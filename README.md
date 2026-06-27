@@ -7,16 +7,16 @@
 ```
 llm/
 ├── agent/                  # Agent 学习
-│   ├── hello-agents/       # 《Hello Agents》课程（来自 datawhalechina/hello-agents）
+│   ├── hello-agents/       # 《Hello Agents》教材（来自 datawhalechina/hello-agents）
 │   ├── memory/             # 个人知识记忆
 │   └── system/             # 系统配置
 ├── cs336/                  # CS336 课程 — Stanford 大模型课程
 │   ├── lectures/           # 课程讲义与代码
 │   ├── notes/              # 个人笔记（每人一个文件夹）
 │   │   └── ljy/            # ljy 的笔记
-│   ├── papers/             # 论文阅读与分享
-│   │   └── 30-paper-zhCN/  # 论文中文解读参考（来自 Romanrose/30-paper-zhCN）
 │   └── references/         # 参考资料
+├── papers/                 # 论文阅读与分享
+│   └── 30-paper-zhCN/      # 论文中文解读参考（来自 Romanrose/30-paper-zhCN）
 └── infra/                  # 基础设施（环境、脚本等）
 ```
 
@@ -33,7 +33,7 @@ llm/
 
 ### 3. Paper Reading — 论文分享
 - 每周阅读并分享一篇大模型相关论文
-- 论文解读放在 `cs336/papers/`，可参考 `30-paper-zhCN` 的中文解读
+- 论文解读放在 `papers/` 目录下，可参考 `30-paper-zhCN` 的中文解读
 - 鼓励 PPT/文档 + 演示的形式分享
 
 ## 🚀 如何参与
