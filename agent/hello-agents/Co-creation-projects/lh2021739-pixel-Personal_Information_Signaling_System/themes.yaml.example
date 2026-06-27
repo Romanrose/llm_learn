@@ -1,0 +1,14 @@
+# 搜索主题配置示例
+# 复制此文件为 themes.yaml 并修改为你感兴趣的主题
+
+themes:
+  - mcp          # Model Context Protocol
+  - agent        # AI Agent
+  - rag          # Retrieval-Augmented Generation
+  - money        # 理财/投资
+  - AI           # 人工智能
+  # 你可以添加更多主题，例如：
+  # - 健康
+  # - 学习
+  # - 工作
+

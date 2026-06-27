@@ -1,0 +1,34 @@
+{
+  "work_meeting": {
+    "formal": {
+      "zh": "感谢您的邮件。关于{{subject}}，我已收到您的信息。我将在{{timeframe}}内回复您详细的反馈。如有紧急事项，请随时联系我。\n\n此致\n敬礼",
+      "en": "Thank you for your email regarding {{subject}}. I have received your information and will provide detailed feedback within {{timeframe}}. Please feel free to contact me if there are any urgent matters.\n\nBest regards"
+    },
+    "casual": {
+      "zh": "收到！关于{{subject}}的事情我看到了，{{timeframe}}内给你回复。有急事随时找我。",
+      "en": "Got it! I've seen the {{subject}} matter and will get back to you within {{timeframe}}. Feel free to reach out if it's urgent."
+    }
+  },
+  "customer_inquiry": {
+    "formal": {
+      "zh": "尊敬的客户，\n\n感谢您对我们产品/服务的关注。关于您咨询的{{subject}}，我们将安排专业人员在{{timeframe}}内为您提供详细解答。\n\n如有其他问题，欢迎随时联系我们。\n\n此致\n敬礼",
+      "en": "Dear Valued Customer,\n\nThank you for your interest in our products/services. Regarding your inquiry about {{subject}}, we will arrange for a professional to provide you with detailed answers within {{timeframe}}.\n\nPlease feel free to contact us if you have any other questions.\n\nBest regards"
+    }
+  },
+  "general_acknowledgment": {
+    "formal": {
+      "zh": "您好，\n\n已收到您的邮件，我将仔细阅读并在{{timeframe}}内回复。\n\n谢谢！",
+      "en": "Hello,\n\nI have received your email and will read it carefully and reply within {{timeframe}}.\n\nThank you!"
+    },
+    "casual": {
+      "zh": "收到你的邮件了，我看看然后{{timeframe}}内回复你。",
+      "en": "Got your email, I'll take a look and get back to you within {{timeframe}}."
+    }
+  },
+  "out_of_office": {
+    "formal": {
+      "zh": "您好，\n\n我目前不在办公室，将于{{return_date}}返回。在此期间，如有紧急事务，请联系{{emergency_contact}}。\n\n谢谢理解！",
+      "en": "Hello,\n\nI am currently out of the office and will return on {{return_date}}. For urgent matters during this period, please contact {{emergency_contact}}.\n\nThank you for your understanding!"
+    }
+  }
+}

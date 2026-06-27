@@ -1,0 +1,419 @@
+<!-- 仪表板模板 -->
+<div class="dashboard fade-in">
+    <div class="dashboard-header">
+        <h1>研创·智核仪表板</h1>
+        <p>欢迎使用智能科研助手平台</p>
+    </div>
+
+    <!-- 统计卡片 -->
+    <div class="stats-section">
+        <h2>数据概览</h2>
+        <div id="stats-container" class="stats-grid">
+            <!-- 统计数据将通过JavaScript动态加载 -->
+        </div>
+    </div>
+
+    <!-- 快速操作 -->
+    <div class="quick-actions">
+        <h2>快速操作</h2>
+        <div class="action-grid">
+            <div class="action-card" data-action="show-modal" data-target="literature-search-modal">
+                <div class="action-icon">🔍</div>
+                <h3>文献搜索</h3>
+                <p>智能搜索相关文献</p>
+            </div>
+            <div class="action-card" data-action="show-modal" data-target="paper-analysis-modal">
+                <div class="action-icon">📊</div>
+                <h3>论文分析</h3>
+                <p>深度分析论文内容</p>
+            </div>
+            <div class="action-card" data-action="show-modal" data-target="academic-writing-modal">
+                <div class="action-icon">✍️</div>
+                <h3>学术写作</h3>
+                <p>辅助生成学术文档</p>
+            </div>
+            <div class="action-card" data-action="navigate" data-target="/papers/new">
+                <div class="action-icon">📄</div>
+                <h3>添加论文</h3>
+                <p>手动添加论文信息</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 最近任务 -->
+    <div class="recent-tasks">
+        <h2>最近任务</h2>
+        <div id="recent-tasks-container">
+            <!-- 最近任务将通过JavaScript动态加载 -->
+        </div>
+        <div class="view-all">
+            <a href="/tasks" class="btn btn-outline">查看所有任务</a>
+        </div>
+    </div>
+
+    <!-- 系统状态 -->
+    <div class="system-status">
+        <h2>系统状态</h2>
+        <div class="status-grid">
+            <div class="status-item">
+                <div class="status-indicator status-online"></div>
+                <span>API服务</span>
+                <span class="status-text">在线</span>
+            </div>
+            <div class="status-item">
+                <div class="status-indicator status-online"></div>
+                <span>向量数据库</span>
+                <span class="status-text">正常</span>
+            </div>
+            <div class="status-item">
+                <div class="status-indicator status-online"></div>
+                <span>智能体服务</span>
+                <span class="status-text">运行中</span>
+            </div>
+            <div class="status-item">
+                <div class="status-indicator status-warning"></div>
+                <span>存储空间</span>
+                <span class="status-text">75%</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 文献搜索模态框 -->
+<div id="literature-search-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">智能文献搜索</h3>
+            <button class="modal-close" data-action="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form class="ajax-form" data-endpoint="/tasks" data-method="POST" data-redirect="/tasks/{id}">
+                <div class="form-group">
+                    <label class="form-label">搜索关键词</label>
+                    <input type="text" name="query" class="form-control" placeholder="输入搜索关键词..." required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">最大论文数量</label>
+                    <select name="max_papers" class="form-select">
+                        <option value="10">10篇</option>
+                        <option value="20" selected>20篇</option>
+                        <option value="50">50篇</option>
+                        <option value="100">100篇</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">发表年份范围</label>
+                    <div class="year-range">
+                        <input type="number" name="year_start" class="form-control" placeholder="起始年份" min="1900" max="2024">
+                        <span>至</span>
+                        <input type="number" name="year_end" class="form-control" placeholder="结束年份" min="1900" max="2024">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">期刊/会议</label>
+                    <input type="text" name="venues" class="form-control" placeholder="输入期刊或会议名称，多个用逗号分隔">
+                </div>
+                <input type="hidden" name="title" value="文献搜索任务">
+                <input type="hidden" name="task_type" value="literature_search">
+                <input type="hidden" name="priority" value="medium">
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline" data-action="close-modal">取消</button>
+            <button type="submit" form="ajax-form" class="btn btn-primary">开始搜索</button>
+        </div>
+    </div>
+</div>
+
+<!-- 论文分析模态框 -->
+<div id="paper-analysis-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">论文分析</h3>
+            <button class="modal-close" data-action="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form class="ajax-form" data-endpoint="/tasks" data-method="POST" data-redirect="/tasks/{id}">
+                <div class="form-group">
+                    <label class="form-label">选择论文</label>
+                    <div class="paper-selector">
+                        <!-- 论文选择器将通过JavaScript动态加载 -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">分析类型</label>
+                    <select name="analysis_type" class="form-select" required>
+                        <option value="">请选择分析类型</option>
+                        <option value="comprehensive">综合分析</option>
+                        <option value="methodology">方法论分析</option>
+                        <option value="findings">研究发现分析</option>
+                        <option value="gap">研究缺口分析</option>
+                        <option value="trend">趋势分析</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">重点关注领域</label>
+                    <input type="text" name="focus_areas" class="form-control" placeholder="输入重点关注领域，多个用逗号分隔">
+                </div>
+                <input type="hidden" name="title" value="论文分析任务">
+                <input type="hidden" name="task_type" value="analysis">
+                <input type="hidden" name="priority" value="medium">
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline" data-action="close-modal">取消</button>
+            <button type="submit" form="ajax-form" class="btn btn-primary">开始分析</button>
+        </div>
+    </div>
+</div>
+
+<!-- 学术写作模态框 -->
+<div id="academic-writing-modal" class="modal">
+    <div class="modal-content modal-large">
+        <div class="modal-header">
+            <h3 class="modal-title">学术写作助手</h3>
+            <button class="modal-close" data-action="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form class="ajax-form" data-endpoint="/tasks" data-method="POST" data-redirect="/tasks/{id}">
+                <div class="form-group">
+                    <label class="form-label">写作类型</label>
+                    <select name="writing_type" class="form-select" required>
+                        <option value="">请选择写作类型</option>
+                        <option value="review">文献综述</option>
+                        <option value="summary">论文总结</option>
+                        <option value="critique">论文评述</option>
+                        <option value="proposal">研究提案</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">参考论文</label>
+                    <div class="paper-selector">
+                        <!-- 论文选择器将通过JavaScript动态加载 -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">写作大纲</label>
+                    <textarea name="outline" class="form-control form-textarea" rows="6" placeholder="输入写作大纲，每行一个章节..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">目标字数</label>
+                    <input type="number" name="length" class="form-control" placeholder="预计字数" min="100" max="10000" value="1000">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">写作风格</label>
+                    <select name="style" class="form-select">
+                        <option value="academic">学术风格</option>
+                        <option value="formal">正式风格</option>
+                        <option value="concise">简洁风格</option>
+                    </select>
+                </div>
+                <input type="hidden" name="title" value="学术写作任务">
+                <input type="hidden" name="task_type" value="writing">
+                <input type="hidden" name="priority" value="medium">
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline" data-action="close-modal">取消</button>
+            <button type="submit" form="ajax-form" class="btn btn-primary">开始写作</button>
+        </div>
+    </div>
+</div>
+
+<style>
+.dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.dashboard-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.dashboard-header p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+.stats-section,
+.quick-actions,
+.recent-tasks,
+.system-status {
+    margin-bottom: 40px;
+}
+
+.stats-section h2,
+.quick-actions h2,
+.recent-tasks h2,
+.system-status h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--dark-color);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.stat-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.action-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.action-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.action-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--dark-color);
+}
+
+.action-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.status-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.status-online {
+    background-color: var(--success-color);
+}
+
+.status-warning {
+    background-color: var(--warning-color);
+}
+
+.status-offline {
+    background-color: var(--danger-color);
+}
+
+.status-text {
+    margin-left: auto;
+    font-weight: 500;
+}
+
+.year-range {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.year-range input {
+    flex: 1;
+}
+
+.modal-large {
+    max-width: 800px;
+}
+
+.paper-selector {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    padding: 10px;
+}
+
+.view-all {
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 10px;
+    }
+    
+    .dashboard-header h1 {
+        font-size: 2rem;
+    }
+    
+    .stats-grid,
+    .action-grid,
+    .status-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .year-range {
+        flex-direction: column;
+    }
+    
+    .year-range span {
+        display: none;
+    }
+}
+</style>

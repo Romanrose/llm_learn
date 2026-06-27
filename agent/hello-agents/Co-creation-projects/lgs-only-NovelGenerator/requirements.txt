@@ -1,0 +1,11 @@
+# Core Framework
+hello-agents[all]>=0.2.8
+
+# Web Framework
+fastapi>=0.109.0
+uvicorn>=0.27.0
+pydantic>=2.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+requepip sts>=2.30.0

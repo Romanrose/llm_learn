@@ -1,0 +1,40 @@
+# LLM Configuration
+OPENAI_API_KEY="sk-XXXXX"
+OPENAI_MODEL="gemini-2.5-flash-latest"
+OPENAI_BASE_URL="http://XXXXX.com"
+
+# Alternative
+LLM_API_KEY="sk-XXXXX"
+LLM_MODEL_ID="gemini-2.5-flash-latest"
+LLM_BASE_URL="http://XXXXX.com"
+
+
+# Tavily API (Recommended - Better for AI content)
+TAVILY_API_KEY="tvly-XXXXX"
+
+# OR SerpAPI (Alternative)
+SERPAPI_API_KEY="XXXXX"
+
+# Unsplash API Credentials
+UNSPLASH_ACCESS_KEY="XXXXX"
+UNSPLASH_SECRET_KEY="XXXXX"
+
+# System Configuration
+MAX_DEPTH=3
+APPROVAL_THRESHOLD=75
+REVISION_THRESHOLD=60
+ENABLE_PARALLEL=false
+ENABLE_SEARCH=true
+
+# 超时时间（可选，默认60秒）
+LLM_TIMEOUT=60
+
+# 服务器配置
+HOST=0.0.0.0
+PORT=8000
+
+# CORS配置
+CORS_ORIGINS=http://localhost:5173,http://localhost:3000
+
+# 日志级别
+LOG_LEVEL=INFO

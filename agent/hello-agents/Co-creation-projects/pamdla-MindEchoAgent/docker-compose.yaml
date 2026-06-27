@@ -1,0 +1,41 @@
+services:
+  mindechoagent:
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mindechoagent
+    container_name: mindechoagent
+    hostname: mindechoagent
+    restart: unless-stopped
+    volumes:
+      - $PWD:/app
+
+  qdrant:
+    image: qdrant/qdrant
+    container_name: qdrant
+    hostname: qdrant
+    ports:
+      - 6333:6333
+    volumes:
+      - ./qdrant/data:/qdrant/storage
+    environment:
+      - QDRANT__TELEMETRY_DISABLED=true
+    restart: unless-stopped
+
+  neosrv:
+    image: neo4j:2025.11.2-community
+    container_name: neosrv
+    hostname: neosrv
+    ports:
+      - 7474:7474
+      - 7687:7687
+    volumes:
+      - ./neo4j/data:/data
+      - ./neo4j/logs:/logs
+      - ./neo4j/import:/import
+    environment:
+      NEO4J_AUTH: neo4j/password  # 最好在.env设置
+      NEO4J_PLUGINS: '["apoc"]'   # 可选插件
+    restart: unless-stopped
+

@@ -1,0 +1,456 @@
+<!-- 登录模板 -->
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <div class="logo">
+                <h1>研创·智核</h1>
+                <p>InnoCore AI</p>
+            </div>
+            <h2>用户登录</h2>
+            <p>登录您的智能科研助手账户</p>
+        </div>
+
+        <form class="login-form ajax-form" data-endpoint="/auth/login" data-method="POST" data-redirect="/">
+            <div class="form-group">
+                <label class="form-label" for="email">邮箱地址</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="请输入邮箱地址" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">密码</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="请输入密码" required>
+                <div class="password-toggle" data-action="toggle-password">
+                    <span class="eye-icon">👁️</span>
+                </div>
+            </div>
+
+            <div class="form-options">
+                <label class="checkbox-label">
+                    <input type="checkbox" name="remember">
+                    <span class="checkmark"></span>
+                    记住我
+                </label>
+                <a href="#" class="forgot-password">忘记密码？</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">
+                <span class="btn-text">登录</span>
+                <span class="btn-loading" style="display: none;">
+                    <span class="spinner"></span>
+                    登录中...
+                </span>
+            </button>
+        </form>
+
+        <div class="login-footer">
+            <p>还没有账户？ <a href="#" data-action="show-register">立即注册</a></p>
+        </div>
+
+        <div class="demo-info">
+            <h3>演示账户</h3>
+            <div class="demo-accounts">
+                <div class="demo-account">
+                    <strong>普通用户：</strong>
+                    <span>demo@example.com / demo123</span>
+                </div>
+                <div class="demo-account">
+                    <strong>高级用户：</strong>
+                    <span>premium@example.com / premium123</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-features">
+        <h3>平台特色</h3>
+        <div class="feature-list">
+            <div class="feature-item">
+                <div class="feature-icon">🤖</div>
+                <div class="feature-content">
+                    <h4>智能多智能体</h4>
+                    <p>猎手、矿工、教练、验证器四大智能体协同工作</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔍</div>
+                <div class="feature-content">
+                    <h4>智能文献搜索</h4>
+                    <p>基于语义理解的精准文献检索</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📊</div>
+                <div class="feature-content">
+                    <h4>深度论文分析</h4>
+                    <p>多维度分析论文内容，提取关键信息</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">✍️</div>
+                <div class="feature-content">
+                    <h4>学术写作助手</h4>
+                    <p>AI辅助生成高质量的学术文档</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 注册模态框 -->
+<div id="register-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">用户注册</h3>
+            <button class="modal-close" data-action="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form class="register-form ajax-form" data-endpoint="/auth/register" data-method="POST" data-redirect="/">
+                <div class="form-group">
+                    <label class="form-label" for="reg-username">用户名</label>
+                    <input type="text" id="reg-username" name="username" class="form-control" placeholder="请输入用户名" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="reg-email">邮箱地址</label>
+                    <input type="email" id="reg-email" name="email" class="form-control" placeholder="请输入邮箱地址" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="reg-password">密码</label>
+                    <input type="password" id="reg-password" name="password" class="form-control" placeholder="请输入密码（至少6位）" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="reg-confirm-password">确认密码</label>
+                    <input type="password" id="reg-confirm-password" name="confirm_password" class="form-control" placeholder="请再次输入密码" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="reg-fullname">姓名（可选）</label>
+                    <input type="text" id="reg-fullname" name="full_name" class="form-control" placeholder="请输入您的姓名">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="reg-institution">机构（可选）</label>
+                    <input type="text" id="reg-institution" name="institution" class="form-control" placeholder="请输入您的机构名称">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="reg-field">研究领域（可选）</label>
+                    <select id="reg-field" name="research_field" class="form-select">
+                        <option value="">请选择研究领域</option>
+                        <option value="computer-science">计算机科学</option>
+                        <option value="artificial-intelligence">人工智能</option>
+                        <option value="machine-learning">机器学习</option>
+                        <option value="data-science">数据科学</option>
+                        <option value="biology">生物学</option>
+                        <option value="medicine">医学</option>
+                        <option value="physics">物理学</option>
+                        <option value="chemistry">化学</option>
+                        <option value="mathematics">数学</option>
+                        <option value="engineering">工程学</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="agree_terms" required>
+                        <span class="checkmark"></span>
+                        我同意 <a href="#" class="terms-link">服务条款</a> 和 <a href="#" class="privacy-link">隐私政策</a>
+                    </label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline" data-action="close-modal">取消</button>
+            <button type="submit" form="register-form" class="btn btn-primary">注册</button>
+        </div>
+    </div>
+</div>
+
+<style>
+.login-container {
+    display: flex;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-card {
+    flex: 1;
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo h1 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.logo p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.login-header h2 {
+    font-size: 1.8rem;
+    color: var(--dark-color);
+    margin-bottom: 10px;
+}
+
+.login-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-color);
+    border-radius: 3px;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    color: white;
+    font-size: 12px;
+}
+
+.forgot-password {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.btn-full {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.login-footer {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-footer p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.login-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+.demo-info {
+    background: var(--light-color);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.demo-info h3 {
+    font-size: 1rem;
+    color: var(--dark-color);
+    margin-bottom: 15px;
+}
+
+.demo-accounts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.demo-account {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.demo-account strong {
+    color: var(--dark-color);
+}
+
+.demo-account span {
+    font-family: monospace;
+    background: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+}
+
+.login-features {
+    flex: 1;
+    padding: 60px 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-features h3 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.feature-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.feature-content p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color 0.2s;
+}
+
+.password-toggle:hover {
+    color: var(--primary-color);
+}
+
+.eye-icon {
+    font-size: 1.2rem;
+}
+
+.terms-link,
+.privacy-link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.terms-link:hover,
+.privacy-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
+    
+    .login-card {
+        max-width: 100%;
+        padding: 30px 20px;
+    }
+    
+    .login-features {
+        padding: 40px 20px;
+    }
+    
+    .feature-icon {
+        font-size: 2rem;
+    }
+    
+    .feature-content h4 {
+        font-size: 1.1rem;
+    }
+    
+    .demo-accounts {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .demo-info {
+        padding: 15px;
+    }
+    
+    .demo-account {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+</style>

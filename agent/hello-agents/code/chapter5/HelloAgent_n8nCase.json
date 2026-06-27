@@ -1,0 +1,350 @@
+{
+  "name": "HelloAgent_n8nCase",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        368,
+        -160
+      ],
+      "id": "46a534e3-3e72-4d0b-9a41-bc5c28834ee4",
+      "name": "Gmail",
+      "alwaysOutputData": false,
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "XD1oTN8hEyHzsxBR",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        416,
+        32
+      ],
+      "id": "882131ef-83bc-415f-9430-59d40503c4ae",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "4HqrqZ1DN3LCRp28",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Gmail').item.json.threadId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        544,
+        32
+      ],
+      "id": "d230cedb-0a48-424f-8b79-4a5e8ae304a7",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
+      "typeVersion": 1,
+      "position": [
+        672,
+        32
+      ],
+      "id": "164578ff-9ef8-41ab-b4c3-22f7871c4885",
+      "name": "SerpAPI",
+      "credentials": {
+        "serpApi": {
+          "id": "Nmxsc4WxINf7TGrA",
+          "name": "SerpAPI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Gmail').item.json.From }}",
+        "subject": "=Re:  {{ $('Gmail').item.json.Subject }}",
+        "message": "={{ $json.output }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        928,
+        -160
+      ],
+      "id": "c680c326-e4e1-41df-9f76-520c4b522618",
+      "name": "Send a message",
+      "webhookId": "94ed889e-1e8a-4c90-980f-38cd02c32873",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "XD1oTN8hEyHzsxBR",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "memoryKey": {
+          "__rl": true,
+          "value": "my-dailytime",
+          "mode": "list"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        -16,
+        -160
+      ],
+      "id": "ead1ed07-6e2c-4ba2-9d28-d5adf76540f1",
+      "name": "Simple Vector Store1"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-embedding-exp-03-07"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -32,
+        48
+      ],
+      "id": "67402e5f-270b-4e31-9b48-4d2a2b60d79e",
+      "name": "Embeddings Google Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "4HqrqZ1DN3LCRp28",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        128,
+        48
+      ],
+      "id": "e55e36f5-8628-496b-acb7-52a4f67b9af2",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n\n  {\n    \"doc_id\": \"work-schedule-001\",\n    \"content\": \"我的工作时间是周一至周五，上午9点到下午5点。时区是澳大利亚东部标准时间（AEST）。\"\n  },\n  {\n    \"doc_id\": \"off-hours-policy-001\",\n    \"content\": \"在非工作时间（包括周末和公共假期），我无法立即回复邮件。\"\n  },\n  {\n    \"doc_id\": \"auto-reply-instruction-001\",\n    \"content\": \"如果邮件是在非工作时间收到的，AI助手应该告知发件人，邮件已收到，我会在下一个工作日的9点到5点之间尽快处理并回复。\"\n  }\n\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -240,
+        -160
+      ],
+      "id": "75bc8b52-3ff2-43b3-a6fa-d200c821de4a",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "这是Simple Vector Store2工具，用来查询我的个人信息，特别是我的工作时间和邮件回复策略。当需要判断当前是否为工作时间，或者需要告知对方我何时会回复邮件时，必须使用此工具。",
+        "memoryKey": {
+          "__rl": true,
+          "value": "my-dailytime",
+          "mode": "list",
+          "cachedResultName": "my-dailytime"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        800,
+        48
+      ],
+      "id": "ad9ba7d0-26b7-499b-9c5a-3d4295f6f7ed",
+      "name": "Simple Vector Store2"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-embedding-exp-03-07"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        800,
+        208
+      ],
+      "id": "9ff48ca5-a7fd-45d6-8ff3-01c86bf63eea",
+      "name": "Embeddings Google Gemini1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "4HqrqZ1DN3LCRp28",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=# 上下文信息\n- 当前时间: {{ new Date().toLocaleString('en-AU', { timeZone: 'Australia/Sydney', hour12: false }) }} (澳大利亚悉尼时间)\n- 发件人: {{ $json.From }}\n- 主题: {{ $json.Subject }}\n- 邮件正文: {{ $json.snippet }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "=# 角色和目标\n你是一个全天候待命、专业高效的AI邮件助手。你的任务是：第一时间使用公开信息尽力回答所有邮件中的问题，并根据我的工作日程，在回复的开头附加上下文状态提醒。\n\n# 上下文信息\n- 当前时间: {{ new Date().toLocaleString('en-AU', { timeZone: 'Australia/Sydney', hour12: false }) }} (澳大利亚悉尼时间)\n- 邮件信息在输入数据中。\n\n# 可用工具\n- Simple Vector Store2: 用来查询我准确的工作时间（例如：周一至周五，上午9点到下午5点）。\n- SerpAPI: **[主要信息来源]** 优先使用此工具在互联网上搜索，以回答邮件中的具体问题。\n\n# 执行步骤\n1.  **分析问题**: 首先，仔细阅读邮件内容，提炼出发件人的核心问题。\n\n2.  **并行信息搜集**: 同时执行以下两个操作来收集信息：\n    a. 使用 `SerpAPI` 工具，上网搜索出发件人问题的答案。\n    b. 使用 `Simple Vector Store2` 工具，获取我设定的准确工作时间。\n\n3.  **草拟核心回复**: 根据 `SerpAPI` 搜集到的信息，清晰、直接地回答发件人的问题，这部分将作为邮件回复的主体。\n\n4.  **添加状态前缀并整合**:\n    a. 对比“当前时间”和我从工具中获取的工作时间。\n    b. **如果当前是“非工作时间”**: 创建一段状态提醒前缀。这段前缀**必须包含**从 `Simple Vector Store2` 获取到的具体工作时间。\n        * **前缀示例**: \"您好，感谢您的来信。您已在我的非工作时间联系我（我的工作时间为：[此处插入查询到的工作时间]）。我会在下一个工作日亲自审阅此邮件。与此同时，这是根据公开信息为您找到的初步答复：**<br><br>---<br><br>**\"\n    c. **如果当前是“工作时间”**: 只需使用简单的问候语即可。\n        * **前缀示例**: \"您好，关于您提出的问题，答复如下：**<br><br>---<br><br>**\"\n    d. 将生成的前缀和你草拟的核心回复（第3步的结果）拼接在一起，形成最终的邮件正文。\n\n5.  **格式化输出**: 你必须将最终生成的邮件内容以一个严格的 JSON 格式输出。格式如下，不要添加任何额外的解释或文字：\n    {\n      \"shouldReply\": true,\n      \"subject\": \"Re: [原始邮件主题]\",\n      \"body\": \"[这里是拼接好的、完整的邮件回复正文，**所有换行必须使用HTML的<br>标签**]\"\n    }\n\n# 规则和限制\n- **永远优先尝试回答**: 无论何时，你的首要任务是使用 `SerpAPI` 为用户提供有价值的回复。\n- **必须声明状态**: 如果在非工作时间回复，必须在邮件开头明确声明，并附上我准确的工作时间。\n- **信息来源要准确**: 工作时间必须严格以 `Simple Vector Store2` 的结果为准；问题答案主要来源于 `SerpAPI`，不要编造信息。\n- **输出格式**: **在最终输出的JSON中，`body`字段内的所有换行都必须使用 `<br>` 标签，而不是 `\\n`。**"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        576,
+        -160
+      ],
+      "id": "b5e90bc0-1d53-4bea-9300-b9982ff5b9b4",
+      "name": "AI Agent1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Gmail": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SerpAPI": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Simple Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Simple Vector Store1",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Simple Vector Store1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Vector Store2": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Simple Vector Store2",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4b54e880-ce89-48af-bc22-d753d162b460",
+  "meta": {
+    "instanceId": "87f6aa8e755e8ea119eeb2e3b3db6a7d58c6b1d2109e9b94ec4ef98f2449f77d"
+  },
+  "id": "b8xRsyXsQr5XE16V",
+  "tags": []
+}

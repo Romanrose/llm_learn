@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>第一个 ECharts 实例</title>
+    <!-- 引入 echarts.js -->
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+ 
+        // 指定图表的配置项和数据
+        var option = {
+    xAxis: {
+        type: 'category',
+        data: ['2025年6月', '2025年7月', '2025年8月', '2025年9月', '2025年10月']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name: '居民消费价格指数',
+            data: [100.1, 100.0, 99.6, 99.7, 100.2],
+            type: 'line'
+        },
+        {
+            name: '食品烟酒类居民消费价格指数',
+            data: [100.1, 99.2, 97.5, 97.4, 98.4],
+            type: 'line'
+        },
+        {
+            name: '衣着类居民消费价格指数',
+            data: [101.6, 101.7, 101.8, 101.7, 101.7],
+            type: 'line'
+        },
+        {
+            name: '居住类居民消费价格指数',
+            data: [100.1, 100.1, 100.1, 100.1, 100.1],
+            type: 'line'
+        },
+        {
+            name: '生活用品及服务类居民消费价格指数',
+            data: [100.7, 101.2, 101.8, 102.2, 101.9],
+            type: 'line'
+        },
+        {
+            name: '交通通信类居民消费价格指数',
+            data: [96.3, 96.9, 97.6, 98.0, 98.5],
+            type: 'line'
+        },
+        {
+            name: '教育文化娱乐类居民消费价格指数',
+            data: [101.0, 100.9, 101.0, 100.8, 100.9],
+            type: 'line'
+        },
+        {
+            name: '医疗保健类居民消费价格指数',
+            data: [100.4, 100.5, 100.9, 101.1, 101.4],
+            type: 'line'
+        },
+        {
+            name: '其他用品及服务类居民消费价格指数',
+            data: [108.1, 108.0, 108.6, 109.9, 112.8],
+            type: 'line'
+        },
+        {
+            name: '非食品居民消费价格指数',
+            data: [100.1, 100.3, 100.5, 100.7, 100.9],
+            type: 'line'
+        },
+        {
+            name: '消费品居民消费价格指数',
+            data: [99.8, 99.6, 99.0, 99.2, 99.8],
+            type: 'line'
+        },
+        {
+            name: '服务居民消费价格指数',
+            data: [100.5, 100.5, 100.6, 100.6, 100.8],
+            type: 'line'
+        },
+        {
+            name: '不包括食品和能源居民消费价格指数',
+            data: [100.7, 100.8, 100.9, 101.0, 101.2],
+            type: 'line'
+        }
+    ]
+}
+        
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

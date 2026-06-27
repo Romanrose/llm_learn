@@ -1,0 +1,15 @@
+# FastAPI后端依赖
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+requests>=2.31.0
+
+# CORS支持
+python-multipart>=0.0.6
+
+# 测试工具
+pytest>=7.4.0
+httpx>=0.25.0
+
+# HelloAgents框架
+hello-agents>=0.2.4,<=0.2.9

@@ -1,0 +1,3 @@
+hello-agents[all]>=0.2.7
+jupyterlab
+python-dotenv

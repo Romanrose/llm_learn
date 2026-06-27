@@ -1,0 +1,11 @@
+# YouTube频道白名单配置示例
+# 复制此文件为 channels.yaml 并修改为你信任的频道
+
+whitelist_channels:
+  - Anthropic          # Anthropic官方频道
+  - OpenAI             # OpenAI官方频道
+  - The Diary Of A CEO # 商业/创业频道
+  # 你可以添加更多信任的频道，例如：
+  # - 你喜欢的频道名称1
+  # - 你喜欢的频道名称2
+

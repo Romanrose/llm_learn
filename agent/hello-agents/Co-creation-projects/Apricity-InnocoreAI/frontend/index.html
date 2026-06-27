@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研创·智核 - InnoCore AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card.active {
+            background: #e8f0fe;
+            border-left-color: #4285f4;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #5a6fd8;
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .status {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .interaction-panel {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .interaction-panel.active {
+            display: block;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .input-group input,
+        .input-group textarea,
+        .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .input-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .response-area {
+            background: #f8f9fa;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 200px;
+            max-height: 500px;
+            overflow-y: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        .response-area pre {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+            overflow-x: auto;
+            margin: 10px 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .paper-card {
+            background: white;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .paper-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .paper-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .paper-card .authors {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 8px 0;
+        }
+
+        .paper-card .abstract {
+            color: #444;
+            line-height: 1.6;
+            margin: 12px 0;
+            font-size: 0.95rem;
+        }
+
+        .paper-card .meta {
+            display: flex;
+            gap: 15px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .paper-card .meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .paper-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .paper-card a:hover {
+            text-decoration: underline;
+        }
+
+        .result-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+            margin: -20px -20px 20px -20px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .result-stats {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error {
+            background: #ffebee;
+            border: 1px solid #f44336;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .success {
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-buttons .btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .file-upload {
+            border: 2px dashed #667eea;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .file-upload:hover {
+            background: #f8f9ff;
+        }
+
+        .file-upload.dragover {
+            background: #e8f0fe;
+            border-color: #4285f4;
+        }
+
+        .copy-btn {
+            float: right;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid #667eea;
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .copy-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .badge-success {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .badge-info {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .badge-warning {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .json-key {
+            color: #0066cc;
+            font-weight: 600;
+        }
+
+        .json-string {
+            color: #008000;
+        }
+
+        .json-number {
+            color: #ff6600;
+        }
+
+        .json-boolean {
+            color: #cc00cc;
+            font-weight: 600;
+        }
+
+        .json-null {
+            color: #999;
+            font-style: italic;
+        }
+
+        .markdown-content {
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .markdown-content h1,
+        .markdown-content h2,
+        .markdown-content h3 {
+            color: #667eea;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .markdown-content ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            margin: 15px 0;
+        }
+
+        .markdown-content li {
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+
+        .markdown-content strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .markdown-content code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #e83e8c;
+            font-size: 0.9em;
+        }
+
+        .markdown-content pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border-left: 4px solid #667eea;
+            margin: 15px 0;
+        }
+
+        .markdown-content pre code {
+            background: none;
+            padding: 0;
+            color: #333;
+        }
+
+        .markdown-content a {
+            color: #667eea;
+            text-decoration: none;
+            border-bottom: 1px solid #667eea;
+        }
+
+        .markdown-content a:hover {
+            color: #5a6fd8;
+            border-bottom-color: #5a6fd8;
+        }
+
+        .markdown-content p {
+            margin: 12px 0;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 研创·智核</h1>
+            <p>基于多智能体架构的智能科研助手平台</p>
+        </header>
+
+        <main class="main-content">
+            <div class="status" id="systemStatus">
+                ✅ 系统初始化中...
+            </div>
+
+            <div class="nav-buttons">
+                <a href="/docs" class="btn" target="_blank">📚 API 文档</a>
+                <a href="/health" class="btn" target="_blank">🔍 健康检查</a>
+                <button class="btn" onclick="checkSystemStatus()">🔄 刷新状态</button>
+            </div>
+
+            <section>
+                <h2>🚀 核心功能</h2>
+
+                <!-- 工作流模式选择 -->
+                <div
+                    style="margin-bottom: 20px; padding: 15px; background: #f0f7ff; border-radius: 8px; border-left: 4px solid #667eea;">
+                    <h3 style="margin: 0 0 10px 0; color: #667eea;">🔄 工作模式</h3>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <label style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="radio" name="work-mode" value="individual" checked style="margin-right: 8px;">
+                            <span>单独模式 - 独立使用每个智能体</span>
+                        </label>
+                        <label style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="radio" name="work-mode" value="workflow" style="margin-right: 8px;">
+                            <span>协调模式 - 自动化完整工作流 ⭐</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="features">
+                    <div class="feature-card" onclick="activateAgent('workflow')" id="workflow-card"
+                        style="display: none; grid-column: 1 / -1; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                        <h3>🔄 完整工作流</h3>
+                        <p>自动协调所有智能体：搜索论文 → 深度分析 → 生成引用 → 撰写报告</p>
+                        <button class="btn" style="background: white; color: #667eea;"
+                            onclick="event.stopPropagation(); activateAgent('workflow')">启动工作流</button>
+                    </div>
+
+                    <div class="feature-card" onclick="activateAgent('hunter')" id="hunter-card">
+                        <h3>🕵️ Hunter Agent</h3>
+                        <p>智能文献搜索与监控，自动抓取 ArXiv、IEEE 等平台的最新论文</p>
+                        <button class="btn" onclick="event.stopPropagation(); activateAgent('hunter')">开始搜索</button>
+                    </div>
+
+                    <div class="feature-card" onclick="activateAgent('miner')" id="miner-card">
+                        <h3>🧠 Miner Agent</h3>
+                        <p>深度论文分析，挖掘创新点，生成结构化研究报告</p>
+                        <button class="btn" onclick="event.stopPropagation(); activateAgent('miner')">分析论文</button>
+                    </div>
+
+                    <div class="feature-card" onclick="activateAgent('coach')" id="coach-card">
+                        <h3>✍️ Coach Agent</h3>
+                        <p>个性化写作助手，提供学术润色、风格迁移和实时指导</p>
+                        <button class="btn" onclick="event.stopPropagation(); activateAgent('coach')">写作助手</button>
+                    </div>
+
+                    <div class="feature-card" onclick="activateAgent('validator')" id="validator-card">
+                        <h3>🔎 Validator Agent</h3>
+                        <p>引用格式校验，确保学术引用的准确性和标准化</p>
+                        <button class="btn" onclick="event.stopPropagation(); activateAgent('validator')">校验引用</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hunter Agent 交互面板 -->
+            <div class="interaction-panel" id="hunter-panel">
+                <h3>🕵️ 文献搜索</h3>
+                <div class="input-group">
+                    <label for="search-keywords">搜索关键词</label>
+                    <input type="text" id="search-keywords"
+                        placeholder="例如: machine learning, natural language processing">
+                </div>
+                <div class="input-group">
+                    <label for="search-source">搜索来源</label>
+                    <select id="search-source">
+                        <option value="arxiv">ArXiv</option>
+                        <option value="ieee">IEEE</option>
+                        <option value="pubmed">PubMed</option>
+                        <option value="all">全部来源</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="search-limit">论文数量限制</label>
+                    <input type="number" id="search-limit" value="10" min="1" max="50">
+                </div>
+                <button class="btn" onclick="executeHunterTask()">开始搜索</button>
+                <div class="loading" id="hunter-loading">
+                    <div class="spinner"></div>
+                    <p>正在搜索论文...</p>
+                </div>
+                <div class="response-area" id="hunter-response"></div>
+            </div>
+
+            <!-- Miner Agent 交互面板 -->
+            <div class="interaction-panel" id="miner-panel">
+                <h3>🧠 论文分析</h3>
+                <div class="input-group">
+                    <label for="paper-upload">上传论文 (PDF)</label>
+                    <div class="file-upload" id="paper-upload-area">
+                        <p>📄 点击或拖拽PDF文件到此处</p>
+                        <input type="file" id="paper-file" accept=".pdf" style="display: none;">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="paper-url">或输入论文URL</label>
+                    <input type="url" id="paper-url" placeholder="https://arxiv.org/abs/...">
+                </div>
+                <div class="input-group">
+                    <label for="analysis-type">分析类型</label>
+                    <select id="analysis-type">
+                        <option value="summary">内容摘要</option>
+                        <option value="innovation">创新点分析</option>
+                        <option value="comparison">对比分析</option>
+                        <option value="comprehensive">综合分析</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="executeMinerTask()">开始分析</button>
+                <div class="loading" id="miner-loading">
+                    <div class="spinner"></div>
+                    <p>正在分析论文...</p>
+                </div>
+                <div class="response-area" id="miner-response"></div>
+            </div>
+
+            <!-- Coach Agent 交互面板 -->
+            <div class="interaction-panel" id="coach-panel">
+                <h3>✍️ 写作助手</h3>
+                <div class="input-group">
+                    <label for="writing-text">您的文本</label>
+                    <textarea id="writing-text" placeholder="请输入需要润色的学术文本..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="writing-style">写作风格</label>
+                    <select id="writing-style">
+                        <option value="formal">正式学术风格</option>
+                        <option value="nature">Nature风格</option>
+                        <option value="science">Science风格</option>
+                        <option value="ieee">IEEE风格</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="writing-task">任务类型</label>
+                    <select id="writing-task">
+                        <option value="polish">润色改进</option>
+                        <option value="translate">中译英</option>
+                        <option value="explain">解释概念</option>
+                        <option value="expand">内容扩展</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="executeCoachTask()">开始处理</button>
+                <div class="loading" id="coach-loading">
+                    <div class="spinner"></div>
+                    <p>正在处理文本...</p>
+                </div>
+                <div class="response-area" id="coach-response"></div>
+            </div>
+
+            <!-- Validator Agent 交互面板 -->
+            <div class="interaction-panel" id="validator-panel">
+                <h3>🔎 引用校验</h3>
+                <div class="input-group">
+                    <label for="citation-input">引用信息</label>
+                    <textarea id="citation-input" placeholder="请输入引用信息，可以是DOI、标题、或BibTeX格式..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="citation-format">输出格式</label>
+                    <select id="citation-format">
+                        <option value="bibtex">BibTeX</option>
+                        <option value="apa">APA</option>
+                        <option value="ieee">IEEE</option>
+                        <option value="mla">MLA</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="executeValidatorTask()">校验引用</button>
+                <div class="loading" id="validator-loading">
+                    <div class="spinner"></div>
+                    <p>正在校验引用...</p>
+                </div>
+                <div class="response-area" id="validator-response"></div>
+            </div>
+
+            <!-- Workflow 协调面板 -->
+            <div class="interaction-panel" id="workflow-panel">
+                <h3>🔄 完整工作流</h3>
+                <p style="color: #666; margin-bottom: 20px;">自动协调所有智能体完成完整的研究流程</p>
+
+                <div class="input-group">
+                    <label for="workflow-keywords">研究关键词</label>
+                    <input type="text" id="workflow-keywords" placeholder="例如: deep learning for computer vision">
+                </div>
+
+                <div class="input-group">
+                    <label for="workflow-limit">搜索论文数量</label>
+                    <select id="workflow-limit">
+                        <option value="3">3篇（快速）</option>
+                        <option value="5" selected>5篇（推荐）</option>
+                        <option value="10">10篇（详细）</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="workflow-analysis-type">分析类型</label>
+                    <select id="workflow-analysis-type">
+                        <option value="summary">摘要分析</option>
+                        <option value="innovation">创新点分析</option>
+                        <option value="comparison">对比分析</option>
+                        <option value="comprehensive">综合分析</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="workflow-citation-format">引用格式</label>
+                    <select id="workflow-citation-format">
+                        <option value="bibtex">BibTeX</option>
+                        <option value="apa">APA</option>
+                        <option value="ieee">IEEE</option>
+                        <option value="mla">MLA</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>
+                        <input type="checkbox" id="workflow-generate-report" checked>
+                        生成综合报告
+                    </label>
+                </div>
+
+                <button class="btn" onclick="executeWorkflow()"
+                    style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">🚀 启动完整工作流</button>
+
+                <div class="loading" id="workflow-loading">
+                    <div class="spinner"></div>
+                    <p>工作流执行中，请稍候...</p>
+                </div>
+
+                <div class="response-area" id="workflow-response"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let currentAgent = null;
+
+        // 页面加载时检查系统状态
+        document.addEventListener('DOMContentLoaded', function () {
+            checkSystemStatus();
+            setupFileUpload();
+            setupWorkModeSwitch();
+        });
+
+        // 设置工作模式切换
+        function setupWorkModeSwitch() {
+            const modeRadios = document.querySelectorAll('input[name="work-mode"]');
+            modeRadios.forEach(radio => {
+                radio.addEventListener('change', function () {
+                    const workflowCard = document.getElementById('workflow-card');
+                    if (this.value === 'workflow') {
+                        workflowCard.style.display = 'block';
+                    } else {
+                        workflowCard.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // 检查系统状态
+        async function checkSystemStatus() {
+            const statusDiv = document.getElementById('systemStatus');
+            try {
+                const response = await fetch('/health');
+                const data = await response.json();
+
+                if (response.ok) {
+                    statusDiv.className = 'status';
+                    statusDiv.innerHTML = `✅ 系统运行正常 | 状态: ${data.status} | 时间: ${new Date().toLocaleString()}`;
+                } else {
+                    throw new Error('系统状态异常');
+                }
+            } catch (error) {
+                statusDiv.className = 'error';
+                statusDiv.innerHTML = `❌ 系统连接失败: ${error.message}`;
+            }
+        }
+
+        // 激活智能体
+        function activateAgent(agentType) {
+            // 重置所有卡片和面板
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.querySelectorAll('.interaction-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+
+            // 激活选中的智能体
+            currentAgent = agentType;
+            document.getElementById(`${agentType}-card`).classList.add('active');
+            document.getElementById(`${agentType}-panel`).classList.add('active');
+        }
+
+        // 执行Hunter任务
+        async function executeHunterTask() {
+            const keywords = document.getElementById('search-keywords').value;
+            const source = document.getElementById('search-source').value;
+            const limit = document.getElementById('search-limit').value;
+
+            if (!keywords.trim()) {
+                showError('hunter-response', '请输入搜索关键词');
+                return;
+            }
+
+            showLoading('hunter-loading');
+
+            try {
+                const response = await fetch('/api/v1/papers/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        keywords: keywords,
+                        source: source,
+                        limit: parseInt(limit)
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showSuccess('hunter-response', `找到 ${data.papers?.length || 0} 篇相关论文`, data);
+                } else {
+                    showError('hunter-response', data.detail || '搜索失败');
+                }
+            } catch (error) {
+                showError('hunter-response', `网络错误: ${error.message}`);
+            } finally {
+                hideLoading('hunter-loading');
+            }
+        }
+
+        // 执行Miner任务
+        async function executeMinerTask() {
+            const paperUrl = document.getElementById('paper-url').value;
+            const analysisType = document.getElementById('analysis-type').value;
+
+            if (!paperUrl.trim()) {
+                showError('miner-response', '请输入论文URL或上传PDF文件');
+                return;
+            }
+
+            showLoading('miner-loading');
+
+            try {
+                const response = await fetch('/api/v1/analysis/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        paper_url: paperUrl,
+                        analysis_type: analysisType
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showSuccess('miner-response', '论文分析完成', data);
+                } else {
+                    showError('miner-response', data.detail || '分析失败');
+                }
+            } catch (error) {
+                showError('miner-response', `网络错误: ${error.message}`);
+            } finally {
+                hideLoading('miner-loading');
+            }
+        }
+
+        // 执行Coach任务
+        async function executeCoachTask() {
+            const text = document.getElementById('writing-text').value;
+            const style = document.getElementById('writing-style').value;
+            const task = document.getElementById('writing-task').value;
+
+            if (!text.trim()) {
+                showError('coach-response', '请输入需要处理的文本');
+                return;
+            }
+
+            showLoading('coach-loading');
+
+            try {
+                const response = await fetch('/api/v1/writing/coach', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        text: text,
+                        style: style,
+                        task: task
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showSuccess('coach-response', '文本处理完成', data);
+                } else {
+                    showError('coach-response', data.detail || '处理失败');
+                }
+            } catch (error) {
+                showError('coach-response', `网络错误: ${error.message}`);
+            } finally {
+                hideLoading('coach-loading');
+            }
+        }
+
+        // 执行Validator任务
+        async function executeValidatorTask() {
+            const citation = document.getElementById('citation-input').value;
+            const format = document.getElementById('citation-format').value;
+
+            if (!citation.trim()) {
+                showError('validator-response', '请输入引用信息');
+                return;
+            }
+
+            showLoading('validator-loading');
+
+            try {
+                const response = await fetch('/api/v1/citations/validate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        citation: citation,
+                        format: format
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showSuccess('validator-response', '引用校验完成', data);
+                } else {
+                    showError('validator-response', data.detail || '校验失败');
+                }
+            } catch (error) {
+                showError('validator-response', `网络错误: ${error.message}`);
+            } finally {
+                hideLoading('validator-loading');
+            }
+        }
+
+        // 执行完整工作流
+        async function executeWorkflow() {
+            const keywords = document.getElementById('workflow-keywords').value;
+            const limit = document.getElementById('workflow-limit').value;
+            const analysisType = document.getElementById('workflow-analysis-type').value;
+            const citationFormat = document.getElementById('workflow-citation-format').value;
+            const generateReport = document.getElementById('workflow-generate-report').checked;
+
+            if (!keywords.trim()) {
+                showError('workflow-response', '请输入研究关键词');
+                return;
+            }
+
+            showLoading('workflow-loading');
+
+            try {
+                const response = await fetch('/api/v1/workflow/complete', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        keywords: keywords,
+                        limit: parseInt(limit),
+                        analysis_type: analysisType,
+                        citation_format: citationFormat,
+                        writing_task: generateReport ? 'improve' : null
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showSuccess('workflow-response', '🎉 工作流执行完成！', data);
+                } else {
+                    showError('workflow-response', data.detail || '工作流执行失败');
+                }
+            } catch (error) {
+                showError('workflow-response', `网络错误: ${error.message}`);
+            } finally {
+                hideLoading('workflow-loading');
+            }
+        }
+
+        // 设置文件上传
+        function setupFileUpload() {
+            const uploadArea = document.getElementById('paper-upload-area');
+            const fileInput = document.getElementById('paper-file');
+
+            uploadArea.addEventListener('click', () => fileInput.click());
+
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('dragover');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+
+                const files = e.dataTransfer.files;
+                if (files.length > 0 && files[0].type === 'application/pdf') {
+                    handleFileUpload(files[0]);
+                }
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    handleFileUpload(e.target.files[0]);
+                }
+            });
+        }
+
+        // 处理文件上传
+        async function handleFileUpload(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            showLoading('miner-loading');
+
+            try {
+                // 使用新的 PDF 解析端点
+                const response = await fetch('/api/v1/analysis/upload-pdf', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // 自动填充 URL 字段
+                    document.getElementById('paper-url').value = data.file_path || '';
+
+                    // 显示解析结果
+                    const uploadInfo = `
+                        <div class="paper-card">
+                            <h4>📄 ${data.title || file.name}</h4>
+                            <div class="authors">
+                                👥 作者: ${data.authors ? data.authors.join(', ') : '未知'}
+                            </div>
+                            <div class="abstract">
+                                📝 ${data.abstract || '无摘要'}
+                            </div>
+                            <div class="meta">
+                                <span>📄 ${data.page_count || 0} 页</span>
+                                <span>📊 ${data.word_count || 0} 词</span>
+                                <span>✅ 已解析</span>
+                            </div>
+                        </div>
+                    `;
+
+                    showSuccess('miner-response', '✅ PDF 文件上传并解析成功！现在可以选择分析类型并开始分析。', {
+                        upload_info: uploadInfo
+                    });
+                } else {
+                    showError('miner-response', data.detail || '上传失败');
+                }
+            } catch (error) {
+                showError('miner-response', `上传错误: ${error.message}`);
+            } finally {
+                hideLoading('miner-loading');
+            }
+        }
+
+        // 显示加载状态
+        function showLoading(loadingId) {
+            document.getElementById(loadingId).classList.add('active');
+        }
+
+        // 隐藏加载状态
+        function hideLoading(loadingId) {
+            document.getElementById(loadingId).classList.remove('active');
+        }
+
+        // 显示成功消息
+        function showSuccess(responseId, message, data = null) {
+            const responseDiv = document.getElementById(responseId);
+
+            let content = `<div class="success">✅ ${message}</div>`;
+
+            if (data) {
+                // 工作流结果
+                if (data.steps && Array.isArray(data.steps)) {
+                    content += formatWorkflowResult(data);
+                }
+                // PDF 上传信息
+                else if (data.upload_info) {
+                    content += data.upload_info;
+                }
+                // 论文搜索结果
+                else if (data.papers && Array.isArray(data.papers)) {
+                    content += formatPaperResults(data);
+                }
+                // 论文分析结果
+                else if (data.analysis) {
+                    content += formatAnalysisResult(data);
+                }
+                // 写作助手结果
+                else if (data.result && typeof data.result === 'string') {
+                    content += formatWritingResult(data);
+                }
+                // 引用校验结果
+                else if (data.formatted_citation) {
+                    content += formatCitationResult(data);
+                }
+                // 其他类型的数据用格式化的 JSON 展示
+                else {
+                    const jsonStr = JSON.stringify(data, null, 2);
+                    const jsonId = 'json-' + Date.now();
+                    content += `
+                        <div style="position: relative;">
+                            <button class="copy-btn" onclick="copyToClipboard('${jsonId}', event)">📋 复制</button>
+                            <pre id="${jsonId}">${syntaxHighlight(jsonStr)}</pre>
+                        </div>
+                    `;
+                }
+            }
+
+            responseDiv.innerHTML = content;
+        }
+
+        // 格式化论文搜索结果
+        function formatPaperResults(data) {
+            let html = `
+                <div class="result-header">
+                    <span>📚 搜索结果</span>
+                    <span class="result-stats">共找到 ${data.papers.length} 篇论文</span>
+                </div>
+            `;
+
+            data.papers.forEach((paper, index) => {
+                html += `
+                    <div class="paper-card">
+                        <h4>${index + 1}. ${escapeHtml(paper.title)}</h4>
+                        <div class="authors">
+                            👥 作者: ${paper.authors.join(', ')}
+                        </div>
+                        <div class="abstract">
+                            📝 ${escapeHtml(paper.abstract)}
+                        </div>
+                        <div class="meta">
+                            <span>📅 ${paper.published_date}</span>
+                            <span>🔗 <a href="${paper.url}" target="_blank">查看原文</a></span>
+                            ${paper.pdf_url ? `<span>📄 <a href="${paper.pdf_url}" target="_blank">下载PDF</a></span>` : ''}
+                            <span>🆔 ${paper.id}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            return html;
+        }
+
+        // 格式化论文分析结果
+        function formatAnalysisResult(data) {
+            let html = `
+                <div class="result-header">
+                    <span>🧠 论文分析</span>
+                    <span class="result-stats">${data.analysis_type}</span>
+                </div>
+            `;
+
+            if (data.paper_info) {
+                html += `
+                    <div class="paper-card">
+                        <h4>${escapeHtml(data.paper_info.title)}</h4>
+                        <div class="authors">
+                            👥 作者: ${data.paper_info.authors.join(', ')}
+                        </div>
+                        <div class="meta">
+                            <span>📅 ${data.paper_info.published_date}</span>
+                            <span>🔗 <a href="${data.paper_info.url}" target="_blank">查看原文</a></span>
+                            <span>🏷️ ${data.paper_info.categories.join(', ')}</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            const analysisId = 'analysis-' + Date.now();
+            html += '<div class="paper-card">';
+            html += '<h4>📊 分析结果 <button class="copy-btn" onclick="copyToClipboard(\'' + analysisId + '\', event)" style="float: right;">📋 复制</button></h4>';
+            html += '<div class="markdown-content" id="' + analysisId + '">';
+            html += renderMarkdown(data.analysis);
+            html += '</div>';
+            html += '</div>';
+
+            return html;
+        }
+
+        // 改进的 Markdown 渲染器
+        function renderMarkdown(text) {
+            if (!text) return '';
+
+            // 按行处理
+            const lines = text.split('\n');
+            let html = '';
+            let inList = false;
+            let listItems = [];
+
+            for (let i = 0; i < lines.length; i++) {
+                let line = lines[i];
+
+                // 跳过空行
+                if (!line.trim()) {
+                    if (inList) {
+                        html += '<ul style="list-style-type: disc; padding-left: 25px; margin: 15px 0;">' + listItems.join('') + '</ul>';
+                        listItems = [];
+                        inList = false;
+                    }
+                    html += '<br/>';
+                    continue;
+                }
+
+                // 标题 (必须在行首) - 从最长的开始匹配
+                const h4Match = line.match(/^####\s+(.+)$/);
+                if (h4Match) {
+                    if (inList) {
+                        html += '<ul style="list-style-type: disc; padding-left: 25px; margin: 15px 0;">' + listItems.join('') + '</ul>';
+                        listItems = [];
+                        inList = false;
+                    }
+                    html += '<h4 style="color: #667eea; margin: 15px 0 8px 0; font-size: 1.05rem; font-weight: 600;">' + formatInlineMarkdown(h4Match[1]) + '</h4>';
+                    continue;
+                }
+
+                const h3Match = line.match(/^###\s+(.+)$/);
+                if (h3Match) {
+                    if (inList) {
+                        html += '<ul style="list-style-type: disc; padding-left: 25px; margin: 15px 0;">' + listItems.join('') + '</ul>';
+                        listItems = [];
+                        inList = false;
+                    }
+                    html += '<h3 style="color: #667eea; margin: 20px 0 10px 0; font-size: 1.1rem; font-weight: 600;">' + formatInlineMarkdown(h3Match[1]) + '</h3>';
+                    continue;
+                }
+
+                const h2Match = line.match(/^##\s+(.+)$/);
+                if (h2Match) {
+                    if (inList) {
+                        html += '<ul style="list-style-type: disc; padding-left: 25px; margin: 15px 0;">' + listItems.join('') + '</ul>';
+                        listItems = [];
+                        inList = false;
+                    }
+                    html += '<h2 style="color: #667eea; margin: 25px 0 15px 0; font-size: 1.3rem; font-weight: 600;">' + formatInlineMarkdown(h2Match[1]) + '</h2>';
+                    continue;
+                }
+
+                const h1Match = line.match(/^#\s+(.+)$/);
+                if (h1Match) {
+                    if (inList) {
+                        html += '<ul style="list-style-type: disc; padding-left: 25px; margin: 15px 0;">' + listItems.join('') + '</ul>';
+                        listItems = [];
+                        inList = false;
+                    }
+                    html += '<h1 style="color: #667eea; margin: 30px 0 20px 0; font-size: 1.5rem; font-weight: 600;">' + formatInlineMarkdown(h1Match[1]) + '</h1>';
+                    continue;
+                }
+
+                // 有序列表
+                const orderedMatch = line.match(/^(\d+)\.\s+(.+)$/);
+                if (orderedMatch) {
+                    const content = orderedMatch[2];
+                    const formatted = formatInlineMarkdown(content);
+                    listItems.push(`<li style="margin: 10px 0; line-height: 1.8;">${formatted}</li>`);
+                    inList = true;
+                    continue;
+                }
+
+                // 无序列表
+                const unorderedMatch = line.match(/^[-*]\s+(.+)$/);
+                if (unorderedMatch) {
+                    const content = unorderedMatch[1];
+                    const formatted = formatInlineMarkdown(content);
+                    listItems.push(`<li style="margin: 10px 0; line-height: 1.8;">${formatted}</li>`);
+                    inList = true;
+                    continue;
+                }
+
+                // 普通段落
+                if (inList) {
+                    html += '<ul style="list-style-type: disc; padding-left: 25px; margin: 15px 0;">' + listItems.join('') + '</ul>';
+                    listItems = [];
+                    inList = false;
+                }
+
+                const formatted = formatInlineMarkdown(line);
+                html += `<p style="margin: 12px 0; line-height: 1.8; color: #444;">${formatted}</p>`;
+            }
+
+            // 处理未闭合的列表
+            if (inList) {
+                html += '<ul style="list-style-type: disc; padding-left: 25px; margin: 15px 0;">' + listItems.join('') + '</ul>';
+            }
+
+            return html;
+        }
+
+        // 格式化行内 Markdown 元素
+        function formatInlineMarkdown(text) {
+            // 转义 HTML
+            text = escapeHtml(text);
+
+            // 粗体 **text**
+            text = text.replace(/\*\*(.+?)\*\*/g, '<strong style="color: #333; font-weight: 600;">$1</strong>');
+
+            // 斜体 *text*
+            text = text.replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+            // 行内代码 `code`
+            text = text.replace(/`([^`]+)`/g, '<code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px; font-family: monospace; color: #e83e8c; font-size: 0.9em;">$1</code>');
+
+            // 链接 [text](url)
+            text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color: #667eea; text-decoration: none; border-bottom: 1px solid #667eea;">$1</a>');
+
+            return text;
+        }
+
+        // 格式化写作助手结果
+        function formatWritingResult(data) {
+            let html = `
+                <div class="result-header">
+                    <span>✍️ 写作助手</span>
+                    <span class="result-stats">${data.task} - ${data.style}</span>
+                </div>
+            `;
+
+            if (data.original) {
+                html += `
+                    <div class="paper-card">
+                        <h4>📝 原文</h4>
+                        <div class="abstract" style="background: #f8f9fa; padding: 15px; border-radius: 6px;">
+                            ${escapeHtml(data.original)}
+                        </div>
+                    </div>
+                `;
+            }
+
+            const resultId = 'writing-result-' + Date.now();
+            html += '<div class="paper-card">';
+            html += '<h4>✨ 处理结果 <button class="copy-btn" onclick="copyToClipboard(\'' + resultId + '\', event)" style="float: right;">📋 复制</button></h4>';
+            html += '<div class="markdown-content" id="' + resultId + '">';
+            html += renderMarkdown(data.result);
+            html += '</div>';
+            html += '</div>';
+
+            return html;
+        }
+
+        // 格式化引用校验结果
+        function formatCitationResult(data) {
+
+            const jsonId = 'citation-' + Date.now();
+            let html = `
+                <div class="result-header">
+                    <span>🔎 引用校验</span>
+                    <span class="result-stats">${data.format.toUpperCase()} ${data.verified ? '✅ 已验证' : '⚠️ 未验证'}</span>
+                </div>
+            `;
+
+            if (data.metadata) {
+                const meta = data.metadata;
+
+                // 处理标题
+                let title = 'N/A';
+                if (meta.title) {
+                    title = Array.isArray(meta.title) ? meta.title[0] : meta.title;
+                }
+
+                // 处理作者
+                let authors = 'N/A';
+                if (meta.authors) {
+                    if (Array.isArray(meta.authors)) {
+                        authors = meta.authors.join(', ');
+                    } else {
+                        authors = meta.authors;
+                    }
+                }
+
+                // 处理年份
+                let year = 'N/A';
+                if (meta.year) {
+                    year = meta.year;
+                } else if (meta.published && meta.published['date-parts']) {
+                    year = meta.published['date-parts'][0][0];
+                }
+
+                // 处理期刊
+                let journal = 'N/A';
+                if (meta.journal) {
+                    journal = meta.journal;
+                } else if (meta['container-title']) {
+                    journal = Array.isArray(meta['container-title']) ? meta['container-title'][0] : meta['container-title'];
+                }
+
+                html += `
+                    <div class="paper-card">
+                        <h4>📄 论文信息</h4>
+                        <div class="authors">
+                            📖 标题: ${escapeHtml(title)}
+                        </div>
+                        <div class="authors">
+                            👥 作者: ${escapeHtml(authors)}
+                        </div>
+                        <div class="meta">
+                            <span>📅 ${year}</span>
+                            <span>📚 ${escapeHtml(journal)}</span>
+                            ${meta.arxiv_id ? `<span>🔗 arXiv:${meta.arxiv_id}</span>` : ''}
+                            ${meta.doi ? `<span>🔗 DOI:${meta.doi}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            html += `
+                <div class="paper-card">
+                    <h4>📋 格式化引用 <button class="copy-btn" onclick="copyToClipboard('${jsonId}', event)" style="float: right;">📋 复制</button></h4>
+                    <pre id="${jsonId}" style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #667eea; overflow-x: auto;">${escapeHtml(data.formatted_citation)}</pre>
+                </div>
+            `;
+
+            if (data.warnings && data.warnings.length > 0) {
+                html += `
+                    <div class="error">
+                        ⚠️ ${data.warnings.join('; ')}
+                    </div>
+                `;
+            }
+
+            return html;
+        }
+
+        // 格式化工作流结果
+        function formatWorkflowResult(data) {
+            let html = `
+                <div class="result-header">
+                    <span>🔄 工作流执行结果</span>
+                    <span class="result-stats">${data.status === 'completed' ? '✅ 完成' : '⚠️ 部分完成'}</span>
+                </div>
+            `;
+
+            // 显示摘要
+            if (data.summary) {
+                html += `
+                    <div class="paper-card">
+                        <h4>📊 执行摘要</h4>
+                        <div class="meta">
+                            <span>📚 找到 ${data.summary.total_papers} 篇论文</span>
+                            <span>🧠 分析 ${data.summary.analyzed_papers} 篇</span>
+                            <span>📝 生成 ${data.summary.generated_citations} 条引用</span>
+                        </div>
+                        <p style="margin-top: 10px; color: #666;">关键词: ${data.summary.keywords}</p>
+                    </div>
+                `;
+            }
+
+            // 显示各步骤结果
+            if (data.steps && data.steps.length > 0) {
+                data.steps.forEach((step, index) => {
+                    const statusIcon = step.status === 'completed' ? '✅' : step.status === 'failed' ? '❌' : '⏳';
+
+                    html += `
+                        <div class="paper-card">
+                            <h4>${statusIcon} 步骤 ${step.step}: ${step.name}</h4>
+                    `;
+
+                    if (step.status === 'completed' && step.result) {
+                        // 论文搜索结果
+                        if (step.result.papers) {
+                            html += `<p>找到 ${step.result.total_found} 篇论文</p>`;
+                            step.result.papers.slice(0, 3).forEach((paper, i) => {
+                                html += `
+                                    <div style="margin: 10px 0; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                                        <strong>${i + 1}. ${escapeHtml(paper.title)}</strong><br>
+                                        <small>作者: ${paper.authors.slice(0, 3).join(', ')}${paper.authors.length > 3 ? ' et al.' : ''}</small>
+                                    </div>
+                                `;
+                            });
+                        }
+
+                        // 分析结果
+                        if (step.result.analyses) {
+                            html += `<p>完成 ${step.result.total_analyzed} 篇论文分析</p>`;
+                            step.result.analyses.forEach((analysis, i) => {
+                                html += `
+                                    <div style="margin: 10px 0; padding: 10px; background: #f0f7ff; border-radius: 5px;">
+                                        <strong>${i + 1}. ${escapeHtml(analysis.title)}</strong>
+                                        <div class="markdown-content" style="margin-top: 10px;">
+                                            ${renderMarkdown(analysis.analysis.substring(0, 500) + '...')}
+                                        </div>
+                                    </div>
+                                `;
+                            });
+                        }
+
+                        // 引用结果
+                        if (step.result.citations) {
+                            html += `<p>生成 ${step.result.total_citations} 条引用</p>`;
+                            const citationId = 'citations-' + Date.now();
+                            html += `<button class="copy-btn" onclick="copyToClipboard('${citationId}', event)">📋 复制全部引用</button>`;
+                            html += `<div id="${citationId}" style="margin-top: 10px;">`;
+                            step.result.citations.forEach((citation, i) => {
+                                html += `<p style="margin: 5px 0;">${i + 1}. ${escapeHtml(citation.formatted_citation)}</p>`;
+                            });
+                            html += '</div>';
+                        }
+
+                        // 报告结果
+                        if (step.result.report) {
+                            const reportId = 'report-' + Date.now();
+                            html += `<button class="copy-btn" onclick="copyToClipboard('${reportId}', event)">📋 复制报告</button>`;
+                            html += `<div class="markdown-content" id="${reportId}" style="margin-top: 10px;">`;
+                            html += renderMarkdown(step.result.report);
+                            html += '</div>';
+                        }
+                    } else if (step.status === 'failed') {
+                        html += `<p style="color: #f44336;">错误: ${step.error}</p>`;
+                    }
+
+                    html += '</div>';
+                });
+            }
+
+            return html;
+        }
+
+        // HTML 转义函数
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // JSON 语法高亮
+        function syntaxHighlight(json) {
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                let cls = 'json-number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'json-key';
+                    } else {
+                        cls = 'json-string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'json-boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'json-null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+        }
+
+        // 复制到剪贴板
+        function copyToClipboard(elementId, event) {
+            // 阻止事件冒泡
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            const element = document.getElementById(elementId);
+            if (!element) {
+                return;
+            }
+
+            // 获取纯文本内容
+            const text = element.innerText || element.textContent;
+
+            navigator.clipboard.writeText(text).then(() => {
+                // 显示复制成功提示
+                const btn = event ? event.target : null;
+                if (btn) {
+                    const originalText = btn.textContent;
+                    btn.textContent = '✅ 已复制';
+                    btn.style.background = '#4caf50';
+                    btn.style.color = 'white';
+                    btn.style.borderColor = '#4caf50';
+
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.style.background = '';
+                        btn.style.color = '';
+                        btn.style.borderColor = '';
+                    }, 2000);
+                }
+                console.log('已复制 ' + text.length + ' 个字符');
+            }).catch(err => {
+                console.error('复制失败:', err);
+                alert('复制失败，请手动选择文本复制');
+            });
+        }
+
+        // 显示错误消息
+        function showError(responseId, message) {
+            const responseDiv = document.getElementById(responseId);
+            responseDiv.innerHTML = `
+                <div class="error">
+                    ❌ ${message}
+                </div>
+            `;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,378 @@
+{
+  "results": [
+    {
+      "problem_id": "gen_aime_1",
+      "scores": {
+        "correctness": 3.0,
+        "clarity": 4.0,
+        "difficulty_match": 3.0,
+        "completeness": 4.0
+      },
+      "total_score": 3.5,
+      "evaluation_text": "```json\n{\n    \"correctness\": 3,\n    \"clarity\": 4,\n    \"difficulty_match\": 3,\n    \"completeness\": 4,\n    \"comments\": \"题目的解答部分存在逻辑错误，最后计算2023rd项时，最终的答案应该是4而不是1，因为在计算 (2023 - 5) mod 8 时，结果为6，而根据循环模式，循环的第6项为4，而非1。解答步骤基本完整，但由于关键部分的错误导致正确性受影响。题目难度与AIME题目不完全匹配，偏向于较简单的数列问题。\"\n}\n```",
+      "execution_time": 3.2240538597106934
+    },
+    {
+      "problem_id": "gen_aime_2",
+      "scores": {
+        "correctness": 4.0,
+        "clarity": 4.0,
+        "difficulty_match": 3.0,
+        "completeness": 4.0
+      },
+      "total_score": 3.75,
+      "evaluation_text": "```json\n{\n    \"correctness\": 4,\n    \"clarity\": 4,\n    \"difficulty_match\": 3,\n    \"completeness\": 4,\n    \"comments\": \"The problem is mostly correct in terms of mathematical logic, but there is a small error in the answer; the 2024th term is indeed 27, but the interpretation of finding the sum of the digits is not clearly linked to the final answer of 9. The sequence's behavior is well-explained, but the final step and connection to the answer could be clearer. The problem is slightly simpler than typical AIME problems, as it involves recognizing a pattern rather than deeper problem-solving or multiple concepts. The solution covers the key steps but could benefit from a clearer explanation of why the sum of the digits of 27 is relevant to the final answer.\"\n}\n```",
+      "execution_time": 3.4472837448120117
+    },
+    {
+      "problem_id": "gen_aime_3",
+      "scores": {
+        "correctness": 2.0,
+        "clarity": 3.0,
+        "difficulty_match": 4.0,
+        "completeness": 2.0
+      },
+      "total_score": 2.75,
+      "evaluation_text": "```json\n{\n    \"correctness\": 2,\n    \"clarity\": 3,\n    \"difficulty_match\": 4,\n    \"completeness\": 2,\n    \"comments\": \"题目的解答过程中存在严重错误，导致最终答案与题目给出的不一致。对于一个多项式满足f(1)=10, f(2)=20, f(3)=30, f(4)=40的条件，直接推出a+b+c+d=70是错误的。实际上，应当通过构造新的多项式g(x)=f(x)-10x来处理，g(x)的根为1, 2, 3, 4，然后再分析其系数和。解答中，步骤和推理并不完整，缺少关键的多项式构造和分析，导致错误的结论。难度方面，题目符合AIME标准，但解答中缺乏必要的步骤和推理，影响了整体的完整性和正确性。\"\n}\n```",
+      "execution_time": 6.914599657058716
+    },
+    {
+      "problem_id": "gen_aime_4",
+      "scores": {
+        "correctness": 1.0,
+        "clarity": 3.0,
+        "difficulty_match": 3.0,
+        "completeness": 3.0
+      },
+      "total_score": 2.5,
+      "evaluation_text": "```json\n{\n    \"correctness\": 1,\n    \"clarity\": 3,\n    \"difficulty_match\": 3,\n    \"completeness\": 3,\n    \"comments\": \"该题目在正确性方面存在严重问题：题目给出的答案25不符合已知条件的计算结果。经过正确推导，ab + bc + ca 的值应为4，而不是25。此外，解答过程在试图使用对称性和拉格朗日乘数法来最大化结果时出现了不必要的复杂化，并且没有纠正错误的答案。清晰度上，虽然解答包含了一些详细的代数步骤，但由于推导过程中的错误，可能会让读者感到困惑。难度上，题目符合AIME的水平，但由于提供的解答不正确，可能会对参赛者造成误导。完整性方面，由于核心计算出现错误，导致解答缺乏正确的推理步骤。\"\n}\n```",
+      "execution_time": 4.767943859100342
+    },
+    {
+      "problem_id": "gen_aime_5",
+      "scores": {
+        "correctness": 4.0,
+        "clarity": 4.0,
+        "difficulty_match": 3.0,
+        "completeness": 3.0
+      },
+      "total_score": 3.5,
+      "evaluation_text": "```json\n{\n    \"correctness\": 4,\n    \"clarity\": 4,\n    \"difficulty_match\": 3,\n    \"completeness\": 3,\n    \"comments\": \"该题目总体上是正确的，但答案提供的计算过程有误。根据计算，a_10 = 286 不是一个完全平方数，因此答案 '10' 是错误的。解答中的公式 a_n = 1 + (n(n-1)(2n-1))/6 是正确的，但没有在解答中使用到。该题的难度不符合典型的AIME题目，因为它涉及的计算和推理较为简单且直接。解答部分缺乏将公式应用于找到正确m值的步骤，完整性可以提高。\"\n}\n```",
+      "execution_time": 4.121169328689575
+    },
+    {
+      "problem_id": "gen_aime_6",
+      "scores": {
+        "correctness": 2.0,
+        "clarity": 3.0,
+        "difficulty_match": 4.0,
+        "completeness": 3.0
+      },
+      "total_score": 3.0,
+      "evaluation_text": "```json\n{\n    \"correctness\": 2,\n    \"clarity\": 3,\n    \"difficulty_match\": 4,\n    \"completeness\": 3,\n    \"comments\": \"The problem statement has a logical mistake in the calculation of maximum value of f(p). The proposed solution incorrectly states the maximum value as 9751 after several incorrect calculations. The correct logic should involve maximizing the sum of the two largest possible 4-digit numbers formed by the digits 1 through 9, while minimizing the single digit a9. The explanation lacks clarity in its reasoning, and the oversight in calculations shows a lack of thoroughness. The problem's difficulty is appropriate for AIME, but the solution provided is incomplete and incorrect in its final answer. Further refinement in solution steps and verification of calculations is needed.\"\n}\n```",
+      "execution_time": 3.089435577392578
+    },
+    {
+      "problem_id": "gen_aime_7",
+      "scores": {
+        "correctness": 3.0,
+        "clarity": 3.0,
+        "difficulty_match": 4.0,
+        "completeness": 3.0
+      },
+      "total_score": 3.25,
+      "evaluation_text": "```json\n{\n    \"correctness\": 3,\n    \"clarity\": 3,\n    \"difficulty_match\": 4,\n    \"completeness\": 3,\n    \"comments\": \"这个题目在问题构建上具有一定的挑战性，符合AIME的难度要求。然而，解答中存在一些错误，包括不正确的概率计算和最终得到的错误答案。解答过程中的公式和推理没有解释清楚，尤其是在包含排除法则的应用上。清晰度方面，问题描述较为直观，但解答的步骤缺乏详细说明，可能导致读者难以理解。此外，结果中的m和n的相对质性没有正确处理。综合来看，题目有潜力，但需要在逻辑和解答清晰度上进行改进。\"\n}\n```",
+      "execution_time": 4.858828067779541
+    },
+    {
+      "problem_id": "gen_aime_8",
+      "scores": {
+        "correctness": 4.0,
+        "clarity": 4.0,
+        "difficulty_match": 4.0,
+        "completeness": 4.0
+      },
+      "total_score": 4.0,
+      "evaluation_text": "```json\n{\n    \"correctness\": 4,\n    \"clarity\": 4,\n    \"difficulty_match\": 4,\n    \"completeness\": 4,\n    \"comments\": \"This problem is structured well and mostly correct, but there is a minor inconsistency in the final answer derivation. The calculation of the number of perfect square divisors is correct and leads to the correct probability of 3/20. However, the final answer provided as 19 seems to be a mistake, as the numbers m and n are correctly identified as 3 and 20, leading to m+n = 23. The clarity of the problem and solution is good, but the minor oversight in the final arithmetic reduces the completeness and correctness slightly. Overall, the problem difficulty is appropriate for AIME, challenging yet solvable with a solid understanding of number theory and divisor counting.\"\n}\n```",
+      "execution_time": 2.4106380939483643
+    },
+    {
+      "problem_id": "gen_aime_9",
+      "scores": {
+        "correctness": 3.0,
+        "clarity": 4.0,
+        "difficulty_match": 3.0,
+        "completeness": 3.0
+      },
+      "total_score": 3.25,
+      "evaluation_text": "```json\n{\n    \"correctness\": 3,\n    \"clarity\": 4,\n    \"difficulty_match\": 3,\n    \"completeness\": 3,\n    \"comments\": \"The problem contains a significant error in its solution. The sequence described is indeed a shifted Fibonacci sequence, but the calculation provided incorrectly states that the term a_15 is divisible by 1000. In fact, a_15 = 987 is not divisible by 1000, and the correct smallest n needs further computation. The clarity of the problem statement and solution is generally good, but the solution lacks completeness because it stops prematurely with an incorrect conclusion. The difficulty level seems to be slightly easier than typical AIME problems due to its computational nature rather than requiring deeper insight or problem-solving techniques.\"\n}\n```",
+      "execution_time": 3.9147017002105713
+    },
+    {
+      "problem_id": "gen_aime_10",
+      "scores": {
+        "correctness": 5.0,
+        "clarity": 4.0,
+        "difficulty_match": 4.0,
+        "completeness": 5.0
+      },
+      "total_score": 4.5,
+      "evaluation_text": "```json\n{\n    \"correctness\": 5,\n    \"clarity\": 4,\n    \"difficulty_match\": 4,\n    \"completeness\": 5,\n    \"comments\": \"该题目正确地利用了圆周上直角三角形的性质，即直径所对的圆周角为直角，从而正确地计算了三角形的面积。题目清晰地表述了已知条件，并通过勾股定理验证了直角三角形的性质。题目的难度适中，符合AIME题目的标准。解答步骤完整，包含了必要的推理和验证步骤。唯一的小改进建议是解答部分的末尾，应该更准确地解释如何得出 m + n + p = 34 的最终结果。\"\n}\n```",
+      "execution_time": 3.468392848968506
+    },
+    {
+      "problem_id": "gen_aime_11",
+      "scores": {
+        "correctness": 4.0,
+        "clarity": 3.0,
+        "difficulty_match": 3.0,
+        "completeness": 3.0
+      },
+      "total_score": 3.25,
+      "evaluation_text": "```json\n{\n    \"correctness\": 4,\n    \"clarity\": 3,\n    \"difficulty_match\": 3,\n    \"completeness\": 3,\n    \"comments\": \"这道题目涉及一个递推序列，并要求找出第一个能被7整除的项。解答中进行了序列的递推计算，并正确识别出a2为零模7。然而，在解答的过程中，存在一些不必要的步骤，且答案给出与实际计算不符（应为n=2而非n=3）。此外，解答中前后不一致，增加了理解难度。题目难度适中，但解答部分不够完整，缺少对一些步骤的详细说明。\"\n}\n```",
+      "execution_time": 2.9038174152374268
+    },
+    {
+      "problem_id": "gen_aime_12",
+      "scores": {
+        "correctness": 3.0,
+        "clarity": 3.0,
+        "difficulty_match": 2.0,
+        "completeness": 3.0
+      },
+      "total_score": 2.75,
+      "evaluation_text": "```json\n{\n    \"correctness\": 3,\n    \"clarity\": 3,\n    \"difficulty_match\": 2,\n    \"completeness\": 3,\n    \"comments\": \"This problem has several issues that affect its quality. Firstly, the solution provided contains logical errors and inconsistencies, particularly in the handling of the inclusion-exclusion principle and the deduction of the number of students in all three activities. The calculation steps are not clearly laid out, and the final answer appears to be incorrect based on the given logic. Additionally, the problem's difficulty is not well-aligned with typical AIME standards, which usually involve more intricate mathematical reasoning and problem-solving techniques. The problem also lacks a thorough and coherent explanation in the solution, which makes it difficult for the reader to follow the intended logic. Overall, the problem could benefit from a clearer structure, more precise reasoning, and alignment with the expected difficulty level of AIME problems.\"\n}\n```",
+      "execution_time": 3.511565685272217
+    },
+    {
+      "problem_id": "gen_aime_13",
+      "scores": {
+        "correctness": 4.0,
+        "clarity": 3.0,
+        "difficulty_match": 3.0,
+        "completeness": 4.0
+      },
+      "total_score": 3.5,
+      "evaluation_text": "```json\n{\n    \"correctness\": 4,\n    \"clarity\": 3,\n    \"difficulty_match\": 3,\n    \"completeness\": 4,\n    \"comments\": \"The solution shows a good understanding of the geometric probability involved in the problem, and the probability calculation is mostly correct. However, there is a mistake in the final steps related to the last three digits calculation, which seems to be due to an incorrect interpretation of the problem's requirements. The clarity of the solution could be improved by clearly stating the problem's requirements and ensuring that the final answer aligns with the expected format. The difficulty of the problem is somewhat aligned with AIME standards, but the misunderstanding of the output requirement slightly affects the overall quality.\"\n}\n```",
+      "execution_time": 3.011523485183716
+    },
+    {
+      "problem_id": "gen_aime_14",
+      "scores": {
+        "correctness": 1.0,
+        "clarity": 3.0,
+        "difficulty_match": 1.0,
+        "completeness": 2.0
+      },
+      "total_score": 1.75,
+      "evaluation_text": "```json\n{\n    \"correctness\": 1,\n    \"clarity\": 3,\n    \"difficulty_match\": 1,\n    \"completeness\": 2,\n    \"comments\": \"详细评价: 1. 正确性: 题目的解答过程中的计算有错误，最终答案与计算过程不符。解答中给出的答案是10300，而题目答案是999，且计算的逻辑不支持这两个结果。 2. 清晰度: 题目表述清楚，易于理解，但解答中的错误可能让读者迷惑。 3. 难度匹配: 题目的难度远低于AIME标准，AIME题目通常需要更高的数学思考或技巧，此题过于简单。 4. 完整性: 解答过程不够完整，因为计算步骤中的错误导致结果不准确，没有正确识别问题中的错误。\"\n}\n```",
+      "execution_time": 3.9433140754699707
+    },
+    {
+      "problem_id": "gen_aime_15",
+      "scores": {
+        "correctness": 3.0,
+        "clarity": 3.0,
+        "difficulty_match": 2.0,
+        "completeness": 3.0
+      },
+      "total_score": 2.75,
+      "evaluation_text": "```json\n{\n    \"correctness\": 3,\n    \"clarity\": 3,\n    \"difficulty_match\": 2,\n    \"completeness\": 3,\n    \"comments\": \"The problem contains a fundamental error in the understanding of the conditions for a point to lie on both circles. The setup of the problem is incorrect because given the centers of the circles and their radii, the circles do not intersect; the distance between the centers is 8, which is equal to the sum of the radii (5 + 3), meaning they are externally tangent at only one point. Therefore, there cannot be a point P lying on both circles that would satisfy the given conditions for calculation. Additionally, the solution contains logical inconsistencies and incorrect substitutions, leading to an incorrect answer. The problem lacks clarity in explaining how the intersection or tangency affects the selection of P and its implications for the distance calculation. Furthermore, the difficulty level is not aligned with typical AIME problems, which usually require deeper insights or more sophisticated techniques. Overall, the problem and its solution require significant revision to be valid and align with AIME standards.\"\n}\n```",
+      "execution_time": 5.860377550125122
+    },
+    {
+      "problem_id": "gen_aime_16",
+      "scores": {
+        "correctness": 5.0,
+        "clarity": 5.0,
+        "difficulty_match": 4.0,
+        "completeness": 5.0
+      },
+      "total_score": 4.75,
+      "evaluation_text": "```json\n{\n    \"correctness\": 5,\n    \"clarity\": 5,\n    \"difficulty_match\": 4,\n    \"completeness\": 5,\n    \"comments\": \"这道题目在数学逻辑上是正确的，给出的解答详尽且准确地解释了如何构造3x3幻方并验证其性质。问题的表述清晰，解答步骤明确，易于理解。题目难度符合AIME的标准，因为要求考生不仅要理解幻方的性质，还要进行合理的推理和验证。解答包含了必要的推理步骤，如计算幻方常数、列出一个已知的幻方配置，以及通过对称操作解释八种不同配置的来源。因此，题目的整体质量很高。\"\n}\n```",
+      "execution_time": 3.2819583415985107
+    },
+    {
+      "problem_id": "gen_aime_17",
+      "scores": {
+        "correctness": 4.0,
+        "clarity": 3.0,
+        "difficulty_match": 3.0,
+        "completeness": 3.0
+      },
+      "total_score": 3.25,
+      "evaluation_text": "```json\n{\n    \"correctness\": 4,\n    \"clarity\": 3,\n    \"difficulty_match\": 3,\n    \"completeness\": 3,\n    \"comments\": \"该题目存在一些问题。在正确性方面，答案计算有误。根据计算，实际的和应该是 10416，而不是 325。题意中给出的答案 325 不正确。在清晰度方面，尽管问题的表述和解答的步骤基本清晰，但有些地方可以更详细，比如平方和公式的推导。在难度匹配方面，该题目比典型的AIME问题稍简单，解法包含识别平方数序列，这在竞赛中比较常见。在完整性方面，解答缺少对平方和公式的详细推导，这对于确保理解是必要的。\"\n}\n```",
+      "execution_time": 6.139104127883911
+    },
+    {
+      "problem_id": "gen_aime_18",
+      "scores": {
+        "correctness": 2.0,
+        "clarity": 3.0,
+        "difficulty_match": 3.0,
+        "completeness": 3.0
+      },
+      "total_score": 2.75,
+      "evaluation_text": "```json\n{\n    \"correctness\": 2,\n    \"clarity\": 3,\n    \"difficulty_match\": 3,\n    \"completeness\": 3,\n    \"comments\": \"题目给出的答案24与题目解答不一致，且解答过程存在错误。首先在计算a和b时，解答中给出的方程组解出a=6, b=-8，计算a+b得到-2，而非24，后续调整过程也不够清晰，未能正确展示如何得到a+b=24的答案。解答步骤缺乏对a和b的重新计算和验证。题目难度对于AIME而言适中，但解答不够完整和准确，影响了整体的评估。\"\n}\n```",
+      "execution_time": 8.60336709022522
+    },
+    {
+      "problem_id": "gen_aime_19",
+      "scores": {
+        "correctness": 3.0,
+        "clarity": 3.0,
+        "difficulty_match": 3.0,
+        "completeness": 3.0
+      },
+      "total_score": 3.0,
+      "evaluation_text": "```json\n{\n    \"correctness\": 3,\n    \"clarity\": 3,\n    \"difficulty_match\": 3,\n    \"completeness\": 3,\n    \"comments\": \"The problem attempts to be similar to AIME by involving algebraic manipulation and maximization under constraints. However, the answer and solution provided contain inaccuracies. Firstly, the calculation of the maximum value of \\( ab + bc + ca \\) is incorrect; the solution fails to provide the right algebraic manipulations or logical deductions to find the correct maximum. The solution prematurely concludes values for \\( a, b, \\) and \\( c \\) without sufficient justification or exploration of other possibilities, like using the equality case in the Cauchy-Schwarz inequality. Additionally, the problem's difficulty is not quite aligned with typical AIME problems, which often require more subtle insights or non-trivial manipulations. The clarity is moderate, but the explanation could be improved by breaking down steps more clearly and exploring different strategies. The solution lacks completeness by not fully exploring alternative values or methods to ensure the maximum is correctly derived. Overall, it needs revision in its mathematical logic and presentation to align better with AIME standards.\"\n}\n```",
+      "execution_time": 12.811752319335938
+    },
+    {
+      "problem_id": "gen_aime_20",
+      "scores": {
+        "correctness": 3.0,
+        "clarity": 3.0,
+        "difficulty_match": 4.0,
+        "completeness": 3.0
+      },
+      "total_score": 3.25,
+      "evaluation_text": "```json\n{\n    \"correctness\": 3,\n    \"clarity\": 3,\n    \"difficulty_match\": 4,\n    \"completeness\": 3,\n    \"comments\": \"该题目结构合理且具有一定的挑战性，符合AIME的难度标准。然而，解答过程中存在几个问题。首先，答案部分中的计算错误：在计算相似三角形的面积时，使用的比例计算结果与给出的答案不符；实际计算应为 (5/3)^2 * 15 = 125/3 = 41.67，而非 35。问题表述基本清晰，但解答部分的推理过程不够完整和准确，尤其是在处理整数化简部分时显得不清晰。建议在解答中明确面积比例的计算，并确保提供的答案和计算步骤一致。\"\n}\n```",
+      "execution_time": 3.2803139686584473
+    },
+    {
+      "problem_id": "gen_aime_21",
+      "scores": {
+        "correctness": 3.0,
+        "clarity": 3.0,
+        "difficulty_match": 4.0,
+        "completeness": 3.0
+      },
+      "total_score": 3.25,
+      "evaluation_text": "```json\n{\n    \"correctness\": 3,\n    \"clarity\": 3,\n    \"difficulty_match\": 4,\n    \"completeness\": 3,\n    \"comments\": \"该题目在数学逻辑上存在问题，特别是在最小和的计算过程中。题目条件中关于二次函数的选择和计算有混淆，特别是对于如何选择a, b, c以保证所需条件满足。解答过程中也缺乏对关键步骤的详细推导和验证。题目的陈述部分有些模糊，尤其是关于选择函数的依据和细节。整体难度接近AIME标准，但在准确性和清晰度上需要改进。\"\n}\n```",
+      "execution_time": 3.934663772583008
+    },
+    {
+      "problem_id": "gen_aime_22",
+      "scores": {
+        "correctness": 5.0,
+        "clarity": 4.0,
+        "difficulty_match": 4.0,
+        "completeness": 5.0
+      },
+      "total_score": 4.5,
+      "evaluation_text": "```json\n{\n    \"correctness\": 5,\n    \"clarity\": 4,\n    \"difficulty_match\": 4,\n    \"completeness\": 5,\n    \"comments\": \"这道题目在逻辑上是正确的，答案也准确无误。问题表述清晰，只是解答中有部分步骤可能对于一些读者而言需要更多解释，例如为什么N = 125k是合理的选择。难度符合AIME标准，问题涉及模运算和数论，需要一定的推理能力。解答步骤完整，涵盖了所有必要的推理和计算。整体来说，这是一道高质量的AIME风格题目。\"\n}\n```",
+      "execution_time": 2.8868408203125
+    },
+    {
+      "problem_id": "gen_aime_23",
+      "scores": {
+        "correctness": 4.0,
+        "clarity": 4.0,
+        "difficulty_match": 4.0,
+        "completeness": 4.0
+      },
+      "total_score": 4.0,
+      "evaluation_text": "```json\n{\n    \"correctness\": 4,\n    \"clarity\": 4,\n    \"difficulty_match\": 4,\n    \"completeness\": 4,\n    \"comments\": \"The problem is well-structured and presents a clear mathematical challenge suitable for an AIME-style question. However, there are some minor issues in the solution that affect its correctness and completeness. The computation of the segment lengths and the final ratio require careful simplification to ensure accuracy. Additionally, the handling of the intersection points could be more precise, particularly in ensuring that the segments are correctly identified and their lengths are accurately calculated. The problem's clarity is mostly good, but the explanation of terms like 'support' could be more explicit. Overall, the problem matches the AIME difficulty level well, challenging students to apply geometric and algebraic reasoning in a non-trivial context.\"\n}\n```",
+      "execution_time": 4.162907361984253
+    },
+    {
+      "problem_id": "gen_aime_24",
+      "scores": {
+        "correctness": 3.0,
+        "clarity": 3.0,
+        "difficulty_match": 3.0,
+        "completeness": 3.0
+      },
+      "total_score": 3.0,
+      "evaluation_text": "```json\n{\n    \"correctness\": 2,\n    \"clarity\": 3,\n    \"difficulty_match\": 1,\n    \"completeness\": 2,\n    \"comments\": \"该题目存在几个关键性错误。首先，题目中给出的方程 \\( x^3 - 3x^2 + 4x - 12 = 0 \\) 被错误地测试为有实数根为 2，但实际上求解后得到的 \\( x^2 - x + 2 = 0 \\) 应该有两个复数根，而不是继续求得其他实数根。此外，题目所求 \\( x_2 + x_1x_3 \\) 的表达式与所给答案 7 不符，因为无法通过实际计算得到。解答过程中的逻辑和步骤不完整且含混不清，未能准确解决题目中所求的值。整体上，该题目的难度也不符合 AIME 的标准，因为它未能提供合理的挑战性。\"\n}\n```",
+      "execution_time": 5.341580390930176
+    },
+    {
+      "problem_id": "gen_aime_25",
+      "scores": {
+        "correctness": 4.0,
+        "clarity": 3.0,
+        "difficulty_match": 4.0,
+        "completeness": 4.0
+      },
+      "total_score": 3.75,
+      "evaluation_text": "```json\n{\n    \"correctness\": 4,\n    \"clarity\": 3,\n    \"difficulty_match\": 4,\n    \"completeness\": 4,\n    \"comments\": \"问题的设定符合AIME风格，涉及角平分线定理和幂定理的应用。然而，解答的步骤中有一些地方不够清晰，尤其是在解释如何从已知条件推导出BE的具体值时。答案部分的逻辑跳跃较大，缺乏一些必要的推理步骤，特别是在假设BE的值和最终得出答案之间。此外，问题中关于BE的计算应该更为详细，以帮助读者理解每一步的推导过程。总体而言，题目有一定挑战性，适合AIME的难度范围，但需要在解答的清晰度和步骤完整性上进行改进。\"\n}\n```",
+      "execution_time": 4.716083765029907
+    },
+    {
+      "problem_id": "gen_aime_26",
+      "scores": {
+        "correctness": 3.0,
+        "clarity": 3.0,
+        "difficulty_match": 3.0,
+        "completeness": 3.0
+      },
+      "total_score": 3.0,
+      "evaluation_text": "```json\n{\n    \"correctness\": 5,\n    \"clarity\": 5,\n    \"difficulty_match\": 3,\n    \"completeness\": 5,\n    \"comments\": \"The problem is mathematically correct, and the solution accurately determines the distance \\( d \\) from the center of the circle to the vertices of the hexagon. The problem statement is clear and concise, and the solution is straightforward and easy to follow. However, the difficulty may be on the easier side for an AIME problem as it primarily tests understanding of regular polygons and symmetry, which are generally basic concepts. The problem could be improved by adding complexity or additional steps. Overall, the problem is well-constructed but may not fully match the typical challenge level of an AIME problem.\"\n}\n```",
+      "execution_time": 3.892986536026001
+    },
+    {
+      "problem_id": "gen_aime_27",
+      "scores": {
+        "correctness": 3.0,
+        "clarity": 3.0,
+        "difficulty_match": 3.0,
+        "completeness": 3.0
+      },
+      "total_score": 3.0,
+      "evaluation_text": "```json\n{\n    \"correctness\": 3,\n    \"clarity\": 4,\n    \"difficulty_match\": 4,\n    \"completeness\": 4,\n    \"comments\": \"The problem is structured in a manner that is suitable for an AIME-style question and involves geometric reasoning and algebraic manipulation, which matches the typical difficulty level. However, there is an inconsistency in the solution provided. The calculation for the sum \\(m + n\\) initially suggests 39, but the final answer given is 27 without an explicit explanation for this change. This affects the correctness score. The clarity of the problem statement is good, but the solution lacks a clear explanation for the adjustment of the final answer. The steps leading to the understanding of \\(PQ\\) and the tangency condition are correct, but the final conclusion needs to be reevaluated for accuracy.\"\n}\n```",
+      "execution_time": 3.3524539470672607
+    },
+    {
+      "problem_id": "gen_aime_28",
+      "scores": {
+        "correctness": 2.0,
+        "clarity": 3.0,
+        "difficulty_match": 2.0,
+        "completeness": 2.0
+      },
+      "total_score": 2.25,
+      "evaluation_text": "```json\n{\n    \"correctness\": 2,\n    \"clarity\": 3,\n    \"difficulty_match\": 2,\n    \"completeness\": 2,\n    \"comments\": \"这道题目存在多个问题。首先，解答部分的数学逻辑不正确。对于内切圆，题目中的解答没有正确计算小三角形的面积，并且最终答案1是错误的。其次，题目的表述不够清晰，尤其是在解释如何形成小三角形时。问题的难度不符合AIME标准，因为它缺乏足够的复杂性和挑战性。解答部分也不完整，没有给出详细的推理过程和步骤来得出最终答案。建议重新审视和修正题目的数学逻辑，并提供更为详尽和准确的解答。\"\n}\n```",
+      "execution_time": 3.918867826461792
+    },
+    {
+      "problem_id": "gen_aime_29",
+      "scores": {
+        "correctness": 5.0,
+        "clarity": 4.0,
+        "difficulty_match": 4.0,
+        "completeness": 4.0
+      },
+      "total_score": 4.25,
+      "evaluation_text": "```json\n{\n    \"correctness\": 5,\n    \"clarity\": 4,\n    \"difficulty_match\": 4,\n    \"completeness\": 4,\n    \"comments\": \"题目正确地描述了问题并提供了准确的答案。解答中使用了费马小定理来简化计算，这是合适的。然而，解答过程中低次幂的计算部分略显冗长，可以更简洁地总结成一个表格或结合线索直接找到最小的n，避免冗余计算。题目的难度符合AIME的标准，但解答部分在计算5的幂时可以更高效。整体而言，题目和解答都很清晰，但可以在说明如何快速找到最小n的思路上做得更好。\"\n}\n```",
+      "execution_time": 3.3993613719940186
+    },
+    {
+      "problem_id": "gen_aime_30",
+      "scores": {
+        "correctness": 3.0,
+        "clarity": 4.0,
+        "difficulty_match": 4.0,
+        "completeness": 3.0
+      },
+      "total_score": 3.5,
+      "evaluation_text": "```json\n{\n    \"correctness\": 3,\n    \"clarity\": 4,\n    \"difficulty_match\": 4,\n    \"completeness\": 3,\n    \"comments\": \"The problem setup is interesting and involves multiple geometric and algebraic steps, which is suitable for a high-level math competition like AIME. However, there are some issues with the solution provided. The calculation of segment FG seems overly simplified and doesn't account for the complexity expected in such a problem. Specifically, the symmetry and intersection points need to be more rigorously derived, especially the parameterization of line BC and solving the intersection with the circle. The final answer does not match the algebraic steps provided, indicating a possible error in calculation or logic. The explanation is clear and follows a logical progression, though it lacks depth in certain derivations, notably in finding the points F and G. Overall, the problem is well-conceived, but the solution requires more detailed and accurate mathematical reasoning.\"\n}\n```",
+      "execution_time": 3.7917966842651367
+    }
+  ],
+  "metrics": {
+    "average_total_score": 3.316666666666667,
+    "dimension_averages": {
+      "correctness": 3.2666666666666666,
+      "clarity": 3.4,
+      "difficulty_match": 3.2666666666666666,
+      "completeness": 3.3333333333333335
+    },
+    "pass_rate": 0.4,
+    "excellent_rate": 0.1
+  },
+  "evaluation_date": "2025-10-11T12:41:43.357467",
+  "judge_model": "gpt-4o",
+  "num_problems": 30
+}

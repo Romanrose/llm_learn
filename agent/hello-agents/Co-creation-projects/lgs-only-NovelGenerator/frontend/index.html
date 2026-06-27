@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 小说生成器</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 0.3s ease;
+        }
+        .fade-enter-from, .fade-leave-to {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
+    <div id="app" class="max-w-7xl mx-auto p-6">
+        <header class="mb-8 text-center">
+            <h1 class="text-4xl font-extrabold text-blue-600 tracking-tight">AI 小说创作助手</h1>
+            <p class="text-gray-500 mt-2">释放你的创意，让 AI 帮你构建世界</p>
+        </header>
+
+        <!-- 顶部：项目配置区域 (隐式包含 Novel ID) -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-100">
+            <div class="flex flex-col md:flex-row gap-4 items-end">
+                <div class="flex-grow w-full">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">小说标题</label>
+                    <input v-model="project.title" type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition shadow-sm" placeholder="请输入你的小说名称">
+                </div>
+                <div class="w-full md:w-auto">
+                     <!-- 只有当标题输入后，才真正去加载或初始化项目 -->
+                    <button @click="initOrLoadProject" :disabled="!project.title || loading" class="w-full md:w-auto px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-md">
+                        {{ projectLoaded ? '刷新项目' : '开始创作' }}
+                    </button>
+                </div>
+            </div>
+            <div v-if="project.novel_id" class="mt-2 text-xs text-gray-400">
+                项目 ID: {{ project.novel_id }}
+            </div>
+        </div>
+
+        <div v-if="projectLoaded" class="space-y-8">
+            
+            <!-- 第一部分：大纲生成 -->
+            <section class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 px-6 py-4 border-b border-gray-100">
+                    <h2 class="text-xl font-bold text-gray-800 flex items-center">
+                        <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">1</span>
+                        大纲生成与管理
+                    </h2>
+                </div>
+                
+                <div class="flex flex-col md:flex-row">
+                    <!-- 左侧 1/3：输入与配置 -->
+                    <div class="w-full md:w-1/3 p-6 border-b md:border-b-0 md:border-r border-gray-100 bg-gray-50/50">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">核心思路 / 故事梗概</label>
+                                <textarea v-model="outlineInput.user_input" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm h-32" placeholder="例如：一个关于程序员穿越到修仙世界修复天道Bug的故事..."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">预计字数</label>
+                                <input v-model.number="outlineInput.target_length" type="number" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 shadow-sm" step="1000">
+                            </div>
+
+                            <!-- 频段选择 -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">小说频段</label>
+                                <div class="flex gap-4">
+                                    <label class="flex items-center cursor-pointer">
+                                        <input type="radio" v-model="outlineInput.channel" value="男频" class="form-radio text-blue-600 h-4 w-4">
+                                        <span class="ml-2 text-gray-700">男频</span>
+                                    </label>
+                                    <label class="flex items-center cursor-pointer">
+                                        <input type="radio" v-model="outlineInput.channel" value="女频" class="form-radio text-pink-600 h-4 w-4">
+                                        <span class="ml-2 text-gray-700">女频</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 风格选择 -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">作品风格</label>
+                                <select v-model="outlineInput.style" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 bg-white shadow-sm">
+                                    <option value="" disabled>请选择风格</option>
+                                    <option v-for="style in currentStyles" :key="style" :value="style">{{ style }}</option>
+                                </select>
+                            </div>
+
+                            <button @click="generateOutline" :disabled="loading" class="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-lg hover:from-blue-700 hover:to-indigo-700 transition shadow-md flex items-center justify-center">
+                                <span v-if="loading && currentAction === 'outline'" class="animate-spin mr-2">⟳</span>
+                                {{ outline.id ? '重新生成大纲' : '生成大纲' }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 右侧 2/3：显示与操作 -->
+                    <div class="w-full md:w-2/3 p-6 flex flex-col">
+                        <div class="flex-grow mb-4">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                大纲内容 
+                                <span v-if="!outline.id" class="text-gray-400 font-normal ml-2">(尚未生成)</span>
+                                <span v-else class="text-green-600 font-normal ml-2 text-xs">已保存 (ID: {{outline.id}})</span>
+                            </label>
+                            <textarea v-model="outline.content" class="w-full h-[500px] p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-mono text-sm leading-relaxed bg-white shadow-inner resize-none" placeholder="大纲将显示在这里..."></textarea>
+                        </div>
+                        
+                        <div v-if="outline.id" class="flex justify-end gap-3 pt-2 border-t border-gray-100">
+                            <button @click="updateOutline" :disabled="loading" class="px-5 py-2 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 transition shadow flex items-center">
+                                <span v-if="loading && currentAction === 'update_outline'" class="animate-spin mr-2">⟳</span>
+                                保存修改
+                            </button>
+                            <button @click="deleteOutline" :disabled="loading" class="px-5 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition shadow flex items-center">
+                                <span v-if="loading && currentAction === 'delete_outline'" class="animate-spin mr-2">⟳</span>
+                                删除大纲
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 第二部分：章节生成 -->
+            <section class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                <div class="bg-gradient-to-r from-green-50 to-teal-50 px-6 py-4 border-b border-gray-100">
+                    <h2 class="text-xl font-bold text-gray-800 flex items-center">
+                        <span class="bg-green-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">2</span>
+                        章节生成
+                    </h2>
+                </div>
+                
+                <div class="p-6">
+                    <!-- 上方：输入配置 -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
+                        <div class="md:col-span-8">
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">本章思路 / 剧情走向 (可选)</label>
+                            <textarea v-model="chapterInput.user_input" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 shadow-sm h-24" placeholder="留空则 AI 将根据大纲和前文自动续写..."></textarea>
+                        </div>
+                        <div class="md:col-span-4 space-y-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">生成数量</label>
+                                <div class="flex items-center">
+                                    <input v-model.number="chapterInput.num_chapters" type="range" min="1" max="5" class="w-full mr-3 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                                    <span class="text-lg font-bold text-green-600 w-8">{{ chapterInput.num_chapters }}章</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">单章字数</label>
+                                <input v-model.number="chapterInput.chapter_length" type="number" step="100" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 shadow-sm">
+                            </div>
+                            <button @click="generateChapters" :disabled="loading || !outline.id" class="w-full py-3 bg-gradient-to-r from-green-600 to-teal-600 text-white font-bold rounded-lg hover:from-green-700 hover:to-teal-700 transition shadow-md flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed">
+                                <span v-if="loading && currentAction === 'chapter'" class="animate-spin mr-2">⟳</span>
+                                {{ !outline.id ? '请先生成大纲' : '开始生成章节' }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 下方：最新生成预览 (如果有) -->
+                    <div v-if="lastGeneratedChapter" class="mt-6 border-t border-gray-100 pt-6">
+                        <div class="bg-green-50 border border-green-100 rounded-lg p-4">
+                            <h3 class="text-md font-bold text-green-800 mb-2">最新生成预览: {{ lastGeneratedChapter.title }}</h3>
+                            <div class="text-sm text-gray-600 line-clamp-6 whitespace-pre-wrap">{{ lastGeneratedChapter.content }}</div>
+                            <div class="mt-2 text-right">
+                                <button @click="scrollToChapter(lastGeneratedChapter.id)" class="text-green-600 text-sm font-medium hover:underline">去列表中查看完整内容 &rarr;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 第三部分：章节列表 -->
+            <section class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden pb-12">
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+                    <h2 class="text-xl font-bold text-gray-800 flex items-center">
+                        <span class="bg-purple-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">3</span>
+                        章节列表
+                    </h2>
+                    <span class="text-sm text-gray-500">共 {{ chapters.length }} 章</span>
+                </div>
+
+                <div v-if="chapters.length === 0" class="p-12 text-center text-gray-400">
+                    <p>暂无章节，快去生成第一章吧！</p>
+                </div>
+
+                <div class="divide-y divide-gray-100">
+                    <div v-for="(chapter, index) in reversedChapters" :key="chapter.id" :id="'chapter-' + chapter.id" class="transition hover:bg-gray-50">
+                        <!-- 章节标题行 (可点击折叠) -->
+                        <div @click="toggleChapter(chapter.id)" class="p-4 cursor-pointer flex justify-between items-center group">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm">{{ chapters.length - index }}</span>
+                                <h3 class="font-bold text-gray-800 group-hover:text-purple-600 transition">{{ chapter.title || '未命名章节' }}</h3>
+                                <span class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">{{ chapter.summary ? (chapter.summary.substring(0, 20) + (chapter.summary.length > 20 ? '...' : '')) : '无摘要' }}</span>
+                            </div>
+                            <div class="flex items-center text-gray-400">
+                                <span class="mr-2 text-xs" v-if="chapter.loadingContent">加载中...</span>
+                                <svg class="w-5 h-5 transition-transform duration-300" :class="{'rotate-180': activeChapterId === chapter.id}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+
+                        <!-- 章节内容区域 -->
+                        <transition name="fade">
+                            <div v-if="activeChapterId === chapter.id" class="bg-gray-50/50 border-t border-gray-100 p-6">
+                                <div v-if="chapter.loadingContent" class="flex justify-center py-8">
+                                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
+                                </div>
+                                <div v-else>
+                                    <div class="mb-4">
+                                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">章节标题</label>
+                                        <input v-model="chapter.title" class="w-full p-2 border border-gray-300 rounded focus:ring-1 focus:ring-purple-500 bg-white">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">正文内容</label>
+                                        <textarea v-model="chapter.content" class="w-full h-96 p-4 border border-gray-300 rounded focus:ring-1 focus:ring-purple-500 font-mono text-sm leading-relaxed bg-white shadow-inner resize-y"></textarea>
+                                    </div>
+                                    <div class="flex justify-end gap-3">
+                                        <button @click.stop="updateChapter(chapter)" :disabled="loading" class="px-4 py-2 bg-yellow-500 text-white text-sm font-semibold rounded hover:bg-yellow-600 transition shadow flex items-center">
+                                            <span v-if="loading && currentAction === 'update_chapter_' + chapter.id" class="animate-spin mr-2 h-3 w-3 border-b-2 border-white rounded-full"></span>
+                                            保存修改
+                                        </button>
+                                        <button @click.stop="deleteChapter(chapter)" :disabled="loading" class="px-4 py-2 bg-red-500 text-white text-sm font-semibold rounded hover:bg-red-600 transition shadow flex items-center">
+                                            <span v-if="loading && currentAction === 'delete_chapter_' + chapter.id" class="animate-spin mr-2 h-3 w-3 border-b-2 border-white rounded-full"></span>
+                                            删除本章
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </transition>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 初始加载状态 -->
+        <div v-else-if="loading" class="fixed inset-0 bg-white/80 flex items-center justify-center z-50">
+             <div class="text-center">
+                <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600 mx-auto mb-4"></div>
+                <p class="text-blue-600 font-semibold text-lg">正在连接 AI 创作引擎...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, reactive, computed, onMounted, nextTick } = Vue;
+        const API_URL = 'http://localhost:8000';
+
+        // 风格配置数据
+        const STYLE_CATEGORIES = {
+            '男频': ['玄幻', '历史', '都市', '衍生', '悬疑'],
+            '女频': ['年代', '纯爱', '现代言情', '古代言情', '衍生', '悬疑']
+        };
+
+        createApp({
+            setup() {
+                // --- State ---
+                const loading = ref(false);
+                const currentAction = ref(null); // 用于跟踪当前正在执行的具体操作，以便显示特定按钮的 loading
+                const projectLoaded = ref(false);
+                
+                const project = reactive({
+                    novel_id: '',
+                    title: ''
+                });
+
+                const outlineInput = reactive({
+                    user_input: '',
+                    target_length: 3000,
+                    channel: '男频', // 默认男频
+                    style: ''
+                });
+
+                const outline = reactive({
+                    id: null,
+                    content: ''
+                });
+
+                const chapterInput = reactive({
+                    user_input: '',
+                    num_chapters: 1,
+                    chapter_length: 3000
+                });
+
+                const chapters = ref([]); // 存储所有章节元数据
+                const activeChapterId = ref(null);
+                const lastGeneratedChapter = ref(null);
+
+                // --- Computed ---
+                const currentStyles = computed(() => {
+                    return STYLE_CATEGORIES[outlineInput.channel] || [];
+                });
+
+                // 倒序排列章节用于显示
+                const reversedChapters = computed(() => {
+                    return [...chapters.value].reverse();
+                });
+
+                // --- Methods ---
+
+                // 生成随机ID
+                const generateNovelId = () => {
+                    return 'novel_' + Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+                };
+
+                // 初始化或加载项目
+                const initOrLoadProject = async () => {
+                    if (!project.title) return;
+                    
+                    loading.value = true;
+                    currentAction.value = 'init';
+                    
+                    try {
+                        // 如果没有 ID，生成一个
+                        if (!project.novel_id) {
+                            project.novel_id = generateNovelId();
+                        }
+
+                        // 尝试从后端获取项目信息（如果是已有项目）
+                        // 注意：这里我们总是先尝试获取，如果不存在后端会返回空结构
+                        const res = await fetch(`${API_URL}/projects/${project.title}/${project.novel_id}`);
+                        if (res.ok) {
+                            const data = await res.json();
+                            
+                            // 设置大纲ID
+                            outline.id = data.outline_id;
+                            if (outline.id) {
+                                await loadOutlineContent(outline.id);
+                            } else {
+                                outline.content = '';
+                            }
+                            
+                            // 设置章节列表
+                            chapters.value = data.chapters.map(c => ({
+                                ...c, 
+                                content: null, // 内容懒加载
+                                loadingContent: false 
+                            }));
+                        }
+                        
+                        projectLoaded.value = true;
+                    } catch (e) {
+                        alert('项目初始化失败: ' + e);
+                        console.error(e);
+                    } finally {
+                        loading.value = false;
+                        currentAction.value = null;
+                    }
+                };
+
+                const loadOutlineContent = async (noteId) => {
+                    try {
+                        const res = await fetch(`${API_URL}/outline/${project.title}/${project.novel_id}/${noteId}`);
+                        if (!res.ok) throw new Error('Failed to load outline');
+                        const data = await res.json();
+                        outline.content = data.content;
+                    } catch (e) {
+                        console.error("Error loading outline content:", e);
+                    }
+                };
+
+                const generateOutline = async () => {
+                    loading.value = true;
+                    currentAction.value = 'outline';
+                    try {
+                        // 构建 style_tags
+                        const styleTags = {
+                            'channel': outlineInput.channel,
+                            'style': outlineInput.style
+                        };
+                        
+                        const res = await fetch(`${API_URL}/outline/generate`, {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({
+                                novel_id: project.novel_id,
+                                title: project.title,
+                                user_input: outlineInput.user_input,
+                                target_length: outlineInput.target_length,
+                                style_tags: styleTags
+                            })
+                        });
+                        
+                        if (!res.ok) throw new Error(await res.text());
+                        
+                        const data = await res.json();
+                        outline.id = data.note_id;
+                        outline.content = data.content;
+                    } catch (e) {
+                        alert('大纲生成失败: ' + e);
+                    } finally {
+                        loading.value = false;
+                        currentAction.value = null;
+                    }
+                };
+
+                const updateOutline = async () => {
+                    if (!outline.id) return;
+                    loading.value = true;
+                    currentAction.value = 'update_outline';
+                    try {
+                        const res = await fetch(`${API_URL}/outline/update`, {
+                            method: 'PUT',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({
+                                novel_id: project.novel_id,
+                                title: project.title,
+                                note_id: outline.id,
+                                content: outline.content
+                            })
+                        });
+                        if (!res.ok) throw new Error(await res.text());
+                        alert('大纲保存成功！');
+                    } catch (e) {
+                        alert('保存失败: ' + e);
+                    } finally {
+                        loading.value = false;
+                        currentAction.value = null;
+                    }
+                };
+
+                const deleteOutline = async () => {
+                    if(!confirm('确定要删除当前大纲吗？此操作不可恢复。')) return;
+                    loading.value = true;
+                    currentAction.value = 'delete_outline';
+                    try {
+                        const params = new URLSearchParams({
+                            novel_id: project.novel_id,
+                            title: project.title,
+                            note_id: outline.id
+                        });
+                        const res = await fetch(`${API_URL}/outline/delete?${params.toString()}`, {
+                            method: 'DELETE'
+                        });
+                        if (!res.ok) throw new Error(await res.text());
+                        
+                        outline.id = null;
+                        outline.content = '';
+                        alert('大纲已删除');
+                    } catch (e) {
+                        alert('删除失败: ' + e);
+                    } finally {
+                        loading.value = false;
+                        currentAction.value = null;
+                    }
+                };
+
+                const generateChapters = async () => {
+                    loading.value = true;
+                    currentAction.value = 'chapter';
+                    lastGeneratedChapter.value = null;
+                    
+                    try {
+                        const res = await fetch(`${API_URL}/chapter/generate`, {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({
+                                novel_id: project.novel_id,
+                                title: project.title,
+                                user_input: chapterInput.user_input,
+                                num_chapters: chapterInput.num_chapters,
+                                chapter_length: chapterInput.chapter_length
+                            })
+                        });
+                        
+                        if (!res.ok) throw new Error(await res.text());
+                        
+                        const data = await res.json();
+                        
+                        // 添加新生成的章节到列表
+                        const newChapters = [];
+                        for (const c of data.generated_chapters) {
+                            // 为了能够立即预览，我们需要获取内容。
+                            // 此时我们其实只知道 ID。为了简单，我们立即去 fetch 一次内容，或者后端返回的时候能带上内容最好。
+                            // 查看后端接口，generate 只返回 id, title, summary。
+                            // 所以我们需要单独 fetch 内容用于预览。
+                            const chapterObj = {...c, content: null, loadingContent: false};
+                            chapters.value.push(chapterObj);
+                            newChapters.push(chapterObj);
+                        }
+                        
+                        // 自动加载最后一个生成的章节内容用于预览
+                        if (newChapters.length > 0) {
+                            const lastOne = newChapters[newChapters.length - 1];
+                            await loadChapterContent(lastOne);
+                            lastGeneratedChapter.value = lastOne;
+                        }
+                        
+                        // 清空输入
+                        chapterInput.user_input = '';
+
+                    } catch (e) {
+                        alert('章节生成失败: ' + e);
+                    } finally {
+                        loading.value = false;
+                        currentAction.value = null;
+                    }
+                };
+
+                const loadChapterContent = async (chapter) => {
+                    if (chapter.content) return;
+                    chapter.loadingContent = true;
+                    try {
+                        const res = await fetch(`${API_URL}/chapter/${project.title}/${project.novel_id}/${chapter.id}`);
+                        if (!res.ok) throw new Error('Failed to load chapter content');
+                        const data = await res.json();
+                        chapter.content = data.content;
+                    } catch (e) {
+                        console.error(e);
+                        chapter.content = "加载内容失败";
+                    } finally {
+                        chapter.loadingContent = false;
+                    }
+                };
+
+                const toggleChapter = async (id) => {
+                    if (activeChapterId.value === id) {
+                        activeChapterId.value = null;
+                        return;
+                    }
+                    activeChapterId.value = id;
+                    const chapter = chapters.value.find(c => c.id === id);
+                    if (chapter) {
+                        await loadChapterContent(chapter);
+                    }
+                };
+
+                const updateChapter = async (chapter) => {
+                    loading.value = true;
+                    currentAction.value = 'update_chapter_' + chapter.id;
+                    try {
+                        const res = await fetch(`${API_URL}/chapter/update`, {
+                            method: 'PUT',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({
+                                novel_id: project.novel_id,
+                                title: project.title,
+                                note_id: chapter.id,
+                                content: chapter.content,
+                                chapter_title: chapter.title // 支持修改标题
+                            })
+                        });
+                        if (!res.ok) throw new Error(await res.text());
+                        alert('章节更新成功');
+                    } catch (e) {
+                        alert('更新失败: ' + e);
+                    } finally {
+                        loading.value = false;
+                        currentAction.value = null;
+                    }
+                };
+
+                const deleteChapter = async (chapter) => {
+                    if(!confirm('确定要删除这一章吗？')) return;
+                    loading.value = true;
+                    currentAction.value = 'delete_chapter_' + chapter.id;
+                    try {
+                        const params = new URLSearchParams({
+                            novel_id: project.novel_id,
+                            title: project.title,
+                            note_id: chapter.id
+                        });
+                        const res = await fetch(`${API_URL}/chapter/delete?${params.toString()}`, {
+                            method: 'DELETE'
+                        });
+                        if (!res.ok) throw new Error(await res.text());
+                        
+                        chapters.value = chapters.value.filter(c => c.id !== chapter.id);
+                        if (activeChapterId.value === chapter.id) activeChapterId.value = null;
+                        if (lastGeneratedChapter.value && lastGeneratedChapter.value.id === chapter.id) lastGeneratedChapter.value = null;
+                        
+                    } catch (e) {
+                        alert('删除失败: ' + e);
+                    } finally {
+                        loading.value = false;
+                        currentAction.value = null;
+                    }
+                };
+                
+                const scrollToChapter = (id) => {
+                    activeChapterId.value = id;
+                    // 等待 DOM 更新展开后再滚动
+                    nextTick(async () => {
+                        const el = document.getElementById('chapter-' + id);
+                        if (el) {
+                            el.scrollIntoView({ behavior: 'smooth' });
+                            // 确保内容已加载
+                            const chapter = chapters.value.find(c => c.id === id);
+                            if (chapter) await loadChapterContent(chapter);
+                        }
+                    });
+                };
+
+                return {
+                    loading, currentAction, projectLoaded,
+                    project, outlineInput, outline, chapterInput, chapters,
+                    activeChapterId, lastGeneratedChapter,
+                    STYLE_CATEGORIES, currentStyles, reversedChapters,
+                    initOrLoadProject, generateOutline, updateOutline, deleteOutline,
+                    generateChapters, toggleChapter, updateChapter, deleteChapter, scrollToChapter
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

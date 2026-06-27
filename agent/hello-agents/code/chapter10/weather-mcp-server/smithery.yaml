@@ -1,0 +1,29 @@
+name: weather-mcp-server
+displayName: Weather MCP Server
+description: Real-time weather query MCP server based on HelloAgents framework
+version: 1.0.0
+author: HelloAgents Team
+homepage: https://github.com/yourusername/weather-mcp-server
+license: MIT
+categories:
+  - weather
+  - data
+tags:
+  - weather
+  - real-time
+  - helloagents
+  - wttr
+runtime: container
+build:
+  dockerfile: Dockerfile
+  dockerBuildPath: .
+startCommand:
+  type: http
+tools:
+  - name: get_weather
+    description: Get current weather for a city
+  - name: list_supported_cities
+    description: List all supported cities
+  - name: get_server_info
+    description: Get server information
+
