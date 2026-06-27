@@ -1,0 +1,12 @@
+# HelloAgents框架
+hello-agents[all]>=0.1.0
+
+# Jupyter环境
+jupyter>=1.0.0
+notebook>=7.0.0
+
+# 读取excel文件
+xlrd>=2.0.1
+
+# 环境变量管理
+python-dotenv>=1.0.0

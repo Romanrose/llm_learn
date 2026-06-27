@@ -1,0 +1,25 @@
+# FinReportAgent 依赖配置
+# 作者: kkkano | 日期: 2026-01-25
+# 安装: pip install -r requirements.txt
+
+# 核心框架
+hello-agents>=0.2.8
+
+# LLM 客户端
+openai>=1.0.0
+
+# 金融数据
+yfinance>=0.2.0
+
+# 搜索引擎
+duckduckgo-search>=4.0.0
+
+# 数据处理
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Jupyter 运行环境
+ipython>=8.0.0
+
+# 环境配置
+python-dotenv>=1.0.0

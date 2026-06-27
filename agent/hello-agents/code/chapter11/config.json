@@ -1,0 +1,27 @@
+{
+  "model": {
+    "base_model": "Qwen/Qwen3-0.6B"
+  },
+  "data": {
+    "max_samples": 100
+  },
+  "sft": {
+    "output_dir": "./models/sft_model",
+    "num_epochs": 2,
+    "batch_size": 4
+  },
+  "grpo": {
+    "output_dir": "./models/grpo_model",
+    "num_epochs": 2,
+    "batch_size": 2
+  },
+  "eval": {
+    "max_samples": 20,
+    "sft_accuracy_threshold": 0.4
+  },
+  "monitoring": {
+    "use_wandb": false,
+    "use_tensorboard": true,
+    "wandb_project": "agentic-rl-pipeline"
+  }
+}

@@ -1,0 +1,12 @@
+# 多智能体天气穿衣建议系统依赖
+
+# 核心框架
+hello-agents[all]==0.2.8
+fastmcp==2.13.1
+
+# Web界面
+requests==2.32.5
+gradio==4.44.1
+
+# 环境变量管理
+dotenv==0.9.9

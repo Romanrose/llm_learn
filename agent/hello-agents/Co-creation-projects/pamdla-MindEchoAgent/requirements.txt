@@ -1,0 +1,8 @@
+hello-agents[all]>=0.2.7
+qdrant-client~=1.15.1
+
+gradio
+python-dotenv
+loguru
+openai
+flask

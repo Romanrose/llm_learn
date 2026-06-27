@@ -1,0 +1,20 @@
+# Personal Information Signaling System - 个人信息信号系统
+# 依赖包列表
+
+# YAML文件处理
+pyyaml>=6.0.0
+
+# 图片处理（桌面提醒功能）
+Pillow>=10.0.0
+
+# 环境变量管理
+python-dotenv>=1.0.0
+
+# HTTP客户端（YouTube API调用）
+httpx>=0.28.0
+
+# LLM调用（可选，用于维度提取和研究报告生成）
+# 注意：hello_agents 需要单独安装，请参考：
+# https://github.com/datawhalechina/hello-agents
+# 或者使用 pip install hello-agents（如果已发布到PyPI）
+

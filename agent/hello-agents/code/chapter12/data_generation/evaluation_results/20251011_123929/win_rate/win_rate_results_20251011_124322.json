@@ -1,0 +1,275 @@
+{
+  "comparisons": [
+    {
+      "problem_a_id": "25",
+      "problem_b_id": "gen_aime_26",
+      "winner": "Problem A",
+      "reason": "Upon evaluation, Problem A and Problem B are both solid in terms of mathematical correctness and clarity. However, Problem A exhibits a higher level of problem quality and complexity, which aligns more closely with the AIME standards. Problem A involves an intricate combinatorial setup, requiring the solver to understand properties of a regular polygon and engage in non-trivial counting arguments to find the number of ways to pair vertices, which is a challenging task suitable for AIME. In contrast, Problem B, while correctly formulated and solvable, relies on a straightforward application of the properties of a regular hexagon inscribed in a circle. The solution to Problem B is more direct and less complex, as it quickly reduces to finding the radius of the circle, a relatively simple task. Therefore, considering the dimensions of difficulty appropriateness and problem quality, Problem A is the winner due to its higher level of complexity and challenge appropriate for AIME.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem A\",\n    \"reason\": \"Upon evaluation, Problem A and Problem B are both solid in terms of mathematical correctness and clarity. However, Problem A exhibits a higher level of problem quality and complexity, which aligns more closely with the AIME standards. Problem A involves an intricate combinatorial setup, requiring the solver to understand properties of a regular polygon and engage in non-trivial counting arguments to find the number of ways to pair vertices, which is a challenging task suitable for AIME. In contrast, Problem B, while correctly formulated and solvable, relies on a straightforward application of the properties of a regular hexagon inscribed in a circle. The solution to Problem B is more direct and less complex, as it quickly reduces to finding the radius of the circle, a relatively simple task. Therefore, considering the dimensions of difficulty appropriateness and problem quality, Problem A is the winner due to its higher level of complexity and challenge appropriate for AIME.\"\n}\n```",
+      "execution_time": 6.184344053268433,
+      "actual_order": {
+        "A": "Reference",
+        "B": "Generated"
+      },
+      "actual_winner": "Reference"
+    },
+    {
+      "problem_a_id": "gen_aime_19",
+      "problem_b_id": "10",
+      "winner": "Tie",
+      "reason": "Failed to parse response",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem B\",\n    \"reason\": \"Both problems exhibit certain strengths and weaknesses, but Problem B has a slight edge in terms of overall quality. \n\n1. **Mathematical Correctness**: Both problems appear to be mathematically correct; however, Problem A contains a solution that does not match the provided answer, indicating a potential error in either the problem setup or the given answer. Problem B's answer matches the problem statement, indicating mathematical correctness.\n\n2. **Clarity**: Problem A is clear in its requirements, but the solution process seems convoluted and potentially incorrect as it doesn't align with the provided answer. Problem B, while more complex, clearly lays out the piecewise function and periodic nature, followed by a clear geometric intersection context.\n\n3. **Difficulty Appropriateness**: Problem B presents a challenge that is suitable for AIME level, requiring understanding of periodic functions, piecewise definitions, and intersections with a parabola. Problem A, while also challenging, suffers from a mismatch in the solution and answer, which affects its perceived difficulty and solvability.\n\n4. **Problem Quality**: Problem B is well-designed with a clear linkage between the periodic function and intersection with a parabola, providing a rich mathematical exploration. Problem A's quality is compromised by the errors in solution alignment, reducing its effectiveness and educational value.\n\nOverall, Problem B is more aligned with the evaluation criteria, offering a clearer, correctly answered, and suitably challenging problem that stands up to scrutiny across all dimensions.\"\n}\n```",
+      "execution_time": 6.297120571136475,
+      "actual_order": {
+        "A": "Generated",
+        "B": "Reference"
+      },
+      "actual_winner": "Tie"
+    },
+    {
+      "problem_a_id": "4",
+      "problem_b_id": "gen_aime_28",
+      "winner": "Problem A",
+      "reason": "Upon evaluating both problems, Problem A is superior in terms of mathematical correctness, clarity, and difficulty appropriateness. Problem A is a combinatorial problem that requires the solver to understand permutations and divisibility rules, which are common themes in AIME-style problems. The problem is clearly stated, and the answer provided is consistent with the problem requirements. In contrast, Problem B has several issues. The solution provided for Problem B incorrectly concludes that the area of one of the smaller triangles is 1, while logically, given the problem statement, the area should be less than 1 due to the division of the area among the smaller triangles. Additionally, the solution lacks clarity, especially in the justification of the final step where it abruptly concludes the area as 1 without proper reasoning, which detracts from its mathematical correctness and clarity. Therefore, Problem A is the better-quality problem.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem A\",\n    \"reason\": \"Upon evaluating both problems, Problem A is superior in terms of mathematical correctness, clarity, and difficulty appropriateness. Problem A is a combinatorial problem that requires the solver to understand permutations and divisibility rules, which are common themes in AIME-style problems. The problem is clearly stated, and the answer provided is consistent with the problem requirements. In contrast, Problem B has several issues. The solution provided for Problem B incorrectly concludes that the area of one of the smaller triangles is 1, while logically, given the problem statement, the area should be less than 1 due to the division of the area among the smaller triangles. Additionally, the solution lacks clarity, especially in the justification of the final step where it abruptly concludes the area as 1 without proper reasoning, which detracts from its mathematical correctness and clarity. Therefore, Problem A is the better-quality problem.\"\n}\n```",
+      "execution_time": 4.189812898635864,
+      "actual_order": {
+        "A": "Reference",
+        "B": "Generated"
+      },
+      "actual_winner": "Reference"
+    },
+    {
+      "problem_a_id": "gen_aime_7",
+      "problem_b_id": "27",
+      "winner": "Problem B",
+      "reason": "Problem B has a clear and unambiguous statement with a correct and straightforward answer. The mathematical correctness of the sequence operations in Problem B is sound and leads to a rational number, where the task is to find the remainder when the sum of the numerator and denominator is divided by 1000. This is a typical AIME-style problem that involves sequences and modular arithmetic, which are common themes in such competitions. Problem A, on the other hand, suffers from a solution that is both unnecessarily complicated and possibly incorrect in its simplification process. The inclusion-exclusion principle is correctly applied, but the final simplification error suggests a lack of clarity or correctness in the solution verification, which affects the overall quality. While both problems have a certain degree of complexity, Problem B's approach to sequences provides a more elegant and appropriate challenge for the AIME context.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem B\",\n    \"reason\": \"Problem B has a clear and unambiguous statement with a correct and straightforward answer. The mathematical correctness of the sequence operations in Problem B is sound and leads to a rational number, where the task is to find the remainder when the sum of the numerator and denominator is divided by 1000. This is a typical AIME-style problem that involves sequences and modular arithmetic, which are common themes in such competitions. Problem A, on the other hand, suffers from a solution that is both unnecessarily complicated and possibly incorrect in its simplification process. The inclusion-exclusion principle is correctly applied, but the final simplification error suggests a lack of clarity or correctness in the solution verification, which affects the overall quality. While both problems have a certain degree of complexity, Problem B's approach to sequences provides a more elegant and appropriate challenge for the AIME context.\"\n}\n```",
+      "execution_time": 4.697055101394653,
+      "actual_order": {
+        "A": "Generated",
+        "B": "Reference"
+      },
+      "actual_winner": "Reference"
+    },
+    {
+      "problem_a_id": "29",
+      "problem_b_id": "gen_aime_6",
+      "winner": "Problem A",
+      "reason": "Problem A is mathematically correct and concise. It clearly defines a polynomial function and asks for the sum of specific values of k, which is a well-posed question. The problem is appropriate for AIME standards as it involves understanding polynomial behavior and requires analytical thinking. On the other hand, Problem B has multiple issues. The solution provided in Problem B is incorrect, as it contains errors in calculating the maximum value of f(p). The problem statement in Problem B is somewhat misleading because it suggests maximizing the sum of permutations without a clear strategy, leading to confusion. Additionally, the solution attempts to use permutations without clearly explaining the rationale or strategy behind the selections. While Problem B has potential, the errors in its solution detract from its overall quality. Therefore, Problem A is the winner due to its correctness, clarity, and appropriate difficulty level.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem A\",\n    \"reason\": \"Problem A is mathematically correct and concise. It clearly defines a polynomial function and asks for the sum of specific values of k, which is a well-posed question. The problem is appropriate for AIME standards as it involves understanding polynomial behavior and requires analytical thinking. On the other hand, Problem B has multiple issues. The solution provided in Problem B is incorrect, as it contains errors in calculating the maximum value of f(p). The problem statement in Problem B is somewhat misleading because it suggests maximizing the sum of permutations without a clear strategy, leading to confusion. Additionally, the solution attempts to use permutations without clearly explaining the rationale or strategy behind the selections. While Problem B has potential, the errors in its solution detract from its overall quality. Therefore, Problem A is the winner due to its correctness, clarity, and appropriate difficulty level.\"\n}\n```",
+      "execution_time": 3.9496095180511475,
+      "actual_order": {
+        "A": "Reference",
+        "B": "Generated"
+      },
+      "actual_winner": "Reference"
+    },
+    {
+      "problem_a_id": "20",
+      "problem_b_id": "gen_aime_29",
+      "winner": "Tie",
+      "reason": "Both problems have their unique attributes that make them suitable for AIME standards, and neither problem stands out significantly over the other across the evaluation dimensions. \n\n1. Mathematical Correctness: Both Problem A and Problem B are mathematically correct. The answers provided are consistent with the problem statements, and the reasoning in Problem B's solution verifies the correctness.\n\n2. Clarity: Problem B is clearer in terms of presentation and understanding. Problem A, while clear, involves a complex geometric setup that might take longer for students to parse compared to the straightforward modular arithmetic problem in Problem B.\n\n3. Difficulty Appropriateness: Problem A involves geometry and requires understanding of several geometric properties and relationships, which aligns well with AIME's difficulty level. Problem B, on the other hand, involves modular arithmetic and application of Fermat's Little Theorem, which are also suitable for AIME.\n\n4. Problem Quality: Problem A is well-designed with a complex geometric configuration that tests a variety of skills. Problem B is simpler in terms of setup but still requires deep understanding of number theory concepts.\n\nOverall, both problems meet the AIME standard comprehensively, and therefore neither problem significantly outshines the other across all dimensions.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Tie\",\n    \"reason\": \"Both problems have their unique attributes that make them suitable for AIME standards, and neither problem stands out significantly over the other across the evaluation dimensions. \\n\\n1. Mathematical Correctness: Both Problem A and Problem B are mathematically correct. The answers provided are consistent with the problem statements, and the reasoning in Problem B's solution verifies the correctness.\\n\\n2. Clarity: Problem B is clearer in terms of presentation and understanding. Problem A, while clear, involves a complex geometric setup that might take longer for students to parse compared to the straightforward modular arithmetic problem in Problem B.\\n\\n3. Difficulty Appropriateness: Problem A involves geometry and requires understanding of several geometric properties and relationships, which aligns well with AIME's difficulty level. Problem B, on the other hand, involves modular arithmetic and application of Fermat's Little Theorem, which are also suitable for AIME.\\n\\n4. Problem Quality: Problem A is well-designed with a complex geometric configuration that tests a variety of skills. Problem B is simpler in terms of setup but still requires deep understanding of number theory concepts.\\n\\nOverall, both problems meet the AIME standard comprehensively, and therefore neither problem significantly outshines the other across all dimensions.\"\n}\n```",
+      "execution_time": 6.399900913238525,
+      "actual_order": {
+        "A": "Reference",
+        "B": "Generated"
+      },
+      "actual_winner": "Tie"
+    },
+    {
+      "problem_a_id": "gen_aime_22",
+      "problem_b_id": "8",
+      "winner": "Problem A",
+      "reason": "Both Problem A and Problem B are mathematically interesting and invite the solver to apply a range of mathematical techniques. However, Problem A stands out for a few reasons: \n\n1. **Mathematical Correctness**: Both problems are mathematically sound and have correct answers. \n\n2. **Clarity**: Problem A provides a clear condition involving congruences that is easy to understand and follow. Problem B, while clear, involves a transformation that might be less intuitive for some solvers in terms of visualizing the rotation and intersection. \n\n3. **Difficulty Appropriateness**: Both problems are challenging and appropriate for AIME, but Problem A involves a more direct application of modular arithmetic and factorization, which aligns well with typical AIME problem-solving strategies. Problem B involves additional geometric visualization and understanding of transformations, making it potentially more complex than typical AIME problems which focus more on algebra and number theory.\n\n4. **Problem Quality**: Problem A is well-designed, with a clear path to the solution that involves logical steps and common number theory techniques. Problem B is also well-designed but may require more abstract thinking due to the geometric aspect. \n\nOverall, Problem A provides a clearer and more direct problem-solving experience, making it slightly superior in this evaluation.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem A\",\n    \"reason\": \"Both Problem A and Problem B are mathematically interesting and invite the solver to apply a range of mathematical techniques. However, Problem A stands out for a few reasons: \\n\\n1. **Mathematical Correctness**: Both problems are mathematically sound and have correct answers. \\n\\n2. **Clarity**: Problem A provides a clear condition involving congruences that is easy to understand and follow. Problem B, while clear, involves a transformation that might be less intuitive for some solvers in terms of visualizing the rotation and intersection. \\n\\n3. **Difficulty Appropriateness**: Both problems are challenging and appropriate for AIME, but Problem A involves a more direct application of modular arithmetic and factorization, which aligns well with typical AIME problem-solving strategies. Problem B involves additional geometric visualization and understanding of transformations, making it potentially more complex than typical AIME problems which focus more on algebra and number theory.\\n\\n4. **Problem Quality**: Problem A is well-designed, with a clear path to the solution that involves logical steps and common number theory techniques. Problem B is also well-designed but may require more abstract thinking due to the geometric aspect. \\n\\nOverall, Problem A provides a clearer and more direct problem-solving experience, making it slightly superior in this evaluation.\"\n}\n```",
+      "execution_time": 6.507522344589233,
+      "actual_order": {
+        "A": "Generated",
+        "B": "Reference"
+      },
+      "actual_winner": "Generated"
+    },
+    {
+      "problem_a_id": "22",
+      "problem_b_id": "gen_aime_8",
+      "winner": "Problem A",
+      "reason": "Both problems are mathematically correct and have clear problem statements, but Problem A stands out in terms of complexity and originality. Here is a breakdown of the evaluation dimensions:\n\n1. Mathematical Correctness: Both problems are mathematically sound. Problem A deals with the application of the greedy algorithm to determine when it provides an optimal solution, while Problem B involves probability and divisor counting, both of which are correctly handled.\n\n2. Clarity: Both problem statements are clear and unambiguous, providing sufficient information for the solver to understand what is required without confusion.\n\n3. Difficulty Appropriateness: Both problems are suitable for AIME standards. Problem A's exploration of the greedy algorithm's success across a range of values introduces a unique challenge that requires deeper analysis beyond straightforward calculation. Problem B, while also challenging, involves more standard divisor and probability calculations.\n\n4. Problem Quality: Problem A exhibits higher quality due to its innovative approach in examining the conditions under which a common algorithm succeeds. It encourages deeper thinking about algorithmic efficiency, which adds to the problem's educational value. Problem B, although well-crafted, follows a more conventional path of evaluating divisors and probability.\n\nOverall, Problem A provides a more engaging and thought-provoking challenge, thus making it the higher quality problem.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem A\",\n    \"reason\": \"Both problems are mathematically correct and have clear problem statements, but Problem A stands out in terms of complexity and originality. Here is a breakdown of the evaluation dimensions:\\n\\n1. Mathematical Correctness: Both problems are mathematically sound. Problem A deals with the application of the greedy algorithm to determine when it provides an optimal solution, while Problem B involves probability and divisor counting, both of which are correctly handled.\\n\\n2. Clarity: Both problem statements are clear and unambiguous, providing sufficient information for the solver to understand what is required without confusion.\\n\\n3. Difficulty Appropriateness: Both problems are suitable for AIME standards. Problem A's exploration of the greedy algorithm's success across a range of values introduces a unique challenge that requires deeper analysis beyond straightforward calculation. Problem B, while also challenging, involves more standard divisor and probability calculations.\\n\\n4. Problem Quality: Problem A exhibits higher quality due to its innovative approach in examining the conditions under which a common algorithm succeeds. It encourages deeper thinking about algorithmic efficiency, which adds to the problem's educational value. Problem B, although well-crafted, follows a more conventional path of evaluating divisors and probability.\\n\\nOverall, Problem A provides a more engaging and thought-provoking challenge, thus making it the higher quality problem.\"\n}\n```",
+      "execution_time": 4.903303623199463,
+      "actual_order": {
+        "A": "Reference",
+        "B": "Generated"
+      },
+      "actual_winner": "Reference"
+    },
+    {
+      "problem_a_id": "gen_aime_13",
+      "problem_b_id": "22",
+      "winner": "Problem B",
+      "reason": "Both problems are challenging and suitable for the AIME level, but Problem B is the winner based on its higher quality in several evaluation dimensions. Firstly, both problems are mathematically sound, but Problem B is more clearly presented and free from errors or ambiguities in its description. Problem A has some inconsistencies in the solution, particularly in the calculation and explanation of the last three digits of m+n, which is confusing and incorrect as the correct last three digits should simply be the sum 10, not 375. Problem B, on the other hand, is clear and well-structured throughout with a correct answer. Regarding difficulty, both problems are appropriate for AIME, but Problem B offers a more interesting and less straightforward combinatorial challenge, requiring understanding of algorithms and optimization, which adds to its complexity. Overall, Problem B is better designed with a more consistent problem statement and solution, making it the superior problem.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem B\",\n    \"reason\": \"Both problems are challenging and suitable for the AIME level, but Problem B is the winner based on its higher quality in several evaluation dimensions. Firstly, both problems are mathematically sound, but Problem B is more clearly presented and free from errors or ambiguities in its description. Problem A has some inconsistencies in the solution, particularly in the calculation and explanation of the last three digits of m+n, which is confusing and incorrect as the correct last three digits should simply be the sum 10, not 375. Problem B, on the other hand, is clear and well-structured throughout with a correct answer. Regarding difficulty, both problems are appropriate for AIME, but Problem B offers a more interesting and less straightforward combinatorial challenge, requiring understanding of algorithms and optimization, which adds to its complexity. Overall, Problem B is better designed with a more consistent problem statement and solution, making it the superior problem.\"\n}\n```",
+      "execution_time": 6.666977405548096,
+      "actual_order": {
+        "A": "Generated",
+        "B": "Reference"
+      },
+      "actual_winner": "Reference"
+    },
+    {
+      "problem_a_id": "4",
+      "problem_b_id": "gen_aime_10",
+      "winner": "Problem B",
+      "reason": "Both problems present interesting challenges, but Problem B stands out in several key aspects. Firstly, the mathematical correctness of Problem B is clearly demonstrated with a detailed solution that shows a complete and accurate derivation of the problem's parameters. The problem involves well-known geometric principles such as the properties of a triangle inscribed in a circle and the Pythagorean theorem, which are executed correctly and contribute to a well-rounded mathematical experience. In terms of clarity, Problem B is succinct in its presentation of the geometric scenario, making it straightforward to understand the setup without ambiguity. Problem A, while interesting, lacks a complete solution, which makes it difficult to fully evaluate its correctness and reasoning. The difficulty of Problem B is appropriate for an AIME-style question, as it involves multiple steps and requires a solid understanding of geometry and algebra, making it challenging yet solvable. Finally, Problem B is better designed as it naturally engages with mathematical concepts and has a logical progression, whereas Problem A seems more mechanical and lacks a creative spark in problem design. Hence, Problem B is judged to be of higher quality.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem B\",\n    \"reason\": \"Both problems present interesting challenges, but Problem B stands out in several key aspects. Firstly, the mathematical correctness of Problem B is clearly demonstrated with a detailed solution that shows a complete and accurate derivation of the problem's parameters. The problem involves well-known geometric principles such as the properties of a triangle inscribed in a circle and the Pythagorean theorem, which are executed correctly and contribute to a well-rounded mathematical experience. In terms of clarity, Problem B is succinct in its presentation of the geometric scenario, making it straightforward to understand the setup without ambiguity. Problem A, while interesting, lacks a complete solution, which makes it difficult to fully evaluate its correctness and reasoning. The difficulty of Problem B is appropriate for an AIME-style question, as it involves multiple steps and requires a solid understanding of geometry and algebra, making it challenging yet solvable. Finally, Problem B is better designed as it naturally engages with mathematical concepts and has a logical progression, whereas Problem A seems more mechanical and lacks a creative spark in problem design. Hence, Problem B is judged to be of higher quality.\"\n}\n```",
+      "execution_time": 3.981515645980835,
+      "actual_order": {
+        "A": "Reference",
+        "B": "Generated"
+      },
+      "actual_winner": "Generated"
+    },
+    {
+      "problem_a_id": "gen_aime_9",
+      "problem_b_id": "11",
+      "winner": "Problem A",
+      "reason": "Both Problem A and Problem B are interesting and complex problems that fit the AIME style in different ways. However, after evaluation, Problem A is determined to have higher quality based on the evaluation criteria. \n\n1. **Mathematical Correctness**: Both problems present reasonable and mathematically sound scenarios. Problem A deals with a shifted Fibonacci sequence, a well-defined mathematical concept with a clear solution path. Problem B involves inequalities in a 3D space, which can be more abstract and requires more detailed explanation to ensure correctness.\n\n2. **Clarity**: Problem A is clearer and more straightforward. It provides specific sequence conditions and a clear objective (finding a term divisible by 1000), which is unambiguous. Problem B, while intriguing, involves complex inequalities in a lesser-known context, which might be less accessible without additional context or diagrams.\n\n3. **Difficulty Appropriateness**: Both problems are challenging, fitting the AIME standard. Problem A's difficulty comes from sequence manipulation and modular arithmetic, while Problem B's complexity arises from spatial reasoning and inequalities. Problem A has a clearer path to solution, making it better suited to the timed and competitive AIME environment.\n\n4. **Problem Quality**: Problem A provides a classic mathematical problem-solving experience with a clear, logical progression and a satisfying resolution. Problem B is more novel but may be overly complex for some competitors due to the spatial reasoning and inequality conditions. \n\nOverall, while both problems have merit, Problem A stands out due to its clear statement, mathematical elegance, and accessibility, making it the preferred choice.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem A\",\n    \"reason\": \"Both Problem A and Problem B are interesting and complex problems that fit the AIME style in different ways. However, after evaluation, Problem A is determined to have higher quality based on the evaluation criteria. \\n\\n1. **Mathematical Correctness**: Both problems present reasonable and mathematically sound scenarios. Problem A deals with a shifted Fibonacci sequence, a well-defined mathematical concept with a clear solution path. Problem B involves inequalities in a 3D space, which can be more abstract and requires more detailed explanation to ensure correctness.\\n\\n2. **Clarity**: Problem A is clearer and more straightforward. It provides specific sequence conditions and a clear objective (finding a term divisible by 1000), which is unambiguous. Problem B, while intriguing, involves complex inequalities in a lesser-known context, which might be less accessible without additional context or diagrams.\\n\\n3. **Difficulty Appropriateness**: Both problems are challenging, fitting the AIME standard. Problem A's difficulty comes from sequence manipulation and modular arithmetic, while Problem B's complexity arises from spatial reasoning and inequalities. Problem A has a clearer path to solution, making it better suited to the timed and competitive AIME environment.\\n\\n4. **Problem Quality**: Problem A provides a classic mathematical problem-solving experience with a clear, logical progression and a satisfying resolution. Problem B is more novel but may be overly complex for some competitors due to the spatial reasoning and inequality conditions. \\n\\nOverall, while both problems have merit, Problem A stands out due to its clear statement, mathematical elegance, and accessibility, making it the preferred choice.\"\n}\n```",
+      "execution_time": 6.167335748672485,
+      "actual_order": {
+        "A": "Generated",
+        "B": "Reference"
+      },
+      "actual_winner": "Generated"
+    },
+    {
+      "problem_a_id": "12",
+      "problem_b_id": "gen_aime_25",
+      "winner": "Problem B",
+      "reason": "Both problems are mathematically rich and complex, but Problem B stands out for several reasons. Firstly, it adheres more closely to AIME standards, which often incorporate classic geometric theorems and require deeper insight into properties like the Angle Bisector Theorem and Power of a Point. The problem is clearly stated, with given ratios and lengths that guide the solver through a logical sequence of steps rooted in geometry. While both problems are mathematically correct, Problem A's expected value problem involving random line segments through a disk is more abstract and less typical of AIME-style questions. Problem B also provides a more engaging challenge that involves leveraging multiple mathematical concepts, making it a higher-quality problem for an advanced contest setting. Clarity is maintained throughout Problem B, and its level of difficulty is appropriate for AIME, balancing challenge with solvability. Thus, Problem B is the superior choice.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem B\",\n    \"reason\": \"Both problems are mathematically rich and complex, but Problem B stands out for several reasons. Firstly, it adheres more closely to AIME standards, which often incorporate classic geometric theorems and require deeper insight into properties like the Angle Bisector Theorem and Power of a Point. The problem is clearly stated, with given ratios and lengths that guide the solver through a logical sequence of steps rooted in geometry. While both problems are mathematically correct, Problem A's expected value problem involving random line segments through a disk is more abstract and less typical of AIME-style questions. Problem B also provides a more engaging challenge that involves leveraging multiple mathematical concepts, making it a higher-quality problem for an advanced contest setting. Clarity is maintained throughout Problem B, and its level of difficulty is appropriate for AIME, balancing challenge with solvability. Thus, Problem B is the superior choice.\"\n}\n```",
+      "execution_time": 3.8654050827026367,
+      "actual_order": {
+        "A": "Reference",
+        "B": "Generated"
+      },
+      "actual_winner": "Generated"
+    },
+    {
+      "problem_a_id": "gen_aime_15",
+      "problem_b_id": "21",
+      "winner": "Problem B",
+      "reason": "When evaluating the two problems based on the given criteria: \n\n1. **Mathematical Correctness**: Problem A has a significant flaw in its solution, as the final answer does not match the problem's conditions. The proposed answer, 16, is not consistent with the calculations or the logic presented in the solution. Problem B, on the other hand, does not present a solution, but the problem statement and the answer provided are inherently more plausible and consistent with the type of problems usually appearing in AIME.\n\n2. **Clarity**: Problem A's statement is somewhat clear, but the solution is convoluted and ultimately incorrect, creating confusion for the reader. Problem B's statement is clear, unambiguous, and typical of combinatorial probability questions in competitive math, making it straightforward for readers familiar with the domain.\n\n3. **Difficulty Appropriateness**: Problem A fails in this category because of the incorrect solution, introducing a level of confusion rather than challenge. Problem B presents a problem that is appropriately challenging for AIME standards, requiring a deep understanding of divisors and probability.\n\n4. **Problem Quality**: Problem A is poorly designed due to its incorrect final answer and flawed explanation, leading to a lack of confidence in its quality. Problem B, however, is well-designed, requiring a nuanced understanding of number theory and probability, aligning well with high-quality AIME problems.\n\nOverall, Problem B is more consistent with the AIME standards of clarity, difficulty, and problem quality, while Problem A suffers from mathematical inaccuracies and unclear solution logic.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem B\",\n    \"reason\": \"When evaluating the two problems based on the given criteria: \\n\\n1. **Mathematical Correctness**: Problem A has a significant flaw in its solution, as the final answer does not match the problem's conditions. The proposed answer, 16, is not consistent with the calculations or the logic presented in the solution. Problem B, on the other hand, does not present a solution, but the problem statement and the answer provided are inherently more plausible and consistent with the type of problems usually appearing in AIME.\\n\\n2. **Clarity**: Problem A's statement is somewhat clear, but the solution is convoluted and ultimately incorrect, creating confusion for the reader. Problem B's statement is clear, unambiguous, and typical of combinatorial probability questions in competitive math, making it straightforward for readers familiar with the domain.\\n\\n3. **Difficulty Appropriateness**: Problem A fails in this category because of the incorrect solution, introducing a level of confusion rather than challenge. Problem B presents a problem that is appropriately challenging for AIME standards, requiring a deep understanding of divisors and probability.\\n\\n4. **Problem Quality**: Problem A is poorly designed due to its incorrect final answer and flawed explanation, leading to a lack of confidence in its quality. Problem B, however, is well-designed, requiring a nuanced understanding of number theory and probability, aligning well with high-quality AIME problems.\\n\\nOverall, Problem B is more consistent with the AIME standards of clarity, difficulty, and problem quality, while Problem A suffers from mathematical inaccuracies and unclear solution logic.\"\n}\n```",
+      "execution_time": 5.380846977233887,
+      "actual_order": {
+        "A": "Generated",
+        "B": "Reference"
+      },
+      "actual_winner": "Reference"
+    },
+    {
+      "problem_a_id": "gen_aime_21",
+      "problem_b_id": "20",
+      "winner": "Problem B",
+      "reason": "Both problems exhibit high quality in mathematical design; however, Problem B stands out slightly more in terms of clarity and problem quality. For mathematical correctness, both problems have correct and reasonable answers, with Problem A providing a detailed solution that seems plausible, and Problem B having a straightforward and correct answer. In terms of clarity, Problem B is presented with a clear geometric configuration and an accompanying diagram, which helps in visualizing the problem, despite its complexity. Problem A, while clear, involves complex algebraic reasoning and could be perceived as slightly more ambiguous due to the detailed conditions required for the logarithmic function. Regarding difficulty appropriateness for AIME standards, both problems are challenging yet solvable, with Problem B leaning slightly towards a more engaging geometric exploration. Lastly, in terms of problem quality, Problem B involves an interesting geometric scenario with a creative setup that provides a richer problem-solving experience. Overall, although both problems are of high quality, Problem B is more visually and conceptually appealing, making it the winner in this comparison.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem B\",\n    \"reason\": \"Both problems exhibit high quality in mathematical design; however, Problem B stands out slightly more in terms of clarity and problem quality. For mathematical correctness, both problems have correct and reasonable answers, with Problem A providing a detailed solution that seems plausible, and Problem B having a straightforward and correct answer. In terms of clarity, Problem B is presented with a clear geometric configuration and an accompanying diagram, which helps in visualizing the problem, despite its complexity. Problem A, while clear, involves complex algebraic reasoning and could be perceived as slightly more ambiguous due to the detailed conditions required for the logarithmic function. Regarding difficulty appropriateness for AIME standards, both problems are challenging yet solvable, with Problem B leaning slightly towards a more engaging geometric exploration. Lastly, in terms of problem quality, Problem B involves an interesting geometric scenario with a creative setup that provides a richer problem-solving experience. Overall, although both problems are of high quality, Problem B is more visually and conceptually appealing, making it the winner in this comparison.\"\n}\n```",
+      "execution_time": 6.145542144775391,
+      "actual_order": {
+        "A": "Generated",
+        "B": "Reference"
+      },
+      "actual_winner": "Reference"
+    },
+    {
+      "problem_a_id": "6",
+      "problem_b_id": "gen_aime_27",
+      "winner": "Problem B",
+      "reason": "Both problems are challenging and appropriate for AIME-level difficulty, but Problem B has a slight edge in terms of clarity and mathematical correctness. Problem A involves calculating a probability with a somewhat convoluted setup, which could lead to ambiguity without a solution provided. In contrast, Problem B provides a clear geometric problem with a well-defined context and a detailed solution, demonstrating correctness and clarity. Problem B's setup and solution are more straightforward, enhancing its overall quality and making it easier for a solver to follow. Therefore, based on these criteria, Problem B is the winner.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem B\",\n    \"reason\": \"Both problems are challenging and appropriate for AIME-level difficulty, but Problem B has a slight edge in terms of clarity and mathematical correctness. Problem A involves calculating a probability with a somewhat convoluted setup, which could lead to ambiguity without a solution provided. In contrast, Problem B provides a clear geometric problem with a well-defined context and a detailed solution, demonstrating correctness and clarity. Problem B's setup and solution are more straightforward, enhancing its overall quality and making it easier for a solver to follow. Therefore, based on these criteria, Problem B is the winner.\"\n}\n```",
+      "execution_time": 2.8636226654052734,
+      "actual_order": {
+        "A": "Reference",
+        "B": "Generated"
+      },
+      "actual_winner": "Generated"
+    },
+    {
+      "problem_a_id": "21",
+      "problem_b_id": "gen_aime_11",
+      "winner": "Problem A",
+      "reason": "Both problems are mathematically correct and clear. Problem A requires knowledge of number theory, specifically properties of divisors and probability, which fits the AIME difficulty level well. Its solution involves recognizing patterns in the divisors and understanding the least common multiple, which adds depth and complexity. Problem B, while clear and correct, primarily involves straightforward calculations of a sequence modulo 7. It is less complex and challenging compared to Problem A, making it slightly below AIME's typical difficulty. Problem A, therefore, presents a more appropriate challenge and is a well-designed problem with suitable complexity, making it the higher quality problem overall.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem A\",\n    \"reason\": \"Both problems are mathematically correct and clear. Problem A requires knowledge of number theory, specifically properties of divisors and probability, which fits the AIME difficulty level well. Its solution involves recognizing patterns in the divisors and understanding the least common multiple, which adds depth and complexity. Problem B, while clear and correct, primarily involves straightforward calculations of a sequence modulo 7. It is less complex and challenging compared to Problem A, making it slightly below AIME's typical difficulty. Problem A, therefore, presents a more appropriate challenge and is a well-designed problem with suitable complexity, making it the higher quality problem overall.\"\n}\n```",
+      "execution_time": 3.2908051013946533,
+      "actual_order": {
+        "A": "Reference",
+        "B": "Generated"
+      },
+      "actual_winner": "Reference"
+    },
+    {
+      "problem_a_id": "0",
+      "problem_b_id": "gen_aime_18",
+      "winner": "Problem A",
+      "reason": "Problem A is mathematically correct and has a clear problem statement. It asks for integer bases where a specific divisibility condition holds, which is a typical type of problem found in AIME. The problem is well-designed as it requires understanding of number bases and divisibility, matching the challenging yet solvable nature expected of AIME problems. Problem B, while interesting, contains a critical error in the solution process that undermines its mathematical correctness. The solution presented leads to a contradiction and incorrectly adjusted values that do not match given conditions. This error significantly impacts the problem's quality, as it leads to an incorrect answer. Clarity is reasonable in both problems, but due to the substantial error in Problem B's solution, Problem A is the stronger, more reliable choice.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem A\",\n    \"reason\": \"Problem A is mathematically correct and has a clear problem statement. It asks for integer bases where a specific divisibility condition holds, which is a typical type of problem found in AIME. The problem is well-designed as it requires understanding of number bases and divisibility, matching the challenging yet solvable nature expected of AIME problems. Problem B, while interesting, contains a critical error in the solution process that undermines its mathematical correctness. The solution presented leads to a contradiction and incorrectly adjusted values that do not match given conditions. This error significantly impacts the problem's quality, as it leads to an incorrect answer. Clarity is reasonable in both problems, but due to the substantial error in Problem B's solution, Problem A is the stronger, more reliable choice.\"\n}\n```",
+      "execution_time": 3.83967924118042,
+      "actual_order": {
+        "A": "Reference",
+        "B": "Generated"
+      },
+      "actual_winner": "Reference"
+    },
+    {
+      "problem_a_id": "gen_aime_2",
+      "problem_b_id": "20",
+      "winner": "Problem B",
+      "reason": "Both Problem A and Problem B are mathematically correct and provide reasonable answers. However, Problem B stands out in several dimensions. Firstly, it offers a more complex and intricate geometric scenario that fits well with the challenging nature of AIME problems, whereas Problem A's sequence becomes trivial after a few steps. In terms of clarity, both problems are well-stated, but Problem B requires more rigorous reasoning and has more conditions to consider, which adds to its depth and interest. Problem A, although clear, becomes straightforward once the repeating pattern is identified, which may not fully align with the typical AIME difficulty level. Problem B also involves a higher level of problem-solving skills due to its geometric nature and the conditions provided for the inscribed rectangle. Overall, Problem B is a more well-designed and appropriately challenging problem, making it the higher quality choice.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem B\",\n    \"reason\": \"Both Problem A and Problem B are mathematically correct and provide reasonable answers. However, Problem B stands out in several dimensions. Firstly, it offers a more complex and intricate geometric scenario that fits well with the challenging nature of AIME problems, whereas Problem A's sequence becomes trivial after a few steps. In terms of clarity, both problems are well-stated, but Problem B requires more rigorous reasoning and has more conditions to consider, which adds to its depth and interest. Problem A, although clear, becomes straightforward once the repeating pattern is identified, which may not fully align with the typical AIME difficulty level. Problem B also involves a higher level of problem-solving skills due to its geometric nature and the conditions provided for the inscribed rectangle. Overall, Problem B is a more well-designed and appropriately challenging problem, making it the higher quality choice.\"\n}\n```",
+      "execution_time": 3.6062393188476562,
+      "actual_order": {
+        "A": "Generated",
+        "B": "Reference"
+      },
+      "actual_winner": "Reference"
+    },
+    {
+      "problem_a_id": "gen_aime_12",
+      "problem_b_id": "16",
+      "winner": "Problem B",
+      "reason": "Both problems have strengths and weaknesses, but Problem B edges ahead in terms of overall quality. In terms of mathematical correctness, both problems have potential issues. Problem A's solution contains some reasoning errors and incorrect assumptions, particularly in the handling of the overlap with the chess club, which leads to an incorrect conclusion. Problem B, although lacking a detailed solution, presents a clear and straightforward problem statement that is mathematically sound. Regarding clarity, both problems are generally clear, but Problem B is more concise and less prone to misinterpretation. For difficulty appropriateness, Problem B presents a challenge typical of AIME problems, involving divisibility and polynomial factorization, whereas Problem A's logic puzzle is slightly more straightforward once the correct approach is applied. Finally, in terms of problem quality, Problem B is well-designed with a focused question that does not rely on potentially misleading assumptions. Despite the lack of a given solution, Problem B's statement and answer indicate a correct and reasonable problem setup, making it the better choice.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem B\",\n    \"reason\": \"Both problems have strengths and weaknesses, but Problem B edges ahead in terms of overall quality. In terms of mathematical correctness, both problems have potential issues. Problem A's solution contains some reasoning errors and incorrect assumptions, particularly in the handling of the overlap with the chess club, which leads to an incorrect conclusion. Problem B, although lacking a detailed solution, presents a clear and straightforward problem statement that is mathematically sound. Regarding clarity, both problems are generally clear, but Problem B is more concise and less prone to misinterpretation. For difficulty appropriateness, Problem B presents a challenge typical of AIME problems, involving divisibility and polynomial factorization, whereas Problem A's logic puzzle is slightly more straightforward once the correct approach is applied. Finally, in terms of problem quality, Problem B is well-designed with a focused question that does not rely on potentially misleading assumptions. Despite the lack of a given solution, Problem B's statement and answer indicate a correct and reasonable problem setup, making it the better choice.\"\n}\n```",
+      "execution_time": 4.273446559906006,
+      "actual_order": {
+        "A": "Generated",
+        "B": "Reference"
+      },
+      "actual_winner": "Reference"
+    },
+    {
+      "problem_a_id": "2",
+      "problem_b_id": "gen_aime_30",
+      "winner": "Problem A",
+      "reason": "Both problems are interesting and involve creative reasoning, but Problem A stands out for a few reasons. In terms of mathematical correctness, both answers appear to be correct, although Problem B's solution seems to contain an inconsistency in calculating the value of m+n+p, where the expected value of 6 was mistakenly replaced by 23 in the final answer. This inconsistency in Problem B affects its mathematical correctness. Clarity-wise, both problems are clear and well-stated, although Problem B's complexity might overwhelm some solvers due to the multiple steps and algebraic manipulations required. Regarding difficulty appropriateness, Problem A fits well with AIME standards, combining combinatorial reasoning with simple arithmetic. Problem B is also challenging, but the error in the solution and potential missteps during its algebraic manipulation may complicate its perceived difficulty. Lastly, in terms of problem quality, Problem A is well-designed within its domain, presenting a classic yet engaging combinatorial challenge. Problem B, while rich in geometric concepts, suffers from solution errors that slightly detract from its overall quality. Therefore, Problem A is the winner.",
+      "comparison_text": "```json\n{\n    \"winner\": \"Problem A\",\n    \"reason\": \"Both problems are interesting and involve creative reasoning, but Problem A stands out for a few reasons. In terms of mathematical correctness, both answers appear to be correct, although Problem B's solution seems to contain an inconsistency in calculating the value of m+n+p, where the expected value of 6 was mistakenly replaced by 23 in the final answer. This inconsistency in Problem B affects its mathematical correctness. Clarity-wise, both problems are clear and well-stated, although Problem B's complexity might overwhelm some solvers due to the multiple steps and algebraic manipulations required. Regarding difficulty appropriateness, Problem A fits well with AIME standards, combining combinatorial reasoning with simple arithmetic. Problem B is also challenging, but the error in the solution and potential missteps during its algebraic manipulation may complicate its perceived difficulty. Lastly, in terms of problem quality, Problem A is well-designed within its domain, presenting a classic yet engaging combinatorial challenge. Problem B, while rich in geometric concepts, suffers from solution errors that slightly detract from its overall quality. Therefore, Problem A is the winner.\"\n}\n```",
+      "execution_time": 5.753171920776367,
+      "actual_order": {
+        "A": "Reference",
+        "B": "Generated"
+      },
+      "actual_winner": "Reference"
+    }
+  ],
+  "metrics": {
+    "win_rate": 0.25,
+    "loss_rate": 0.65,
+    "tie_rate": 0.1,
+    "wins": 5,
+    "losses": 13,
+    "ties": 2,
+    "total_comparisons": 20
+  },
+  "evaluation_date": "2025-10-11T12:43:22.568017",
+  "judge_model": "gpt-4o"
+}

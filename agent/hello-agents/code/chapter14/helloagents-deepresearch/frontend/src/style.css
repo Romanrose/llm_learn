@@ -1,0 +1,18 @@
+:root {
+  color: #1a1a1a;
+  background-color: #f6f6f6;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#app {
+  min-height: 100vh;
+}
