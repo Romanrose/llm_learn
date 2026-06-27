@@ -1,0 +1,19 @@
+torch
+numpy
+sympy
+requests
+sqlitedict
+warcio
+markdownify
+tiktoken
+openai
+wandb
+einops
+jaxtyping
+readable-number
+# triton  # Not available on Windows
+# kenlm  # Requires compilation, failing on Windows
+# fasttext  # Requires compilation, failing on Windows
+mmh3
+bitarray
+matplotlib
