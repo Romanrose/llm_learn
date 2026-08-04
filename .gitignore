@@ -45,3 +45,9 @@ logs/
 # CS336 generated/run files
 cs336/lectures/.venv/
 cs336/lectures/var/
+
+# Obsidian local settings, workspace state, plugins and themes
+.obsidian/
+
+# Unnamed Obsidian Base scratch files
+未命名*.base
