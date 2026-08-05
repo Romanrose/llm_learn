@@ -1,52 +1,73 @@
-# LLM 共学项目
+# LLM 学习仓库
 
-一个面向大语言模型（LLM）理论、工程实现和智能体应用的学习共同体仓库。
+这是一个围绕大语言模型（LLM）的个人共学仓库：把课程讲义、逐字稿与笔记、论文复现、Agent 教材和开发环境资料放在同一个可持续维护的知识库中。
 
-这里不追求一个统一的“启动命令”，而是把课程、论文实现、Agent 教材和基础设施资料组织在一起，方便按学习阶段逐步深入，也方便成员通过笔记和代码互相复习、Review 和贡献。
+学习主线是：**模型基础 → 从零实现 → 论文机制 → Agent 应用 → 工程实践**。仓库不是单一程序，因此不提供统一的启动命令；请进入对应目录，按照该目录的说明运行。
 
-## 学习路线
+## 从这里开始
 
-推荐按照“模型基础 → 核心机制 → Agent 应用 → 工程实践”的顺序学习：
+1. 先阅读根目录的[学习与转写提示词手册](提示词.md)，了解课程笔记、视频逐字稿和转写流程的约定。
+2. 学习 [CS336：Language Modeling from Scratch](llm/cs336/)，用课程讲义和作业建立训练语言模型的系统认识。
+3. 在 [`llm/cs336/notes/`](llm/cs336/notes/) 中记录自己的课程笔记与逐字稿；当前已有 `ljy` 的笔记示例。
+4. 结合 [`papers/30-paper-zhCN/`](papers/30-paper-zhCN/) 复现经典论文，随后进入 [`agent/hello-agents/`](agent/hello-agents/) 的 Agent 学习与实践。
 
-1. **模型基础：** 使用 `cs336/` 学习如何从零构建语言模型。
-2. **机制理解：** 使用 `papers/30-paper-zhCN/` 通过 Notebook 实现经典论文中的核心算法。
-3. **Agent 应用：** 使用 `agent/hello-agents/` 学习 ReAct、RAG、MCP、多智能体和 Agentic RL。
-4. **工程实践：** 参考 `infra/` 中的环境、远程开发和多服务器配置文档。
+## 学习地图
 
-## 项目结构
+| 阶段 | 内容 | 建议产出 |
+| --- | --- | --- |
+| 1. 模型基础 | CS336 讲义、作业与参考实现 | 每讲笔记、关键公式和最小复现实验 |
+| 2. 论文机制 | Transformer、RAG、Scaling Law 等论文 Notebook | 一页论文卡片、可运行实验记录 |
+| 3. Agent 应用 | ReAct、RAG、MCP、多智能体、Agentic RL | 小型 Agent 项目或章节练习 |
+| 4. 工程实践 | 远程开发、GPU、网络和工具配置 | 可复现环境说明与踩坑记录 |
+
+## 仓库结构
 
 ```text
 llm_learn/
-├── agent/                  # Agent 学习资料与实践代码
-│   ├── hello-agents/       # Datawhale《Hello Agents》教材及配套代码
-│   ├── memory/             # 个人知识记忆
-│   └── system/             # 系统配置
-├── cs336/                  # Stanford CS336：从零构建语言模型
-│   ├── lectures/           # 可执行讲义、课程代码和 Trace Viewer
-│   ├── notes/              # 共学成员的个人笔记
-│   └── references/         # 课程作业与参考实现
-├── papers/                 # 论文阅读与教学实现
-│   └── 30-paper-zhCN/      # Sutskever 推荐的 30 篇论文中文实现
-└── infra/                  # 开发环境、远程连接和基础设施文档
+├── llm/
+│   └── cs336/                         # Stanford CS336 学习主目录
+│       ├── lectures/                  # 课程讲义、可执行代码与 Trace Viewer
+│       ├── notes/                     # 个人课程笔记与逐字稿
+│       ├── references/                # 作业、参考实现与扩展材料
+│       └── UPSTREAM-LECTURES.md       # 讲义来源与同步说明
+├── papers/
+│   └── 30-paper-zhCN/                 # 经典论文的中文教学实现
+├── agent/
+│   ├── hello-agents/                  # 《Hello Agents》教材与配套代码
+│   ├── memory/                        # 学习过程中的记忆/知识资料
+│   └── system/                        # Agent 系统配置资料
+├── infra/                             # GPU、网络、远程开发与工具配置
+├── xingqu/                            # 延伸阅读与兴趣主题
+└── 提示词.md                           # 笔记、逐字稿、转写流程手册
 ```
 
-## 快速开始
+## CS336 快速开始
 
-### CS336 课程
-
-课程讲义和运行说明见 [`cs336/lectures/README.md`](llm/cs336/lectures/README.md)。例如：
+课程入口和具体运行说明见 [`llm/cs336/lectures/README.md`](llm/cs336/lectures/README.md)。一个典型的本地运行方式如下：
 
 ```bash
-cd cs336/lectures
+cd llm/cs336/lectures
 pip install -r requirements.txt
 python execute.py -m lecture_01
 ```
 
-执行讲义后，可以使用 Trace Viewer 查看生成的运行轨迹；具体命令和远程 Slurm 运行方式请参考课程目录中的 README。
+讲义运行后可使用 Trace Viewer 查看执行轨迹。远程 Slurm、依赖和具体参数请以课程目录中的 README 为准。
+
+课程笔记建议写入 `llm/cs336/notes/<你的名字>/`：
+
+```text
+llm/cs336/notes/<你的名字>/
+├── lecture4.md             # 整理后的课程笔记
+└── lecture4_transcript.md  # 阅读友好的完整逐字稿
+```
+
+视频转写采用“**优先使用字幕；没有字幕时，在得到账号/音频下载授权后使用本地 ASR**”的流程。转写规范、模型选择和 Markdown 公式写法请见[提示词手册](提示词.md)。本机的转写工具放在 `workflow/`，仅供本地使用，不提交到 GitHub。
+
+## 论文与 Agent 学习
 
 ### 经典论文实现
 
-`papers/30-paper-zhCN/` 包含 30 篇论文的教学 Notebook，覆盖 RNN/LSTM、CNN、Transformer、VAE、Scaling Law、RAG 等主题。该子项目使用独立的 `uv` 环境：
+[`papers/30-paper-zhCN/`](papers/30-paper-zhCN/) 包含 30 篇经典论文的教学 Notebook，覆盖 RNN/LSTM、CNN、Transformer、VAE、Scaling Law、RAG 等主题。该目录使用独立的 `uv` 环境：
 
 ```bash
 cd papers/30-paper-zhCN
@@ -56,25 +77,17 @@ uv run jupyter notebook
 
 ### Agent 学习
 
-`agent/hello-agents/` 是从基础理论到综合项目的完整教程，在线阅读入口和章节导航见其 [README](agent/hello-agents/README.md)。配套代码位于该目录的 `code/` 下，建议边读边运行、修改和调试。
+[`agent/hello-agents/`](agent/hello-agents/) 覆盖 Agent 基础、ReAct、RAG、MCP、多智能体与 Agentic RL。建议边读教材、边运行 `code/` 目录里的示例，并将实验记录留在自己的笔记目录中。
 
-## 如何参与
+## 贡献与同步约定
 
-1. Fork 本仓库，或在本地创建自己的工作分支。
-2. 在 `cs336/notes/<你的名字>/` 下维护个人学习笔记。
-3. 在 `papers/` 中提交论文解读、实验记录或演示材料。
-4. 为代码补充注释、测试和运行说明。
-5. 提交 Pull Request，与其他成员进行 Review。
+- 在分支上修改，通过 Pull Request 合并；不要直接覆盖他人的笔记。
+- 个人 CS336 笔记放在 `llm/cs336/notes/<你的名字>/`，建议命名为 `lecture<数字>.md`；完整逐字稿追加 `_transcript.md`。
+- 新增代码请说明依赖、运行命令和预期结果；论文笔记建议以 `YYYY-MM-DD-论文简称.md` 命名。
+- 不提交 API Key、密码、私钥、真实服务器地址或未授权下载的内容。
+- `.obsidian/`、`workflow/`、课程运行缓存和本地虚拟环境均为本地文件，不进入远程仓库。
 
-## 贡献规范
+## 资料来源
 
-- 笔记命名建议使用 `lecture<数字>.md` 或 `lecture<数字>.py`。
-- 论文分享建议使用 `YYYY-MM-DD-论文简称.md` 命名。
-- 新增代码应说明依赖、运行方式和预期结果。
-- 请不要提交 API Key、密码、私钥、真实服务器地址等敏感信息。
-- `.obsidian/` 是本机 Obsidian 的工作区、插件和主题配置，已加入 `.gitignore`，不应提交到远程仓库。
-
-## 相关说明
-
-- CS336、Hello Agents 和论文实现目录保留各自上游项目的说明与许可证，请以对应目录中的文档为准。
-- 基础设施实践记录见 [`infra/SSH-Codex-多服务器配置实战.md`](SSH-Codex-多服务器配置实战.md)。
+- CS336 的上游讲义、许可证与同步说明见 [`llm/cs336/UPSTREAM-LECTURES.md`](llm/cs336/UPSTREAM-LECTURES.md)。
+- 各教材与论文实现保留其上游说明与许可证；使用和再分发时请遵循对应目录中的规则。
