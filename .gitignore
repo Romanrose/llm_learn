@@ -45,6 +45,12 @@ logs/
 # CS336 generated/run files
 cs336/lectures/.venv/
 cs336/lectures/var/
+llm/cs336/lectures/.venv/
+llm/cs336/lectures/var/
+
+# Local video tooling and archived course materials
+workflow/
+llm/cs336/lectures-2025-backup/
 
 # Obsidian local settings, workspace state, plugins and themes
 .obsidian/
