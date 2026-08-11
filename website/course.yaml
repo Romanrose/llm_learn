@@ -1,0 +1,89 @@
+name: llm_learn
+description: 从课程官方资源到逐字稿、讲义解读、博客与 PDF 的个人学习知识库
+owner:
+  id: romanrose
+  name: ljy
+site:
+  title: llm_learn
+  lang: zh-CN
+  base: /llm_learn/
+  repository: https://github.com/Romanrose/llm_learn
+categories:
+  - id: llm
+    title: 大模型
+    description: 语言模型原理、训练、评估与推理
+  - id: agent
+    title: 智能体
+    description: Agent 架构、记忆、工具使用与工程实践
+  - id: infra
+    title: AI Infra
+    description: GPU、分布式系统、网络与开发环境
+  - id: papers
+    title: 论文
+    description: 经典论文精读、复现与扩展阅读
+sections:
+  - id: llm-courses
+    title: 大模型课程
+    description: 从模型基础、训练系统到评估与数据
+    items:
+      - id: cs336-2026
+        courseId: cs336-2026
+        title: CS336 2026
+        subtitle: Language Modeling from Scratch
+        route: /generated/courses/cs336-2026/
+  - id: agent
+    title: 智能体与 Agent
+    description: Agent 架构、记忆、工具使用与工程实践
+    items:
+      - id: hello-agents
+        title: Hello Agents
+        subtitle: 从基础范式到多智能体与 Agentic RL
+        detail: 完整教材
+        route: /topics/agent/#hello-agents
+      - id: agent-memory
+        title: Agent Memory
+        subtitle: 记忆分层、召回与上下文工程
+        detail: 专题笔记
+        route: /topics/agent/#agent-memory
+      - id: tencentdb-memory
+        title: TencentDB Agent Memory
+        subtitle: 从原理到 Tiny Memory 教学实现
+        detail: 渐进式教程
+        route: /topics/agent/#tencentdb-agent-memory
+  - id: infra
+    title: AI Infra 与工程
+    description: GPU、网络、远程开发与生产系统
+    items:
+      - id: network
+        title: Network & Remote Dev
+        subtitle: 浏览器、SSH 与多服务器开发环境
+        detail: 工程笔记
+        route: /topics/infra/#network--remote-development
+      - id: gpu
+        title: GPU Systems
+        subtitle: GPU 架构、Attention 与性能工程
+        detail: 课程逐字稿
+        route: /topics/infra/#gpu-systems
+  - id: papers
+    title: 论文与技术文章
+    description: 经典论文复现、机制解释与前沿文章
+    items:
+      - id: paper-30
+        title: 30 Papers
+        subtitle: 经典论文中文教学实现
+        detail: Notebook 合集
+        route: /topics/papers/#30-papers
+      - id: technical-articles
+        title: Technical Articles
+        subtitle: Agent、模型与工程文章精读
+        detail: 持续整理
+        route: /topics/papers/#技术文章
+  - id: interviews
+    title: 演讲、访谈与延伸阅读
+    description: 从课程之外理解研究、产品和产业判断
+    items:
+      - id: interviews
+        title: Interviews & Talks
+        subtitle: 技术访谈、演讲与播客笔记
+        detail: 待接入 Course 流程
+        route: /topics/interviews/

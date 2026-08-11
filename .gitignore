@@ -30,6 +30,7 @@ Desktop.ini
 # Environment
 .env
 .env.*
+!.env.example
 *.local
 
 # Git
@@ -39,18 +40,30 @@ Desktop.ini
 *.log
 logs/
 
+# VitePress site
+node_modules/
+website/generated/
+website/.vitepress/generated/
+website/.vitepress/cache/
+website/.vitepress/dist/
+website/public/generated/
+
+# Nested VitePress projects (for example under agent/)
+**/.vitepress/cache/
+**/.vitepress/dist/
+
 # IDE history
 .history/
 
 # CS336 generated/run files
-cs336/lectures/.venv/
-cs336/lectures/var/
-llm/cs336/lectures/.venv/
-llm/cs336/lectures/var/
+llm/cs336-2026/lectures/.venv/
+llm/cs336-2026/lectures/var/
 
 # Local video tooling and archived course materials
-workflow/
-llm/cs336/lectures-2025-backup/
+workflow/video/
+var/krillinai/
+llm/cs336-2026/lectures-2025-backup/
+llm/*/exports/
 
 # Obsidian local settings, workspace state, plugins and themes
 .obsidian/

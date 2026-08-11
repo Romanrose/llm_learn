@@ -1,0 +1,4 @@
+node_modules
+docs/.vitepress/dist
+examples/final/data/*.json
+.DS_Store
