@@ -1,10 +1,10 @@
 # CS336 2026
 
-本目录保存 Stanford CS336 2026 的官方课程材料、原始资源、逐讲内容和导出文件。课程唯一 ID 为 `cs336-2026`，内容归属由仓库根目录 `course.yaml` 的 `owner` 字段统一定义，不再按作者拆分目录。
+本目录保存 Stanford CS336 2026 的官方课程材料、原始资源、逐讲内容和导出文件。课程唯一 ID 为 `cs336-2026`，内容归属由 `website/course.yaml` 的 `owner` 字段统一定义，不再按作者拆分目录。
 
 CS336 2026 是当前仓库的完整课程样例。以后新增课程时，先复制本目录的组织原则和 catalog 配置，只接入正在学习的 Lecture，不要求一次性把整门课的所有资源和页面都补齐。
 
-所有逐字稿遵循仓库级[课程逐字稿生成规范](../../standards/transcript-generation.md)。
+所有逐字稿遵循仓库级[课程逐字稿生成规范](../../workflow/standards/transcript-generation.md)。
 
 ## 数据目录
 
@@ -28,7 +28,7 @@ llm/cs336-2026/
 └── UPSTREAM.md               # 官方讲义快照来源和同步方法
 ```
 
-并非每讲都必须同时拥有全部文件。网站是否展示某个产物，以 `catalog/courses/cs336-2026.yaml` 中对应 Lecture 的 `outputs` 为准。
+并非每讲都必须同时拥有全部文件。网站是否展示某个产物，以 `website/catalog-data/courses/cs336-2026.yaml` 中对应 Lecture 的 `outputs` 为准。
 
 ## 命名规则
 
@@ -54,7 +54,7 @@ npm run course -- generate cs336-2026 lecture-01 --run
 npm run build
 ```
 
-课程路径只在 `catalog/courses/cs336-2026.yaml` 的 `paths` 中配置；自动化脚本不再接收作者目录参数。
+课程路径只在 `website/catalog-data/courses/cs336-2026.yaml` 的 `paths` 中配置；自动化脚本不再接收作者目录参数。
 
 `transcript --engine krillinai` 是新的候选字幕入口。它使用本机 `workflow/video/krillinai/krillinai-cli`（或 `COURSE_KRILLINAI` 指定的二进制），优先取平台字幕、必要时按 KrillinAI 配置回退处理，并将中英 SRT、Markdown 候选稿和运行清单写入 `notes/lecture-NN/references/krillinai/`。该目录中的内容不会自动展示在网站，也不会覆盖同级正式的 `transcript.en.md` 与 `transcript.zh-CN.md`。先运行 `--dry-run`；实际生成前请完成 KrillinAI 的模型/密钥配置。`--caption-source any` 与 `whisper` 可能下载音频，命令要求额外传入 `--allow-audio-download`；只使用平台字幕时可指定 `manual` 或 `auto`。审核术语、完整性和时间轴后再手动采纳。
 
@@ -66,7 +66,7 @@ npm run build
 
 一门新课程的最小闭环是：
 
-1. 在 `catalog/courses/<course-id>.yaml` 登记课程和正在学习的 Lecture。
+1. 在 `website/catalog-data/courses/<course-id>.yaml` 登记课程和正在学习的 Lecture。
 2. 在 `llm/<course-id>/` 保存官方材料和来源说明。
 3. 只为当前 Lecture 创建 `notes/<lecture-id>/`，按需生成逐字稿、Note、Blog 或 PDF。
 4. 人工审核后把正式产物登记到 `outputs`，再运行 `npm run build`。

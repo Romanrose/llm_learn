@@ -293,7 +293,7 @@ source-discovered
 3. 参考 Lecture 04 的成稿形式：保留段落起始时间戳，连续语义片段合并为阅读段落，不逐句或逐 cue 换行。
 4. 中文翻译保持原段落顺序和时间戳，不摘要、不删减、不扩写；只修正明显断句、滑窗重复、标点和能够确认的术语错误。
 5. 逐字稿保留必要的英文术语、课堂互动和口语信息；Note 和 Blog 另行组织，不继承逐字稿时间轴。
-6. 按 standards/transcript-generation.md 执行来源记录和质量检查。
+6. 按 workflow/standards/transcript-generation.md 执行来源记录和质量检查。
 7. 完成后报告字幕来源、生成文件、待核术语、时间戳异常、重复检测和人工抽查结果。
 
 视频：<url>

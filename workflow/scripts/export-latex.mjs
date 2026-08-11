@@ -6,10 +6,10 @@ import { dirname, extname, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parse } from 'yaml'
 
-const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const catalogRoot = join(repoRoot, 'catalog', 'courses')
-const templateRoot = join(repoRoot, 'templates', 'latex')
-const publicRoot = join(repoRoot, 'site', 'public', 'generated', 'exports')
+const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+const catalogRoot = join(repoRoot, 'website', 'catalog-data', 'courses')
+const templateRoot = join(repoRoot, 'workflow', 'templates', 'latex')
+const publicRoot = join(repoRoot, 'website', 'public', 'generated', 'exports')
 
 function relativeToRepo(path) {
   return relative(repoRoot, path) || '.'

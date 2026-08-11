@@ -11,9 +11,9 @@ import { promisify } from 'node:util'
 import { parse, stringify } from 'yaml'
 import { krillinAiArtifact, runKrillinAiSubtitle, srtToTranscriptBody } from './adapters/krillinai.mjs'
 
-const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const catalogRoot = join(repoRoot, 'catalog', 'courses')
-const reviewRoot = join(repoRoot, 'catalog', 'reviews')
+const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+const catalogRoot = join(repoRoot, 'website', 'catalog-data', 'courses')
+const reviewRoot = join(repoRoot, 'website', 'catalog-data', 'reviews')
 const userAgent = 'llm_learn-course/0.1 (+https://github.com/Romanrose/llm_learn)'
 const execFileAsync = promisify(execFile)
 const localYtDlp = process.env.COURSE_YT_DLP ?? join(repoRoot, 'workflow', 'video', 'transcript-pipeline', '.venv', 'bin', 'yt-dlp')
@@ -43,7 +43,7 @@ function usage(exitCode = 0) {
 
 function loadCourse(courseId) {
   const path = join(catalogRoot, `${courseId}.yaml`)
-  if (!existsSync(path)) throw new Error(`找不到课程配置：catalog/courses/${courseId}.yaml`)
+  if (!existsSync(path)) throw new Error(`找不到课程配置：website/catalog-data/courses/${courseId}.yaml`)
   return { path, data: parse(readFileSync(path, 'utf8')) }
 }
 
@@ -799,7 +799,7 @@ function upsertOutput(outputs, next) {
 
 async function exportLatex(courseId, lectureId) {
   if (!lectureId || lectureId.startsWith('--')) throw new Error('用法：course export <course-id> <lecture-id>')
-  await execFileAsync(process.execPath, [join(repoRoot, 'scripts', 'export-latex.mjs'), courseId, lectureId], {
+  await execFileAsync(process.execPath, [join(repoRoot, 'workflow', 'scripts', 'export-latex.mjs'), courseId, lectureId], {
     cwd: repoRoot,
     maxBuffer: 200_000,
   })
@@ -1089,7 +1089,7 @@ async function sync(courseId) {
     lectureCount: course.items.length,
   }
   writeYaml(path, course)
-  console.log(`已同步 ${course.items.length} 节课程：catalog/courses/${courseId}.yaml`)
+  console.log(`已同步 ${course.items.length} 节课程：website/catalog-data/courses/${courseId}.yaml`)
 }
 
 async function discover(courseId) {
@@ -1148,7 +1148,7 @@ async function discover(courseId) {
     resources,
   }
   writeYaml(reviewPath(courseId), review)
-  console.log(`发现 ${resources.length} 个候选资源：catalog/reviews/${courseId}.resources.yaml`)
+  console.log(`发现 ${resources.length} 个候选资源：website/catalog-data/reviews/${courseId}.resources.yaml`)
   for (const source of sources.filter((item) => item.status === 'error')) console.warn(`入口不可用：${source.url} (${source.error})`)
   console.log('请检查候选清单，再使用 course approve 批准需要进入知识库的资源。')
 }

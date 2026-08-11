@@ -3,11 +3,11 @@ import { dirname, extname, join, normalize, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parse } from 'yaml'
 
-const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const catalogRoot = join(repoRoot, 'catalog')
-const outputRoot = join(repoRoot, 'site', 'generated')
-const configGeneratedRoot = join(repoRoot, 'site', '.vitepress', 'generated')
-const courseSettings = parse(readFileSync(join(repoRoot, 'course.yaml'), 'utf8'))
+const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
+const catalogRoot = join(repoRoot, 'website', 'catalog-data')
+const outputRoot = join(repoRoot, 'website', 'generated')
+const configGeneratedRoot = join(repoRoot, 'website', '.vitepress', 'generated')
+const courseSettings = parse(readFileSync(join(repoRoot, 'website', 'course.yaml'), 'utf8'))
 
 function collectYamlFiles(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -204,4 +204,4 @@ write(join(outputRoot, 'catalog', 'index.md'), [
 
 writeFileSync(join(configGeneratedRoot, 'catalog.json'), `${JSON.stringify(generatedCatalog, null, 2)}\n`, 'utf8')
 writeFileSync(join(configGeneratedRoot, 'site.json'), `${JSON.stringify(courseSettings, null, 2)}\n`, 'utf8')
-console.log(`Generated ${generatedCatalog.length} course(s) in site/generated`)
+console.log(`Generated ${generatedCatalog.length} course(s) in website/generated`)

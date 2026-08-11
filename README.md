@@ -6,14 +6,14 @@
 
 ## 从这里开始
 
-1. 先阅读[统一项目结构](standards/project-structure.md)、[学习与转写提示词手册](提示词.md)和[课程逐字稿生成规范](standards/transcript-generation.md)。
+1. 先阅读[统一项目结构](workflow/standards/project-structure.md)、[学习与转写提示词手册](workflow/standards/prompt-handbook.md)和[课程逐字稿生成规范](workflow/standards/transcript-generation.md)。
 2. 学习 [CS336 2026：Language Modeling from Scratch](llm/cs336-2026/)，用课程讲义和作业建立训练语言模型的系统认识。
 3. 在 [`llm/cs336-2026/notes/`](llm/cs336-2026/notes/) 中按 Lecture 保存课程笔记、逐字稿与 Blog。
 4. 结合 [`papers/30-paper-zhCN/`](papers/30-paper-zhCN/) 复现经典论文，随后进入 [`agent/hello-agents/`](agent/hello-agents/) 的 Agent 学习与实践。
 
 ## 学习网站
 
-仓库根目录提供 VitePress 网站。课程内容仍保留在原目录中，`course.yaml` 保存全局设置，`catalog/` 元数据负责描述课程、Lecture 与逐字稿、Blog、讲义和 PDF 之间的关系，构建前会自动生成网站页面和导航。
+`website/` 集中保存 VitePress 网站、全站配置和课程元数据。课程与专题内容保留在 `llm/`、`agent/`、`infra/`、`papers/` 和 `interest/` 五个并列方向中；`website/course.yaml` 保存全局设置，`website/catalog-data/` 负责描述课程、Lecture 与逐字稿、Blog、讲义和 PDF 之间的关系，构建前会自动生成网站页面和导航。
 
 ```bash
 npm install
@@ -81,14 +81,19 @@ llm_learn/
 ├── agent/
 │   ├── hello-agents/                  # 《Hello Agents》教材与配套代码
 │   ├── memory/                        # 学习过程中的记忆/知识资料
-│   └── system/                        # Agent 系统配置资料
+│   └── tencentdb-agent-memory-tutorial/ # Agent Memory 渐进式教程
 ├── infra/                             # GPU、网络、远程开发与工具配置
-├── xingqu/                            # 延伸阅读与兴趣主题
-├── standards/                          # 全局目录、逐字稿和质量规范
-├── templates/                          # LaTeX 等可复用输出模板
-├── catalog/                            # 课程、资源和网站元数据
-├── scripts/                            # Course CLI、网站和导出脚本
-└── 提示词.md                           # 笔记、逐字稿、转写流程手册
+├── interest/                          # 课外阅读与个人兴趣主题
+├── website/                            # VitePress 网站、配置和课程元数据
+│   ├── .vitepress/                     # 导航、主题和构建配置
+│   ├── catalog-data/                   # 课程与资源 YAML
+│   ├── course.yaml                     # 全站设置和分类
+│   └── ...                             # 首页、专题页和生成页面
+└── workflow/                           # 脚本、模板、规范和本地工具
+    ├── scripts/                        # Course CLI、网站和导出脚本
+    ├── standards/                      # 项目、逐字稿和质量规范
+    ├── templates/                      # LaTeX 等可复用输出模板
+    └── video/                          # 本地视频/字幕工具，不提交 Git
 ```
 
 ## CS336 快速开始
@@ -117,9 +122,9 @@ llm/cs336-2026/notes/lecture-04/
 └── assets/                 # 图片与附件
 ```
 
-以后新增课程或项目只复制这套结构和约定，不需要预先创建完整课程树。具体规则见[统一项目结构](standards/project-structure.md)。
+以后新增课程或项目只复制这套结构和约定，不需要预先创建完整课程树。具体规则见[统一项目结构](workflow/standards/project-structure.md)。
 
-视频转写采用“**优先使用字幕；没有字幕时，在得到账号/音频下载授权后使用本地 ASR**”的流程。转写规范、模型选择和 Markdown 公式写法请见[提示词手册](提示词.md)。本机的转写工具放在 `workflow/`，仅供本地使用，不提交到 GitHub。
+视频转写采用“**优先使用字幕；没有字幕时，在得到账号/音频下载授权后使用本地 ASR**”的流程。转写规范、模型选择和 Markdown 公式写法请见[提示词手册](workflow/standards/prompt-handbook.md)。本机的转写工具放在 `workflow/video/`，仅供本地使用，不提交到 GitHub。
 
 ## 论文与 Agent 学习
 
@@ -143,7 +148,7 @@ uv run jupyter notebook
 - 课程内容放在 `llm/<完整课程 ID>/notes/<Lecture ID>/`；稳定产物使用 `note.md`、`blog.md`、`transcript.<语言>.md` 等固定文件名。
 - 新增代码请说明依赖、运行命令和预期结果；论文笔记建议以 `YYYY-MM-DD-论文简称.md` 命名。
 - 不提交 API Key、密码、私钥、真实服务器地址或未授权下载的内容。
-- `.obsidian/`、`workflow/`、课程运行缓存和本地虚拟环境均为本地文件，不进入远程仓库。
+- `.obsidian/`、`workflow/video/`、课程运行缓存和本地虚拟环境均为本地文件，不进入远程仓库；`workflow/scripts/`、`workflow/standards/` 和 `workflow/templates/` 是仓库正式内容。
 
 ## 资料来源
 
