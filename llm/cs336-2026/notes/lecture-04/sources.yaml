@@ -1,0 +1,18 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-04
+title: Attention alternatives and mixture of experts
+sourceState: historical
+video:
+  title: CS336 Lecture 4
+  url: https://www.bilibili.com/video/BV1msTD6CE6j?p=4
+caption:
+  state: historical-source
+  kind: asr
+  language: en
+  transcript: llm/cs336-2026/notes/lecture-04/transcript.zh-CN.md
+  processor: historical-external-pipeline
+materials:
+  - label: lecture 4.pdf
+    type: slides
+    url: https://github.com/stanford-cs336/lectures/blob/main/lecture_04.pdf

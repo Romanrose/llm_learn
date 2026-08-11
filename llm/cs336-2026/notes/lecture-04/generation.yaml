@@ -1,0 +1,18 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-04
+state: reviewed
+pipeline: historical-transcript
+createdAt: 2026-08-11T00:00:00Z
+inputs:
+  source: llm/cs336-2026/notes/lecture-04/sources.yaml
+outputs:
+  transcriptZh: llm/cs336-2026/notes/lecture-04/transcript.zh-CN.md
+  lectureNote: llm/cs336-2026/notes/lecture-04/note.md
+  blog: llm/cs336-2026/notes/lecture-04/blog.md
+review:
+  state: reviewed
+  required:
+    - completeness
+    - terminology
+    - timestamp-anomalies

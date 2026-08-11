@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-01
+title: Overview, tokenization
+preparedAt: 2026-08-11T13:05:15.903Z
+video:
+  id: JuoVZkPBiKk
+  title: "Stanford CS336 Language Modeling from Scratch | Spring 2026 | Lecture 1: Overview, Tokenization"
+  url: https://www.youtube.com/watch?v=JuoVZkPBiKk
+  playlist: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+  playlistIndex: 1
+  channel: Stanford Online
+  durationSeconds: 4762
+materials:
+  - label: lecture_01.py
+    type: reference
+    url: https://cs336.stanford.edu/lectures/?trace=lecture_01
+    status: pending
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: manual
+  language: en-US
+  transcript: llm/cs336-2026/notes/lecture-01/transcript.en.md
+  processor: video-subtitle-transcript
