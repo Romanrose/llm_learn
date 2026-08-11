@@ -1,0 +1,23 @@
+{
+  "name": "llm_learn",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "course": "workflow/scripts/course.mjs"
+  },
+  "scripts": {
+    "course": "node workflow/scripts/course.mjs",
+    "latex:export": "node workflow/scripts/export-latex.mjs",
+    "site:generate": "node workflow/scripts/export-latex.mjs && node workflow/scripts/generate-site.mjs",
+    "dev": "npm run site:generate && vitepress dev website",
+    "build": "npm run site:generate && vitepress build website",
+    "preview": "vitepress preview website"
+  },
+  "devDependencies": {
+    "markdown-it-mathjax3": "4.3.2",
+    "vitepress": "1.6.4",
+    "vue": "3.5.41",
+    "yaml": "2.9.0"
+  }
+}

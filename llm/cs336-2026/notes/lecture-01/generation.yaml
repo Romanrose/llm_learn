@@ -1,0 +1,24 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-01
+state: draft-ready
+createdAt: 2026-08-11T11:23:09.157Z
+inputs:
+  transcript: llm/cs336-2026/notes/lecture-01/transcript.en.md
+  lecture: llm/cs336-2026/lectures/lecture_01.py
+  sources: llm/cs336-2026/notes/lecture-01/sources.yaml
+outputs:
+  transcriptZh: llm/cs336-2026/notes/lecture-01/transcript.zh-CN.md
+  lectureNote: llm/cs336-2026/notes/lecture-01/note.md
+  blog: llm/cs336-2026/notes/lecture-01/blog.md
+review:
+  state: pending
+  required:
+    - terminology
+    - completeness
+    - citations
+completedAt: 2026-08-11T11:29:25.718Z
+generator:
+  provider: codex-cli
+  mode: read-only
+  translationChunks: 9

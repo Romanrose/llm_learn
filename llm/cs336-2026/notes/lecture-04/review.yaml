@@ -1,0 +1,15 @@
+schemaVersion: 1
+state: reviewed
+course: cs336-2026
+lecture: lecture-04
+reviewedAt: 2026-08-11T00:00:00Z
+source: historical-lecture-04-reference
+checks:
+  errors: []
+  warnings:
+    - 原始历史稿部分时间戳存在倒序，保留正文顺序，后续回听时复核。
+    - 本讲保留已有中文组织稿，暂无独立英文逐字稿文件。
+outputs:
+  transcriptZh: llm/cs336-2026/notes/lecture-04/transcript.zh-CN.md
+  note: llm/cs336-2026/notes/lecture-04/note.md
+  blog: llm/cs336-2026/notes/lecture-04/blog.md
