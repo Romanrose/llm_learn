@@ -43,6 +43,6 @@ outline: [2, 3]
 ## 维护原则
 
 - 原始内容仍保留在 `llm/`、`agent/`、`infra/` 和 `papers/`，网站不改变物理目录。
-- `course.yaml` 定义全站结构，`catalog/` 描述课程、Lecture 和产物之间的关系。
+- `website/course.yaml` 定义全站结构，`website/catalog-data/` 描述课程、Lecture 和产物之间的关系。
 - 逐字稿默认不进入全文搜索，Lecture Note 和 Blog 作为主要阅读入口。
 - 官方 Slides 可以归档；能够从 LaTeX 重建的 PDF 不重复提交生成物。

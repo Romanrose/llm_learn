@@ -4,15 +4,15 @@
   "private": true,
   "type": "module",
   "bin": {
-    "course": "scripts/course.mjs"
+    "course": "workflow/scripts/course.mjs"
   },
   "scripts": {
-    "course": "node scripts/course.mjs",
-    "latex:export": "node scripts/export-latex.mjs",
-    "site:generate": "node scripts/export-latex.mjs && node scripts/generate-site.mjs",
-    "dev": "npm run site:generate && vitepress dev site",
-    "build": "npm run site:generate && vitepress build site",
-    "preview": "vitepress preview site"
+    "course": "node workflow/scripts/course.mjs",
+    "latex:export": "node workflow/scripts/export-latex.mjs",
+    "site:generate": "node workflow/scripts/export-latex.mjs && node workflow/scripts/generate-site.mjs",
+    "dev": "npm run site:generate && vitepress dev website",
+    "build": "npm run site:generate && vitepress build website",
+    "preview": "vitepress preview website"
   },
   "devDependencies": {
     "markdown-it-mathjax3": "4.3.2",

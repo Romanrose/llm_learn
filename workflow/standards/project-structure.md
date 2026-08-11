@@ -7,30 +7,34 @@
 ## 1. 设计原则
 
 - 先有真实学习内容，再增加目录；不为“未来可能使用”创建空壳结构。
-- 每个内容单元都有稳定 ID，目录、catalog、网站路由和生成记录使用同一个 ID。
+- 每个内容单元都有稳定 ID，目录、catalog-data、网站路由和生成记录使用同一个 ID。
 - 原始资料、过程稿、正式稿和网站产物分层保存，避免互相覆盖。
 - 自动化只生成候选稿和网站页面；来源、术语、公式、时间轴和发布状态由人确认。
-- 生成页面不是源文件，不能直接编辑 `site/generated/`。
+- 生成页面不是源文件，不能直接编辑 `website/generated/`。
 - 本地密钥、Cookie、音频、缓存和构建产物不进入 Git。
 
 ## 2. 顶层目录
 
 ```text
 llm_learn/
-├── catalog/                 # 课程与资源元数据，不保存正文
-│   ├── courses/             # <course-id>.yaml
-│   └── reviews/             # 资源发现与审核清单
-├── llm/                     # 课程学习内容
+├── llm/                     # LLM 课程学习内容
 │   └── <course-id>/
 ├── agent/                   # Agent 教材和独立项目
 │   └── <project-id>/
 ├── infra/                   # AI Infra 与开发环境资料
-├── papers/                  # 论文阅读、复现和教学实现
-├── standards/               # 全局内容与工程规范
-├── templates/               # 可复用的输出模板
-├── scripts/                 # 课程、网站和导出自动化
-├── site/                    # VitePress 源页面与主题
-└── workflow/                # 本地工具、虚拟环境和下载流程，不提交 Git
+├── papers/                  # Paper 阅读、复现和教学实现
+├── interest/                # 课外阅读与个人兴趣主题
+├── website/                 # VitePress 网站、课程元数据和网站配置
+│   ├── .vitepress/          # 主题、导航和构建配置
+│   ├── catalog-data/        # 课程与资源元数据，不保存正文
+│   │   ├── courses/         # <course-id>.yaml
+│   │   └── reviews/         # 资源发现与审核清单
+│   └── course.yaml          # 全站分类和网站设置
+└── workflow/                # 自动化脚本、模板、规范和本地工具
+    ├── scripts/             # 课程、网站和导出自动化
+    ├── standards/           # 项目、逐字稿和质量规范
+    ├── templates/           # 可复用的输出模板
+    └── video/               # 本地视频/字幕工具，不提交 Git
 ```
 
 ## 3. 课程模板
@@ -58,7 +62,7 @@ llm/<course-id>/
 └── exports/                 # 本地生成的 PDF/XeLaTeX，不提交 Git
 ```
 
-不是每一讲都必须拥有全部产物。`catalog/courses/<course-id>.yaml` 的 `outputs` 是网站展示的唯一来源。
+不是每一讲都必须拥有全部产物。`website/catalog-data/courses/<course-id>.yaml` 的 `outputs` 是网站展示的唯一来源。
 
 ## 4. Agent、论文和工程项目模板
 
@@ -82,21 +86,21 @@ agent/<project-id>/
 
 ```text
 正文文件 ──┐
-来源清单 ──┼─> catalog/*.yaml ──> scripts/generate-site.mjs ──> site/generated/
-审核记录 ──┘                                      └───────> VitePress / Pages
+来源清单 ──┼─> website/catalog-data/*.yaml ──> workflow/scripts/generate-site.mjs ──> website/generated/
+审核记录 ──┘                                                        └───────> VitePress / Pages
 ```
 
-- `catalog/courses/` 描述课程、Lecture、来源和网站产物。
-- `site/generated/` 和 `site/.vitepress/generated/` 是构建时生成的中间文件。
-- `site/` 中的首页、专题页和 Vue 组件是手工维护的网站入口。
-- 课程 PDF 由 `templates/latex/` 和 `note.md` 生成，输出放在 `exports/`，部署构建时临时复制到 `site/public/generated/`。
+- `website/catalog-data/courses/` 描述课程、Lecture、来源和网站产物。
+- `website/generated/` 和 `website/.vitepress/generated/` 是构建时生成的中间文件。
+- `website/` 中的首页、专题页和 Vue 组件是手工维护的网站入口。
+- 课程 PDF 由 `workflow/templates/latex/` 和 `note.md` 生成，输出放在 `exports/`，部署构建时临时复制到 `website/public/generated/`。
 
 ## 6. 渐进式接入流程
 
 新增课程或项目时只做当前学习需要的最小闭环：
 
 1. 分配稳定 ID，创建入口 README。
-2. 在 `catalog/` 登记来源和内容单元。
+2. 在 `website/catalog-data/` 登记来源和内容单元。
 3. 保存官方资料或代码，并记录 `UPSTREAM.md` 或来源清单。
 4. 生成并人工审核必要的逐字稿、Note、Blog 或实验记录。
 5. 将已确认的产物登记到 `outputs`，运行 `npm run build`。

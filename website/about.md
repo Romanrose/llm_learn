@@ -25,4 +25,4 @@ title: 关于 llm_learn
 
 ## 项目结构
 
-课程正文位于 `llm/<course-id>/`，独立 Agent 项目位于 `agent/<project-id>/`，论文复现位于 `papers/<paper-id>/`。课程的 `catalog/` 只保存元数据，网站页面由构建脚本生成，详细约定见仓库的[统一项目结构](https://github.com/Romanrose/llm_learn/blob/master/standards/project-structure.md)。
+课程正文位于 `llm/<course-id>/`，独立 Agent 项目位于 `agent/<project-id>/`，论文复现位于 `papers/<paper-id>/`。课程的 `website/catalog-data/` 只保存元数据，网站页面由 `workflow/scripts/` 中的构建脚本生成，详细约定见仓库的[统一项目结构](https://github.com/Romanrose/llm_learn/blob/master/workflow/standards/project-structure.md)。

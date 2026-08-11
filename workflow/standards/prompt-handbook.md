@@ -2,7 +2,7 @@
 
 > 直接贴链接并说明想要的结果即可。本机优先走**已有字幕**；只有没有可用字幕时，才在你明确授权后下载音频并本地转写。
 
-本手册是操作入口；目录、课程 ID、产物和审核状态以[统一项目结构](standards/project-structure.md)与[课程逐字稿生成规范](standards/transcript-generation.md)为准。当前主要维护 `cs336-2026`，其他课程按实际学习进度渐进式接入。
+本手册是操作入口；目录、课程 ID、产物和审核状态以[统一项目结构](project-structure.md)与[课程逐字稿生成规范](transcript-generation.md)为准。当前主要维护 `cs336-2026`，其他课程按实际学习进度渐进式接入。
 
 ## 先选目标
 
@@ -56,7 +56,7 @@
 - 候选稿放在 `notes/<lecture-id>/references/<provider>/`，审核通过后才提升到正式文件名。
 - 原始音频、字幕下载件、JSON 等中间文件默认放临时目录；只有你明确要求才存入 Obsidian。
 
-完整的来源优先级、翻译边界、Markdown 模板和质量门禁见[课程逐字稿生成规范](standards/transcript-generation.md)。
+完整的来源优先级、翻译边界、Markdown 模板和质量门禁见[课程逐字稿生成规范](transcript-generation.md)。
 
 ### 逐字稿排版规则
 
@@ -104,7 +104,7 @@ npm run course -- generate cs336-2026 lecture-01 --provider deepseek --run
 npm run course -- validate cs336-2026 lecture-01 --provider deepseek
 ```
 
-正式稿发布后使用 `--published` 校验；不要直接编辑 `site/generated/`，网站页面由构建命令重新生成。
+正式稿发布后使用 `--published` 校验；不要直接编辑 `website/generated/`，网站页面由构建命令重新生成。
 
 ## 登录态、授权与边界
 
