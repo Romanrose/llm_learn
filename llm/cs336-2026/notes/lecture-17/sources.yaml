@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-17
+title: Alignment - multimodality
+preparedAt: 2026-08-15T05:49:52.593Z
+video:
+  id: 26FtD08ZpOU
+  title: "Stanford CS336 Language Modeling from Scratch | Spring 2026 | Lecture 17: Alignment - Multimodality"
+  url: https://www.youtube.com/watch?v=26FtD08ZpOU
+  playlist: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+  playlistIndex: 17
+  channel: Stanford Online
+  durationSeconds: 4659
+materials:
+  - label: lecture_17.py
+    type: reference
+    url: https://cs336.stanford.edu/lectures/?trace=lecture_17
+    status: pending
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: manual
+  language: en-US
+  transcript: llm/cs336-2026/notes/lecture-17/transcript.en.md
+  processor: video-subtitle-transcript

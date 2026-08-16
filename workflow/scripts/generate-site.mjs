@@ -26,8 +26,13 @@ function write(path, content) {
   writeFileSync(path, content.trimStart(), 'utf8')
 }
 
-function frontmatter({ title, description = '', search = true }) {
-  return `---\ntitle: ${JSON.stringify(title)}\ndescription: ${JSON.stringify(description)}\nsearch: ${search}\n---\n\n`
+function frontmatter({ title, description = '', search = true, aside, outline, pageClass }) {
+  const extra = [
+    ...(aside === undefined ? [] : [`aside: ${aside}`]),
+    ...(outline === undefined ? [] : [`outline: ${outline}`]),
+    ...(pageClass ? [`pageClass: ${pageClass}`] : []),
+  ].join('\n')
+  return `---\ntitle: ${JSON.stringify(title)}\ndescription: ${JSON.stringify(description)}\nsearch: ${search}${extra ? `\n${extra}` : ''}\n---\n\n`
 }
 
 function statusLabel(status) {
@@ -41,7 +46,16 @@ function statusLabel(status) {
 }
 
 function resourceTypeLabel(type) {
-  return ({ slides: '讲义 / Slides', video: '视频', code: '代码', reference: '课程资料' })[type] ?? type
+  return ({
+    slides: '讲义 / Slides',
+    video: '视频',
+    code: '代码',
+    reference: '课程资料',
+    paper: '论文',
+    blog: '技术文章',
+    docs: '文档',
+    book: '书籍 / 教程',
+  })[type] ?? type
 }
 
 function assignmentStateLabel(state) {
@@ -67,6 +81,27 @@ function vueProp(value) {
 
 function withoutMarkdownExtension(path) {
   return /\.md$/i.test(path) ? path.slice(0, -extname(path).length) : path
+}
+
+function normalizeOutputs(course, item) {
+  const outputs = [...(item.outputs ?? [])]
+  const transcriptEnSource = normalize(join(course.paths?.notes ?? `llm/${course.id}/notes`, item.id, 'transcript.en.md'))
+  if (existsSync(resolve(repoRoot, transcriptEnSource)) && !outputs.some((output) => output.id === 'transcript-en')) {
+    outputs.push({
+      id: 'transcript-en',
+      label: '英文逐字稿',
+      source: transcriptEnSource,
+      searchable: false,
+      reviewStatus: 'source',
+    })
+  }
+  const order = new Map([
+    ['lecture-note', 0],
+    ['blog', 1],
+    ['transcript-zh', 2],
+    ['transcript-en', 3],
+  ])
+  return outputs.sort((a, b) => (order.get(a.id) ?? 99) - (order.get(b.id) ?? 99))
 }
 
 function readSource(source, outputs) {
@@ -99,31 +134,48 @@ const generatedCatalog = records.map((course) => {
     .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
     .map((item) => {
       const route = `/generated/courses/${course.id}/${item.id}/`
-      const outputs = (item.outputs ?? []).map((output) => ({
+      const outputs = normalizeOutputs(course, item).map((output) => ({
         ...output,
         route: `/generated/courses/${course.id}/${item.id}/${output.id}`,
       }))
       const tabs = [
-        { id: 'overview', label: '课程资料', route },
-        ...outputs.map(({ id, label, route }) => ({ id, label, route })),
+        { id: 'overview', label: '课程简介', route: `${route}#content-overview` },
+        ...outputs.map(({ id, label }) => ({ id, label, route: `${route}#content-${id}` })),
+      ]
+      const workspaceTabs = [
+        { id: 'overview', label: '课程简介', available: true },
+        ...[
+          ['lecture-note', '课程笔记'],
+          ['blog', 'Blog 解读'],
+          ['transcript-zh', '中文逐字稿'],
+          ['transcript-en', '英文逐字稿'],
+        ].map(([id, label]) => ({ id, label, available: outputs.some((output) => output.id === id) })),
       ]
       const exportLinks = item.exports ?? []
+      const lectureVideo = (item.official ?? []).find((link) => /youtu(?:\.be|be\.com)/.test(link.url))
+      const learningResources = [...(item.resources ?? []), ...(item.readings ?? [])]
       const details = [
         ...(item.date ? [{ label: '日期', value: item.date }] : []),
         ...(item.instructors?.length ? [{ label: '讲师', value: item.instructors.join(' / ') }] : []),
-        { label: '官方资料', value: `${item.resources?.length ?? 0} 项` },
+        { label: '课程资料', value: `${learningResources.length} 项` },
         { label: '内容产物', value: `${outputs.length} 项` },
       ]
 
       for (const output of outputs) {
-        const links = [...(course.official ?? []), ...(item.official ?? [])]
+        const links = [
+          ...(course.official ?? []).filter((link) => !/youtube\.com\/playlist/.test(link.url)),
+          ...(item.official ?? []),
+        ]
         const page = [
           frontmatter({
             title: `${course.shortTitle ?? course.title} · ${item.title} · ${output.label}`,
             description: item.subtitle ?? course.description,
             search: output.searchable !== false,
+            aside: false,
+            outline: false,
           }),
-          `<CourseHeader eyebrow=${JSON.stringify(`${course.shortTitle ?? course.title} · Lecture ${item.order ?? ''}`)} title=${JSON.stringify(item.title)} description=${JSON.stringify(item.subtitle ?? '')} status=${JSON.stringify(itemStatusLabel(item))} :details=${vueProp(details)} :links=${vueProp([...links, ...exportLinks])} />`,
+          `<CourseHeader eyebrow=${JSON.stringify(`${course.shortTitle ?? course.title} · Lecture ${item.order ?? ''}`)} title=${JSON.stringify(item.title)} courseRoute=${JSON.stringify(`/generated/courses/${course.id}/`)} description=${JSON.stringify(item.subtitle ?? '')} status=${JSON.stringify(itemStatusLabel(item))} :details=${vueProp(details)} :links=${vueProp([...links, ...exportLinks])} />`,
+          ...(lectureVideo ? [`<LectureVideo title=${JSON.stringify(`Lecture ${item.order ?? ''} · ${item.title}`)} url=${JSON.stringify(lectureVideo.url)} />`] : []),
           `<CourseTabs active=${JSON.stringify(output.id)} :items=${vueProp(tabs)} />`,
           `<div class="source-note">本页由 <code>${output.source}</code> 自动生成；原始笔记位置保持不变。</div>`,
           readSource(output.source, outputs),
@@ -131,43 +183,86 @@ const generatedCatalog = records.map((course) => {
         write(join(outputRoot, 'courses', course.id, item.id, `${output.id}.md`), page)
       }
 
-      const resources = (item.resources ?? []).map((resource) => (
-        `- [${resource.label}](${resource.url}) · ${resourceTypeLabel(resource.type)} · ${resource.status === 'approved' ? '已审核' : '待审核'}`
-      )).join('\n')
-      const outputLinks = outputs.map((output) => `- [${output.label}](${output.route}) · 来源：\`${output.source}\``).join('\n')
-      const assignments = (item.assignments ?? []).map((assignment) => (
-        `- ${assignment.id} · ${assignmentStateLabel(assignment.state)}`
+      const assignmentRows = (item.assignments ?? []).map((assignment) => (
+        `<div><span>${assignment.id}</span><strong>${assignmentStateLabel(assignment.state)}</strong></div>`
       )).join('\n')
       const lectureLinks = [...(course.official?.slice(0, 1) ?? []), ...(item.official ?? []), ...exportLinks]
+      const resourceCards = learningResources.map((resource) => (
+        `<a href="${resource.url}" target="_blank" rel="noreferrer"><strong>${resourceTypeLabel(resource.type)}</strong><span>${resource.label}</span><small>${resource.note ?? '打开链接'}</small><b>↗</b></a>`
+      )).join('\n')
+      const outputPanes = [
+        ['lecture-note', '课程笔记'],
+        ['blog', 'Blog 解读'],
+        ['transcript-zh', '中文逐字稿'],
+        ['transcript-en', '英文逐字稿'],
+      ].map(([id, label]) => {
+        const output = outputs.find((candidate) => candidate.id === id)
+        return [
+          `<section id="content-${id}" class="workspace-pane" data-workspace-pane="${id}" hidden>`,
+          output ? readSource(output.source, outputs) : `## ${label}\n\n本讲的${label}尚未生成。`,
+          '</section>',
+        ].join('\n\n')
+      }).join('\n\n')
       const lecturePage = [
         frontmatter({
           title: `${course.shortTitle ?? course.title} · Lecture ${item.order ?? ''} · ${item.title}`,
           description: item.subtitle ?? `${item.date ?? ''} ${item.instructors?.join(' / ') ?? ''}`.trim(),
+          aside: false,
+          outline: false,
+          pageClass: 'lecture-workspace-page',
         }),
-        `<CourseHeader eyebrow=${JSON.stringify(`${course.shortTitle ?? course.title} · Lecture ${item.order ?? ''}`)} title=${JSON.stringify(item.title)} description=${JSON.stringify(item.subtitle ?? '')} status=${JSON.stringify(itemStatusLabel(item))} :details=${vueProp(details)} :links=${vueProp(lectureLinks)} />`,
-        `<CourseTabs active="overview" :items=${vueProp(tabs)} />`,
-        ...(item.preparation ? [
-          '## 自动化准备',
-          `当前状态：**${preparationLabel(item.preparation.state)}**。来源清单：\`${item.preparation.manifest}\`。${item.preparation.state === 'subtitle-ready' ? '字幕已经提取并清洗，下一步生成中文逐字稿、讲义解读和 Blog 草稿。' : '视频没有可用字幕，下载音频并运行 ASR 前需要明确授权。'}`,
+        `<LectureWorkspaceHero eyebrow=${JSON.stringify(`${course.shortTitle ?? course.title} · Lecture ${item.order ?? ''}`)} title=${JSON.stringify(item.title)} status=${JSON.stringify(itemStatusLabel(item))} courseRoute=${JSON.stringify(`/generated/courses/${course.id}/`)} videoUrl=${JSON.stringify(lectureVideo?.url ?? '')} :details=${vueProp(details)} :links=${vueProp(lectureLinks)} />`,
+        `<LectureWorkspaceTabs :items=${vueProp(workspaceTabs)} />`,
+        '<LectureWorkspaceOutline />',
+        '<div class="workspace-panes">',
+        '<section id="content-overview" class="workspace-pane is-active" data-workspace-pane="overview">',
+        '## 课程简介',
+        `<div class="workspace-course-intro">${item.overview ?? item.subtitle ?? `本讲由 ${item.instructors?.join(' / ') || '课程讲师'} 主讲，属于 ${course.shortTitle ?? course.title} 的第 ${item.order ?? ''} 讲。`}</div>`,
+        '<section class="workspace-info-panel">',
+        '<header class="workspace-info-panel__header"><span>COURSE MATERIALS</span><strong>官方资料与延伸阅读</strong></header>',
+        resourceCards ? `<div class="workspace-resource-cards">\n${resourceCards}\n</div>` : '<p class="workspace-info-panel__empty">本讲的课程资料与延伸阅读尚未同步。</p>',
+        '</section>',
+        ...(assignmentRows ? [
+          '<section class="workspace-info-panel">',
+          '<header class="workspace-info-panel__header"><span>ASSIGNMENTS</span><strong>作业节点</strong></header>',
+          `<div class="workspace-assignment-rows">\n${assignmentRows}\n</div>`,
+          '</section>',
         ] : []),
-        ...(item.generation ? [
-          '## 内容生成',
-          `当前状态：**${item.generation.state === 'draft-ready' ? '草稿待校对' : item.generation.state}**。生成清单：\`${item.generation.manifest}\`。`,
-        ] : []),
-        '## 官方资料',
-        resources || '本讲的官方资料尚未同步。',
-        '## 内容产物',
-        outputLinks || '本讲已建立资料入口，逐字稿、讲义解读和 Blog 尚待生成。',
-        ...(exportLinks.length ? ['## PDF 与 LaTeX', exportLinks.map((link) => `- [${link.label}](${link.url})`).join('\n')] : []),
-        ...(assignments ? ['## 作业节点', assignments] : []),
+        '</section>',
+        outputPanes,
+        '</div>',
       ].join('\n\n')
       write(join(outputRoot, 'courses', course.id, item.id, 'index.md'), lecturePage)
 
       return { ...item, route, outputs }
     })
 
-  const officialLinks = (course.official ?? []).map((link) => `- [${link.label}](${link.url})`).join('\n')
-  const lectureGrid = items.map((item) => ({
+  const playlist = (course.official ?? []).find((link) => /youtube\.com\/playlist/.test(link.url))
+  const previewVideo = items
+    .flatMap((item) => item.official ?? [])
+    .find((link) => /youtu(?:\.be|be\.com)/.test(link.url))
+  const firstLecture = items.find((item) => item.outputs.length)?.route ?? items[0]?.route
+  const publishedCount = items.filter((item) => itemStatusLabel(item) === '已发布').length
+  const outputCount = items.reduce((total, item) => total + item.outputs.length, 0)
+  const referenceRoute = `/generated/courses/${course.id}/references/`
+  const referenceGroups = items
+    .filter((item) => item.readings?.length)
+    .map((item) => ({ id: item.id, order: item.order, title: item.title, readings: item.readings }))
+  const referenceCount = referenceGroups.reduce((total, group) => total + group.readings.length, 0)
+  const uniqueReferenceCount = new Set(referenceGroups.flatMap((group) => group.readings.map((reading) => reading.url))).size
+  const referenceGridItem = {
+    id: 'references',
+    order: 0,
+    title: '课程参考资料',
+    subtitle: '按课程目录汇总论文、技术文章、官方文档与代码仓库。',
+    instructors: [],
+    status: '持续更新',
+    route: referenceRoute,
+    resourceCount: uniqueReferenceCount,
+    outputCount: 1,
+    outputLabels: [`${uniqueReferenceCount} 项`],
+  }
+  const lectureGrid = [referenceGridItem, ...items.map((item) => ({
     id: item.id,
     order: item.order,
     date: item.date,
@@ -176,27 +271,37 @@ const generatedCatalog = records.map((course) => {
     instructors: item.instructors,
     status: itemStatusLabel(item),
     route: item.route,
-    resourceCount: item.resources?.length ?? 0,
+    resourceCount: (item.resources?.length ?? 0) + (item.readings?.length ?? 0),
     outputCount: item.outputs.length,
     outputLabels: item.outputs.map((output) => output.label),
-  }))
+  }))]
+
+  write(join(outputRoot, 'courses', course.id, 'references', 'index.md'), [
+    frontmatter({
+      title: `${course.shortTitle ?? course.title} · 课程参考资料`,
+      description: `按课程目录整理的 ${uniqueReferenceCount} 条论文、技术文章、文档与代码。`,
+      aside: false,
+      outline: false,
+      pageClass: 'course-reference-page',
+    }),
+    '# L00 · 课程参考资料',
+    '本页按 CS336 的课程顺序汇总各讲涉及的论文、技术文章、官方文档、教程和代码仓库。每讲页面仍保留与本讲直接相关的资料入口。',
+    `<CourseReferenceLibrary :groups=${vueProp(referenceGroups)} :total=${JSON.stringify(referenceCount)} :uniqueTotal=${JSON.stringify(uniqueReferenceCount)} />`,
+  ].join('\n\n'))
+
   const overview = [
-    frontmatter({ title: course.title, description: course.description }),
-    `<CourseHeader eyebrow=${JSON.stringify(`课程 · ${course.year ?? ''}`)} title=${JSON.stringify(course.title)} description=${JSON.stringify(course.description)} status=${JSON.stringify(statusLabel(course.status))} :links=${vueProp(course.official ?? [])} />`,
-    '## 官方资源',
-    officialLinks || '官方资源待审核。',
-    '## 课程内容',
+    frontmatter({ title: course.title, description: course.description, aside: false, outline: false }),
+    `<CourseHero eyebrow=${JSON.stringify(`Stanford · Language Modeling from Scratch · ${course.year ?? ''}`)} title=${JSON.stringify(course.shortTitle ?? course.title)} description=${JSON.stringify(course.description)} status=${JSON.stringify(statusLabel(course.status))} startRoute=${JSON.stringify(firstLecture ?? '')} referenceRoute=${JSON.stringify(referenceRoute)} watchUrl=${JSON.stringify(playlist?.url ?? '')} previewUrl=${JSON.stringify(previewVideo?.url ?? '')} :details=${vueProp([{ label: '讲次', value: `${items.length} 讲` }, { label: '发布', value: `${publishedCount} 讲` }, { label: '内容', value: `${outputCount} 份` }, { label: '资料', value: `${uniqueReferenceCount} 条` }])} :links=${vueProp(course.official ?? [])} />`,
+    '## 课程学习路径',
     lectureGrid.length ? `<LectureGrid :items=${vueProp(lectureGrid)} />` : '课程条目正在整理中。',
-    '## 生成说明',
-    `本课程页面由 \`${course.metadataFile}\` 生成。添加 Lecture 时只需更新元数据并提供对应源文件。`,
   ].join('\n\n')
   write(join(outputRoot, 'courses', course.id, 'index.md'), overview)
 
-  return { ...course, items }
+  return { ...course, referenceRoute, items }
 })
 
 write(join(outputRoot, 'catalog', 'index.md'), [
-  frontmatter({ title: '知识地图', description: 'llm_learn 的课程与专题目录' }),
+  frontmatter({ title: '知识地图', description: 'llm_learn 的课程与专题目录', aside: false, outline: false }),
   '# 知识地图',
   '课程、专题和论文通过元数据组织，原始文件仍保留在它们最自然的位置。',
   '<CourseMap />',

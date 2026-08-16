@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-07
+title: Parallelism
+preparedAt: 2026-08-15T05:48:22.350Z
+video:
+  id: SzpOcwdIL0Y
+  title: "Stanford CS336 Language Modeling from Scratch | Spring 2026 | Lecture 7: Parallelism"
+  url: https://www.youtube.com/watch?v=SzpOcwdIL0Y
+  playlist: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+  playlistIndex: 7
+  channel: Stanford Online
+  durationSeconds: 4862
+materials:
+  - label: lecture_07.py
+    type: reference
+    url: https://cs336.stanford.edu/lectures/?trace=lecture_07
+    status: pending
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: manual
+  language: en-US
+  transcript: llm/cs336-2026/notes/lecture-07/transcript.en.md
+  processor: video-subtitle-transcript
