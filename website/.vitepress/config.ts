@@ -14,6 +14,7 @@ type CatalogEntry = {
   id: string
   title: string
   shortTitle?: string
+  referenceRoute?: string
   items: CatalogItem[]
 }
 
@@ -25,22 +26,21 @@ const settings = JSON.parse(readFileSync(settingsPath, 'utf8')) as {
   site: { title: string; lang: string; base: string; repository: string }
 }
 
-const courseSidebar = catalog.flatMap((course) => [
-  {
-    text: course.shortTitle ?? course.title,
-    link: `/generated/courses/${course.id}/`,
-    items: course.items.map((item) => ({
-      text: `${item.order ? `Lecture ${item.order} · ` : ''}${item.title}`,
-      link: item.route,
-      ...(item.outputs.length
-        ? {
-            collapsed: true,
-            items: item.outputs.map((output) => ({ text: output.label, link: output.route })),
-          }
-        : {}),
-    })),
-  },
-])
+function lectureSidebarItem(item: CatalogItem) {
+  return {
+    text: `${item.order ? `L${String(item.order).padStart(2, '0')} · ` : ''}${item.title}`,
+    link: item.route,
+  }
+}
+
+const courseSidebar = catalog.flatMap((course) => [{
+  text: course.shortTitle ?? course.title,
+  link: `/generated/courses/${course.id}/`,
+  items: [
+    ...(course.referenceRoute ? [{ text: 'L00 · 课程参考资料', link: course.referenceRoute }] : []),
+    ...course.items.map(lectureSidebarItem),
+  ],
+}])
 
 export default defineConfig({
   lang: settings.site.lang,
@@ -62,11 +62,9 @@ export default defineConfig({
   },
   themeConfig: {
     nav: [
-      { text: '首页', link: '/' },
-      { text: '课程', link: '/#course-map' },
-      { text: 'CS336', link: '/generated/courses/cs336-2026/' },
-      { text: 'Course 工作流', link: '/workflow/' },
-      { text: '关于', link: '/about' },
+      { text: '学习首页', link: '/' },
+      { text: '课程与专题', link: '/#course-map' },
+      { text: '生成流程与关于', link: '/workflow/' },
     ],
     sidebar: {
       '/topics/': [
@@ -81,36 +79,35 @@ export default defineConfig({
         },
       ],
       '/workflow/': [
-        { text: 'Course 工作流', link: '/workflow/' },
-        { text: '关于 llm_learn', link: '/about' },
+        { text: '生成流程与关于', link: '/workflow/' },
+      ],
+      '/references/': [
+        { text: '课程网站参考', link: '/references/course-site-design' },
+        { text: 'CS336 学习路径', link: '/generated/courses/cs336-2026/' },
+        { text: '生成流程', link: '/workflow/' },
       ],
       '/generated/courses/': courseSidebar,
       '/generated/catalog/': [
-        { text: '知识地图', link: '/generated/catalog/' },
+        { text: '课程与专题', link: '/generated/catalog/' },
         ...catalog.map((course) => ({ text: course.shortTitle ?? course.title, link: `/generated/courses/${course.id}/` })),
       ],
       '/': [
-        { text: '首页', link: '/' },
         {
-          text: '课程地图',
+          text: '内容分类',
           items: [
             { text: '大模型课程', link: '/#llm-courses' },
-            { text: '智能体与 Agent', link: '/#agent' },
-            { text: 'AI Infra 与工程', link: '/#infra' },
+            { text: '智能体项目', link: '/#agent' },
+            { text: 'AI Infra 项目', link: '/#infra' },
             { text: '论文与技术文章', link: '/#papers' },
-            { text: '演讲、访谈与延伸阅读', link: '/#interviews' },
+            { text: '演讲与访谈', link: '/#interviews' },
           ],
         },
         {
-          text: '专题',
+          text: '站点',
           items: [
-            { text: 'Agent', link: '/topics/agent/' },
-            { text: 'Infra', link: '/topics/infra/' },
-            { text: 'Papers', link: '/topics/papers/' },
-            { text: 'Interviews', link: '/topics/interviews/' },
+            { text: '生成流程与关于', link: '/workflow/' },
           ],
         },
-        { text: 'Course 工作流', link: '/workflow/' },
       ],
     },
     outline: { level: [2, 3], label: '本页内容' },

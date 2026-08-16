@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-11
+title: Scaling laws
+preparedAt: 2026-08-15T05:49:03.360Z
+video:
+  id: vTfEyOyzV9E
+  title: "Stanford CS336 Language Modeling from Scratch | Spring 2026 | Lecture 11:  Scaling Laws"
+  url: https://www.youtube.com/watch?v=vTfEyOyzV9E
+  playlist: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+  playlistIndex: 11
+  channel: Stanford Online
+  durationSeconds: 4623
+materials:
+  - label: lecture_11.pdf
+    type: slides
+    url: https://github.com/stanford-cs336/lectures/blob/main/lecture_11.pdf
+    status: pending
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: manual
+  language: en-US
+  transcript: llm/cs336-2026/notes/lecture-11/transcript.en.md
+  processor: video-subtitle-transcript

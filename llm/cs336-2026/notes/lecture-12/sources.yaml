@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-12
+title: Evaluation
+preparedAt: 2026-08-15T05:49:14.441Z
+video:
+  id: JpAxdTWQJxM
+  title: "Stanford CS336 Language Modeling from Scratch | Spring 2026 | Lecture 12: Evaluation"
+  url: https://www.youtube.com/watch?v=JpAxdTWQJxM
+  playlist: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+  playlistIndex: 12
+  channel: Stanford Online
+  durationSeconds: 4714
+materials:
+  - label: lecture_12.py
+    type: reference
+    url: https://cs336.stanford.edu/lectures/?trace=lecture_12
+    status: pending
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: manual
+  language: en-US
+  transcript: llm/cs336-2026/notes/lecture-12/transcript.en.md
+  processor: video-subtitle-transcript

@@ -32,7 +32,7 @@ sections:
         subtitle: Language Modeling from Scratch
         route: /generated/courses/cs336-2026/
   - id: agent
-    title: 智能体与 Agent
+    title: 智能体项目
     description: Agent 架构、记忆、工具使用与工程实践
     items:
       - id: hello-agents
@@ -51,7 +51,7 @@ sections:
         detail: 渐进式教程
         route: /topics/agent/#tencentdb-agent-memory
   - id: infra
-    title: AI Infra 与工程
+    title: AI Infra 项目
     description: GPU、网络、远程开发与生产系统
     items:
       - id: network
@@ -66,7 +66,7 @@ sections:
         route: /topics/infra/#gpu-systems
   - id: papers
     title: 论文与技术文章
-    description: 经典论文复现、机制解释与前沿文章
+    description: 30 篇论文精读、机制解释与技术文章
     items:
       - id: paper-30
         title: 30 Papers
@@ -79,7 +79,7 @@ sections:
         detail: 持续整理
         route: /topics/papers/#技术文章
   - id: interviews
-    title: 演讲、访谈与延伸阅读
+    title: 演讲与访谈
     description: 从课程之外理解研究、产品和产业判断
     items:
       - id: interviews

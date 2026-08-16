@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-14
+title: Data (filtering, deduplication, mixing, synthetic data)
+preparedAt: 2026-08-15T05:49:30.397Z
+video:
+  id: 5sxHosTLPF8
+  title: "Stanford CS336 Language Modeling from Scratch | Spring 2026 | Lecture 14: Data"
+  url: https://www.youtube.com/watch?v=5sxHosTLPF8
+  playlist: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+  playlistIndex: 14
+  channel: Stanford Online
+  durationSeconds: 5086
+materials:
+  - label: lecture_14.py
+    type: reference
+    url: https://cs336.stanford.edu/lectures/?trace=lecture_14
+    status: pending
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: manual
+  language: en-US
+  transcript: llm/cs336-2026/notes/lecture-14/transcript.en.md
+  processor: video-subtitle-transcript

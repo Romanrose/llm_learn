@@ -12,6 +12,7 @@ function linkHref(url: string) {
 defineProps<{
   eyebrow: string
   title: string
+  courseRoute?: string
   description?: string
   status?: string
   links?: Array<{ label: string; url: string }>
@@ -21,6 +22,7 @@ defineProps<{
 
 <template>
   <header class="course-header">
+    <a v-if="courseRoute" class="course-header__back" :href="withBase(courseRoute)">← 返回课程学习路径</a>
     <div class="course-header__copy">
       <div class="course-header__topline">
         <span class="ll-eyebrow">{{ eyebrow }}</span>
@@ -35,10 +37,11 @@ defineProps<{
         </div>
       </dl>
     </div>
-    <nav v-if="links?.length" class="course-header__actions" aria-label="课程外部资源">
+    <nav v-if="links?.length" class="course-header__actions" aria-label="本讲资源">
       <a
         v-for="link in links"
         :key="link.url"
+        class="course-button"
         :href="linkHref(link.url)"
         :target="isExternal(link.url) ? '_blank' : undefined"
         :rel="isExternal(link.url) ? 'noreferrer' : undefined"

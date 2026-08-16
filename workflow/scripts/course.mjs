@@ -588,6 +588,7 @@ function promote(courseId, lectureId, args) {
   upsertOutput(outputs, { id: 'lecture-note', label: 'Lecture Note', source: relativeToRepo(formalPaths.note), searchable: true, reviewStatus: 'reviewed' })
   upsertOutput(outputs, { id: 'blog', label: 'Blog 解读', source: relativeToRepo(formalPaths.blog), searchable: true, reviewStatus: 'reviewed' })
   upsertOutput(outputs, { id: 'transcript-zh', label: '中文逐字稿', source: relativeToRepo(formalPaths.chinese), searchable: false, reviewStatus: 'reviewed' })
+  upsertOutput(outputs, { id: 'transcript-en', label: '英文逐字稿', source: relativeToRepo(paths.english), searchable: false, reviewStatus: 'source' })
   item.outputs = outputs
   item.generation = { state: 'reviewed', manifest: relativeToRepo(paths.review), reviewedAt: new Date().toISOString() }
   writeYaml(courseConfigPath, course)
@@ -644,11 +645,18 @@ async function generateDeepSeekTranslation({ courseId, course, item, transcriptE
   const candidateDirectory = join(lectureDirectory, 'references', 'deepseek')
   const candidatePath = join(candidateDirectory, 'transcript.zh-CN.md')
   const runPath = join(candidateDirectory, 'run.yaml')
-  if (!args.includes('--overwrite') && (existsSync(candidatePath) || existsSync(runPath))) {
+  const reuseCandidateTranscript = args.includes('--reuse-candidate-transcript')
+  if (!args.includes('--overwrite') && !reuseCandidateTranscript && (existsSync(candidatePath) || existsSync(runPath))) {
     throw new Error(`DeepSeek 候选稿已存在：${relativeToRepo(candidateDirectory)}；确认覆盖后增加 --overwrite`)
   }
   const englishTranscript = readFileSync(transcriptEnPath, 'utf8')
-  const chunks = splitParagraphs(englishTranscript)
+  const existingChineseTranscript = reuseCandidateTranscript && existsSync(candidatePath)
+    ? readFileSync(candidatePath, 'utf8')
+    : null
+  if (reuseCandidateTranscript && !existingChineseTranscript) {
+    throw new Error(`缺少可复用的中文候选稿：${relativeToRepo(candidatePath)}`)
+  }
+  const chunks = reuseCandidateTranscript ? [] : splitParagraphs(englishTranscript)
   const translations = new Array(chunks.length)
   let nextChunk = 0
   let completedChunks = 0
@@ -663,12 +671,19 @@ async function generateDeepSeekTranslation({ courseId, course, item, transcriptE
         timestamps.push({ marker, timestamp })
         return `${marker} `
       })
-      const result = await runDeepSeek(`你在翻译 ${lectureLabel(course, item)} 的英文逐字稿。请参考 Lecture 04 的成稿风格，将下面内容完整、忠实地翻译为简体中文。\n\n要求：\n1. 不摘要、不删减、不补写原文没有的事实。\n2. 保留技术术语、模型名、论文名、函数名和常用缩写；首次出现可写中文（English）。\n3. 只修正明显断句、重复、语序和能够确认的术语错误，保留讲者的论证、例子、提问、玩笑和课堂互动。\n4. 只输出自然语义段落，不添加标题、前言、总结或代码围栏。\n5. 输入中的 [[[TIMESTAMP_N]]] 标记是视频时间戳，必须原样保留在对应段落开头，不能翻译、删除、合并或改写。\n6. 这是第 ${index + 1}/${chunks.length} 个分块，只翻译给定文本。\n\n英文原文：\n${protectedChunk}`)
-      let translated = result.content
-      for (const { marker, timestamp } of timestamps) translated = translated.replaceAll(marker, timestamp)
-      if (timestamps.some(({ timestamp }) => !translated.includes(timestamp))) {
-        throw new Error(`DeepSeek 分块 ${index + 1} 丢失时间戳`)
+      let translated = ''
+      let timestampsPreserved = false
+      for (let attempt = 1; attempt <= 3; attempt += 1) {
+        const retryInstruction = attempt === 1
+          ? ''
+          : '\n\n上一次输出遗漏了一个或多个 [[[TIMESTAMP_N]]] 标记。请重新翻译，并逐个原样保留所有标记。'
+        const result = await runDeepSeek(`你在翻译 ${lectureLabel(course, item)} 的英文逐字稿。请参考 Lecture 04 的成稿风格，将下面内容完整、忠实地翻译为简体中文。\n\n要求：\n1. 不摘要、不删减、不补写原文没有的事实。\n2. 保留技术术语、模型名、论文名、函数名和常用缩写；首次出现可写中文（English）。\n3. 只修正明显断句、重复、语序和能够确认的术语错误，保留讲者的论证、例子、提问、玩笑和课堂互动。\n4. 只输出自然语义段落，不添加标题、前言、总结或代码围栏。\n5. 输入中的 [[[TIMESTAMP_N]]] 标记是视频时间戳，必须原样保留在对应段落开头，不能翻译、删除、合并或改写。\n6. 这是第 ${index + 1}/${chunks.length} 个分块，只翻译给定文本。${retryInstruction}\n\n英文原文：\n${protectedChunk}`)
+        translated = result.content
+        for (const { marker, timestamp } of timestamps) translated = translated.replaceAll(marker, timestamp)
+        timestampsPreserved = timestamps.every(({ timestamp }) => translated.includes(timestamp))
+        if (timestampsPreserved) break
       }
+      if (!timestampsPreserved) throw new Error(`DeepSeek 分块 ${index + 1} 连续 3 次丢失时间戳`)
       translations[index] = translated
       completedChunks += 1
       console.log(`  完成翻译 ${completedChunks}/${chunks.length}`)
@@ -689,15 +704,21 @@ async function generateDeepSeekTranslation({ courseId, course, item, transcriptE
     translations.join('\n\n'),
     '',
   ].join('\n')
-  const aligned = reflowAlignedTranscripts(englishTranscript, chineseTranscript)
-  const finalChineseTranscript = aligned.chinese
-  writeFileSync(transcriptEnPath, aligned.english, 'utf8')
-  const shortChunk = translations.findIndex((translation, index) => translation.length < chunks[index].length * 0.2)
-  if (shortChunk !== -1 || finalChineseTranscript.length < englishTranscript.length * 0.28) {
-    throw new Error(`中文候选稿长度异常${shortChunk === -1 ? '' : `（分块 ${shortChunk + 1}）`}，可能发生输出截断`)
+  let finalChineseTranscript
+  if (existingChineseTranscript) {
+    finalChineseTranscript = existingChineseTranscript
+    console.log(`复用中文候选逐字稿：${relativeToRepo(candidatePath)}`)
+  } else {
+    const aligned = reflowAlignedTranscripts(englishTranscript, chineseTranscript)
+    finalChineseTranscript = aligned.chinese
+    writeFileSync(transcriptEnPath, aligned.english, 'utf8')
+    const shortChunk = translations.findIndex((translation, index) => translation.length < chunks[index].length * 0.2)
+    if (shortChunk !== -1 || finalChineseTranscript.length < englishTranscript.length * 0.28) {
+      throw new Error(`中文候选稿长度异常${shortChunk === -1 ? '' : `（分块 ${shortChunk + 1}）`}，可能发生输出截断`)
+    }
+    mkdirSync(candidateDirectory, { recursive: true })
+    writeFileSync(candidatePath, finalChineseTranscript, 'utf8')
   }
-  mkdirSync(candidateDirectory, { recursive: true })
-  writeFileSync(candidatePath, finalChineseTranscript, 'utf8')
   writeYaml(runPath, {
     schemaVersion: 1,
     state: 'candidate-ready',
@@ -713,16 +734,21 @@ async function generateDeepSeekTranslation({ courseId, course, item, transcriptE
   })
   console.log(`DeepSeek 中文候选稿已写入：${relativeToRepo(candidatePath)}`)
 
-  const sourceText = existsSync(lectureSourcePath) ? readFileSync(lectureSourcePath, 'utf8') : ''
+  // PDFs are binary assets, not prompt text. Passing their UTF-8-decoded bytes to
+  // the model wastes context and can corrupt the evidence window; the transcript
+  // remains the source of truth until a dedicated PDF text extractor is added.
+  const sourceText = existsSync(lectureSourcePath) && extname(lectureSourcePath).toLowerCase() !== '.pdf'
+    ? readFileSync(lectureSourcePath, 'utf8')
+    : ''
   const evidence = `\n\n中文候选逐字稿：\n${finalChineseTranscript}${sourceText ? `\n\n本讲讲义代码：\n${sourceText}` : ''}`
   console.log('DeepSeek 生成 Lecture Note 候选稿')
-  const noteResult = await runDeepSeek(`为 ${lectureLabel(course, item)} 编写中文 Lecture Note 候选稿。只能依据下面提供的逐字稿和讲义代码，不要虚构课程未提及的观点、数据或引用。\n\n要求：\n- 输出完整 Markdown，不要代码围栏，也不要逐段添加时间戳。\n- 面向有编程基础的学习者，结构清晰、信息密度高。\n- 包含：学习目标、课程主线、核心概念、关键公式或原则、课程作业关联、常见误区、复习清单。\n- 区分课程原意与解释，不要写成逐字稿，不要使用空泛的 AI 套话。\n- 保留重要英文术语。\n- 目标长度 3000–6000 个中文字符。${evidence}`)
+  const noteResult = await runDeepSeek(`为 ${lectureLabel(course, item)} 编写中文 Lecture Note 候选稿。只能依据下面提供的逐字稿和讲义代码，不要虚构课程未提及的观点、数据或引用。\n\n要求：\n- 输出完整 Markdown，不要代码围栏，也不要逐段添加时间戳。\n- 面向有编程基础的学习者，结构清晰、信息密度高。\n- 包含：学习目标、课程主线、核心概念、关键公式或原则、课程作业关联、常见误区、复习清单。\n- 区分课程原意与解释，不要写成逐字稿，不要使用空泛的 AI 套话。\n- 保留重要英文术语。\n- 不补充输入未明确给出的硬件规格、基准测试单位或数值、日期和外部链接；缺少精确依据时使用定性表述。\n- 目标长度 3000–6000 个中文字符。${evidence}`)
   const notePath = join(candidateDirectory, 'note.md')
   if (noteResult.content.length < 2_000) throw new Error('DeepSeek Lecture Note 候选稿长度不足')
   writeFileSync(notePath, `${noteResult.content.replace(/^```(?:markdown)?\s*/i, '').replace(/\s*```$/, '').trim()}\n`, 'utf8')
 
   console.log('DeepSeek 生成 Blog 候选稿')
-  const blogResult = await runDeepSeek(`为 ${lectureLabel(course, item)} 编写一篇可独立阅读的中文技术 Blog 候选稿。只能依据下面提供的逐字稿和讲义代码，不要虚构课程未提及的观点、数据或外部引用。\n\n要求：\n- 输出完整 Markdown，不要代码围栏，也不要逐段添加时间戳。\n- 文章要有明确标题、导语、递进论证和结语，不能只是课程提纲的改写。\n- 使用课程中的具体例子支撑观点。\n- 解释本讲内容在本课程整体学习路径中的位置。\n- 文末列出官方视频和讲义入口。\n- 保留重要英文术语。\n- 目标长度 3500–7000 个中文字符。${evidence}`)
+  const blogResult = await runDeepSeek(`为 ${lectureLabel(course, item)} 编写一篇可独立阅读的中文技术 Blog 候选稿。只能依据下面提供的逐字稿和讲义代码，不要虚构课程未提及的观点、数据或外部引用。\n\n要求：\n- 输出完整 Markdown，不要代码围栏，也不要逐段添加时间戳。\n- 文章要有明确标题、导语、递进论证和结语，不能只是课程提纲的改写。\n- 使用课程中的具体例子支撑观点。\n- 解释本讲内容在本课程整体学习路径中的位置。\n- 文末列出官方视频和讲义入口。\n- 保留重要英文术语。\n- 不补充输入未明确给出的硬件规格、基准测试单位或数值、日期和外部链接；缺少精确依据时使用定性表述。\n- 目标长度 3500–7000 个中文字符。${evidence}`)
   const blogPath = join(candidateDirectory, 'blog.md')
   if (blogResult.content.length < 2_500) throw new Error('DeepSeek Blog 候选稿长度不足')
   writeFileSync(blogPath, `${blogResult.content.replace(/^```(?:markdown)?\s*/i, '').replace(/\s*```$/, '').trim()}\n`, 'utf8')
