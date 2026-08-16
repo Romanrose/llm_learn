@@ -53,3 +53,9 @@ npm run course -- prepare cs336-2026 lecture-01
 npm run course -- validate <course-id> <lecture-id> --published
 npm run build
 ```
+
+## 关于 llm_learn
+
+这是一个围绕课程、项目、论文与演讲资料建立的个人学习库。它不预先堆叠空目录：只有真正开始学习、资料来源明确且有正式产物时，才接入课程目录。
+
+每门课程遵循统一结构：官方资料确定事实边界，字幕和讲义提供原始证据，AI 协助形成候选稿，最终经校验与人工确认后发布为课程笔记、Blog、双语逐字稿和 PDF。

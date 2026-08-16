@@ -3,7 +3,7 @@ state: reviewed
 course: cs336-2026
 lecture: lecture-05
 provider: deepseek
-reviewedAt: 2026-08-11T13:38:37.915Z
+reviewedAt: 2026-08-15T13:27:09.109Z
 source: llm/cs336-2026/notes/lecture-05/references/deepseek
 outputs:
   chinese: llm/cs336-2026/notes/lecture-05/transcript.zh-CN.md

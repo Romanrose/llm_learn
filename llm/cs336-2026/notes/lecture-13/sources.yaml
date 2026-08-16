@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-13
+title: Data (sources, datasets)
+preparedAt: 2026-08-15T05:49:21.564Z
+video:
+  id: -qm0ln33G24
+  title: "Stanford CS336 Language Modeling from Scratch | Spring 2026 | Lecture 13: Data (Sources, Datasets)"
+  url: https://www.youtube.com/watch?v=-qm0ln33G24
+  playlist: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+  playlistIndex: 13
+  channel: Stanford Online
+  durationSeconds: 4921
+materials:
+  - label: lecture_13.py
+    type: reference
+    url: https://cs336.stanford.edu/lectures/?trace=lecture_13
+    status: pending
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: manual
+  language: en-US
+  transcript: llm/cs336-2026/notes/lecture-13/transcript.en.md
+  processor: video-subtitle-transcript

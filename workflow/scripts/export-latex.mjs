@@ -149,12 +149,14 @@ function markdownToLatex(markdown, { noteDirectory, outputDirectory }) {
       continue
     }
     if (/^```/.test(line)) {
-      const language = line.slice(3).trim() || 'text'
+      const requestedLanguage = line.slice(3).trim().toLowerCase()
+      const supportedLanguages = new Set(['bash', 'c', 'c++', 'java', 'javascript', 'json', 'matlab', 'python', 'sql', 'tex', 'xml'])
+      const language = supportedLanguages.has(requestedLanguage) ? `[language=${requestedLanguage}]` : ''
       const code = []
       index += 1
       while (index < lines.length && !/^```/.test(lines[index])) code.push(lines[index++])
       index += 1
-      body.push(`\\begin{lstlisting}[language=${language}]\n${code.join('\n')}\n\\end{lstlisting}`)
+      body.push(`\\begin{lstlisting}${language}\n${code.join('\n')}\n\\end{lstlisting}`)
       continue
     }
     if (/^\s*\|/.test(line) && lines[index + 1]?.includes('|---')) {
