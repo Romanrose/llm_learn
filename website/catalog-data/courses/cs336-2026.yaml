@@ -30,6 +30,33 @@ items:
     order: 1
     date: Mon March 30
     title: Overview, tokenization
+    subtitle: 建立从数据到语言模型的课程全景，并理解分词器如何把文本转换为模型可处理的表示。
+    overview: 本讲从“如何在固定资源下训练出更好的语言模型”出发，串起数据、模型架构、系统、Scaling Laws 与对齐等课程主线。后半部分聚焦文本表示：比较字符、字节、词级切分的局限，并通过 BPE 理解词表大小、压缩率、可逆性和多语言处理之间的取舍。
+    readings:
+      - label: Neural Language Models are Effective Priors for Scene Text Recognition
+        type: paper
+        url: https://arxiv.org/abs/2005.04305
+        note: 课程引用
+      - label: SentencePiece - A simple and language independent subword tokenizer
+        type: paper
+        url: https://arxiv.org/abs/1808.06226
+        note: 推荐阅读
+      - label: OpenAI tiktoken
+        type: code
+        url: https://github.com/openai/tiktoken
+        note: 实践工具
+      - label: Neural Machine Translation of Rare Words with Subword Units
+        type: paper
+        url: https://arxiv.org/abs/1508.07909
+        note: BPE 经典论文
+      - label: Language Models are Few-Shot Learners
+        type: paper
+        url: https://arxiv.org/abs/2005.14165
+        note: 模型规模背景
+      - label: UTF-8 Standard
+        type: docs
+        url: https://www.unicode.org/versions/Unicode16.0.0/core-spec/chapter-3/
+        note: 文本编码
     instructors:
       - Percy
     resources:
@@ -51,7 +78,7 @@ items:
     generation:
       state: reviewed
       manifest: llm/cs336-2026/notes/lecture-01/review.yaml
-      reviewedAt: 2026-08-11T13:15:41.825Z
+      reviewedAt: 2026-08-15T13:30:03.709Z
     outputs:
       - id: lecture-note
         label: Lecture Note
@@ -77,6 +104,37 @@ items:
     order: 2
     date: Wed April 1
     title: PyTorch (einops), resource accounting (FLOPs, memory, arithmetic intensity)
+    subtitle: 用张量操作、FLOPs、显存和算术强度建立训练大模型前最基本的资源核算方法。
+    overview: 本讲建立训练系统分析所需的统一语言：先用 PyTorch 与 einops 表达张量计算，再计算参数量、FLOPs、激活与优化器显存。课程进一步引入算术强度和 Roofline Model，用来判断一个算子究竟受计算吞吐限制，还是受显存带宽限制，并据此估算 Transformer 训练成本。
+    readings:
+      - label: Mixed Precision Training
+        type: paper
+        url: https://arxiv.org/abs/1710.03740
+        note: 课程引用
+      - label: JAX Scaling Book - Roofline analysis
+        type: book
+        url: https://jax-ml.github.io/scaling-book/roofline/
+        note: 推荐教程
+      - label: Transformer FLOPs
+        type: blog
+        url: https://www.adamcasson.com/posts/transformer-flops
+        note: 计算参考
+      - label: FP8 Formats for Deep Learning
+        type: paper
+        url: https://arxiv.org/abs/2209.05433
+        note: 低精度训练
+      - label: Einops Basics
+        type: docs
+        url: https://einops.rocks/1-einops-basics/
+        note: 张量表达
+      - label: Transformer Inference Arithmetic
+        type: blog
+        url: https://kipp.ly/transformer-inference-arithmetic/
+        note: 资源核算
+      - label: Model Training Anatomy - Memory Usage
+        type: docs
+        url: https://huggingface.co/docs/transformers/v4.32.1/model_memory_anatomy
+        note: 显存核算
     instructors:
       - Percy
     resources:
@@ -112,14 +170,50 @@ items:
         source: llm/cs336-2026/notes/lecture-02/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-02/transcript.en.md
+        searchable: false
+        reviewStatus: source
     generation:
       state: reviewed
       manifest: llm/cs336-2026/notes/lecture-02/review.yaml
-      reviewedAt: 2026-08-11T13:44:36.678Z
+      reviewedAt: 2026-08-15T13:27:08.675Z
   - id: lecture-03
     order: 3
     date: Mon April 6
     title: Architectures, hyperparameters
+    subtitle: 理解 Transformer 架构的关键选择，以及模型规模、深度和训练超参数之间的关系。
+    overview: 本讲以现代 Transformer 的共同骨架为起点，比较 RMSNorm、SwiGLU、RoPE、串并联子层和去偏置等常见设计。重点不只是罗列模型差异，而是理解这些选择为何在内存访问、优化稳定性和规模扩展中有效，并形成选择层数、宽度、头数、词表和正则化策略的经验框架。
+    readings:
+      - label: Attention Is All You Need
+        type: paper
+        url: https://arxiv.org/abs/1706.03762
+        note: 基础论文
+      - label: GLU Variants Improve Transformer
+        type: paper
+        url: https://arxiv.org/abs/2002.05202
+        note: 课程引用
+      - label: RoFormer - Enhanced Transformer with Rotary Position Embedding
+        type: paper
+        url: https://arxiv.org/abs/2104.09864
+        note: 课程引用
+      - label: Root Mean Square Layer Normalization
+        type: paper
+        url: https://arxiv.org/abs/1910.07467
+        note: RMSNorm
+      - label: Layer Normalization
+        type: paper
+        url: https://arxiv.org/abs/1607.06450
+        note: 基础归一化
+      - label: Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer
+        type: paper
+        url: https://arxiv.org/abs/1910.10683
+        note: T5
+      - label: LLaMA - Open and Efficient Foundation Language Models
+        type: paper
+        url: https://arxiv.org/abs/2302.13971
+        note: 现代架构案例
     instructors:
       - Tatsu
     resources:
@@ -151,14 +245,50 @@ items:
         source: llm/cs336-2026/notes/lecture-03/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-03/transcript.en.md
+        searchable: false
+        reviewStatus: source
     generation:
       state: reviewed
       manifest: llm/cs336-2026/notes/lecture-03/review.yaml
-      reviewedAt: 2026-08-11T13:49:43.532Z
+      reviewedAt: 2026-08-15T13:27:08.860Z
   - id: lecture-04
     order: 4
     date: Wed April 8
     title: Attention alternatives and mixture of experts
+    subtitle: 比较注意力替代方案与混合专家模型，分析它们在计算效率和模型容量上的取舍。
+    overview: 本讲讨论两条扩大模型能力的路线：用线性注意力、状态空间模型等结构降低长序列计算成本，以及用 Mixture of Experts 在近似固定 FLOPs 下增加参数容量。课程会拆解专家路由、负载均衡、容量溢出和通信开销，说明稀疏模型的算法收益为何必须与系统实现共同考虑。
+    readings:
+      - label: Transformers are SSMs - Generalized Models and Efficient Algorithms Through Structured State Space Duality
+        type: paper
+        url: https://arxiv.org/abs/2405.21060
+        note: Mamba-2
+      - label: Switch Transformers - Scaling to Trillion Parameter Models with Simple and Efficient Sparsity
+        type: paper
+        url: https://arxiv.org/abs/2101.03961
+        note: MoE 基础
+      - label: DeepSeekMoE - Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models
+        type: paper
+        url: https://arxiv.org/abs/2401.06066
+        note: 课程案例
+      - label: Mamba - Linear-Time Sequence Modeling with Selective State Spaces
+        type: paper
+        url: https://arxiv.org/abs/2312.00752
+        note: 状态空间模型
+      - label: ST-MoE - Designing Stable and Transferable Sparse Expert Models
+        type: paper
+        url: https://arxiv.org/abs/2202.08906
+        note: MoE 稳定性
+      - label: DeepSeek-V3 Technical Report
+        type: paper
+        url: https://arxiv.org/abs/2412.19437
+        note: 现代 MoE
+      - label: Outrageously Large Neural Networks - The Sparsely-Gated Mixture-of-Experts Layer
+        type: paper
+        url: https://arxiv.org/abs/1701.06538
+        note: MoE 经典论文
     instructors:
       - Tatsu
     resources:
@@ -169,7 +299,8 @@ items:
     status: published
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-04/generation.yaml
+      manifest: llm/cs336-2026/notes/lecture-04/review.yaml
+      reviewedAt: 2026-08-15T13:34:14.843Z
     review:
       state: reviewed
       manifest: llm/cs336-2026/notes/lecture-04/review.yaml
@@ -189,15 +320,58 @@ items:
         source: llm/cs336-2026/notes/lecture-04/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-04/transcript.en.md
+        searchable: false
+        reviewStatus: source
     exports:
       - label: PDF 讲义
         url: /generated/exports/cs336-2026/lecture-04/lecture-04.pdf
       - label: LaTeX 源码
         url: /generated/exports/cs336-2026/lecture-04/lecture-04.tex
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=cKSwj_qZ8Jg
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-04/sources.yaml
+      preparedAt: 2026-08-15T07:16:02.473Z
   - id: lecture-05
     order: 5
     date: Mon April 13
     title: GPUs, TPUs
+    subtitle: 从硬件视角理解 GPU 与 TPU 的执行方式，以及它们如何影响大模型训练效率。
+    overview: 本讲从线程、Warp、Block、SM 和存储层次解释 GPU 的执行模型，并对照 TPU 的矩阵计算与互联设计。随后用低精度、算子融合、重计算、访存合并和分块等方法分析性能瓶颈，最后以 FlashAttention 展示如何把硬件约束转化为更高效的算法。
+    readings:
+      - label: FlashAttention - Fast and Memory-Efficient Exact Attention with IO-Awareness
+        type: paper
+        url: https://arxiv.org/abs/2205.14135
+        note: 核心论文
+      - label: JAX Scaling Book - How to Think About GPUs
+        type: book
+        url: https://jax-ml.github.io/scaling-book/gpus/
+        note: 推荐教程
+      - label: Making Deep Learning Go Brrrr From First Principles
+        type: blog
+        url: https://horace.io/brrr_intro.html
+        note: 推荐阅读
+      - label: FlashAttention-2 - Faster Attention with Better Parallelism and Work Partitioning
+        type: paper
+        url: https://arxiv.org/abs/2307.08691
+        note: 算法演进
+      - label: NVIDIA Matrix Multiplication Background User's Guide
+        type: docs
+        url: https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html
+        note: 硬件文档
+      - label: CUDA C++ Programming Guide
+        type: docs
+        url: https://docs.nvidia.com/cuda/cuda-c-programming-guide/
+        note: CUDA 基础
+      - label: What Shapes Do Matrix Multiplications Like?
+        type: blog
+        url: https://www.thonking.ai/p/what-shapes-do-matrix-multiplications
+        note: 性能直觉
     instructors:
       - Tatsu
     resources:
@@ -222,6 +396,11 @@ items:
         source: llm/cs336-2026/notes/lecture-05/note.md
         searchable: true
         reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-05/transcript.en.md
+        searchable: false
+        reviewStatus: source
     official:
       - label: 课程视频
         url: https://www.youtube.com/watch?v=izZba4UA7iY
@@ -232,11 +411,42 @@ items:
     generation:
       state: reviewed
       manifest: llm/cs336-2026/notes/lecture-05/review.yaml
-      reviewedAt: 2026-08-11T13:38:37.916Z
+      reviewedAt: 2026-08-15T13:27:09.113Z
   - id: lecture-06
     order: 6
     date: Wed April 15
     title: Kernels, Triton
+    subtitle: 进入 GPU Kernel 与 Triton 编程，理解算子实现、内存访问和性能优化的基本方法。
+    overview: 本讲把上一讲的硬件直觉落到算子实现：学习如何建立正确的 benchmark、使用 profiler 定位瓶颈，并从访存、并行粒度和融合机会分析 Kernel。随后用 Triton 编写向量加法、Softmax 和矩阵乘等算子，理解 program、block、mask、tiling 与自动调优的配合方式。
+    readings:
+      - label: Triton - An Intermediate Language and Compiler for Tiled Neural Network Computations
+        type: paper
+        url: https://dl.acm.org/doi/10.1145/3315508.3329973
+        note: 核心论文
+      - label: Triton Fused Softmax Tutorial
+        type: docs
+        url: https://triton-lang.org/main/getting-started/tutorials/02-fused-softmax.html
+        note: 动手实践
+      - label: PyTorch Profiler Recipe
+        type: docs
+        url: https://pytorch.org/tutorials/recipes/recipes/profiler_recipe.html
+        note: 性能分析
+      - label: Triton Matrix Multiplication Tutorial
+        type: docs
+        url: https://triton-lang.org/main/getting-started/tutorials/03-matrix-multiplication.html
+        note: 动手实践
+      - label: PyTorch Benchmark Recipe
+        type: docs
+        url: https://pytorch.org/tutorials/recipes/recipes/benchmark.html
+        note: 基准测试
+      - label: CUDA Parallel Thread Execution ISA
+        type: docs
+        url: https://docs.nvidia.com/cuda/parallel-thread-execution/
+        note: 执行模型
+      - label: Introducing Triton - Open-Source GPU Programming for Neural Networks
+        type: blog
+        url: https://openai.com/index/triton/
+        note: 项目介绍
     instructors:
       - Percy
     resources:
@@ -250,10 +460,73 @@ items:
       - id: assignment-2
         state: out
     status: resources-discovered
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=xnDHaNUvHBg
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-06/sources.yaml
+      preparedAt: 2026-08-15T05:22:22.405Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-06/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-06/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-06/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-06/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-06/review.yaml
+      reviewedAt: 2026-08-15T13:27:09.324Z
   - id: lecture-07
     order: 7
     date: Mon April 20
     title: Parallelism
+    subtitle: 介绍大模型训练中的并行基础，以及计算任务如何跨多张加速卡进行拆分与协同。
+    overview: 本讲先把单卡训练扩展到多卡环境，建立带宽、延迟、拓扑和集合通信的基本模型。通过 broadcast、reduce、all-reduce、all-gather 与 reduce-scatter，理解数据并行如何同步梯度，以及通信量、计算重叠和互联结构如何决定扩展效率。
+    readings:
+      - label: Megatron-LM - Training Multi-Billion Parameter Language Models Using Model Parallelism
+        type: paper
+        url: https://arxiv.org/abs/1909.08053
+        note: 并行训练基础
+      - label: PyTorch Distributed Overview
+        type: docs
+        url: https://pytorch.org/docs/stable/distributed.html
+        note: 实践文档
+      - label: Levanter - Legible, Scalable, Reproducible Foundation Models with JAX
+        type: blog
+        url: https://crfm.stanford.edu/2023/06/16/levanter-1_0-release.html
+        note: 课程引用
+      - label: Horovod - Fast and Easy Distributed Deep Learning in TensorFlow
+        type: paper
+        url: https://arxiv.org/abs/1802.05799
+        note: Ring AllReduce
+      - label: NVIDIA Collective Communications Library Documentation
+        type: docs
+        url: https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/
+        note: 集合通信
+      - label: NCCL Tests Performance Guide
+        type: docs
+        url: https://github.com/NVIDIA/nccl-tests/blob/master/doc/PERFORMANCE.md
+        note: 通信测量
+      - label: Demystifying NCCL - An In-depth Analysis of GPU Communication Protocols and Algorithms
+        type: paper
+        url: https://arxiv.org/abs/2507.04786
+        note: 延伸阅读
     instructors:
       - Percy
     resources:
@@ -262,10 +535,73 @@ items:
         url: https://cs336.stanford.edu/lectures/?trace=lecture_07
         status: pending
     status: resources-discovered
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=SzpOcwdIL0Y
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-07/sources.yaml
+      preparedAt: 2026-08-15T05:48:22.350Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-07/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-07/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-07/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-07/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-07/review.yaml
+      reviewedAt: 2026-08-15T13:27:09.505Z
   - id: lecture-08
     order: 8
     date: Wed April 22
     title: Parallelism
+    subtitle: 继续分析数据、张量和流水线并行，并理解通信成本对分布式训练效率的影响。
+    overview: 本讲系统比较大模型训练的组合并行策略：从 ZeRO/FSDP 分片参数、梯度和优化器状态，到张量并行、流水线并行、序列并行与上下文并行。重点是根据模型规模、批量大小、节点拓扑和显存预算计算通信代价，并理解为何生产训练通常需要多种并行方式组成 3D 或 4D 并行。
+    readings:
+      - label: ZeRO - Memory Optimizations Toward Training Trillion Parameter Models
+        type: paper
+        url: https://arxiv.org/abs/1910.02054
+        note: 参数分片
+      - label: Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM
+        type: paper
+        url: https://arxiv.org/abs/2104.04473
+        note: 3D 并行
+      - label: Reducing Activation Recomputation in Large Transformer Models
+        type: paper
+        url: https://arxiv.org/abs/2205.05198
+        note: 序列并行
+      - label: GPipe - Efficient Training of Giant Neural Networks using Pipeline Parallelism
+        type: paper
+        url: https://arxiv.org/abs/1811.06965
+        note: 流水线并行
+      - label: PyTorch FSDP - Experiences on Scaling Fully Sharded Data Parallel
+        type: paper
+        url: https://arxiv.org/abs/2304.11277
+        note: 参数分片实践
+      - label: DeepSpeed-Megatron - System Optimizations Enable Training Deep Learning Models with Over 100 Billion Parameters
+        type: paper
+        url: https://arxiv.org/abs/2207.00032
+        note: 系统案例
+      - label: Megatron Core Developer Guide
+        type: docs
+        url: https://docs.nvidia.com/megatron-core/developer-guide/latest/index.html
+        note: 工程文档
     instructors:
       - Tatsu
     resources:
@@ -274,10 +610,73 @@ items:
         url: https://github.com/stanford-cs336/lectures/blob/main/lecture_08.pdf
         status: pending
     status: resources-discovered
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=6-cXp-aOmdg
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-08/sources.yaml
+      preparedAt: 2026-08-15T05:48:29.990Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-08/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-08/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-08/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-08/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-08/review.yaml
+      reviewedAt: 2026-08-15T13:27:09.667Z
   - id: lecture-09
     order: 9
     date: Mon April 27
     title: Scaling laws
+    subtitle: 建立 Scaling Laws 的基本直觉，理解模型、数据与计算量之间的幂律关系。
+    overview: 本讲把 Scaling Laws 作为预测与决策工具：观察损失如何随参数量、数据量和训练计算呈现近似幂律，并学习在对数坐标下拟合趋势。课程进一步讨论架构、优化器、批量大小和下游任务的尺度效应，以及 Kaplan 与 Chinchilla 对计算最优模型和数据配比的不同结论。
+    readings:
+      - label: Scaling Laws for Neural Language Models
+        type: paper
+        url: https://arxiv.org/abs/2001.08361
+        note: Kaplan Scaling Laws
+      - label: Training Compute-Optimal Large Language Models
+        type: paper
+        url: https://arxiv.org/abs/2203.15556
+        note: Chinchilla
+      - label: Chinchilla Scaling - A Replication Attempt
+        type: paper
+        url: https://arxiv.org/abs/2404.10102
+        note: 复核阅读
+      - label: Deep Learning Scaling is Predictable, Empirically
+        type: paper
+        url: https://arxiv.org/abs/1712.00409
+        note: 早期 Scaling Laws
+      - label: A Constructive Prediction of the Generalization Error Across Scales
+        type: paper
+        url: https://arxiv.org/abs/1909.12673
+        note: 联合缩放
+      - label: Scaling Laws for Autoregressive Generative Modeling
+        type: paper
+        url: https://arxiv.org/abs/2010.14701
+        note: 跨模态缩放
+      - label: Scaling Data-Constrained Language Models
+        type: paper
+        url: https://arxiv.org/abs/2305.16264
+        note: 数据受限场景
     instructors:
       - Tatsu
     resources:
@@ -286,10 +685,73 @@ items:
         url: https://github.com/stanford-cs336/lectures/blob/main/lecture_09.pdf
         status: pending
     status: resources-discovered
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=Q15rhEWZPQ4
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-09/sources.yaml
+      preparedAt: 2026-08-15T05:48:41.224Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-09/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-09/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-09/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-09/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-09/review.yaml
+      reviewedAt: 2026-08-15T13:27:09.873Z
   - id: lecture-10
     order: 10
     date: Wed April 29
     title: Inference
+    subtitle: 分析语言模型推理的计算与内存瓶颈，并理解批处理、缓存和服务吞吐之间的关系。
+    overview: 本讲区分 Prefill 与 Decode 两个推理阶段，分析 KV Cache、批处理、延迟、吞吐和显存占用之间的关系。随后考察量化、PagedAttention、连续批处理与推测解码等关键技术，解释 vLLM、SGLang、TensorRT-LLM 等系统如何提升在线服务效率。
+    readings:
+      - label: Efficient Memory Management for Large Language Model Serving with PagedAttention
+        type: paper
+        url: https://arxiv.org/abs/2309.06180
+        note: vLLM 核心论文
+      - label: Fast Inference from Transformers via Speculative Decoding
+        type: paper
+        url: https://arxiv.org/abs/2211.17192
+        note: 推测解码
+      - label: JAX Scaling Book - Inference
+        type: book
+        url: https://jax-ml.github.io/scaling-book/inference/
+        note: 推荐教程
+      - label: SGLang - Efficient Execution of Structured Language Model Programs
+        type: paper
+        url: https://arxiv.org/abs/2312.07104
+        note: 推理系统
+      - label: GPTQ - Accurate Post-Training Quantization for Generative Pre-trained Transformers
+        type: paper
+        url: https://arxiv.org/abs/2210.17323
+        note: 权重量化
+      - label: SmoothQuant - Accurate and Efficient Post-Training Quantization for Large Language Models
+        type: paper
+        url: https://arxiv.org/abs/2211.10438
+        note: 激活量化
+      - label: vLLM Documentation
+        type: docs
+        url: https://docs.vllm.ai/
+        note: 工程文档
     instructors:
       - Percy
     resources:
@@ -303,10 +765,73 @@ items:
       - id: assignment-3
         state: out
     status: resources-discovered
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=EfM546A79aM
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-10/sources.yaml
+      preparedAt: 2026-08-15T05:48:51.329Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-10/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-10/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-10/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-10/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-10/review.yaml
+      reviewedAt: 2026-08-15T13:27:10.112Z
   - id: lecture-11
     order: 11
     date: Mon May 4
     title: Scaling laws
+    subtitle: 进一步学习 Scaling Laws 的拟合与预测方法，用实验结果指导模型和训练预算选择。
+    overview: 本讲转向可执行的 Scaling Laws 实验方案，比较 MiniCPM、DeepSeek、Llama 3 等公开训练配方。内容覆盖 WSD 学习率、IsoFLOP 扫描、批量与学习率缩放、μP 参数化和稀疏模型缩放，目标是在有限的小规模实验中稳定外推大模型的超参数与训练预算。
+    readings:
+      - label: MiniCPM - Unveiling the Potential of Small Language Models with Scalable Training Strategies
+        type: paper
+        url: https://arxiv.org/abs/2404.06395
+        note: 缩放配方
+      - label: DeepSeek LLM - Scaling Open-Source Language Models with Longtermism
+        type: paper
+        url: https://arxiv.org/abs/2401.02954
+        note: 课程案例
+      - label: Tensor Programs V - Tuning Large Neural Networks via Zero-Shot Hyperparameter Transfer
+        type: paper
+        url: https://arxiv.org/abs/2203.03466
+        note: μP
+      - label: The Llama 3 Herd of Models
+        type: paper
+        url: https://arxiv.org/abs/2407.21783
+        note: 缩放案例
+      - label: Cerebras-GPT - Open Compute-Optimal Language Models Trained on the Cerebras Wafer-Scale Cluster
+        type: paper
+        url: https://arxiv.org/abs/2304.03208
+        note: Chinchilla 配方
+      - label: DeepSeek-V2 - A Strong, Economical, and Efficient Mixture-of-Experts Language Model
+        type: paper
+        url: https://arxiv.org/abs/2405.04434
+        note: 稀疏缩放
+      - label: Scaling Book - Training at Scale
+        type: book
+        url: https://jax-ml.github.io/scaling-book/training/
+        note: 推荐教程
     instructors:
       - Tatsu
     resources:
@@ -315,6 +840,38 @@ items:
         url: https://github.com/stanford-cs336/lectures/blob/main/lecture_11.pdf
         status: pending
     status: resources-discovered
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=vTfEyOyzV9E
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-11/sources.yaml
+      preparedAt: 2026-08-15T05:49:03.360Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-11/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-11/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-11/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-11/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-11/review.yaml
+      reviewedAt: 2026-08-15T13:27:10.299Z
   - id: lecture-12
     order: 12
     date: Wed May 6
@@ -331,7 +888,41 @@ items:
         state: due
       - id: assignment-4
         state: out
-    subtitle: 从语言模型指标到 Agent Eval
+    subtitle: 从语言模型指标到 Agent Eval，理解评测集、指标和真实能力之间可能存在的偏差。
+    overview: 本讲从困惑度、知识问答和偏好评测出发，逐步扩展到代码、终端、网络安全等 Agent 任务以及安全与专业领域评测。重点讨论指标饱和、评审模型偏差、数据污染、测试环境缺陷和排行榜过拟合，建立“先检查任务与样本，再解释分数”的评测习惯。
+    readings:
+      - label: Holistic Evaluation of Language Models
+        type: paper
+        url: https://arxiv.org/abs/2211.09110
+        note: HELM
+      - label: Chatbot Arena - An Open Platform for Evaluating LLMs by Human Preference
+        type: paper
+        url: https://arxiv.org/abs/2403.04132
+        note: 偏好评测
+      - label: SWE-bench - Can Language Models Resolve Real-World GitHub Issues?
+        type: paper
+        url: https://arxiv.org/abs/2310.06770
+        note: Agent 评测
+      - label: Measuring Massive Multitask Language Understanding
+        type: paper
+        url: https://arxiv.org/abs/2009.03300
+        note: MMLU
+      - label: GPQA - A Graduate-Level Google-Proof Q&A Benchmark
+        type: paper
+        url: https://arxiv.org/abs/2311.12022
+        note: 高难知识评测
+      - label: HellaSwag - Can a Machine Really Finish Your Sentence?
+        type: paper
+        url: https://arxiv.org/abs/1905.07830
+        note: 常识推理
+      - label: HarmBench - A Standardized Evaluation Framework for Automated Red Teaming
+        type: paper
+        url: https://arxiv.org/abs/2402.04249
+        note: 安全评测
+      - label: AlpacaEval 2.0
+        type: paper
+        url: https://arxiv.org/abs/2404.04475
+        note: 自动偏好评测
     status: published
     official:
       - label: 课程视频
@@ -341,18 +932,69 @@ items:
         label: Blog 解读
         source: llm/cs336-2026/notes/lecture-12/blog.md
         searchable: true
+        reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
         source: llm/cs336-2026/notes/lecture-12/transcript.zh-CN.md
         searchable: false
+        reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
         source: llm/cs336-2026/notes/lecture-12/transcript.en.md
         searchable: false
+        reviewStatus: source
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-12/note.md
+        searchable: true
+        reviewStatus: reviewed
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-12/sources.yaml
+      preparedAt: 2026-08-15T05:49:14.441Z
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-12/review.yaml
+      reviewedAt: 2026-08-15T13:37:30.375Z
   - id: lecture-13
     order: 13
     date: Mon May 11
     title: Data (sources, datasets)
+    subtitle: 梳理预训练数据的主要来源、数据集构建方式，以及数据选择对模型能力的影响。
+    overview: 本讲从网页、代码、论文、书籍和对话数据等来源出发，拆解预训练语料从抓取、解析到数据集发布的完整链路。课程同时讨论 robots.txt、版权许可、内容授权和公开数据的边界，并比较 Common Crawl、Wikipedia、The Pile、RefinedWeb 等数据集的构成与取舍。
+    readings:
+      - label: The Pile - An 800GB Dataset of Diverse Text for Language Modeling
+        type: paper
+        url: https://arxiv.org/abs/2101.00027
+        note: 数据集论文
+      - label: RefinedWeb - The Falcon LLM Dataset
+        type: paper
+        url: https://arxiv.org/abs/2306.01116
+        note: 网页数据
+      - label: Common Crawl
+        type: docs
+        url: https://commoncrawl.org/
+        note: 数据来源
+      - label: The FineWeb Datasets - Decanting the Web for the Finest Text Data at Scale
+        type: paper
+        url: https://arxiv.org/abs/2406.17557
+        note: 网页数据集
+      - label: Dolma - An Open Corpus of Three Trillion Tokens for Language Model Pretraining Research
+        type: paper
+        url: https://arxiv.org/abs/2402.00159
+        note: 开放语料
+      - label: ROOTS - Search Tooling for Large Scale Archives
+        type: paper
+        url: https://arxiv.org/abs/2302.14035
+        note: 数据治理
+      - label: Software Heritage
+        type: docs
+        url: https://www.softwareheritage.org/
+        note: 代码语料来源
+      - label: arXiv Bulk Data Access
+        type: docs
+        url: https://info.arxiv.org/help/bulk_data_s3.html
+        note: 论文语料来源
     instructors:
       - Percy
     resources:
@@ -361,10 +1003,77 @@ items:
         url: https://cs336.stanford.edu/lectures/?trace=lecture_13
         status: pending
     status: resources-discovered
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=-qm0ln33G24
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-13/sources.yaml
+      preparedAt: 2026-08-15T05:49:21.564Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-13/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-13/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-13/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-13/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-13/review.yaml
+      reviewedAt: 2026-08-15T13:27:10.463Z
   - id: lecture-14
     order: 14
     date: Wed May 13
     title: Data (filtering, deduplication, mixing, synthetic data)
+    subtitle: 学习数据过滤、去重、混合与合成数据方法，理解数据质量如何决定训练上限。
+    overview: 本讲进入数据工程的质量控制阶段：使用语言识别、规则、分类器和模型评分过滤语料，并用精确哈希与 MinHash/LSH 处理文档和段落级重复。随后讨论数据源混合、有限数据重复训练以及合成数据，说明质量、覆盖度、多样性和计算预算之间的共同约束。
+    readings:
+      - label: Deduplicating Training Data Makes Language Models Better
+        type: paper
+        url: https://arxiv.org/abs/2107.06499
+        note: 数据去重
+      - label: DataComp-LM - In Search of the Next Generation of Language Model Pretraining Datasets
+        type: paper
+        url: https://arxiv.org/abs/2406.11794
+        note: 数据筛选
+      - label: FineWeb-Edu
+        type: paper
+        url: https://arxiv.org/abs/2406.17557
+        note: 教育数据过滤
+      - label: Gopher - Scaling Language Models, Methods, Analysis and Insights from Training
+        type: paper
+        url: https://arxiv.org/abs/2112.11446
+        note: 质量过滤
+      - label: DoReMi - Optimizing Data Mixtures Speeds Up Language Model Pretraining
+        type: paper
+        url: https://arxiv.org/abs/2305.10429
+        note: 数据混合
+      - label: RegMix - Data Mixture as Regression for Language Model Pre-training
+        type: paper
+        url: https://arxiv.org/abs/2407.01492
+        note: 数据混合
+      - label: Textbooks Are All You Need
+        type: paper
+        url: https://arxiv.org/abs/2306.11644
+        note: 合成数据
+      - label: fastText Language Identification
+        type: docs
+        url: https://fasttext.cc/docs/en/language-identification.html
+        note: 语言过滤
     instructors:
       - Percy
     resources:
@@ -373,10 +1082,77 @@ items:
         url: https://cs336.stanford.edu/lectures/?trace=lecture_14
         status: pending
     status: resources-discovered
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=5sxHosTLPF8
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-14/sources.yaml
+      preparedAt: 2026-08-15T05:49:30.397Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-14/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-14/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-14/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-14/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-14/review.yaml
+      reviewedAt: 2026-08-15T13:27:10.646Z
   - id: lecture-15
     order: 15
     date: Mon May 18
     title: Mid/post-training (SFT/RLHF)
+    subtitle: 介绍监督微调与 RLHF，理解基础模型如何经过中后训练转化为可用的助手模型。
+    overview: 本讲解释基础模型如何通过 Mid-training、监督微调和偏好优化获得指令遵循、对话与安全行为。课程重点比较示范数据与偏好数据的采集方式，并从目标函数和工程复杂度上对照 PPO 与 DPO，同时提醒标注者分布、回答长度和模型生成反馈会改变最终行为。
+    readings:
+      - label: Training Language Models to Follow Instructions with Human Feedback
+        type: paper
+        url: https://arxiv.org/abs/2203.02155
+        note: InstructGPT
+      - label: Direct Preference Optimization - Your Language Model is Secretly a Reward Model
+        type: paper
+        url: https://arxiv.org/abs/2305.18290
+        note: DPO
+      - label: Constitutional AI - Harmlessness from AI Feedback
+        type: paper
+        url: https://arxiv.org/abs/2212.08073
+        note: AI Feedback
+      - label: Learning to Summarize with Human Feedback
+        type: paper
+        url: https://arxiv.org/abs/2009.01325
+        note: 早期 RLHF
+      - label: Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback
+        type: paper
+        url: https://arxiv.org/abs/2204.05862
+        note: HH-RLHF
+      - label: Secrets of RLHF in Large Language Models Part I - PPO
+        type: paper
+        url: https://arxiv.org/abs/2307.04964
+        note: PPO 实践
+      - label: UltraFeedback - Boosting Language Models with Scaled AI Feedback
+        type: paper
+        url: https://arxiv.org/abs/2310.01377
+        note: AI 偏好数据
+      - label: AlpacaFarm - A Simulation Framework for Methods that Learn from Human Feedback
+        type: paper
+        url: https://arxiv.org/abs/2305.14387
+        note: RLHF 工程
     instructors:
       - Tatsu
     resources:
@@ -385,10 +1161,77 @@ items:
         url: https://github.com/stanford-cs336/lectures/blob/main/lecture_15.pdf
         status: pending
     status: resources-discovered
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=2oH6PWPrYFo
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-15/sources.yaml
+      preparedAt: 2026-08-15T05:49:39.135Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-15/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-15/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-15/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-15/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-15/review.yaml
+      reviewedAt: 2026-08-15T13:27:10.813Z
   - id: lecture-16
     order: 16
     date: Wed May 20
     title: Post-training - RLVR
+    subtitle: 聚焦可验证奖励强化学习，理解 RLVR 的训练信号、优化流程与适用任务。
+    overview: 本讲从 PPO 的策略梯度、价值模型和 KL 约束出发，引出更适合可验证任务的 GRPO 与相关变体。通过 DeepSeek-R1、DeepSeekMath、Kimi 等案例，课程分析正确性奖励、组内基线、长思维链涌现、SFT 冷启动和奖励投机，说明 RLVR 能扩展什么、又不能替代什么。
+    readings:
+      - label: Proximal Policy Optimization Algorithms
+        type: paper
+        url: https://arxiv.org/abs/1707.06347
+        note: PPO
+      - label: DeepSeekMath - Pushing the Limits of Mathematical Reasoning in Open Language Models
+        type: paper
+        url: https://arxiv.org/abs/2402.03300
+        note: GRPO
+      - label: DeepSeek-R1 - Incentivizing Reasoning Capability in LLMs via Reinforcement Learning
+        type: paper
+        url: https://arxiv.org/abs/2501.12948
+        note: RLVR 案例
+      - label: Kimi k1.5 - Scaling Reinforcement Learning with LLMs
+        type: paper
+        url: https://arxiv.org/abs/2501.12599
+        note: 推理强化学习
+      - label: Back to Basics - Revisiting REINFORCE Style Optimization for Learning from Human Feedback
+        type: paper
+        url: https://arxiv.org/abs/2402.14740
+        note: RLOO
+      - label: Understanding R1-Zero-Like Training - A Critical Perspective
+        type: paper
+        url: https://arxiv.org/abs/2503.20783
+        note: RLVR 分析
+      - label: OpenAI Spinning Up - PPO
+        type: docs
+        url: https://spinningup.openai.com/en/latest/algorithms/ppo.html
+        note: 算法教程
+      - label: AlpacaFarm PPO Trainer
+        type: code
+        url: https://github.com/tatsu-lab/alpaca_farm/blob/main/src/alpaca_farm/rl/ppo_trainer.py
+        note: 课程代码
     instructors:
       - Tatsu
     resources:
@@ -402,10 +1245,77 @@ items:
       - id: assignment-5
         state: out
     status: resources-discovered
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=dIFAi87Ws4E
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-16/sources.yaml
+      preparedAt: 2026-08-15T05:49:46.268Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-16/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-16/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-16/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-16/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-16/review.yaml
+      reviewedAt: 2026-08-15T13:27:11.003Z
   - id: lecture-17
     order: 17
     date: Wed May 27
     title: Alignment - multimodality
+    subtitle: 讨论模型对齐与多模态扩展，理解语言模型如何连接图像等其他信息形式。
+    overview: 本讲研究如何把预训练语言模型扩展为视觉语言模型：先用 CLIP 式对比学习对齐图像与文本表示，再比较冻结编码器、投影层、交叉注意力和端到端训练等连接方案。课程结合 Flamingo、LLaVA 等模型讨论多模态指令数据、分辨率、视觉 Token 与语言能力保持之间的取舍。
+    readings:
+      - label: Learning Transferable Visual Models From Natural Language Supervision
+        type: paper
+        url: https://arxiv.org/abs/2103.00020
+        note: CLIP
+      - label: Flamingo - a Visual Language Model for Few-Shot Learning
+        type: paper
+        url: https://arxiv.org/abs/2204.14198
+        note: 多模态架构
+      - label: Visual Instruction Tuning
+        type: paper
+        url: https://arxiv.org/abs/2304.08485
+        note: LLaVA
+      - label: An Image is Worth 16x16 Words - Transformers for Image Recognition at Scale
+        type: paper
+        url: https://arxiv.org/abs/2010.11929
+        note: Vision Transformer
+      - label: BLIP-2 - Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models
+        type: paper
+        url: https://arxiv.org/abs/2301.12597
+        note: 模态连接
+      - label: PaLI - A Jointly-Scaled Multilingual Language-Image Model
+        type: paper
+        url: https://arxiv.org/abs/2209.06794
+        note: 多模态缩放
+      - label: LLaVA Project
+        type: code
+        url: https://github.com/haotian-liu/LLaVA
+        note: 开源实现
+      - label: OpenAI CLIP
+        type: code
+        url: https://github.com/openai/CLIP
+        note: 开源实现
     instructors:
       - Percy
     resources:
@@ -414,16 +1324,50 @@ items:
         url: https://cs336.stanford.edu/lectures/?trace=lecture_17
         status: pending
     status: resources-discovered
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=26FtD08ZpOU
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-17/sources.yaml
+      preparedAt: 2026-08-15T05:49:52.593Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-17/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-17/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-17/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-17/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-17/review.yaml
+      reviewedAt: 2026-08-15T13:27:11.241Z
   - id: lecture-18
     order: 18
     date: Mon June 1
     title: "Guest lecture: Daniel Selsam"
+    subtitle: 嘉宾讲座，结合前沿研究与实践经验补充课程主线中的模型训练与推理视角。
     resources: []
     status: scheduled
   - id: lecture-19
     order: 19
     date: Wed June 3
     title: "Guest lecture: Dan Fu"
+    subtitle: 嘉宾讲座，从研究与系统实践出发回顾大模型效率、架构和应用中的关键问题。
     resources: []
     assignments:
       - id: assignment-5
@@ -431,5 +1375,5 @@ items:
     status: scheduled
 schedule:
   source: https://cs336.stanford.edu/
-  syncedAt: 2026-08-11T10:46:09.464Z
+  syncedAt: 2026-08-15T05:41:47.021Z
   lectureCount: 19

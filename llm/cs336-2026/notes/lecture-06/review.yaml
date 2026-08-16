@@ -1,0 +1,14 @@
+schemaVersion: 1
+state: reviewed
+course: cs336-2026
+lecture: lecture-06
+provider: deepseek
+reviewedAt: 2026-08-15T13:27:09.321Z
+source: llm/cs336-2026/notes/lecture-06/references/deepseek
+outputs:
+  chinese: llm/cs336-2026/notes/lecture-06/transcript.zh-CN.md
+  note: llm/cs336-2026/notes/lecture-06/note.md
+  blog: llm/cs336-2026/notes/lecture-06/blog.md
+checks:
+  errors: []
+  warnings: []

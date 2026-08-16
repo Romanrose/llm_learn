@@ -1,0 +1,24 @@
+schemaVersion: 1
+state: candidate-ready
+provider: deepseek
+model: deepseek-v4-flash
+createdAt: 2026-08-15T06:07:21.979Z
+course: cs336-2026
+lecture: lecture-10
+inputs:
+  transcriptEn: llm/cs336-2026/notes/lecture-10/transcript.en.md
+  lecture: llm/cs336-2026/lectures/lecture_10.py
+outputs:
+  transcriptZh: llm/cs336-2026/notes/lecture-10/references/deepseek/transcript.zh-CN.md
+  note: llm/cs336-2026/notes/lecture-10/references/deepseek/note.md
+  blog: llm/cs336-2026/notes/lecture-10/references/deepseek/blog.md
+translation:
+  chunks: 9
+  maxConcurrent: 3
+review:
+  state: pending
+  required:
+    - completeness
+    - terminology
+    - hallucination
+    - citations

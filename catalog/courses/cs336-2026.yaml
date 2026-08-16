@@ -1,0 +1,376 @@
+kind: course
+id: cs336-2026
+category: llm
+title: Stanford CS336 · Language Modeling from Scratch
+shortTitle: CS336 2026
+year: 2026
+status: updating
+description: 从零构建语言模型，覆盖架构、GPU、并行训练、Scaling Laws、评估与数据。
+paths:
+  root: llm/cs336-2026
+  lectures: llm/cs336-2026/lectures
+  references: llm/cs336-2026/references
+  resources: llm/cs336-2026/resources
+  notes: llm/cs336-2026/notes
+  exports: llm/cs336-2026/exports
+transcript:
+  engine: krillinai
+  originLanguage: en
+  targetLanguage: zh_cn
+  captionSource: any
+official:
+  - label: 课程主页
+    url: https://cs336.stanford.edu/
+  - label: 官方视频
+    url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+  - label: 官方讲义仓库
+    url: https://github.com/stanford-cs336/lectures
+items:
+  - id: lecture-01
+    order: 1
+    date: Mon March 30
+    title: Overview, tokenization
+    instructors:
+      - Percy
+    resources:
+      - label: lecture_01.py
+        type: reference
+        url: https://cs336.stanford.edu/lectures/?trace=lecture_01
+        status: pending
+    assignments:
+      - id: assignment-1
+        state: out
+    status: resources-discovered
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=JuoVZkPBiKk
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-01/sources.yaml
+      preparedAt: 2026-08-11T13:05:15.903Z
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-01/review.yaml
+      reviewedAt: 2026-08-11T13:15:41.825Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-01/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-01/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-01/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-01/transcript.en.md
+        searchable: false
+        reviewStatus: source
+  - id: lecture-02
+    order: 2
+    date: Wed April 1
+    title: PyTorch (einops), resource accounting (FLOPs, memory, arithmetic intensity)
+    instructors:
+      - Percy
+    resources:
+      - label: lecture_02.py
+        type: reference
+        url: https://cs336.stanford.edu/lectures/?trace=lecture_02
+        status: pending
+      - label: recording version
+        type: reference
+        url: https://cs336.stanford.edu/lectures/?trace=lecture_02_recording
+        status: pending
+    status: resources-discovered
+  - id: lecture-03
+    order: 3
+    date: Mon April 6
+    title: Architectures, hyperparameters
+    instructors:
+      - Tatsu
+    resources:
+      - label: lecture 3.pdf
+        type: slides
+        url: https://github.com/stanford-cs336/lectures/blob/main/lecture_03.pdf
+        status: pending
+    status: resources-discovered
+  - id: lecture-04
+    order: 4
+    date: Wed April 8
+    title: Attention alternatives and mixture of experts
+    instructors:
+      - Tatsu
+    resources:
+      - label: lecture 4.pdf
+        type: slides
+        url: https://github.com/stanford-cs336/lectures/blob/main/lecture_04.pdf
+        status: pending
+    status: published
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-04/generation.yaml
+    review:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-04/review.yaml
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-04/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-04/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-04/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+  - id: lecture-05
+    order: 5
+    date: Mon April 13
+    title: GPUs, TPUs
+    instructors:
+      - Tatsu
+    resources:
+      - label: lecture 5.pdf
+        type: slides
+        url: https://github.com/stanford-cs336/lectures/blob/main/lecture_05.pdf
+        status: pending
+    status: published
+    outputs:
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-05/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-05/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-05/note.md
+        searchable: true
+        reviewStatus: reviewed
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=izZba4UA7iY
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-05/sources.yaml
+      preparedAt: 2026-08-11T13:20:26.702Z
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-05/review.yaml
+      reviewedAt: 2026-08-11T13:38:37.916Z
+  - id: lecture-06
+    order: 6
+    date: Wed April 15
+    title: Kernels, Triton
+    instructors:
+      - Percy
+    resources:
+      - label: lecture_06.py
+        type: reference
+        url: https://cs336.stanford.edu/lectures/?trace=lecture_06
+        status: pending
+    assignments:
+      - id: assignment-1
+        state: due
+      - id: assignment-2
+        state: out
+    status: resources-discovered
+  - id: lecture-07
+    order: 7
+    date: Mon April 20
+    title: Parallelism
+    instructors:
+      - Percy
+    resources:
+      - label: lecture_07.py
+        type: reference
+        url: https://cs336.stanford.edu/lectures/?trace=lecture_07
+        status: pending
+    status: resources-discovered
+  - id: lecture-08
+    order: 8
+    date: Wed April 22
+    title: Parallelism
+    instructors:
+      - Tatsu
+    resources:
+      - label: lecture_08.pdf
+        type: slides
+        url: https://github.com/stanford-cs336/lectures/blob/main/lecture_08.pdf
+        status: pending
+    status: resources-discovered
+  - id: lecture-09
+    order: 9
+    date: Mon April 27
+    title: Scaling laws
+    instructors:
+      - Tatsu
+    resources:
+      - label: lecture_09.pdf
+        type: slides
+        url: https://github.com/stanford-cs336/lectures/blob/main/lecture_09.pdf
+        status: pending
+    status: resources-discovered
+  - id: lecture-10
+    order: 10
+    date: Wed April 29
+    title: Inference
+    instructors:
+      - Percy
+    resources:
+      - label: lecture_10.py
+        type: reference
+        url: https://cs336.stanford.edu/lectures/?trace=lecture_10
+        status: pending
+    assignments:
+      - id: assignment-2
+        state: due
+      - id: assignment-3
+        state: out
+    status: resources-discovered
+  - id: lecture-11
+    order: 11
+    date: Mon May 4
+    title: Scaling laws
+    instructors:
+      - Tatsu
+    resources:
+      - label: lecture_11.pdf
+        type: slides
+        url: https://github.com/stanford-cs336/lectures/blob/main/lecture_11.pdf
+        status: pending
+    status: resources-discovered
+  - id: lecture-12
+    order: 12
+    date: Wed May 6
+    title: Evaluation
+    instructors:
+      - Percy
+    resources:
+      - label: lecture_12.py
+        type: reference
+        url: https://cs336.stanford.edu/lectures/?trace=lecture_12
+        status: pending
+    assignments:
+      - id: assignment-3
+        state: due
+      - id: assignment-4
+        state: out
+    subtitle: 从语言模型指标到 Agent Eval
+    status: published
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=JpAxdTWQJxM
+    outputs:
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-12/blog.md
+        searchable: true
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-12/transcript.zh-CN.md
+        searchable: false
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-12/transcript.en.md
+        searchable: false
+  - id: lecture-13
+    order: 13
+    date: Mon May 11
+    title: Data (sources, datasets)
+    instructors:
+      - Percy
+    resources:
+      - label: lecture_13.py
+        type: reference
+        url: https://cs336.stanford.edu/lectures/?trace=lecture_13
+        status: pending
+    status: resources-discovered
+  - id: lecture-14
+    order: 14
+    date: Wed May 13
+    title: Data (filtering, deduplication, mixing, synthetic data)
+    instructors:
+      - Percy
+    resources:
+      - label: lecture_14.py
+        type: reference
+        url: https://cs336.stanford.edu/lectures/?trace=lecture_14
+        status: pending
+    status: resources-discovered
+  - id: lecture-15
+    order: 15
+    date: Mon May 18
+    title: Mid/post-training (SFT/RLHF)
+    instructors:
+      - Tatsu
+    resources:
+      - label: lecture_15.pdf
+        type: slides
+        url: https://github.com/stanford-cs336/lectures/blob/main/lecture_15.pdf
+        status: pending
+    status: resources-discovered
+  - id: lecture-16
+    order: 16
+    date: Wed May 20
+    title: Post-training - RLVR
+    instructors:
+      - Tatsu
+    resources:
+      - label: lecture_16.pdf
+        type: slides
+        url: https://github.com/stanford-cs336/lectures/blob/main/lecture_16.pdf
+        status: pending
+    assignments:
+      - id: assignment-4
+        state: due
+      - id: assignment-5
+        state: out
+    status: resources-discovered
+  - id: lecture-17
+    order: 17
+    date: Wed May 27
+    title: Alignment - multimodality
+    instructors:
+      - Percy
+    resources:
+      - label: lecture_17.py
+        type: reference
+        url: https://cs336.stanford.edu/lectures/?trace=lecture_17
+        status: pending
+    status: resources-discovered
+  - id: lecture-18
+    order: 18
+    date: Mon June 1
+    title: "Guest lecture: Daniel Selsam"
+    resources: []
+    status: scheduled
+  - id: lecture-19
+    order: 19
+    date: Wed June 3
+    title: "Guest lecture: Dan Fu"
+    resources: []
+    assignments:
+      - id: assignment-5
+        state: due
+    status: scheduled
+schedule:
+  source: https://cs336.stanford.edu/
+  syncedAt: 2026-08-11T10:46:09.464Z
+  lectureCount: 19

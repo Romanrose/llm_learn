@@ -2,17 +2,24 @@ schemaVersion: 1
 course: cs336-2026
 lecture: lecture-04
 title: Attention alternatives and mixture of experts
-sourceState: historical
+preparedAt: 2026-08-15T07:16:02.473Z
 video:
-  title: CS336 Lecture 4
-  url: https://www.bilibili.com/video/BV1msTD6CE6j?p=4
-caption:
-  state: historical-source
-  kind: asr
-  language: en
-  transcript: llm/cs336-2026/notes/lecture-04/transcript.zh-CN.md
-  processor: historical-external-pipeline
+  id: cKSwj_qZ8Jg
+  title: "Stanford CS336 Language Modeling from Scratch | Spring 2026 | Lecture 4: Attention Alternatives"
+  url: https://www.youtube.com/watch?v=cKSwj_qZ8Jg
+  playlist: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+  playlistIndex: 4
+  channel: Stanford Online
+  durationSeconds: 5180
 materials:
   - label: lecture 4.pdf
     type: slides
     url: https://github.com/stanford-cs336/lectures/blob/main/lecture_04.pdf
+    status: pending
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: manual
+  language: en-US
+  transcript: llm/cs336-2026/notes/lecture-04/transcript.en.md
+  processor: video-subtitle-transcript

@@ -1,0 +1,137 @@
+---
+title: "CS336 2026 · Attention alternatives and mixture of experts · Blog 解读"
+description: "从零构建语言模型，覆盖架构、GPU、并行训练、Scaling Laws、评估与数据。"
+search: true
+---
+
+
+
+<CourseHeader eyebrow="CS336 2026 · Lecture 4" title="Attention alternatives and mixture of experts" description="" status="已发布" :details='[{"label":"日期","value":"Wed April 8"},{"label":"讲师","value":"Tatsu"},{"label":"官方资料","value":"1 项"},{"label":"内容产物","value":"3 项"}]' :links='[{"label":"课程主页","url":"https://cs336.stanford.edu/"},{"label":"官方视频","url":"https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV"},{"label":"官方讲义仓库","url":"https://github.com/stanford-cs336/lectures"}]' />
+
+<CourseTabs active="blog" :items='[{"id":"overview","label":"课程资料","route":"/generated/courses/cs336-2026/lecture-04/"},{"id":"lecture-note","label":"Lecture Note","route":"/generated/courses/cs336-2026/lecture-04/lecture-note"},{"id":"blog","label":"Blog 解读","route":"/generated/courses/cs336-2026/lecture-04/blog"},{"id":"transcript-zh","label":"中文逐字稿","route":"/generated/courses/cs336-2026/lecture-04/transcript-zh"}]' />
+
+<div class="source-note">本页由 <code>llm/cs336-2026/notes/lecture-04/blog.md</code> 自动生成；原始笔记位置保持不变。</div>
+
+# 理解现代大模型的两条扩展路径：长上下文与混合专家
+
+> 基于 Stanford CS336 Lecture 4 的学习整理。本文面向初学者，讨论 Transformer 在“读得更长”和“容纳更多参数”时为何会变得昂贵，以及线性注意力和混合专家模型分别试图解决什么问题。
+
+## 从一个 Transformer 层开始
+
+今天的语言模型可以处理一段很长的文本，回答问题、总结文档，甚至调用工具完成多步任务。要理解这些能力背后的工程挑战，我们从 Transformer 的一个基本计算层开始。
+
+一段文本进入模型后，会先被切分为 token。token 可以粗略理解为词、词的一部分或标点符号。模型为每个 token 维护一个向量表示，并在许多层中不断更新这些向量。一个典型的 Transformer 层包含两类计算：attention 和前馈网络（feed-forward network，FFN）。
+
+attention 的作用是让当前位置参考上下文。例如，在“这篇论文讨论了模型的扩展规律，它指出……”这句话中，“它”需要回看前文，才能知道自己指代什么。FFN 则更像对每个位置分别进行一次较复杂的特征变换。前者负责在 token 之间传递信息，后者负责在每个 token 上进行较密集的非线性计算。
+
+这套结构非常有效，但它的成本会随着模型使用方式的变化而改变。上下文越来越长时，attention 逐渐成为瓶颈；模型希望拥有更多参数时，FFN 又会带来更高的每 token 计算量。Lecture 4 讨论的两类架构，正是分别应对这两个问题。
+
+## 为什么长上下文会使 attention 变贵
+
+标准 attention 通常写作：
+
+$$
+\operatorname{Attn}(Q,K,V)=\operatorname{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V.
+$$
+
+初看这个公式不必急于理解全部符号。可以把每个 token 的 $Q$ 看作“我正在寻找什么”，$K$ 看作“我能提供什么线索”，$V$ 则是“如果被选中，我要传递什么信息”。模型会比较每个 token 的 $Q$ 与其他 token 的 $K$，据此决定应当从哪些 $V$ 中取回信息。
+
+问题在于，这种比较几乎发生在所有 token 对之间。若输入长度为 $n$，中间会形成一个约为 $n\times n$ 的注意力分数矩阵。文本长度翻倍，成对比较的数量大约变为四倍。短文本中，这部分成本还可以接受；当模型需要阅读数十万甚至百万 token 的上下文时，attention 的计算量和显存占用就会迅速上升。
+
+自回归生成还会遇到 KV cache 问题。模型每生成一个新 token，都需要与此前的上下文交互。为了不重复计算历史 token 的 $K$ 和 $V$，系统会把它们缓存起来。上下文越长，缓存越大；在长对话、长文档问答或 agent 执行多轮工具调用时，这部分内存会直接限制并发和吞吐量。
+
+## FlashAttention：先解决数据搬运问题
+
+面对 attention 的成本，第一步不一定是修改模型公式。许多实际性能问题来自数据在不同存储层级之间的搬运，而不是浮点乘加本身。
+
+GPU 的计算单元很快，但高带宽显存的读写相对昂贵。朴素实现会显式构造很大的注意力矩阵，再将它写入显存、读出并用于后续计算。FlashAttention 通过分块计算和更合理的访问顺序，避免物化完整的注意力矩阵。它得到的 attention 结果与标准计算相同，却显著减少了内存读写。
+
+因此，FlashAttention 没有改变 attention 的 $O(n^2)$ 渐近复杂度，也没有让任意长度的上下文都变得便宜；它解决的是同一算法在真实硬件上如何高效执行的问题。这个区别很重要：算法复杂度描述规模增长的趋势，系统实现决定一个给定规模能否在有限显存和有限时间内跑完。
+
+当上下文继续增大时，常数因子的优化仍然不足。此时需要改变的不是实现细节，而是模型保存和使用历史信息的方式。
+
+## 线性注意力：把历史信息写入状态
+
+暂时忽略 softmax，可以把 attention 的主要乘法写成：
+
+$$
+(QK^\top)V.
+$$
+
+矩阵乘法满足结合律，因此也可以写成：
+
+$$
+(QK^\top)V=Q(K^\top V).
+$$
+
+两种写法的数学结果相同，但中间计算不同。第一种写法需要先得到与 $n^2$ 相关的大矩阵；第二种写法先计算 $K^\top V$，可以把对序列长度的主要依赖改写为近似线性的形式。由此得到的思路通常被称为线性注意力。
+
+它还有一个更直观的解释。假设模型从左到右读取 token，可以持续维护一个状态：
+
+$$
+S_t=S_{t-1}+k_tv_t^\top, \qquad y_t=q_tS_t.
+$$
+
+这里的 $S_t$ 是对前 $t$ 个 token 的压缩表示。新 token 到来时，模型不必保存并逐一访问所有过去的 token，而是更新一次固定大小的状态，再用当前的 $q_t$ 从该状态中读取信息。这种形式与循环神经网络（RNN）相似：历史被总结到状态中，推理时的存储开销不再随上下文长度线性增长。
+
+线性注意力的代价也很明确。标准 softmax attention 可以针对一个具体 token 从任意历史位置检索信息；固定大小状态必须把大量历史压缩进有限空间，可能丢失细粒度的位置信息或内容关联。因此，线性注意力不是对标准 attention 的无损替代，而是一种效率和表达能力之间的取舍。
+
+## 状态模型如何决定保留什么
+
+简单地累加历史信息并不总是合适。不同 token 的重要性不同，旧信息有时应当被保留，有时应当被遗忘。Mamba 一类状态空间模型（state-space models，SSM）在这一点上引入了门控机制，例如：
+
+$$
+S_t=\gamma_t\odot S_{t-1}+k_tv_t^\top.
+$$
+
+$\gamma_t$ 可以理解为遗忘门。它由当前输入产生，用于控制旧状态保留多少。若某个 token 表示话题转移，模型可以减弱旧状态的影响；若当前内容仍依赖先前信息，模型则可以更多地保留历史。后续的 Gated DeltaNet 等模型还进一步控制新信息如何写入状态，以减少重复内容的累积。
+
+这类模型的一个重要特点是：训练和推理可以采用不同但等价的计算视角。训练时，可以借助并行扫描等方法处理整段序列；推理时，则像 RNN 一样逐 token 更新状态。对于长序列服务，这种固定状态的推理形式尤其有吸引力。
+
+不过，目前很多实际架构并不选择完全放弃 softmax attention。更常见的设计是混合层：大多数层使用较便宜的线性或状态机制，每隔若干层保留一次全局 attention。前者负责以较低成本推进长序列，后者保留对任意位置进行全局交互的能力。混合架构反映了一个现实判断：不同计算机制各有优势，模型不必只选择其中一种。
+
+## 参数更多，为什么计算不一定更多
+
+长上下文处理的是 token 之间的交互成本。另一条扩展路径关心的是模型容量。
+
+在普通 Transformer 中，FFN 对每个 token 都使用同一组参数。增加 FFN 的宽度或层数，通常能增加模型容量，但也意味着每个 token 都要执行更多矩阵运算。若希望模型拥有更多参数，却不希望每次前向传播都激活全部参数，就需要条件计算（conditional computation）。
+
+混合专家模型（Mixture of Experts，MoE）是条件计算最常见的形式之一。它把一个大的 FFN 替换成多个 expert；每个 expert 本身仍是一个小型 FFN。一个轻量的 router 为当前 token 计算各个 expert 的分数，只选择 top-$K$ 个 expert 执行，再将结果加权合并：
+
+$$
+y=\sum_{i\in\operatorname{TopK}(g(x))}g_i(x)E_i(x).
+$$
+
+其中，$E_i$ 是第 $i$ 个 expert，$g(x)$ 是 router 的输出。假设一层有许多 expert，但每个 token 只激活两个，那么总参数量可以很大，单个 token 实际支付的专家计算量却接近两个 FFN。这就是 MoE 的基本价值：增加的是可用参数容量，而不是按相同比例增加每个 token 的激活计算。
+
+## Router 学习分工
+
+初学者容易把 expert 想成“数学专家”“代码专家”或“中文专家”。这是一种有用的直觉，但通常并不准确。router 不会收到人工标注的职业标签，它只通过训练目标学习哪些 token 表示适合送往哪些子网络。最终形成的分工可能与语言、词形、频率、局部上下文模式或隐藏空间中的某些方向有关，而未必具有清晰的人类语义。
+
+MoE 的困难也由 router 引入。如果只优化语言模型的主损失，少数 expert 可能在训练早期获得更多 token，随后因为梯度更多而越来越受偏爱；其余 expert 则很少被调用，几乎无法学习。这种现象称为路由塌缩或 expert collapse。
+
+因此，MoE 往往需要负载均衡目标，使不同 expert 获得相对合理的 token 数量。这里存在一个真实的张力：主任务希望每个 token 去最合适的 expert，均衡目标希望 expert 的使用不要过于集中。模型训练需要在两者之间取得平衡。共享专家、细粒度专家以及不同形式的均衡策略，都是围绕这一问题发展出来的设计。
+
+## 稀疏计算会把问题带到系统层
+
+MoE 并不意味着“免费增加参数”。在大模型训练和推理中，expert 常常被放在不同 GPU 上。token 被 router 选中后，需要发送到对应设备执行 expert，再把结果收回。这一过程通常涉及 all-to-all 通信。
+
+如果某些 expert 特别热门，对应设备会成为最慢的一环；如果 token 经常跨设备路由，通信时间也会抵消一部分计算节省。于是，expert 数量、top-$K$ 的选择、设备拓扑、批大小和路由策略都会影响实际效率。DeepSeek 等 MoE 工作中讨论的设备级路由和通信均衡，正是为了处理这一层问题。
+
+这说明 MoE 不是单纯的网络结构技巧。它要求算法、数值计算和分布式系统共同配合：router 要学得稳定，expert 负载要足够均衡，通信路径也要足够高效。模型参数是否能转化为真实能力，取决于这几个环节能否同时成立。
+
+## 结语：两种稀疏性，两类取舍
+
+Lecture 4 中的线性注意力和 MoE 分别处理不同方向的扩展压力。线性注意力或状态模型试图压缩历史，从而降低长上下文的时间和内存成本；MoE 则通过只激活部分参数，在可控计算量下扩大模型容量。
+
+两者都没有消除取舍。状态模型以有限状态换取更好的长序列扩展性，但可能弱化精确的全局检索；MoE 以稀疏激活换取更多参数，却引入路由、负载均衡和跨设备通信问题。理解这些取舍，比记住某个模型名称更重要。
+
+从更广的角度看，现代大模型的架构演进并不只是“增加层数和参数”。它还在不断回答三个工程问题：哪些历史信息应被保留，哪些参数应被激活，以及这些计算应当如何在硬件上执行。长上下文模型和混合专家模型，正是这三类问题在当前大模型中的两种代表性答案。
+
+---
+
+## 延伸阅读
+
+- [课程整理笔记](./lecture-note)
+- [完整中文逐字稿](./transcript-zh)
+- [线性注意力速记（仓库原稿）](https://github.com/Romanrose/llm_learn/blob/main/llm/cs336-2026/notes/lecture-04/references/linear-attention.md)
