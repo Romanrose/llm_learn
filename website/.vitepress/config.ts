@@ -33,14 +33,17 @@ function lectureSidebarItem(item: CatalogItem) {
   }
 }
 
-const courseSidebar = catalog.flatMap((course) => [{
-  text: course.shortTitle ?? course.title,
-  link: `/generated/courses/${course.id}/`,
-  items: [
-    ...(course.referenceRoute ? [{ text: 'L00 · 课程参考资料', link: course.referenceRoute }] : []),
-    ...course.items.map(lectureSidebarItem),
-  ],
-}])
+const courseSidebars = Object.fromEntries(catalog.map((course) => [
+  `/generated/courses/${course.id}/`,
+  [{
+    text: course.shortTitle ?? course.title,
+    link: `/generated/courses/${course.id}/`,
+    items: [
+      ...(course.referenceRoute ? [{ text: 'L00 · 课程参考资料', link: course.referenceRoute }] : []),
+      ...course.items.map(lectureSidebarItem),
+    ],
+  }],
+]))
 
 export default defineConfig({
   lang: settings.site.lang,
@@ -87,7 +90,7 @@ export default defineConfig({
         { text: '计算机科学资源地图', link: '/references/computer-science-resource-map' },
         { text: '生成流程', link: '/workflow/' },
       ],
-      '/generated/courses/': courseSidebar,
+      ...courseSidebars,
       '/generated/catalog/': [
         { text: '课程与专题', link: '/generated/catalog/' },
         ...catalog.map((course) => ({ text: course.shortTitle ?? course.title, link: `/generated/courses/${course.id}/` })),
