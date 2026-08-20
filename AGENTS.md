@@ -21,7 +21,7 @@ Use these paths for current work:
 
 `website/generated/` and `website/.vitepress/generated/` are generated. Never edit them directly; update the source Markdown, YAML, Vue/CSS, or generator and rerun generation.
 
-Older `site/`, `catalog/`, and `scripts/` directories are not the active website pipeline. Do not add new website work there unless a migration task explicitly requires it.
+There is no second website or legacy catalog pipeline. Do not create parallel `site/`, `catalog/`, `scripts/`, `standards/`, or root-level `course.yaml` paths; use the active paths above.
 
 ## Content and publication rules
 
