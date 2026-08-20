@@ -37,11 +37,11 @@
 
 语言模型 RL 的基础是策略梯度（REINFORCE 形式）：
 
-\[
+$$
 \nabla_\theta J(\theta) = \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\theta(\cdot|x)} \left[ R(x, y) \nabla_\theta \log \pi_\theta(y|x) \right]
-\]
+$$
 
-即以加权 SFT 更新的方式对奖励做梯度上升，权重 \( R(x,y) \) 可正可负。
+即以加权 SFT 更新的方式对奖励做梯度上升，权重 $R(x,y)$ 可正可负。
 
 #### PPO 基本结构
 
@@ -55,7 +55,7 @@
 - PPO 对实现细节非常敏感，社区有大量“PPO 实现细节”类文章。
 - 常见问题：
   - KL 项操作方式错误（如只在正值处截断）会导致训练崩溃。
-  - 许多人使用 \(\gamma = \lambda = 1\)，退化为 bandit 问题，丢失多步结构。
+  - 许多人使用 $\gamma = \lambda = 1$，退化为 bandit 问题，丢失多步结构。
   - 价值网络与主模型同尺寸，显存开销大，不利于大规模推理。
   - 梯度估计方差高，需要大量工程 hack 才能稳定训练。
 
@@ -74,23 +74,23 @@
 
 #### 定义
 
-在给定 prompt 下采样 \(G\) 个输出 \(\{o_1, ..., o_G\}\)，计算每个输出的奖励 \(r_i\)，然后做 z-score 归一化：
+在给定 prompt 下采样 $G$ 个输出 $\{o_1, ..., o_G\}$，计算每个输出的奖励 $r_i$，然后做 z-score 归一化：
 
-\[
+$$
 A_i = \frac{r_i - \text{mean}(\{r_1, ..., r_G\})}{\text{std}(\{r_1, ..., r_G\})}
-\]
+$$
 
 目标函数形式与 PPO 类似：
 
-\[
+$$
 \mathcal{L}_{\text{GRPO}} = \frac{1}{G} \sum_{i=1}^G \min\left( \frac{\pi_\theta(o_i|x)}{\pi_{\theta_{\text{old}}}(o_i|x)} A_i, \ \text{clip}\left(\frac{\pi_\theta(o_i|x)}{\pi_{\theta_{\text{old}}}(o_i|x)}, 1-\epsilon, 1+\epsilon\right) A_i \right) - \beta \cdot \text{KL}(\pi_\theta \| \pi_{\text{ref}})
-\]
+$$
 
-在线情况下，\(\pi_\theta = \pi_{\theta_{\text{old}}}\)，clip 操作失效，目标简化为：
+在线情况下，$\pi_\theta = \pi_{\theta_{\text{old}}}$，clip 操作失效，目标简化为：
 
-\[
+$$
 \mathbb{E}[A_i] - \beta \cdot \text{KL}
-\]
+$$
 
 即直接对优势做策略梯度，减去 KL 正则。
 

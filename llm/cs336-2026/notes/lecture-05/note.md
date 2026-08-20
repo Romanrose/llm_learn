@@ -155,16 +155,16 @@
 ## 关键公式
 
 - 操作强度（Arithmetic Intensity）：
-  \[
+  $$
   \text{AI} = \frac{\text{FLOPs}}{\text{Bytes moved}}
-  \]
-- 无分块矩阵乘法全局内存读取次数（每个元素）：\( N \) 次
-- 分块后（分块大小为 T）：\( N/T \) 次全局读取 + T 次共享内存读取
+  $$
+- 无分块矩阵乘法全局内存读取次数（每个元素）：$N$ 次
+- 分块后（分块大小为 T）：$N/T$ 次全局读取 + T 次共享内存读取
 - 在线 softmax 修正：
-  \[
+  $$
   \ell_{\text{new}} = \ell_{\text{old}} \cdot e^{m_{\text{old}} - m_{\text{new}}} + \sum e^{x_i - m_{\text{new}}}
-  \]
-  （其中 \( \ell \) 为归一化累加和，\( m \) 为 running max）
+  $$
+  （其中 $\ell$ 为归一化累加和，$m$ 为 running max）
 
 ---
 
