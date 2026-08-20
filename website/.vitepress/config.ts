@@ -84,6 +84,7 @@ export default defineConfig({
       '/references/': [
         { text: '课程网站参考', link: '/references/course-site-design' },
         { text: 'CS336 学习路径', link: '/generated/courses/cs336-2026/' },
+        { text: '计算机科学资源地图', link: '/references/computer-science-resource-map' },
         { text: '生成流程', link: '/workflow/' },
       ],
       '/generated/courses/': courseSidebar,

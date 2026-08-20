@@ -54,6 +54,12 @@ sections:
     title: AI Infra 项目
     description: GPU、网络、远程开发与生产系统
     items:
+      - id: cs149-fall25
+        courseId: cs149-fall25
+        title: CS149 Fall 2025
+        subtitle: Parallel Computing
+        detail: 多核、GPU、AI 加速器与并发控制
+        route: /generated/courses/cs149-fall25/
       - id: network
         title: Network & Remote Dev
         subtitle: 浏览器、SSH 与多服务器开发环境

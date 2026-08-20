@@ -15,6 +15,8 @@
 
 `website/` 集中保存 VitePress 网站、全站配置和课程元数据。课程与专题内容保留在 `llm/`、`agent/`、`infra/`、`papers/` 和 `interest/` 五个并列方向中；`website/course.yaml` 保存全局设置，`website/catalog-data/` 负责描述课程、Lecture 与逐字稿、Blog、讲义和 PDF 之间的关系，构建前会自动生成网站页面和导航。
 
+计算机专业主干课程的中文资源导航见[计算机科学学习资源地图](website/references/computer-science-resource-map.md)，网站路径为 `/references/computer-science-resource-map`。该页面优先收录带在线文档、源码、实验或可复现实验的算法、系统、网络、数据库、编译器、组成原理和软件工程资源。
+
 ```bash
 npm install
 npm run dev

@@ -1,0 +1,249 @@
+course: cs149-fall25
+state: resources-approved
+discoveredAt: 2026-08-18T07:13:02.526Z
+sources:
+  - url: https://gfxcourses.stanford.edu/cs149/fall25/courseinfo
+    finalUrl: https://gfxcourses.stanford.edu/cs149/fall25/courseinfo
+    status: ok
+    contentType: text/html; charset=utf-8
+  - url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    finalUrl: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: ok
+    contentType: text/html; charset=utf-8
+  - url: https://www.youtube.com/playlist?list=PLoROMvodv4rMp7MTFr4hQsDEcX7Bx6Odp
+    status: seed-only
+resources:
+  - id: course-page-courseinfo-5bb01d33
+    label: 课程主页
+    type: course-page
+    url: https://gfxcourses.stanford.edu/cs149/fall25/courseinfo
+    discoveredFrom: course-config
+    status: approved
+  - id: reference-lecture-c71812f7
+    label: "[Lectures/Readings]"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/courseinfo
+    status: approved
+  - id: reference-efficiency-c8dc85ea
+    label: "Lecture 1: Why Parallelism? Why Efficiency?"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/efficiency/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-accelerators-22302b96
+    label: "Lecture 10: Hardware Specialization"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/accelerators/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-proghardware-c18f4fb8
+    label: "Lecture 11: Programming Systems for Specialized Hardware"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/proghardware/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-aidatacenter-b1d0a1b7
+    label: "Lecture 12: Mapping AI Applications to the Datacenter Computer"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/aidatacenter/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-aiperfoptimization-a2321a21
+    label: "Lecture 13: Domain-Specific Programming Systems and AI-Driven Performance Optimization"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/aiperfoptimization/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-cachecoherence-7b12f8e8
+    label: "Lecture 14: Cache Coherence"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/cachecoherence/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-sync-consistency-d00c4f51
+    label: "Lecture 15: Implementing Synchronization + Memory Consistency"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/sync_consistency/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-finegrainedsync-6f0863f6
+    label: "Lecture 16: Fine-Grained Locking and Lock-Free Programming"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/finegrainedsync/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-transactions-b3cca281
+    label: "Lecture 17: Transactional Memory (Part I)"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/transactions/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-wrapup-41c482db
+    label: "Lecture 18: Transactional Memory (Part II) + Ask Me Anything with Kunle and Kayvon"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/wrapup/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-multicore1-1b214224
+    label: "Lecture 2: A Modern Multi-Core Processor (Part I)"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/multicore1/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-multicore2-471722c7
+    label: "Lecture 3: Modern Multi-Core Architecture (Part II) + ISPC Programming Abstractions"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/multicore2/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-thoughtprocess-dcc93aa9
+    label: "Lecture 4: Parallelizing Code: An Example Thought Process"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/thoughtprocess/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-perfopt1-8727df4a
+    label: "Lecture 5: Program Optimization 1: Work Distribution and Scheduling"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/perfopt1/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-perfopt2-6bb01d2e
+    label: "Lecture 6: Program Optimization 2: Locality and Communication"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/perfopt2/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-gpuarch-9af1cf7e
+    label: "Lecture 7: GPU Architecture and CUDA Programming"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/gpuarch/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-dataparallel-4028b9eb
+    label: "Lecture 8: Data-Parallel Thinking"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/dataparallel/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: reference-dnninference-bceb3ee2
+    label: "Lecture 9: Efficiently Evaluating DNNs on GPUs: Transformers and ConvNets"
+    type: reference
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/dnninference/
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved
+  - id: slides-01-efficiency-hyf1ajq-20bdd6e6
+    label: "Lecture 1: Lecture 1 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/efficiency/01_efficiency_hyF1AJq.pdf
+    discoveredFrom: course-config:lecture-01
+    status: approved
+  - id: slides-10-specialized-e641343f
+    label: "Lecture 10: Lecture 10 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/accelerators/10_Specialized.pdf
+    discoveredFrom: course-config:lecture-10
+    status: approved
+  - id: slides-11-specializedhardwareprogramming-1d03bc79
+    label: "Lecture 11: Lecture 11 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/proghardware/11_SpecializedHardwareProgramming.pdf
+    discoveredFrom: course-config:lecture-11
+    status: approved
+  - id: slides-12-ai-datacentermapping-2fb527d0
+    label: "Lecture 12: Lecture 12 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/aidatacenter/12_AI_DatacenterMapping.pdf
+    discoveredFrom: course-config:lecture-12
+    status: approved
+  - id: slides-13-autooptimize-9f99cc56
+    label: "Lecture 13: Lecture 13 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/aiperfoptimization/13_autooptimize.pdf
+    discoveredFrom: course-config:lecture-13
+    status: approved
+  - id: slides-14-coherence-38c5cfe6
+    label: "Lecture 14: Lecture 14 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/cachecoherence/14_coherence.pdf
+    discoveredFrom: course-config:lecture-14
+    status: approved
+  - id: slides-15-consistency-ff991996
+    label: "Lecture 15: Lecture 15 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/sync_consistency/15_consistency.pdf
+    discoveredFrom: course-config:lecture-15
+    status: approved
+  - id: slides-16-finegrainedlock-4649da11
+    label: "Lecture 16: Lecture 16 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/finegrainedsync/16_finegrainedlock.pdf
+    discoveredFrom: course-config:lecture-16
+    status: approved
+  - id: slides-17-transactionalmem-02da5d14
+    label: "Lecture 17: Lecture 17 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/transactions/17_transactionalmem.pdf
+    discoveredFrom: course-config:lecture-17
+    status: approved
+  - id: slides-18-transactionalmem-a4wu1q8-cbf2c6d4
+    label: "Lecture 18: Lecture 18 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/wrapup/18_transactionalmem_A4wu1Q8.pdf
+    discoveredFrom: course-config:lecture-18
+    status: approved
+  - id: slides-02-basicarch-899aed99
+    label: "Lecture 2: Lecture 2 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/multicore1/02_basicarch.pdf
+    discoveredFrom: course-config:lecture-02
+    status: approved
+  - id: slides-03-multicore2-ispc-wuedbzt-f903dbb6
+    label: "Lecture 3: Lecture 3 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/multicore2/03_multicore2-ispc_WueDBzT.pdf
+    discoveredFrom: course-config:lecture-03
+    status: approved
+  - id: slides-04-progbasics-16ad376c
+    label: "Lecture 4: Lecture 4 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/thoughtprocess/04_progbasics.pdf
+    discoveredFrom: course-config:lecture-04
+    status: approved
+  - id: slides-05-progperf1-c64990b0
+    label: "Lecture 5: Lecture 5 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/perfopt1/05_progperf1.pdf
+    discoveredFrom: course-config:lecture-05
+    status: approved
+  - id: slides-06-progperf2-33b05c76
+    label: "Lecture 6: Lecture 6 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/perfopt2/06_progperf2.pdf
+    discoveredFrom: course-config:lecture-06
+    status: approved
+  - id: slides-07-gpuarch-7de70fd4
+    label: "Lecture 7: Lecture 7 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/gpuarch/07_gpuarch.pdf
+    discoveredFrom: course-config:lecture-07
+    status: approved
+  - id: slides-08-dataparallel-e65772fc
+    label: "Lecture 8: Lecture 8 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/dataparallel/08_dataparallel.pdf
+    discoveredFrom: course-config:lecture-08
+    status: approved
+  - id: slides-09-dnneval-8fbf0db8
+    label: "Lecture 9: Lecture 9 Slides (PDF)"
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/dnninference/09_dnneval.pdf
+    discoveredFrom: course-config:lecture-09
+    status: approved
+  - id: video-playlist-a36a304d
+    label: Stanford's Youtube Channel
+    type: video
+    url: https://www.youtube.com/playlist?list=PLoROMvodv4rMp7MTFr4hQsDEcX7Bx6Odp
+    discoveredFrom: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+    status: approved

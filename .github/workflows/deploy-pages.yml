@@ -2,7 +2,9 @@ name: Deploy VitePress site
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
+      - codex/cs149-fall25
   workflow_dispatch:
 
 permissions:

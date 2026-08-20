@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cs149-fall25
+lecture: lecture-07
+title: GPU Architecture and CUDA Programming
+preparedAt: 2026-08-18T08:17:46.739Z
+video:
+  id: qQTDF0CBoxE
+  title: Stanford CS149 I Parallel Computing I 2023 I Lecture 7 - GPU architecture and CUDA Programming
+  url: https://www.youtube.com/watch?v=qQTDF0CBoxE
+  playlist: https://www.youtube.com/playlist?list=PLoROMvodv4rMp7MTFr4hQsDEcX7Bx6Odp
+  playlistIndex: 7
+  channel: Stanford Online
+  durationSeconds: 4727
+materials:
+  - label: Lecture 7 Slides (PDF)
+    type: slides
+    url: https://gfxcourses.stanford.edu/cs149/fall25content/media/gpuarch/07_gpuarch.pdf
+    status: approved
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: manual
+  language: en-US
+  transcript: infra/cs149-fall25/notes/lecture-07/transcript.en.md
+  processor: video-subtitle-transcript
