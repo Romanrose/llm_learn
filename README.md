@@ -46,7 +46,7 @@ llm_learn/
     └── templates/
 ```
 
-当前网站构建入口是 `website/` 与 `workflow/`。`site/`、`catalog/` 和 `scripts/` 中保留的文件属于早期目录或兼容材料，不作为当前网站的编辑入口。
+当前网站构建入口是 `website/` 与 `workflow/`。课程元数据、站点分类、自动化脚本和规范均以这两个目录为唯一编辑入口。
 
 ## 本地预览与构建
 
