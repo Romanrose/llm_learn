@@ -3,6 +3,7 @@ id: cs336-2026
 category: llm
 title: Stanford CS336 · Language Modeling from Scratch
 shortTitle: CS336 2026
+eyebrow: Stanford · Language Modeling from Scratch · 2026
 year: 2026
 status: updating
 description: 从零构建语言模型，覆盖架构、GPU、并行训练、Scaling Laws、评估与数据。

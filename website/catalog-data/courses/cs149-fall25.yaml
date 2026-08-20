@@ -3,8 +3,10 @@ id: cs149-fall25
 category: infra
 title: Stanford CS149 · Parallel Computing
 shortTitle: CS149 Fall 2025
+eyebrow: Stanford · Parallel Computing · 2025
 year: 2025
 status: updating
+publishOutputs: false
 description: 从多核、SIMD 与 GPU 编程出发，系统掌握并行程序的性能、硬件与同步设计。
 referenceRoute: /references/cs149-fall25
 paths:

@@ -85,6 +85,7 @@ function withoutMarkdownExtension(path) {
 }
 
 function normalizeOutputs(course, item) {
+  if (course.publishOutputs === false || item.publishOutputs === false) return []
   const outputs = [...(item.outputs ?? [])]
   const transcriptEnSource = normalize(join(course.paths?.notes ?? `llm/${course.id}/notes`, item.id, 'transcript.en.md'))
   if (existsSync(resolve(repoRoot, transcriptEnSource)) && !outputs.some((output) => output.id === 'transcript-en')) {
@@ -292,7 +293,7 @@ const generatedCatalog = records.map((course) => {
 
   const overview = [
     frontmatter({ title: course.title, description: course.description, aside: false, outline: false }),
-    `<CourseHero eyebrow=${JSON.stringify(`Stanford · Language Modeling from Scratch · ${course.year ?? ''}`)} title=${JSON.stringify(course.shortTitle ?? course.title)} description=${JSON.stringify(course.description)} status=${JSON.stringify(statusLabel(course.status))} startRoute=${JSON.stringify(firstLecture ?? '')} referenceRoute=${JSON.stringify(referenceRoute)} watchUrl=${JSON.stringify(playlist?.url ?? '')} previewUrl=${JSON.stringify(previewVideo?.url ?? '')} :details=${vueProp([{ label: '讲次', value: `${items.length} 讲` }, { label: '发布', value: `${publishedCount} 讲` }, { label: '内容', value: `${outputCount} 份` }, { label: '资料', value: `${uniqueReferenceCount} 条` }])} :links=${vueProp(course.official ?? [])} />`,
+    `<CourseHero eyebrow=${JSON.stringify(course.eyebrow ?? `${course.title} · ${course.year ?? ''}`)} title=${JSON.stringify(course.shortTitle ?? course.title)} description=${JSON.stringify(course.description)} status=${JSON.stringify(statusLabel(course.status))} startRoute=${JSON.stringify(firstLecture ?? '')} referenceRoute=${JSON.stringify(referenceRoute)} watchUrl=${JSON.stringify(playlist?.url ?? '')} previewUrl=${JSON.stringify(previewVideo?.url ?? '')} :details=${vueProp([{ label: '讲次', value: `${items.length} 讲` }, { label: '发布', value: `${publishedCount} 讲` }, { label: '内容', value: `${outputCount} 份` }, { label: '资料', value: `${uniqueReferenceCount} 条` }])} :links=${vueProp(course.official ?? [])} />`,
     '## 课程学习路径',
     lectureGrid.length ? `<LectureGrid :items=${vueProp(lectureGrid)} />` : '课程条目正在整理中。',
   ].join('\n\n')
