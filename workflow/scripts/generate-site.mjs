@@ -42,6 +42,7 @@ function statusLabel(status) {
     draft: '草稿',
     scheduled: '课程表已同步',
     'resources-discovered': '资源待审核',
+    'resources-approved': '官方资料已接入',
   })[status] ?? status
 }
 

@@ -36,6 +36,60 @@ GPU 的编程模型可以用三层结构概括：
 
 **Triton 的核心思想就是让你以线程块为单位思考**，而不是每个线程。
 
+### 从第一张结构图到一次 Block 的执行
+
+可以把 GPU 想象成一座工厂：CPU 负责下达任务，GPU 负责大量并行计算。GPU 内部有许多流式多处理器（Streaming Multiprocessors，SMs），每个 SM 都有自己的计算核心、寄存器和 shared memory；所有 SM 共享 GPU 的 global memory（显存）。SM 可以理解成一个能够独立工作的“车间”，但它不是 CPU 核心的简单放大版：一个 SM 会同时管理许多线程和多个线程块。
+
+程序员通常不会只启动一个线程，而是启动一个由大量线程组成的 **Grid**。Grid 又被划分为许多 **Block**，每个 Block 由若干 **Thread** 组成：
+
+```text
+Grid：整个计算任务
+└── Block：任务的一小块
+    └── Thread：处理一个或几个元素
+```
+
+例如，对于向量加法 `c[i] = a[i] + b[i]`，如果有 8192 个元素、每个 Block 有 32 个线程，就需要 256 个 Block。一个 Block 内的线程可以合作并访问同一块 shared memory；不同 Block 之间通常不能直接通信，因此它们可以被 GPU 以任意顺序调度。
+
+GPU 启动任务后，会把 Block 动态分配给 SM：
+
+```text
+Block 0 ──→ SM 0
+Block 1 ──→ SM 1
+Block 2 ──→ SM 0
+```
+
+一个 Block 必须整体放在一个 SM 上，不能拆到多个 SM，因为 Block 内的线程需要共享 shared memory，并且可能需要同步。如果 SM 资源（寄存器、shared memory 等）足够，一个 SM 可以同时容纳多个 Block；资源不足时，只能容纳较少的 Block。
+
+Block 被放入 SM 后，硬件会把线程分成多个 **Warp**。一个 Warp 通常包含 32 个线程，因此 128 个线程的 Block 会被分成 4 个 Warp：
+
+```text
+Block 0
+├── Warp 0：Thread 0–31
+├── Warp 1：Thread 32–63
+├── Warp 2：Thread 64–95
+└── Warp 3：Thread 96–127
+```
+
+GPU 的指令调度基本以 Warp 为单位：同一 Warp 中的线程执行相同的指令，但处理不同的数据。以向量加法为例，每个线程根据自己的 Block ID 和 Thread ID 定位元素：
+
+```python
+i = block_id * threads_per_block + thread_id
+c[i] = a[i] + b[i]
+```
+
+因此，一个 Block 的执行过程可以概括为：
+
+```text
+CPU 发起 kernel
+→ GPU 创建 Grid
+→ 调度器把 Block 分配给 SM
+→ SM 把 Block 分成 Warp
+→ Warp 中的线程读取数据、执行计算、写回结果
+→ Block 完成后，SM 继续处理下一个 Block
+```
+
+这一过程解释了后面几个性能概念的来源：Block 是否能同时驻留在 SM 上，取决于资源使用量；Warp 中的线程是否访问连续地址，会影响内存合并；Warp 是否走不同分支，会产生控制发散。
+
 ## 三、编程模型与硬件的交互：那些决定性能的细节
 
 编程模型本身很优雅，但性能对硬件极其敏感。以下是五个你必须理解的关键概念。
@@ -290,3 +344,4 @@ def matmul_relu_kernel(a_ptr, b_ptr, c_ptr, M, N, K, ...):
 
 - **官方视频**：[CS336 2026 Lecture 6](https://www.youtube.com/watch?v=xnDHaNUvHBg)
 - **课程讲义**：[CS336 · Language Modeling from Scratch](https://cs336.stanford.edu/lectures/?trace=lecture_06)（Lecture 6: Kernels, Triton）
+- **GPU 架构入门讲义**：[Stanford CS149 · GPU Architecture & CUDA Programming](https://cs149.stanford.edu/winter19content/lectures/07_gpuarch/07_gpuarch_slides.pdf)

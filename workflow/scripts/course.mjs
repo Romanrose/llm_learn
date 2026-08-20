@@ -201,7 +201,7 @@ async function playlistVideo(course, item) {
   if (!playlist && directVideo) return { url: directVideo.url, playlist: null, playlistIndex: null }
   if (!playlist) throw new Error('课程配置中没有找到 YouTube 播放列表或 Lecture 视频')
   const data = await ytDlpJson(['--flat-playlist', '--dump-single-json', playlist.url])
-  const lecturePattern = new RegExp(`\\bLecture\\s+${item.order}\\s*:`, 'i')
+  const lecturePattern = new RegExp(`\\bLecture\\s+${item.order}\\b`, 'i')
   const entryIndex = (data.entries ?? []).findIndex((entry) => lecturePattern.test(entry.title ?? ''))
   if (entryIndex === -1 && directVideo) return { url: directVideo.url, playlist: playlist.url, playlistIndex: null }
   if (entryIndex === -1) throw new Error(`播放列表中没有匹配到 Lecture ${item.order}`)
@@ -693,7 +693,7 @@ async function generateDeepSeekTranslation({ courseId, course, item, transcriptE
   const chineseTranscript = [
     `# ${course.shortTitle ?? course.title} Lecture ${item.order}：完整中文逐字稿`,
     '',
-    `- 视频：[官方视频](${item.official?.find((link) => link.label === '课程视频')?.url ?? ''})`,
+    `- 视频：[官方视频](${item.official?.find((link) => /视频/.test(link.label))?.url ?? ''})`,
     '- 来源：英文人工字幕提取后翻译为中文；保留段落起始时间戳，只修正明显的断句、重复和语序。',
     '- 说明：这是逐字稿，不是讲义摘要；相邻且语义连续的片段已合并为阅读段落；术语保留必要英文。',
     '',
@@ -896,27 +896,53 @@ async function generate(courseId, lectureId, args) {
         const chunk = chunks[index]
         console.log(`  开始翻译 ${index + 1}/${chunks.length}`)
         const outputPath = join(tempDirectory, `translation-${index + 1}.md`)
-        translations[index] = await runGenerator(`你在翻译 ${lectureLabel(course, item)} 的英文人工字幕。请将下面内容完整、忠实地翻译为简体中文。\n\n要求：\n1. 不摘要、不删减、不补写字幕中没有的事实。\n2. 保留技术术语、模型名、论文名、函数名和常用缩写；首次出现可写中文（English）。\n3. 修正明显的自动断句问题，但保留讲者的论证、例子、提问和课堂互动。\n4. 按自然语义段输出 Markdown 正文，不添加标题、前言、总结或代码围栏。\n5. 本段是 ${index + 1}/${chunks.length}，只翻译所给文本。\n\n英文字幕：\n${chunk}`, outputPath)
+        const timestampPattern = /^(\[(?:(?:\d{2}:)?\d{2}:\d{2}(?:\.\d+)?|\d{2}:\d{2}(?:\.\d+)?)\])\s*/gm
+        const timestamps = []
+        const protectedChunk = chunk.replace(timestampPattern, (_, timestamp) => {
+          const marker = `[[[TIMESTAMP_${timestamps.length}]]]`
+          timestamps.push({ marker, timestamp })
+          return `${marker} `
+        })
+        let translated = ''
+        let timestampsPreserved = false
+        for (let attempt = 1; attempt <= 3; attempt += 1) {
+          const retryInstruction = attempt === 1
+            ? ''
+            : '\n\n上一次输出遗漏了一个或多个 [[[TIMESTAMP_N]]] 标记。请重新翻译，并逐个原样保留所有标记。'
+          translated = await runGenerator(`你在翻译 ${lectureLabel(course, item)} 的英文人工字幕。请将下面内容完整、忠实地翻译为简体中文。\n\n要求：\n1. 不摘要、不删减、不补写字幕中没有的事实。\n2. 保留技术术语、模型名、论文名、函数名和常用缩写；首次出现可写中文（English）。\n3. 修正明显的自动断句问题，但保留讲者的论证、例子、提问和课堂互动。\n4. 按自然语义段输出 Markdown 正文，不添加标题、前言、总结或代码围栏。\n5. 输入中的 [[[TIMESTAMP_N]]] 是视频时间戳，必须逐个原样保留在对应段落开头，不能翻译、删除、合并或改写。\n6. 本段是 ${index + 1}/${chunks.length}，只翻译所给文本。${retryInstruction}\n\n英文字幕：\n${protectedChunk}`, outputPath)
+          timestampsPreserved = timestamps.every(({ marker }) => translated.includes(marker))
+          if (timestampsPreserved) break
+        }
+        if (!timestampsPreserved) throw new Error(`中文逐字稿分块 ${index + 1} 连续 3 次丢失时间戳`)
+        for (const { marker, timestamp } of timestamps) translated = translated.replaceAll(marker, timestamp)
+        translations[index] = translated
         completedChunks += 1
         console.log(`  完成翻译 ${index + 1}/${chunks.length}（总进度 ${completedChunks}/${chunks.length}）`)
       }
     }
     await Promise.all(Array.from({ length: Math.min(3, chunks.length) }, () => translateWorker()))
-    const transcriptZh = [
+    const untranslatedChinese = [
       `# ${course.shortTitle ?? course.title} · Lecture ${item.order} · ${item.title}｜中文逐字稿`,
       '',
-      `- 视频：${item.official?.find((link) => link.label === '课程视频')?.url ?? ''}`,
+      `- 视频：${item.official?.find((link) => /视频/.test(link.label))?.url ?? ''}`,
       `- 英文来源：${relativeToRepo(transcriptEnPath)}`,
       '- 状态：机器翻译草稿，待对照视频与讲义校对',
+      '',
+      '---',
+      '',
+      '## 正文',
       '',
       translations.join('\n\n'),
       '',
     ].join('\n')
+    const aligned = reflowAlignedTranscripts(englishTranscript, untranslatedChinese)
+    const transcriptZh = aligned.chinese
     const shortChunk = translations.findIndex((translation, index) => translation.length < chunks[index].length * 0.2)
     console.log(`中文逐字稿长度：${transcriptZh.length} 字符（英文源 ${englishTranscript.length} 字符）`)
     if (shortChunk !== -1 || transcriptZh.length < englishTranscript.length * 0.28) {
       throw new Error(`中文逐字稿长度异常${shortChunk === -1 ? '' : `（分块 ${shortChunk + 1}）`}，可能发生输出截断`)
     }
+    writeFileSync(transcriptEnPath, aligned.english, 'utf8')
     writeFileSync(transcriptZhPath, transcriptZh, 'utf8')
 
     const commonEvidence = `只能依据以下仓库文件写作，不要虚构课程未提及的观点或引用：\n- ${relativeToRepo(transcriptEnPath)}\n- ${relativeToRepo(transcriptZhPath)}\n${existsSync(lectureSourcePath) ? `- ${relativeToRepo(lectureSourcePath)}` : ''}`
@@ -1145,6 +1171,20 @@ async function discover(courseId) {
     }
   }
 
+  // A course index often links to a per-lecture landing page rather than the
+  // binary material itself. Lecture metadata is already reviewed by the course
+  // maintainer, so include those direct resources in the same audit manifest.
+  for (const item of course.items ?? []) {
+    for (const resource of item.resources ?? []) {
+      candidates.push({
+        label: `Lecture ${item.order ?? item.id}: ${resource.label}`,
+        url: resource.url,
+        discoveredFrom: `course-config:${item.id}`,
+        status: resource.status,
+      })
+    }
+  }
+
   const unique = new Map()
   for (const candidate of candidates) {
     const url = normalizeUrl(candidate.url)
@@ -1161,7 +1201,7 @@ async function discover(courseId) {
         type,
         url: candidate.url,
         discoveredFrom: candidate.discoveredFrom,
-        status: previous?.status ?? 'pending',
+        status: previous?.status ?? candidate.status ?? 'pending',
       }
     })
     .sort((a, b) => a.type.localeCompare(b.type) || a.label.localeCompare(b.label, 'zh-CN'))

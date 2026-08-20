@@ -1,0 +1,24 @@
+schemaVersion: 1
+course: cs149-fall25
+lecture: lecture-07
+state: draft-ready
+createdAt: 2026-08-18T08:28:11.002Z
+inputs:
+  transcript: infra/cs149-fall25/notes/lecture-07/transcript.en.md
+  lecture: null
+  sources: infra/cs149-fall25/notes/lecture-07/sources.yaml
+outputs:
+  transcriptZh: infra/cs149-fall25/notes/lecture-07/transcript.zh-CN.md
+  lectureNote: infra/cs149-fall25/notes/lecture-07/note.md
+  blog: infra/cs149-fall25/notes/lecture-07/blog.md
+review:
+  state: pending
+  required:
+    - terminology
+    - completeness
+    - citations
+completedAt: 2026-08-18T08:34:30.834Z
+generator:
+  provider: codex-cli
+  mode: read-only
+  translationChunks: 10

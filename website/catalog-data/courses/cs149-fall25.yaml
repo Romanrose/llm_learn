@@ -1,0 +1,348 @@
+kind: course
+id: cs149-fall25
+category: infra
+title: Stanford CS149 · Parallel Computing
+shortTitle: CS149 Fall 2025
+year: 2025
+status: updating
+description: 从多核、SIMD 与 GPU 编程出发，系统掌握并行程序的性能、硬件与同步设计。
+referenceRoute: /references/cs149-fall25
+paths:
+  root: infra/cs149-fall25
+  lectures: infra/cs149-fall25/lectures
+  references: infra/cs149-fall25/references
+  resources: infra/cs149-fall25/resources
+  notes: infra/cs149-fall25/notes
+  exports: infra/cs149-fall25/exports
+transcript:
+  engine: manual
+  originLanguage: en
+  targetLanguage: zh_cn
+  captionSource: manual
+official:
+  - label: 课程主页
+    url: https://gfxcourses.stanford.edu/cs149/fall25/courseinfo
+  - label: 讲义与阅读
+    url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
+  - label: 2023 公开课程视频
+    url: https://www.youtube.com/playlist?list=PLoROMvodv4rMp7MTFr4hQsDEcX7Bx6Odp
+items:
+  - id: lecture-01
+    order: 1
+    title: Why Parallelism? Why Efficiency?
+    subtitle: 并行化的动机、速度提升的边界与性能效率的基本语言。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 1 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/efficiency/01_efficiency_hyF1AJq.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/efficiency/
+    status: resources-approved
+  - id: lecture-02
+    order: 2
+    title: A Modern Multi-Core Processor (Part I)
+    subtitle: 多核、SIMD 与硬件多线程三种并行形式。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 2 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/multicore1/02_basicarch.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/multicore1/
+    status: resources-approved
+  - id: lecture-03
+    order: 3
+    title: Modern Multi-Core Architecture (Part II) + ISPC Programming Abstractions
+    subtitle: 线程、延迟与带宽，以及 ISPC 的编程抽象和底层实现。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 3 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/multicore2/03_multicore2-ispc_WueDBzT.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/multicore2/
+    status: resources-approved
+  - id: lecture-04
+    order: 4
+    title: "Parallelizing Code: An Example Thought Process"
+    subtitle: 在数据并行与共享地址空间模型中，逐步并行化一个程序。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 4 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/thoughtprocess/04_progbasics.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/thoughtprocess/
+    status: resources-approved
+  - id: lecture-05
+    order: 5
+    title: "Program Optimization 1: Work Distribution and Scheduling"
+    subtitle: 平衡工作负载、降低调度开销与 Cilk work stealing。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 5 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/perfopt1/05_progperf1.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/perfopt1/
+    status: resources-approved
+  - id: lecture-06
+    order: 6
+    title: "Program Optimization 2: Locality and Communication"
+    subtitle: 消息传递、流水化、算术强度与 contention 的性能影响。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 6 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/perfopt2/06_progperf2.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/perfopt2/
+    status: resources-approved
+  - id: lecture-07
+    order: 7
+    title: GPU Architecture and CUDA Programming
+    subtitle: CUDA 编程抽象及其在现代 GPU 上的实现。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 7 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/gpuarch/07_gpuarch.pdf
+        status: approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=qQTDF0CBoxE
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/gpuarch/
+    status: resources-approved
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs149-fall25/notes/lecture-07/sources.yaml
+      preparedAt: 2026-08-18T08:17:46.739Z
+    generation:
+      state: draft-ready
+      manifest: infra/cs149-fall25/notes/lecture-07/generation.yaml
+      completedAt: 2026-08-18T08:34:30.834Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: infra/cs149-fall25/notes/lecture-07/note.md
+        searchable: true
+        reviewStatus: draft
+      - id: blog
+        label: Blog 解读
+        source: infra/cs149-fall25/notes/lecture-07/blog.md
+        searchable: true
+        reviewStatus: draft
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: infra/cs149-fall25/notes/lecture-07/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: draft
+      - id: transcript-en
+        label: 英文逐字稿
+        source: infra/cs149-fall25/notes/lecture-07/transcript.en.md
+        searchable: false
+        reviewStatus: source
+  - id: lecture-08
+    order: 8
+    title: Data-Parallel Thinking
+    subtitle: 用 map、reduce、scan、prefix sum 与 groupByKey 表达数据并行。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 8 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/dataparallel/08_dataparallel.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/dataparallel/
+    status: resources-approved
+  - id: lecture-09
+    order: 9
+    title: "Efficiently Evaluating DNNs on GPUs: Transformers and ConvNets"
+    subtitle: 高效调度 DNN 层、将卷积映射到矩阵乘法，以及 Transformer 和算子融合。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 9 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/dnninference/09_dnneval.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/dnninference/
+    status: resources-approved
+  - id: lecture-10
+    order: 10
+    title: Hardware Specialization
+    subtitle: 能效计算、专用加速器设计与 DNN 加速器案例。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 10 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/accelerators/10_Specialized.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/accelerators/
+    status: resources-approved
+  - id: lecture-11
+    order: 11
+    title: Programming Systems for Specialized Hardware
+    subtitle: 面向专用硬件的现代编程系统与软硬件协同趋势。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 11 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/proghardware/11_SpecializedHardwareProgramming.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/proghardware/
+    status: resources-approved
+  - id: lecture-12
+    order: 12
+    title: Mapping AI Applications to the Datacenter Computer
+    subtitle: 现代 AI 应用如何在数据中心规模部署与服务。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 12 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/aidatacenter/12_AI_DatacenterMapping.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/aidatacenter/
+    status: resources-approved
+  - id: lecture-13
+    order: 13
+    title: Domain-Specific Programming Systems and AI-Driven Performance Optimization
+    subtitle: 领域专用编程抽象与 AI 驱动的自动程序优化。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 13 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/aiperfoptimization/13_autooptimize.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/aiperfoptimization/
+    status: resources-approved
+  - id: lecture-14
+    order: 14
+    title: Cache Coherence
+    subtitle: MSI/MESI 失效式一致性协议与 false sharing。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 14 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/cachecoherence/14_coherence.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/cachecoherence/
+    status: resources-approved
+  - id: lecture-15
+    order: 15
+    title: Implementing Synchronization + Memory Consistency
+    subtitle: 锁的细粒度同步、宽松一致性模型及其编程后果。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 15 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/sync_consistency/15_consistency.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/sync_consistency/
+    status: resources-approved
+  - id: lecture-16
+    order: 16
+    title: Fine-Grained Locking and Lock-Free Programming
+    subtitle: 细粒度锁、无锁队列/栈，以及 ABA 问题。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 16 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/finegrainedsync/16_finegrainedlock.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/finegrainedsync/
+    status: resources-approved
+  - id: lecture-17
+    order: 17
+    title: Transactional Memory (Part I)
+    subtitle: 事务的动机、实现设计空间，以及 STM 与 HTM 基础。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 17 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/transactions/17_transactionalmem.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/transactions/
+    status: resources-approved
+  - id: lecture-18
+    order: 18
+    title: Transactional Memory (Part II) + Ask Me Anything
+    subtitle: 事务内存收束与课程后续学习方向。
+    instructors:
+      - Kayvon Fatahalian
+      - Kunle Olukotun
+    resources:
+      - label: Lecture 18 Slides (PDF)
+        type: slides
+        url: https://gfxcourses.stanford.edu/cs149/fall25content/media/wrapup/18_transactionalmem_A4wu1Q8.pdf
+        status: approved
+    official:
+      - label: 讲义页面
+        url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/wrapup/
+    status: resources-approved
