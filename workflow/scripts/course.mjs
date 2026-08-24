@@ -16,8 +16,9 @@ const catalogRoot = join(repoRoot, 'website', 'catalog-data', 'courses')
 const reviewRoot = join(repoRoot, 'website', 'catalog-data', 'reviews')
 const userAgent = 'llm_learn-course/0.1 (+https://github.com/Romanrose/llm_learn)'
 const execFileAsync = promisify(execFile)
-const localYtDlp = process.env.COURSE_YT_DLP ?? join(repoRoot, 'workflow', 'video', 'transcript-pipeline', '.venv', 'bin', 'yt-dlp')
-const subtitleTool = process.env.COURSE_SUBTITLE_TOOL ?? '/Users/romanrose/.codex/skills/video-subtitle-transcript/scripts/subtitle_transcript.py'
+const runtimeRoot = join(repoRoot, 'workflow', '.runtime')
+const localYtDlp = process.env.COURSE_YT_DLP ?? join(runtimeRoot, 'bin', 'yt-dlp')
+const subtitleTool = process.env.COURSE_SUBTITLE_TOOL ?? join(repoRoot, 'workflow', 'scripts', 'subtitle-transcript.mjs')
 const generatorCli = process.env.COURSE_GENERATOR ?? 'codex'
 
 function usage(exitCode = 0) {
@@ -95,6 +96,20 @@ async function ytDlpJson(args) {
   const binary = executable(localYtDlp, '本地 yt-dlp')
   const { stdout } = await execFileAsync(binary, args, { timeout: 60_000, maxBuffer: 30 * 1024 * 1024 })
   return JSON.parse(stdout)
+}
+
+async function runSubtitleTool(tool, videoUrl, languages) {
+  const args = [videoUrl, '--output', '__OUTPUT__', '--langs', languages, '--with-timestamps']
+  const environment = { ...process.env, PATH: `${dirname(localYtDlp)}:${process.env.PATH ?? ''}` }
+  const extension = extname(tool).toLowerCase()
+  if (extension === '.mjs' || extension === '.js') {
+    return { command: process.execPath, args: [tool, ...args, '--yt-dlp', localYtDlp], env: environment }
+  }
+  if (extension === '.py') {
+    const python = executable(process.env.COURSE_PYTHON ?? join(runtimeRoot, 'bin', 'python'), '字幕环境 Python')
+    return { command: python, args: [tool, ...args], env: environment }
+  }
+  return { command: executable(tool, '字幕清洗工具'), args, env: environment }
 }
 
 function chooseCaption(metadata) {
@@ -258,18 +273,12 @@ async function prepare(courseId, lectureId, args) {
   }
 
   const tool = executable(subtitleTool, '字幕清洗工具')
-  const pythonPath = join(repoRoot, 'workflow', 'video', 'transcript-pipeline', '.venv', 'bin', 'python')
-  const executablePython = executable(pythonPath, '字幕环境 Python')
-  await execFileAsync(executablePython, [
-    tool,
-    located.url,
-    '--output', transcriptPath,
-    '--langs', `${caption.language},en-US,en,zh-Hans,zh-CN,zh`,
-    '--with-timestamps',
-  ], {
+  const invocation = await runSubtitleTool(tool, located.url, `${caption.language},en-US,en,zh-Hans,zh-CN,zh`)
+  const invocationArgs = invocation.args.map((value) => value === '__OUTPUT__' ? transcriptPath : value)
+  await execFileAsync(invocation.command, invocationArgs, {
     timeout: 120_000,
     maxBuffer: 20 * 1024 * 1024,
-    env: { ...process.env, PATH: `${dirname(localYtDlp)}:${process.env.PATH ?? ''}` },
+    env: invocation.env,
   })
 
   const rawTranscript = readFileSync(transcriptPath, 'utf8')
@@ -845,9 +854,10 @@ async function generate(courseId, lectureId, args) {
 
   const lectureNumber = String(item.order).padStart(2, '0')
   const lectureSourcePath = join(coursePath(course, 'lectures', `llm/${course.id}/lectures`), `lecture_${lectureNumber}.py`)
-  const transcriptZhPath = join(lectureDirectory, 'transcript.zh-CN.md')
-  const notePath = join(lectureDirectory, 'note.md')
-  const blogPath = join(lectureDirectory, 'blog.md')
+  const candidateDirectory = join(lectureDirectory, 'references', 'codex-cli')
+  const transcriptZhPath = join(candidateDirectory, 'transcript.zh-CN.md')
+  const notePath = join(candidateDirectory, 'note.md')
+  const blogPath = join(candidateDirectory, 'blog.md')
   const generationPath = join(lectureDirectory, 'generation.yaml')
   const provider = optionValue(args, '--provider', 'codex-cli')
   if (!['codex-cli', 'deepseek'].includes(provider)) throw new Error('--provider 必须是 codex-cli 或 deepseek')
@@ -882,6 +892,7 @@ async function generate(courseId, lectureId, args) {
     return
   }
 
+  mkdirSync(candidateDirectory, { recursive: true })
   const tempDirectory = mkdtempSync(join(tmpdir(), `course-generate-${lectureId}-`))
   try {
     const englishTranscript = readFileSync(transcriptEnPath, 'utf8')
@@ -963,12 +974,6 @@ async function generate(courseId, lectureId, args) {
     writeYaml(generationPath, generation)
 
     item.generation = { state: 'draft-ready', manifest: relativeToRepo(generationPath), completedAt: generation.completedAt }
-    const outputs = [...(item.outputs ?? [])]
-    upsertOutput(outputs, { id: 'lecture-note', label: 'Lecture Note', source: relativeToRepo(notePath), searchable: true, reviewStatus: 'draft' })
-    upsertOutput(outputs, { id: 'blog', label: 'Blog 解读', source: relativeToRepo(blogPath), searchable: true, reviewStatus: 'draft' })
-    upsertOutput(outputs, { id: 'transcript-zh', label: '中文逐字稿', source: relativeToRepo(transcriptZhPath), searchable: false, reviewStatus: 'draft' })
-    upsertOutput(outputs, { id: 'transcript-en', label: '英文逐字稿', source: relativeToRepo(transcriptEnPath), searchable: false, reviewStatus: 'source' })
-    item.outputs = outputs
     writeYaml(courseConfigPath, course)
     console.log(`草稿生成完成：${relativeToRepo(generationPath)}`)
   } catch (error) {
