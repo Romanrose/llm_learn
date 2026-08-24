@@ -52,6 +52,8 @@ llm_learn/
 
 ```bash
 npm install
+npm run workflow:bootstrap
+npm run workflow:doctor
 npm run dev
 ```
 
@@ -62,6 +64,8 @@ npm run build
 ```
 
 构建会先生成课程页面和可发布的 PDF，再执行 VitePress 构建。推送到 `master` 后，GitHub Actions 会自动发布到 [GitHub Pages](https://romanrose.github.io/llm_learn/)。
+
+课程工作流的可复现安装、诊断和协作交接说明见 [workflow/README.md](workflow/README.md)。运行时、下载缓存和 `.env` 均只保留在本机，不进入 Git。
 
 ## 课程内容如何生成
 

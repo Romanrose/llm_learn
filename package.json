@@ -8,6 +8,9 @@
   },
   "scripts": {
     "course": "node workflow/scripts/course.mjs",
+    "workflow:bootstrap": "node workflow/scripts/bootstrap-runtime.mjs",
+    "workflow:doctor": "node workflow/scripts/doctor-runtime.mjs",
+    "workflow:subtitle": "node workflow/scripts/subtitle-transcript.mjs",
     "latex:export": "node workflow/scripts/export-latex.mjs",
     "site:generate": "node workflow/scripts/export-latex.mjs && node workflow/scripts/generate-site.mjs",
     "dev": "npm run site:generate && vitepress dev website",

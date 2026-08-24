@@ -61,6 +61,7 @@ llm/cs336-2026/lectures/var/
 
 # Local video tooling and archived course materials
 workflow/video/
+workflow/.runtime/
 var/krillinai/
 llm/cs336-2026/lectures-2025-backup/
 llm/*/exports/

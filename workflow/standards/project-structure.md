@@ -34,7 +34,8 @@ llm_learn/
     ├── scripts/             # 课程、网站和导出自动化
     ├── standards/           # 项目、逐字稿和质量规范
     ├── templates/           # 可复用的输出模板
-    └── video/               # 本地视频/字幕工具，不提交 Git
+    ├── .runtime/            # 本地可复现运行时（由 bootstrap 创建，不提交 Git）
+    └── video/               # 旧的本地视频/字幕工具，不提交 Git
 ```
 
 ## 3. 课程模板
