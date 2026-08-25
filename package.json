@@ -9,6 +9,7 @@
   "scripts": {
     "course": "node workflow/scripts/course.mjs",
     "workflow:bootstrap": "node workflow/scripts/bootstrap-runtime.mjs",
+    "workflow:bootstrap:krillinai": "node workflow/scripts/bootstrap-krillinai.mjs",
     "workflow:doctor": "node workflow/scripts/doctor-runtime.mjs",
     "workflow:subtitle": "node workflow/scripts/subtitle-transcript.mjs",
     "latex:export": "node workflow/scripts/export-latex.mjs",

@@ -11,6 +11,7 @@ const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const runtimeRoot = join(repoRoot, 'workflow', '.runtime')
 const isWindows = process.platform === 'win32'
 const defaultYtDlp = join(runtimeRoot, isWindows ? 'Scripts/yt-dlp.exe' : 'bin/yt-dlp')
+const defaultKrillinAi = join(runtimeRoot, 'krillinai', isWindows ? 'krillinai-cli.exe' : 'krillinai-cli')
 const subtitleTool = process.env.COURSE_SUBTITLE_TOOL ?? join(repoRoot, 'workflow', 'scripts', 'subtitle-transcript.mjs')
 const ytDlp = process.env.COURSE_YT_DLP ?? defaultYtDlp
 
@@ -48,7 +49,7 @@ async function main() {
   if (existsSync(subtitleTool)) console.log(`OK   subtitle tool: ${subtitleTool}`)
   else { console.log(`FAIL subtitle tool: not found (${subtitleTool})`); healthy = false }
   await check('Codex CLI (optional for --provider codex-cli)', process.env.COURSE_GENERATOR ?? 'codex', false)
-  await check('KrillinAI (optional for transcript --engine krillinai)', process.env.COURSE_KRILLINAI ?? 'krillinai-cli', false)
+  await check('KrillinAI (optional for local ASR / translation)', process.env.COURSE_KRILLINAI ?? defaultKrillinAi, false)
   if (!process.env.DEEPSEEK_API_KEY && !process.env.OPENAI_API_KEY) console.log('INFO model API key: not configured (needed only for --provider deepseek)')
   if (!healthy) {
     console.log('\nRun `npm run workflow:bootstrap` to install the required subtitle runtime, then run this command again.')

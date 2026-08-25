@@ -14,7 +14,7 @@ npm run workflow:doctor
 
 `workflow:bootstrap` 在 `workflow/.runtime/` 创建隔离 Python 环境并安装（或更新）满足最低版本的 `yt-dlp`。视频平台变化频繁，因此每次重新执行 bootstrap 都会刷新下载器；该目录被 Git 忽略，任何人 clone 后都能独立创建；不要提交它。
 
-复制 `.env.example` 为 `.env`。保留 `COURSE_YT_DLP` 为空即可使用 bootstrap 的默认位置。DeepSeek、OpenAI、KrillinAI 和 Codex CLI 均为可选能力；分别在确有需要时配置自己的凭据或路径，绝不共享 `.env`、Cookie 或二进制文件。
+复制 `.env.example` 为 `.env`。保留 `COURSE_YT_DLP` 为空即可使用 bootstrap 的默认位置。DeepSeek 与 Codex CLI 是可选能力；各自的凭据或路径仅保存在本机，绝不共享 `.env`、Cookie 或二进制文件。
 
 ## 工作流
 
@@ -48,10 +48,25 @@ npm run build
 
 ## 可选 KrillinAI
 
-KrillinAI 不随仓库发布。自行安装后在 `.env` 中设置 `COURSE_KRILLINAI`，再运行：
+KrillinAI 是平台没有字幕时的本地 ASR 与字幕翻译回退。它使用本地 Whisper 系列模型或云端转写服务，并通过 OpenAI 兼容的 LLM 服务翻译字幕。
+
+```bash
+npm run workflow:bootstrap:krillinai
+```
+
+该命令从 KrillinAI 官方 `v2.1.0` Release 下载与当前平台匹配的 CLI、验证 SHA-256，并在 `workflow/.runtime/krillinai/config/config.toml` 创建一份仅本机使用的配置模板。编辑其中的 `[transcribe]` 和 `[llm]`：macOS Apple Silicon 可选择 `whisperkit`，其他本地环境可选择 `fasterwhisper` 或 `whisper.cpp`；`[llm]` 支持任何 OpenAI 兼容的云端或本地模型服务。不要提交该配置、模型缓存或 API Key。
+
+完成配置后运行：
 
 ```bash
 npm run course -- transcript <course-id> <lecture-id> --engine krillinai --dry-run
 ```
 
-若选择可能回退到 ASR 的字幕来源，还必须显式增加 `--allow-audio-download`。
+若选择可能回退到 ASR 的字幕来源，还必须显式增加 `--allow-audio-download`。例如：
+
+```bash
+npm run course -- transcript <course-id> <lecture-id> \
+  --engine krillinai --caption-source whisper --allow-audio-download
+```
+
+`--caption-source manual|auto` 只使用已有平台字幕，不触发音频下载；`any|whisper` 可能下载音频并运行 ASR。
