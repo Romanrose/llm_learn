@@ -1,0 +1,68 @@
+%% Shared semantic components for llm_learn course-note exports.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mi-core}[2026/08/11 llm_learn shared course-note components]
+
+\usepackage{iftex}
+\ifPDFTeX
+  \PackageError{mi-core}{Compile with XeLaTeX or LuaLaTeX}{}
+\fi
+
+\usepackage{ctex,fontspec,xcolor}
+\usepackage{amsmath,amssymb,amsthm,bm}
+\usepackage{graphicx}
+\usepackage{booktabs,tabularx,array}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\IfFontExistsTF{Noto Serif CJK SC}
+  {\setCJKmainfont{Noto Serif CJK SC}}
+  {\IfFontExistsTF{Songti SC}
+    {\setCJKmainfont{Songti SC}}
+    {\IfFontExistsTF{STSong}{\setCJKmainfont{STSong}}{}}}
+\IfFontExistsTF{TeX Gyre Termes}{\setmainfont{TeX Gyre Termes}}{}
+
+\definecolor{MIBrand}{HTML}{1A9D8F}
+\definecolor{MIInk}{HTML}{1A1A1A}
+\definecolor{MIDark}{HTML}{2F5E58}
+\definecolor{MILight}{HTML}{E8F4F1}
+\definecolor{MIAccent}{HTML}{D94F4F}
+\definecolor{MISoft}{HTML}{F3F8F7}
+\color{MIInk}
+\hypersetup{colorlinks=true,linkcolor=MIDark,urlcolor=MIBrand,citecolor=MIDark}
+
+\DeclareMathOperator{\Var}{Var}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\MIEmph}[1]{\textcolor{MIBrand}{\textbf{#1}}}
+
+\tcbset{enhanced,breakable,arc=3pt,boxrule=.8pt,left=9pt,right=9pt,top=8pt,bottom=8pt}
+\newtcolorbox{KeyBox}[1][Key idea]{colback=MILight,colframe=MIBrand,
+  colbacktitle=MIDark,coltitle=white,title=\textbf{#1}}
+\newtcolorbox{Takeaway}[1][Takeaway]{colback=MIAccent!10,colframe=MIAccent,
+  colbacktitle=MIAccent,coltitle=white,title=\textbf{#1}}
+\newtcolorbox{SourceBox}[1][来源]{colback=MISoft,colframe=MIBrand,
+  colbacktitle=MIDark,coltitle=white,title=\textbf{#1}}
+
+\lstset{
+  basicstyle=\small\ttfamily,
+  breaklines=true,
+  columns=fullflexible,
+  frame=single,
+  rulecolor=\color{MIBrand!45},
+  backgroundcolor=\color{MISoft},
+  numbers=left,
+  numberstyle=\tiny\color{MIDark!65},
+  keywordstyle=\color{MIDark}\bfseries,
+  commentstyle=\color{MIAccent!80!black}
+}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{corollary}[theorem]{推论}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定义}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注释}
