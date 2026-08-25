@@ -1,12 +1,13 @@
 import { execFile } from 'node:child_process'
 import { existsSync, readFileSync } from 'node:fs'
-import { join, resolve } from 'node:path'
+import { dirname, join, resolve } from 'node:path'
 import { promisify } from 'node:util'
 
 const execFileAsync = promisify(execFile)
 
 export function krillinAiBinary(repoRoot) {
-  return process.env.COURSE_KRILLINAI ?? join(repoRoot, 'workflow', 'video', 'krillinai', 'krillinai-cli')
+  const executable = process.platform === 'win32' ? 'krillinai-cli.exe' : 'krillinai-cli'
+  return process.env.COURSE_KRILLINAI ?? join(repoRoot, 'workflow', '.runtime', 'krillinai', executable)
 }
 
 function assertInsideRepo(repoRoot, path) {
@@ -50,7 +51,8 @@ export async function runKrillinAiSubtitle({
     ...(dryRun ? ['--dry-run'] : []),
   ]
   const { stdout, stderr } = await execFileAsync(binary, args, {
-    cwd: repoRoot,
+    // KrillinAI discovers its config/ directory beside its executable.
+    cwd: dirname(binary),
     timeout: 12 * 60_000,
     maxBuffer: 20 * 1024 * 1024,
   })

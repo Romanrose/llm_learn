@@ -1,0 +1,50 @@
+# This file is copied to workflow/.runtime/krillinai/config/config.toml.
+# It is local-only: add your own model endpoint and key there, never here.
+
+[app]
+segment_duration = 5
+transcribe_parallel_num = 1
+translate_parallel_num = 3
+transcribe_max_attempts = 3
+translate_max_attempts = 5
+max_sentence_length = 70
+enable_block_vtt_batch = false
+vtt_batch_size = 10
+target_language_first = true
+short_subtitle_max_chars = 20
+proxy = ""
+
+[server]
+host = "127.0.0.1"
+port = 8888
+
+[llm]
+# Any OpenAI-compatible endpoint works, including a local model service.
+base_url = ""
+api_key = ""
+model = ""
+json = false
+
+[transcribe]
+# Choose one for your machine: openai, fasterwhisper, whisperkit, whisper.cpp, aliyun.
+# whisperkit is intended for macOS Apple Silicon; fasterwhisper is a common local fallback elsewhere.
+provider = "whisperkit"
+enable_gpu_acceleration = false
+
+[transcribe.openai]
+base_url = ""
+api_key = ""
+model = "whisper-1"
+
+[transcribe.fasterwhisper]
+model = "medium"
+
+[transcribe.whisperkit]
+model = "large-v2"
+
+[transcribe.whispercpp]
+model = "large-v2"
+
+[tts]
+# TTS is unused by the course workflow but required by some KrillinAI commands.
+provider = "edge-tts"
