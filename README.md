@@ -12,8 +12,9 @@
 
 | 类型 | 内容 | 当前状态 | 网站入口 |
 | --- | --- | --- | --- |
-| 课程 | Stanford CS336 2026 · Language Modeling from Scratch | 19 讲；已整理 17 讲的课程笔记、Blog 与中英文逐字稿 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs336-2026/) |
+| 课程 | Stanford CS336 2026 · Language Modeling from Scratch | 19 讲；已整理 18 讲的课程笔记、Blog 与中英文逐字稿；第 18 讲等待公开资料 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs336-2026/) |
 | 课程 | Stanford CS149 Fall 2025 · Parallel Computing | 已接入课程主页、18 讲 Slides、公开视频与参考资料；笔记暂不公开 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs149-fall25/) |
+| 课程 | CMU 11-768 Fall 2026 · AI Agents | 23 次教学讲座；前 12 讲笔记与 Blog、前 9 讲中英文逐字稿已审核发布 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cmu-11768-fall26/) |
 | 项目资料 | Hello Agents、Agent Memory、TencentDB Agent Memory | 保留项目源码、教程与学习入口 | [智能体专题](https://romanrose.github.io/llm_learn/topics/agent/) |
 | 工程资料 | Network、SSH、多服务器开发、GPU Systems | 保留工程笔记与课程关联资料 | [AI Infra 专题](https://romanrose.github.io/llm_learn/topics/infra/) |
 | 论文与延伸阅读 | 30 Papers、技术文章、访谈与演讲 | 按专题持续归档 | [课程与专题](https://romanrose.github.io/llm_learn/#course-map) |

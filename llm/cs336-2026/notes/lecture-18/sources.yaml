@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-18
+title: "Guest lecture: Daniel Selsam"
+checkedAt: 2026-10-03
+state: source-unavailable
+official:
+  - label: 课程主页
+    url: https://cs336.stanford.edu/
+  - label: 官方播放列表
+    url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
+verification: 核对课程官网与官方播放列表；列表有 18 个公开视频（L01–L17 与 Dan Fu），未发现 Daniel Selsam 的公开视频或 Slides。
+missingOutputs:
+  - note.md
+  - blog.md
+  - transcript.en.md
+  - transcript.zh-CN.md
+nextStep: 待官方公开录像、字幕、Slides 或取得可核验的课程方逐字稿后生成。
+review:
+  state: pending
+audioDownloaded: false

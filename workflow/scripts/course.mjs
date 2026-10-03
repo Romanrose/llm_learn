@@ -94,7 +94,7 @@ function executable(path, label) {
 
 async function ytDlpJson(args) {
   const binary = executable(localYtDlp, '本地 yt-dlp')
-  const { stdout } = await execFileAsync(binary, args, { timeout: 60_000, maxBuffer: 30 * 1024 * 1024 })
+  const { stdout } = await execFileAsync(binary, ['--js-runtimes', `node:${process.execPath}`, ...args], { timeout: 60_000, maxBuffer: 30 * 1024 * 1024 })
   return JSON.parse(stdout)
 }
 
@@ -115,14 +115,14 @@ async function runSubtitleTool(tool, videoUrl, languages) {
 function chooseCaption(metadata) {
   const priorities = ['en-US', 'en', 'zh-Hans', 'zh-CN', 'zh']
   for (const [kind, tracks] of [['manual', metadata.subtitles], ['auto', metadata.automatic_captions]]) {
-    for (const language of priorities) {
+    for (const language of kind === 'auto' ? ['en-orig', ...priorities] : priorities) {
       if (tracks?.[language]?.length) return { kind, language }
     }
   }
   return null
 }
 
-function mergeTimestampedTranscript(markdown, { title, videoUrl, subtitle }) {
+export function mergeTimestampedTranscript(markdown, { title, videoUrl, subtitle }) {
   const timestampPattern = /^\[((?:\d{2}:)?\d{2}:\d{2}(?:[.,]\d+)?|\d{2}:\d{2}(?:[.,]\d+)?)\]\s*(.*)$/
   const cues = []
   for (const line of markdown.split(/\r?\n/)) {
@@ -236,7 +236,7 @@ async function prepare(courseId, lectureId, args) {
   mkdirSync(lectureDirectory, { recursive: true })
 
   const located = await playlistVideo(course, item)
-  const metadata = await ytDlpJson(['--skip-download', '--dump-single-json', located.url])
+  const metadata = await ytDlpJson(['--no-playlist', '--skip-download', '--dump-single-json', located.url])
   const caption = chooseCaption(metadata)
   const transcriptPath = join(lectureDirectory, 'transcript.en.md')
   const manifestPath = join(lectureDirectory, 'sources.yaml')
@@ -273,7 +273,7 @@ async function prepare(courseId, lectureId, args) {
   }
 
   const tool = executable(subtitleTool, '字幕清洗工具')
-  const invocation = await runSubtitleTool(tool, located.url, `${caption.language},en-US,en,zh-Hans,zh-CN,zh`)
+  const invocation = await runSubtitleTool(tool, located.url, caption.language)
   const invocationArgs = invocation.args.map((value) => value === '__OUTPUT__' ? transcriptPath : value)
   await execFileAsync(invocation.command, invocationArgs, {
     timeout: 120_000,
@@ -1369,7 +1369,7 @@ async function main() {
   throw new Error(`未知命令：${command}`)
 }
 
-main().catch((error) => {
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main().catch((error) => {
   console.error(`course: ${error.message}`)
   process.exitCode = 1
 })

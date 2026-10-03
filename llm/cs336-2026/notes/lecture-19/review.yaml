@@ -1,0 +1,29 @@
+schemaVersion: 1
+state: reviewed
+course: cs336-2026
+lecture: lecture-19
+provider: deepseek
+reviewedAt: 2026-10-03T10:08:51.503Z
+source: llm/cs336-2026/notes/lecture-19/references/deepseek
+evidenceMode: transcript-only
+approval:
+  by: user
+  at: 2026-10-03T10:08:51.503Z
+  scope: 本批 Note、Blog 与中英文逐字稿内容已确认；参照 CS336 2026 合并段落后发布。
+  quote: 我看内容没什么问题，就是你仿照那种格式合并之后，你就可以推送到正式版本里，我审核没什么问题了。
+outputs:
+  lecture-note: llm/cs336-2026/notes/lecture-19/note.md
+  blog: llm/cs336-2026/notes/lecture-19/blog.md
+  transcript-zh: llm/cs336-2026/notes/lecture-19/transcript.zh-CN.md
+  transcript-en: llm/cs336-2026/notes/lecture-19/transcript.en.md
+paragraphMerge:
+  record: llm/cs336-2026/notes/lecture-19/references/deepseek/paragraph-merge.yaml
+  before: 214
+  after: 91
+  englishTextUnchanged: true
+  chineseTextUnchanged: true
+  alignedTimestamps: true
+checks:
+  errors: []
+  warnings: []
+sourceLimits: 只有平台人工英文字幕，没有独立 Slides 输入。

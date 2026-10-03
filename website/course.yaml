@@ -32,9 +32,14 @@ sections:
         subtitle: Language Modeling from Scratch
         route: /generated/courses/cs336-2026/
   - id: agent
-    title: 智能体项目
+    title: 智能体课程与项目
     description: Agent 架构、记忆、工具使用与工程实践
     items:
+      - id: cmu-11768-fall26
+        courseId: cmu-11768-fall26
+        title: CMU 11-768 Fall 2026
+        subtitle: AI Agents
+        route: /generated/courses/cmu-11768-fall26/
       - id: hello-agents
         title: Hello Agents
         subtitle: 从基础范式到多智能体与 Agentic RL

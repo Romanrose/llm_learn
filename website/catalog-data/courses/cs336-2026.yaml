@@ -1364,6 +1364,13 @@ items:
     subtitle: 嘉宾讲座，结合前沿研究与实践经验补充课程主线中的模型训练与推理视角。
     resources: []
     status: scheduled
+    preparation:
+      state: source-unavailable
+      checkedAt: 2026-10-03
+      note: 核对官方课程页与官方播放列表（18 个公开视频），未找到 Daniel Selsam 嘉宾课的公开录像或讲义；不以 Dan Fu 的录像替代。
+    generation:
+      state: source-unavailable
+      manifest: llm/cs336-2026/notes/lecture-18/generation.yaml
   - id: lecture-19
     order: 19
     date: Wed June 3
@@ -1373,7 +1380,39 @@ items:
     assignments:
       - id: assignment-5
         state: due
-    status: scheduled
+    status: published
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=9EEm4iMAF5s
+    preparation:
+      state: subtitle-ready
+      manifest: llm/cs336-2026/notes/lecture-19/sources.yaml
+      preparedAt: 2026-10-03T08:55:41.286Z
+    generation:
+      state: reviewed
+      manifest: llm/cs336-2026/notes/lecture-19/review.yaml
+      reviewedAt: 2026-10-03T10:08:51.503Z
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: llm/cs336-2026/notes/lecture-19/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: llm/cs336-2026/notes/lecture-19/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: llm/cs336-2026/notes/lecture-19/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: llm/cs336-2026/notes/lecture-19/transcript.en.md
+        searchable: false
+        reviewStatus: source
 schedule:
   source: https://cs336.stanford.edu/
   syncedAt: 2026-08-15T05:41:47.021Z

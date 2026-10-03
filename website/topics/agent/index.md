@@ -1,11 +1,19 @@
 ---
 title: 智能体与 Agent
-description: Agent 架构、记忆、工具使用与工程实践
+description: Agent 课程、架构、记忆、工具使用与工程实践
 ---
 
 # 智能体与 Agent
 
-本区把 Agent 教材、专题笔记和可运行教程组织成一条连续路线。
+本区收录 Agent 课程、教材、专题笔记和可运行教程。
+
+## CMU 11-768 · AI Agents（Fall 2026）
+
+[进入课程工作台](/generated/courses/cmu-11768-fall26/) · [课程参考资料](/generated/courses/cmu-11768-fall26/references/) · [官方课程](https://www.cmu-agents.com/)
+
+Graham Neubig 与 Daniel Fried 开设的研究生课程，从 Agent 运行框架、工具使用、上下文、Skills 与记忆出发，延伸到编码、计算机使用、深度研究、SFT / RL 训练、安全和交互。
+
+截至 2026 年 10 月 3 日，已登记 23 次教学讲座、12 份官方 Slides、9 个录像链接、前两次作业仓库，以及逐讲阅读资料。假期、项目答疑和期末展示不计入讲次数；尚未发布资料的讲次保留计划状态。前 12 讲 Note、Blog 与前 9 讲中英文逐字稿已由用户审核并开放；逐字稿参照 CS336 2026 按完整语义段合并。
 
 ## Hello Agents
 

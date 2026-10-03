@@ -100,7 +100,7 @@ export default defineConfig({
           text: '内容分类',
           items: [
             { text: '大模型课程', link: '/#llm-courses' },
-            { text: '智能体项目', link: '/#agent' },
+            { text: '智能体课程与项目', link: '/#agent' },
             { text: 'AI Infra 项目', link: '/#infra' },
             { text: '论文与技术文章', link: '/#papers' },
             { text: '演讲与访谈', link: '/#interviews' },

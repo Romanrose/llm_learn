@@ -73,7 +73,7 @@ const heroLinks = computed(() => {
     <div class="workspace-hero__video">
       <a v-if="videoUrl" class="workspace-hero__watch" :href="videoUrl" target="_blank" rel="noreferrer">
         <img v-if="thumbnailUrl" :src="thumbnailUrl" :alt="`${title} 视频封面`" />
-        <span><b aria-hidden="true">▶</b><strong>在 YouTube 观看</strong><small>打开 CS336 官方录播</small></span>
+        <span><b aria-hidden="true">▶</b><strong>在 YouTube 观看</strong><small>打开本讲官方录播</small></span>
       </a>
       <div v-else class="workspace-hero__empty"><span>视频待接入</span><small>官方资源发布后会自动出现在这里</small></div>
     </div>

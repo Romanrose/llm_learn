@@ -1,0 +1,9 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-18
+state: source-unavailable
+inputs:
+  manifest: llm/cs336-2026/notes/lecture-18/sources.yaml
+outputs: {}
+review:
+  state: pending

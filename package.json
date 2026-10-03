@@ -15,6 +15,7 @@
     "latex:export": "node workflow/scripts/export-latex.mjs",
     "site:generate": "node workflow/scripts/export-latex.mjs && node workflow/scripts/generate-site.mjs",
     "dev": "npm run site:generate && vitepress dev website",
+    "review:dev": "node workflow/scripts/review-preview.mjs",
     "build": "npm run site:generate && vitepress build website",
     "preview": "vitepress preview website"
   },

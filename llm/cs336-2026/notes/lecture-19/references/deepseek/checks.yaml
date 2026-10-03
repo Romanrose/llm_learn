@@ -1,0 +1,31 @@
+schemaVersion: 1
+checkedAt: 2026-10-03T10:07:20.932Z
+course: cs336-2026
+lecture: lecture-19
+state: structure-passed
+reviewState: approved
+evidenceMode: transcript-only
+inputHash: 1ad6e09512d9e3f9e5c38402390127b916a0551b04a8c3377a35f7ebf6ffaad3
+counts:
+  englishParagraphs: 91
+  chineseParagraphs: 91
+  slides: 0
+timeline:
+  first: 00:05.200
+  last: 01:11:28.790
+  durationSeconds: 4300
+  lastParagraphToDurationRatio: 0.997
+errors: []
+warnings: []
+humanChecksRequired:
+  - 字幕错词与专名
+  - 中文语义完整性与术语一致性
+  - 公式与图示
+  - 引用支持论点
+  - Note / Blog 来源忠实性
+limitation: 结构校验不证明语义正确；内容由用户确认。代理未重新完整回听视频或声称独立核验全部公式。
+approval:
+  by: user
+  at: 2026-10-03T10:08:51.503Z
+  scope: 本批 Note、Blog 与中英文逐字稿内容已确认；参照 CS336 2026 合并段落后发布。
+  quote: 我看内容没什么问题，就是你仿照那种格式合并之后，你就可以推送到正式版本里，我审核没什么问题了。

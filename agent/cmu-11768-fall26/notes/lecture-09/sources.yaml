@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cmu-11768-fall26
+lecture: lecture-09
+title: "Training 2: Reinforcement Learning Basics"
+preparedAt: 2026-10-03T09:02:58.761Z
+video:
+  id: paAcPaaYZGM
+  title: "CMU AI Agents 2026: 9. Reinforcement Learning Basics"
+  url: https://www.youtube.com/watch?v=paAcPaaYZGM&list=PLSN0qpDfUvTM&index=9
+  playlist: null
+  playlistIndex: null
+  channel: Graham Neubig
+  durationSeconds: 4666
+materials:
+  - label: Lecture 9 slides
+    url: https://www.cmu-agents.com/slides/lecture-09-rl-basics.pdf
+    type: slides
+    status: approved
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: agent/cmu-11768-fall26/notes/lecture-09/transcript.en.md
+  processor: video-subtitle-transcript

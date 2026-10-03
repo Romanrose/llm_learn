@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cmu-11768-fall26
+lecture: lecture-03
+title: "Agent Capabilities 2: Context Management for Long-Context Agents"
+preparedAt: 2026-10-03T09:00:00.385Z
+video:
+  id: AiwCCvFW1uE
+  title: "CMU AI Agents 2026: 3. Long Context Modeling for Agents"
+  url: https://www.youtube.com/watch?v=AiwCCvFW1uE&list=PLSN0qpDfUvTM&index=3
+  playlist: null
+  playlistIndex: null
+  channel: Graham Neubig
+  durationSeconds: 4539
+materials:
+  - label: Lecture 3 slides
+    url: https://www.cmu-agents.com/slides/lecture-03-long-context.pdf
+    type: slides
+    status: approved
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: agent/cmu-11768-fall26/notes/lecture-03/transcript.en.md
+  processor: video-subtitle-transcript

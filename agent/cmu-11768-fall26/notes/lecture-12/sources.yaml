@@ -1,0 +1,20 @@
+schemaVersion: 1
+course: cmu-11768-fall26
+lecture: lecture-12
+title: "Training 4: RL Systems"
+checkedAt: 2026-10-03
+state: slides-ready
+materials:
+  - label: Lecture 12 slides
+    url: https://www.cmu-agents.com/slides/lecture-12-rl-systems.pdf
+    type: slides
+    status: approved
+slides:
+  text: agent/cmu-11768-fall26/notes/lecture-12/references/source/slides.md
+  sha256: 15a062df1513c0710e4e3bd8cfa247d4b131b966faadc32e5101561c322a8a13
+  pages: 43
+  limitation: 逐页文本提取不能确认图示、公式布局；待核。
+caption:
+  state: unavailable
+  note: 截至核对日，官网本讲未给出公开录像或字幕。
+audioDownloaded: false

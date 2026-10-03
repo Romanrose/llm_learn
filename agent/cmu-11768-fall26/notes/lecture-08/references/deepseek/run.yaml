@@ -1,0 +1,108 @@
+schemaVersion: 1
+course: cmu-11768-fall26
+lecture: lecture-08
+state: candidate-ready
+provider: deepseek
+model: deepseek-v4-flash
+inputHash: 4bc38c0f05a75e0cec615ad93938ba3ed2cd454bf0965b083c0bdcf6b91054bc
+createdAt: 2026-10-03T09:09:00.382Z
+evidenceMode: transcript-and-slides
+inputs:
+  transcriptEn: agent/cmu-11768-fall26/notes/lecture-08/transcript.en.md
+  slidesText: agent/cmu-11768-fall26/notes/lecture-08/references/source/slides.md
+outputs:
+  transcriptEn: agent/cmu-11768-fall26/notes/lecture-08/references/deepseek/transcript.en.md
+  transcriptZh: agent/cmu-11768-fall26/notes/lecture-08/references/deepseek/transcript.zh-CN.md
+  note: agent/cmu-11768-fall26/notes/lecture-08/references/deepseek/note.md
+  blog: agent/cmu-11768-fall26/notes/lecture-08/references/deepseek/blog.md
+usage:
+  - prompt_tokens: 1591
+    completion_tokens: 1236
+    total_tokens: 2827
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1591
+  - prompt_tokens: 1593
+    completion_tokens: 1320
+    total_tokens: 2913
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1593
+  - prompt_tokens: 1605
+    completion_tokens: 1287
+    total_tokens: 2892
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1605
+  - prompt_tokens: 1617
+    completion_tokens: 1299
+    total_tokens: 2916
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1617
+  - prompt_tokens: 1583
+    completion_tokens: 1264
+    total_tokens: 2847
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1583
+  - prompt_tokens: 1562
+    completion_tokens: 1383
+    total_tokens: 2945
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1562
+  - prompt_tokens: 1712
+    completion_tokens: 1424
+    total_tokens: 3136
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1712
+  - prompt_tokens: 488
+    completion_tokens: 300
+    total_tokens: 788
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 488
+  - prompt_tokens: 15838
+    completion_tokens: 6624
+    total_tokens: 22462
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 15838
+  - prompt_tokens: 15846
+    completion_tokens: 3949
+    total_tokens: 19795
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 15846
+review:
+  state: approved
+  approval:
+    by: user
+    at: 2026-10-03T10:08:51.503Z
+    scope: 本批 Note、Blog 与中英文逐字稿内容已确认；参照 CS336 2026 合并段落后发布。
+    quote: 我看内容没什么问题，就是你仿照那种格式合并之后，你就可以推送到正式版本里，我审核没什么问题了。
+  manifest: agent/cmu-11768-fall26/notes/lecture-08/review.yaml
+translation:
+  chunks: 8
+  completed: 8
+completedAt: 2026-10-03T09:10:38.856Z
+paragraphMerge: agent/cmu-11768-fall26/notes/lecture-08/references/deepseek/paragraph-merge.yaml
+publication:
+  state: published
+  outputs:
+    lecture-note: agent/cmu-11768-fall26/notes/lecture-08/note.md
+    blog: agent/cmu-11768-fall26/notes/lecture-08/blog.md
+    transcript-zh: agent/cmu-11768-fall26/notes/lecture-08/transcript.zh-CN.md
+    transcript-en: agent/cmu-11768-fall26/notes/lecture-08/transcript.en.md

@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cmu-11768-fall26
+lecture: lecture-07
+title: Computer Use Agents
+preparedAt: 2026-10-03T08:57:56.822Z
+video:
+  id: jwGluLrrqjQ
+  title: "CMU AI Agents 2026: 7. Computer Use Agents"
+  url: https://www.youtube.com/watch?v=jwGluLrrqjQ&list=PLSN0qpDfUvTM&index=7
+  playlist: null
+  playlistIndex: null
+  channel: Graham Neubig
+  durationSeconds: 4465
+materials:
+  - label: Lecture 7 slides
+    url: https://www.cmu-agents.com/slides/lecture-07-computer-use-agents.pdf
+    type: slides
+    status: approved
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: agent/cmu-11768-fall26/notes/lecture-07/transcript.en.md
+  processor: video-subtitle-transcript

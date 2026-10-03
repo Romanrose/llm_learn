@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cmu-11768-fall26
+lecture: lecture-02
+title: "Agent Capabilities 1: Tool Use"
+preparedAt: 2026-10-03T08:59:40.664Z
+video:
+  id: jXChFB4JSyw
+  title: "CMU AI Agents 2026: 2. Tool Use for Language Model Agents"
+  url: https://www.youtube.com/watch?v=jXChFB4JSyw&list=PLSN0qpDfUvTM&index=2
+  playlist: null
+  playlistIndex: null
+  channel: Graham Neubig
+  durationSeconds: 3442
+materials:
+  - label: Lecture 2 slides
+    url: https://www.cmu-agents.com/slides/lecture-02-tool-use.pdf
+    type: slides
+    status: approved
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: agent/cmu-11768-fall26/notes/lecture-02/transcript.en.md
+  processor: video-subtitle-transcript

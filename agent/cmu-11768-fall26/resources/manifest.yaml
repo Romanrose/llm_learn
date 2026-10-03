@@ -1,0 +1,133 @@
+course: cmu-11768-fall26
+state: linked
+checkedAt: 2026-10-03
+source: https://www.cmu-agents.com/
+catalog: website/catalog-data/courses/cmu-11768-fall26.yaml
+verification:
+  slides: 12 份官方 PDF 已验证可访问，并临时获取用于逐页文本提取；仓库保留提取文本与 SHA-256，不镜像 PDF 文件。
+  videos: 9 个录像来自官网日程，已获取平台原始英文自动字幕并清洗；未下载音视频，未完成完整视频回听。
+  assignments: 前两次作业仓库均通过 HTTP HEAD 检查（200）。
+  readings: 265 个阅读条目（252 个不同 URL）取自官网日程的 readings / references；保留官方标签和分组，未逐一核查链接或审阅全文。
+resources:
+  - label: Lecture 1 slides
+    url: https://www.cmu-agents.com/slides/lecture-01-agents.pdf
+    type: slides
+    status: linked
+    local: null
+  - label: 课程视频
+    url: https://www.youtube.com/watch?v=UwfjzyLnvMg&list=PLSN0qpDfUvTM&index=1
+    type: video
+    status: linked
+    local: null
+  - label: Lecture 2 slides
+    url: https://www.cmu-agents.com/slides/lecture-02-tool-use.pdf
+    type: slides
+    status: linked
+    local: null
+  - label: 课程视频
+    url: https://www.youtube.com/watch?v=jXChFB4JSyw&list=PLSN0qpDfUvTM&index=2
+    type: video
+    status: linked
+    local: null
+  - label: Lecture 3 slides
+    url: https://www.cmu-agents.com/slides/lecture-03-long-context.pdf
+    type: slides
+    status: linked
+    local: null
+  - label: 课程视频
+    url: https://www.youtube.com/watch?v=AiwCCvFW1uE&list=PLSN0qpDfUvTM&index=3
+    type: video
+    status: linked
+    local: null
+  - label: Lecture 4 slides
+    url: https://www.cmu-agents.com/slides/lecture-04-memory-and-skills.pdf
+    type: slides
+    status: linked
+    local: null
+  - label: 课程视频
+    url: https://www.youtube.com/watch?v=6zigF2a-2Pw&list=PLSN0qpDfUvTM&index=4
+    type: video
+    status: linked
+    local: null
+  - label: Lecture 5 slides
+    url: https://www.cmu-agents.com/slides/lecture-05-planning.pdf
+    type: slides
+    status: linked
+    local: null
+  - label: 课程视频
+    url: https://www.youtube.com/watch?v=S8v-dR4s29M&list=PLSN0qpDfUvTM&index=5
+    type: video
+    status: linked
+    local: null
+  - label: Lecture 6 slides
+    url: https://www.cmu-agents.com/slides/lecture-06-coding-agents.pdf
+    type: slides
+    status: linked
+    local: null
+  - label: Assignment 1 · Harness
+    url: https://github.com/cmu-agents/assignment-1
+    type: code
+    status: linked
+    local: null
+  - label: 课程视频
+    url: https://www.youtube.com/watch?v=1BWeH1oOM7k&list=PLSN0qpDfUvTM&index=6
+    type: video
+    status: linked
+    local: null
+  - label: Lecture 7 slides
+    url: https://www.cmu-agents.com/slides/lecture-07-computer-use-agents.pdf
+    type: slides
+    status: linked
+    local: null
+  - label: 课程视频
+    url: https://www.youtube.com/watch?v=jwGluLrrqjQ&list=PLSN0qpDfUvTM&index=7
+    type: video
+    status: linked
+    local: null
+  - label: Lecture 8 slides
+    url: https://www.cmu-agents.com/slides/lecture-08-sft.pdf
+    type: slides
+    status: linked
+    local: null
+  - label: 课程视频
+    url: https://www.youtube.com/watch?v=O3HSU0AoILc&list=PLSN0qpDfUvTM&index=8
+    type: video
+    status: linked
+    local: null
+  - label: Lecture 9 slides
+    url: https://www.cmu-agents.com/slides/lecture-09-rl-basics.pdf
+    type: slides
+    status: linked
+    local: null
+  - label: 课程视频
+    url: https://www.youtube.com/watch?v=paAcPaaYZGM&list=PLSN0qpDfUvTM&index=9
+    type: video
+    status: linked
+    local: null
+  - label: Lecture 10 slides
+    url: https://www.cmu-agents.com/slides/lecture-10-deep-research-agents.pdf
+    type: slides
+    status: linked
+    local: null
+  - label: Lecture 11 slides
+    url: https://www.cmu-agents.com/slides/lecture-11-rl-advanced.pdf
+    type: slides
+    status: linked
+    local: null
+  - label: Lecture 12 slides
+    url: https://www.cmu-agents.com/slides/lecture-12-rl-systems.pdf
+    type: slides
+    status: linked
+    local: null
+  - label: Assignment 2 · Eval
+    url: https://github.com/cmu-agents/assignment-2
+    type: code
+    status: linked
+    local: null
+generation:
+  state: reviewed
+  slidesLectures: 12
+  subtitleLectures: 9
+  candidateProvider: deepseek
+  publication: 用户确认后显式开放前 12 讲 Note/Blog 与前 9 讲中英文逐字稿。
+  approvedAt: 2026-10-03T10:09:56.644Z

@@ -1,0 +1,20 @@
+schemaVersion: 1
+course: cmu-11768-fall26
+lecture: lecture-10
+title: "Domains 3: Deep Research Agents"
+checkedAt: 2026-10-03
+state: slides-ready
+materials:
+  - label: Lecture 10 slides
+    url: https://www.cmu-agents.com/slides/lecture-10-deep-research-agents.pdf
+    type: slides
+    status: approved
+slides:
+  text: agent/cmu-11768-fall26/notes/lecture-10/references/source/slides.md
+  sha256: b3f9fafe7d586394efe3880d026c653b8b079151ffc75607d6aa7fab9c9ee259
+  pages: 124
+  limitation: 逐页文本提取不能确认图示、公式布局；待核。
+caption:
+  state: unavailable
+  note: 截至核对日，官网本讲未给出公开录像或字幕。
+audioDownloaded: false

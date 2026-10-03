@@ -1,0 +1,364 @@
+# CMU 11-768 Fall 2026 · Lecture 6 · Domains 1: Coding Agents
+
+- 视频：[官方视频](https://www.youtube.com/watch?v=1BWeH1oOM7k&list=PLSN0qpDfUvTM&index=6)
+- 字幕：en-orig · auto captions
+- 处理：连续字幕合并为自然段；每段保留首条字幕的起始时间戳
+- 状态：原语言字幕稿，待校对
+
+---
+
+## 正文
+
+[00:02.710] Okay. Um, today I'll I'll be talking about agents for coding and software development. So, presumably many or mo most or all uh people here are using coding agents. So, um I I barely need to describe what their underlying functionality is. Um but I would like to talk about um how we can build coding agents and what the necessary things we need to have in
+
+[00:28.880] order to build coding agents are. And um actually I just realized that the title of this slide is uh maybe uh a little bit of a misnomer. The first thing that I'd like to talk about is what it means to have a language model. Not a not an agent, but a language model that's able to write code. Um, and so there's different uh things you can do.
+
+[00:51.520] The kind of obvious thing is you say in English um I want you to write a program that uh visualizes this data for me. Um and you give it like a CSV uh file in your prompt and uh creates a bar chart uh for this data. Um, how many people do this sort of query like frequently?
+
+[01:18.159] Doesn't necessarily need to be a bar chart, but like write write this program for me to do this task. Probably a lot of people uh and you write it in like chat GPT or a coding agent or something like that. Um, however, there's a lot of other tasks that involve generating code that's not just like a oneoff like prompt, but you can also do um you can uh have it modify
+
+[01:45.040] repositories. So, you can have it modify like multiple files. Um, and so this would be something more like in this repository uh fix this issue or make this improvement or something like that. And then finally, actually developing software is not just writing code and implementing fixing issues and implementing features, but there's also a lot of other stuff involved. So I'd
+
+[02:08.720] like to talk about some of that other stuff as well. And of course uh like all of our other agents, this will involve us uh writing prompts, providing tools to the agent, and uh having a good LM that's able to solve these tasks. I'm mostly in this lecture going to focus on the second and third parts of this. And the reason why is because we spent the last two lectures
+
+[02:37.120] talking about like skills and memory uh and you know how we incorporate long context. And so for the prompting I I think many of the things were already covered in the previous lecture. So the first element that we have here is a large language model that has the ability to write code.
+
+[03:02.319] And so the example is writing code. Uh in order to write code from a prompt, you uh essentially need to be able to cover a few things. Um and sorry, just to clarify, this is this is single step at the moment. It's not agentic codew writing. It's singlestep uh language models. And so in order to have the ability to write code in a single step, you need to be able to understand the
+
+[03:27.840] language uh the programming language that you're going to be writing in. Another very very important uh topic is editing because usually we don't write code once and then throw it away although we do do that sometimes. Usually we like iteratively improve and that is not something that comes for free from language models. you need to train it into the model. And then the
+
+[03:50.159] final thing is reasoning. And coding has been one of the more successful applications of reasoning models uh just because um like math which is another uh successful application of reasoning models. You uh can easily verify or at least somewhat easily verify that you did a good job of it. So uh these are the the three things that I'd like to cover.
+
+[04:19.509] So when you're training recently every language model is a coding model. Um so there there are no language models that don't know how to write code. And the reason why is because coding is one of the most valuable and like widely used use cases for language models, but it's not something you get for free. Um, so may maybe before I go into the like the
+
+[04:39.759] actual content, what sorts of things do you think are necessary to train a model that is good for uh generating code? Not necessarily for agentic tasks first, but like what what sorts of things do you think you might need to do? >> Any ideas? Yeah. >> First of all, tokens must >> Okay. Yeah. all the tokens uh must exist. Uh so what what are what are the
+
+[05:10.000] some tokens that must exist for code that wouldn't necessarily need to exist for non-code models. [laughter] >> Yeah. So um there's uh I'll give a few examples of of what these tokens look like. Um any any other things that you might need to do? Um but like sorry just to to summarize. So uh you need to make sure your tokens have the tokens that are going to appear in code. Yeah.
+
+[05:43.039] >> You just need like a lot of coding. >> You need a lot of coding data to train on. Yeah. Um and so where where would you get that? >> GitHub. >> GitHub. Sure. Okay. Cool. Um any any other ideas? Yeah. For coding there's like special tools like all the OS related >> for coding there's special tools like GP and OS related tools. So yes this is uh very important. Um so that's more
+
+[06:14.560] that's maybe more important on the agentic side once you start creating an agent that actually like moves around the codebase. But if you were writing bash scripts for instance, you definitely need to know know about those even as in a single step setting. So um yeah, these these are all great points.
+
+[06:30.319] Uh so pre-training um you need to pre-train on a large corpus. It needs to include code, but it can't be only code because you also need it to understand English or whatever language you're quering in it uh it in. As well, um you need to make sure the tokenization's right, which I'm going to talk about in a bit. Um the next thing uh is mid-training. And I'm going to talk
+
+[06:53.039] about mid-training and supervised fine-tuning as kind of being the uh the same or mid-training or continual pre-training or supervised fine-tuning is all being part of this step. Um in here you need to train on code mixtures. Another really important thing for coding models is to be able to handle long contexts because you want to pull in lots of context from throughout the
+
+[07:15.120] codebase. And then uh another thing is uh RL post training. And of course we're going to be talking about uh each of these in more detail later with respect to the specific mechanics of how we train these models. So I want to mostly focus on uh kind of like the coding specific details in this uh task and uh leave the overall overview of how you do supervised
+
+[07:39.120] fine-tuning or RL postraining for later. So pre-training this is basically we need to learn from code and text and of course we're just optimizing next token prediction at this stage typically as is shown in the equation. So when you're training a coding model in contrast to training a model that only needs to answer questions you want to mix web text of course because every
+
+[08:06.879] model learns from web text but also technical pros. So this could be explanations of how code works. Uh things like math for improving logical reasoning abilities, source code, documentation, uh many many sources. Another thing, this is before probably any of you started working on language models, but there was a time when we normalized whites space. Uh so basically
+
+[08:38.159] we would take all of the spaces and like drop them down to a single space or something like that. That would be really bad if you're programming in Python, right? Because whites space is meaning bearing. So you need to be careful about these sorts of things. You also need to be careful about file boundaries and how you express file boundaries. You need to be able to have
+
+[08:58.720] uh APIs and you need to be able to preserve text and code relationships. Like if you have a markdown uh block within text, you want to make sure it remains in a markdown block. And of course, you will be evaluating while you're doing training. Typically, you'll do this just on a held out loss uh on coding tasks, but uh you need to shape your evaluation so that it covers uh the
+
+[09:27.279] sorts of things that you want to cover. So choosing and cleaning data is hard when you're training a textbased model. It's even harder when you're training a coding model because code is very uh unique in its distribution. So the first thing you need to do is uh filter by language and source. There is a lot of code online that's completely autogenerated and so it's like less
+
+[09:57.680] interesting from the point of view of you wanting to train on it. So you can remove that sort of code. Um you can remove things that are in wrong encodings uh and low value repeated codes. So um one example of this is forks or vendored libraries or nearly identical files or copied solutions. So if you look online on GitHub, there are thousands to uh tens of thousands,
+
+[10:26.800] hundreds of thousands of forks. And so if you just download them and use them as is, then you'll have lots of uh lots of trouble. Oh, sorry. Uh also mentioning this is tiny down here, but I'm taking a lot of this from a paper called Start Coder, which was uh one of the first coders on uh one of the first papers on pre-training models to be good at coding tasks. So if you're interested
+
+[10:48.480] in all of these details, you can you can take a closer look at that. And I believe Daniel uh you were involved in this. So you can ask Daniel for more uh more details. Um another interesting thing that people uh think about in some cases don't think about things in other cases is recording licenses and uh source dates and optouts and uh sensitive data filtering. So just
+
+[11:14.160] to give some examples, if you train on code that's in a proprietary license and then release the model and then make a billion dollars on this model, the people who have the proprietary license are going to come around two years later and say, "Hey, you trained on my code. Give me a hundred million because my code is contributing to your model." And you
+
+[11:39.920] might not want that to happen. Um or you might not care. But you need to decide [laughter] u uh actually US copyright law is a little bit vague about you know uh whe whether you should care about that or not. Um uh source states so if you don't want a whole bunch of old code you might want only new code. Um you can allow people the ability to opt out. also uh
+
+[12:02.480] sensitive data. Um people upload all kinds of things they should not be uploading uh like their uh API keys which nobody in this class will do, right? Uh please please do not push your API keys to the repository but you know people do this. Um, and I there are tools that allow you to do this sensitive data filtering like I uh I and hugging face use one called
+
+[12:28.399] truffle hog uh which is uh one that basically identifies all these uh API keys and then uh if you want to build a a training set or a test set you'll uh want to build a training set or a test set but this is also very difficult because of forks and all of the other problems you deal with. So um moving on to the next thing which is tokens. Uh this is something that uh you know kind of
+
+[12:54.160] needed to evolve as code became more important. But basically uh here I wrote bite level BP on code and pros. But BP is basically just any subword tokenization method. Um I think maybe most people would be familiar with uh with BPE but you can uh substitute in anyone you want. Um the uh thing that you need to be careful about is preserving uh whites space
+
+[13:24.160] and also uh compressing very frequent things. So up until we started working on code a lot whites space might be like one token. So that would mean that you would if you're generating uh 16 indented you know Python code you would have 16 spaces or something like that.
+
+[13:44.560] And so typically uh what it looks like is it would be um you know compressed into like three spaces and a a return in like a single token. So you start uh tokenizing specifically in a way that's useful for code. Another thing you can do but don't necessarily need to do is um like normalize the code so it becomes in a more normal uh more standard uh setting
+
+[14:12.800] but uh you you don't necessarily need to do that. So another thing you need to think about is the languages that you want to handle. And so Starcoder uh they took the approach of modeling all the languages or modeling not all the languages but a lot of very popular languages and kind of necessarily the ones that had more training data ended up being better at
+
+[14:39.600] particular tasks. Another uh other things that you need to be aware of are you know like what languages will the users want to be using and also what languages are easier to write um or supported by you know whatever agentic framework you're using. So for instance, if you ask a model to do something and like you don't specify the language, what language will it it
+
+[15:10.880] use? Like have you ever said code me up an app to do X? What language will it use for that? Yeah, >> mostly Python. Yeah, I think mostly Python. What uh has anybody seen any other contrary things? typically react. [clears throat] >> Yeah, exactly. So, if you if you ask for like a dashboard, it will do React. If you ask for just about anything else, it
+
+[15:37.120] will do Python. Um, and of course, you can specify something else. Um, I I had a heavy data processing pipeline uh that I originally wrote in Python and I asked the model to convert it to Rust to make it faster. And so the model did that but then every time it ran another program it ran it again in Python. So [laughter] like I had to say in rust in rust in
+
+[16:02.240] rust in rust every time until finally it did it. So they have these very strong biases. Um I think the biases are built in for two for two reasons. One is ease of writing the language. So, Python is like relatively concise and easy to write. Popularity and then also like downstream uh what was the model RL trained on? And it was probably RL trained with like a Python interpreter.
+
+[16:27.120] So, it it's more uh favoring that language. Cool. Any questions about pre-training? >> Yeah. >> Is there a situation where you want to augment your tokenizer specified like space for example? a separate token so that it's easier for the model to internally separate like language tokens and coding tokens even though they're like the same.
+
+[16:56.000] >> Yeah. Yeah. So this is a great question. I mean like it it does have return space face in here in the example. But um one one interesting thing is um you actually don't need to treat whites space any differently than every other token. um bite pair encoding is like literally meant to merge together bytes. Um and so however in almost all of the cases people do treat whites space
+
+[17:21.760] differently. Um and so the reason why is because like let's say the model is performing a little bit poorly. It's very weird for it to put out a partial word. And so they want to like essentially bias the model so that it's not outputting like partial words or partial word tokens. And so um typically they will tokenize whites space separately and non-white space
+
+[17:46.640] separately. But um there are also kind of exceptions to that. >> Yeah. >> Yeah. You can get a more efficient like representation in particular for code if you like tokens across space. So in the encoder paper we did that um you can get like 40% tokens but it can also break things in weird ways like said so like import nump numpy as np would be one token but like the model wouldn't be
+
+[18:15.600] able to stop like import numpy as you have to like back off and do like and you also have to be really careful if you change your tokenizer can break at scale and you have to be a little bit smart about how you do it. There's some papers on that we can share.
+
+[18:37.120] >> Yeah. So, so just to um repeat basically uh you can the two of the main points were like you can get a much more compact tokenization if you actually allow it to just tokenize indiscriminately regardless of whites space or not. Um but it can break things in weird ways. So like if you write import numpy is np that could become like a single token in your your code
+
+[19:03.840] model but then you'd have trouble like doing autocomplete or something like that because it's too long. So, um, cool. Any any other things? Okay. So, uh, now I'd like to go into mid training. And, uh, I have a few examples here. One is from Code Lama. Another one is from, uh, Quen Coder. And so, these are, uh, public papers that explain how they take a previously
+
+[19:31.840] trained non-code model and adapt it to being a coding model. So this kind of is good for highlighting the uh the difference between a co a non-coding model and a coding model. So um the first thing that you can do is you can increase code exposure. So if you start off with a much uh you know more heterogeneous data set you can increase the exposure of code. Um you could also
+
+[19:55.520] choose the mixture empirically uh to try to get code gains and uh maintain general capability and um so for example in code llama they took llama 2 and then did 500 billion additional tokens uh for the the additional models and uh there context extension is also uh important here. So here's one empirical uh result from Quen 2.5 coder where basically they said this
+
+[20:26.480] is a coding model and we're going to make it really good at code and so we'll just add 100% code and and train on 100% code afterwards. But the problem was it got uh quite poor scores on uh other important tasks like math or question answering. Um but if they continued training with not 100% code but but also text and math they were able to have like a tiny drop in the coding
+
+[20:53.360] performance while maintaining other performance. And this is obviously possible or important because uh you know like nobody's going to use a model like just for coding uh nowadays. So another thing is long context handling. And I already kind of talked about long context handling a lot. So I'm just going to go into this uh in a previous class, but I'm just going to go
+
+[21:15.440] into this in a little bit of detail. But you basically want to uh come up with coherent sequences of uh to train models on. So a very naive way to create data for a coding model is to say I'm just going to take this repo and I'm going to concatenate all the files together. But concatenating all the files together actually very often will exceed the long
+
+[21:44.559] context of even the longest context models. Like you only train up to typically 1 million tokens and there's many code bases or like I'd say most reasonable code bases are more than 1 million tokens. um like the Google monor repo is allegedly like billions of lines long, right? So that's not even on the same uh order of magnitude. And so but you would like to have a coherent file
+
+[22:12.720] understanding. So you can do things like take everything in a directory or you can parse the dependency graph and follow the dependencies and concatenate together things that depend on each other. Uh that sort of thing. Um so Quen 2.5 coder just as an example it started training into 8K and then it extended uh up to 128K with yarn uh like like I talked about a couple classes
+
+[22:38.880] ago. So this is also really important and this sort of context manipulation allows you to do that and you can validate it through tasks like cross file completion and infilling and short context retention which I'm going to talk about in a bit. So next I'll talk about infilling. I feel like actually I shouldn't talk about this because Daniel's the expert
+
+[23:03.360] and this is mostly about his paper but I I will talk about it anyway and people can ask him questions. Um but he had a paper called encoder. Um it was one of the first papers on training strong coding models with an infilling objective so that they would be able to perform tasks that are not just code completion but also um kind of predicting the uh inner part of code.
+
+[23:27.120] And so what this means is we get something like this is positive and we want to predict its return type um would be just one example of this. And so the problem is if you just look to the body to the the left in a normal auto reggressive model, you actually have no idea, right? Like there's no information about is positive. I mean, well, maybe you could guess bool from is positive,
+
+[23:51.520] but it it could also be a string or whatever else or an enum. And so then if you look at this, you could uh you know, tell that it's actually the return type. So how do we do this? Uh the answer is surprisingly is that a question or no? Um okay. So I think the answer is uh surprisingly you know you can do surprisingly simple things to make this work which is
+
+[24:17.600] basically you turn an infilling task into an auto reggressive task. And so you have like the prefix, you have the suffix and then you infill uh infill the span here. And so this m0 is essentially the the first uh like the first span that you infill and then this is uh that comes after m0 here. Um and so then at inference time you just do you put m0
+
+[24:47.760] here between the prefix and the suffix and then you put m0 again and then it generates a span. So this also um generalizes to one or more holes. So like if you have multiple holes, you can have an M0 and an M1 and then generate M0 at first and then M1 second. So this is a a general way that you can do any sort of infilling task.
+
+[25:11.679] And this allows you to do all kinds of useful things uh from the point of view of software engineering. So you can complete code in the middle of a large file. You can infer types uh like I did for return types. You can generate comments, rename variables. All of these things are like instances of an infilling task.
+
+[25:35.110] And here are some of the experimental results from the paper. So there are uh basically left to right inference on uh a number of tasks that they evaluated on single lines and multiple lines was like 48 to 24 uh and 25. Um if you did left to right with 10 candidates and reranked them uh using uh the context from the whole file, you would uh get do better uh but still uh
+
+[26:00.880] would not achieve nearly the improvement of training a model to do this. And this is you know not requiring any reranking at all. That's just uh using the um the infilling based inference and uh you can demonstrate that uh you can train with infilling but still maintain uh standard code completion.
+
+[26:22.960] And so uh if you did causal masking where you basically uh you know masked the the left to right they still were able to maintain performance. So it's not like really a trade-off between the two. Um, any any questions here or any follow-up comments? >> Yeah.
+
+[26:53.430] You apply like a a random selection of like kind of like a long tail distribution. So the majority of the time you're just doing one, but you could do up to I think like 100 chance. And then for each one of those you like sample and those are like you just replace the model >> and so the model doesn't predict the mass.
+
+[27:24.320] >> Okay. So I I'll repeat that for the back but basically um the question was how do you decide how many spans and how big the spans are to sample and the answer was basically you use a longtail distribution so that uh you're doing one most of the time but then you do two some of the time three less of the time uh and and similarly for the uh the length of the outputs and you could
+
+[27:45.120] probably model that after the infills that you actually see in real life uh if like you wanted to do that. So >> yeah let me just count on scale. Yeah, cool. Okay, so this is one example of an important uh thing that you can do uh for code in filling. Um but you can actually become very creative in learning from code.
+
+[28:08.480] So there's a bunch of different sources. So, um, you can use commit diffs. And so, if you have the before, uh, if you have the files before the diff and a message, uh, like from a a pull request or something like that, you can then generate the diff or the after output. So, this would allow you to basically learn good code editing models. Um, another thing is learning from diagnostics.
+
+[28:40.080] So, um, you can get broken code plus an error and generate, uh, repairs. So, does anyone have an idea of where you could get like a ton of this data, uh, nearly for free? >> Stack overflow. >> Stack Overflow uh, is is one good one. That's not the one I was thinking of, though. issues.
+
+[28:58.960] >> GitHub issues uh maybe a little bit more uh >> yeah, GitHub pull requests uh is is good, but uh like uh if you're a software developer um where where do you see code break? Maybe in in GitHub or something tests. Yeah. So I I specifically was going to talk about continuous integration tests, which are the tests that run when you make a push to a repository or something
+
+[29:24.240] like this. All of this history is included in GitHub and it's public and so you can see that a particular version of the code ran and generated an error and then a later version of the code eventually passed and got merged in. So this is a very rich uh version of this sort of test data that you don't need to um like generate yourself because generating it yourself would be would be
+
+[29:46.080] painful. Um, of course, if you start running an agent, you can run an agent and generate the data. Uh, which is what I'll be talking about later. So, um, yeah, the tests is related to that. Um, another thing is execution traces. And so, this is kind of interesting. It's a little bit niche, but there uh you know it it's pretty cool, which is like you can see
+
+[30:14.720] how the program actually acts by instrumenting it and running it at test time. And you could um for example ask the language model to generate this the stack at a particular point in in program execution or something like that. Um or generate the outputs at a particular point in program execution.
+
+[30:34.240] And I'm going to talk a little bit about code world models at the very end of this talk which kind of relies on this. Cool. Um any any questions? Good. Okay. So next I'd like to talk about evaluating generated code. Um there's a few paradigms to do this. Um, one of the most obvious ways to do this, um, which actually, uh, we we did in a paper in 2017, I guess, is comparing with a
+
+[31:05.919] reference solution. And so, um, what this means is you have a human generated output and you compare not the execution results, but you just say, is the machine generated code similar to the human generated code? And so a long time ago, uh, there was a famous metric called blue. Has anybody actually used this anymore?
+
+[31:30.080] Oh, wow. I'm actually [laughter] surprised by how many people still know uh still know of this, but um there's a metric called blue, which is basically measuring uh token and engram overlap uh between the uh the output code. And so this is uh this would allow you to find code that looks similar on the surface, but the problem with this is that uh it
+
+[31:57.440] um if you have like more than or equal, this is only one token different, but it's actually very different from the point of view of the behavior of the program. Um, and on the other hand, there's uh things with different expressions that look very different from the point of view of token overlap, but actually are uh are not different.
+
+[32:17.200] So there's been a few ways to um essentially account for this. So one way of doing it is uh this metric called codeblue. And basically what it does is instead of comparing the surface level similarity uh from the point of view of tokens it compares the abstract syntax tree uh between the uh programs. So one feature of programs is every program can be turned into a tree uh that
+
+[32:43.440] essentially specifies how uh the model you know exe or how the program will be executed uh according to the logic of the programming language. And so they um they compared based on the syntax tree and they also compared based on a syntactic data flow match um or semantic data flow match which is like which variables are uh kind of come from uh which place and and stuff like that.
+
+[33:13.039] Um another way that you can compare code similarity is uh using embedding based methods. And so this is um something that we uh created in 2023 called code bert score. And the basic idea is that you uh would take code and this would be one example of uh code. This would be another example of code and you uh embed each token in the code. And then you uh
+
+[33:42.559] check to make sure that each token has a good other token that corresponds to it in the uh in the other set of code. And this uh this allows you to tell like that all of the code is uh all of the code is essentially reflected um in the other implementation.
+
+[34:10.790] So um these are good in the case um or actually sorry I'm going to talk about the trade-offs in a few slides. So um may maybe I'll just switch to the other paradigm of evaluating code and this is by far more popular nowadays. Um so nowadays the typical way of evaluating code is by actually running it. And so what you do is you have a candidate um a candidate output and then you have a
+
+[34:31.760] bunch of test cases and based on the candidate output you run the test cases and um you evaluate and if it passes all the test cases you get a score of one. If it doesn't pass all the test cases you you get a score of zero. Um so each of these have uh benefits and disadvantages. So if you look at the execution checks um the benefit of execution uh executionbased evaluation
+
+[35:01.280] is that this can accept different correct implementations. The disadvantage is this is really hard to create really good unit tests. And for every famous benchmark that you will find, um there is a paper complaining about how bad the unit tests are and uh saying that they either have false positives uh from the point of view of um allowing incorrect implementations
+
+[35:29.040] because the tests are not rigorous enough or false negatives which is that the input to the model is um the input given to the agent is not enough to pass all all of the unit tests. And just to give an example of this, um it might say I want a uh I want a nice button on the top right of my interface that uh says learn more or something like that. And that
+
+[36:00.640] might be great, but the test might also be checking the background color of the the button or something. Um because that's a requirement that wasn't obvious right at the very beginning of the test, but became obvious later. So th this is like the problem uh it's like one of the biggest problems in uh training coding agents nowadays uh because we move we're
+
+[36:20.480] moving to more and more difficult tasks and um creating tests that both have low false positives and low false negatives is is very hard. Um so the uh the advantage another advantage is detecting semantic errors through uh execution is good but this needs um a essentially good tests dependencies in an isolated environment and uh so for instance um if you need to
+
+[36:57.119] run the tests it's easy if you're just using the Python standard library but if not you need to install all the dependencies beforehand. Um and so the typical way we do this is we have something like a docker container uh which installs all of the dependencies.
+
+[37:13.119] Um but you might think you have installed all the dependencies but then you didn't think about the versions of the libraries that you're using. And so the versions get upgraded the tests die. um and uh you're you're giving a newer model a lower score just because the tests are like out of date. So uh this is another another problem we have to deal with. And then the final thing is
+
+[37:37.760] um you need a stable execution environment in time. And so running the tests for a very big repository can actually be very time consuming. And in a lot of the benchmarks uh that we deal with uh including Sweetbench which I'll talk about in a moment um they you know have come up with ways to fix this but it it's definitely a uh a difficulty.
+
+[38:04.069] Cool. Um so ju just to give some ideas of benchmarks that are popular in uh like singlestep code generation. Um human develop string and um you need to generate a completion uh and there are hidden unit tests. So, uh, this was actually, I think, just manually created by people at OpenAI. Um, so they came up with a bunch of like kind of tricky Python, uh,
+
+[38:42.079] functions, uh, to implement. And so it's not necessarily reflective of real world usage. Um, one that's a little bit harder is one called code contests. And basically, this is like code forces uh style uh like more competitive programming things. And there's a bunch of a bunch of other evaluation benchmarks, but they go from kind of like simple to to more complex ones.
+
+[39:22.310] on the fir on their first attempt can solve a code forces problem with no mistakes and get it 100% correct. But that's kind of what we're asking singlestep language models to do here. And so uh this is actually a pretty pretty difficult task and it requires extensive reasoning.
+
+[39:38.240] Um so uh this is an example of something from uh a paper from 2021 that introduced humanl and everybody if you know what codeex is nowadays you'll be very confused by the fact that this is also called codeex um but this was the original code completion model that was implemented for uh github in 2021 and basically Um here what they're doing is they are evaluating um
+
+[40:13.200] how uh how much basically the model passes and so uh you can see that as they scaled up the model the model passed more um at one and what pass one means is you get to generate a single output and that passes but it's also common to report like pass k uh which is like if you generate uh if you generate five outputs. Um, is any one of those correct? And so that's like a slightly
+
+[40:41.280] more lenient metric that you can evaluate as well. >> Cool. Uh, any questions here? >> How is code efficiency or complexity factored into training? You read my mind. Uh, thank you. Thank you for introducing my next slide for me. So um the answer is coding efficiency is for non-agentic tasks was mostly not factored into training. Um they mostly did not uh did not consider whether it
+
+[41:21.839] was faster code or slower code. They mostly just considered whether it was right code. Um there are a few uh exceptions to this. Uh one of them is uh this uh paper no fun of um and the uh the existing um basically the idea here is that you don't just evaluate um like functional requirements which are like that it does the thing it's supposed to do correctly. But you also
+
+[41:52.400] do um uh runtime things like runtime efficiency uh latency or resource use and maintainability and security um uh based on things like static checks. So there is work to evaluate uh this other stuff as well. For agentic tasks it's uh more common to consider efficiency and I I'll talk about that in a bit.
+
+[42:15.040] Cool. Okay. So um for singlestep code generation models uh a typical way to learn the models is through RL over the test results. So this is pretty straightforward uh from the point of view of RL tasks which is you just sample responses you run the tests over them and then you update the model. So nothing nothing too uh surprising here. Um but one really
+
+[42:49.119] important thing is this allows you to train um large language mo uh train uh large reasoning models. So uh as I mentioned solving code forces in you know a single step is quite difficult and so it requires uh you to really think carefully about the uh response and reasoning models are very very helpful in doing this and so um this is uh possible uh possible to do. So like
+
+[43:16.800] one hint of worrying about efficiency is like if you're doing a code forces thing a lot of competitive coding tasks give you a execution timeout and so like if you go over the execution timeout basically um you won't get uh you won't get any score for it but um yeah that that's uh basically the method that you can use here and um you you can show that this
+
+[43:40.880] reinforcement learning uh style thing after mid-training can uh you know further improve your uh further improve your results. This is just one example from a paper called deep coder that you can look up. But basically um you know they trained for a while at 16k context uh trained uh for longer at 32k context and eventually um reported on uh like 64k context here.
+
+[44:16.150] Cool. Um so yeah any any questions? >> Yeah >> is that to provide the single step model context to like code more efficiently for code or is that the reason because it was language model and then >> yeah that's a a great question. So um to repeat the question for the comments that are included in code why do I get you know comments in code when it's actually not necessary um you know to
+
+[44:43.839] like solve the task. I only have hypothesis here because I I don't I'm not 100% sure about like the models that I use the most. You know what what GPD is doing or what what Claude is doing. Um, so I'd like to go back and and read a little bit more about this, but my guess is that um, number one, the models are trained on existing code and existing code has
+
+[45:09.440] comments, so they'll fill them out. Number two, they are trained to do reasoning. And I feel like there's probably some implicit incentive to add more comments in your code to buy more tokens so that you can think about what to do next while you're generating the code. Um, so I think there might be an implicit incentive to get models to do comments. And then uh I'm certain now
+
+[45:33.119] now nowadays uh maybe not like six months ago but now there's also some like non-functional you know classifier or like code quality model that they're incorporating uh that says uh write comments write an appropriate number of comments like not too many not too few because one of the big um complaints about previous coding models was that they would generate like
+
+[45:56.720] a million comments that nobody would ever read and be super verbose. So, um I remember when uh the more recent version of Codex was released, one of the things they stressed was we will not give you a whole bunch of comment spam and we'll just do it concisely. So, yeah.
+
+[46:24.230] >> Is there specific training methods for code quality that make it human readable? Um, I mean like I think the the obvious way of doing this is to come up with some model that you know judges code quality and add it to your reward during RL. I don't know of any details of this. Do do you know of any uh >> I think like when people do post training they'll often like collect
+
+[46:46.560] readability as one particular judgement that >> so yeah okay >> so um to to repeat for the back like when you're doing post training um there's often a kind of like RLHF step where you train a reward model that predicts how good the output is and readability is one of the things that you can collect from human annotator ators and then that will be boosted in
+
+[47:13.520] like indirectly through the reward. Cool. Um okay so I definitely like to cover aentic coding. So um this is uh the big difference between uh singlestep coding and agentic coding is that we um now are doing iterative tool calls uh like you know all agents and let let's first talk about the most common setting of uh either fixing bugs or implementing new features in GitHub
+
+[47:46.319] repositories or in code repositories when you want to do something like this typically you uh you have three steps. Uh the first one is localize. Um so this is like if we are talking about uh sorry I think my my running example is now uh a long time ago but basically we had um we had an example of fixing some code uh so that the return value would be uh would be appropriate. And so um
+
+[48:17.440] localize essentially here is trying to find the place that needs to be modified. Um then uh edit is uh changing the place that needs to be modified. So for example, if we're um setting a default only when the value is none. Um and then verify is checking that you actually did a good job. And then uh typically you will do this in a loop. So if you uh if
+
+[48:45.440] you find that verification fails, you'll go back and iterate until uh everything passes. So yeah, here here's the the running example. Um so uh if you uh if your job is to find the place where uh retries is not defaulting appropriately when the value is zero, um you uh will first localize the implementation and reproduce the behavior.
+
+[49:13.280] Um and so uh then you edit and so to uh fix the issues you will then go in and edit the code and then you verify by running all of the tests and if the tests fail uh then you use the failures to uh guide the next step uh that you're performing here. So this is agentic coding. Um and you basically put this in a loop uh using the tools that I'll talk about in a bit.
+
+[49:45.599] Um I'd just like to point out there's one um alternative way that you could do repo level coding without any iterative agentic workflow. Um there was a paper uh called or there is a paper called agent list which is actually by uh Steven Sha a like new assistant professor here. But um basically what they did is um instead of having the agent be able to call call
+
+[50:14.800] tools to do localization. It basically split it into a localization step where uh they would first localize um they first predict the files that need to be edited uh then predict the uh classes and functions that need to be edited and then pick specifically the lines that need to be edited. Then they would generate a patch um just using a singlestep language model. So this is an
+
+[50:42.480] alternative. This was like for a short time like frustratingly effective because I I at this time was building coding agents and uh we saw quite a few language models where this workflow actually worked better than using a coding agent. And the reason why is because um the language models were trained very heavily to be good at like singlestep code resolution and they were
+
+[51:06.319] not trained very heavily to be good at like agentic tool calling and uh and verification loops. Um and uh so yeah anyway this is an alternative way that you could solve repo level code generation but typically now everybody uh everybody uses agents. So how do you apply agents to this? Um one answer is you give the agent a single tool. Um the one tool that you
+
+[51:36.559] give to an agent is uh the ability to run bash commands. And so this goes back to, you know, the comment before that being able to use bash commands is really important. And a mini suite agent is uh something that was created by uh the people who created SWUB um which is essentially an agent that only uses bash commands to to solve problems. And so
+
+[52:02.000] this allows you to localize. So um the way you can localize is using uh things like gp or rip gp which is kind of a a more expressive version of gp um cat and find. Um if you want to edit files you can use things like said or you can run a python oneoff script you can use patch and then to execute checks you can use piest or build commands. So at least in
+
+[52:26.880] theory this is all that you need to implement a coding agent. Um, can anyone think of some reasons why this might not be might not be ideal? So, so the answer was there's only a limited number of tools like GDB and other uh and there's other tools like GDB, but you could just run GDB through the bash commands, right? So, like it just just to clarify, I'm not saying you
+
+[53:06.960] only provide these tools to the agent. I'm saying you provide only one tool to the agent and it's a bash tool. >> Yeah. great uh great point. So um uh just to reiterate what the point was is um these will be most of the tool calls and if these are most of the tool calls if you encapsulate them into a more efficient tool the agent should be able to do a good job here. And so just to
+
+[53:52.079] give an example if I want to edit files the the agent needs to think every time about whether it uses said or python or patch. Um whereas if you make a standard file editing tool that's specifically tailored to agents doing a good job at it um then it will just mostly rely on that file editing tool and it will get the file edits more correct. And so just
+
+[54:18.800] to give an example this is what it would look like if you were running with said um and so uh that will you know match the line match the lines and stuff like this. But what if you needed to replace a thing that had lots of backslashes in it or something like that. Then you would be like backslashbackslash all the time.
+
+[54:38.160] You need to get the number of backslashes exactly correct. Um and so there's just a number of of things that make uh bash not necessarily the best possible interface for um working uh with files for instance. And so the biggest change that most or maybe even all uh you know competitive coding agents use is they uh also add at least one tool for file editing.
+
+[55:03.680] And so you can um either write a whole file or uh you can search and replace within the file. And typically these are implemented uh from the point of view of like having a tool that allows you to um to perform these operations in a like fixed format uh that the this tool uh uses.
+
+[55:26.319] So um one one way that has been examined is a unified diff format. So basically you have um like the lines and the change that needs to be made. But um the problem with this is uh if you ask the agent to get the lines, it will mess up the lines all the time and like not apply uh properly. And so instead, uh, the most typical way of doing these things is, um, uh, you have something
+
+[55:57.839] that looks a lot like a diff, but it's not, uh, it's not purely a diff or it doesn't specify line numbers. So, um, this is probably the most common way of doing it. It's done in a lot of, um, it's done in a lot of, uh, coding agents. Can anyone think of a downside of doing the right one instead of the left one? Any Yeah, exactly. So if there's multiple
+
+[56:39.599] versions of retries equals 3 anywhere in the file, it won't match and then uh you you won't be able to disambiguate which one should be fixed. So basically what the coding agent needs to do in that case is it needs to write more lines until it becomes unambiguous. But the advantage of doing the thing on the right is much larger than that disadvantage. So almost all coding
+
+[57:02.160] agents use this. Um so diff format can make a big difference and file editing tool format can make a big difference. Um this is an example from something called the uh the Ader code edit benchmark or code editing benchmark and uh basically it evaluated uh GPT4 Turbo which was a model at the time on uh comparing like search and replace and unified diff format and GPT4
+
+[57:28.960] Turbo was just like a lot better at unified diff format because it had seen more of that in its training data. Um nowadays uh it's a little bit less prominent but it still is a thing. Like until very recently Gemini uh performed quite poorly on a number of harnesses because Gemini like Gemini was trained on its own edit format that was different than everybody else's and so
+
+[57:52.720] it was not working well. I think they fixed it in the past like few months or something like this. But this can be a major major major bottleneck uh to getting agents to work well if it's not done properly. Cool. Uh any questions here? Okay. Um so the next thing is finding relevant code. So you start with uh searching for you know whatever information you have. So uh rip gpap is
+
+[58:27.440] the most uh you know popular tool for uh for doing this but you can also search with uh grap or you know a dedicated code search tool and uh then you follow the values and uh the agent goes and fixes things. There's also more complex methods that people have examined with respect to code localization.
+
+[58:51.359] And so uh just to give one example, this is a paper called LOK agent where LOK agent what it did is it provided the agent with a special tool that allowed it to follow dependency paths. So if you um found the issue, you found config.py um and then uh once you found config.py, you could automatically jump with this tool to other related uh files if you wanted to.
+
+[59:20.000] So um this is uh interesting. Uh what I will say is from my experience it's hard to make this work this sort of approach work better uh than the simpler stuff. And I'll I'll give some actual examples of that later. So for coding agent evaluation and training um the most popular uh benchmark for evaluating coding agents is bench. Probably many people have
+
+[59:46.000] heard of this. Mo most people here. Okay, cool. Um, but anyway, like because I assume that not everybody has heard of it. Basically, the way uh this benchmark was created was it was created from GitHub issues where they take the GitHub issue uh which is the problem. They take the codebase state at the time the GitHub issue was resolved. So, it's basically what happened before the pull
+
+[01:00:12.480] request. And they also find the tests that were associated with the GitHub issue. And so the tests are um because they were introduced together with this GitHub issue, these are presumably testing the functionality that needed to be fixed in the GitHub issue. So then based on that um they you know have an agent that generates a patch. um based on the patch they apply the patch they
+
+[01:00:40.400] apply the tests and uh they generate results and if all of the relevant tests pass then you get a score of one. If all the relevance tests don't pass they they get a score of zero. Um harness here means actually something different uh than you know what an agentic harness means. It means like the test harness.
+
+[01:00:59.760] Um so it's just running the test. But one important thing uh to mention here is that running the whole test suite on some of these GitHub repos would be really expensive. So like some of these repos are Django in NumPy and other things like this and running the test harness would be like 5 minutes or 10 minutes for each example that you wanted to evaluate uh possibly even more. And
+
+[01:01:23.680] so what they did here is they came up with a smaller subset of tests that need to pass in order for this issue to be considered resolved. And these fall into uh some categories. The first one is failed to failed to pass. And so these are things that failed before the PR and pass after the PR. So they're testing the functionality uh that was actually
+
+[01:01:42.880] implemented in the PR. Then there's also pass to pass ones and these are related tests that passed before uh the the PR was filed and then also need to pass after to make sure you didn't break anything and didn't have any regressions. Cool. So um to build runnable benchmark tasks um essentially what and you'll do more of this in the evaluation uh evaluation
+
+[01:02:12.319] benchmark place uh assignment but run runnable tasks are basically you need a starting state. So you need uh the files uh you might need the dependencies and you need the test command and the issue is the requested behavior um and the checks are the the tests.
+
+[01:02:35.990] So um the good news about agents nowadays is actually evaluation is one of the biggest problems in uh making better agents because if you can generate lots of evaluations um you can actually perform reinforcement learning on these evaluation benchmarks and train an agent to do a good job. And so um if you can go through this process of generating many many of these outputs, you can
+
+[01:03:02.400] actually uh train a model. And the way you do this is basically you just run the model to um run the model to generate an output and calculate the reward if uh you know the it did a good job or not. And um one of our uh one of our first papers on doing this was something called sugeim. So the thing with uh sui bench is that uh swbench is only an evaluation data set or they only have
+
+[01:03:33.359] configured uh training environments for the evaluation data set. So for uh Swedge uh we basically created uh additional training environments and trained a model on it and demonstrated that a model that was you know quite poor before with about 11% accuracy with even 500 examples could scale up to being uh quite a bit better. And um I'm not going to talk about this a whole lot
+
+[01:03:56.240] yet because we're going to be talking about this in a later class. But we also demonstrated that if you generate lots of outputs and rerank them uh you can do inference time scaling and do uh even better. Um so the biggest effort on this uh which I actually just realized I don't have it in the slides um but is worth knowing is something called SU rebench and SU
+
+[01:04:20.160] rebench basically what this is is it's constantly creating more SWEBench environments and uh so they've been they've created them from PRs from uh December 2024 to June uh June 30 2026 And I actually just discussed with the author recently and I think they're going to up update this in October or so. Um so this is just um creating more and more of these and they have a
+
+[01:04:49.440] training set and a development set. So this is probably the best example of a large scale uh large scale publicly available uh coding uh coding agent data in the format of SWEBench. But um there's also more lightweight ways to create this data. So um one of the problems with this is you need a single pull request for each one of these uh uh training examples that you create. And so
+
+[01:05:21.119] this is an example from Swissmith um which is not relying on uh pull requests but it's instead relying on artificially injected bugs. And what you do is you prepare an executable baseline and you mutate the code but keep the tests. And so essentially um how many people have heard of like mutation testing?
+
+[01:05:48.240] A few people. Okay. This is this is actually a really interesting idea from uh kind of like software engineering or software engineering practice which is if you are not sure if your tests are good like if you have unit tests but you're not sure if your unit test suite is very comprehensive. You can go in and make small mutations to the code that should break the code and then you see
+
+[01:06:12.640] if the tests pass or not. And if the tests still pass those tests are like not good tests. they they aren't covering like real breakages. So you should augment your test suite. Um so I think this work was inspired by that idea, but it's not exactly the same in that um they mutate the code in the repository and then they try to find tests that fail afterwards. And so what
+
+[01:06:38.319] this essentially allows you to do is um it allows you to create synthetic buggy data that you can then use to train models. uh just by just with the existing uh tests in in codebase. Um so here's a example. So um if you have code where all four of the existing tests pass, you then go in and mutate the code um uh into something like return three if not value instead of uh
+
+[01:07:09.680] if value is none. And then um one of the tests may fail now. And so this is a good example where you essentially uh are able to come up with uh something that says please fix this. So the good thing about this is this is very lightweight and you can generate a nearly infinite amount of data by doing this. The bad thing about this is these are not necessarily like natural uh
+
+[01:07:40.799] training examples that you might want to tackle for real. Um so you can scale out to different uh programming languages with this framework as well. So there's uh something uh called multisbench and another thing called SWEBench multilingual which basically uh scale out to you know a number of different programming languages.
+
+[01:08:04.880] The only logistic difficulty is that the conventions are different between the languages and you need to handle them. Um, the good thing is now coding agents can do this very easily. So it's not that not that hard to change the conventions. Um, a final thing I'd like to talk about is multi-harness training. And so as I mentioned before, um if the edit format is very different
+
+[01:08:33.199] between uh what a language model expects and what the harness expects, um most uh most language models will perform worse on the harnesses that they're not trained on. So now it is very common uh for language model providers to train on multiple harnesses. So they'll not just train on, you know, a single harness, but they'll train on like open hands and open code
+
+[01:08:56.319] and codecs and um, you know, all of these other harnesses. And to give one example of this, um, you can read the reports of Neotron by Nvidia where they intentionally trained on um, I think five or more uh, five or more harnesses to provide this to provide a model that works with a lot of different harnesses.
+
+[01:09:21.189] Cool. Um, we don't have a whole lot of time left. I'm maybe we'll just go quickly through a number of different um a number of different uh tasks other than just like straight up issue resolution. These are less these are less mainstream in research, but they're very important if you want to build a functional model.
+
+[01:09:42.799] So, um front-end development of one of is one of them. Um there's a front-end development benchmark called Swebench Multimodal. Um this is a benchmark that focuses only on fixing bugs in frontend uh fixing bugs in uh front-end tasks. And so it is not um it's not focusing on developing like new frontends. It's more uh kind of on the issue resolution
+
+[01:10:13.679] thing. And so there's two differences in the in creating a multimodal model. The first difference is typically you would think that you would need a a multimodal model to do um uh to like take in the input and understand the input. So you would need a language model that was trained to be able to ingest images. Um the other thing is you need to verify
+
+[01:10:40.880] and so you need to there's a couple ways to verify in the browser. One way is to write tests uh that work in the browser. Um another way is to look at the the output. Um so uh there's kind of two ways that people do this nowadays. Um, one common way of doing this is to take a guey based agent and use it as a component of your coding agent or have a have an
+
+[01:11:07.199] agent that can handle both guey based tasks and coding tasks. Next class is going to be about guey agents. So I'm not going to explain at all about how we build guey agents. Um, another way you can do it is by writing a script that tests the guey. And so for instance, Playright is a common uh guey testing library that a lot of people use to do this sort of thing.
+
+[01:11:30.640] Um and so basically, you know, you might if you have an issue where you're able to submit with a length of zero input, um you would uh then be able to verify that visually that this happens. or you would be able to write a um a playright script that makes sure that after you add zero it enter an unblink name will appear.
+
+[01:11:53.520] Um so yeah and then su bench multimodal is is a way to evaluate that one very shocking result from a couple months ago was there's a popular model called GLM 5 uh GLM uh and GLM 5.2 uh was a model that came out. It was not a multimodal model, but it got like number one on front-end design arena. Um, regardless of this, so that kind of shook my assumptions about what you need in order
+
+[01:12:22.560] to be a good front-end uh developing uh code coding agent. But uh you know, I I still think multimodal behavior is probably pretty important. Um, so there's a famous idea of inner loops and outer loops in development. And the inner loop of development is kind of what I've been talking up about up until this point. And it's essentially the uh iterative process of doing bug fixes,
+
+[01:12:52.000] testing, and these sorts of things. Then the outer loop of development is everything that's not this. And there's a lot of stuff involved in software development that's not this. So for example, code review is one example. Um deployment and monitoring is another example. Maintenance um and also uh planning and coming up with requirements are are other
+
+[01:13:13.199] examples. And ideally we'd like to have agents that can help us with all of these things. Um but the hard thing is all of these things are kind of harder to define and also harder to find training data for. Um so this is an interesting survey from Microsoft in 2019. So this might be different uh than it is now but um in 2019 they did a survey of their software developers and
+
+[01:13:37.760] asked how much of your time do you spend coding and the answer was uh 15%. Um and this is like the the new uh issue development and and feature new uh feature development and issue resolution. They spent uh 25% of their time on meetings and email uh 14% debugging. uh 8% running tests uh etc etc. So like actually this is a big part of the software development uh work uh as well.
+
+[01:14:14.470] So um what we can do is we can compare uh tasks and so um you know if we have repair uh issue repair um I already talked about that but there's also um creating uh things from scratch um creating good tests for your code fixing failing deployments or something and uh developing you know apps over a long period of time. And so a first uh example is um you can train specifically
+
+[01:14:43.120] on localization. Um so you can have models that are are particularly good at identifying you know like where to um where to start working on a coding task. We have a RL um uh approach to doing this called code scout. Um, this might be interesting to you uh if you want to do an RL related thing for your project because it's like coding agents uh but it's a little bit more tractable and
+
+[01:15:12.000] easier to do with smaller models. So if that sounds interesting to you, you can check out our code scout paper. Um, a second task is uh creating apps uh from scratch. Uh there's something called viench which is evaluating agents for how good they are at kind of vibe coding in general. Um this is very uh hard to do because you need to um you need to be able to evaluate them
+
+[01:15:38.159] properly and so uh you need to come up with good verifiers. Another thing is um imp implementing full uh kind of like backend libraries. Uh there's a few benchmarks for this. One older one called commit zero and one newly popular one called program bench. In program bench essentially what you need to do is you need to re reverse engineer a binary and reimplement it
+
+[01:16:01.360] from scratch. And so here what you can do is you can run the binary and probe based on inputs and outputs and then you need to create a new implementation. And this is interesting because it's very long horizon and uh you know with shorter horizon tasks becoming easier and easier it's now like one of the new challenges.
+
+[01:16:24.390] Another example uh if you're interested in benchmarks is the sui milestone benchmark. And the basic idea here is that you don't want to implement a single issue. You want to implement many issues in kind of an epoch. And make sure that as you um implement the issues one by one, you're not making a huge mess of the codebase and making it harder to maintain uh because that's a
+
+[01:16:44.480] big problem with code uh some coding agents. And so uh this is a benchmark that's uh meant to evaluate that. Another really big problem nowadays is uh generating tests that allow you to validate whether you did a good job of fixing an issue. Because I feel like now with coding agents, if you can write really good tests to validate that um the issue is solved, you've kind of
+
+[01:17:11.120] solved half of the battle, right? you've like specified what task needs to be done and then agents are just really good at iterating on them. So, SWTB is an example of a benchmark that uh that allows you to do this and it's based on the mutation testing that I mentioned before.
+
+[01:17:27.280] A final one is um kind of like more operational uh like tasks like deployment and I don't think there's a really good um there there are really really good benchmarks for this yet and it's kind of harder because you need actual infrastructure to run it but I have a reference for an example um uh that was created by Jet Brains that you can take a look at if you're interested
+
+[01:17:54.719] Um, so yeah, we're we're at 50 uh we're at 50 past. Um, I'll I'll maybe just cover this one uh very very briefly. So there's also some um uh some work uh by people uh here at CMU including me uh and Daniel and for the other one called SU playground and um SU playground and hybrid gym which basically are um automatically creating coding benchmarks for things other than
+
+[01:18:30.800] just coding uh for other things in software engineering. So, um, sorry I ran out of time and I'm not going to be able to cover code world models, but I'm happy to, uh, talk about that in our, uh, in office hours or something like that. So, uh, yeah, thank you everyone.

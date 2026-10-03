@@ -1,0 +1,280 @@
+# CMU 11-768 Fall 2026 · Lecture 8 · Training 1: Supervised Fine-Tuning (SFT)
+
+- 视频：[官方视频](https://www.youtube.com/watch?v=O3HSU0AoILc&list=PLSN0qpDfUvTM&index=8)
+- 字幕：en-orig · auto captions
+- 处理：连续字幕合并为自然段；每段保留首条字幕的起始时间戳
+- 状态：原语言字幕稿，待校对
+
+---
+
+## 正文
+
+[00:00.320] Hi everyone. I'm really glad to uh give the lecture today. Uh it's on super wise fine tuning for agents. So before I start, I want to ask like how many of you have trained agents before? Like please raise your hand. Okay. Um then how many of you have done SFT on agents?
+
+[00:20.000] Okay, that's actually more than I expected. Um okay so I will be go over these topics today like uh because this is the first lecture on training of agents. So I will first give a overall introduction of like what is training of agents mean and uh and then go over SFT specific topics and also like transitioning into RL which will be the next three lectures.
+
+[00:49.280] Okay. Um this is a sample trajectory sampled from sui gym. We can see there are different rows in the trajectory. Um so there are a row of system, row of user, row of assistant and observation. Like among these uh we can see there's only three assistant messages in this trajectory.
+
+[01:17.119] Um so in the overall setting the agent receives an issue which is like given by the user and a couple of tools in a sandbox like for example in this case this is bash and a file edit tool. So in the process the agent produces ss and generates commands and uh reads the observations that those commands return at eventually the repository's own tasks like unit test will determine whether
+
+[01:51.200] the run succeeded or not. There are several methods of updating the agent that we already discussed about like first context window. Um there are different pros and cons for different methods like for context window it has high fidelity to what already happened but it is costly noisy and does not decide what matters and for external artifacts it'sable
+
+[02:18.000] editable retrievable and portable so very easy uh reading by human beings but it must be induced selected and maintained throughout the agent trajectory process. So today we'll be talking about updating model weights. This like could incur faster inferences and broader behavior change but like um because we need to train the model the process of training will be slower and
+
+[02:41.920] more opaque because it's like blackboxed and model specific because it will incur a model specific behavior after training. So we change the weight like once and every call after that gets a new behavior with nothing extra in the prompt. And the first two things we discussed before like update only in seconds and um these like cost of a training run every time you change it
+
+[03:10.800] and also you cannot open like the weights to see what's going on within a model or move the change to a different model. So this thing like is like onedirectional and opaque like to train a model we need trajectories. Then what does the trajectory teach? First of all how to write a tool call that this harness can actually run.
+
+[03:35.920] Second like how to keep going when the conversation gets long because the trajectories in learn from like we're supposed to be long and what a tool call result uh what the tool result should look like. So um it waits for one instead of writing one itself and whatever else was in the data that what we use for training like for example extra commentary repeated
+
+[04:02.480] commands and one way of solving a problem. There are several work to give a more broad overview of what training looks like in frontier labs or like maybe in academia as well. The full this is the full training pipeline. Um we first start with pre-training which is the largest amount of tokens but like this is the stage where uh where language models learn basic next token
+
+[04:28.000] prediction and then mid-training this is like the second stage but like people have very different definitions for what mid training is uh like mid training is like anything that happens between pre-training and post- training some people even counts like SFT as mid-training nowadays and then but typically SFT is considered as like post-training stage. Um so after mid
+
+[04:51.280] training we went to SFT. Uh we are like uh this will be covered today and then the next stage will be RL where it will be mostly rollouts and rewards which will be covered like later. But notice that like for most of pre-training mini training and SFT we can find fixed corpuses that we can uh train the model on. But for RL there's typically no fixed corpuses. it's like learned on the
+
+[05:17.919] model's own like rollouts. So um I will supervise fine-tuning as a cold start before reinforcement learning. Um like cold start means that this checkpoint RL that begins from today's like uh this represent one of the most common pipeline for post training today. This is like um retrieved from Kim K3's report where the model like after pre-training and
+
+[05:49.360] mid-training it do supervised finetuning first to initialize a baseline agentic capabilities and the next stage is reinforcement learning where models develop domain experts at varying reasoning efforts. The last stage is on policy distillation which consolidate the expert into like one model. Uh this is the last stage and we will cover the next uh the second and the third topic
+
+[06:13.919] like in later lectures in Kim K3 the model learns to call tools and finish long tasks during SFT u before any RL and uh but some might ask so why don't we just use RL instead of like SFT why do we still do SFT nowadays um So this question deepseek R1 zero has like tried to seek response again like DeepSc R10 run RL directly on the base models. Uh so before any SFT happens
+
+[06:53.199] and they learned their lesson. So like in their very next model uh they put SFT back in R1 starts from a few thousands created examples of SFT because R10's answers just like mix languages and were hard to read without SFT. Uh I think the SFT stage established a high quality coord policy for the subsequent RL stage.
+
+[07:17.520] This is a comparison of SFT and RL side by side. Um so for supervised fine-tuning it learns from recorded trajectories of agents whoever produced them like it can be produced by stronger models or even themselves and SF learn the signal of a target for every token and it needs data and GPUs to train a model with. It's good at learning tool calls formats and long tasks but is
+
+[07:44.880] stuck with the demonstrations that are wrong or narrow or used up. For reinforcement learning, it's like learn from its own rollouts scored by a reward at the design for its domain. And uh it learns the signal of one number per roll out per per long roll out. And it needs a live environment, sandboxes and checkable rewards which are some like uh some interesting facts for our people to
+
+[08:12.560] solve. And uh is good at sharpening what the model already attempts to. uh but the start is two weeks so the reward might sometimes not be like checked um in our lectures we'll be covering reinforcement learning in the next three lectures and I think next topic I'll be going through is like the trajectories as token sequences we all know from language models that
+
+[08:42.800] there might be chat template that is different for each different language models So for each token sequence um like every boundary above is a template token and uh let's use the coin example queen template example here where um it has some special tokens like uh IM start and then like have special tokens like to call etc and we feed this trajectories through
+
+[09:15.839] the template and you get one string string of token that represent the whole trajectory. Like for example, it might be going through multiple tool calls like 10 to calls and reaching a final answer, submitting a final trajectory to like some verifier. But like all of these will be represented as one string that will be fit into the training infrastructure to train a model. And the
+
+[09:40.240] special tokens markers are single special tokens. The rest is what the agent could actually uh write and see in their trajectory that they output. And um different from a language model for agentic SFT, we might not train all of like the output the all of the trajectory. Like for example, here in the trajectory I represented, the gray boxes are the ones that we consider as
+
+[10:10.640] context. So these will not be in uh calculated towards loss. Uh but the red boxed ones are where we calculate loss like cross entropy loss is what we usually use. But like we have apply a special mask there to assistant tokens that we only train on assistant tokens but not non-assistant tokens which are considered contexts.
+
+[10:35.920] So the mask is like one bit per token saying whether the token's prediction like counts towards the final training and we want to minimize it because like minimizing it raises the probability of each recorded action like given everything before it has context. This will help increase uh the agent's capability of mimicking what is like already in the trajectory and um
+
+[11:02.880] observations here are conditioning context but not prediction targets. Yeah. >> Why don't we try to also train with train like observation? It could result. >> Yeah. The question is like why don't we train models also on observations. Uh I would say like training on assistant messages are the general rule of thumb like in agentic SFT because like observations or user context might be
+
+[11:31.760] given from the user or the environment instead of like given from predicted by the assistant but like I agree that like there are papers um existing that are training on observations and find it to be useful for predicting the world uh stage uh state. So like what I'm discussing here is like uh the general recipe but like you might do ablation studies or even innovations to see what
+
+[11:59.279] might be the best option for your scenario. >> Just a quick followup about that there one particular paper that did that is called the computational world model that meta published. So they're training the model to like output the results of tool calls which are executing code. Um So they find that it's like pretty helpful on tasks that are aligned with
+
+[12:23.360] like understanding execution semantics but like it also you could imagine it like takes up some kind of some of the capacity of the model. So yeah like definitely if your model is too small it might hurt its performance on other things. It's kind of like an open question of could it how does it impact kind of the base agentive abilities of the model but it could be like super
+
+[12:45.200] useful for like world modeling or planning. So it's a little bit more experimental like >> yeah um to explain more on how the mask is built like first we have a render that the template writes the conversation as like one whole string and knows where each assistant span starts and ends with um some special tokens and then like uh tokenize those character positions
+
+[13:11.120] become like token positions and then these uh we mask like the tokens inside an assistant as one and everything else get the zero because it's not trained on. And the template does the bookkeeping here because like where a system tax starts where it stops like uh by the time training starts the rows uh of system message of users of uh observations are gone. The trainer sees
+
+[13:41.760] the string and the bits and nothing else. These are some masking controls across some like SFT frameworks. I really like one specific example is like llama factory where you can specify whether you want to train on the prompt as well, whether you want to mask a history uh when calculating loss. Um, so I can show an example of like real usage of llama factory.
+
+[14:28.800] Um, this is one of the packages I really like to use when doing agentic SFT. You can like generate roll outs or synthetic trajectories and fit into like this infrastructure and identify your model that you want to train with and then just start training. Um you can specify arguments like uh whether you want to train the whole trajectory or you want to cut it off at
+
+[14:53.839] some position or like we want to train on the context as well. So um there's another special token like the end of turn token where it's like represented differently for different models like for example for queen models it's represented as um this the uh the red token here of I am end and um for other models uh like like for example um probably Kimi Llama like they all
+
+[15:38.399] have very different end of token end of turn tokens. So if you want to train a model you might need to take a look at what their chat template is so you don't like confuse the model during post training. And uh one thing I observed like when setting up training trajectories are people often times mixed up uh what to include in um calculating loss and what are like
+
+[16:08.079] context only. Uh for example, the row header of assistant here is now trained for the agent to produce to generate and the model only produces um the red boxes here instead of the gray box and at last the model produces the stop token. So it has to be also be trained inside within the mask and also end of turn um is like actually a combination of multiple
+
+[16:37.040] events instead of only one because end of turn means that you need to end this message you need to end this tool and also you need to finish the task. Um so like for example in Kimi K3's template here down here um it actually spells them apart with separate tokens for better for the model to better learn how to stop.
+
+[17:02.800] Another thing that um might be masked out during a training process is reasoning blocks. As we know reasoning blocks are very long blocks and um sometimes people only train on like non-re reasoning parts. So only the like actual tool calls or actual um trajectories.
+
+[17:24.880] So there are typical several switches that you can try to experiment with. Does the reasoning stays in the context or do they stay in the system message? Uh if they say in the assistant message whether should it be trained on um in the context reason explain the actions that follows the context uh follows the context and if it is trained on it becomes a style that the model
+
+[17:49.360] itself writes. For example, Neimotron like Neimotra 3 ultra keeps like budget truncated reasoning in the context and mask the artificial cut off of the loss. These are like model specific decisions that are very different across different labs or different frontier model development.
+
+[18:13.679] Um >> yeah sure >> what's the difference between >> uh are you asking for why like reasoning our mask sometimes? Yeah. Uh I'm actually going over this right now like because reason introjectories could be very very long compared to the actual tool call or the actual task completion stage which might confuse the model to produce like only long reasoning but
+
+[18:44.880] like mixed up with the final outcome. So uh either reasoning sometimes reasoning is mascal sometimes reasoning is train and there is this paper last year of balanced SFT which it aims to balance like reasoning trajectories alongside with the um execution or tool call trajectory. So uh models can learn both.
+
+[19:06.880] Um so long if we have very long reasoning trajectories it could dominate the loss and the short like tool call or test completion is what we actually most need for like correctness. For example for a task of software engineering we might want the model to reason on what's its next step is but we don't want the model to not actually perform the next step. So um reasoning
+
+[19:37.440] and action or execution are both important. So in this paper of balance SFT they introduce like rebalancing of uh reasoning and um tool call which like helps more on multi-turn like execution of agents and uh this is a table from MAI so Microsoft MAI model MAI thinking model um they have very different samples across different capability they're aiming to train. Like for example, they
+
+[20:13.120] categorize STEM capability and coding as like one category and general agency capability as another and general helpfulness and safety as like another. Uh from their sample weight you can see like uh how different they are considering each agent capability uh capabilities importance. Um but like the results are like the token ways are very different from sample ways because
+
+[20:40.640] different capabilities might incur different lengths of SF trajectories where STEM and coding trajectories are typically very long compared to uh maybe general helpfulness and safety where um in the MAI paper they tend to uh balance the mixture or chose the mixture by counting the number of samples but like stem and coding traces like are so long. So they nearly take
+
+[21:08.720] all the tokens they're training on and whatever you balance by counting trajectories you should also so this answer is like you should also check whether it's also balanced in tokens or like whether the distribution in tokens is what you preferred. Um also these are some open problems in supervising trajectories where the first one is that we could not find a
+
+[21:35.039] published experiment that changes the mask for agent SFT and measures what happens but as uh Benu said there's like a recent paper on uh computation world model that like also trained on observations as well. So I think this is one open question that's like worth uh experimenting on and also the careful masking experiments are mostly single term recently uh on instruction tuning
+
+[22:02.480] instead of on agents. Um and the one case where unmasking the prompt helped like had long prompts and short answers and little um data like in the paper below I attached like agent trajectories are the opposite on all three. So I still think this is an open question that's like worth discussing.
+
+[22:25.600] Um also choosing the trajectories are important for agent SFT as well. Um so this is a table of like where typical trajectories come from for agent take SFT on the left column like who run the task like where to collect agent SFT trajectory from either is from a strong model that could run it or from the model that like you are training on like uh for example for MAI they use its own
+
+[22:56.799] reasoning runs or trajectories for SFT and Um yeah, so like depending on the roles um whether you keep everything you got from the uh the generated trajectory or you keep the runs that only passed some threshold or verifier. So if you keep everything that you generated from a strong model that's like called plain distillation. If you keep the runs that
+
+[23:22.000] pass some sort of verifiers like most of the SFT falls into this category for example Swimmatron by Nvidia and opensource agent all falls into this category. Um and then like if you keep everything that you generated from the model yourself then like this an example is MAI but they felt like little difference um using like FFTD and uh if you keep the runs that pass the
+
+[23:53.200] verifier with the model of itself then this is like called expert iteration which should be like teased later. So most agent SFD data sits in the like top right box of like keeping only a subset of filter data generated with a strong model and because the stronger model like writes better trajectories than the student could and the tasks own like task might be good as keeping uh
+
+[24:23.840] only the good trajectories and uh in the bottom row the model makes its own training data. So repeat the loop like you get S for iteration which will be covered later. This is some results from sweet gym which falls into the upper right like you keep the runs that passed with a stronger model that runs it category. uh where it founds that like it achieves
+
+[24:50.720] much higher resolution rate after um distilling from models like GT40 and Cloud while only keeping the trajectories that pass um the repository tasks. And um in terms of trajectory count and saturation, scaling the number of training trajectories might um result in an increase in the model performance, but like it might saturate at some point and it's much easier for as uh for
+
+[25:27.200] saturation if you are using a smaller model for training. So in the plot here like the authors of SGM uses the same task set throughout of software engineering and only the number of sample data like changes. So increased through time and accuracy was still rising when the sampling budget run out and they had task to spare where like what they run out of was compute to
+
+[25:58.559] sample more uh more runs and every point in this plot uses the same task like what happens when you add new task uh I will be discussing like later um but like not all agentic trajectory might be like helpful. There are some desirable behaviors even in successful rollouts. Uh for successful we mean that the final eventual uh task was successfully completed. But there are
+
+[26:27.840] something intermediate that we might not be able to measure like this might be teaching undesirable behaviors if we use this directly as SFT data. So let's assume that every run passed its like unit test or like the repositories tests. But look at how like for example one edited and uh the red box there like one edited and rerun test in a loop for most of its turns and
+
+[26:59.120] another left print statements in the final batch. So although the final answer is wrong but this all might still teach the model some wrong behaviors um that it should not learn from SFT and the loss copies like every action no matter like whether it's good or not. So train on these runs and the model learns the best together with the eventual fix.
+
+[27:26.159] There are like some filters for uh what counts as good SFT data like one very simple example is like filtering real by uh by length like length of the trajectory u for example in a trajectory with uh less than let's say five turns it's probably likely that it's not very good trajectories because like if it's short there are like different Um you you can say different things
+
+[27:57.520] about like short trajectories but either is like short because it solve the task correctly like at one try and then it's difficult for agent to learn error recovery abilities uh or it might just like the trajectory is incorrect itself. So it's like being very short or the agent encounter like some errors when generating the trajectory which makes us very short. So like filtering by
+
+[28:23.200] trajectory lens is one of the useful approaches that people do today. Um this is like uh this ablation study is performed by the paper open s agent. So uh one of their conclusion is that the best filter here is just count the number of turns of agents and drops every run that's shorter than five.
+
+[28:47.840] And turn count says like how much work a run took uh but not whether the work was any was good. And uh um in this case a four turn clean fix might got dropped um and a 14 turn like messy trajectory might still get kept but on average it still helped. Another thing that's important for SFT is like whether you can choose the best teacher like the model itself being the
+
+[29:18.240] best model does not mean that that it could be a best teacher. Um for the open source agent paper they evaluated several agents on like several benchmarks and they found that the best agent evaluated at that time which was GPD 5.3 codeex is actually the worst teacher among all of these uh models.
+
+[29:41.919] You can see that it resulted in like less gain compared to other models or even like some decrease in performances after distilling from 255.3 codeex. So if you want to distill from a stronger model or if you want to generate trajectories from a teacher model uh you might need to choose your teacher model wisely.
+
+[30:05.279] >> Yeah. >> Teach on calls mainly how Is this possible? So the codeex produces correct tool calls but they are the least efficient for training other models. Is there like a reasoning behind it? How could that be? Um there might be various reasons behind it like for example um GPT 5.3 codeex is good at training good at um solving the task itself but like
+
+[30:36.000] the generated trajectory might not work for the student model that much like because the thinking mode might be very different or the methods of solving the task might be very different. Um so yeah that's one of the explanations. Um also like leaderboard rank only told like whether um whether the models to run things here and you should like try more
+
+[31:04.399] teachers and keeping the better student that is cheap like by comparison also for SFT ch like wisely choosing the task sources are important. There are just so many asset data assets out there. Um but not probably not all of them could work for the task you are looking to train on. Um still done by open source agent but like they perform some abolition studies on how much like
+
+[31:38.080] each different task source of agent trajectories could contribute to different benchmarks. Like for example, Sweet Smith contributed the most to Sweetbench verified but it contribute less to terminal bench. And the choice of task source could change the results the most like change the results of training your model the most.
+
+[32:04.240] Also different sources might help different benchmarks. So like you should spend your effort here before tuning anything else. So you should try uh which task might works out for your for your particular benchmark and then distill like maybe train on that specific data set instead of training on all you can get.
+
+[32:26.320] And one of their conclusion or empirical conclusion is that it's best for you to mix like four to eight sources of data sets and because going wider than that might not actually help you for your particular benchmark. Um we might think that scaling up just simply could improve agentic performances on benchmarks. But like um empirical evidence shows the contrary.
+
+[32:57.919] Like if you only set up sample the same rowouts from the same distribution then performance at might actually drop or be saturated over time as you increase the number of rowouts. But on the other hand, if like you increase the distribution, for example, you add more data through synthetic augmentation, then like um the accuracy might still go up as you add more examples.
+
+[33:25.279] So as you can see from the three um plots here u both the blue curve represents synthetic augmentation uh with different distribution of the data where the red curve represent up sampling rollouts within the same distribution. Both curves are from the same like 10k data set and differ only in where the extra data come from like whether the extra data distribution is
+
+[33:49.760] the same with the prior data. Um so the the pink curve adds more runs of the same task and it flattens out through time and the blue curves add new task but it keeps climbing. Um I also want to have a short discussion like let's assume that we have three runs of the same task and you are deciding uh like which ones to use for the training set. Let's say option A
+
+[34:22.560] where you have a short run that solved the issue in four turns and option B a long long run that made a wrong edit and so this test failed and recovered and option C a run that solved the issue after 11 attempts um that changed nothing. Which of these would you keep in your agent training trajectories?
+
+[34:46.720] And for the ones that you keep, which actions um should carry the loss and which of your answer would the minimum term computer gets wrong? Any any thoughts? probably the B because we're training only on two columns which means that the context of the test doesn't really matter and the fact that you will able to solve the problem for turns is not as
+
+[35:15.119] valuable as being able to work on long trajectories observing the tests and recovering and getting the results on like a harder configuration even though it's >> yeah I I think that makes sense um but what we would think could be the potential disadvantage of choosing B >> more data, more computer training and then the model gets smaller goals and like excessive doing excessive goals
+
+[35:47.440] like >> yeah uh other than that there's also a probability of just learning the wrong edit and not being able to learn the recovery ability. So like there's both sides of keeping this data but like so it will improve the agents like error recovery ability but it might also uh incur wrong behaviors for agents.
+
+[36:11.280] Yeah. Um any any other answers? >> Yeah, go ahead. >> Uh and what's your reasoning? So like behavior rather than going through that. >> Yeah. But uh on the other hand if like for example it's um first try results in like on the one hand like uh it's a right behavior or the right results from the start. But like on the other hand, if you encounter like a wrong behavior
+
+[37:08.720] at the first turn, it might not be able to learn like how to recover from it. So like um I would say the best answer is to incorporate both A and B. Um and like so you want to increase or increase number of data that like could cover the most useful abilities towards your benchmark.
+
+[37:31.920] Um for the next section here I will talk about my own work uh with um with professor Graham Yubik. This is like uh on developing a standardized format for agentic SFT. The paper is called Asian data protocol where like this is motivated by each data set was built each uh there are a lot of agentic SFT data out there but like each of them was built by a
+
+[38:03.200] different group a different lab like in its own format towards a different target audience. Um like for example for web data sets some might be used HTML for uh observations but my others might be using accessibility tree structures. So uh they are very different in terms of the formatting and tool calls.
+
+[38:25.520] So for example, if I want to train on both um go browse and mine to web where go browse uses accessibility tree structures for web observations and mind to web uses HTMLs for understanding the web content then it will be difficult for me to incorporate both of them to combine them together because um they have different format and to train on them together we need to write a
+
+[38:52.960] customized converter from each of them to my specified agent format. So let's say I want to train um open hands agent on both go browse and mine to web. I need to write a converter from go browse to open hands and then mine to web to open hands. So that's like a lot of engineering work.
+
+[39:13.359] Um so in our paper we represent like a trae we represent a trajectory that was like in very different formats into a standardized and a unique format that could represent like a variety of different agentic tasks where we covered uh like like where you read like each once and convert it to our standardized format and then convert our standardized format to your
+
+[39:40.240] specified agentic format. So you don't need to write custom converters or uh to be able to use multiple data sets for training. Like for example for the web data sets we just talked about before. Um we keep the HTML and accessibility tree structures in our data structures instead of only picking one. But like you can still pick what you want and convert to whatever format you want like
+
+[40:09.440] downstream. Uh when you perform agentic training um if like using our standardized format each assets only need to convert itself into our standardized format for once and then convert our standardized format once to your specified agentic format once. So this will reduce the computational overhead.
+
+[40:36.240] And once the data is in one format um you still need to write it to your agent format. So if I want to train open hands I need to convert a agent uh agent data protocol format into open hands format and uh that's because like different agent takes different actions. So the same trajectory comes out to look different uh for each agent.
+
+[41:01.920] This is also where you set the system prompt and decide what to do when the context get long. And then you want to check the result like do those who call pars and does each call come from a come with a s a function s and does the conversation end the way it should be.
+
+[41:23.680] Um this is a analysis that we did analyzing whether we want to train on um diverse data instead of only one task specific data. So like previously with open source Asian that they disc they examined whether um training on each task could improve the performance on different benchmarks but like that's only training one on one of the data sets. So they only examine the
+
+[41:50.160] effectiveness of training on um each task source. Um but like here we examined whether training on multiple different sources could result in better performance than training on a single source. So we discovered that for almost every different agent task agent benchmark training on multiple different sources will result in higher performance compared to only training on
+
+[42:15.520] a single source. So improving the diversity of data could help a lot in agent take evaluation. So we control this study using the same harness, the same model and the same evaluation format. Only the training mixture change by incorporating a more diverse set of data.
+
+[42:38.240] Yeah. And training on the mixture beat the matching single domain set. So uh even on the domain's own benchmark and next I'll be talking about actually running the training pipeline. These are some real supervised fine tuning configurations from the wild. Like for example for Neatron 3 ultra they packed uh 294 case u tokens into sequences with uh 64 batch and their learning rate
+
+[43:10.560] decays like throughout time. for MEI self distillation they pack like 128K and with like a very large batch and a learning rate um that also decays through time but like uh was what might different that is that like they did a warm-up before starting the full SFT and for a recently released model K2 Horizon they were using 512K um sequences with like three different
+
+[43:42.000] faces is they haven't released their specific uh numbers yet um for SFD configurations but like um they said that like their learning rate decayed on like high quality subsets >> this is not parameter efficient piping right this is just like full training on trajectory how would you do pre-training essentially except the data is different >> yes but like uh also for pre-training
+
+[44:07.280] um I think people don't mask out like non-agentic parts also expert routing during SFT. Uh the frontier models that I discussed in this lectures are mostly mix of experts where the models that the public papers fine-tune are dense. uh find a mixture of expert model on narrow agent data and a few experts take most of the tokens like uh what is shown in the right panel here.
+
+[44:44.640] We can see that um we have the most tokens dense like at the left and as the number of expert increase the token uh the number of token we use like decreases and MAI is like balancing the routing uh hard during the supervised stage and a thousand times harder than during RL and they raise drop to 15 Like I think reading one or two technical reports from Frontier Labs or um public papers
+
+[45:21.040] are important before you start doing SFD because they provide a lot of interesting insights that you could use for SFT and um packing whole conversations. So um typically we don't want truncations and splitting because we want the full trajectory but uh in reality like each conversation is assigned to the pack whose like remaining capacity uh it most tightly fits
+
+[45:57.680] and no conversation is actually splitted or truncated which is like a deliberate choice against hallucination. And this this plot is like adapted from Neotron's technical report. And identical problems are kept out of the same pack and packs are shuffled afterwards for better training utility.
+
+[46:21.839] Another thing I want to cover here is template drift where the template you train with has to be the template that you serve with to ensure this alignment even down to the whites space. So to have the best utility of your model and um you you render the same trajectory twice like once with a tool message after it and once resolved so you can get two different strings.
+
+[46:50.880] When the two messages appended a conditional thinking block uh changes the earlier assistant turn and the prefix no longer matches. So these are uh like why it is fatal inside a tuloop. Um yeah and also there are some publicly released training artifacts. For example, K2 Horizon's model card has a stage bystage training table like uh for each stem, each token and sequence
+
+[47:24.319] length and what each phase like was for. That table is where the number on the configuration slide like came from and um I think K2 Horizon might be a good uh way although I don't think their technical report is officially released yet but like if it's released I would recommend taking a look because like it's um it's like fully open containing all the um details of training all the
+
+[47:50.400] data of training um even the loss like they incurred during training through weights and biases like ways and biases is a common platform you use to monitor loss during training. So you can look at their actual uh enterprise level models training loss curves and it also ships like intermediate checkpoints at each stage of their training that you can
+
+[48:13.920] continue training or um post train on their pre-training checkpoints. Also Neatron released the post training checkpoints too like together with the training data and their training recipe. Um I would suggest like reading at least one of these um that could like teach you a lot on enterprise level training uh SFT more practically we want to do we want
+
+[48:41.599] to do is like we want to know whether actually SFT worked after we train a model or before we train a model. So uh there might be mismatches between training and running uh your experiments on on evaluation benchmarks for example um for what it has learned through like trajectories. It might have the same prefix and perform some edits and then the test passed and then it submits the
+
+[49:10.000] job to a verifier but like in reality it might incur another different edit than the edit that you are trained on and then the test failed. Um and then now what the agent should do is not in SFD data. So this is like very depend on the agents like uh error recovery ability that we just discussed.
+
+[49:35.280] So training grades only one action at a time. Um always continuing the recorded run and also um when models are deployed there is no recording and every action the model takes change what it might see next. This is the reason why the loss curve of training is not um like you can use it to monitor whether training is going well but you cannot use it to substitute
+
+[50:06.880] actual evaluation because like training continues the recording and deployment continues itself. Uh one so as shown in example one different addit here um and it is in in a state no training run ever have visited in that case the low loss promise nothing but uh about what happens there. So you need to um so you need to monitor both training loss and evaluation results.
+
+[50:39.599] Um speaking of evaluation results like before trusting any number you should check that you can um and a rule of thumb is like you can check that you can over fit 20 examples. Um if the loss will not drop then the bug might be like upstream and then you can evaluate by running the model in a harness and on task with check checkable outcomes and you can read you should read publish
+
+[51:09.280] numbers carefully. Sometimes they are the best of like several harnesses instead of like the results you can get from a single run on single harness. And you should try to match the split to the claim by keeping all runs of one task on the same site and split by repository if you want to say it generalizes to new ones.
+
+[51:32.400] Um yeah robustness across harnesses like trajectories collected in one system teach systems conventions along with the task. So for example, if I collect trajectories through a agent open hands that it might not like generalize to cloud code or codeex and collecting across like several harnesses is how existing frontier labs or academia labs avoid training a model
+
+[51:59.599] that only works for uh works in one harness. Um if you want to train uh like outside the target domain, you should train on one capability and move the others whether or not like you want to measure it. So if I want to have a good software engineering model, I should still probably train reasoning capabilities because these capabilities might uh transfer and also your mixture is the
+
+[52:30.480] control here and balancing it by examples uh is not bal is not the same as balancing it by tokens. This is a lesson we learned from the MAI um MAI technical report. So evaluate the things you were not trying to improve too instead of like benchmaxing on only one domain that you care about.
+
+[52:52.400] These are some takeaways from SFT. And now moving towards like what SFT could do to help RL. Um yeah so RL provide I think in my opinion RL provides the most gains where uh when the SFT model is selected with RL in mind. um to view the whole training pipeline. I I think SFT is where you can gain the most agent cap general agentic capabilities from. But
+
+[53:23.040] for RL, you can gain domain specific or better reasoning through RL. um existing frontier labs like Neimotron or um K2 Horizon, they they all find that SFT is where agents could gain models could gain the most general agent uh capabilities. Well, RL is um where you want to train for a specific domain.
+
+[53:50.640] And um like also um the three key uh takeaways from the table here are all applied to no SFT at all barely at all barely moves the base model. This is a takeaway that we get from deepseek R10 and SFT alone stops well short of what the pair reaches. So um the winning recipe starts RL from a checkpoint that was deliberately not trained to its own best score but like
+
+[54:23.599] train towards like later uh for better later RL. So I view SFT as a prior state that could co-start agency capabilities that is like well served for later RL. Okay. Um that's all my lecture today and um I welcome any questions. [applause] >> Yeah, we have time for questions.
+
+[54:56.240] >> Yeah, >> I have a question regarding where you said that it comes from. What if there's no >> Would you be able to just briefly repeat the questions from the media? >> Yeah, sure. Um, the question was, uh, we were saying distillation happens when you use a better model to generate trajectories of SFT, but what will happen if there's no better models? Um, okay.
+
+[55:29.839] So what so what MAI chose here is to distill from itself. uh this is one of the solutions and the other solution is like for example for I think for frontiers lab especially proprietary ones that like lead the um research of uh training training models like for example open AI anthropic um they rely more on gaining agentic capabilities through RL um like SFD is mostly on
+
+[56:04.960] SFD is mostly like I say a cold start that like where the agents learn general abilities but not improving um that much because like if you are using SFT then it's fundamentally limited by the teacher model's capability. So if you don't have better teacher model then you might need to rely on RL for training.
+
+[56:28.319] That's that's my take. in the first place before >> um they have a lot of data like >> just use >> yeah there's like a huge amount of trajectories out there >> plus reinforcement learning which will lectures >> so for RL we don't rely on existing trajectories but we rely on the model's own like rules >> does anyone use pipeline anymore to adapt agents to specific tasks like if you want to
+
+[57:09.440] navigate some complicated service you would have like SFP in a sense you explained now and then some smaller cycle to like fine tune it is that system >> uh I think in general especially for the prop priority model they expect you to use like only like one single model but might be after model XO merging uh but like only one single model will be actually be inferenced at like inference
+
+[57:40.960] time so I'm not sure about like the proprietary ones but for um a recently released open model K2 horizon they did multiple rounds of um like fine-tuning even after an SFT stage and the RL stage so they did like some recurrent um fine-tuning Even after the general training stage, Uh the question is like whether there is still low rank adaptations. Um I think for
+
+[58:30.000] labs that with sufficient resources um they prefer full fine-tuning but uh like for myself I've done uh low rank adaptation before for better like efficiency. Yeah. Uh. >> Oh, here. model. >> Um is the question do we want to supervise it on wrong answers? Uh I would say maybe we want to supervise it on wrong intermediate answers but we want we still want the
+
+[59:27.040] eventual results to be right because that's like like for example if you are using a coding agent to write some code you don't want it to be wrong. >> Yeah. For example like do we only like supervise on the >> Oh. Oh well, I think we still need to supervise on the like wrong edit because that's like how we learn from the past wrong behaviors. So um we supervise both
+
+[59:55.280] the right results and the recovery process. >> Is there a wrong to the right? Um I think it's typically determined empirically like for example as I mentioned you might want to train on a smaller portion of the data but like maybe with the same distribution or the same task and see whether it works on a smaller scale model um before running anything like larger scale or scale up.
+
+[01:00:30.160] Um yeah, most of these are determined empirically. Like for example, why does the MAI people choose to um choose to use 56% of STEM and coding? Uh like they determined empirically this might be the best setting for um their model >> for using like correctness to determine um how much to weight an example.
+
+[01:00:56.480] Reinforcement learning actually will do this sort of at the level and um the reinforcement learning because like we'll we'll talk about like the way the gradient is set up in the RL but like basically the more reward the model gets on that example the higher the weight of the gradient on that example will be so if you have like correctness as a signal RL will
+
+[01:01:22.160] effectively rewe it from you for you um it does that implicitly at the trajectory level So if the model is like making some mistakes and then recovering from them, it's going to reinforce making those same mistakes again. If you know that they're mistakes and have kind of like a smarter way of, you know, supervising the loss, you might be able to do better, but those sorts of
+
+[01:01:46.319] approaches can be a little bit tricky to set up. So the most common thing is to um just uh use the overall reward on the trajectory um and either like filter the trajectories out to just choose the correct ones and do SFT like you said or um in reinforcement learning we can um rely on um the algorithm to effectively and we'll see more about that in a few days
+
+[01:02:13.520] but yeah for like choosing kind of just based on like you know the knowledge of you know, this instance is a good fit domainwise for your downstream test. That ends up being a lot more empirical. And there's methods people use to kind of like if you have an evaluation set and you can like compute the loss of your model on that evaluation set, you can use that as some signal to select
+
+[01:02:38.880] your data mixture. Um, but it's all just sort of approximate because you're not doing training on that data mixture. Any other questions? It's just the same as >> uh do you mean the objective of training? >> Um that's a great question. Do you have a general answer for that?
+
+[01:03:27.920] >> Yeah. Uh like you had said before, you can think of SFT as being just like pre-training except you are you're formatting your data. >> Yeah. >> To you know have kind of like the structured tags that put it into a chat format and you're also applying a mask to the loss. So you're not supervising the model to output like you know the results of tool calls typically
+
+[01:03:51.280] >> but the loss function that you're using is the same like cross entropy loss that you're using in pre-training you're just applying it to different data and on um just a subset of the >> yeah that's your question >> sorry what kind of imitation Yeah. Yeah. This is like this is imitation learning with with teacher forcing. So like teacher forcing has
+
+[01:04:26.160] kind of a fixed context and doesn't uh sample from the model at training time. Um that's what these SF most of these SF are choosing. Yeah. Yeah. Yeah, we'll we'll talk about ones that s we'll talk more about ones that have the model produce the training data in the next few lectures.
+
+[01:04:46.480] >> Yeah, good questions. Well, let's thank you a

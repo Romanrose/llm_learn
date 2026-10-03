@@ -1,0 +1,143 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-19
+state: candidate-ready
+provider: deepseek
+model: deepseek-v4-flash
+inputHash: 1ad6e09512d9e3f9e5c38402390127b916a0551b04a8c3377a35f7ebf6ffaad3
+createdAt: 2026-10-03T08:56:21.827Z
+evidenceMode: transcript-only
+inputs:
+  transcriptEn: llm/cs336-2026/notes/lecture-19/transcript.en.md
+  slidesText: null
+outputs:
+  transcriptEn: llm/cs336-2026/notes/lecture-19/references/deepseek/transcript.en.md
+  transcriptZh: llm/cs336-2026/notes/lecture-19/references/deepseek/transcript.zh-CN.md
+  note: llm/cs336-2026/notes/lecture-19/references/deepseek/note.md
+  blog: llm/cs336-2026/notes/lecture-19/references/deepseek/blog.md
+usage:
+  - prompt_tokens: 1701
+    completion_tokens: 1305
+    total_tokens: 3006
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1701
+  - prompt_tokens: 1763
+    completion_tokens: 1320
+    total_tokens: 3083
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1763
+  - prompt_tokens: 1759
+    completion_tokens: 1358
+    total_tokens: 3117
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1759
+  - prompt_tokens: 1717
+    completion_tokens: 1335
+    total_tokens: 3052
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1717
+  - prompt_tokens: 1727
+    completion_tokens: 1276
+    total_tokens: 3003
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1727
+  - prompt_tokens: 1744
+    completion_tokens: 1389
+    total_tokens: 3133
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1744
+  - prompt_tokens: 1734
+    completion_tokens: 1329
+    total_tokens: 3063
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1734
+  - prompt_tokens: 1721
+    completion_tokens: 1296
+    total_tokens: 3017
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1721
+  - prompt_tokens: 1706
+    completion_tokens: 1253
+    total_tokens: 2959
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1706
+  - prompt_tokens: 1715
+    completion_tokens: 1292
+    total_tokens: 3007
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 1715
+  - prompt_tokens: 366
+    completion_tokens: 183
+    total_tokens: 549
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 366
+  - prompt_tokens: 13955
+    completion_tokens: 3740
+    total_tokens: 17695
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 13955
+  - prompt_tokens: 13963
+    completion_tokens: 3307
+    total_tokens: 17270
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 13963
+  - prompt_tokens: 13995
+    completion_tokens: 3994
+    total_tokens: 17989
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 13995
+  - prompt_tokens: 14003
+    completion_tokens: 3970
+    total_tokens: 17973
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 14003
+review:
+  state: approved
+  approval:
+    by: user
+    at: 2026-10-03T10:08:51.503Z
+    scope: 本批 Note、Blog 与中英文逐字稿内容已确认；参照 CS336 2026 合并段落后发布。
+    quote: 我看内容没什么问题，就是你仿照那种格式合并之后，你就可以推送到正式版本里，我审核没什么问题了。
+  manifest: llm/cs336-2026/notes/lecture-19/review.yaml
+translation:
+  chunks: 11
+  completed: 11
+completedAt: 2026-10-03T09:05:53.467Z
+paragraphMerge: llm/cs336-2026/notes/lecture-19/references/deepseek/paragraph-merge.yaml
+publication:
+  state: published
+  outputs:
+    lecture-note: llm/cs336-2026/notes/lecture-19/note.md
+    blog: llm/cs336-2026/notes/lecture-19/blog.md
+    transcript-zh: llm/cs336-2026/notes/lecture-19/transcript.zh-CN.md
+    transcript-en: llm/cs336-2026/notes/lecture-19/transcript.en.md

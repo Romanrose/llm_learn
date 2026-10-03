@@ -1,0 +1,30 @@
+schemaVersion: 1
+course: cmu-11768-fall26
+lecture: lecture-06
+title: "Domains 1: Coding Agents"
+preparedAt: 2026-10-03T08:57:40.005Z
+video:
+  id: 1BWeH1oOM7k
+  title: "CMU AI Agents 2026: 6. Agents for Coding and Software Development"
+  url: https://www.youtube.com/watch?v=1BWeH1oOM7k&list=PLSN0qpDfUvTM&index=6
+  playlist: null
+  playlistIndex: null
+  channel: Graham Neubig
+  durationSeconds: 4728
+materials:
+  - label: Lecture 6 slides
+    url: https://www.cmu-agents.com/slides/lecture-06-coding-agents.pdf
+    type: slides
+    status: approved
+  - label: Assignment 1 · Harness
+    type: code
+    url: https://github.com/cmu-agents/assignment-1
+    status: approved
+    note: 官方作业仓库
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: agent/cmu-11768-fall26/notes/lecture-06/transcript.en.md
+  processor: video-subtitle-transcript

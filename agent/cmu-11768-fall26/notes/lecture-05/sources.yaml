@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cmu-11768-fall26
+lecture: lecture-05
+title: "Agent Capabilities 4: Planning, Task Decomposition, and Multi-Agent Coordination"
+preparedAt: 2026-10-03T08:57:22.750Z
+video:
+  id: S8v-dR4s29M
+  title: "CMU AI Agents 2026: 5. Planning, Task Decomposition, and Multi-Agent Coordination"
+  url: https://www.youtube.com/watch?v=S8v-dR4s29M&list=PLSN0qpDfUvTM&index=5
+  playlist: null
+  playlistIndex: null
+  channel: Graham Neubig
+  durationSeconds: 4513
+materials:
+  - label: Lecture 5 slides
+    url: https://www.cmu-agents.com/slides/lecture-05-planning.pdf
+    type: slides
+    status: approved
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: agent/cmu-11768-fall26/notes/lecture-05/transcript.en.md
+  processor: video-subtitle-transcript

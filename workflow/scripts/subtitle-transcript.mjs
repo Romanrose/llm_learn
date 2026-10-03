@@ -4,6 +4,7 @@ import { execFile } from 'node:child_process'
 import { mkdtemp, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { basename, extname, join, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { promisify } from 'node:util'
 
 const execFileAsync = promisify(execFile)
@@ -43,11 +44,12 @@ function cleanText(text) {
 
 function formatTimestamp(raw) {
   const value = raw.trim().replace(',', '.')
+  if (value.split(':').length === 2) return value
   const [hours, minutes, seconds] = value.split(':')
   return hours === '00' ? `${minutes}:${seconds}` : value
 }
 
-function parseVttOrSrt(contents) {
+export function parseVttOrSrt(contents) {
   const cues = []
   let timestamp = null
   let lines = []
@@ -60,6 +62,7 @@ function parseVttOrSrt(contents) {
   for (const original of contents.split(/\r?\n/)) {
     const line = original.replace(/^\uFEFF/, '').trim()
     if (!line) {
+      if (timestamp && !lines.length) continue
       flush()
       continue
     }
@@ -73,18 +76,32 @@ function parseVttOrSrt(contents) {
     if (!line.includes('-->')) lines.push(line)
   }
   flush()
-  return dedupe(cues)
+  return dedupe(cues, /<\d{2}:\d{2}:\d{2}\.\d+>/.test(contents))
 }
 
-function dedupe(cues) {
+function dedupe(cues, rolling = false) {
   const result = []
   let previous = ''
+  const history = []
   for (const cue of cues) {
+    if (rolling) {
+      const words = cue.text.split(/\s+/)
+      const normalizedWords = words.map(word => word.toLowerCase().replace(/[^\p{L}\p{N}]/gu, ''))
+      let overlap = Math.min(history.length, words.length)
+      while (overlap > 0 && !normalizedWords.slice(0, overlap).every((word, index) => word === history[history.length - overlap + index])) overlap--
+      const novelWords = words.slice(overlap)
+      if (novelWords.length) {
+        result.push({ timestamp: cue.timestamp, text: novelWords.join(' ') })
+        history.push(...normalizedWords.slice(overlap))
+        if (history.length > 100) history.splice(0, history.length - 100)
+      }
+      continue
+    }
     const normalized = cue.text.replace(/\s+/g, '').toLowerCase()
     if (!normalized || normalized === previous) continue
     if (previous && normalized.startsWith(previous) && normalized.length < previous.length + 40) {
       result.at(-1).text = cue.text
-      result.at(-1).timestamp = cue.timestamp
+      // Retain the first cue's timestamp when expanding its text.
     } else {
       result.push(cue)
     }
@@ -124,7 +141,8 @@ async function main() {
   const workdir = await mkdtemp(join(tmpdir(), 'llm-learn-subtitles-'))
   try {
     await execFileAsync(ytDlp, [
-      '--skip-download', '--write-subs', '--write-auto-subs', '--sub-langs', languages.join(','),
+      '--js-runtimes', `node:${process.execPath}`,
+      '--no-playlist', '--skip-download', '--write-subs', '--write-auto-subs', '--sub-langs', languages.join(','),
       '--output', join(workdir, '%(id)s.%(ext)s'), videoUrl,
     ], { timeout: 120_000, maxBuffer: 20 * 1024 * 1024 })
     const files = await subtitleFiles(workdir)
@@ -140,7 +158,7 @@ async function main() {
   }
 }
 
-main().catch((error) => {
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main().catch((error) => {
   console.error(`subtitle-transcript: ${error.message}`)
   process.exitCode = 1
 })

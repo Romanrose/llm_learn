@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: cmu-11768-fall26
+lecture: lecture-01
+title: "Course Overview: What Is an Agent?"
+preparedAt: 2026-10-03T08:54:58.008Z
+video:
+  id: UwfjzyLnvMg
+  title: "CMU AI Agents 2026: 1. What are Agents and How Do They Work?"
+  url: https://www.youtube.com/watch?v=UwfjzyLnvMg&list=PLSN0qpDfUvTM&index=1
+  playlist: null
+  playlistIndex: null
+  channel: Graham Neubig
+  durationSeconds: 4072
+materials:
+  - label: Lecture 1 slides
+    url: https://www.cmu-agents.com/slides/lecture-01-agents.pdf
+    type: slides
+    status: approved
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: agent/cmu-11768-fall26/notes/lecture-01/transcript.en.md
+  processor: video-subtitle-transcript

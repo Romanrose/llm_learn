@@ -5,9 +5,15 @@ import { parse } from 'yaml'
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const catalogRoot = join(repoRoot, 'website', 'catalog-data')
-const outputRoot = join(repoRoot, 'website', 'generated')
-const configGeneratedRoot = join(repoRoot, 'website', '.vitepress', 'generated')
+const previewRootIndex = process.argv.indexOf('--preview-root')
+if (previewRootIndex !== -1 && (!process.argv.includes('--review') || !process.argv[previewRootIndex + 1] || process.argv[previewRootIndex + 1].startsWith('--'))) {
+  throw new Error('--preview-root 必须与 --review 和临时目录一起使用')
+}
+const websiteOutputRoot = previewRootIndex === -1 ? join(repoRoot, 'website') : resolve(process.argv[previewRootIndex + 1])
+const outputRoot = join(websiteOutputRoot, 'generated')
+const configGeneratedRoot = join(websiteOutputRoot, '.vitepress', 'generated')
 const courseSettings = parse(readFileSync(join(repoRoot, 'website', 'course.yaml'), 'utf8'))
+const reviewPreview = process.argv.includes('--review')
 
 function collectYamlFiles(directory) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -67,10 +73,13 @@ function preparationLabel(state) {
   return ({
     'subtitle-ready': '字幕已准备',
     'needs-audio-authorization': '等待音频授权',
+    'source-unavailable': '等待公开资料',
+    'slides-ready': '讲义已准备',
   })[state] ?? state
 }
 
 function itemStatusLabel(item) {
+  if (item.reviewPreview) return '待用户审核'
   if (item.generation?.state === 'draft-ready') return '草稿待校对'
   if (item.generation?.state === 'reviewed' || item.status === 'published') return '已发布'
   return item.preparation?.state ? preparationLabel(item.preparation.state) : statusLabel(item.status)
@@ -85,24 +94,22 @@ function withoutMarkdownExtension(path) {
 }
 
 function normalizeOutputs(course, item) {
-  if (course.publishOutputs === false || item.publishOutputs === false) return []
-  const outputs = [...(item.outputs ?? [])]
-  const transcriptEnSource = normalize(join(course.paths?.notes ?? `llm/${course.id}/notes`, item.id, 'transcript.en.md'))
-  if (existsSync(resolve(repoRoot, transcriptEnSource)) && !outputs.some((output) => output.id === 'transcript-en')) {
-    outputs.push({
-      id: 'transcript-en',
-      label: '英文逐字稿',
-      source: transcriptEnSource,
-      searchable: false,
-      reviewStatus: 'source',
-    })
+  const outputs = course.publishOutputs === false || item.publishOutputs === false ? [] : [...(item.outputs ?? [])]
+  if (reviewPreview && !outputs.length) {
+    const dir = resolve(repoRoot, course.paths.notes, item.id, 'references')
+    for (const provider of ['deepseek', 'deepseek-slides']) {
+      const manifestPath = join(dir, provider, 'run.yaml')
+      if (!existsSync(manifestPath)) continue
+      const manifest = parse(readFileSync(manifestPath, 'utf8'))
+      if (manifest.state !== 'candidate-ready' || manifest.review?.state === 'approved') continue
+      return [
+        ['lecture-note', 'Lecture Note', 'note.md'], ['blog', 'Blog 解读', 'blog.md'],
+        ['transcript-zh', '中文逐字稿', 'transcript.zh-CN.md'], ['transcript-en', '英文逐字稿', 'transcript.en.md'],
+      ].filter(([, , file]) => existsSync(join(dir, provider, file)))
+        .map(([id, label, file]) => ({ id, label, source: relative(repoRoot, join(dir, provider, file)), searchable: false, reviewStatus: 'draft' }))
+    }
   }
-  const order = new Map([
-    ['lecture-note', 0],
-    ['blog', 1],
-    ['transcript-zh', 2],
-    ['transcript-en', 3],
-  ])
+  const order = new Map([['lecture-note', 0], ['blog', 1], ['transcript-zh', 2], ['transcript-en', 3]])
   return outputs.sort((a, b) => (order.get(a.id) ?? 99) - (order.get(b.id) ?? 99))
 }
 
@@ -140,6 +147,7 @@ const generatedCatalog = records.map((course) => {
         ...output,
         route: `/generated/courses/${course.id}/${item.id}/${output.id}`,
       }))
+      item.reviewPreview = outputs.some(output => output.reviewStatus === 'draft')
       const tabs = [
         { id: 'overview', label: '课程简介', route: `${route}#content-overview` },
         ...outputs.map(({ id, label }) => ({ id, label, route: `${route}#content-${id}` })),
@@ -218,6 +226,7 @@ const generatedCatalog = records.map((course) => {
         '<LectureWorkspaceOutline />',
         '<div class="workspace-panes">',
         '<section id="content-overview" class="workspace-pane is-active" data-workspace-pane="overview">',
+        ...(item.reviewPreview ? ['> 本地候选稿审核预览：Note、Blog 与逐字稿尚未人工审核，不代表正式发布内容。'] : []),
         '## 课程简介',
         `<div class="workspace-course-intro">${item.overview ?? item.subtitle ?? `本讲由 ${item.instructors?.join(' / ') || '课程讲师'} 主讲，属于 ${course.shortTitle ?? course.title} 的第 ${item.order ?? ''} 讲。`}</div>`,
         '<section class="workspace-info-panel">',
@@ -244,7 +253,7 @@ const generatedCatalog = records.map((course) => {
     .flatMap((item) => item.official ?? [])
     .find((link) => /youtu(?:\.be|be\.com)/.test(link.url))
   const firstLecture = items.find((item) => item.outputs.length)?.route ?? items[0]?.route
-  const publishedCount = items.filter((item) => itemStatusLabel(item) === '已发布').length
+  const publishedCount = items.filter((item) => (itemStatusLabel(item) === '已发布' || (reviewPreview && item.reviewPreview))).length
   const outputCount = items.reduce((total, item) => total + item.outputs.length, 0)
   const referenceRoute = `/generated/courses/${course.id}/references/`
   const referenceGroups = items
@@ -287,15 +296,16 @@ const generatedCatalog = records.map((course) => {
       pageClass: 'course-reference-page',
     }),
     '# L00 · 课程参考资料',
-    '本页按 CS336 的课程顺序汇总各讲涉及的论文、技术文章、官方文档、教程和代码仓库。每讲页面仍保留与本讲直接相关的资料入口。',
+    `本页按 ${course.shortTitle ?? course.title} 的课程顺序汇总各讲涉及的论文、技术文章、官方文档、教程和代码仓库。每讲页面仍保留与本讲直接相关的资料入口。`,
     `<CourseReferenceLibrary :groups=${vueProp(referenceGroups)} :total=${JSON.stringify(referenceCount)} :uniqueTotal=${JSON.stringify(uniqueReferenceCount)} />`,
   ].join('\n\n'))
 
   const overview = [
     frontmatter({ title: course.title, description: course.description, aside: false, outline: false }),
-    `<CourseHero eyebrow=${JSON.stringify(course.eyebrow ?? `${course.title} · ${course.year ?? ''}`)} title=${JSON.stringify(course.shortTitle ?? course.title)} description=${JSON.stringify(course.description)} status=${JSON.stringify(statusLabel(course.status))} startRoute=${JSON.stringify(firstLecture ?? '')} referenceRoute=${JSON.stringify(referenceRoute)} watchUrl=${JSON.stringify(playlist?.url ?? '')} previewUrl=${JSON.stringify(previewVideo?.url ?? '')} :details=${vueProp([{ label: '讲次', value: `${items.length} 讲` }, { label: '发布', value: `${publishedCount} 讲` }, { label: '内容', value: `${outputCount} 份` }, { label: '资料', value: `${uniqueReferenceCount} 条` }])} :links=${vueProp(course.official ?? [])} />`,
+    `<CourseHero eyebrow=${JSON.stringify(course.eyebrow ?? `${course.title} · ${course.year ?? ''}`)} title=${JSON.stringify(course.shortTitle ?? course.title)} description=${JSON.stringify(course.description)} status=${JSON.stringify(statusLabel(course.status))} startRoute=${JSON.stringify(firstLecture ?? '')} referenceRoute=${JSON.stringify(referenceRoute)} watchUrl=${JSON.stringify(playlist?.url ?? previewVideo?.url ?? '')} previewUrl=${JSON.stringify(previewVideo?.url ?? '')} :details=${vueProp([{ label: '讲次', value: `${items.length} 讲` }, { label: reviewPreview ? '可审阅' : '发布', value: `${publishedCount} 讲` }, { label: '内容', value: `${outputCount} 份` }, { label: '资料', value: `${uniqueReferenceCount} 条` }])} :links=${vueProp(course.official ?? [])} />`,
+    ...(reviewPreview ? ['> 本地审核预览：候选内容标记为“待用户审核”；正式发布仍需人工审核并显式开放 outputs。'] : []),
     '## 课程学习路径',
-    lectureGrid.length ? `<LectureGrid :items=${vueProp(lectureGrid)} />` : '课程条目正在整理中。',
+    lectureGrid.length ? `<LectureGrid :items=${vueProp(lectureGrid)}${course.learningModules ? ` :modules=${vueProp(course.learningModules)}` : ''} />` : '课程条目正在整理中。',
   ].join('\n\n')
   write(join(outputRoot, 'courses', course.id, 'index.md'), overview)
 

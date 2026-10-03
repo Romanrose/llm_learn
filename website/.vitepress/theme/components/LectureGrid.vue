@@ -7,7 +7,9 @@ type Lecture = {
   status: string; route: string; resourceCount: number; outputCount: number; outputLabels: string[]
 }
 
-const props = defineProps<{ items: Lecture[] }>()
+type LearningModule = { id: string; title: string; description: string; from: number; to: number }
+
+const props = defineProps<{ items: Lecture[]; modules?: LearningModule[] }>()
 
 const moduleDefinitions = [
   { id: 'course-references', title: '00 · Course References', description: '按讲次整理的论文、技术文章、文档与代码', from: 0, to: 0 },
@@ -19,7 +21,7 @@ const moduleDefinitions = [
   { id: 'guest-lectures', title: '06 · Guest Lectures', description: '外部研究者专题分享', from: 18, to: 99 },
 ]
 
-const modules = computed(() => moduleDefinitions.map((module) => ({
+const modules = computed(() => (props.modules ?? moduleDefinitions).map((module) => ({
   ...module,
   items: props.items.filter((item) => (item.order ?? 0) >= module.from && (item.order ?? 0) <= module.to),
 })).filter((module) => module.items.length))
@@ -47,7 +49,7 @@ function shortLabel(label: string) {
             </div>
             <div class="lecture-row__assets" aria-label="可用内容">
               <span v-for="label in item.outputLabels" :key="label">{{ shortLabel(label) }}</span>
-              <span v-if="!item.outputLabels.length" class="is-pending">待接入</span>
+              <span v-if="!item.outputLabels.length" class="is-pending">{{ item.resourceCount ? '官方资料已接入' : '计划中' }}</span>
             </div>
             <span class="lecture-row__arrow" aria-hidden="true">→</span>
           </a>

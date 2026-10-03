@@ -1,0 +1,1869 @@
+kind: course
+id: cmu-11768-fall26
+category: agent
+title: CMU 11-768 · AI Agents
+shortTitle: CMU 11-768 Fall 2026
+eyebrow: Carnegie Mellon University · AI Agents · Fall 2026
+year: 2026
+status: updating
+publishOutputs: true
+description: 从 Agent 运行框架、工具、上下文与记忆，到应用、SFT / RL 训练、安全和交互；前 12 讲笔记与 Blog、前 9 讲中英文逐字稿已审核发布。
+paths:
+  root: agent/cmu-11768-fall26
+  resources: agent/cmu-11768-fall26/resources
+  notes: agent/cmu-11768-fall26/notes
+  references: agent/cmu-11768-fall26/references
+  exports: agent/cmu-11768-fall26/exports
+transcript:
+  engine: manual
+  originLanguage: en
+  targetLanguage: zh_cn
+  captionSource: platform-auto
+official:
+  - label: 课程主页
+    url: https://www.cmu-agents.com/
+  - label: 课程日程与阅读
+    url: https://www.cmu-agents.com/#schedule
+  - label: 作业与项目要求
+    url: https://www.cmu-agents.com/#assignments
+  - label: Assignment 1 · Harness
+    url: https://github.com/cmu-agents/assignment-1
+  - label: Assignment 2 · Eval
+    url: https://github.com/cmu-agents/assignment-2
+schedule:
+  source: https://www.cmu-agents.com/
+  checkedAt: 2026-10-03
+  lectureCount: 23
+  sourceSessionCount: 30
+  note: 仅教学讲座进入 items；假期、项目答疑与期末展示单独记录。保留官方 scheduleCode；首次录入后稳定 lecture-id，后续不按日期重编号。官网为客户端渲染，当前通用 course sync 的 HTML 解析器不适用，需人工核对日程。
+  events:
+    - code: 8a
+      date: Tue, Oct 13, 2026
+      title: Fall Break - No class
+    - code: 8b
+      date: Thu, Oct 15, 2026
+      title: Fall Break - No class
+    - code: 11a
+      date: Tue, Nov 3, 2026
+      title: Project hours
+    - code: 11b
+      date: Thu, Nov 5, 2026
+      title: Project hours
+    - code: 14b
+      date: Thu, Nov 26, 2026
+      title: Thanksgiving - No class
+    - code: 15a
+      date: Tue, Dec 1, 2026
+      title: Final presentations (posters)
+    - code: 15b
+      date: Thu, Dec 3, 2026
+      title: Final presentations (posters)
+learningModules:
+  - id: course-references
+    title: 00 · Course References
+    description: 按讲次整理的论文、技术文章、文档与代码
+    from: 0
+    to: 0
+  - id: agent-capabilities
+    title: 01 · Agent Capabilities
+    description: Agent 运行框架、工具、上下文、Skills / Memory 与规划
+    from: 1
+    to: 5
+  - id: domains-and-training
+    title: 02 · Domains & Training
+    description: 编码、计算机使用、深度研究，以及 SFT / RL 与训练系统
+    from: 6
+    to: 12
+  - id: safety-and-frameworks
+    title: 03 · Safety & Frameworks
+    description: 沙箱、凭据、OpenHands、LangGraph 与可观测性
+    from: 13
+    to: 16
+  - id: interaction-and-work
+    title: 04 · Interaction & Work
+    description: 未来工作、多智能体协作与人机交互
+    from: 17
+    to: 19
+  - id: search-and-inference
+    title: 05 · Search & Inference
+    description: 重排序、Critic 模型与树搜索
+    from: 20
+    to: 21
+  - id: guest-lectures
+    title: 06 · Guest Lectures
+    description: 客座讲座与前沿专题
+    from: 22
+    to: 23
+items:
+  - id: lecture-01
+    order: 1
+    scheduleCode: 1a
+    date: Tue, Aug 25, 2026
+    title: "Course Overview: What Is an Agent?"
+    subtitle: 理解 LLM Agent、运行框架与模型训练之间的关系，建立课程全景。
+    module: Introduction and Agent Capabilities
+    status: published
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=UwfjzyLnvMg&list=PLSN0qpDfUvTM&index=1
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    resources:
+      - label: Lecture 1 slides
+        url: https://www.cmu-agents.com/slides/lecture-01-agents.pdf
+        type: slides
+        status: approved
+    readings:
+      - label: Toolformer
+        url: https://arxiv.org/abs/2302.04761
+        type: paper
+        note: 官方课程阅读
+      - label: ReAct
+        url: https://arxiv.org/abs/2210.03629
+        type: paper
+        note: 官方课程阅读
+      - label: Mini-SWE-Agent
+        url: https://github.com/swe-agent/mini-swe-agent
+        type: code
+        note: 官方课程阅读
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: agent/cmu-11768-fall26/notes/lecture-01/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: agent/cmu-11768-fall26/notes/lecture-01/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-01/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-01/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: agent/cmu-11768-fall26/notes/lecture-01/sources.yaml
+      preparedAt: 2026-10-03T08:54:58.008Z
+    generation:
+      state: reviewed
+      manifest: agent/cmu-11768-fall26/notes/lecture-01/review.yaml
+      reviewedAt: 2026-10-03T10:08:51.503Z
+  - id: lecture-02
+    order: 2
+    scheduleCode: 1b
+    date: Thu, Aug 27, 2026
+    title: "Agent Capabilities 1: Tool Use"
+    subtitle: 工具接口、函数调用与约束解码，理解 Agent 如何可靠地执行动作。
+    module: Introduction and Agent Capabilities
+    status: published
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=jXChFB4JSyw&list=PLSN0qpDfUvTM&index=2
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    resources:
+      - label: Lecture 2 slides
+        url: https://www.cmu-agents.com/slides/lecture-02-tool-use.pdf
+        type: slides
+        status: approved
+    readings:
+      - label: What Are Tools Anyway?
+        url: https://arxiv.org/abs/2403.15452
+        type: paper
+        note: 官方课程阅读
+      - label: CodeAct
+        url: https://arxiv.org/abs/2402.01030
+        type: paper
+        note: 官方课程阅读
+      - label: Toolformer
+        url: https://arxiv.org/abs/2302.04761
+        type: paper
+        note: 官方课程阅读
+      - label: XGrammar
+        url: https://arxiv.org/abs/2411.15100
+        type: paper
+        note: 官方课程阅读
+      - label: OpenAI Chat Completions API
+        url: https://platform.openai.com/docs/api-reference/chat/create
+        type: docs
+        note: 官方补充参考
+      - label: Hugging Face Chat Templates
+        url: https://huggingface.co/docs/transformers/chat_templating
+        type: docs
+        note: 官方补充参考
+      - label: Qwen2.5 Chat Template
+        url: https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/blob/main/tokenizer_config.json
+        type: docs
+        note: 官方补充参考
+      - label: Berkeley Function-Calling Leaderboard V4
+        url: https://gorilla.cs.berkeley.edu/leaderboard.html
+        type: docs
+        note: 官方补充参考
+      - label: BFCL V4 Methodology
+        url: https://gorilla.cs.berkeley.edu/blogs/15_bfcl_v4_web_search.html
+        type: blog
+        note: 官方补充参考
+      - label: OpenRouter Provider Analytics
+        url: https://openrouter.ai/
+        type: docs
+        note: 官方补充参考
+      - label: OpenAI Function Calling Guide
+        url: https://developers.openai.com/api/docs/guides/function-calling
+        type: docs
+        note: 官方补充参考
+      - label: Qwen3.8 Tool-Call Template
+        url: https://huggingface.co/Qwen/Qwen3.8-27B/blob/main/tokenizer_config.json
+        type: docs
+        note: 官方补充参考
+      - label: Mistral Small 4 Model Card
+        url: https://huggingface.co/mistralai/Mistral-Small-4-119B-2603
+        type: docs
+        note: 官方补充参考
+      - label: Mistral Tool-Call Tokenization Guide
+        url: https://github.com/mistralai/cookbook/blob/main/concept-deep-dive/tokenization/tool_calling.md
+        type: code
+        note: 官方补充参考
+      - label: DeepSeek V3.2 Tool-Call Encoding
+        url: https://huggingface.co/deepseek-ai/DeepSeek-V3.2/blob/main/encoding/encoding_dsv32.py
+        type: docs
+        note: 官方补充参考
+      - label: OpenHands Tool System Architecture
+        url: https://docs.openhands.dev/sdk/arch/tool-system
+        type: docs
+        note: 官方补充参考
+      - label: OpenHands Agent Dispatch Source
+        url: https://github.com/OpenHands/software-agent-sdk/blob/main/openhands-sdk/openhands/sdk/agent/agent.py
+        type: code
+        note: 官方补充参考
+      - label: OpenHands ToolDefinition Source
+        url: https://github.com/OpenHands/software-agent-sdk/blob/main/openhands-sdk/openhands/sdk/tool/tool.py
+        type: code
+        note: 官方补充参考
+      - label: JSON Schema 2020-12
+        url: https://json-schema.org/draft/2020-12/json-schema-core.html
+        type: docs
+        note: 官方补充参考
+      - label: JSON Schema 2020-12 Validation
+        url: https://json-schema.org/draft/2020-12/json-schema-validation.html
+        type: docs
+        note: 官方补充参考
+      - label: OpenAPI Specification
+        url: https://spec.openapis.org/oas/latest.html
+        type: docs
+        note: 官方补充参考
+      - label: FastAPI Generated OpenAPI
+        url: https://fastapi.tiangolo.com/tutorial/first-steps/#openapi
+        type: docs
+        note: 官方补充参考
+      - label: FastAPI Security and OpenAPI
+        url: https://fastapi.tiangolo.com/tutorial/security/
+        type: docs
+        note: 官方补充参考
+      - label: MCP 2026-07-28 Specification Release
+        url: https://blog.modelcontextprotocol.io/posts/2026-07-28/
+        type: blog
+        note: 官方补充参考
+      - label: MCP TypeScript SDK v2 Overview
+        url: https://ts.sdk.modelcontextprotocol.io/v2/
+        type: docs
+        note: 官方补充参考
+      - label: MCP Transports Specification
+        url: https://modelcontextprotocol.io/specification/draft/basic/transports
+        type: docs
+        note: 官方补充参考
+      - label: MCP Tools Specification
+        url: https://modelcontextprotocol.io/specification/draft/server/tools
+        type: docs
+        note: 官方补充参考
+      - label: FastMCP OpenAPI Integration
+        url: https://gofastmcp.com/integrations/openapi
+        type: docs
+        note: 官方补充参考
+      - label: FastMCP Token Verification
+        url: https://gofastmcp.com/servers/auth/token-verification
+        type: docs
+        note: 官方补充参考
+      - label: FastMCP Bearer Client Authentication
+        url: https://gofastmcp.com/clients/auth/bearer
+        type: docs
+        note: 官方补充参考
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: agent/cmu-11768-fall26/notes/lecture-02/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: agent/cmu-11768-fall26/notes/lecture-02/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-02/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-02/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: agent/cmu-11768-fall26/notes/lecture-02/sources.yaml
+      preparedAt: 2026-10-03T08:59:40.664Z
+    generation:
+      state: reviewed
+      manifest: agent/cmu-11768-fall26/notes/lecture-02/review.yaml
+      reviewedAt: 2026-10-03T10:08:51.503Z
+  - id: lecture-03
+    order: 3
+    scheduleCode: 2a
+    date: Tue, Sep 1, 2026
+    title: "Agent Capabilities 2: Context Management for Long-Context Agents"
+    subtitle: 长上下文、上下文预算与压缩，管理多步任务中的信息。
+    module: Introduction and Agent Capabilities
+    status: published
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=AiwCCvFW1uE&list=PLSN0qpDfUvTM&index=3
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    resources:
+      - label: Lecture 3 slides
+        url: https://www.cmu-agents.com/slides/lecture-03-long-context.pdf
+        type: slides
+        status: approved
+    readings:
+      - label: DistServe
+        url: https://arxiv.org/abs/2401.09670
+        type: paper
+        note: 官方补充参考
+      - label: Needle in a Haystack
+        url: https://github.com/gkamradt/LLMTest_NeedleInAHaystack
+        type: code
+        note: 官方补充参考
+      - label: Attention Is All You Need
+        url: https://arxiv.org/abs/1706.03762
+        type: paper
+        note: 官方补充参考
+      - label: Longformer
+        url: https://arxiv.org/abs/2004.05150
+        type: paper
+        note: 官方补充参考
+      - label: Transformers are RNNs
+        url: https://arxiv.org/abs/2006.16236
+        type: paper
+        note: 官方补充参考
+      - label: Linear Transformers Are Secretly Fast Weight Programmers
+        url: https://arxiv.org/abs/2102.11174
+        type: paper
+        note: 官方补充参考
+      - label: Gated Delta Networks
+        url: https://arxiv.org/abs/2412.06464
+        type: paper
+        note: 官方补充参考
+      - label: Kimi Linear
+        url: https://arxiv.org/abs/2510.26692
+        type: paper
+        note: 官方补充参考
+      - label: DeepSeek Sparse Attention
+        url: https://arxiv.org/abs/2512.02556
+        type: paper
+        note: 官方补充参考
+      - label: Grouped-Query Attention
+        url: https://arxiv.org/abs/2305.13245
+        type: paper
+        note: 官方补充参考
+      - label: DeepSeek-V2
+        url: https://arxiv.org/abs/2405.04434
+        type: paper
+        note: 官方补充参考
+      - label: RoFormer
+        url: https://arxiv.org/abs/2104.09864
+        type: paper
+        note: 官方补充参考
+      - label: NoPE Length Generalization
+        url: https://arxiv.org/abs/2305.19466
+        type: paper
+        note: 官方补充参考
+      - label: Position Interpolation
+        url: https://arxiv.org/abs/2306.15595
+        type: paper
+        note: 官方补充参考
+      - label: YaRN
+        url: https://arxiv.org/abs/2309.00071
+        type: paper
+        note: 官方补充参考
+      - label: Qwen3.8-Flash-Next
+        url: https://qwen.ai/blog?id=qwen3.8-flash-next
+        type: blog
+        note: 官方补充参考
+      - label: GLM-5
+        url: https://arxiv.org/abs/2602.15763
+        type: paper
+        note: 官方补充参考
+      - label: GLM-5.3-Flash
+        url: https://huggingface.co/zai-org/GLM-5.3-Flash
+        type: docs
+        note: 官方补充参考
+      - label: Kimi K3
+        url: https://arxiv.org/abs/2607.24653
+        type: paper
+        note: 官方补充参考
+      - label: Nemotron 3 Ultra
+        url: https://research.nvidia.com/labs/nemotron/files/NVIDIA-Nemotron-3-Ultra-Technical-Report.pdf
+        type: docs
+        note: 官方补充参考
+      - label: Inkling
+        url: https://thinkingmachines.ai/news/introducing-inkling/
+        type: docs
+        note: 官方补充参考
+      - label: DeepSeek V4
+        url: https://arxiv.org/abs/2606.19348
+        type: paper
+        note: 官方补充参考
+      - label: Ring Attention
+        url: https://arxiv.org/abs/2310.01889
+        type: paper
+        note: 官方补充参考
+      - label: Megatron Context Parallelism
+        url: https://docs.nvidia.com/megatron-core/developer-guide/latest/user-guide/features/context_parallel.html
+        type: docs
+        note: 官方补充参考
+      - label: Prompt Cache
+        url: https://arxiv.org/abs/2311.04934
+        type: paper
+        note: 官方补充参考
+      - label: Can I Buy Your KV Cache?
+        url: https://arxiv.org/abs/2606.13361
+        type: paper
+        note: 官方补充参考
+      - label: DeepSeek API Pricing
+        url: https://api-docs.deepseek.com/quick_start/pricing/
+        type: docs
+        note: 官方补充参考
+      - label: Z.AI API Pricing
+        url: https://docs.z.ai/guides/overview/pricing
+        type: docs
+        note: 官方补充参考
+      - label: Kimi K3 Pricing
+        url: https://www.kimi.ai/resources/kimi-k3-pricing
+        type: docs
+        note: 官方补充参考
+      - label: OpenAI Model Pricing
+        url: https://developers.openai.com/api/docs/models/compare
+        type: docs
+        note: 官方补充参考
+      - label: Anthropic Prompt Caching
+        url: https://platform.claude.com/docs/en/build-with-claude/prompt-caching
+        type: docs
+        note: 官方补充参考
+      - label: PagedAttention / vLLM
+        url: https://arxiv.org/abs/2309.06180
+        type: paper
+        note: 官方补充参考
+      - label: SGLang / RadixAttention
+        url: https://arxiv.org/abs/2312.07104
+        type: paper
+        note: 官方补充参考
+      - label: SGLang Cache-Aware Load Balancing
+        url: https://lmsys.org/blog/2024-12-04-sglang-v0-4/
+        type: blog
+        note: 官方补充参考
+      - label: MemGPT
+        url: https://arxiv.org/abs/2310.08560
+        type: paper
+        note: 官方补充参考
+      - label: LongLLMLingua
+        url: https://aclanthology.org/2024.acl-long.91/
+        type: paper
+        note: 官方补充参考
+      - label: Codex
+        url: https://github.com/openai/codex
+        type: code
+        note: 官方补充参考
+      - label: OpenCode
+        url: https://github.com/anomalyco/opencode
+        type: code
+        note: 官方补充参考
+      - label: Pi
+        url: https://github.com/badlogic/pi-mono
+        type: code
+        note: 官方补充参考
+      - label: Hermes Agent
+        url: https://github.com/NousResearch/hermes-agent
+        type: code
+        note: 官方补充参考
+      - label: OpenHands
+        url: https://github.com/All-Hands-AI/OpenHands
+        type: code
+        note: 官方补充参考
+      - label: ReSum
+        url: https://arxiv.org/abs/2509.13313
+        type: paper
+        note: 官方补充参考
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: agent/cmu-11768-fall26/notes/lecture-03/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: agent/cmu-11768-fall26/notes/lecture-03/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-03/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-03/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: agent/cmu-11768-fall26/notes/lecture-03/sources.yaml
+      preparedAt: 2026-10-03T09:00:00.385Z
+    generation:
+      state: reviewed
+      manifest: agent/cmu-11768-fall26/notes/lecture-03/review.yaml
+      reviewedAt: 2026-10-03T10:08:51.503Z
+  - id: lecture-04
+    order: 4
+    scheduleCode: 2b
+    date: Thu, Sep 3, 2026
+    title: "Agent Capabilities 3: Skills and Memory"
+    subtitle: Agent Skills、工作流记忆与长期记忆，学习复用任务经验。
+    module: Introduction and Agent Capabilities
+    status: published
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=6zigF2a-2Pw&list=PLSN0qpDfUvTM&index=4
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    resources:
+      - label: Lecture 4 slides
+        url: https://www.cmu-agents.com/slides/lecture-04-memory-and-skills.pdf
+        type: slides
+        status: approved
+    readings:
+      - label: "OpenHands: How to Create Effective Agent Skills"
+        url: https://www.openhands.dev/blog/20260227-creating-effective-agent-skills
+        type: blog
+        note: 官方课程阅读
+      - label: SkillsBench
+        url: https://arxiv.org/abs/2602.12670
+        type: paper
+        note: 官方课程阅读
+      - label: MemGPT
+        url: https://arxiv.org/abs/2310.08560
+        type: paper
+        note: 官方课程阅读
+      - label: Agent Workflow Memory (AWM)
+        url: https://arxiv.org/abs/2409.07429
+        type: paper
+        note: 官方课程阅读
+      - label: Agent Skill Induction (ASI)
+        url: https://arxiv.org/abs/2504.06821
+        type: paper
+        note: 官方课程阅读
+      - label: ReasoningBank
+        url: https://arxiv.org/abs/2509.25140
+        type: paper
+        note: 官方课程阅读
+      - label: Mem0
+        url: https://arxiv.org/abs/2504.19413
+        type: paper
+        note: 官方补充参考
+      - label: Reflexion
+        url: https://arxiv.org/abs/2303.11366
+        type: paper
+        note: 官方补充参考
+      - label: ExpeL
+        url: https://arxiv.org/abs/2308.10144
+        type: paper
+        note: 官方补充参考
+      - label: Agent S
+        url: https://arxiv.org/abs/2410.08164
+        type: paper
+        note: 官方补充参考
+      - label: Synapse
+        url: https://arxiv.org/abs/2306.07863
+        type: paper
+        note: 官方补充参考
+      - label: ICAL
+        url: https://arxiv.org/abs/2406.14596
+        type: paper
+        note: 官方补充参考
+      - label: Voyager
+        url: https://arxiv.org/abs/2305.16291
+        type: paper
+        note: 官方补充参考
+      - label: DreamCoder
+        url: https://arxiv.org/abs/2006.08381
+        type: paper
+        note: 官方补充参考
+      - label: Stitch
+        url: https://arxiv.org/abs/2211.16605
+        type: paper
+        note: 官方补充参考
+      - label: LAPS
+        url: https://arxiv.org/abs/2106.11053
+        type: paper
+        note: 官方补充参考
+      - label: LILO
+        url: https://arxiv.org/abs/2310.19791
+        type: paper
+        note: 官方补充参考
+      - label: SkillWeaver
+        url: https://arxiv.org/abs/2504.07079
+        type: paper
+        note: 官方补充参考
+      - label: PolySkill
+        url: https://arxiv.org/abs/2510.15863
+        type: paper
+        note: 官方补充参考
+      - label: TroVE
+        url: https://arxiv.org/abs/2401.12869
+        type: paper
+        note: 官方补充参考
+      - label: Not All Skills Help
+        url: https://arxiv.org/abs/2606.15390
+        type: paper
+        note: 官方补充参考
+      - label: SAGE
+        url: https://aclanthology.org/2026.acl-long.69/
+        type: paper
+        note: 官方补充参考
+      - label: AgeMem
+        url: https://aclanthology.org/2026.acl-long.981/
+        type: paper
+        note: 官方补充参考
+      - label: "HermesAgent: prompt_builder.py"
+        url: https://github.com/NousResearch/hermes-agent/blob/main/agent/prompt_builder.py
+        type: code
+        note: 官方补充参考
+      - label: "HermesAgent: skills_tool.py"
+        url: https://github.com/NousResearch/hermes-agent/blob/main/tools/skills_tool.py
+        type: code
+        note: 官方补充参考
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: agent/cmu-11768-fall26/notes/lecture-04/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: agent/cmu-11768-fall26/notes/lecture-04/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-04/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-04/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: agent/cmu-11768-fall26/notes/lecture-04/sources.yaml
+      preparedAt: 2026-10-03T09:00:20.643Z
+    generation:
+      state: reviewed
+      manifest: agent/cmu-11768-fall26/notes/lecture-04/review.yaml
+      reviewedAt: 2026-10-03T10:08:51.503Z
+  - id: lecture-05
+    order: 5
+    scheduleCode: 3a
+    date: Tue, Sep 8, 2026
+    title: "Agent Capabilities 4: Planning, Task Decomposition, and Multi-Agent Coordination"
+    subtitle: 规划、任务分解与多智能体协调，组织长程任务。
+    module: Introduction and Agent Capabilities
+    status: published
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=S8v-dR4s29M&list=PLSN0qpDfUvTM&index=5
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    resources:
+      - label: Lecture 5 slides
+        url: https://www.cmu-agents.com/slides/lecture-05-planning.pdf
+        type: slides
+        status: approved
+    readings:
+      - label: "Cursor: Introducing Plan Mode"
+        url: https://cursor.com/blog/plan-mode
+        type: blog
+        note: 官方课程阅读
+      - label: Least-to-Most Prompting
+        url: https://arxiv.org/abs/2205.10625
+        type: paper
+        note: 官方课程阅读
+      - label: Decomposed Prompting
+        url: https://arxiv.org/abs/2210.02406
+        type: paper
+        note: 官方课程阅读
+      - label: Code as Policies
+        url: https://arxiv.org/abs/2209.07753
+        type: paper
+        note: 官方课程阅读
+      - label: SayCan
+        url: https://arxiv.org/abs/2204.01691
+        type: paper
+        note: 官方课程阅读
+      - label: Plan-and-Act
+        url: https://arxiv.org/abs/2503.09572
+        type: paper
+        note: 官方课程阅读
+      - label: Thinking vs. Doing
+        url: https://arxiv.org/abs/2506.07976
+        type: paper
+        note: 官方课程阅读
+      - label: Calibrate-Then-Act
+        url: https://arxiv.org/abs/2602.16699
+        type: paper
+        note: 官方课程阅读
+      - label: Recursive Agent Optimization (RAO)
+        url: https://arxiv.org/abs/2605.06639
+        type: paper
+        note: 官方课程阅读
+      - label: Multi-Agent Computer Use (MACU)
+        url: https://arxiv.org/abs/2606.01533
+        type: paper
+        note: 官方课程阅读
+      - label: Claude Code Permission Modes
+        url: https://code.claude.com/docs/en/cli-usage
+        type: docs
+        note: 官方补充参考
+      - label: OpenAI Model Guidance
+        url: https://developers.openai.com/api/docs/guides/latest-model
+        type: docs
+        note: 官方补充参考
+      - label: Large Language Models are Zero-Shot Reasoners
+        url: https://arxiv.org/abs/2205.11916
+        type: paper
+        note: 官方补充参考
+      - label: Plan-and-Solve Prompting
+        url: https://arxiv.org/abs/2305.04091
+        type: paper
+        note: 官方补充参考
+      - label: STaR
+        url: https://arxiv.org/abs/2203.14465
+        type: paper
+        note: 官方补充参考
+      - label: DeepSeek-R1
+        url: https://arxiv.org/abs/2501.12948
+        type: paper
+        note: 官方补充参考
+      - label: Recursive Language Models
+        url: https://arxiv.org/abs/2512.24601
+        type: paper
+        note: 官方补充参考
+      - label: PlanBench
+        url: https://arxiv.org/abs/2206.10498
+        type: paper
+        note: 官方补充参考
+      - label: ProgPrompt
+        url: https://arxiv.org/abs/2209.11302
+        type: paper
+        note: 官方补充参考
+      - label: Binder
+        url: https://arxiv.org/abs/2210.02875
+        type: paper
+        note: 官方补充参考
+      - label: "Anthropic: Building Effective Agents"
+        url: https://www.anthropic.com/engineering/building-effective-agents
+        type: blog
+        note: 官方补充参考
+      - label: UGround
+        url: https://arxiv.org/abs/2410.05243
+        type: paper
+        note: 官方补充参考
+      - label: Agent S
+        url: https://arxiv.org/abs/2410.08164
+        type: paper
+        note: 官方补充参考
+      - label: Language Models as Zero-Shot Planners
+        url: https://arxiv.org/abs/2201.07207
+        type: paper
+        note: 官方补充参考
+      - label: LLM-Planner
+        url: https://arxiv.org/abs/2212.04088
+        type: paper
+        note: 官方补充参考
+      - label: Inner Monologue
+        url: https://arxiv.org/abs/2207.05608
+        type: paper
+        note: 官方补充参考
+      - label: SwiftSage
+        url: https://arxiv.org/abs/2305.17390
+        type: paper
+        note: 官方补充参考
+      - label: The Danger of Overthinking
+        url: https://arxiv.org/abs/2502.08235
+        type: paper
+        note: 官方补充参考
+      - label: Training Proactive and Personalized LLM Agents (PPP-Agent)
+        url: https://arxiv.org/abs/2511.02208
+        type: paper
+        note: 官方补充参考
+      - label: Vending-Bench
+        url: https://arxiv.org/abs/2502.15840
+        type: paper
+        note: 官方补充参考
+      - label: The Illusion of Diminishing Returns
+        url: https://arxiv.org/abs/2509.09677
+        type: paper
+        note: 官方补充参考
+      - label: ADaPT
+        url: https://arxiv.org/abs/2311.05772
+        type: paper
+        note: 官方补充参考
+      - label: Web Agents Should Adopt the Plan-Then-Execute Paradigm
+        url: https://arxiv.org/abs/2605.14290
+        type: paper
+        note: 官方补充参考
+      - label: TravelPlanner
+        url: https://arxiv.org/abs/2402.01622
+        type: paper
+        note: 官方补充参考
+      - label: Odysseys
+        url: https://odysseys-website.pages.dev/
+        type: docs
+        note: 官方补充参考
+      - label: Don't Sleep on Single-Agent Systems
+        url: https://www.openhands.dev/blog/dont-sleep-on-single-agent-systems
+        type: blog
+        note: 官方补充参考
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: agent/cmu-11768-fall26/notes/lecture-05/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: agent/cmu-11768-fall26/notes/lecture-05/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-05/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-05/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: agent/cmu-11768-fall26/notes/lecture-05/sources.yaml
+      preparedAt: 2026-10-03T08:57:22.750Z
+    generation:
+      state: reviewed
+      manifest: agent/cmu-11768-fall26/notes/lecture-05/review.yaml
+      reviewedAt: 2026-10-03T10:08:51.503Z
+  - id: lecture-06
+    order: 6
+    scheduleCode: 3b
+    date: Thu, Sep 10, 2026
+    title: "Domains 1: Coding Agents"
+    subtitle: 编码 Agent 的运行框架、工具接口与软件工程任务。
+    module: Domains
+    status: published
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=1BWeH1oOM7k&list=PLSN0qpDfUvTM&index=6
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    resources:
+      - label: Lecture 6 slides
+        url: https://www.cmu-agents.com/slides/lecture-06-coding-agents.pdf
+        type: slides
+        status: approved
+      - label: Assignment 1 · Harness
+        type: code
+        url: https://github.com/cmu-agents/assignment-1
+        status: approved
+        note: 官方作业仓库
+    readings:
+      - label: OLMo
+        url: https://arxiv.org/abs/2402.00838
+        type: paper
+        note: 官方补充参考
+      - label: StarCoder
+        url: https://arxiv.org/abs/2305.06161
+        type: paper
+        note: 官方补充参考
+      - label: Whitespace-run tokens
+        url: https://arxiv.org/abs/2107.03374
+        type: paper
+        note: 官方补充参考
+      - label: StarCoder2 tokenizer
+        url: https://huggingface.co/bigcode/starcoder2-3b/blob/main/tokenizer.json
+        type: docs
+        note: 官方补充参考
+      - label: Code Llama
+        url: https://arxiv.org/abs/2308.12950
+        type: paper
+        note: 官方补充参考
+      - label: Qwen2.5-Coder
+        url: https://arxiv.org/abs/2409.12186
+        type: paper
+        note: 官方补充参考
+      - label: InCoder
+        url: https://arxiv.org/abs/2204.05999
+        type: paper
+        note: 官方补充参考
+      - label: Scaling study
+        url: https://arxiv.org/abs/2207.14255
+        type: paper
+        note: 官方补充参考
+      - label: OctoPack
+        url: https://arxiv.org/abs/2308.07124
+        type: paper
+        note: 官方补充参考
+      - label: DrRepair
+        url: https://proceedings.mlr.press/v119/yasunaga20a.html
+        type: docs
+        note: 官方补充参考
+      - label: CodeRL
+        url: https://arxiv.org/abs/2207.01780
+        type: paper
+        note: 官方补充参考
+      - label: CodeExecutor
+        url: https://aclanthology.org/2023.findings-acl.308/
+        type: paper
+        note: 官方补充参考
+      - label: Grammar-based code generation
+        url: https://aclanthology.org/P17-1041/
+        type: paper
+        note: 官方补充参考
+      - label: CodeBLEU
+        url: https://arxiv.org/abs/2009.10297
+        type: paper
+        note: 官方补充参考
+      - label: CodeBERTScore
+        url: https://aclanthology.org/2023.emnlp-main.859/
+        type: paper
+        note: 官方补充参考
+      - label: EvalPlus
+        url: https://arxiv.org/abs/2305.01210
+        type: paper
+        note: 官方补充参考
+      - label: CodeContests / AlphaCode
+        url: https://arxiv.org/abs/2203.07814
+        type: paper
+        note: 官方补充参考
+      - label: NoFunEval
+        url: https://arxiv.org/abs/2401.15963
+        type: paper
+        note: 官方补充参考
+      - label: DeepCoder
+        url: https://www.together.ai/blog/deepcoder
+        type: blog
+        note: 官方补充参考
+      - label: SWE-agent
+        url: https://arxiv.org/abs/2405.15793
+        type: paper
+        note: 官方补充参考
+      - label: Agentless
+        url: https://arxiv.org/abs/2407.01489
+        type: paper
+        note: 官方补充参考
+      - label: mini-SWE-agent
+        url: https://mini-swe-agent.com/latest/
+        type: docs
+        note: 官方补充参考
+      - label: Aider edit formats
+        url: https://aider.chat/docs/more/edit-formats.html
+        type: docs
+        note: 官方补充参考
+      - label: Aider unified diffs
+        url: https://aider.chat/docs/unified-diffs.html
+        type: docs
+        note: 官方补充参考
+      - label: LocAgent
+        url: https://arxiv.org/abs/2503.09089
+        type: paper
+        note: 官方补充参考
+      - label: SWE-bench
+        url: https://arxiv.org/abs/2310.06770
+        type: paper
+        note: 官方补充参考
+      - label: SWE-Gym
+        url: https://arxiv.org/abs/2412.21139
+        type: paper
+        note: 官方补充参考
+      - label: R2E-Gym
+        url: https://arxiv.org/abs/2504.07164
+        type: paper
+        note: 官方补充参考
+      - label: SWE-smith
+        url: https://arxiv.org/abs/2504.21798
+        type: paper
+        note: 官方补充参考
+      - label: Multi-SWE-bench
+        url: https://arxiv.org/abs/2504.02605
+        type: paper
+        note: 官方补充参考
+      - label: SWE-bench Multilingual
+        url: https://www.swebench.com/multilingual.html
+        type: docs
+        note: 官方补充参考
+      - label: SWE-bench Multimodal
+        url: https://arxiv.org/abs/2410.03859
+        type: paper
+        note: 官方补充参考
+      - label: VisualWebArena
+        url: https://arxiv.org/abs/2401.13649
+        type: paper
+        note: 官方补充参考
+      - label: Playwright locators
+        url: https://playwright.dev/docs/locators
+        type: docs
+        note: 官方补充参考
+      - label: Commit0
+        url: https://arxiv.org/abs/2412.01769
+        type: paper
+        note: 官方补充参考
+      - label: ProgramBench
+        url: https://arxiv.org/abs/2605.03546
+        type: paper
+        note: 官方补充参考
+      - label: SWE-Milestone
+        url: https://arxiv.org/abs/2603.13428
+        type: paper
+        note: 官方补充参考
+      - label: SWT-Bench
+        url: https://arxiv.org/abs/2406.12952
+        type: paper
+        note: 官方补充参考
+      - label: SWE-Playground
+        url: https://arxiv.org/abs/2512.12216
+        type: paper
+        note: 官方补充参考
+      - label: Hybrid-Gym
+        url: https://arxiv.org/abs/2602.16819
+        type: paper
+        note: 官方补充参考
+      - label: Code World Models
+        url: https://arxiv.org/abs/2405.15383
+        type: paper
+        note: 官方补充参考
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: agent/cmu-11768-fall26/notes/lecture-06/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: agent/cmu-11768-fall26/notes/lecture-06/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-06/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-06/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    assignments:
+      - id: assignment-1
+        state: due
+    preparation:
+      state: subtitle-ready
+      manifest: agent/cmu-11768-fall26/notes/lecture-06/sources.yaml
+      preparedAt: 2026-10-03T08:57:40.005Z
+    generation:
+      state: reviewed
+      manifest: agent/cmu-11768-fall26/notes/lecture-06/review.yaml
+      reviewedAt: 2026-10-03T10:08:51.503Z
+  - id: lecture-07
+    order: 7
+    scheduleCode: 4a
+    date: Tue, Sep 15, 2026
+    title: Computer Use Agents
+    subtitle: 计算机使用 Agent，连接网页、GUI 环境与操作评测。
+    module: Domains
+    instructors:
+      - JY Koh
+    status: published
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=jwGluLrrqjQ&list=PLSN0qpDfUvTM&index=7
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    resources:
+      - label: Lecture 7 slides
+        url: https://www.cmu-agents.com/slides/lecture-07-computer-use-agents.pdf
+        type: slides
+        status: approved
+    readings:
+      - label: WebArena
+        url: https://arxiv.org/abs/2307.13854
+        type: paper
+        note: 官方课程阅读
+      - label: VisualWebArena
+        url: https://arxiv.org/abs/2401.13649
+        type: paper
+        note: 官方课程阅读
+      - label: OSWorld
+        url: https://arxiv.org/abs/2404.07972
+        type: paper
+        note: 官方课程阅读
+      - label: OpenCUA
+        url: https://arxiv.org/abs/2508.09123
+        type: paper
+        note: 官方课程阅读
+      - label: CUA-Gym
+        url: https://arxiv.org/abs/2605.25624
+        type: paper
+        note: 官方课程阅读
+      - label: Multi-Agent Computer Use (MACU)
+        url: https://arxiv.org/abs/2606.01533
+        type: paper
+        note: 官方课程阅读
+      - label: MiniWoB
+        url: https://arxiv.org/abs/1704.04368
+        type: paper
+        note: 官方补充参考
+      - label: WebShop
+        url: https://arxiv.org/abs/2207.01206
+        type: paper
+        note: 官方补充参考
+      - label: ReAct
+        url: https://arxiv.org/abs/2210.03629
+        type: paper
+        note: 官方补充参考
+      - label: Mind2Web
+        url: https://arxiv.org/abs/2306.06070
+        type: paper
+        note: 官方补充参考
+      - label: WebVoyager
+        url: https://arxiv.org/abs/2401.13919
+        type: paper
+        note: 官方补充参考
+      - label: ScreenSpot-Pro
+        url: https://arxiv.org/abs/2504.07981
+        type: paper
+        note: 官方补充参考
+      - label: Gym-Anything
+        url: https://arxiv.org/abs/2604.06126
+        type: paper
+        note: 官方补充参考
+      - label: MolmoWeb
+        url: https://arxiv.org/abs/2604.08516
+        type: paper
+        note: 官方补充参考
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: agent/cmu-11768-fall26/notes/lecture-07/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: agent/cmu-11768-fall26/notes/lecture-07/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-07/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-07/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: agent/cmu-11768-fall26/notes/lecture-07/sources.yaml
+      preparedAt: 2026-10-03T08:57:56.822Z
+    generation:
+      state: reviewed
+      manifest: agent/cmu-11768-fall26/notes/lecture-07/review.yaml
+      reviewedAt: 2026-10-03T10:08:51.503Z
+  - id: lecture-08
+    order: 8
+    scheduleCode: 4b
+    date: Thu, Sep 17, 2026
+    title: "Training 1: Supervised Fine-Tuning (SFT)"
+    subtitle: 用监督微调学习 Agent 轨迹与工具使用行为。
+    module: Training Methods
+    instructors:
+      - Yueqi Song
+    status: published
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=O3HSU0AoILc&list=PLSN0qpDfUvTM&index=8
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    resources:
+      - label: Lecture 8 slides
+        url: https://www.cmu-agents.com/slides/lecture-08-sft.pdf
+        type: slides
+        status: approved
+    readings:
+      - label: Kimi K3
+        url: https://arxiv.org/abs/2607.24653
+        type: paper
+        note: 官方补充参考
+      - label: DeepSeek-R1
+        url: https://arxiv.org/abs/2501.12948
+        type: paper
+        note: 官方补充参考
+      - label: Nemotron 3 Ultra
+        url: https://research.nvidia.com/labs/nemotron/files/NVIDIA-Nemotron-3-Ultra-Technical-Report.pdf
+        type: docs
+        note: 官方补充参考
+      - label: MAI-Thinking-1
+        url: https://microsoft.ai/pdf/mai-thinking-1.pdf
+        type: docs
+        note: 官方补充参考
+      - label: K2 Horizon model card
+        url: https://huggingface.co/IFM/K2-Horizon-375B-A23B
+        type: docs
+        note: 官方补充参考
+      - label: Kimi K2
+        url: https://arxiv.org/abs/2507.20534
+        type: paper
+        note: 官方补充参考
+      - label: OpenThoughts-Agent
+        url: https://arxiv.org/abs/2606.24855
+        type: paper
+        note: 官方补充参考
+      - label: SWE-Gym
+        url: https://arxiv.org/abs/2412.21139
+        type: paper
+        note: 官方补充参考
+      - label: Agent Data Protocol
+        url: https://arxiv.org/abs/2510.24702
+        type: paper
+        note: 官方补充参考
+      - label: BalanceSFT
+        url: https://arxiv.org/abs/2505.20192
+        type: paper
+        note: 官方补充参考
+      - label: Instruction Modelling
+        url: https://arxiv.org/abs/2405.14394
+        type: paper
+        note: 官方补充参考
+      - label: Weighted Instruction Tuning
+        url: https://arxiv.org/abs/2507.07817
+        type: paper
+        note: 官方补充参考
+      - label: DAgger
+        url: https://proceedings.mlr.press/v15/ross11a.html
+        type: docs
+        note: 官方补充参考
+      - label: "Transformers: chat templates"
+        url: https://huggingface.co/docs/transformers/en/chat_templating
+        type: docs
+        note: 官方补充参考
+      - label: "Transformers: apply_chat_template"
+        url: https://huggingface.co/docs/transformers/en/main_classes/tokenizer
+        type: docs
+        note: 官方补充参考
+      - label: "TRL: SFTTrainer"
+        url: https://huggingface.co/docs/trl/en/sft_trainer
+        type: docs
+        note: 官方补充参考
+      - label: "TRL: training chat templates"
+        url: https://huggingface.co/docs/trl/en/chat_templates
+        type: docs
+        note: 官方补充参考
+      - label: "Axolotl: conversation datasets"
+        url: https://docs.axolotl.ai/docs/dataset-formats/conversation.html
+        type: docs
+        note: 官方补充参考
+      - label: LLaMA-Factory
+        url: https://github.com/hiyouga/LLaMA-Factory
+        type: code
+        note: 官方补充参考
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: agent/cmu-11768-fall26/notes/lecture-08/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: agent/cmu-11768-fall26/notes/lecture-08/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-08/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-08/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: agent/cmu-11768-fall26/notes/lecture-08/sources.yaml
+      preparedAt: 2026-10-03T08:58:13.533Z
+    generation:
+      state: reviewed
+      manifest: agent/cmu-11768-fall26/notes/lecture-08/review.yaml
+      reviewedAt: 2026-10-03T10:08:51.503Z
+  - id: lecture-09
+    order: 9
+    scheduleCode: 5a
+    date: Tue, Sep 22, 2026
+    title: "Training 2: Reinforcement Learning Basics"
+    subtitle: 强化学习基础，以及面向 Agent 的奖励与策略优化。
+    module: Training Methods
+    status: published
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=paAcPaaYZGM&list=PLSN0qpDfUvTM&index=9
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    resources:
+      - label: Lecture 9 slides
+        url: https://www.cmu-agents.com/slides/lecture-09-rl-basics.pdf
+        type: slides
+        status: approved
+    readings:
+      - label: ReST
+        url: https://arxiv.org/abs/2308.08998
+        type: paper
+        note: 官方课程阅读
+      - label: ReST-EM
+        url: https://arxiv.org/abs/2312.06585
+        type: paper
+        note: 官方课程阅读
+      - label: DeepSeekMath
+        url: https://arxiv.org/abs/2402.03300
+        type: paper
+        note: 官方课程阅读
+      - label: DrGRPO
+        url: https://arxiv.org/abs/2503.20783
+        type: paper
+        note: 官方课程阅读
+      - label: RL Fundamentals
+        url: https://cmu-l3.github.io/anlp-spring2026/static_files/anlp-s2026-16-rl.pdf
+        type: docs
+        note: 官方补充参考
+      - label: REINFORCE
+        url: https://doi.org/10.1007/BF00992696
+        type: docs
+        note: 官方补充参考
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: agent/cmu-11768-fall26/notes/lecture-09/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: agent/cmu-11768-fall26/notes/lecture-09/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-09/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: agent/cmu-11768-fall26/notes/lecture-09/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: agent/cmu-11768-fall26/notes/lecture-09/sources.yaml
+      preparedAt: 2026-10-03T09:02:58.761Z
+    generation:
+      state: reviewed
+      manifest: agent/cmu-11768-fall26/notes/lecture-09/review.yaml
+      reviewedAt: 2026-10-03T10:08:51.503Z
+  - id: lecture-10
+    order: 10
+    scheduleCode: 5b
+    date: Thu, Sep 24, 2026
+    title: "Domains 3: Deep Research Agents"
+    subtitle: 深度研究 Agent，结合检索、信息整合与研究任务。
+    module: Domains
+    instructors:
+      - Akari Asai
+    status: published
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    resources:
+      - label: Lecture 10 slides
+        url: https://www.cmu-agents.com/slides/lecture-10-deep-research-agents.pdf
+        type: slides
+        status: approved
+    readings:
+      - label: OpenScholar
+        url: https://www.nature.com/articles/s41586-025-10072-4
+        type: docs
+        note: 官方课程阅读
+      - label: BrowseComp
+        url: https://arxiv.org/abs/2504.12516
+        type: paper
+        note: 官方课程阅读
+      - label: DeepResearch Bench
+        url: https://arxiv.org/abs/2506.11763
+        type: paper
+        note: 官方课程阅读
+      - label: Tongyi DeepResearch
+        url: https://arxiv.org/abs/2510.24701
+        type: paper
+        note: 官方课程阅读
+      - label: DR Tulu
+        url: https://arxiv.org/abs/2511.19399
+        type: paper
+        note: 官方课程阅读
+      - label: AgentIR
+        url: https://arxiv.org/abs/2603.04384
+        type: paper
+        note: 官方课程阅读
+      - label: Natural Questions example
+        url: https://ai.google.com/research/NaturalQuestions/databrowser
+        type: docs
+        note: 官方补充参考
+      - label: Wikipedia source document
+        url: https://en.wikipedia.org/w/index.php?oldid=824425456
+        type: docs
+        note: 官方补充参考
+      - label: BrowseComp-Plus
+        url: https://arxiv.org/abs/2508.06600
+        type: paper
+        note: 官方补充参考
+      - label: FinSearchComp
+        url: https://arxiv.org/abs/2509.13160
+        type: paper
+        note: 官方补充参考
+      - label: MedBrowseComp
+        url: https://arxiv.org/abs/2505.14963
+        type: paper
+        note: 官方补充参考
+      - label: ScholarSearch
+        url: https://arxiv.org/abs/2506.13784
+        type: paper
+        note: 官方补充参考
+      - label: AutoResearchBench
+        url: https://arxiv.org/abs/2604.25256
+        type: paper
+        note: 官方补充参考
+      - label: A Critical Evaluation of Evaluations for Long-form Question Answering
+        url: https://aclanthology.org/2023.acl-long.181/
+        type: paper
+        note: 官方补充参考
+      - label: ResearchQA
+        url: https://arxiv.org/abs/2509.00496
+        type: paper
+        note: 官方补充参考
+      - label: DeepResearch Bench II
+        url: https://arxiv.org/abs/2601.08536
+        type: paper
+        note: 官方补充参考
+      - label: "CMU Archives: Herbert Simon"
+        url: https://digitalcollections.library.cmu.edu/cmu-collection/herbert-simon
+        type: docs
+        note: 官方补充参考
+      - label: 1978 Nobel Prize in Economic Sciences
+        url: https://www.nobelprize.org/prizes/economic-sciences/1978/summary/
+        type: docs
+        note: 官方补充参考
+      - label: WebSailor-V2
+        url: https://arxiv.org/abs/2509.13305
+        type: paper
+        note: 官方补充参考
+      - label: WebDancer
+        url: https://arxiv.org/abs/2505.22648
+        type: paper
+        note: 官方补充参考
+      - label: Scaling Agents via Continual Pre-training
+        url: https://arxiv.org/abs/2509.13310
+        type: paper
+        note: 官方补充参考
+      - label: Search-R1
+        url: https://arxiv.org/abs/2503.09516
+        type: paper
+        note: 官方补充参考
+      - label: DeepSeekMath
+        url: https://arxiv.org/abs/2402.03300
+        type: paper
+        note: 官方补充参考
+      - label: Dense Passage Retrieval
+        url: https://aclanthology.org/2020.emnlp-main.550/
+        type: paper
+        note: 官方补充参考
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: agent/cmu-11768-fall26/notes/lecture-10/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: agent/cmu-11768-fall26/notes/lecture-10/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      manifest: agent/cmu-11768-fall26/notes/lecture-10/review.yaml
+      reviewedAt: 2026-10-03T10:08:51.503Z
+    preparation:
+      state: slides-ready
+      manifest: agent/cmu-11768-fall26/notes/lecture-10/sources.yaml
+      checkedAt: 2026-10-03
+  - id: lecture-11
+    order: 11
+    scheduleCode: 6a
+    date: Tue, Sep 29, 2026
+    title: "Training 3: Advanced RL Algorithms"
+    subtitle: 用于 Agent 训练的进阶强化学习算法。
+    module: Training Methods
+    status: published
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    resources:
+      - label: Lecture 11 slides
+        url: https://www.cmu-agents.com/slides/lecture-11-rl-advanced.pdf
+        type: slides
+        status: approved
+    readings:
+      - label: MIXER
+        url: https://michaelauli.github.io/papers/iclr2016_mixer.pdf
+        type: docs
+        note: 官方补充参考
+      - label: InstructGPT
+        url: https://arxiv.org/abs/2203.02155
+        type: paper
+        note: 官方补充参考
+      - label: Generalized Advantage Estimation (GAE)
+        url: https://arxiv.org/abs/1506.02438
+        type: paper
+        note: 官方补充参考
+      - label: Let’s Verify Step by Step
+        url: https://arxiv.org/abs/2305.20050
+        type: paper
+        note: 官方补充参考
+      - label: AReaL
+        url: https://arxiv.org/abs/2505.24298
+        type: paper
+        note: 官方补充参考
+      - label: CTPO
+        url: https://arxiv.org/abs/2605.07331
+        type: paper
+        note: 官方补充参考
+      - label: Proximal Policy Optimization (PPO)
+        url: https://arxiv.org/abs/1707.06347
+        type: paper
+        note: 官方补充参考
+      - label: DeepSeekMath (GRPO)
+        url: https://arxiv.org/abs/2402.03300
+        type: paper
+        note: 官方补充参考
+      - label: MiniMax-M1 (CISPO)
+        url: https://arxiv.org/abs/2506.13585
+        type: paper
+        note: 官方补充参考
+      - label: Group Sequence Policy Optimization (GSPO)
+        url: https://arxiv.org/abs/2507.18071
+        type: paper
+        note: 官方补充参考
+      - label: DAPO
+        url: https://arxiv.org/abs/2503.14476
+        type: paper
+        note: 官方补充参考
+      - label: Introducing SWE-bench Verified
+        url: https://openai.com/index/introducing-swe-bench-verified/
+        type: docs
+        note: 官方补充参考
+      - label: Why we no longer evaluate SWE-bench Verified
+        url: https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/
+        type: docs
+        note: 官方补充参考
+      - label: SABER (τ-bench audit)
+        url: https://arxiv.org/abs/2512.07850
+        type: paper
+        note: 官方补充参考
+      - label: τ-bench task fixes
+        url: https://taubench.com/blog/tau3-task-fixes.html
+        type: blog
+        note: 官方补充参考
+      - label: Reward Hacking in Reinforcement Learning
+        url: https://lilianweng.github.io/posts/2024-11-28-reward-hacking/
+        type: docs
+        note: 官方补充参考
+      - label: MAI-Thinking-1
+        url: https://microsoft.ai/pdf/mai-thinking-1.pdf
+        type: docs
+        note: 官方补充参考
+      - label: PostTrainBench
+        url: https://arxiv.org/abs/2603.08640
+        type: paper
+        note: 官方补充参考
+      - label: Curriculum Learning
+        url: https://doi.org/10.1145/1553374.1553380
+        type: docs
+        note: 官方补充参考
+      - label: "OpenAI: calculator hacking and production evaluations"
+        url: https://alignment.openai.com/prod-evals/
+        type: docs
+        note: 官方补充参考
+      - label: Where the goblins came from
+        url: https://openai.com/index/where-the-goblins-came-from/
+        type: docs
+        note: 官方补充参考
+      - label: Distilling the Knowledge in a Neural Network
+        url: https://arxiv.org/abs/1503.02531
+        type: paper
+        note: 官方补充参考
+      - label: On-Policy Distillation of Language Models (GKD)
+        url: https://arxiv.org/abs/2306.13649
+        type: paper
+        note: 官方补充参考
+      - label: Self-Distilled Reasoner (OPSD)
+        url: https://arxiv.org/abs/2601.18734
+        type: paper
+        note: 官方补充参考
+      - label: Policy Invariance Under Reward Transformations
+        url: https://people.eecs.berkeley.edu/~russell/papers/icml99-shaping.pdf
+        type: docs
+        note: 官方补充参考
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: agent/cmu-11768-fall26/notes/lecture-11/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: agent/cmu-11768-fall26/notes/lecture-11/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      manifest: agent/cmu-11768-fall26/notes/lecture-11/review.yaml
+      reviewedAt: 2026-10-03T10:08:51.503Z
+    preparation:
+      state: slides-ready
+      manifest: agent/cmu-11768-fall26/notes/lecture-11/sources.yaml
+      checkedAt: 2026-10-03
+  - id: lecture-12
+    order: 12
+    scheduleCode: 6b
+    date: Thu, Oct 1, 2026
+    title: "Training 4: RL Systems"
+    subtitle: 强化学习系统，连接训练基础设施与 Agent 执行环境。
+    module: Training Methods
+    instructors:
+      - Apurva Gandhi
+    status: published
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    resources:
+      - label: Lecture 12 slides
+        url: https://www.cmu-agents.com/slides/lecture-12-rl-systems.pdf
+        type: slides
+        status: approved
+      - label: Assignment 2 · Eval
+        type: code
+        url: https://github.com/cmu-agents/assignment-2
+        status: approved
+        note: 官方作业仓库
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: agent/cmu-11768-fall26/notes/lecture-12/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: agent/cmu-11768-fall26/notes/lecture-12/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    assignments:
+      - id: assignment-2
+        state: due
+    generation:
+      state: reviewed
+      manifest: agent/cmu-11768-fall26/notes/lecture-12/review.yaml
+      reviewedAt: 2026-10-03T10:08:51.503Z
+    preparation:
+      state: slides-ready
+      manifest: agent/cmu-11768-fall26/notes/lecture-12/sources.yaml
+      checkedAt: 2026-10-03
+  - id: lecture-13
+    order: 13
+    scheduleCode: 7a
+    date: Tue, Oct 6, 2026
+    title: "Safety 1: Sandboxing and Credential Management"
+    subtitle: 沙箱与凭据管理，约束 Agent 执行动作时的权限。
+    module: Agent Safety
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    outputs: []
+  - id: lecture-14
+    order: 14
+    scheduleCode: 7b
+    date: Thu, Oct 8, 2026
+    title: "Frameworks 1: OpenHands"
+    subtitle: OpenHands 框架与 Agent 系统实现。
+    module: Agent Frameworks
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    outputs: []
+  - id: lecture-15
+    order: 15
+    scheduleCode: 9a
+    date: Tue, Oct 20, 2026
+    title: "Frameworks 2: LangGraph"
+    subtitle: LangGraph 框架与 Agent 工作流编排。
+    module: Agent Frameworks
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    outputs: []
+  - id: lecture-16
+    order: 16
+    scheduleCode: 9b
+    date: Thu, Oct 22, 2026
+    title: "Safety 2: Observability and Monitoring"
+    subtitle: 可观测性与监控，理解 Agent 运行过程及其失败。
+    module: Frameworks and Safety
+    instructors:
+      - Eric Wallace
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    outputs: []
+  - id: lecture-17
+    order: 17
+    scheduleCode: 10a
+    date: Tue, Oct 27, 2026
+    title: Agents and the Future of Work
+    subtitle: Agent 与未来工作方式。
+    module: Interaction and Projects
+    instructors:
+      - Zora Wang
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    outputs: []
+  - id: lecture-18
+    order: 18
+    scheduleCode: 10b
+    date: Thu, Oct 29, 2026
+    title: "Interaction 1: Multi-Agent Interaction"
+    subtitle: 多智能体之间的交互与协作。
+    module: Interaction and Projects
+    instructors:
+      - Saujas Vaduguru
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    outputs: []
+    assignments:
+      - id: assignment-3
+        state: due
+  - id: lecture-19
+    order: 19
+    scheduleCode: 12a
+    date: Tue, Nov 10, 2026
+    title: "Interaction 2: Human-Agent Interaction"
+    subtitle: 人类与 Agent 的交互。
+    module: Interaction and Projects
+    instructors:
+      - Valerie Chen
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    outputs: []
+  - id: lecture-20
+    order: 20
+    scheduleCode: 12b
+    date: Thu, Nov 12, 2026
+    title: "Search 1: Reranking and Critic Models"
+    subtitle: 重排序与 Critic 模型，用评价信号选择候选行为。
+    module: Search and Inference
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    outputs: []
+  - id: lecture-21
+    order: 21
+    scheduleCode: 13a
+    date: Tue, Nov 17, 2026
+    title: "Search 2: Tree Search"
+    subtitle: 树搜索与推理时探索。
+    module: Search and Inference
+    instructors:
+      - JY Koh
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    outputs: []
+  - id: lecture-22
+    order: 22
+    scheduleCode: 13b
+    date: Thu, Nov 19, 2026
+    title: Guest Lecture
+    subtitle: Karthik Narasimhan 客座讲座；具体主题待官方公布。
+    module: Advanced Topics
+    instructors:
+      - Karthik Narasimhan
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    outputs: []
+  - id: lecture-23
+    order: 23
+    scheduleCode: 14a
+    date: Tue, Nov 24, 2026
+    title: Guest Lecture
+    subtitle: Sasha Rush 客座讲座；具体主题待官方公布。
+    module: Advanced Topics
+    instructors:
+      - Sasha Rush
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cmu-agents.com/#schedule
+    outputs: []

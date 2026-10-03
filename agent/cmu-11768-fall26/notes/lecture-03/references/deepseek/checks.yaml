@@ -1,0 +1,31 @@
+schemaVersion: 1
+checkedAt: 2026-10-03T10:07:20.731Z
+course: cmu-11768-fall26
+lecture: lecture-03
+state: structure-passed
+reviewState: approved
+evidenceMode: transcript-and-slides
+inputHash: 66475a26d26c5f7d774570914ddfa5e2c04ee7049dcba3c9f49a1c91d4dd3310
+counts:
+  englishParagraphs: 75
+  chineseParagraphs: 75
+  slides: 54
+timeline:
+  first: 00:07.120
+  last: 01:14:52.960
+  durationSeconds: 4539
+  lastParagraphToDurationRatio: 0.99
+errors: []
+warnings: []
+humanChecksRequired:
+  - 字幕错词与专名
+  - 中文语义完整性与术语一致性
+  - 公式与图示
+  - 引用支持论点
+  - Note / Blog 来源忠实性
+limitation: 结构校验不证明语义正确；内容由用户确认。代理未重新完整回听视频或声称独立核验全部公式。
+approval:
+  by: user
+  at: 2026-10-03T10:08:51.503Z
+  scope: 本批 Note、Blog 与中英文逐字稿内容已确认；参照 CS336 2026 合并段落后发布。
+  quote: 我看内容没什么问题，就是你仿照那种格式合并之后，你就可以推送到正式版本里，我审核没什么问题了。

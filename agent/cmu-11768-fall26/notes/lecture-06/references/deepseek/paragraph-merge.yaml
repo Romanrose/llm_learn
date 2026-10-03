@@ -1,0 +1,77 @@
+schemaVersion: 1
+course: cmu-11768-fall26
+lecture: lecture-06
+mergedAt: 2026-10-03T10:04:25.065Z
+reference: cs336-2026/lecture-04
+before: 177
+after: 55
+starts:
+  - 0
+  - 5
+  - 6
+  - 7
+  - 10
+  - 15
+  - 20
+  - 21
+  - 22
+  - 27
+  - 29
+  - 32
+  - 37
+  - 38
+  - 43
+  - 44
+  - 48
+  - 52
+  - 55
+  - 60
+  - 61
+  - 65
+  - 70
+  - 71
+  - 76
+  - 79
+  - 84
+  - 85
+  - 88
+  - 92
+  - 93
+  - 96
+  - 100
+  - 105
+  - 107
+  - 112
+  - 115
+  - 118
+  - 122
+  - 126
+  - 127
+  - 129
+  - 132
+  - 136
+  - 140
+  - 145
+  - 146
+  - 151
+  - 152
+  - 155
+  - 160
+  - 162
+  - 166
+  - 171
+  - 175
+original:
+  english: agent/cmu-11768-fall26/notes/lecture-06/references/before-paragraph-merge/transcript.en.md
+  chinese: agent/cmu-11768-fall26/notes/lecture-06/references/before-paragraph-merge/transcript.zh-CN.md
+checks:
+  englishTextUnchanged: true
+  chineseTextUnchanged: true
+  timestampSource: first-original-paragraph
+  alignedLanguages: true
+bodyHashes:
+  english: 47e291f572e942167508e07420c32ab55587e89ff2aab5e70edfde868029875d
+  chinese: 2f5d5cc1b6e04f745b435a8cfe971bb6949658e81c388a0f73a72538585b7d76
+limits:
+  maxChineseCharacters: 650
+  maxStartSpanSeconds: 120

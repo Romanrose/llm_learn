@@ -55,10 +55,10 @@ const previewImage = computed(() => {
     </div>
     <div class="course-hero__media">
       <a v-if="watchUrl" :href="watchUrl" target="_blank" rel="noreferrer" class="course-hero__play">
-        <img v-if="previewImage" :src="previewImage" alt="CS336 官方课程预览" />
+        <img v-if="previewImage" :src="previewImage" :alt="`${title} 官方课程预览`" />
         <span aria-hidden="true">▶</span>
         <strong>在 YouTube 观看课程</strong>
-        <small>打开 CS336 官方播放列表</small>
+        <small>打开官方课程视频</small>
       </a>
     </div>
   </section>

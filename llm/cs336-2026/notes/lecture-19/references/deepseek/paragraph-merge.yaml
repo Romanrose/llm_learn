@@ -1,0 +1,113 @@
+schemaVersion: 1
+course: cs336-2026
+lecture: lecture-19
+mergedAt: 2026-10-03T10:03:08.949Z
+reference: cs336-2026/lecture-04
+before: 214
+after: 91
+starts:
+  - 0
+  - 5
+  - 8
+  - 13
+  - 15
+  - 18
+  - 20
+  - 22
+  - 24
+  - 28
+  - 30
+  - 33
+  - 35
+  - 37
+  - 39
+  - 41
+  - 43
+  - 45
+  - 47
+  - 49
+  - 53
+  - 56
+  - 59
+  - 61
+  - 63
+  - 65
+  - 67
+  - 72
+  - 76
+  - 81
+  - 82
+  - 83
+  - 86
+  - 88
+  - 89
+  - 92
+  - 94
+  - 99
+  - 100
+  - 102
+  - 103
+  - 104
+  - 106
+  - 108
+  - 112
+  - 115
+  - 117
+  - 118
+  - 121
+  - 123
+  - 125
+  - 126
+  - 128
+  - 129
+  - 131
+  - 133
+  - 134
+  - 136
+  - 138
+  - 140
+  - 144
+  - 146
+  - 148
+  - 150
+  - 152
+  - 156
+  - 158
+  - 159
+  - 163
+  - 164
+  - 166
+  - 171
+  - 174
+  - 175
+  - 178
+  - 181
+  - 182
+  - 184
+  - 186
+  - 188
+  - 190
+  - 191
+  - 193
+  - 194
+  - 195
+  - 199
+  - 200
+  - 204
+  - 209
+  - 210
+  - 213
+original:
+  english: llm/cs336-2026/notes/lecture-19/references/before-paragraph-merge/transcript.en.md
+  chinese: llm/cs336-2026/notes/lecture-19/references/before-paragraph-merge/transcript.zh-CN.md
+checks:
+  englishTextUnchanged: true
+  chineseTextUnchanged: true
+  timestampSource: first-original-paragraph
+  alignedLanguages: true
+bodyHashes:
+  english: 716edaebc09b9f2c9d3e1f9a3694c8d7d90aa7332436269486a2e06c1289fd7d
+  chinese: d092192c3ba06e9750c1ff3d8a285fe21acb69afddb414d337d5dcb4ad385b3d
+limits:
+  maxChineseCharacters: 650
+  maxStartSpanSeconds: 120

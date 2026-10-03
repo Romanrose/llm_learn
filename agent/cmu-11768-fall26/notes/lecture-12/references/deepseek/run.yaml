@@ -1,0 +1,47 @@
+schemaVersion: 1
+course: cmu-11768-fall26
+lecture: lecture-12
+state: candidate-ready
+provider: deepseek
+model: deepseek-v4-flash
+inputHash: 290aefa5920bdb006a09fde991600381b5ed06d1fca8e192bc99e2d51211de54
+createdAt: 2026-10-03T08:54:01.816Z
+evidenceMode: slides-only
+inputs:
+  transcriptEn: null
+  slidesText: agent/cmu-11768-fall26/notes/lecture-12/references/source/slides.md
+outputs:
+  note: agent/cmu-11768-fall26/notes/lecture-12/references/deepseek/note.md
+  blog: agent/cmu-11768-fall26/notes/lecture-12/references/deepseek/blog.md
+usage:
+  - prompt_tokens: 4934
+    completion_tokens: 5684
+    total_tokens: 10618
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 4934
+  - prompt_tokens: 4942
+    completion_tokens: 4032
+    total_tokens: 8974
+    prompt_tokens_details:
+      cached_tokens: 0
+    prompt_cache_hit_tokens: 0
+    prompt_cache_miss_tokens: 4942
+review:
+  state: approved
+  approval:
+    by: user
+    at: 2026-10-03T10:08:51.503Z
+    scope: 本批 Note、Blog 与中英文逐字稿内容已确认；参照 CS336 2026 合并段落后发布。
+    quote: 我看内容没什么问题，就是你仿照那种格式合并之后，你就可以推送到正式版本里，我审核没什么问题了。
+  manifest: agent/cmu-11768-fall26/notes/lecture-12/review.yaml
+completedAt: 2026-10-03T08:54:43.944Z
+missingOutputs:
+  - transcript.en.md
+  - transcript.zh-CN.md
+publication:
+  state: published
+  outputs:
+    lecture-note: agent/cmu-11768-fall26/notes/lecture-12/note.md
+    blog: agent/cmu-11768-fall26/notes/lecture-12/blog.md

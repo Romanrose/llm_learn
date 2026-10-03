@@ -1,0 +1,29 @@
+schemaVersion: 1
+state: reviewed
+course: cmu-11768-fall26
+lecture: lecture-07
+provider: deepseek
+reviewedAt: 2026-10-03T10:08:51.503Z
+source: agent/cmu-11768-fall26/notes/lecture-07/references/deepseek
+evidenceMode: transcript-and-slides
+approval:
+  by: user
+  at: 2026-10-03T10:08:51.503Z
+  scope: 本批 Note、Blog 与中英文逐字稿内容已确认；参照 CS336 2026 合并段落后发布。
+  quote: 我看内容没什么问题，就是你仿照那种格式合并之后，你就可以推送到正式版本里，我审核没什么问题了。
+outputs:
+  lecture-note: agent/cmu-11768-fall26/notes/lecture-07/note.md
+  blog: agent/cmu-11768-fall26/notes/lecture-07/blog.md
+  transcript-zh: agent/cmu-11768-fall26/notes/lecture-07/transcript.zh-CN.md
+  transcript-en: agent/cmu-11768-fall26/notes/lecture-07/transcript.en.md
+paragraphMerge:
+  record: agent/cmu-11768-fall26/notes/lecture-07/references/deepseek/paragraph-merge.yaml
+  before: 205
+  after: 82
+  englishTextUnchanged: true
+  chineseTextUnchanged: true
+  alignedTimestamps: true
+checks:
+  errors: []
+  warnings: []
+sourceLimits: 平台自动字幕与官方 Slides；保留来源局限和公式待核说明。
