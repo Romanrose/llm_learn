@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "course": "uva-digital-product-management",
+  "checkedAt": "2026-10-03",
+  "courseCaptions": {
+    "state": "not-accessible-without-account",
+    "publicCoursePagesChecked": 5,
+    "publicLessonLinksFound": 0,
+    "publicVttOrSrtLinksFound": 0,
+    "courseTranscriptFilesCreated": 0,
+    "notClaimingAllLessonsProbed": true
+  },
+  "supplements": [
+    {
+      "id": "josh-andrews-killing-complexity",
+      "officialUrl": "https://www.alexandercowan.com/josh-andrews-product-manager-google/",
+      "identity": "independent-teacher-interview-not-coursera-lesson",
+      "sourceType": "public-english-transcript-webpage",
+      "timing": "total-duration-only-21m22s-no-paragraph-timestamps",
+      "storage": "official-link-and-reading-reference",
+      "localFile": "interest/product/uva-digital-product-management/references/public-transcript-sources/josh-andrews-source-reference.md",
+      "licenseState": "redistribution-not-confirmed",
+      "review": "pending"
+    },
+    {
+      "id": "jez-humble-product-pipeline-interview",
+      "discoveredFrom": "https://www.alexandercowan.com/your-delivery-pipeline/",
+      "videoUrl": "https://www.youtube.com/watch?v=6sE9ttHL-3M",
+      "identity": "independent-teacher-linked-interview-not-coursera-lesson",
+      "probeMode": "yt-dlp --skip-download --list-subs --no-playlist; no cookies",
+      "captionState": "extraction-error",
+      "error": "The page needs to be reloaded",
+      "downloadedMedia": false,
+      "captionFilesCreated": 0
+    },
+    {
+      "id": "futurelearn-product-management-open-steps",
+      "url": "https://www.futurelearn.com/info/step-course/digital-product-management",
+      "exampleUrl": "https://www.futurelearn.com/info/courses/digital-product-management/0/steps/69959",
+      "identity": "historical-alternative-platform-open-step-descriptions-current-coursera-version-not-verified",
+      "captionState": "not-acquired",
+      "sourceType": "public-summary-pages",
+      "storage": "links-only",
+      "notATranscript": true
+    }
+  ],
+  "review": {
+    "state": "pending"
+  },
+  "outputs": []
+}

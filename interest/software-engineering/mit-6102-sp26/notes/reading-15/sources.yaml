@@ -1,0 +1,19 @@
+schemaVersion: 1
+course: mit-6102-sp26
+lecture: reading-15
+checkedAt: 2026-10-03
+evidenceMode: reading-only
+reading:
+  url: https://web.mit.edu/6.102/www/sp26/classes/15-promises/
+  title: "Reading 15: Promises"
+  state: body-read
+  contentHash: cd65535ead12bc9b0dcbb74734767a09b29094bcaa9934f48a2fa9d6b119a48d
+  storage: external-link-only
+caption:
+  state: not-applicable-no-class-recording
+  reason: Official FAQ confirms that 6.102 has no lectures and active-learning classtimes are not recorded.
+  policySource: https://web.mit.edu/6.102/www/sp26/general/#are_lectures_recorded
+  policyHeading: Are lectures recorded?
+  checkedAt: 2026-10-03
+review:
+  state: pending

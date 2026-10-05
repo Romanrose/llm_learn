@@ -1,0 +1,33 @@
+schemaVersion: 1
+course: cs147-fall26
+lecture: lecture-02
+provider: codex
+state: candidate-ready
+createdAt: 2026-10-03T10:13:04.621Z
+evidenceMode: authorized-audio-asr
+asr:
+  processor: mlx-whisper
+  model: mlx-community/whisper-small.en-mlx
+  device: Apple GPU / MLX
+  audioSha256: 372ab78c0847738caa0b2832dc3f7cc3f505e2d167e990afa8c1698b138e4a89
+  durationSeconds: 6829.545938
+  mediaStoredInRepository: false
+translation:
+  provider: deepseek
+  model: deepseek-v4-flash
+  onlyInput: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript.en.md
+  timestampAlignment: exact-per-paragraph
+outputs:
+  transcriptEn: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript.en.md
+  transcriptZh: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript.zh-CN.md
+rawAsrEvidence: interest/design/cs147-fall26/references/lectures/lecture-02/codex/asr-segments.json
+checks: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript-checks.yaml
+review:
+  state: pending
+  note: 此ASR稿是用户批准既有Note/Blog后新生成，不能继承之前内容审核。
+rawOriginalAsrEvidence: interest/design/cs147-fall26/references/lectures/lecture-02/codex/asr-segments.original.json
+editLog: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript-edit-log.json
+limitations:
+  - 录制年份unconfirmed；官网目录2026不等于录制年份
+  - 01:45:47—01:49:32源录音近乎静默；没有用讲义补写缺失话语
+  - 低置信度及术语疑点显式标记，尚需回听审核

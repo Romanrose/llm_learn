@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "course": "mit-6102-sp26",
+  "checkedAt": "2026-10-03",
+  "scope": "Official classroom recordings, timed captions, and transcript sources; historical course resources checked separately.",
+  "state": "not-applicable-no-class-recording",
+  "evidenceMode": "reading-only",
+  "decisiveEvidence": {
+    "url": "https://web.mit.edu/6.102/www/sp26/general/#are_lectures_recorded",
+    "heading": "Are lectures recorded?",
+    "finding": "Official policy states that conceptual material is delivered in interactive readings, not lectures, and active-learning classtimes are not recorded."
+  },
+  "historicalChecks": [
+    {
+      "course": "6.005",
+      "term": "Spring 2016",
+      "url": "https://ocw.mit.edu/courses/6-005-software-construction-spring-2016/",
+      "finding": "OCW resource listing includes readings, assignments, exams and solutions; no verified official video/transcript series found. Java-era course, not a 2026 classroom source."
+    },
+    {
+      "course": "6.031",
+      "term": "Spring 2021",
+      "url": "https://web.mit.edu/6.031/www/sp21/general/",
+      "finding": "Official online-course FAQ explicitly says classes will not be recorded."
+    }
+  ],
+  "teacherPagesChecked": [
+    "https://web.mit.edu/maxg/",
+    "https://people.csail.mit.edu/rcm/"
+  ],
+  "counts": {
+    "readingUnits": 19,
+    "classroomTranscripts": 0,
+    "audioDownloads": 0,
+    "videoDownloads": 0
+  },
+  "limitation": "A negative platform search is not proof that no third-party videos exist; the official 2026 no-recording policy resolves the current course transcript requirement. Reading notes remain pending review."
+}

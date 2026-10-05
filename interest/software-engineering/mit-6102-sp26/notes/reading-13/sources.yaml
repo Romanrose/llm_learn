@@ -1,0 +1,19 @@
+schemaVersion: 1
+course: mit-6102-sp26
+lecture: reading-13
+checkedAt: 2026-10-03
+evidenceMode: reading-only
+reading:
+  url: https://web.mit.edu/6.102/www/sp26/classes/13-debugging/
+  title: "Reading 13: (Avoiding) Debugging"
+  state: body-read
+  contentHash: c73d9134b6326f862f8ab2bd347b35bcdecff9e373067a5cf8324799dc1e1e9a
+  storage: external-link-only
+caption:
+  state: not-applicable-no-class-recording
+  reason: Official FAQ confirms that 6.102 has no lectures and active-learning classtimes are not recorded.
+  policySource: https://web.mit.edu/6.102/www/sp26/general/#are_lectures_recorded
+  policyHeading: Are lectures recorded?
+  checkedAt: 2026-10-03
+review:
+  state: pending

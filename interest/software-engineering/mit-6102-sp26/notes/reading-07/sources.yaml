@@ -1,0 +1,19 @@
+schemaVersion: 1
+course: mit-6102-sp26
+lecture: reading-07
+checkedAt: 2026-10-03
+evidenceMode: reading-only
+reading:
+  url: https://web.mit.edu/6.102/www/sp26/classes/07-abstraction-functions-rep-invariants/
+  title: "Reading 7: Abstraction Functions & Rep Invariants"
+  state: body-read
+  contentHash: 9f358f1dffc8cde6cf1572d157eb6a93bac39f2da6e1b22f0f6867c6b46a7cc3
+  storage: external-link-only
+caption:
+  state: not-applicable-no-class-recording
+  reason: Official FAQ confirms that 6.102 has no lectures and active-learning classtimes are not recorded.
+  policySource: https://web.mit.edu/6.102/www/sp26/general/#are_lectures_recorded
+  policyHeading: Are lectures recorded?
+  checkedAt: 2026-10-03
+review:
+  state: pending

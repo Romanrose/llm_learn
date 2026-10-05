@@ -1,0 +1,19 @@
+schemaVersion: 1
+course: mit-6102-sp26
+lecture: reading-17
+checkedAt: 2026-10-03
+evidenceMode: reading-only
+reading:
+  url: https://web.mit.edu/6.102/www/sp26/classes/17-callbacks-guis/
+  title: "Reading 17: Callbacks and Graphical User Interfaces"
+  state: body-read
+  contentHash: 12019ab244743a150bce467210128a722a77df87e79dcfa0e8834729b5ad90c5
+  storage: external-link-only
+caption:
+  state: not-applicable-no-class-recording
+  reason: Official FAQ confirms that 6.102 has no lectures and active-learning classtimes are not recorded.
+  policySource: https://web.mit.edu/6.102/www/sp26/general/#are_lectures_recorded
+  policyHeading: Are lectures recorded?
+  checkedAt: 2026-10-03
+review:
+  state: pending

@@ -1,0 +1,16 @@
+schemaVersion: 1
+checkedAt: 2026-10-03T10:21:53.433Z
+course: cs147-fall26
+unit: assignment-08
+state: structure-passed
+reviewState: approved
+evidenceMode: assignment-reading-only
+errors: []
+warnings:
+  - 未取得课堂字幕；没有生成逐字稿
+humanChecksRequired:
+  - 来源确实支持论点
+  - 课程版本与单元归属
+  - 示例正确性与补充解释边界
+  - 教学深度与术语
+limitation: 结构检查不等同于人工内容审核，不授权发布。

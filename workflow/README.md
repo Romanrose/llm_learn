@@ -70,3 +70,17 @@ npm run course -- transcript <course-id> <lecture-id> \
 ```
 
 `--caption-source manual|auto` 只使用已有平台字幕，不触发音频下载；`any|whisper` 可能下载音频并运行 ASR。
+
+## 阅读与作业单元的候选稿
+
+产品管理、软件工程与 HCI 课程也可按子课程、阅读或作业建立稳定单元。单元类型由 catalog 的 `unitLabel` 标注，不把阅读和作业数量当作讲座数。
+
+基于公开阅读或作业资料整理的原创 Note / Blog 放在 `notes/<unit-id>/references/codex/`，`run.yaml` 使用 `state: candidate-ready`、`provider: codex` 和 `review.state: pending`。`sources.yaml` 记录实际读取的来源、课程版本及访问限制。没有真实字幕时不生成逐字稿；所有候选产物继续保持未发布。
+
+```bash
+node workflow/scripts/validate-resource-drafts.mjs \
+  uva-digital-product-management mit-6102-sp26 cs147-fall26
+npm run review:dev
+```
+
+本地审核服务默认使用 4184 端口，支持这些单元的 Note / Blog 候选预览。结构检查不代表内容已审核；正常 `npm run build` 仍遵循 `publishOutputs` 和 `outputs`，不会自动发布候选稿。

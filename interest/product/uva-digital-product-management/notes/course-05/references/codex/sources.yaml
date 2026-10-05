@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "course": "uva-digital-product-management",
+  "lecture": "course-05",
+  "checkedAt": "2026-10-03",
+  "sourceState": "public-outline-and-teacher-supplement",
+  "sources": [
+    {
+      "label": "官方课程公开目录",
+      "url": "https://www.coursera.org/learn/uva-darden-agile-team-management",
+      "role": "module-navigation",
+      "access": "public-description-only"
+    },
+    {
+      "label": "敏捷基础教程",
+      "url": "https://www.alexandercowan.com/agile-just-basics/",
+      "role": "public-teaching-supplement",
+      "access": "public-webpage"
+    }
+  ],
+  "modules": [
+    {
+      "id": "module-01",
+      "title": "The Agile Team",
+      "videoCount": 20,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-team-management"
+    },
+    {
+      "id": "module-02",
+      "title": "Learning and Deciding",
+      "videoCount": 22,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-team-management"
+    },
+    {
+      "id": "module-03",
+      "title": "Building and Managing",
+      "videoCount": 25,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-team-management"
+    },
+    {
+      "id": "module-04",
+      "title": "Practicing Agile",
+      "videoCount": 6,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-team-management"
+    }
+  ],
+  "caption": {
+    "state": "not-accessible-without-account",
+    "reason": "公开课程描述页无可用完整带时间戳字幕；未使用登录、cookies 或付费访问。",
+    "language": "en",
+    "kind": null,
+    "probe": {
+      "checkedAt": "2026-10-03",
+      "mode": "public-description-html-no-login-no-cookies",
+      "publicLessonLinksFound": 0,
+      "publicVttOrSrtLinksFound": 0,
+      "limits": "Only the public course description and its offered links were inspected; not every private lesson was accessed.",
+      "noAudioOrVideoDownloaded": true
+    }
+  },
+  "license": {
+    "state": "restricted-course-materials",
+    "note": "系列官方 FAQ 禁止分享或分发课程材料；未保存其正文。"
+  },
+  "missingOutputs": [
+    "transcript.en.md",
+    "transcript.zh-CN.md"
+  ],
+  "review": {
+    "state": "pending"
+  },
+  "claimMapping": [
+    {
+      "sourceSection": "官方四模块目录",
+      "supports": "学习、决策、建设、管理与章程属于课程范围",
+      "boundary": "课程范围"
+    },
+    {
+      "sourceSection": "敏捷基础教程：用户故事、故事映射及协作说明",
+      "supports": "共同讨论用户结果是敏捷实践的学习方向",
+      "boundary": "补充依据；章程和回顾样例均原创"
+    }
+  ]
+}

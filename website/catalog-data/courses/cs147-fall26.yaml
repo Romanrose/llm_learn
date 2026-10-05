@@ -1,0 +1,520 @@
+kind: course
+id: cs147-fall26
+category: design
+title: Stanford CS147 · Introduction to Human-Computer Interaction
+shortTitle: Stanford CS147 Autumn 2026
+eyebrow: Stanford · Human-Computer Interaction · Autumn 2026
+year: 2026
+unitLabel: 学习单元
+status: published
+publishOutputs: true
+description: 从需求访谈、问题定义到原型与可用性评估。按 Autumn 2026 官方作业总览接入十个项目练习入口；这是作业导航，完整讲座目录与公开视频待核实。
+paths:
+  root: interest/design/cs147-fall26
+  resources: interest/design/cs147-fall26/resources
+  notes: interest/design/cs147-fall26/notes
+  references: interest/design/cs147-fall26/references
+  exports: interest/design/cs147-fall26/exports
+official:
+  - label: 课程主页
+    url: https://hci.stanford.edu/courses/cs147/2026/au/
+  - label: 延伸阅读与学习建议
+    url: /topics/design/
+  - label: 2026 Course Timeline
+    url: https://hci.stanford.edu/courses/cs147/2026/au/timeline.pdf
+  - label: 2026 Assignments Overview
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+  - label: 2026 课程日程与公开讲义
+    url: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+schedule:
+  source: https://hci.stanford.edu/courses/cs147/2026/au/
+  checkedAt: 2026-10-03
+  unitCount: 13
+  note: 十个单元对应官方作业总览，保留作业身份。已补十组中文候选Note/Blog与三组公开讲义候选，均待审核；第二讲为2026页面复用2025材料，无课堂字幕。A11
+    Final Report仅作课程级参考。 已追加三个公开讲义单元，各自标注实际版本。
+learningModules:
+  - id: course-references
+    title: 00 · 课程参考资料
+    description: 官方来源与经典延伸阅读
+    from: 0
+    to: 0
+  - id: discovery
+    title: 01 · 需求与概念探索
+    description: 按官方作业顺序学习
+    from: 1
+    to: 4
+  - id: prototypes
+    title: 02 · 原型与测试
+    description: 按官方作业顺序学习
+    from: 5
+    to: 6
+  - id: evaluation
+    title: 03 · 评估与项目展示
+    description: 按官方作业顺序学习
+    from: 7
+    to: 10
+  - id: lecture-slides
+    title: 04 · 公开讲义
+    description: 按实际材料版本学习；不等同于课堂逐字稿
+    from: 11
+    to: 13
+items:
+  - id: assignment-01
+    order: 1
+    title: Needfinding
+    subtitle: 访谈并整理用户需求。
+    overview: 访谈并整理用户需求。 已补本地原创Note/Blog候选，尚未审核。本单元是作业，不对应课堂逐字稿；证据与限制见本地来源记录。
+    status: published
+    official:
+      - label: 2026 独立作业说明
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment1_26.pdf
+      - label: 官方作业入口
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+    readings:
+      - label: 2026 独立作业说明
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment1_26.pdf
+        type: docs
+        status: approved
+        note: 已确认正文标注Autumn 2026
+      - label: 官方作业 · Needfinding
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+        type: docs
+        note: 官方资源外链
+        status: approved
+      - label: Design Thinking Bootleg · 2018
+        url: https://dschool.stanford.edu/tools/design-thinking-bootleg
+        type: docs
+        note: 官方方法卡；2018 版，非 2026 新版
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/design/cs147-fall26/notes/assignment-01/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/design/cs147-fall26/notes/assignment-01/blog.md
+        searchable: true
+    unitLabel: 作业
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/design/cs147-fall26/notes/assignment-01/references/codex/run.yaml
+      evidenceMode: assignment-reading-only
+  - id: assignment-02
+    order: 2
+    title: POVs and Experience Prototypes
+    subtitle: 定义问题并测试体验原型。
+    overview: 定义问题并测试体验原型。 已补本地原创Note/Blog候选，尚未审核。本单元是作业，不对应课堂逐字稿；证据与限制见本地来源记录。
+    status: published
+    official:
+      - label: 2026 独立作业说明
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment2_26.pdf
+      - label: 官方作业入口
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+    readings:
+      - label: 2026 独立作业说明
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment2_26.pdf
+        type: docs
+        status: approved
+        note: PDF日期与日程有冲突，截止时间需课程通知核验
+      - label: 官方作业 · POVs and Experience Prototypes
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/design/cs147-fall26/notes/assignment-02/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/design/cs147-fall26/notes/assignment-02/blog.md
+        searchable: true
+    transcriptReferences:
+      - label: "CS 147 2022: Experience Prototyping · 英文字幕"
+        url: https://www.youtube.com/watch?v=QAWQIeGon0k&cc_load_policy=1&cc_lang_pref=en
+        language: en
+        kind: auto
+        note: 补充视频；上传于2022-01-16；平台自动字幕，非2026本课课堂逐字稿。日程Concept
+          Videos推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
+    unitLabel: 作业
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/design/cs147-fall26/notes/assignment-02/references/codex/run.yaml
+      evidenceMode: assignment-reading-only
+  - id: assignment-03
+    order: 3
+    title: Website
+    subtitle: 通过项目网站呈现设计过程。
+    overview: 通过项目网站呈现设计过程。 已补本地原创Note/Blog候选，尚未审核。本单元是作业，不对应课堂逐字稿；证据与限制见本地来源记录。
+    status: published
+    official:
+      - label: 官方作业入口
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+    readings:
+      - label: 官方作业 · Website
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/design/cs147-fall26/notes/assignment-03/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/design/cs147-fall26/notes/assignment-03/blog.md
+        searchable: true
+    unitLabel: 作业
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/design/cs147-fall26/notes/assignment-03/references/codex/run.yaml
+      evidenceMode: assignment-reading-only
+  - id: assignment-04
+    order: 4
+    title: Concept Video
+    subtitle: 用概念视频传达使用场景。
+    overview: 用概念视频传达使用场景。 已补本地原创Note/Blog候选，尚未审核。本单元是作业，不对应课堂逐字稿；证据与限制见本地来源记录。
+    status: published
+    official:
+      - label: 官方作业入口
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+    readings:
+      - label: 官方作业 · Concept Video
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/design/cs147-fall26/notes/assignment-04/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/design/cs147-fall26/notes/assignment-04/blog.md
+        searchable: true
+    transcriptReferences:
+      - label: "CS 147 2022: Experience Prototyping · 英文字幕"
+        url: https://www.youtube.com/watch?v=QAWQIeGon0k&cc_load_policy=1&cc_lang_pref=en
+        language: en
+        kind: auto
+        note: 补充视频；上传于2022-01-16；平台自动字幕，非2026本课课堂逐字稿。日程Concept
+          Videos推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
+    unitLabel: 作业
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/design/cs147-fall26/notes/assignment-04/references/codex/run.yaml
+      evidenceMode: assignment-reading-only
+  - id: assignment-05
+    order: 5
+    title: Low-fi Prototype and Usability Test
+    subtitle: 制作低保真原型并开展可用性测试。
+    overview: 制作低保真原型并开展可用性测试。 已补本地原创Note/Blog候选，尚未审核。本单元是作业，不对应课堂逐字稿；证据与限制见本地来源记录。
+    status: published
+    official:
+      - label: 官方作业入口
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+    readings:
+      - label: 官方作业 · Low-fi Prototype and Usability Test
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/design/cs147-fall26/notes/assignment-05/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/design/cs147-fall26/notes/assignment-05/blog.md
+        searchable: true
+    unitLabel: 作业
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/design/cs147-fall26/notes/assignment-05/references/codex/run.yaml
+      evidenceMode: assignment-reading-only
+  - id: assignment-06
+    order: 6
+    title: Interactive Medium-fi Prototype
+    subtitle: 根据反馈制作交互式中保真原型。
+    overview: 根据反馈制作交互式中保真原型。 已补本地原创Note/Blog候选，尚未审核。本单元是作业，不对应课堂逐字稿；证据与限制见本地来源记录。
+    status: published
+    official:
+      - label: 官方作业入口
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+    readings:
+      - label: 官方作业 · Interactive Medium-fi Prototype
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/design/cs147-fall26/notes/assignment-06/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/design/cs147-fall26/notes/assignment-06/blog.md
+        searchable: true
+    transcriptReferences:
+      - label: Lecture 3.1 Visual Design · 英文字幕
+        url: https://www.youtube.com/watch?v=TIg8ab4PqbU&cc_load_policy=1&cc_lang_pref=en
+        language: en
+        kind: auto
+        note: 补充视频；上传于2013-03-05；平台自动字幕，非2026本课课堂逐字稿。日程Visual Information
+          Design推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
+      - label: Lecture 3.2 Typography · 英文字幕
+        url: https://www.youtube.com/watch?v=82gp_2vqLTc&cc_load_policy=1&cc_lang_pref=en
+        language: en
+        kind: auto
+        note: 补充视频；上传于2013-03-05；平台自动字幕，非2026本课课堂逐字稿。日程Visual Information
+          Design推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
+      - label: Lecture 3.3 Grids and Alignment · 英文字幕
+        url: https://www.youtube.com/watch?v=iV9FVoCCT74&cc_load_policy=1&cc_lang_pref=en
+        language: en
+        kind: auto
+        note: 补充视频；上传于2013-03-05；平台自动字幕，非2026本课课堂逐字稿。日程Visual Information
+          Design推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
+    unitLabel: 作业
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/design/cs147-fall26/notes/assignment-06/references/codex/run.yaml
+      evidenceMode: assignment-reading-only
+  - id: assignment-07
+    order: 7
+    title: Heuristic Evaluation (Individual)
+    subtitle: 独立评估其他团队的界面。
+    overview: 独立评估其他团队的界面。 已补本地原创Note/Blog候选，尚未审核。本单元是作业，不对应课堂逐字稿；证据与限制见本地来源记录。
+    status: published
+    official:
+      - label: 官方作业入口
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+    readings:
+      - label: 官方作业 · Heuristic Evaluation (Individual)
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+        type: docs
+        note: 官方资源外链
+        status: approved
+      - label: NN/g · 10 Usability Heuristics
+        url: https://www.nngroup.com/articles/ten-usability-heuristics/
+        type: blog
+        note: 官方文章；最后复核于 2024-01-30
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/design/cs147-fall26/notes/assignment-07/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/design/cs147-fall26/notes/assignment-07/blog.md
+        searchable: true
+    unitLabel: 作业
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/design/cs147-fall26/notes/assignment-07/references/codex/run.yaml
+      evidenceMode: assignment-reading-only
+  - id: assignment-08
+    order: 8
+    title: High-fi Prototype
+    subtitle: 迭代并实现高保真原型。
+    overview: 迭代并实现高保真原型。 已补本地原创Note/Blog候选，尚未审核。本单元是作业，不对应课堂逐字稿；证据与限制见本地来源记录。
+    status: published
+    official:
+      - label: 官方作业入口
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+    readings:
+      - label: 官方作业 · High-fi Prototype
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/design/cs147-fall26/notes/assignment-08/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/design/cs147-fall26/notes/assignment-08/blog.md
+        searchable: true
+    transcriptReferences:
+      - label: Meet The Normals - Adventures in Universal Design · 英文字幕
+        url: https://www.youtube.com/watch?v=A88E4DH2asQ&cc_load_policy=1&cc_lang_pref=en
+        language: en
+        kind: manual
+        note: 补充视频；上传于2014-01-30；平台人工字幕，非2026本课课堂逐字稿。日程Usability
+          Testing推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
+    unitLabel: 作业
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/design/cs147-fall26/notes/assignment-08/references/codex/run.yaml
+      evidenceMode: assignment-reading-only
+  - id: assignment-09
+    order: 9
+    title: HE Summary
+    subtitle: 汇总启发式评估发现。
+    overview: 汇总启发式评估发现。 已补本地原创Note/Blog候选，尚未审核。本单元是作业，不对应课堂逐字稿；证据与限制见本地来源记录。
+    status: published
+    official:
+      - label: 官方作业入口
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+    readings:
+      - label: 官方作业 · HE Summary
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/design/cs147-fall26/notes/assignment-09/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/design/cs147-fall26/notes/assignment-09/blog.md
+        searchable: true
+    unitLabel: 作业
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/design/cs147-fall26/notes/assignment-09/references/codex/run.yaml
+      evidenceMode: assignment-reading-only
+  - id: assignment-10
+    order: 10
+    title: Poster and Pitch
+    subtitle: 通过海报和演讲展示项目。
+    overview: 通过海报和演讲展示项目。 已补本地原创Note/Blog候选，尚未审核。本单元是作业，不对应课堂逐字稿；证据与限制见本地来源记录。
+    status: published
+    official:
+      - label: 官方作业入口
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+    readings:
+      - label: 官方作业 · Poster and Pitch
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/design/cs147-fall26/notes/assignment-10/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/design/cs147-fall26/notes/assignment-10/blog.md
+        searchable: true
+    unitLabel: 作业
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/design/cs147-fall26/notes/assignment-10/references/codex/run.yaml
+      evidenceMode: assignment-reading-only
+  - id: lecture-01
+    order: 11
+    unitLabel: 讲义
+    title: Introduction & Course Overview
+    subtitle: 公开讲义学习解释；非完整课堂记录。
+    status: published
+    official:
+      - label: 官方讲义
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/01-introduction.pdf
+    readings:
+      - label: Introduction & Course Overview
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/01-introduction.pdf
+        type: slides
+        note: 实际材料版本：2026
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/design/cs147-fall26/notes/lecture-01/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/design/cs147-fall26/notes/lecture-01/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/design/cs147-fall26/references/lectures/lecture-01/codex/run.yaml
+      evidenceMode: slides-only
+    displayOrder: 1
+  - id: lecture-02
+    order: 12
+    unitLabel: 讲义
+    title: Design Discovery
+    subtitle: 官方2026目录复用2025讲义；录像年份未确认。
+    status: published
+    official:
+      - label: 官方讲义
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/02-design-discovery.pdf
+      - label: 官方公开视频（录制年份未确认）
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/02-design-discovery.mp4
+    readings:
+      - label: Design Discovery
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/02-design-discovery.pdf
+        type: slides
+        note: 实际材料版本：2025
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/design/cs147-fall26/notes/lecture-02/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/design/cs147-fall26/notes/lecture-02/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/design/cs147-fall26/references/lectures/lecture-02/codex/run.yaml
+      evidenceMode: slides-only
+    displayOrder: 2
+    reviewCandidates:
+      - manifest: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript-run.yaml
+        note: 新ASR逐字稿；待审核，不继承已批准Note/Blog状态
+  - id: lecture-03
+    order: 13
+    unitLabel: 讲义
+    title: Define
+    subtitle: 公开讲义学习解释；非完整课堂记录。
+    status: published
+    official:
+      - label: 官方讲义
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/03-define.pdf
+    readings:
+      - label: Define
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/03-define.pdf
+        type: slides
+        note: 实际材料版本：2026
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/design/cs147-fall26/notes/lecture-03/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/design/cs147-fall26/notes/lecture-03/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/design/cs147-fall26/references/lectures/lecture-03/codex/run.yaml
+      evidenceMode: slides-only
+    displayOrder: 3

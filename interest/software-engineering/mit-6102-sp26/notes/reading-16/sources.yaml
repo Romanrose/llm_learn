@@ -1,0 +1,19 @@
+schemaVersion: 1
+course: mit-6102-sp26
+lecture: reading-16
+checkedAt: 2026-10-03
+evidenceMode: reading-only
+reading:
+  url: https://web.mit.edu/6.102/www/sp26/classes/16-mutual-exclusion/
+  title: "Reading 16: Mutual Exclusion"
+  state: body-read
+  contentHash: 92f33d3138af03a2ac50916a29585dd6537c408819c82c0a4a584f919a3cc3a1
+  storage: external-link-only
+caption:
+  state: not-applicable-no-class-recording
+  reason: Official FAQ confirms that 6.102 has no lectures and active-learning classtimes are not recorded.
+  policySource: https://web.mit.edu/6.102/www/sp26/general/#are_lectures_recorded
+  policyHeading: Are lectures recorded?
+  checkedAt: 2026-10-03
+review:
+  state: pending

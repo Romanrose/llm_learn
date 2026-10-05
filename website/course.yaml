@@ -21,6 +21,15 @@ categories:
   - id: papers
     title: 论文
     description: 经典论文精读、复现与扩展阅读
+  - id: product
+    title: 产品管理
+    description: 从用户需求与产品定位，到假设验证、产品分析和团队协作。接入当前在线系列的五门子课程；官方未标更新年份，视频与练习权限以 Coursera 为准。
+  - id: software-engineering
+    title: 软件工程
+    description: 以 TypeScript 学习规格、测试、抽象、代码审查与并发。接入 Spring 2026 官方十九篇核心阅读与作业入口；尚未确认完整公开录像。
+  - id: design
+    title: 交互与产品设计
+    description: 从需求访谈、问题定义到原型与可用性评估。按 Autumn 2026 官方作业总览接入十个项目练习入口；这是作业导航，完整讲座目录与公开视频待核实。
 sections:
   - id: llm-courses
     title: 大模型课程
@@ -98,3 +107,45 @@ sections:
         subtitle: 技术访谈、演讲与播客笔记
         detail: 待接入 Course 流程
         route: /topics/interviews/
+  - id: product
+    title: 产品管理课程与资料
+    description: 产品定位、用户发现、实验与协作
+    items:
+      - id: uva-digital-product-management
+        courseId: uva-digital-product-management
+        title: UVA Digital Product Management
+        subtitle: 五门子课程 · 当前在线版，未标更新年份
+        route: /generated/courses/uva-digital-product-management/
+      - id: product-references
+        title: 产品管理经典资料
+        subtitle: SVPG · INSPIRED 第 2 版与 TRANSFORMED、Product Talk · 持续产品发现
+        detail: 官方阅读入口
+        route: /topics/product/
+  - id: software-engineering
+    title: 软件工程课程与资料
+    description: 规格、测试、抽象、审查与长期维护
+    items:
+      - id: mit-6102-sp26
+        courseId: mit-6102-sp26
+        title: MIT 6.102 Spring 2026
+        subtitle: Software Construction · 十九篇核心阅读
+        route: /generated/courses/mit-6102-sp26/
+      - id: software-engineering-references
+        title: 软件工程经典资料
+        subtitle: Software Engineering at Google
+        detail: 官方阅读入口
+        route: /topics/software-engineering/
+  - id: design
+    title: 交互与产品设计课程与资料
+    description: 需求研究、原型、可用性与交互设计
+    items:
+      - id: cs147-fall26
+        courseId: cs147-fall26
+        title: Stanford CS147 Autumn 2026
+        subtitle: Introduction to HCI · 十个作业与三份讲义
+        route: /generated/courses/cs147-fall26/
+      - id: design-references
+        title: 交互与产品设计经典资料
+        subtitle: Design Thinking Bootleg · 2018、NN/g · 10 Usability Heuristics
+        detail: 官方阅读入口
+        route: /topics/design/

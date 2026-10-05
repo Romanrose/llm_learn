@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "course": "uva-digital-product-management",
+  "lecture": "course-03",
+  "checkedAt": "2026-10-03",
+  "sourceState": "public-outline-and-teacher-supplement",
+  "sources": [
+    {
+      "label": "官方课程公开目录",
+      "url": "https://www.coursera.org/learn/uva-darden-agile-testing",
+      "role": "module-navigation",
+      "access": "public-description-only"
+    },
+    {
+      "label": "Lean Startup 教程",
+      "url": "https://www.alexandercowan.com/creating-a-lean-startup-style-assumption-set/",
+      "role": "public-teaching-supplement",
+      "access": "public-webpage"
+    },
+    {
+      "label": "公开教学补充：客户发现手册",
+      "url": "https://www.alexandercowan.com/customer-discovery-handbook/",
+      "role": "claim-mapping-supplement",
+      "access": "public-webpage"
+    }
+  ],
+  "modules": [
+    {
+      "id": "module-01",
+      "title": "How Do We Know if We're Building for a User that Doesn't Exist?",
+      "videoCount": 22,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-testing"
+    },
+    {
+      "id": "module-02",
+      "title": "How Do We Reduce Waste & Increase Wins by Testing Our Propositions Before We Build Them?",
+      "videoCount": 20,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-testing"
+    },
+    {
+      "id": "module-03",
+      "title": "How Do We Consistently Deliver Great Usability?",
+      "videoCount": 19,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-testing"
+    },
+    {
+      "id": "module-04",
+      "title": "How Do We Invest to Move Fast?",
+      "videoCount": 25,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-testing"
+    }
+  ],
+  "caption": {
+    "state": "not-accessible-without-account",
+    "reason": "公开课程描述页无可用完整带时间戳字幕；未使用登录、cookies 或付费访问。",
+    "language": "en",
+    "kind": null,
+    "probe": {
+      "checkedAt": "2026-10-03",
+      "mode": "public-description-html-no-login-no-cookies",
+      "publicLessonLinksFound": 0,
+      "publicVttOrSrtLinksFound": 0,
+      "limits": "Only the public course description and its offered links were inspected; not every private lesson was accessed.",
+      "noAudioOrVideoDownloaded": true
+    }
+  },
+  "license": {
+    "state": "restricted-course-materials",
+    "note": "系列官方 FAQ 禁止分享或分发课程材料；未保存其正文。"
+  },
+  "missingOutputs": [
+    "transcript.en.md",
+    "transcript.zh-CN.md"
+  ],
+  "review": {
+    "state": "pending"
+  },
+  "claimMapping": [
+    {
+      "sourceSection": "官方四模块目录",
+      "supports": "用户、需求、可用性、交付覆盖不同问题",
+      "boundary": "课程范围"
+    },
+    {
+      "sourceSection": "客户发现手册：Demand Hypothesis / Usability Hypothesis",
+      "supports": "需求与能否操作不同，观察方法不能直接通用",
+      "boundary": "补充依据；四类失败分类为原创"
+    },
+    {
+      "sourceSection": "Lean Startup 教程",
+      "supports": "把假设与可测试行动相连接",
+      "boundary": "只提供方向；实验卡未执行"
+    }
+  ]
+}

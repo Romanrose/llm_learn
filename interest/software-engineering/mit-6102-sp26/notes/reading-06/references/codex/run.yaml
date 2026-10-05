@@ -1,0 +1,32 @@
+schemaVersion: 1
+course: mit-6102-sp26
+lecture: reading-06
+provider: codex
+state: candidate-ready
+evidenceMode: reading-only
+checkedAt: 2026-10-03
+inputs:
+  - url: https://web.mit.edu/6.102/www/sp26/classes/06-abstract-data-types/
+    kind: official-reading
+    contentHash: e4649015eb0748c5e2893f301a437b867865ffd197cce7335d65eb26b70a944c
+outputs:
+  note: interest/software-engineering/mit-6102-sp26/notes/reading-06/references/codex/note.md
+  blog: interest/software-engineering/mit-6102-sp26/notes/reading-06/references/codex/blog.md
+review:
+  state: approved
+  approvedAt: 2026-10-03T09:49:42.102Z
+  approvedBy: user
+  authorization: 用户在本次对话明确：可以了，全部批准
+  scope:
+    - existing-note
+    - existing-blog
+  excludes:
+    - future-asr-transcripts
+    - commit
+    - push
+    - deployment
+limitations:
+  - Reading-based explanation, not classroom transcript.
+  - Official FAQ confirms no lectures and no active-learning class recordings.
+  - No human content review or full original exercise solution reproduction.
+captionPolicySource: https://web.mit.edu/6.102/www/sp26/general/#are_lectures_recorded

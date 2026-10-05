@@ -1,0 +1,631 @@
+kind: course
+id: mit-6102-sp26
+category: software-engineering
+title: MIT 6.102 · Software Construction
+shortTitle: MIT 6.102 Spring 2026
+eyebrow: MIT · Software Construction · Spring 2026
+year: 2026
+unitLabel: 阅读
+status: published
+publishOutputs: true
+description: 以 TypeScript 学习规格、测试、抽象、代码审查与并发。接入 Spring 2026
+  官方十九篇核心阅读与作业入口；官方明确概念由交互阅读提供，主动学习课堂不录像。
+paths:
+  root: interest/software-engineering/mit-6102-sp26
+  resources: interest/software-engineering/mit-6102-sp26/resources
+  notes: interest/software-engineering/mit-6102-sp26/notes
+  references: interest/software-engineering/mit-6102-sp26/references
+  exports: interest/software-engineering/mit-6102-sp26/exports
+official:
+  - label: 官方课堂与录像政策
+    url: https://web.mit.edu/6.102/www/sp26/general/#are_lectures_recorded
+  - label: 课程主页
+    url: https://web.mit.edu/6.102/www/sp26/
+  - label: 延伸阅读与学习建议
+    url: /topics/software-engineering/
+  - label: PS0 · Turtle Graphics
+    url: https://web.mit.edu/6.102/www/sp26/psets/ps0/
+  - label: Star Battle 项目
+    url: https://web.mit.edu/6.102/www/sp26/project/starb/
+schedule:
+  source: https://web.mit.edu/6.102/www/sp26/
+  checkedAt: 2026-10-03
+  unitCount: 19
+  note: 按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+learningModules:
+  - id: course-references
+    title: 00 · 课程参考资料
+    description: 官方来源与经典延伸阅读
+    from: 0
+    to: 0
+  - id: specifications
+    title: 01 · 规格、测试与审查
+    description: 按官方阅读顺序学习
+    from: 1
+    to: 5
+  - id: abstraction
+    title: 02 · 抽象与数据设计
+    description: 按官方阅读顺序学习
+    from: 6
+    to: 12
+  - id: concurrency
+    title: 03 · 调试、并发与交互
+    description: 按官方阅读顺序学习
+    from: 13
+    to: 19
+items:
+  - id: reading-01
+    order: 1
+    title: Static Checking
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/01-static-checking/
+    readings:
+      - label: 官方阅读 · Static Checking
+        url: https://web.mit.edu/6.102/www/sp26/classes/01-static-checking/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-01/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-01/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-01/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-02
+    order: 2
+    title: Testing
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/02-testing/
+    readings:
+      - label: 官方阅读 · Testing
+        url: https://web.mit.edu/6.102/www/sp26/classes/02-testing/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-02/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-02/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-02/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-03
+    order: 3
+    title: Code Review
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/03-code-review/
+    readings:
+      - label: 官方阅读 · Code Review
+        url: https://web.mit.edu/6.102/www/sp26/classes/03-code-review/
+        type: docs
+        note: 官方资源外链
+        status: approved
+      - label: Software Engineering at Google
+        url: https://abseil.io/resources/swe-book
+        type: book
+        note: 官方免费在线阅读；经典工程实践
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-03/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-03/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-03/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-04
+    order: 4
+    title: Specifications
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/04-specifications/
+    readings:
+      - label: 官方阅读 · Specifications
+        url: https://web.mit.edu/6.102/www/sp26/classes/04-specifications/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-04/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-04/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-04/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-05
+    order: 5
+    title: Designing Specifications
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/05-designing-specs/
+    readings:
+      - label: 官方阅读 · Designing Specifications
+        url: https://web.mit.edu/6.102/www/sp26/classes/05-designing-specs/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-05/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-05/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-05/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-06
+    order: 6
+    title: Abstract Data Types
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/06-abstract-data-types/
+    readings:
+      - label: 官方阅读 · Abstract Data Types
+        url: https://web.mit.edu/6.102/www/sp26/classes/06-abstract-data-types/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-06/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-06/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-06/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-07
+    order: 7
+    title: Abstraction Functions & Rep Invariants
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/07-abstraction-functions-rep-invariants/
+    readings:
+      - label: 官方阅读 · Abstraction Functions & Rep Invariants
+        url: https://web.mit.edu/6.102/www/sp26/classes/07-abstraction-functions-rep-invariants/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-07/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-07/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-07/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-08
+    order: 8
+    title: Interfaces & Subtyping
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/08-interfaces-subtyping/
+    readings:
+      - label: 官方阅读 · Interfaces & Subtyping
+        url: https://web.mit.edu/6.102/www/sp26/classes/08-interfaces-subtyping/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-08/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-08/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-08/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-09
+    order: 9
+    title: Equality
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/09-equality/
+    readings:
+      - label: 官方阅读 · Equality
+        url: https://web.mit.edu/6.102/www/sp26/classes/09-equality/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-09/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-09/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-09/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-10
+    order: 10
+    title: Functional Programming
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/10-functional-programming/
+    readings:
+      - label: 官方阅读 · Functional Programming
+        url: https://web.mit.edu/6.102/www/sp26/classes/10-functional-programming/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-10/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-10/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-10/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-11
+    order: 11
+    title: Recursive Data Types
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/11-recursive-data-types/
+    readings:
+      - label: 官方阅读 · Recursive Data Types
+        url: https://web.mit.edu/6.102/www/sp26/classes/11-recursive-data-types/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-11/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-11/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-11/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-12
+    order: 12
+    title: Grammars & Parsing
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/12-grammars-parsing/
+    readings:
+      - label: 官方阅读 · Grammars & Parsing
+        url: https://web.mit.edu/6.102/www/sp26/classes/12-grammars-parsing/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-12/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-12/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-12/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-13
+    order: 13
+    title: Debugging
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/13-debugging/
+    readings:
+      - label: 官方阅读 · Debugging
+        url: https://web.mit.edu/6.102/www/sp26/classes/13-debugging/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-13/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-13/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-13/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-14
+    order: 14
+    title: Concurrency
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/14-concurrency/
+    readings:
+      - label: 官方阅读 · Concurrency
+        url: https://web.mit.edu/6.102/www/sp26/classes/14-concurrency/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-14/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-14/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-14/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-15
+    order: 15
+    title: Promises
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/15-promises/
+    readings:
+      - label: 官方阅读 · Promises
+        url: https://web.mit.edu/6.102/www/sp26/classes/15-promises/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-15/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-15/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-15/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-16
+    order: 16
+    title: Mutual Exclusion
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/16-mutual-exclusion/
+    readings:
+      - label: 官方阅读 · Mutual Exclusion
+        url: https://web.mit.edu/6.102/www/sp26/classes/16-mutual-exclusion/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-16/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-16/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-16/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-17
+    order: 17
+    title: Callbacks & Graphical User Interfaces
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/17-callbacks-guis/
+    readings:
+      - label: 官方阅读 · Callbacks & Graphical User Interfaces
+        url: https://web.mit.edu/6.102/www/sp26/classes/17-callbacks-guis/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-17/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-17/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-17/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-18
+    order: 18
+    title: Message-Passing & Networking
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/18-message-passing-networking/
+    readings:
+      - label: 官方阅读 · Message-Passing & Networking
+        url: https://web.mit.edu/6.102/www/sp26/classes/18-message-passing-networking/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-18/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-18/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-18/references/codex/run.yaml
+      evidenceMode: reading-only
+  - id: reading-19
+    order: 19
+    title: Little Languages
+    subtitle: 阅读官方材料，并结合练习核对概念。
+    overview: 阅读官方材料，并结合练习核对概念。
+      本单元对应官方阅读，请通过资料链接阅读原文。按官方十九篇阅读建立单元，不将阅读数当作课堂讲座数；作业、项目均使用公开外链。
+    status: published
+    official:
+      - label: 官方阅读入口
+        url: https://web.mit.edu/6.102/www/sp26/classes/19-little-languages/
+    readings:
+      - label: 官方阅读 · Little Languages
+        url: https://web.mit.edu/6.102/www/sp26/classes/19-little-languages/
+        type: docs
+        note: 官方资源外链
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-19/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/software-engineering/mit-6102-sp26/notes/reading-19/blog.md
+        searchable: true
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-19/references/codex/run.yaml
+      evidenceMode: reading-only

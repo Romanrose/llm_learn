@@ -1,0 +1,26 @@
+schemaVersion: 1
+course: uva-digital-product-management
+lecture: course-04
+provider: codex
+state: candidate-ready
+createdAt: 2026-10-03
+evidenceMode: public-outline-and-teacher-supplement
+outputs:
+  note: interest/product/uva-digital-product-management/notes/course-04/references/codex/note.md
+  blog: interest/product/uva-digital-product-management/notes/course-04/references/codex/blog.md
+missingOutputs:
+  - transcript.en.md
+  - transcript.zh-CN.md
+review:
+  state: approved
+  approvedAt: 2026-10-03T09:49:42.034Z
+  approvedBy: user
+  authorization: 用户在本次对话明确：可以了，全部批准
+  scope:
+    - existing-note
+    - existing-blog
+  excludes:
+    - future-asr-transcripts
+    - commit
+    - push
+    - deployment

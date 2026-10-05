@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "originalAsrEvidence": "interest/design/cs147-fall26/references/lectures/lecture-02/codex/asr-segments.original.json",
+  "repair": {
+    "retryStart": 6310,
+    "retryEnd": 6720,
+    "conditionOnPreviousText": false,
+    "temperature": 0,
+    "restored": "missing ethics discussion after source near-silence",
+    "sourceSilence": {
+      "startSeconds": 6347,
+      "endSeconds": 6572,
+      "pcmSampleRate": 16000,
+      "sampleBits": 16,
+      "rmsTypical": 0.9,
+      "peakTypical": 3
+    },
+    "removed": "Confirmed machine Thank you/you hallucinations only inside near-digital-silence interval",
+    "limitation": "No attempt to reconstruct absent speech from slides; uncertain names explicitly marked."
+  },
+  "confirmedTermCorrections": [
+    {
+      "start": 173.44,
+      "before": "David Kelly",
+      "after": "David Kelley",
+      "source": "https://dschool.stanford.edu/directory/david-kelley"
+    },
+    {
+      "start": 179.16,
+      "before": "Henry Dreyfus",
+      "after": "Henry Dreyfuss",
+      "source": "https://hci.stanford.edu/courses/cs147/2026/au/lectures/02-design-discovery.pdf"
+    },
+    {
+      "start": 1295.7,
+      "before": "Christina Wodke",
+      "after": "Christina Wodtke",
+      "source": "https://cs247b.stanford.edu/syllabus.html"
+    },
+    {
+      "start": 1921.4199999999998,
+      "before": "Slice Spread Design",
+      "after": "Sliced Bread Design",
+      "source": "https://hci.stanford.edu/courses/cs147/2026/au/lectures/02-design-discovery.pdf"
+    },
+    {
+      "start": 2035.58,
+      "before": "Bronuslaw Malinowski",
+      "after": "Bronislaw Malinowski",
+      "source": "https://hci.stanford.edu/courses/cs147/2026/au/lectures/02-design-discovery.pdf"
+    }
+  ],
+  "additionalEdits": [
+    {
+      "type": "boundary-overlap-deduplication",
+      "atSeconds": 6310,
+      "removed": "the topics that we were discussing.",
+      "evidence": "retry开头与前一原ASR segment末尾完全重叠，仅删机械重复。"
+    },
+    {
+      "type": "boundary-sentence-restoration",
+      "atSeconds": 6720,
+      "restored": "why you design the car",
+      "evidence": "原始ASR segment 6718.18–6722.34秒已识别此句尾；定点重试在边界截断，恢复原来源。"
+    },
+    {
+      "type": "uncertainty-marker",
+      "scope": "无法由来源确认的专名/术语及评分偏低段落",
+      "reason": "未冒充语义校对；保留机器文本和回听要求。"
+    }
+  ]
+}

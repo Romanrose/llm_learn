@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "course": "cs147-fall26",
+  "lecture": "assignment-05",
+  "provider": "codex",
+  "state": "candidate-ready",
+  "review": {
+    "state": "pending"
+  },
+  "run": "interest/design/cs147-fall26/notes/assignment-05/references/codex/run.yaml"
+}

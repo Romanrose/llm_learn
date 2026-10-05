@@ -1,0 +1,23 @@
+schemaVersion: 1
+course: mit-6102-sp26
+unit: reading-02
+state: approved
+approvedAt: 2026-10-03T09:49:42.084Z
+approvedBy: user
+authorization: 用户在本次对话明确：可以了，全部批准
+scope:
+  - existing-note
+  - existing-blog
+excludes:
+  - future-asr-transcripts
+  - commit
+  - push
+  - deployment
+candidateManifest: interest/software-engineering/mit-6102-sp26/notes/reading-02/references/codex/run.yaml
+formalOutputs:
+  - interest/software-engineering/mit-6102-sp26/notes/reading-02/note.md
+  - interest/software-engineering/mit-6102-sp26/notes/reading-02/blog.md
+limitations:
+  - Reading-based explanation, not classroom transcript.
+  - Official FAQ confirms no lectures and no active-learning class recordings.
+  - No human content review or full original exercise solution reproduction.

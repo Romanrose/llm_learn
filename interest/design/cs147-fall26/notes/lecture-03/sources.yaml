@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "course": "cs147-fall26",
+  "lecture": "lecture-03",
+  "checkedAt": "2026-10-03",
+  "sourceState": "public-slides-read",
+  "slides": {
+    "url": "https://hci.stanford.edu/courses/cs147/2026/au/lectures/03-define.pdf",
+    "title": "Define",
+    "pages": 81,
+    "actualVersion": "2026",
+    "versionState": "current-year-confirmed"
+  },
+  "caption": {
+    "state": "not-found",
+    "reason": "公开日程没有对应字幕入口；未下载音视频或运行ASR。"
+  },
+  "review": {
+    "state": "pending"
+  }
+}

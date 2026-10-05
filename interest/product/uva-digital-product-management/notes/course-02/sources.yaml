@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "course": "uva-digital-product-management",
+  "lecture": "course-02",
+  "checkedAt": "2026-10-03",
+  "sourceState": "public-outline-and-teacher-supplement",
+  "sources": [
+    {
+      "label": "官方课程公开目录",
+      "url": "https://www.coursera.org/learn/uva-darden-getting-started-agile",
+      "role": "module-navigation",
+      "access": "public-description-only"
+    },
+    {
+      "label": "客户发现手册",
+      "url": "https://www.alexandercowan.com/customer-discovery-handbook/",
+      "role": "public-teaching-supplement",
+      "access": "public-webpage"
+    },
+    {
+      "label": "公开教学补充：敏捷基础",
+      "url": "https://www.alexandercowan.com/agile-just-basics/",
+      "role": "claim-mapping-supplement",
+      "access": "public-webpage"
+    }
+  ],
+  "modules": [
+    {
+      "id": "module-01",
+      "title": "Problems Agile Solves",
+      "videoCount": 17,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-getting-started-agile"
+    },
+    {
+      "id": "module-02",
+      "title": "Focusing Your Agile with Personas, Jobs-to-be-Done, and Alternatives",
+      "videoCount": 10,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-getting-started-agile"
+    },
+    {
+      "id": "module-03",
+      "title": "Getting to Great Agile User Stories",
+      "videoCount": 16,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-getting-started-agile"
+    },
+    {
+      "id": "module-04",
+      "title": "Focusing on Customer Value with User Stories",
+      "videoCount": 12,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-getting-started-agile"
+    }
+  ],
+  "caption": {
+    "state": "not-accessible-without-account",
+    "reason": "公开课程描述页无可用完整带时间戳字幕；未使用登录、cookies 或付费访问。",
+    "language": "en",
+    "kind": null,
+    "probe": {
+      "checkedAt": "2026-10-03",
+      "mode": "public-description-html-no-login-no-cookies",
+      "publicLessonLinksFound": 0,
+      "publicVttOrSrtLinksFound": 0,
+      "limits": "Only the public course description and its offered links were inspected; not every private lesson was accessed.",
+      "noAudioOrVideoDownloaded": true
+    }
+  },
+  "license": {
+    "state": "restricted-course-materials",
+    "note": "系列官方 FAQ 禁止分享或分发课程材料；未保存其正文。"
+  },
+  "missingOutputs": [
+    "transcript.en.md",
+    "transcript.zh-CN.md"
+  ],
+  "review": {
+    "state": "pending"
+  },
+  "claimMapping": [
+    {
+      "sourceSection": "官方四模块目录",
+      "supports": "人物、任务、替代方案与故事是明确模块主题",
+      "boundary": "课程范围"
+    },
+    {
+      "sourceSection": "客户发现手册：Persona & JTBD Hypotheses",
+      "supports": "任务与人群判断需依据经历和观察更新",
+      "boundary": "支持研究问题；访谈样例为原创"
+    },
+    {
+      "sourceSection": "敏捷基础教程：User Story Mapping",
+      "supports": "用户故事为协作提供共同讨论对象",
+      "boundary": "补充依据；验收表不是教师表格"
+    }
+  ]
+}

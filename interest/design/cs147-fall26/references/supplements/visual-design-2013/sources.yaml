@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "course": "cs147-fall26",
+  "unitKind": "external-supplement",
+  "id": "visual-design-2013",
+  "checkedAt": "2026-10-03",
+  "officialCalendar": "https://hci.stanford.edu/courses/cs147/2026/au/calendar.html",
+  "relatedAssignments": [
+    "assignment-06"
+  ],
+  "video": {
+    "id": "TIg8ab4PqbU",
+    "url": "https://www.youtube.com/watch?v=TIg8ab4PqbU",
+    "captionViewingUrl": "https://www.youtube.com/watch?v=TIg8ab4PqbU&cc_load_policy=1&cc_lang_pref=en",
+    "title": "Lecture 3.1 Visual Design",
+    "durationSeconds": 458,
+    "uploadDate": "2013-03-05",
+    "is2026ClassRecording": false
+  },
+  "caption": {
+    "state": "subtitle-ready",
+    "kind": "auto",
+    "language": "en-orig",
+    "probe": "yt-dlp --skip-download 字幕提取成功；未使用Cookie/登录",
+    "bytes": 67243,
+    "sha256": "25f4636c3eccfcfaa4725046f0d107a1b9f8733b33f606bd53c46fe739226e7a",
+    "cueCount": 415,
+    "firstStart": "00:00:02.720",
+    "lastStart": "00:07:35.480",
+    "rawStoredInRepository": false
+  },
+  "rights": {
+    "state": "rights-review-needed",
+    "platformLicense": null,
+    "reason": "公开字幕访问不等于完整复制、翻译与再分发授权；metadata未返回开放许可。"
+  },
+  "transcript": {
+    "state": "not-generated-pending-source-rights",
+    "english": null,
+    "chinese": null,
+    "reason": "没有从讲义生成或将平台自动翻译冒充人工翻译。"
+  },
+  "review": {
+    "state": "pending"
+  }
+}

@@ -1,0 +1,385 @@
+schemaVersion: 1
+course: cs147-fall26
+lecture: lecture-02
+checkedAt: 2026-10-03T10:13:04.598Z
+state: structure-passed
+reviewState: pending
+counts:
+  englishParagraphs: 159
+  chineseParagraphs: 159
+  asrSegments: 1404
+  lowConfidenceSegments: 57
+timeline:
+  first: 00:00.000
+  lastParagraphStart: 01:53:24.500
+  lastSegmentEndSeconds: 6826.46
+  videoDurationSeconds: 6829.61
+  audioDurationSeconds: 6829.545938
+  segmentEndToDurationRatio: 0.9995387730778186
+characters:
+  english: 92604
+  chinese: 31786
+lowConfidenceSegments:
+  - id: 9
+    start: 141.36
+    end: 148.08
+    avgLogprob: -0.1465270283457997
+    noSpeechProbability: 0.8636301159858704
+    compressionRatio: 1.676991150442478
+  - id: 10
+    start: 148.08
+    end: 153.16000000000003
+    avgLogprob: -0.1465270283457997
+    noSpeechProbability: 0.8636301159858704
+    compressionRatio: 1.676991150442478
+  - id: 11
+    start: 153.16000000000003
+    end: 158.64000000000001
+    avgLogprob: -0.1465270283457997
+    noSpeechProbability: 0.8636301159858704
+    compressionRatio: 1.676991150442478
+  - id: 12
+    start: 158.64000000000001
+    end: 161.10000000000002
+    avgLogprob: -0.1465270283457997
+    noSpeechProbability: 0.8636301159858704
+    compressionRatio: 1.676991150442478
+  - id: 13
+    start: 161.10000000000002
+    end: 165.44000000000003
+    avgLogprob: -0.1465270283457997
+    noSpeechProbability: 0.8636301159858704
+    compressionRatio: 1.676991150442478
+  - id: 14
+    start: 165.44
+    end: 173.44
+    avgLogprob: -0.20403024051966293
+    noSpeechProbability: 0.7360983490943909
+    compressionRatio: 1.4723404255319148
+  - id: 15
+    start: 173.44
+    end: 179.16
+    avgLogprob: -0.20403024051966293
+    noSpeechProbability: 0.7360983490943909
+    compressionRatio: 1.4723404255319148
+  - id: 16
+    start: 179.16
+    end: 184.4
+    avgLogprob: -0.20403024051966293
+    noSpeechProbability: 0.7360983490943909
+    compressionRatio: 1.4723404255319148
+  - id: 17
+    start: 184.4
+    end: 186.88
+    avgLogprob: -0.20403024051966293
+    noSpeechProbability: 0.7360983490943909
+    compressionRatio: 1.4723404255319148
+  - id: 18
+    start: 186.88
+    end: 192.36
+    avgLogprob: -0.20403024051966293
+    noSpeechProbability: 0.7360983490943909
+    compressionRatio: 1.4723404255319148
+  - id: 152
+    start: 612.7
+    end: 614.26
+    avgLogprob: -0.21576228568224404
+    noSpeechProbability: 0.7927408814430237
+    compressionRatio: 1.6370967741935485
+  - id: 153
+    start: 614.26
+    end: 615.26
+    avgLogprob: -0.21576228568224404
+    noSpeechProbability: 0.7927408814430237
+    compressionRatio: 1.6370967741935485
+  - id: 154
+    start: 615.26
+    end: 616.26
+    avgLogprob: -0.21576228568224404
+    noSpeechProbability: 0.7927408814430237
+    compressionRatio: 1.6370967741935485
+  - id: 155
+    start: 616.26
+    end: 619.74
+    avgLogprob: -0.21576228568224404
+    noSpeechProbability: 0.7927408814430237
+    compressionRatio: 1.6370967741935485
+  - id: 156
+    start: 619.74
+    end: 624.22
+    avgLogprob: -0.21576228568224404
+    noSpeechProbability: 0.7927408814430237
+    compressionRatio: 1.6370967741935485
+  - id: 157
+    start: 624.22
+    end: 626.62
+    avgLogprob: -0.21576228568224404
+    noSpeechProbability: 0.7927408814430237
+    compressionRatio: 1.6370967741935485
+  - id: 158
+    start: 626.62
+    end: 629.1400000000001
+    avgLogprob: -0.21576228568224404
+    noSpeechProbability: 0.7927408814430237
+    compressionRatio: 1.6370967741935485
+  - id: 159
+    start: 629.1400000000001
+    end: 630.82
+    avgLogprob: -0.21576228568224404
+    noSpeechProbability: 0.7927408814430237
+    compressionRatio: 1.6370967741935485
+  - id: 160
+    start: 630.82
+    end: 632.82
+    avgLogprob: -0.21576228568224404
+    noSpeechProbability: 0.7927408814430237
+    compressionRatio: 1.6370967741935485
+  - id: 161
+    start: 632.82
+    end: 633.82
+    avgLogprob: -0.21576228568224404
+    noSpeechProbability: 0.7927408814430237
+    compressionRatio: 1.6370967741935485
+  - id: 162
+    start: 633.82
+    end: 634.82
+    avgLogprob: -0.21576228568224404
+    noSpeechProbability: 0.7927408814430237
+    compressionRatio: 1.6370967741935485
+  - id: 163
+    start: 634.82
+    end: 635.82
+    avgLogprob: -0.21576228568224404
+    noSpeechProbability: 0.7927408814430237
+    compressionRatio: 1.6370967741935485
+  - id: 164
+    start: 635.82
+    end: 636.82
+    avgLogprob: -0.21576228568224404
+    noSpeechProbability: 0.7927408814430237
+    compressionRatio: 1.6370967741935485
+  - id: 186
+    start: 712.98
+    end: 717.78
+    avgLogprob: -0.16308978321106454
+    noSpeechProbability: 0.6230145692825317
+    compressionRatio: 1.6741573033707866
+  - id: 187
+    start: 717.78
+    end: 722.98
+    avgLogprob: -0.16308978321106454
+    noSpeechProbability: 0.6230145692825317
+    compressionRatio: 1.6741573033707866
+  - id: 188
+    start: 722.98
+    end: 725.46
+    avgLogprob: -0.16308978321106454
+    noSpeechProbability: 0.6230145692825317
+    compressionRatio: 1.6741573033707866
+  - id: 189
+    start: 725.46
+    end: 726.86
+    avgLogprob: -0.16308978321106454
+    noSpeechProbability: 0.6230145692825317
+    compressionRatio: 1.6741573033707866
+  - id: 190
+    start: 726.86
+    end: 731.1800000000001
+    avgLogprob: -0.16308978321106454
+    noSpeechProbability: 0.6230145692825317
+    compressionRatio: 1.6741573033707866
+  - id: 191
+    start: 731.1800000000001
+    end: 737.4200000000001
+    avgLogprob: -0.16308978321106454
+    noSpeechProbability: 0.6230145692825317
+    compressionRatio: 1.6741573033707866
+  - id: 192
+    start: 737.4200000000001
+    end: 739.3000000000001
+    avgLogprob: -0.16308978321106454
+    noSpeechProbability: 0.6230145692825317
+    compressionRatio: 1.6741573033707866
+  - id: 193
+    start: 739.3000000000001
+    end: 742.46
+    avgLogprob: -0.16308978321106454
+    noSpeechProbability: 0.6230145692825317
+    compressionRatio: 1.6741573033707866
+  - id: 202
+    start: 769.48
+    end: 773.52
+    avgLogprob: -0.2164870162508381
+    noSpeechProbability: 0.629960298538208
+    compressionRatio: 1.6574803149606299
+  - id: 203
+    start: 773.52
+    end: 775.8000000000001
+    avgLogprob: -0.2164870162508381
+    noSpeechProbability: 0.629960298538208
+    compressionRatio: 1.6574803149606299
+  - id: 204
+    start: 775.8000000000001
+    end: 776.8000000000001
+    avgLogprob: -0.2164870162508381
+    noSpeechProbability: 0.629960298538208
+    compressionRatio: 1.6574803149606299
+  - id: 205
+    start: 776.8000000000001
+    end: 779.44
+    avgLogprob: -0.2164870162508381
+    noSpeechProbability: 0.629960298538208
+    compressionRatio: 1.6574803149606299
+  - id: 206
+    start: 779.44
+    end: 780.44
+    avgLogprob: -0.2164870162508381
+    noSpeechProbability: 0.629960298538208
+    compressionRatio: 1.6574803149606299
+  - id: 207
+    start: 780.44
+    end: 782.4
+    avgLogprob: -0.2164870162508381
+    noSpeechProbability: 0.629960298538208
+    compressionRatio: 1.6574803149606299
+  - id: 208
+    start: 782.4
+    end: 784.12
+    avgLogprob: -0.2164870162508381
+    noSpeechProbability: 0.629960298538208
+    compressionRatio: 1.6574803149606299
+  - id: 209
+    start: 784.12
+    end: 785.12
+    avgLogprob: -0.2164870162508381
+    noSpeechProbability: 0.629960298538208
+    compressionRatio: 1.6574803149606299
+  - id: 210
+    start: 785.12
+    end: 787.2
+    avgLogprob: -0.2164870162508381
+    noSpeechProbability: 0.629960298538208
+    compressionRatio: 1.6574803149606299
+  - id: 211
+    start: 787.2
+    end: 789.32
+    avgLogprob: -0.2164870162508381
+    noSpeechProbability: 0.629960298538208
+    compressionRatio: 1.6574803149606299
+  - id: 212
+    start: 789.32
+    end: 790.32
+    avgLogprob: -0.2164870162508381
+    noSpeechProbability: 0.629960298538208
+    compressionRatio: 1.6574803149606299
+  - id: 213
+    start: 790.32
+    end: 794.52
+    avgLogprob: -0.2164870162508381
+    noSpeechProbability: 0.629960298538208
+    compressionRatio: 1.6574803149606299
+  - id: 214
+    start: 794.52
+    end: 798.64
+    avgLogprob: -0.2164870162508381
+    noSpeechProbability: 0.629960298538208
+    compressionRatio: 1.6574803149606299
+  - id: 244
+    start: 903.44
+    end: 906.6
+    avgLogprob: -0.18466128199553686
+    noSpeechProbability: 0.7963555455207825
+    compressionRatio: 1.6139705882352942
+  - id: 245
+    start: 906.6
+    end: 911.0400000000001
+    avgLogprob: -0.18466128199553686
+    noSpeechProbability: 0.7963555455207825
+    compressionRatio: 1.6139705882352942
+  - id: 246
+    start: 911.0400000000001
+    end: 913.44
+    avgLogprob: -0.18466128199553686
+    noSpeechProbability: 0.7963555455207825
+    compressionRatio: 1.6139705882352942
+  - id: 247
+    start: 913.44
+    end: 914.44
+    avgLogprob: -0.18466128199553686
+    noSpeechProbability: 0.7963555455207825
+    compressionRatio: 1.6139705882352942
+  - id: 248
+    start: 914.44
+    end: 918.0400000000001
+    avgLogprob: -0.18466128199553686
+    noSpeechProbability: 0.7963555455207825
+    compressionRatio: 1.6139705882352942
+  - id: 249
+    start: 918.0400000000001
+    end: 921.9200000000001
+    avgLogprob: -0.18466128199553686
+    noSpeechProbability: 0.7963555455207825
+    compressionRatio: 1.6139705882352942
+  - id: 250
+    start: 921.9200000000001
+    end: 927.32
+    avgLogprob: -0.18466128199553686
+    noSpeechProbability: 0.7963555455207825
+    compressionRatio: 1.6139705882352942
+  - id: 251
+    start: 927.32
+    end: 931.0400000000001
+    avgLogprob: -0.18466128199553686
+    noSpeechProbability: 0.7963555455207825
+    compressionRatio: 1.6139705882352942
+  - id: 1101
+    start: 4912.98
+    end: 4914.98
+    avgLogprob: -0.9983287811279297
+    noSpeechProbability: 0.852612316608429
+    compressionRatio: 0.38461538461538464
+  - id: 1102
+    start: 4942.98
+    end: 4944.98
+    avgLogprob: -0.7200458526611329
+    noSpeechProbability: 0.8994178771972656
+    compressionRatio: 0.38461538461538464
+  - id: 1286
+    start: 6149.38
+    end: 6151.38
+    avgLogprob: -0.8793765703837076
+    noSpeechProbability: 0.9132903814315796
+    compressionRatio: 0.5555555555555556
+  - id: 1287
+    start: 6179.38
+    end: 6181.38
+    avgLogprob: -0.5516586984906878
+    noSpeechProbability: 0.7640567421913147
+    compressionRatio: 0.5555555555555556
+  - id: 1288
+    start: 6181.38
+    end: 6183.38
+    avgLogprob: -0.527623732884725
+    noSpeechProbability: 0.7796929478645325
+    compressionRatio: 0.5555555555555556
+adjacentDuplicateParagraphs: []
+errors: []
+warnings:
+  - 已解释课堂五分钟休息：01:17:03.860—01:23:49.460；不算语音遗漏
+humanChecksRequired:
+  - 回听开头/结尾、每15–20分钟随机片段
+  - 全部低置信度段落、专名及数字
+  - 中文逐段语义完整性
+  - 讲者切换、课堂互动、图像口述
+  - ASR幻觉与重复
+limitation: 结构对齐不能证明识别和翻译准确；没有完整人工回听审核。
+explainedIntervals:
+  - paragraphStart: 01:17:03.860
+    nextParagraph: 01:23:49.460
+    state: explained-class-break
+    evidence: 段落明确Let’s take five minutes / get water / stretch；保留原时间轴，不算语音遗漏。
+  - start: 01:45:47.000
+    end: 01:49:32.000
+    state: source-near-digital-silence
+    evidence: 16kHz/16-bit PCM，稳定RMS约0.9、峰值2–3/32768，缺失话语不可恢复；独立双语时间戳编者说明。
+editLog: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript-edit-log.json

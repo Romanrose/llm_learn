@@ -1,0 +1,29 @@
+schemaVersion: 1
+course: cs147-fall26
+lecture: assignment-02
+provider: codex
+state: candidate-ready
+createdAt: 2026-10-03
+evidenceMode: assignment-reading-only
+sourceInputs:
+  - interest/design/cs147-fall26/notes/assignment-02/sources.yaml
+outputs:
+  note: interest/design/cs147-fall26/notes/assignment-02/references/codex/note.md
+  blog: interest/design/cs147-fall26/notes/assignment-02/references/codex/blog.md
+review:
+  state: approved
+  approvedAt: 2026-10-03T09:49:42.186Z
+  approvedBy: user
+  authorization: 用户在本次对话明确：可以了，全部批准
+  scope:
+    - existing-note
+    - existing-blog
+  excludes:
+    - future-asr-transcripts
+    - commit
+    - push
+    - deployment
+limitations:
+  - 不是讲座记录；无对应课堂字幕
+  - 流程与虚构例子是原创教学扩展
+  - 正式 rubric、截止日期及未来更新需再核验

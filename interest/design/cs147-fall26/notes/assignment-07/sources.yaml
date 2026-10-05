@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "course": "cs147-fall26",
+  "lecture": "assignment-07",
+  "unitKind": "assignment",
+  "checkedAt": "2026-10-03",
+  "sourceState": "public-assignment-confirmed",
+  "sources": [
+    {
+      "type": "assignment",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf",
+      "version": "2026",
+      "evidence": "总览要求个人对分配团队的中保真界面开展启发式评估，参考其演示和原型。"
+    },
+    {
+      "type": "overview",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf",
+      "version": "2026"
+    }
+  ],
+  "caption": {
+    "state": "not-applicable-to-assignment",
+    "reason": "作业单元不是讲座；未发现对应课堂字幕，不能从作业说明生成逐字稿。"
+  },
+  "review": {
+    "state": "pending"
+  }
+}

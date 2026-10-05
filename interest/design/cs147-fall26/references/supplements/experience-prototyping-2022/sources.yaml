@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "course": "cs147-fall26",
+  "unitKind": "external-supplement",
+  "id": "experience-prototyping-2022",
+  "checkedAt": "2026-10-03",
+  "officialCalendar": "https://hci.stanford.edu/courses/cs147/2026/au/calendar.html",
+  "relatedAssignments": [
+    "assignment-02",
+    "assignment-04"
+  ],
+  "video": {
+    "id": "QAWQIeGon0k",
+    "url": "https://www.youtube.com/watch?v=QAWQIeGon0k",
+    "captionViewingUrl": "https://www.youtube.com/watch?v=QAWQIeGon0k&cc_load_policy=1&cc_lang_pref=en",
+    "title": "CS 147 2022: Experience Prototyping",
+    "durationSeconds": 1403,
+    "uploadDate": "2022-01-16",
+    "is2026ClassRecording": false
+  },
+  "caption": {
+    "state": "subtitle-ready",
+    "kind": "auto",
+    "language": "en-orig",
+    "probe": "yt-dlp --skip-download 字幕提取成功；未使用Cookie/登录",
+    "bytes": 214782,
+    "sha256": "d3612128825851f54f4763814aa8c819e4823fc7c58eed7e085dc10ab4e80feb",
+    "cueCount": 1325,
+    "firstStart": "00:00:02.480",
+    "lastStart": "00:23:17.600",
+    "rawStoredInRepository": false
+  },
+  "rights": {
+    "state": "rights-review-needed",
+    "platformLicense": null,
+    "reason": "公开字幕访问不等于完整复制、翻译与再分发授权；metadata未返回开放许可。"
+  },
+  "transcript": {
+    "state": "not-generated-pending-source-rights",
+    "english": null,
+    "chinese": null,
+    "reason": "没有从讲义生成或将平台自动翻译冒充人工翻译。"
+  },
+  "review": {
+    "state": "pending"
+  }
+}

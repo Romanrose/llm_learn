@@ -1,0 +1,20 @@
+schemaVersion: 1
+course: uva-digital-product-management
+unit: course-04
+state: approved
+approvedAt: 2026-10-03T09:49:42.034Z
+approvedBy: user
+authorization: 用户在本次对话明确：可以了，全部批准
+scope:
+  - existing-note
+  - existing-blog
+excludes:
+  - future-asr-transcripts
+  - commit
+  - push
+  - deployment
+candidateManifest: interest/product/uva-digital-product-management/notes/course-04/references/codex/run.yaml
+formalOutputs:
+  - interest/product/uva-digital-product-management/notes/course-04/note.md
+  - interest/product/uva-digital-product-management/notes/course-04/blog.md
+limitations: []

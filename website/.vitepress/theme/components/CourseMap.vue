@@ -14,18 +14,22 @@ function itemDetail(item: MapItem) {
   const course = courseById.get(item.courseId)
   if (!course) return item.detail ?? '课程整理中'
   const published = course.items.filter((lecture) => lecture.status === 'published' || lecture.generation?.state === 'reviewed').length
-  return `${published}/${course.items.length} 讲已整理`
+  const pending = course.items.filter((unit) => unit.reviewPreview).length
+  if (pending) return `${pending}/${course.items.length} ${course.unitLabel ?? '讲'} · 候选稿待审核`
+  if (course.publishOutputs === false) return `${course.items.length} ${course.unitLabel ?? '讲'} · 官方资源入口`
+  return `${published}/${course.items.length} ${course.unitLabel ?? '讲'}已整理`
 }
 
 function itemType(item: MapItem) {
   if (item.courseId) return 'course'
+  if (/\/topics\/(product|software-engineering|design)\//.test(item.route)) return 'reference'
   if (item.route.includes('/topics/papers')) return 'paper'
   if (item.route.includes('/topics/interviews')) return 'talk'
   return 'project'
 }
 
 function itemTypeLabel(item: MapItem) {
-  return ({ course: '课程', project: '项目', paper: '论文 / 文章', talk: '演讲 / 访谈' } as const)[itemType(item)]
+  return ({ course: '课程', reference: '学习资料', project: '项目', paper: '论文 / 文章', talk: '演讲 / 访谈' } as const)[itemType(item)]
 }
 
 </script>

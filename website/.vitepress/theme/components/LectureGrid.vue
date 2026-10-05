@@ -9,7 +9,7 @@ type Lecture = {
 
 type LearningModule = { id: string; title: string; description: string; from: number; to: number }
 
-const props = defineProps<{ items: Lecture[]; modules?: LearningModule[] }>()
+const props = defineProps<{ items: Lecture[]; modules?: LearningModule[]; unitLabel?: string }>()
 
 const moduleDefinitions = [
   { id: 'course-references', title: '00 · Course References', description: '按讲次整理的论文、技术文章、文档与代码', from: 0, to: 0 },
@@ -36,7 +36,7 @@ function shortLabel(label: string) {
     <section v-for="module in modules" :key="module.id" :id="module.id" class="learning-module">
       <header class="learning-module__header">
         <div><h3>{{ module.title }}</h3><p>{{ module.description }}</p></div>
-        <span>{{ module.items.length }} lectures</span>
+        <span>{{ module.items.length }} {{ props.unitLabel ?? 'lectures' }}</span>
       </header>
       <ol class="lecture-timeline">
         <li v-for="item in module.items" :key="item.id">

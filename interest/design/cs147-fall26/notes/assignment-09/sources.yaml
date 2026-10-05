@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "course": "cs147-fall26",
+  "lecture": "assignment-09",
+  "unitKind": "assignment",
+  "checkedAt": "2026-10-03",
+  "sourceState": "public-assignment-confirmed",
+  "sources": [
+    {
+      "type": "assignment",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf",
+      "version": "2026",
+      "evidence": "总览将 A9 定位为 studio 内汇总对同一项目的启发式评估发现。"
+    },
+    {
+      "type": "overview",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf",
+      "version": "2026"
+    }
+  ],
+  "caption": {
+    "state": "not-applicable-to-assignment",
+    "reason": "作业单元不是讲座；未发现对应课堂字幕，不能从作业说明生成逐字稿。"
+  },
+  "review": {
+    "state": "pending"
+  }
+}

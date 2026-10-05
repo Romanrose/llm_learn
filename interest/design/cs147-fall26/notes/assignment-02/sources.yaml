@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "course": "cs147-fall26",
+  "lecture": "assignment-02",
+  "unitKind": "assignment",
+  "checkedAt": "2026-10-03",
+  "sourceState": "public-assignment-confirmed",
+  "sources": [
+    {
+      "type": "assignment",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment2_26.pdf",
+      "version": "2026",
+      "evidence": "A2 2026 独立说明确认补充访谈、POV/HMW、三个体验原型与假设测试；截止日期与日程存在冲突。"
+    },
+    {
+      "type": "overview",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf",
+      "version": "2026"
+    }
+  ],
+  "caption": {
+    "state": "not-applicable-to-assignment",
+    "reason": "作业单元不是讲座；未发现对应课堂字幕，不能从作业说明生成逐字稿。"
+  },
+  "review": {
+    "state": "pending"
+  }
+}

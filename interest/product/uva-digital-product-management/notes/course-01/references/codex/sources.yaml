@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "course": "uva-digital-product-management",
+  "lecture": "course-01",
+  "checkedAt": "2026-10-03",
+  "sourceState": "public-outline-and-teacher-supplement",
+  "sources": [
+    {
+      "label": "官方课程公开目录",
+      "url": "https://www.coursera.org/learn/uva-darden-digital-product-management",
+      "role": "module-navigation",
+      "access": "public-description-only"
+    },
+    {
+      "label": "教师技能路径",
+      "url": "https://www.alexandercowan.com/you-the-product-manager/",
+      "role": "public-teaching-supplement",
+      "access": "public-webpage"
+    }
+  ],
+  "modules": [
+    {
+      "id": "module-01",
+      "title": "Achieving Focus and #Winning",
+      "videoCount": 24,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-digital-product-management"
+    },
+    {
+      "id": "module-02",
+      "title": "Applying Today's Product Management Methods",
+      "videoCount": 19,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-digital-product-management"
+    },
+    {
+      "id": "module-03",
+      "title": "Exploring a New Product Idea",
+      "videoCount": 15,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-digital-product-management"
+    },
+    {
+      "id": "module-04",
+      "title": "Amplifying an Existing Product",
+      "videoCount": 17,
+      "navigationUrl": "https://www.coursera.org/learn/uva-darden-digital-product-management"
+    }
+  ],
+  "caption": {
+    "state": "not-accessible-without-account",
+    "reason": "公开课程描述页无可用完整带时间戳字幕；未使用登录、cookies 或付费访问。",
+    "language": "en",
+    "kind": null,
+    "probe": {
+      "checkedAt": "2026-10-03",
+      "mode": "public-description-html-no-login-no-cookies",
+      "publicLessonLinksFound": 0,
+      "publicVttOrSrtLinksFound": 0,
+      "limits": "Only the public course description and its offered links were inspected; not every private lesson was accessed.",
+      "noAudioOrVideoDownloaded": true
+    }
+  },
+  "license": {
+    "state": "restricted-course-materials",
+    "note": "系列官方 FAQ 禁止分享或分发课程材料；未保存其正文。"
+  },
+  "missingOutputs": [
+    "transcript.en.md",
+    "transcript.zh-CN.md"
+  ],
+  "review": {
+    "state": "pending"
+  },
+  "claimMapping": [
+    {
+      "sourceSection": "官方四模块目录",
+      "supports": "焦点、方法、新产品与既有产品的学习范围",
+      "boundary": "课程范围；不是讲课全文"
+    },
+    {
+      "sourceSection": "教师技能路径：Digital Product Management 的 Inputs / Outputs",
+      "supports": "学习产物可连接产品定位观点和发现待办",
+      "boundary": "仅支持产物方向；本地定位表为原创"
+    }
+  ]
+}

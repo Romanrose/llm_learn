@@ -1,0 +1,58 @@
+schemaVersion: 1
+course: cs147-fall26
+lecture: lecture-02
+checkedAt: 2026-10-03
+sourceState: public-slides-read
+slides:
+  url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/02-design-discovery.pdf
+  title: Design Discovery
+  pages: 86
+  actualVersion: "2025"
+  versionState: reused-prior-year
+caption:
+  state: asr-draft-ready
+  checkedAt: 2026-10-03
+  method: 先检查公开页面与相邻字幕HEAD，未发现字幕；用户明确授权后，从公开MP4提取临时单声道16kHz音频，使用本地MLX ASR。
+  testedSidecars:
+    - suffix: .vtt
+      httpStatus: 404
+    - suffix: .en.vtt
+      httpStatus: 404
+    - suffix: .srt
+      httpStatus: 404
+    - suffix: .en.srt
+      httpStatus: 404
+    - suffix: .html
+      httpStatus: 404
+  reason: 用户已授权临时音频下载；完整本地机器转写及中文翻译候选生成，仍需回听和内容审核。
+  authorization: 用户本轮明确“可以了，全部批准”，已授权临时音频下载与本地ASR。
+  kind: asr
+  language: en
+  processor: mlx-whisper
+  model: mlx-community/whisper-small.en-mlx
+  device: Apple GPU / MLX
+  transcript: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript.en.md
+  durationSeconds: 6829.545938
+  audioSha256: 372ab78c0847738caa0b2832dc3f7cc3f505e2d167e990afa8c1698b138e4a89
+  reviewState: pending
+review:
+  state: pending
+video:
+  url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/02-design-discovery.mp4
+  state: public-url-confirmed-by-head
+  httpStatus: 200
+  contentType: video/mp4
+  actualRecordingVersion: unconfirmed
+  durationSeconds: 6829.61
+  audioDurationSeconds: 6829.545938
+  mediaInRepository: false
+  videoFileDownloaded: false
+  audioDownloaded: true
+  audioStorage: temporary-only
+transcriptGeneration:
+  run: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript-run.yaml
+  checks: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript-checks.yaml
+  english: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript.en.md
+  chinese: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript.zh-CN.md
+  state: candidate-ready
+  reviewState: pending

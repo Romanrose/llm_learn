@@ -1,0 +1,296 @@
+kind: course
+id: uva-digital-product-management
+category: product
+title: UVA · Digital Product Management
+shortTitle: UVA Digital Product Management
+eyebrow: University of Virginia · 当前在线版
+unitLabel: 子课程
+status: published
+publishOutputs: true
+description: 产品定位、设计与敏捷、假设验证、产品分析和团队协作。公开目录已补至 20 模块；五门子课程各有 Note 与 Blog
+  待审核候选稿，完整字幕和课堂内容未获取。
+paths:
+  root: interest/product/uva-digital-product-management
+  resources: interest/product/uva-digital-product-management/resources
+  notes: interest/product/uva-digital-product-management/notes
+  references: interest/product/uva-digital-product-management/references
+  exports: interest/product/uva-digital-product-management/exports
+official:
+  - label: 课程主页
+    url: https://www.coursera.org/specializations/uva-darden-digital-product-management
+  - label: 延伸阅读与学习建议
+    url: /topics/product/
+schedule:
+  source: https://www.coursera.org/specializations/uva-darden-digital-product-management
+  checkedAt: 2026-10-03
+  unitCount: 5
+  note: 当前在线版；五门子课程共 20 模块，公开目录列出 348 个视频条目。候选稿仅子课程级公开资料整理，不代表完整课堂覆盖。
+learningModules:
+  - id: course-references
+    title: 00 · 课程参考资料
+    description: 官方来源与经典延伸阅读
+    from: 0
+    to: 0
+  - id: product-foundations
+    title: 01 · 产品基础与设计
+    description: 按官方子课程顺序学习
+    from: 1
+    to: 2
+  - id: experimentation
+    title: 02 · 实验与分析
+    description: 按官方子课程顺序学习
+    from: 3
+    to: 4
+  - id: team
+    title: 03 · 团队协作
+    description: 按官方子课程顺序学习
+    from: 5
+    to: 5
+items:
+  - id: course-01
+    order: 1
+    title: "Digital Product Management: Modern Fundamentals"
+    subtitle: 建立产品定位与需求发现的基础。
+    overview: "建立产品定位与需求发现的基础。 公开目录包含 Achieving Focus and #Winning；Applying Today's
+      Product Management Methods；Exploring a New Product Idea；Amplifying an
+      Existing Product。本地 Note 与 Blog 仅基于公开目录与教师补充资料，未审核、未发布；没有获得完整课堂字幕。"
+    status: published
+    official:
+      - label: 官方子课程入口
+        url: https://www.coursera.org/learn/uva-darden-digital-product-management
+    readings:
+      - label: "官方子课程 · Digital Product Management: Modern Fundamentals"
+        url: https://www.coursera.org/learn/uva-darden-digital-product-management
+        type: docs
+        note: 官方资源外链
+        status: approved
+      - label: SVPG · INSPIRED 第 2 版与 TRANSFORMED
+        url: https://www.svpg.com/books/
+        type: book
+        note: 官方书目；书籍需购买
+        status: approved
+      - label: Product Talk · 持续产品发现
+        url: https://www.producttalk.org/getting-started-with-discovery/
+        type: blog
+        note: 免费入门文章与演讲；书籍和训练课程另行付费
+        status: approved
+      - label: 教师公开补充 · 教师技能路径
+        url: https://www.alexandercowan.com/you-the-product-manager/
+        type: docs
+        note: 教师公开教学网页；与平台完整课堂内容不同，原文仅链接
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/product/uva-digital-product-management/notes/course-01/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/product/uva-digital-product-management/notes/course-01/blog.md
+        searchable: true
+    sourceCoverage:
+      checkedAt: 2026-10-03
+      moduleCount: 4
+      videoDirectoryEntries: 75
+      candidateState: pending
+      transcriptState: not-accessible-without-account
+    transcriptReferences:
+      - label: 教师独立访谈 · Josh Andrews 英文逐字文本
+        url: https://www.alexandercowan.com/josh-andrews-product-manager-google/
+        language: en
+        kind: official-text
+        note: 独立补充访谈；非 Coursera 原课；官方页面有完整英文文本但无段落时间戳；仅外链，全文转载与翻译许可待核。
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/product/uva-digital-product-management/notes/course-01/references/codex/run.yaml
+      evidenceMode: public-outline-and-teacher-supplement
+  - id: course-02
+    order: 2
+    title: Agile Meets Design Thinking
+    subtitle: 把设计思考与敏捷开发连接起来。
+    overview: 把设计思考与敏捷开发连接起来。 公开目录包含 Problems Agile Solves；Focusing Your Agile with
+      Personas, Jobs-to-be-Done, and Alternatives；Getting to Great Agile User
+      Stories；Focusing on Customer Value with User Stories。本地 Note 与 Blog
+      仅基于公开目录与教师补充资料，未审核、未发布；没有获得完整课堂字幕。
+    status: published
+    official:
+      - label: 官方子课程入口
+        url: https://www.coursera.org/learn/uva-darden-getting-started-agile
+    readings:
+      - label: 官方子课程 · Agile Meets Design Thinking
+        url: https://www.coursera.org/learn/uva-darden-getting-started-agile
+        type: docs
+        note: 官方资源外链
+        status: approved
+      - label: 教师公开补充 · 客户发现手册
+        url: https://www.alexandercowan.com/customer-discovery-handbook/
+        type: docs
+        note: 教师公开教学网页；与平台完整课堂内容不同，原文仅链接
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/product/uva-digital-product-management/notes/course-02/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/product/uva-digital-product-management/notes/course-02/blog.md
+        searchable: true
+    sourceCoverage:
+      checkedAt: 2026-10-03
+      moduleCount: 4
+      videoDirectoryEntries: 55
+      candidateState: pending
+      transcriptState: not-accessible-without-account
+    transcriptReferences:
+      - label: 教师独立访谈 · Josh Andrews 英文逐字文本
+        url: https://www.alexandercowan.com/josh-andrews-product-manager-google/
+        language: en
+        kind: official-text
+        note: 独立补充访谈；非 Coursera 原课；官方页面有完整英文文本但无段落时间戳；仅外链，全文转载与翻译许可待核。
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/product/uva-digital-product-management/notes/course-02/references/codex/run.yaml
+      evidenceMode: public-outline-and-teacher-supplement
+  - id: course-03
+    order: 3
+    title: Hypothesis-Driven Development
+    subtitle: 围绕待验证假设组织产品实验。
+    overview: 围绕待验证假设组织产品实验。 公开目录包含 How Do We Know if We're Building for a User that
+      Doesn't Exist?；How Do We Reduce Waste & Increase Wins by Testing Our
+      Propositions Before We Build Them?；How Do We Consistently Deliver Great
+      Usability?；How Do We Invest to Move Fast?。本地 Note 与 Blog
+      仅基于公开目录与教师补充资料，未审核、未发布；没有获得完整课堂字幕。
+    status: published
+    official:
+      - label: 官方子课程入口
+        url: https://www.coursera.org/learn/uva-darden-agile-testing
+    readings:
+      - label: 官方子课程 · Hypothesis-Driven Development
+        url: https://www.coursera.org/learn/uva-darden-agile-testing
+        type: docs
+        note: 官方资源外链
+        status: approved
+      - label: 教师公开补充 · Lean Startup 教程
+        url: https://www.alexandercowan.com/creating-a-lean-startup-style-assumption-set/
+        type: docs
+        note: 教师公开教学网页；与平台完整课堂内容不同，原文仅链接
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/product/uva-digital-product-management/notes/course-03/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/product/uva-digital-product-management/notes/course-03/blog.md
+        searchable: true
+    sourceCoverage:
+      checkedAt: 2026-10-03
+      moduleCount: 4
+      videoDirectoryEntries: 86
+      candidateState: pending
+      transcriptState: not-accessible-without-account
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/product/uva-digital-product-management/notes/course-03/references/codex/run.yaml
+      evidenceMode: public-outline-and-teacher-supplement
+  - id: course-04
+    order: 4
+    title: Product Analytics and AI
+    subtitle: 通过产品分析与 AI 辅助产品判断。
+    overview: 通过产品分析与 AI 辅助产品判断。 公开目录包含 Introduction and Customer Analytics；Demand
+      Analytics；UX Analytics；Data Science and AI。本地 Note 与 Blog
+      仅基于公开目录与教师补充资料，未审核、未发布；没有获得完整课堂字幕。
+    status: published
+    official:
+      - label: 官方子课程入口
+        url: https://www.coursera.org/learn/uva-darden-agile-analytics
+    readings:
+      - label: 官方子课程 · Product Analytics and AI
+        url: https://www.coursera.org/learn/uva-darden-agile-analytics
+        type: docs
+        note: 官方资源外链
+        status: approved
+      - label: 教师公开补充 · 可用性测试计划
+        url: https://www.alexandercowan.com/usability-test-plan/
+        type: docs
+        note: 教师公开教学网页；与平台完整课堂内容不同，原文仅链接
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/product/uva-digital-product-management/notes/course-04/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/product/uva-digital-product-management/notes/course-04/blog.md
+        searchable: true
+    sourceCoverage:
+      checkedAt: 2026-10-03
+      moduleCount: 4
+      videoDirectoryEntries: 59
+      candidateState: pending
+      transcriptState: not-accessible-without-account
+    transcriptReferences:
+      - label: 教师独立访谈 · Josh Andrews 英文逐字文本
+        url: https://www.alexandercowan.com/josh-andrews-product-manager-google/
+        language: en
+        kind: official-text
+        note: 独立补充访谈；非 Coursera 原课；官方页面有完整英文文本但无段落时间戳；仅外链，全文转载与翻译许可待核。
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/product/uva-digital-product-management/notes/course-04/references/codex/run.yaml
+      evidenceMode: public-outline-and-teacher-supplement
+  - id: course-05
+    order: 5
+    title: Managing an Agile Team
+    subtitle: 建立敏捷团队的协作与反馈机制。
+    overview: 建立敏捷团队的协作与反馈机制。 公开目录包含 The Agile Team；Learning and Deciding；Building
+      and Managing；Practicing Agile。本地 Note 与 Blog
+      仅基于公开目录与教师补充资料，未审核、未发布；没有获得完整课堂字幕。
+    status: published
+    official:
+      - label: 官方子课程入口
+        url: https://www.coursera.org/learn/uva-darden-agile-team-management
+    readings:
+      - label: 官方子课程 · Managing an Agile Team
+        url: https://www.coursera.org/learn/uva-darden-agile-team-management
+        type: docs
+        note: 官方资源外链
+        status: approved
+      - label: 教师公开补充 · 敏捷基础教程
+        url: https://www.alexandercowan.com/agile-just-basics/
+        type: docs
+        note: 教师公开教学网页；与平台完整课堂内容不同，原文仅链接
+        status: approved
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: interest/product/uva-digital-product-management/notes/course-05/note.md
+        searchable: true
+      - id: blog
+        label: Blog 解读
+        source: interest/product/uva-digital-product-management/notes/course-05/blog.md
+        searchable: true
+    sourceCoverage:
+      checkedAt: 2026-10-03
+      moduleCount: 4
+      videoDirectoryEntries: 73
+      candidateState: pending
+      transcriptState: not-accessible-without-account
+    transcriptReferences:
+      - label: 教师独立访谈 · Josh Andrews 英文逐字文本
+        url: https://www.alexandercowan.com/josh-andrews-product-manager-google/
+        language: en
+        kind: official-text
+        note: 独立补充访谈；非 Coursera 原课；官方页面有完整英文文本但无段落时间戳；仅外链，全文转载与翻译许可待核。
+    generation:
+      state: reviewed
+      provider: codex
+      manifest: interest/product/uva-digital-product-management/notes/course-05/references/codex/run.yaml
+      evidenceMode: public-outline-and-teacher-supplement

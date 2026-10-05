@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "course": "uva-digital-product-management",
+  "checkedAt": "2026-10-03",
+  "items": [
+    {
+      "id": "course-01",
+      "title": "Digital Product Management: Modern Fundamentals",
+      "url": "https://www.coursera.org/learn/uva-darden-digital-product-management",
+      "modules": [
+        {
+          "id": "module-01",
+          "title": "Achieving Focus and #Winning",
+          "videoCount": 24,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-digital-product-management"
+        },
+        {
+          "id": "module-02",
+          "title": "Applying Today's Product Management Methods",
+          "videoCount": 19,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-digital-product-management"
+        },
+        {
+          "id": "module-03",
+          "title": "Exploring a New Product Idea",
+          "videoCount": 15,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-digital-product-management"
+        },
+        {
+          "id": "module-04",
+          "title": "Amplifying an Existing Product",
+          "videoCount": 17,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-digital-product-management"
+        }
+      ],
+      "publicVideoCount": 75,
+      "note": "interest/product/uva-digital-product-management/notes/course-01/references/codex/note.md",
+      "blog": "interest/product/uva-digital-product-management/notes/course-01/references/codex/blog.md",
+      "transcriptState": "not-publicly-acquired"
+    },
+    {
+      "id": "course-02",
+      "title": "Agile Meets Design Thinking",
+      "url": "https://www.coursera.org/learn/uva-darden-getting-started-agile",
+      "modules": [
+        {
+          "id": "module-01",
+          "title": "Problems Agile Solves",
+          "videoCount": 17,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-getting-started-agile"
+        },
+        {
+          "id": "module-02",
+          "title": "Focusing Your Agile with Personas, Jobs-to-be-Done, and Alternatives",
+          "videoCount": 10,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-getting-started-agile"
+        },
+        {
+          "id": "module-03",
+          "title": "Getting to Great Agile User Stories",
+          "videoCount": 16,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-getting-started-agile"
+        },
+        {
+          "id": "module-04",
+          "title": "Focusing on Customer Value with User Stories",
+          "videoCount": 12,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-getting-started-agile"
+        }
+      ],
+      "publicVideoCount": 55,
+      "note": "interest/product/uva-digital-product-management/notes/course-02/references/codex/note.md",
+      "blog": "interest/product/uva-digital-product-management/notes/course-02/references/codex/blog.md",
+      "transcriptState": "not-publicly-acquired"
+    },
+    {
+      "id": "course-03",
+      "title": "Hypothesis-Driven Development",
+      "url": "https://www.coursera.org/learn/uva-darden-agile-testing",
+      "modules": [
+        {
+          "id": "module-01",
+          "title": "How Do We Know if We're Building for a User that Doesn't Exist?",
+          "videoCount": 22,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-testing"
+        },
+        {
+          "id": "module-02",
+          "title": "How Do We Reduce Waste & Increase Wins by Testing Our Propositions Before We Build Them?",
+          "videoCount": 20,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-testing"
+        },
+        {
+          "id": "module-03",
+          "title": "How Do We Consistently Deliver Great Usability?",
+          "videoCount": 19,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-testing"
+        },
+        {
+          "id": "module-04",
+          "title": "How Do We Invest to Move Fast?",
+          "videoCount": 25,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-testing"
+        }
+      ],
+      "publicVideoCount": 86,
+      "note": "interest/product/uva-digital-product-management/notes/course-03/references/codex/note.md",
+      "blog": "interest/product/uva-digital-product-management/notes/course-03/references/codex/blog.md",
+      "transcriptState": "not-publicly-acquired"
+    },
+    {
+      "id": "course-04",
+      "title": "Product Analytics and AI",
+      "url": "https://www.coursera.org/learn/uva-darden-agile-analytics",
+      "modules": [
+        {
+          "id": "module-01",
+          "title": "Introduction and Customer Analytics",
+          "videoCount": 12,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-analytics"
+        },
+        {
+          "id": "module-02",
+          "title": "Demand Analytics",
+          "videoCount": 14,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-analytics"
+        },
+        {
+          "id": "module-03",
+          "title": "UX Analytics",
+          "videoCount": 15,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-analytics"
+        },
+        {
+          "id": "module-04",
+          "title": "Data Science and AI",
+          "videoCount": 18,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-analytics"
+        }
+      ],
+      "publicVideoCount": 59,
+      "note": "interest/product/uva-digital-product-management/notes/course-04/references/codex/note.md",
+      "blog": "interest/product/uva-digital-product-management/notes/course-04/references/codex/blog.md",
+      "transcriptState": "not-publicly-acquired"
+    },
+    {
+      "id": "course-05",
+      "title": "Managing an Agile Team",
+      "url": "https://www.coursera.org/learn/uva-darden-agile-team-management",
+      "modules": [
+        {
+          "id": "module-01",
+          "title": "The Agile Team",
+          "videoCount": 20,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-team-management"
+        },
+        {
+          "id": "module-02",
+          "title": "Learning and Deciding",
+          "videoCount": 22,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-team-management"
+        },
+        {
+          "id": "module-03",
+          "title": "Building and Managing",
+          "videoCount": 25,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-team-management"
+        },
+        {
+          "id": "module-04",
+          "title": "Practicing Agile",
+          "videoCount": 6,
+          "navigationUrl": "https://www.coursera.org/learn/uva-darden-agile-team-management"
+        }
+      ],
+      "publicVideoCount": 73,
+      "note": "interest/product/uva-digital-product-management/notes/course-05/references/codex/note.md",
+      "blog": "interest/product/uva-digital-product-management/notes/course-05/references/codex/blog.md",
+      "transcriptState": "not-publicly-acquired"
+    }
+  ]
+}

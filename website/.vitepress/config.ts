@@ -5,6 +5,8 @@ import { defineConfig } from 'vitepress'
 type CatalogItem = {
   id: string
   order?: number
+  displayOrder?: number
+  unitLabel?: string
   title: string
   route: string
   outputs: Array<{ id: string; label: string; route: string }>
@@ -14,6 +16,7 @@ type CatalogEntry = {
   id: string
   title: string
   shortTitle?: string
+  unitLabel?: string
   referenceRoute?: string
   items: CatalogItem[]
 }
@@ -26,9 +29,9 @@ const settings = JSON.parse(readFileSync(settingsPath, 'utf8')) as {
   site: { title: string; lang: string; base: string; repository: string }
 }
 
-function lectureSidebarItem(item: CatalogItem) {
+function lectureSidebarItem(item: CatalogItem, unitLabel?: string) {
   return {
-    text: `${item.order ? `L${String(item.order).padStart(2, '0')} · ` : ''}${item.title}`,
+    text: `${item.order ? `${unitLabel ? `${unitLabel} ` : 'L'}${String(item.displayOrder ?? item.order).padStart(2, '0')} · ` : ''}${item.title}`,
     link: item.route,
   }
 }
@@ -40,7 +43,7 @@ const courseSidebars = Object.fromEntries(catalog.map((course) => [
     link: `/generated/courses/${course.id}/`,
     items: [
       ...(course.referenceRoute ? [{ text: 'L00 · 课程参考资料', link: course.referenceRoute }] : []),
-      ...course.items.map(lectureSidebarItem),
+      ...course.items.map((item) => lectureSidebarItem(item, item.unitLabel ?? course.unitLabel)),
     ],
   }],
 ]))
@@ -77,6 +80,9 @@ export default defineConfig({
             { text: '智能体与 Agent', link: '/topics/agent/' },
             { text: 'AI Infra 与工程', link: '/topics/infra/' },
             { text: '论文与技术文章', link: '/topics/papers/' },
+            { text: '产品管理', link: '/topics/product/' },
+            { text: '软件工程', link: '/topics/software-engineering/' },
+            { text: '交互与产品设计', link: '/topics/design/' },
             { text: '演讲、访谈与延伸阅读', link: '/topics/interviews/' },
           ],
         },
@@ -104,6 +110,9 @@ export default defineConfig({
             { text: 'AI Infra 项目', link: '/#infra' },
             { text: '论文与技术文章', link: '/#papers' },
             { text: '演讲与访谈', link: '/#interviews' },
+            { text: '产品管理', link: '/#product' },
+            { text: '软件工程', link: '/#software-engineering' },
+            { text: '交互与产品设计', link: '/#design' },
           ],
         },
         {

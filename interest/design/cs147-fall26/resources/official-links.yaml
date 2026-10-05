@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "course": "cs147-fall26",
+  "checkedAt": "2026-10-03",
+  "source": "https://hci.stanford.edu/courses/cs147/2026/au/calendar.html",
+  "method": "读取公开HTML，剔除注释；保存外链及可见文字，不下载媒体或受限阅读。",
+  "resources": [
+    {
+      "label": "Home",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/index.html",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Calendar",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/calendar.html",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Projects",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/projects.html",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Logistics",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/logistics.html",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Past Videos",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/videos.html",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "React/Design",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/webresources.html",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "timeline.pdf",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/timeline.pdf",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "assignments.pdf",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "A1 Needfinding (group)",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment1_26.pdf",
+      "state": "public-pdf-read"
+    },
+    {
+      "label": "Studio Preference Form",
+      "url": "https://hci.st/cs147-26au-studios",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Student Conflict Form",
+      "url": "https://hci.st/cs147-26au-conflict",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Introduction",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/lectures/01-introduction.pdf",
+      "state": "public-pdf-read"
+    },
+    {
+      "label": "PPT",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/lectures/01-introduction.pptx",
+      "state": "media-or-slides-link-only"
+    },
+    {
+      "label": "Design Discovery",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/lectures/02-design-discovery.pdf",
+      "state": "public-pdf-read",
+      "actualVersion": "2025",
+      "versionNote": "2026官网链接的PDF内容为2025；录制年份待核实。"
+    },
+    {
+      "label": "PPT",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/lectures/02-design-discovery.pptx",
+      "state": "media-or-slides-link-only",
+      "actualVersion": "2025",
+      "versionNote": "2026官网链接的PDF内容为2025；录制年份待核实。"
+    },
+    {
+      "label": "Recording)",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/lectures/02-design-discovery.mp4",
+      "state": "media-or-slides-link-only",
+      "actualVersion": "2025",
+      "versionNote": "2026官网链接的PDF内容为2025；录制年份待核实。"
+    },
+    {
+      "label": "Contextual Design: Principles of Contextual Inquiry (Ch\n                        3)",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/restricted/Contextual-Design-Chapter-3.pdf",
+      "state": "restricted-link-only"
+    },
+    {
+      "label": "Empathy Fieldguide",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/FIELDGUIDE-Screen-DTBC-March-2015-V2.pdf",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Should Professors Ban Laptops? How classroom computer\n                        use affects student learning.",
+      "url": "https://www.educationnext.org/wp-content/uploads/2022/02/ednext_xvii_4_carter_etal.pdf",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "ABC News Nightline IDEO Deep Dive, July 1999",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/videos/ABCNews-Nightline_IDEO_July1999.mp4",
+      "state": "media-or-slides-link-only"
+    },
+    {
+      "label": "ABC News, 60 Minutes, IDEO Design Thinking, January\n                        2013",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/videos/60Minutes_IDEO_January2013.mp4",
+      "state": "media-or-slides-link-only"
+    },
+    {
+      "label": "Contextual Design",
+      "url": "http://www.interaction-design.org/encyclopedia/contextual_design.html",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "A2 POV, HMW, Experience Prototypes (group)",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment2_26.pdf",
+      "state": "public-pdf-read"
+    },
+    {
+      "label": "Define",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/lectures/03-define.pdf",
+      "state": "public-pdf-read"
+    },
+    {
+      "label": "PPT",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/lectures/03-define.pptx",
+      "state": "media-or-slides-link-only"
+    },
+    {
+      "label": "Tips for Working Successfully in a Group",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/Tips%20for%20Working%20Successfully%20in%20a%20Group.html",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "The Discipline of Teams",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/restricted/The%20Discipline%20of%20Teams.html",
+      "state": "restricted-link-only"
+    },
+    {
+      "label": "\"How to Survive a Critique: A Guide to Giving and\n                        Receiving Feedback\"",
+      "url": "https://www.aiga.org/resources/how-to-survive-a-critique-a-guide-to-giving-and-receiving-feedback",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Invisible Women",
+      "url": "https://99percentinvisible.org/episode/invisible-women/",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "\"4 Steps to Successful Brainstorming\"",
+      "url": "https://www.forbes.com/sites/susanadams/2013/03/05/4-steps-to-successful-brainstorming/?sh=289c74d65992",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "(Archived Link)",
+      "url": "https://archive.is/hjyyr",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "\"From tecnho-optimism to techno-realism: What it means\n                        to innovate responsibly\"",
+      "url": "https://mags.medium.com/from-techno-optimism-to-techno-realism-what-it-means-to-innovate-responsibly-2b41e47a6470",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Excerpt from Oakley, et al. Coping with Hitchhikers and\n                        Couch Potatoes on Teams",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/restricted/OakleyHitchhikers2004.pdf",
+      "state": "restricted-link-only"
+    },
+    {
+      "label": "Working in Teams",
+      "url": "https://stvp.stanford.edu/av/working-teams",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Early Customer Research (pp. 9-27)",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/Early_Customer_Research_Eisenmann.pdf",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Ways to Create Ecosystems",
+      "url": "https://ecorner.stanford.edu/in-brief/ways-to-create-ecosystems/",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Experience Prototypes Tutorial",
+      "url": "https://youtube.com/watch?v=QAWQIeGon0k",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Ways of Working",
+      "url": "https://ecorner.stanford.edu/in-brief/ways-of-working/",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "\"Design critiques at Figma\"",
+      "url": "https://www.figma.com/blog/design-critiques-at-figma/",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Buxton’s Sketching User Experience",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/restricted/Buxton_lowRes.pdf",
+      "state": "restricted-link-only"
+    },
+    {
+      "label": "Getting the Right Design and the Design Right: Testing\n                        Many Is Better Than One",
+      "url": "http://www.billbuxton.com/rightDesign.pdf",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "\"Involving Customers with Iterative Design\" (Ch 4)",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/restricted/vanDuyne_04_3PP_069-096.pdf",
+      "state": "restricted-link-only"
+    },
+    {
+      "label": "\"Making a Paper Prototype\" (Ch 4)",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/restricted/Snyder-Ch4.PDF",
+      "state": "restricted-link-only"
+    },
+    {
+      "label": "The danger of a single story",
+      "url": "https://www.ted.com/talks/chimamanda_ngozi_adichie_the_danger_of_a_single_story?language=en",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "6.1 Visual Design",
+      "url": "https://www.youtube.com/watch?v=TIg8ab4PqbU&list=PLNtQfKgd43l2kR11FzLF2cXd_fp3kj7jD&index=3",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "6.2 Typography",
+      "url": "https://www.youtube.com/watch?v=82gp_2vqLTc&index=2&list=PLNtQfKgd43l2kR11FzLF2cXd_fp3kj7jD",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "6.3 Grids & Alignment",
+      "url": "https://www.youtube.com/watch?v=iV9FVoCCT74&list=PLNtQfKgd43l2kR11FzLF2cXd_fp3kj7jD&index=3",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "\"Learning From Design Critiques\"",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/LearningFromDesignCritiques.pdf",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "\"Cognitive Aspects in Interaction Design\"",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/restricted/Rogers_InteractionDesign_CognitiveAspects_Chapter3.pdf",
+      "state": "restricted-link-only"
+    },
+    {
+      "label": "Wait Wait... Tell Me!",
+      "url": "https://99percentinvisible.org/episode/wait-wait-tell-me/",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "\"The Psychology of Everyday Things\" (Ch 1)",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/restricted/Norman-Ch1.PDF",
+      "state": "restricted-link-only"
+    },
+    {
+      "label": "How to Conduct a Heuristic Evaluation",
+      "url": "https://www.nngroup.com/articles/how-to-conduct-a-heuristic-evaluation/",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "As We May Think",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/restricted/AsWeMayThink-TheAtlantic.pdf",
+      "state": "restricted-link-only"
+    },
+    {
+      "label": "Tools For Thought (Ch 9)",
+      "url": "http://www.rheingold.com/texts/tft/09.html#Chap09",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Of Mice and Men",
+      "url": "http://99percentinvisible.org/episode/of-mice-and-men/",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "Inclusive Design (6:42)",
+      "url": "https://www.youtube.com/watch?v=A88E4DH2asQ&ab_channel=NationalDisabilityAuthority",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "\"Disability Studies as a Source of Critical Inquiry for the Field of Assistive Technology\"",
+      "url": "http://www.cs.cmu.edu/~io/publications/10MankoffASSETS.pdf",
+      "state": "official-calendar-link-not-individually-reviewed"
+    },
+    {
+      "label": "\"Making the Most of Web Design Patterns\" (Ch 2)",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/restricted/vanDuyne_02_3PP_019-038.pdf",
+      "state": "restricted-link-only"
+    },
+    {
+      "label": "\"Up-Front Value Proposition\" (Pattern C2)",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/restricted/vanDuyne_C2_3PP_277-281.pdf",
+      "state": "restricted-link-only"
+    },
+    {
+      "label": "\"Process Funnel\" (Pattern H1)",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/restricted/vanDuyne_H1_3PP_545-551.pdf",
+      "state": "restricted-link-only"
+    },
+    {
+      "label": "\"Meaningful Error Messages\" (Pattern K13)",
+      "url": "https://hci.stanford.edu/courses/cs147/2026/au/readings/restricted/vanDuyne_K13_3PP_727-730.pdf",
+      "state": "restricted-link-only"
+    }
+  ]
+}

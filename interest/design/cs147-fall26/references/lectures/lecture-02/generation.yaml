@@ -1,0 +1,8 @@
+schemaVersion: 1
+course: cs147-fall26
+lecture: lecture-02
+state: candidate-ready
+review:
+  state: pending
+asrRun: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript-run.yaml
+note: 仅记录新增ASR逐字稿；旧Note/Blog批准记录保留在codex/run.yaml。

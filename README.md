@@ -15,6 +15,10 @@
 | 课程 | Stanford CS336 2026 · Language Modeling from Scratch | 19 讲；已整理 18 讲的课程笔记、Blog 与中英文逐字稿；第 18 讲等待公开资料 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs336-2026/) |
 | 课程 | Stanford CS149 Fall 2025 · Parallel Computing | 已接入课程主页、18 讲 Slides、公开视频与参考资料；笔记暂不公开 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs149-fall25/) |
 | 课程 | CMU 11-768 Fall 2026 · AI Agents | 23 次教学讲座；前 12 讲笔记与 Blog、前 9 讲中英文逐字稿已审核发布 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cmu-11768-fall26/) |
+| 课程 | UVA · Digital Product Management | 当前在线版；五门子课程、10 篇已批准笔记与 Blog，更新年份未标注 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/uva-digital-product-management/) |
+| 课程 | MIT 6.102 Spring 2026 · Software Construction | 十九篇核心阅读、38 篇已批准笔记与 Blog、作业与项目入口 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/mit-6102-sp26/) |
+| 课程 | Stanford CS147 Autumn 2026 · Introduction to HCI | 十个作业与三份讲义单元，26 篇已批准笔记与 Blog；逐字稿另行补充 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs147-fall26/) |
+| 延伸阅读 | 产品管理、软件工程与交互设计经典资料 | SVPG、Product Talk、Software Engineering at Google、d.school Bootleg、NN/g；保留官方入口 | [产品](https://romanrose.github.io/llm_learn/topics/product/) · [工程](https://romanrose.github.io/llm_learn/topics/software-engineering/) · [设计](https://romanrose.github.io/llm_learn/topics/design/) |
 | 项目资料 | Hello Agents、Agent Memory、TencentDB Agent Memory | 保留项目源码、教程与学习入口 | [智能体专题](https://romanrose.github.io/llm_learn/topics/agent/) |
 | 工程资料 | Network、SSH、多服务器开发、GPU Systems | 保留工程笔记与课程关联资料 | [AI Infra 专题](https://romanrose.github.io/llm_learn/topics/infra/) |
 | 论文与延伸阅读 | 30 Papers、技术文章、访谈与演讲 | 按专题持续归档 | [课程与专题](https://romanrose.github.io/llm_learn/#course-map) |
@@ -35,7 +39,7 @@ llm_learn/
 │   └── network/                  # 网络、SSH、远程开发笔记
 ├── agent/                        # Agent 教材与独立项目
 ├── papers/                       # 论文阅读、复现与教学实现
-├── interest/                     # 课外阅读与个人兴趣主题
+├── interest/                     # 产品管理、软件工程、设计课程及课外阅读
 ├── website/                      # 当前生效的 VitePress 网站
 │   ├── catalog-data/             # 课程、讲次、来源与网站产物的元数据
 │   ├── .vitepress/               # 主题、导航和构建配置

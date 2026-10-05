@@ -1,0 +1,358 @@
+{
+  "course": "mit-6102-sp26",
+  "checkedAt": "2026-10-03",
+  "storage": "external-links-only",
+  "resources": [
+    {
+      "title": "Exam 2 solutions",
+      "url": "https://web.mit.edu/6.102/www/sp26/exams/archive/exam2-solutions.pdf",
+      "status": 200,
+      "access": "public-verified",
+      "sections": []
+    },
+    {
+      "title": "General information",
+      "url": "https://web.mit.edu/6.102/www/sp26/general/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "How can I get help in 6.102? Who should I ask?",
+        "Should I directly email an instructor, TA, or other staff?",
+        "How do I post privately on Piazza? Should I restrict my private Piazza post to just certain staff?",
+        "What will happen when I post on Piazza?",
+        "How do I get a specific hyperlink to something I want to ask a question about?",
+        "How do I report a Praxis Tutor exercise that seems buggy?",
+        "Objectives",
+        "Is it possible to take 6.102 without the 6.101 prerequisite?",
+        "Can I take 6.102 as a listener if I don’t have the prerequisite?",
+        "Is it possible to join the class after the first day?",
+        "Is 6.102 a hard class? Can I succeed in 6.102?",
+        "Classes, readings, and nanoquizzes",
+        "Why is 6.102 structured the way it is?",
+        "Why is attendance in class required?",
+        "I was or will be absent from class, or couldn’t participate because of a technical issue, what can I do?"
+      ]
+    },
+    {
+      "title": "Collaboration and public sharing",
+      "url": "https://web.mit.edu/6.102/www/sp26/general/collaboration.html",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "Collaboration",
+        "Individual work",
+        "Group work",
+        "No public sharing"
+      ]
+    },
+    {
+      "title": "Code reviewing",
+      "url": "https://web.mit.edu/6.102/www/sp26/general/code-review.html",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "What to look for",
+        "Process",
+        "How should I address my code reviews?",
+        "How can I see whether I fixed my Checkstyle comments?",
+        "Privacy & visibility",
+        "Respect",
+        "FAQ for reviewers",
+        "Does reviewing affect my grade?",
+        "Does my reviewing affect other people’s grades?",
+        "How many files do I need to review, and how much do I need to do on each one?",
+        "I don’t feel like I know anything. How can I possibly review other people’s code?",
+        "What if I can’t find anything wrong?",
+        "What if I think a Checkstyle comment is wrong or irrelevant?",
+        "How much of the whole program do I have to try to understand?",
+        "How can I find out who wrote this code?"
+      ]
+    },
+    {
+      "title": "Getting Started: Installing Software",
+      "url": "https://web.mit.edu/6.102/www/sp26/tools/getting-started/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "Install Node",
+        "Install TypeScript",
+        "Install Visual Studio Code",
+        "Install Praxis Tutor",
+        "Install Constellation",
+        "Install Git",
+        "Set up Git and github.mit.edu",
+        "Configure npm to use Git Bash (Windows only)",
+        "Set preferences",
+        "Connect to github.mit.edu",
+        "Prepare for class",
+        "Authenticate to websites",
+        "Test Constellation"
+      ]
+    },
+    {
+      "title": "Technical tips and troubleshooting",
+      "url": "https://web.mit.edu/6.102/www/sp26/tools/faq/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "6.102 web apps",
+        "I can’t log in to one of the 6.102 web apps.",
+        "Building and running",
+        "I can’t compile or run tests on my problem set.",
+        "npm test or npm run or other npm commands produce strange errors.",
+        "npm test or npm run ... produces the error sh: ... command not found .",
+        "Using Git",
+        "I’m using Windows, and I’m getting “permission denied” when I run git , or I’m unable to run go.sh when I do gitstream exercises.",
+        "When I git push origin main , I get error: failed to push some refs ...",
+        "Using VS Code",
+        "I can’t use VS Code from the command line.",
+        "When I see the name of a variable or method or class in VS Code, how can I jump straight to its definition?",
+        "How can I easily comment and uncomment parts of my code?",
+        "How can I easily pull up the Command Palette in VS Code?",
+        "Have fun in 6.102!"
+      ]
+    },
+    {
+      "title": "Git 1: Version Control",
+      "url": "https://web.mit.edu/6.102/www/sp26/tools/git-1-version-control/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "Version control",
+        "Multiple developers",
+        "Multiple branches",
+        "The shocking conclusion",
+        "Distributed vs. centralized",
+        "Version control terminology",
+        "Features of a version control system",
+        "Git",
+        "Getting started with Git",
+        "The command line",
+        "Make sure you’re using the right command line",
+        "Common commands",
+        "The Git object graph",
+        "Copy an object graph with git clone",
+        "Practice with GitStream"
+      ]
+    },
+    {
+      "title": "Git 2: Disaster Recovery",
+      "url": "https://web.mit.edu/6.102/www/sp26/tools/git-2-disaster-recovery/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "Why do commits look like diffs?",
+        "Disaster recovery",
+        "git clone",
+        "git revert",
+        "git show and git checkout",
+        "Practice with GitStream"
+      ]
+    },
+    {
+      "title": "Git 3: Team Version Control",
+      "url": "https://web.mit.edu/6.102/www/sp26/tools/git-3-team-version-control/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "Git workflow",
+        "Viewing commit history",
+        "Graph of commits",
+        "Merging",
+        "Automatic merging",
+        "Practice with GitStream",
+        "Merge conflicts",
+        "Pull before you start working",
+        "Using version control in a team"
+      ]
+    },
+    {
+      "title": "Basic TypeScript",
+      "url": "https://web.mit.edu/6.102/www/sp26/tools/typescript/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "Getting started with TypeScript",
+        "Snapshot diagrams",
+        "Mutating values vs. reassigning variables",
+        "Arrays, Maps, and Sets",
+        "Literals",
+        "Generics: declaring Array, Set, and Map variables",
+        "Iteration",
+        "Missing values in maps and arrays",
+        "Variable declarations",
+        "Inferring the type from the initializer",
+        "let vs. var",
+        "More Praxis Tutor",
+        "Object literals and object types",
+        "Enumerations",
+        "API documentation"
+      ]
+    },
+    {
+      "title": "📖 Table of contents + Index of terms",
+      "url": "https://web.mit.edu/6.102/www/sp26/general/toc.html",
+      "status": 200,
+      "access": "public-verified",
+      "sections": []
+    },
+    {
+      "title": "PS0: Turtle Graphics",
+      "url": "https://web.mit.edu/6.102/www/sp26/psets/ps0/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "Install",
+        "Getting started with Git",
+        "Clone",
+        "Collaboration policy",
+        "Slack days",
+        "Getting started with TypeScript",
+        "Turtle graphics and drawSquare",
+        "Commit and push your work so far",
+        "Drawing circles",
+        "Calculating distances and paths",
+        "Personal art",
+        "Submitting",
+        "Grading"
+      ]
+    },
+    {
+      "title": "PS1: Specific Graphics",
+      "url": "https://web.mit.edu/6.102/www/sp26/psets/ps1/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "More progress with Git",
+        "Get the code",
+        "Overview",
+        "Steps",
+        "What you can and can’t change",
+        "Specifications",
+        "Strengthening the specs of bezierInterpolate and bezierPath",
+        "Testing",
+        "Implementation",
+        "Learning about colors and curves, and a Python notebook",
+        "Designing your toolbox of animation functions",
+        "Submitting",
+        "Grading"
+      ]
+    },
+    {
+      "title": "PS2: Multi-Startup Set",
+      "url": "https://web.mit.edu/6.102/www/sp26/psets/ps2/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "Get the code",
+        "Overview",
+        "Interval sets",
+        "Multi-interval sets",
+        "Similarity between multi-interval sets",
+        "Problem 1: Test IntervalSet​<string>",
+        "Problem 2: Implement RepMapIntervalSet",
+        "2.1. Implement RepMapIntervalSet<string>",
+        "2.2. Implement generic RepMapIntervalSet<Label>",
+        "2.3. Test other types of labels",
+        "Problem 3. Implement RepArrayIntervalSet",
+        "3.1. Implement generic RepArrayIntervalSet<Label>",
+        "3.2. Wrap up IntervalSet",
+        "Problem 4: Multi­IntervalSet<Label>",
+        "4.1. Test MultiIntervalSet"
+      ]
+    },
+    {
+      "title": "PS3: Memely",
+      "url": "https://web.mit.edu/6.102/www/sp26/psets/ps3/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "Get the code",
+        "Overview",
+        "Provided Code",
+        "Problem 1: Representing expressions",
+        "Problem 2: Parsing expressions",
+        "Problem 3: Size",
+        "Problem 4: Image generation",
+        "Before you’re done",
+        "Submitting",
+        "Grading"
+      ]
+    },
+    {
+      "title": "PS4: Memory Scramble",
+      "url": "https://web.mit.edu/6.102/www/sp26/psets/ps4/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "Get the code",
+        "Overview",
+        "Game board",
+        "Gameplay rules",
+        "Example game transcript",
+        "Playing on the web",
+        "Problem 1: Game board",
+        "Problem 2: Connect to the web server",
+        "Problem 3: Revise for concurrent players",
+        "Problem 4: Changing cards",
+        "Problem 5: Board events",
+        "Before you’re done",
+        "Submitting",
+        "Grading"
+      ]
+    },
+    {
+      "title": "Star Battle",
+      "url": "https://web.mit.edu/6.102/www/sp26/project/starb/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "Before we start: team Git",
+        "Your team’s repository",
+        "Overview",
+        "Working separately",
+        "Checking in",
+        "Working together",
+        "High-level tasks",
+        "Testing",
+        "Server vs. client",
+        "Provided code",
+        "⭐️⚔️ Specification",
+        "Spec: Parser",
+        "Spec: ADTs",
+        "Spec: Server",
+        "Spec: Client"
+      ]
+    },
+    {
+      "title": "Exam 1",
+      "url": "https://web.mit.edu/6.102/www/sp26/exams/archive/exam1.pdf",
+      "status": 200,
+      "access": "public-verified",
+      "sections": []
+    },
+    {
+      "title": "Exam 1 solutions",
+      "url": "https://web.mit.edu/6.102/www/sp26/exams/archive/exam1-solutions.pdf",
+      "status": 200,
+      "access": "public-verified",
+      "sections": []
+    },
+    {
+      "title": "Exam 2",
+      "url": "https://web.mit.edu/6.102/www/sp26/exams/archive/exam2.pdf",
+      "status": 200,
+      "access": "public-verified",
+      "sections": []
+    },
+    {
+      "title": "Exam archive",
+      "url": "https://web.mit.edu/6.102/www/sp26/exams/archive/",
+      "status": 200,
+      "access": "public-verified",
+      "sections": [
+        "Good luck!"
+      ]
+    }
+  ]
+}

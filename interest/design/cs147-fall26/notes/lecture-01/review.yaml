@@ -1,0 +1,23 @@
+schemaVersion: 1
+course: cs147-fall26
+unit: lecture-01
+state: approved
+approvedAt: 2026-10-03T09:49:42.213Z
+approvedBy: user
+authorization: 用户在本次对话明确：可以了，全部批准
+scope:
+  - existing-note
+  - existing-blog
+excludes:
+  - future-asr-transcripts
+  - commit
+  - push
+  - deployment
+candidateManifest: interest/design/cs147-fall26/references/lectures/lecture-01/codex/run.yaml
+formalOutputs:
+  - interest/design/cs147-fall26/notes/lecture-01/note.md
+  - interest/design/cs147-fall26/notes/lecture-01/blog.md
+limitations:
+  - 无课堂字幕或互动
+  - 2026官网链接的旧材料明确标注 actualVersion；不据路径判断年份
+  - 非逐页讲义译稿；图片案例需原PDF核验

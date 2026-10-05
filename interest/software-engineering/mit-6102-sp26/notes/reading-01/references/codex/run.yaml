@@ -1,0 +1,32 @@
+schemaVersion: 1
+course: mit-6102-sp26
+lecture: reading-01
+provider: codex
+state: candidate-ready
+evidenceMode: reading-only
+checkedAt: 2026-10-03
+inputs:
+  - url: https://web.mit.edu/6.102/www/sp26/classes/01-static-checking/
+    kind: official-reading
+    contentHash: dd0efd8488a54ec2f36aab4dfee0659a6554dc3030fd4d2711aae3618e733f71
+outputs:
+  note: interest/software-engineering/mit-6102-sp26/notes/reading-01/references/codex/note.md
+  blog: interest/software-engineering/mit-6102-sp26/notes/reading-01/references/codex/blog.md
+review:
+  state: approved
+  approvedAt: 2026-10-03T09:49:42.075Z
+  approvedBy: user
+  authorization: 用户在本次对话明确：可以了，全部批准
+  scope:
+    - existing-note
+    - existing-blog
+  excludes:
+    - future-asr-transcripts
+    - commit
+    - push
+    - deployment
+limitations:
+  - Reading-based explanation, not classroom transcript.
+  - Official FAQ confirms no lectures and no active-learning class recordings.
+  - No human content review or full original exercise solution reproduction.
+captionPolicySource: https://web.mit.edu/6.102/www/sp26/general/#are_lectures_recorded
