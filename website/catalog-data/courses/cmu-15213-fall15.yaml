@@ -1,0 +1,1380 @@
+kind: course
+id: cmu-15213-fall15
+category: infra
+title: CMU 15-213 · Introduction to Computer Systems · Fall 2015 录像
+shortTitle: 15-213 Fall 2015
+eyebrow: Historical recordings · 2015
+year: 2015
+status: updating
+publishOutputs: false
+description: 官方历史录像：27 节 Lecture、13 节 Recitation。本机音频转写、中英逐字稿、Lecture Note 与 Blog，审核前不发布。
+paths:
+  root: infra/cmu-15213-fall15
+  notes: infra/cmu-15213-fall15/notes
+  references: infra/cmu-15213-fall15/references
+  resources: infra/cmu-15213-fall15/resources
+  exports: infra/cmu-15213-fall15/exports
+official:
+  - label: 2015 官方课程日程
+    url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+  - label: 2026 最新课程与 Lab
+    url: /generated/courses/cmu-15213-fall26/
+  - label: 历史录像构建说明
+    url: /references/cmu-15213-fall15
+schedule:
+  source: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+  checkedAt: 2026-10-04
+  unitCount: 40
+  note: 顺序采用官方录像目录；标题保留 Lecture/Recitation 原编号，2015 不是 2026。
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    from: 0
+    to: 0
+  - id: historical-videos
+    title: 01 · 官方历史录像
+    from: 1
+    to: 40
+practice:
+  - id: historical-labs
+    title: Fall 2015 · 官方 Lab 与作业说明
+    url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/assignments.html
+    source: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+    checkedAt: 2026-10-04
+    note: 历史版本；实验通过当期课程系统发放，不能替代 2026 题目。
+items:
+  - id: lecture-01
+    order: 1
+    title: "Lecture 01: Course Overview"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d8c83d3a-8074-4afe-ae3b-693e2250999a
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/01-overview.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/01-overview.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-01/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-01/generation.yaml
+  - id: lecture-02
+    order: 2
+    title: "Lecture 02: Bits, Bytes, and Integers"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=6ca8cdb4-6961-42d9-8fac-299e53759a17
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/02-03-bits-ints.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/02-03-bits-ints.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/02-03-bits-ints
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/02-03-bits-ints.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-02/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-02/generation.yaml
+  - id: lecture-03
+    order: 3
+    title: "Lecture 03: Bits, Bytes, and Integers (cont.)"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=526e6341-aa53-4107-8fa1-d13c0e92342e
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/02-03-bits-ints.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/02-03-bits-ints.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/02-03-bits-ints/
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/02-03-bits-ints.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-03/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-03/generation.yaml
+  - id: lecture-04
+    order: 4
+    title: "Lecture 04: Floating Point"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=8dd08ed5-7688-4b34-937f-201b909f61c7
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/04-float.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/04-float.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-04/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-04/generation.yaml
+  - id: recitation-03
+    order: 5
+    title: "Recitation 3: Datalab and Data Representations"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=392a2070-4d49-443c-90b8-4fbbc9f666c6
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec03.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec03.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/linux_boot_camp.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/linux_boot_camp.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/recitation-03/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/recitation-03/generation.yaml
+  - id: lecture-05
+    order: 6
+    title: "Lecture 05: Machine-Level Programming I: Basics"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=6e410255-3858-4e85-89c7-812c5845d197
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/05-machine-basics.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/05-machine-basics.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/05-machine-basics
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/05-machine-basics.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-05/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-05/generation.yaml
+  - id: lecture-06
+    order: 7
+    title: "Lecture 06: Machine-Level Programming II: Control"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=fc93c499-8fc9-4652-9a99-711058054afb
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/06-machine-control.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/06-machine-control.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/06-machine-control
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/06-machine-control.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-06/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-06/generation.yaml
+  - id: recitation-04
+    order: 8
+    title: "Recitation 4: Bomb Lab"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0ed08c72-f0f1-4982-aebc-92d3db7af9fd
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec04.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec04.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/recitation-04/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/recitation-04/generation.yaml
+  - id: lecture-07
+    order: 9
+    title: "Lecture 07: Machine-Level Programming III: Procedures"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=2994255f-923b-4ad4-8fb4-5def7fd802cd
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/07-machine-procedures.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/07-machine-procedures.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/07-machine-procedures
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/07-machine-procedures.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-07/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-07/generation.yaml
+  - id: lecture-08
+    order: 10
+    title: "Lecture 08: Machine-Level Programming IV: Data"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=03308c94-fc20-40d8-8978-1a9b81c344ed
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/08-machine-data.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/08-machine-data.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/08-machine-data
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/08-machine-data.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-08/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-08/generation.yaml
+  - id: recitation-05
+    order: 11
+    title: "Recitation 5: Attack Lab and Stacks"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=60c65748-2026-463f-8c57-134fd6661cdf
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec05.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec05.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/recitation-05/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/recitation-05/generation.yaml
+  - id: lecture-09
+    order: 12
+    title: "Lecture 09: Machine-Level Programming V: Advanced Topics"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3f0bf9ca-d640-4798-b91a-73aed656a10a
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/09-machine-advanced.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/09-machine-advanced.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/09-machine-advanced
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/09-machine-advanced.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-09/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-09/generation.yaml
+  - id: lecture-10
+    order: 13
+    title: "Lecture 10: Program Optimization"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4b1da67c-2980-4b96-82e7-2f99139a2c0d
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/10-optimization.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/10-optimization.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/10-optimization
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/10-optimization.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-10/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-10/generation.yaml
+  - id: recitation-06
+    order: 14
+    title: "Recitation 6: C Review"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=23512312-0ade-4d1a-85ca-d255fe28abde
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec06.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec06.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/c_boot_camp.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/c_boot_camp.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/c_boot_camp.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/recitation-06/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/recitation-06/generation.yaml
+  - id: lecture-11
+    order: 15
+    title: "Lecture 11: The Memory Hierarchy"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=06dfcd19-1024-49eb-add8-3486a38d1426
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/11-memory-hierarchy.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/11-memory-hierarchy.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-11/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-11/generation.yaml
+  - id: lecture-12
+    order: 16
+    title: "Lecture 12: Cache Memories"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3395b86e-0bd4-425d-8872-251e714acdd7
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/12-cache-memories.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/12-cache-memories.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/12-cache-memories
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/12-cache-memories.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-12/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-12/generation.yaml
+  - id: recitation-07
+    order: 17
+    title: "Recitation 7: Cache Lab and Blocking"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=17464223-21aa-485b-9de7-749dd2562616
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec07.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec07.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/recitation-07/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/recitation-07/generation.yaml
+  - id: lecture-13
+    order: 18
+    title: "Lecture 13: Linking"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0aef84fc-a53b-49c6-bb43-14cb2b175249
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/13-linking.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/13-linking.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/13-linking
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/13-linking.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-13/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-13/generation.yaml
+  - id: lecture-14
+    order: 19
+    title: "Lecture 14: Exceptional Control Flow: Exceptions and Processes"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d2759175-d59e-4f80-ab9e-24c2f15c8adb
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/14-ecf-procs.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/14-ecf-procs.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/14-ecf-procs
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/14-ecf-procs.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-14/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-14/generation.yaml
+  - id: recitation-08
+    order: 20
+    title: "Recitation 8: Exam Review"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=439e4c6b-6427-420f-a3a5-270685c151bd
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec08.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec08.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/recitation-08/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/recitation-08/generation.yaml
+  - id: lecture-15
+    order: 21
+    title: "Lecture 15: Exceptional Control Flow: Signals and Nonlocal Jumps"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=aa227a4e-543a-4192-bef4-4eaf6aee1c21
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/15-ecf-signals.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/15-ecf-signals.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/15-ecf-signals
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/15-ecf-signals.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-15/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-15/generation.yaml
+  - id: lecture-16
+    order: 22
+    title: "Lecture 16: System Level I/O"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f107c2ce-79d5-4529-baeb-2bb495d8c11a
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/16-io.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/16-io.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/16-io
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/16-io.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-16/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-16/generation.yaml
+  - id: recitation-09
+    order: 23
+    title: "Recitation 9: Shell Lab, Processes, and Signals, and I/O"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=e74d0ae6-7d44-4ac7-8893-6bc0cceaf667
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec09.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec09.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/recitation-09/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/recitation-09/generation.yaml
+  - id: lecture-17
+    order: 24
+    title: "Lecture 17: Virtual Memory: Concepts"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=80cd47f9-2eba-4e7b-bbab-a2867f87b7fa
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/17-vm-concepts.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/17-vm-concepts.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-17/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-17/generation.yaml
+  - id: lecture-18
+    order: 25
+    title: "Lecture 18: Virtual Memory: Systems"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d3ac31f4-331d-469c-91bf-6ac6692f0159
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/18-vm-systems.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/18-vm-systems.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/18-vm-systems
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/18-vm-systems.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-18/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-18/generation.yaml
+  - id: recitation-10
+    order: 26
+    title: "Recitation 10: Virtual Memory"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3cfbe56c-5040-4268-8f2c-efb8f79c2ce5
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec10.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec10.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/recitation-10/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/recitation-10/generation.yaml
+  - id: lecture-19
+    order: 27
+    title: "Lecture 19: Dynamic Memory Allocation: Basic Concepts"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d69a8072-3d23-4604-8081-0edeba33bb52
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/19-malloc-basic.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/19-malloc-basic.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/19-malloc-basic
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/19-malloc-basic.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-19/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-19/generation.yaml
+  - id: lecture-20
+    order: 28
+    title: "Lecture 20: Dynamic Memory Allocation: Advanced Concepts"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3efacbed-aa6d-4d18-b354-24cdc453e1e8
+    resources:
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/20-malloc-advanced.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-20/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-20/generation.yaml
+  - id: recitation-11
+    order: 29
+    title: "Recitation 11: Malloc Lab"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=2cbcc7f7-ceb0-49cd-9188-a46ca175992b
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec11.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec11.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/recitation-11/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/recitation-11/generation.yaml
+  - id: lecture-21
+    order: 30
+    title: "Lecture 21: Network Programming: Part 1"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=54178cf8-d57e-4984-b46c-b66db645431a
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/21-netprog1.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/21-netprog1.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-21/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-21/generation.yaml
+  - id: lecture-22
+    order: 31
+    title: "Lecture 22: Network Programming: Part II"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0015deb4-3584-4b10-98c9-38f27784feb4
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/22-netprog2.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/22-netprog2.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/22-netprog2/
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/22-netprog2.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-22/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-22/generation.yaml
+  - id: recitation-12
+    order: 32
+    title: "Recitation 12: Debugging Malloc Lab"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9999678d-736f-4e25-bc0c-c7c51d49bb6c
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec12.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec12.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/recitation-12/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/recitation-12/generation.yaml
+  - id: lecture-23
+    order: 33
+    title: "Lecture 23: Concurrent Programming"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0be3c53f-5d35-40f0-a5ab-55897a2c91a5
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/23-concprog.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/23-concprog.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/23-concprog
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/23-concprog.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-23/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-23/generation.yaml
+  - id: lecture-24
+    order: 34
+    title: "Lecture 24: Synchronization: Basics"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=aae5ff94-1551-42b6-8981-7d19157afa0c
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/24-sync-basic.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/24-sync-basic.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/24-sync-basic
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/24-sync-basic.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-24/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-24/generation.yaml
+  - id: recitation-13
+    order: 35
+    title: "Recitation 13: Proxy Lab"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=497ee812-53c8-4343-bc0e-068fbe4f8d08
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec13.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec13.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/recitation-13/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/recitation-13/generation.yaml
+  - id: lecture-25
+    order: 36
+    title: "Lecture 25: Synchronization: Advanced"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=06892ab8-1a16-46de-8910-537dab546828
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/25-sync-advanced.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/25-sync-advanced.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/25-sync-advanced
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/25-sync-advanced.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-25/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-25/generation.yaml
+  - id: recitation-14
+    order: 37
+    title: "Recitation 14: Synchronization"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=ab34098b-11ef-4aa4-abf1-3e5c12ebbb52
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec14.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec14.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/recitation-14/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/recitation-14/generation.yaml
+  - id: lecture-26
+    order: 38
+    title: "Lecture 26: Thread-Level Parallelism"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9ba08262-5318-45f2-a7e1-475e33a98e53
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/26-parallelism.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/26-parallelism.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · code
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/26-parallelism
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · tar
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/code/26-parallelism.tar
+        type: code
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-26/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-26/generation.yaml
+  - id: lecture-27
+    order: 39
+    title: "Lecture 27: Future of Computing"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=7fdc2275-4390-46fb-a436-435e7c535c86
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/27-future.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/lectures/27-future.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/lecture-27/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/lecture-27/generation.yaml
+  - id: recitation-15
+    order: 40
+    title: "Recitation 15: Exam review"
+    subtitle: Fall 2015 官方历史课堂录像；本机 ASR，待校对
+    overview: 本单元依据 Fall 2015 官方录像整理，不能当作 Fall 2026 课堂记录。2026 的课件与 Lab 另在当前课程工作区维护。
+    status: prepared
+    official:
+      - label: 官方历史录像
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=a14ec128-e639-408f-ba6c-eaedfb0810f2
+    resources:
+      - label: 2015 官方日程与讲义
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
+        type: docs
+      - label: Fall 2015 · pdf
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec15.pdf
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+      - label: Fall 2015 · pptx
+        url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/recitations/rec15.pptx
+        type: slides
+        note: 来自 Fall 2015 官方日程，仅作外链；不替代 2026 版本。
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      sourceKind: local-asr
+      manifest: infra/cmu-15213-fall15/notes/recitation-15/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: infra/cmu-15213-fall15/notes/recitation-15/generation.yaml
+unitLabel: Video
+videoSourceMode: historical-local-asr

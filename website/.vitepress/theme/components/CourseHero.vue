@@ -9,6 +9,7 @@ const props = defineProps<{
   status?: string
   startRoute?: string
   referenceRoute?: string
+  practiceRoute?: string
   watchUrl?: string
   previewUrl?: string
   links?: Array<{ label: string; url: string }>
@@ -43,6 +44,7 @@ const previewImage = computed(() => {
       <div class="course-hero__buttons">
         <a v-if="startRoute" class="course-button course-button--primary" :href="withBase(startRoute)">开始学习 <span aria-hidden="true">→</span></a>
         <a v-if="referenceRoute" class="course-button" :href="withBase(referenceRoute)">参考资料库 <span aria-hidden="true">→</span></a>
+        <a v-if="practiceRoute" class="course-button" :href="practiceRoute">Lab 与作业 <span aria-hidden="true">→</span></a>
         <a v-if="watchUrl" class="course-button" :href="watchUrl" target="_blank" rel="noreferrer">观看官方课程 <span aria-hidden="true">↗</span></a>
         <a v-for="link in extraActions" :key="link.url" class="course-button" :href="link.url.startsWith('/') ? withBase(link.url) : link.url" target="_blank" rel="noreferrer">{{ link.label }} <span aria-hidden="true">↗</span></a>
       </div>

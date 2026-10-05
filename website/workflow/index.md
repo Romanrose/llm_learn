@@ -1,9 +1,11 @@
 ---
-title: Course 工作流
+title: 维护文档
 description: 从官方课程资源到网站内容与 PDF
 ---
 
-# Course 工作流
+# 维护文档
+
+本页面向维护课程资料与网站的协作者。网站的阅读方式和内容说明见[关于](/about/)。
 
 每项内容都从可追溯的官方来源开始，而不是直接让模型生成文章。
 
@@ -53,9 +55,3 @@ npm run course -- prepare cs336-2026 lecture-01
 npm run course -- validate <course-id> <lecture-id> --published
 npm run build
 ```
-
-## 关于 llm_learn
-
-这是一个围绕课程、项目、论文与演讲资料建立的个人学习库。它不预先堆叠空目录：只有真正开始学习、资料来源明确且有正式产物时，才接入课程目录。
-
-每门课程遵循统一结构：官方资料确定事实边界，字幕和讲义提供原始证据，AI 协助形成候选稿，最终经校验与人工确认后发布为课程笔记、Blog、双语逐字稿和 PDF。

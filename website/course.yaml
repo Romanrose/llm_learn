@@ -31,121 +31,78 @@ categories:
     title: 交互与产品设计
     description: 从需求访谈、问题定义到原型与可用性评估。按 Autumn 2026 官方作业总览接入十个项目练习入口；这是作业导航，完整讲座目录与公开视频待核实。
 sections:
-  - id: llm-courses
-    title: 大模型课程
-    description: 从模型基础、训练系统到评估与数据
+  - id: foundation-courses
+    title: 编程与计算机系统
+    description: 编程基础、系统原理与并行计算
     items:
-      - id: cs336-2026
-        courseId: cs336-2026
-        title: CS336 2026
-        subtitle: Language Modeling from Scratch
-        route: /generated/courses/cs336-2026/
-  - id: agent
-    title: 智能体课程与项目
-    description: Agent 架构、记忆、工具使用与工程实践
-    items:
-      - id: cmu-11768-fall26
-        courseId: cmu-11768-fall26
-        title: CMU 11-768 Fall 2026
-        subtitle: AI Agents
-        route: /generated/courses/cmu-11768-fall26/
-      - id: hello-agents
-        title: Hello Agents
-        subtitle: 从基础范式到多智能体与 Agentic RL
-        detail: 完整教材
-        route: /topics/agent/#hello-agents
-      - id: agent-memory
-        title: Agent Memory
-        subtitle: 记忆分层、召回与上下文工程
-        detail: 专题笔记
-        route: /topics/agent/#agent-memory
-      - id: tencentdb-memory
-        title: TencentDB Agent Memory
-        subtitle: 从原理到 Tiny Memory 教学实现
-        detail: 渐进式教程
-        route: /topics/agent/#tencentdb-agent-memory
-  - id: infra
-    title: AI Infra 项目
-    description: GPU、网络、远程开发与生产系统
-    items:
+      - id: cs61a-fall26
+        courseId: cs61a-fall26
+        title: CS61A Fall 2026
+        subtitle: Structure and Interpretation of Computer Programs
+        route: /generated/courses/cs61a-fall26/
+      - id: cmu-15213-fall26
+        courseId: cmu-15213-fall26
+        title: CMU 15-213
+        subtitle: Introduction to Computer Systems · 2026 课程资料
+        route: /generated/courses/cmu-15213-fall26/
+        versions:
+          - courseId: cmu-15213-fall15
+            label: 2015 历史录像与配套资料
+            route: /generated/courses/cmu-15213-fall15/
       - id: cs149-fall25
         courseId: cs149-fall25
         title: CS149 Fall 2025
         subtitle: Parallel Computing
         detail: 多核、GPU、AI 加速器与并发控制
         route: /generated/courses/cs149-fall25/
-      - id: network
-        title: Network & Remote Dev
-        subtitle: 浏览器、SSH 与多服务器开发环境
-        detail: 工程笔记
-        route: /topics/infra/#network--remote-development
-      - id: gpu
-        title: GPU Systems
-        subtitle: GPU 架构、Attention 与性能工程
-        detail: 课程逐字稿
-        route: /topics/infra/#gpu-systems
-  - id: papers
-    title: 论文与技术文章
-    description: 30 篇论文精读、机制解释与技术文章
+  - id: llm-courses
+    title: 大模型与智能体
+    description: 语言模型训练、Agent 原理与工程实践
     items:
-      - id: paper-30
-        title: 30 Papers
-        subtitle: 经典论文中文教学实现
-        detail: Notebook 合集
-        route: /topics/papers/#30-papers
-      - id: technical-articles
-        title: Technical Articles
-        subtitle: Agent、模型与工程文章精读
-        detail: 持续整理
-        route: /topics/papers/#技术文章
-  - id: interviews
-    title: 演讲与访谈
-    description: 从课程之外理解研究、产品和产业判断
-    items:
-      - id: interviews
-        title: Interviews & Talks
-        subtitle: 技术访谈、演讲与播客笔记
-        detail: 待接入 Course 流程
-        route: /topics/interviews/
-  - id: product
-    title: 产品管理课程与资料
-    description: 产品定位、用户发现、实验与协作
-    items:
-      - id: uva-digital-product-management
-        courseId: uva-digital-product-management
-        title: UVA Digital Product Management
-        subtitle: 五门子课程 · 当前在线版，未标更新年份
-        route: /generated/courses/uva-digital-product-management/
-      - id: product-references
-        title: 产品管理经典资料
-        subtitle: SVPG · INSPIRED 第 2 版与 TRANSFORMED、Product Talk · 持续产品发现
-        detail: 官方阅读入口
-        route: /topics/product/
-  - id: software-engineering
-    title: 软件工程课程与资料
-    description: 规格、测试、抽象、审查与长期维护
+      - id: cs336-2026
+        courseId: cs336-2026
+        title: CS336 2026
+        subtitle: Language Modeling from Scratch
+        route: /generated/courses/cs336-2026/
+      - id: cmu-11768-fall26
+        courseId: cmu-11768-fall26
+        title: CMU 11-768 Fall 2026
+        subtitle: AI Agents
+        route: /generated/courses/cmu-11768-fall26/
+      - id: cs329z-fall26
+        courseId: cs329z-fall26
+        title: Stanford CS329Z Fall 2026
+        subtitle: Engineering AI Agents
+        route: /generated/courses/cs329z-fall26/
+  - id: software-product
+    title: 软件与产品开发
+    description: 软件质量、产品需求与交互设计
     items:
       - id: mit-6102-sp26
         courseId: mit-6102-sp26
         title: MIT 6.102 Spring 2026
         subtitle: Software Construction · 十九篇核心阅读
         route: /generated/courses/mit-6102-sp26/
-      - id: software-engineering-references
-        title: 软件工程经典资料
-        subtitle: Software Engineering at Google
-        detail: 官方阅读入口
-        route: /topics/software-engineering/
-  - id: design
-    title: 交互与产品设计课程与资料
-    description: 需求研究、原型、可用性与交互设计
-    items:
+      - id: uva-digital-product-management
+        courseId: uva-digital-product-management
+        title: UVA Digital Product Management
+        subtitle: 五门子课程 · 当前在线版，未标更新年份
+        route: /generated/courses/uva-digital-product-management/
       - id: cs147-fall26
         courseId: cs147-fall26
         title: Stanford CS147 Autumn 2026
         subtitle: Introduction to HCI · 十个作业与三份讲义
         route: /generated/courses/cs147-fall26/
-      - id: design-references
-        title: 交互与产品设计经典资料
-        subtitle: Design Thinking Bootleg · 2018、NN/g · 10 Usability Heuristics
-        detail: 官方阅读入口
-        route: /topics/design/
+referenceCollections:
+  - id: product-references
+    title: 产品管理经典资料
+    description: SVPG · INSPIRED 第 2 版与 TRANSFORMED、Product Talk · 持续产品发现
+    route: /topics/product/#经典资料
+  - id: software-engineering-references
+    title: 软件工程经典资料
+    description: Software Engineering at Google
+    route: /topics/software-engineering/#经典资料
+  - id: design-references
+    title: 交互与产品设计经典资料
+    description: Design Thinking Bootleg · 2018、NN/g · 10 Usability Heuristics
+    route: /topics/design/#经典资料

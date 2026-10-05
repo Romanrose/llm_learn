@@ -3,7 +3,7 @@ import { withBase } from 'vitepress'
 import catalog from '../../generated/catalog.json'
 import settings from '../../generated/site.json'
 
-type MapItem = { id: string; courseId?: string; title: string; subtitle?: string; detail?: string; route: string }
+type MapItem = { id: string; courseId?: string; title: string; subtitle?: string; detail?: string; route: string; versions?: Array<{ courseId: string; label: string; route: string }> }
 type MapSection = { id: string; title: string; description?: string; items: MapItem[] }
 
 const sections = (settings.sections ?? []) as MapSection[]
@@ -20,26 +20,14 @@ function itemDetail(item: MapItem) {
   return `${published}/${course.items.length} ${course.unitLabel ?? '讲'}已整理`
 }
 
-function itemType(item: MapItem) {
-  if (item.courseId) return 'course'
-  if (/\/topics\/(product|software-engineering|design)\//.test(item.route)) return 'reference'
-  if (item.route.includes('/topics/papers')) return 'paper'
-  if (item.route.includes('/topics/interviews')) return 'talk'
-  return 'project'
-}
-
-function itemTypeLabel(item: MapItem) {
-  return ({ course: '课程', reference: '学习资料', project: '项目', paper: '论文 / 文章', talk: '演讲 / 访谈' } as const)[itemType(item)]
-}
-
 </script>
 
 <template>
   <section class="course-library" aria-labelledby="course-map">
     <header class="course-library__header">
       <div>
-        <h2 id="course-map">课程与专题</h2>
-        <p>按方向归档的课程、项目、论文与演讲；进入条目后可继续阅读相应的学习资料。</p>
+        <h2 id="course-map">课程目录</h2>
+        <p>按学习方向浏览课程，进入课程后查看讲义、代码、阅读资料与已整理的笔记。</p>
       </div>
     </header>
 
@@ -51,20 +39,30 @@ function itemTypeLabel(item: MapItem) {
               <h3>{{ section.title }}</h3>
               <p v-if="section.description">{{ section.description }}</p>
             </div>
-            <small>{{ section.items.length }} 项</small>
+            <small>{{ section.items.length }} 门课程</small>
           </header>
           <div class="course-list">
-            <a v-for="item in section.items" :key="item.id" :href="withBase(item.route)" class="course-entry">
-              <span class="course-list__kind">{{ itemTypeLabel(item) }}</span>
-              <span class="course-list__main">
-                <strong>{{ item.title }}</strong>
-                <small v-if="item.subtitle">{{ item.subtitle }}</small>
-                <em>{{ itemDetail(item) }}</em>
-              </span>
-            </a>
+            <template v-for="item in section.items" :key="item.id">
+              <a :href="withBase(item.route)" class="course-entry">
+                <span class="course-list__kind">课程</span>
+                <span class="course-list__main">
+                  <strong>{{ item.title }}</strong>
+                  <small v-if="item.subtitle">{{ item.subtitle }}</small>
+                  <em>{{ itemDetail(item) }}</em>
+                </span>
+              </a>
+              <p v-if="item.versions?.length" class="course-versions">
+                <a v-for="version in item.versions" :key="version.courseId" :href="withBase(version.route)">{{ version.label }}</a>
+              </p>
+            </template>
           </div>
         </section>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.course-versions { margin: 0 0 5px 40px; font-size: 13px; }
+.course-versions a { color: var(--vp-c-text-3); font-weight: 400; }
+</style>

@@ -18,6 +18,7 @@ type CatalogEntry = {
   shortTitle?: string
   unitLabel?: string
   referenceRoute?: string
+  practice?: Array<{ id: string }>
   items: CatalogItem[]
 }
 
@@ -27,6 +28,8 @@ const settingsPath = fileURLToPath(new URL('./generated/site.json', import.meta.
 const settings = JSON.parse(readFileSync(settingsPath, 'utf8')) as {
   description: string
   site: { title: string; lang: string; base: string; repository: string }
+  sections: Array<{ id: string; title: string }>
+  referenceCollections: Array<{ title: string; route: string }>
 }
 
 function lectureSidebarItem(item: CatalogItem, unitLabel?: string) {
@@ -43,6 +46,7 @@ const courseSidebars = Object.fromEntries(catalog.map((course) => [
     link: `/generated/courses/${course.id}/`,
     items: [
       ...(course.referenceRoute ? [{ text: 'L00 · 课程参考资料', link: course.referenceRoute }] : []),
+      ...(course.practice?.length ? [{ text: 'Lab 与作业', link: `/generated/courses/${course.id}/#lab-与作业` }] : []),
       ...course.items.map((item) => lectureSidebarItem(item, item.unitLabel ?? course.unitLabel)),
     ],
   }],
@@ -68,58 +72,47 @@ export default defineConfig({
   },
   themeConfig: {
     nav: [
-      { text: '学习首页', link: '/' },
-      { text: '课程与专题', link: '/#course-map' },
-      { text: '生成流程与关于', link: '/workflow/' },
+      { text: '课程', link: '/', activeMatch: '^/$|^/generated/(courses|catalog)/' },
+      { text: '资料库', link: '/generated/resources/', activeMatch: '^/generated/resources/|^/topics/|^/references/' },
+      { text: '关于', link: '/about/', activeMatch: '^/about/|^/workflow/' },
     ],
     sidebar: {
       '/topics/': [
         {
-          text: '专题地图',
-          items: [
-            { text: '智能体与 Agent', link: '/topics/agent/' },
-            { text: 'AI Infra 与工程', link: '/topics/infra/' },
-            { text: '论文与技术文章', link: '/topics/papers/' },
-            { text: '产品管理', link: '/topics/product/' },
-            { text: '软件工程', link: '/topics/software-engineering/' },
-            { text: '交互与产品设计', link: '/topics/design/' },
-            { text: '演讲、访谈与延伸阅读', link: '/topics/interviews/' },
-          ],
+          text: '配套阅读',
+          items: settings.referenceCollections.map((collection) => ({ text: collection.title, link: collection.route })),
         },
       ],
       '/workflow/': [
-        { text: '生成流程与关于', link: '/workflow/' },
+        { text: '关于', link: '/about/' },
+        { text: '维护文档', link: '/workflow/' },
+      ],
+      '/about/': [
+        { text: '关于', link: '/about/' },
+        { text: '维护文档', link: '/workflow/' },
+      ],
+      '/generated/resources/': [
+        { text: '资料库', link: '/generated/resources/' },
+        {
+          text: '配套阅读',
+          items: settings.referenceCollections.map((collection) => ({ text: collection.title, link: collection.route })),
+        },
       ],
       '/references/': [
         { text: '课程网站参考', link: '/references/course-site-design' },
         { text: 'CS336 学习路径', link: '/generated/courses/cs336-2026/' },
         { text: '计算机科学资源地图', link: '/references/computer-science-resource-map' },
-        { text: '生成流程', link: '/workflow/' },
+        { text: '维护文档', link: '/workflow/' },
       ],
       ...courseSidebars,
       '/generated/catalog/': [
-        { text: '课程与专题', link: '/generated/catalog/' },
+        { text: '课程目录', link: '/generated/catalog/' },
         ...catalog.map((course) => ({ text: course.shortTitle ?? course.title, link: `/generated/courses/${course.id}/` })),
       ],
       '/': [
         {
-          text: '内容分类',
-          items: [
-            { text: '大模型课程', link: '/#llm-courses' },
-            { text: '智能体课程与项目', link: '/#agent' },
-            { text: 'AI Infra 项目', link: '/#infra' },
-            { text: '论文与技术文章', link: '/#papers' },
-            { text: '演讲与访谈', link: '/#interviews' },
-            { text: '产品管理', link: '/#product' },
-            { text: '软件工程', link: '/#software-engineering' },
-            { text: '交互与产品设计', link: '/#design' },
-          ],
-        },
-        {
-          text: '站点',
-          items: [
-            { text: '生成流程与关于', link: '/workflow/' },
-          ],
+          text: '课程分类',
+          items: settings.sections.map((section) => ({ text: section.title, link: `/#${section.id}` })),
         },
       ],
     },

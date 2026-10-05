@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { withBase } from 'vitepress'
 type Reading = { label: string; type?: string; url: string; note?: string }
 type Group = { id: string; order: number; title: string; readings: Reading[] }
 
@@ -6,7 +7,7 @@ defineProps<{ groups: Group[]; total: number; uniqueTotal: number }>()
 
 function typeLabel(type?: string) {
   return ({
-    paper: '论文', blog: '技术文章', docs: '文档', code: '代码', book: '书籍 / 教程',
+    slides: '讲义 / Slides', video: '视频', paper: '论文', blog: '技术文章', docs: '文档', code: '代码', book: '书籍 / 教程',
   } as Record<string, string>)[type ?? ''] ?? '参考资料'
 }
 </script>
@@ -16,7 +17,7 @@ function typeLabel(type?: string) {
     <header class="reference-library__intro">
       <div>
         <span>资料索引</span>
-        <p>按课程顺序整理论文、技术文章、文档和代码；每一项都保留在对应讲次下。</p>
+        <p>按课程顺序整理讲义、视频、代码与延伸阅读；每一项都保留在对应讲次下。</p>
       </div>
       <p class="reference-library__count"><strong>{{ uniqueTotal }}</strong> 条资料 · {{ groups.length }} 讲 · {{ total }} 次关联</p>
     </header>
@@ -39,7 +40,7 @@ function typeLabel(type?: string) {
         <p>{{ group.readings.length }} 条资料</p>
       </header>
       <div class="reference-group__items">
-        <a v-for="reading in group.readings" :key="reading.url" :href="reading.url" target="_blank" rel="noreferrer">
+        <a v-for="reading in group.readings" :key="reading.url" :href="withBase(reading.url)" target="_blank" rel="noreferrer">
           <span>{{ typeLabel(reading.type) }}</span>
           <strong>{{ reading.label }}</strong>
           <small>{{ reading.note ?? '延伸阅读' }}</small>

@@ -32,6 +32,17 @@ const thumbnailUrl = computed(() => {
   }
 })
 
+const videoDescription = computed(() => {
+  try {
+    return new URL(props.videoUrl ?? '').pathname === '/playlist'
+      ? '打开官方配套视频合集' : '打开本讲官方录播'
+  } catch {
+    return '打开官方视频'
+  }
+})
+
+const videoPlatform = computed(() => /youtu(?:\.be|be\.com)/.test(props.videoUrl ?? '') ? 'YouTube' : /panopto\.com/.test(props.videoUrl ?? '') ? 'Panopto' : '原视频')
+
 const resourceLinks = computed(() => (props.links ?? []).filter((link) => {
   if (!props.videoUrl) return true
   return link.url !== props.videoUrl && !/课程视频|课堂视频|lecture video/i.test(link.label)
@@ -73,7 +84,7 @@ const heroLinks = computed(() => {
     <div class="workspace-hero__video">
       <a v-if="videoUrl" class="workspace-hero__watch" :href="videoUrl" target="_blank" rel="noreferrer">
         <img v-if="thumbnailUrl" :src="thumbnailUrl" :alt="`${title} 视频封面`" />
-        <span><b aria-hidden="true">▶</b><strong>在 YouTube 观看</strong><small>打开本讲官方录播</small></span>
+        <span><b aria-hidden="true">▶</b><strong>在 {{ videoPlatform }} 观看</strong><small>{{ videoDescription }}</small></span>
       </a>
       <div v-else class="workspace-hero__empty"><span>视频待接入</span><small>官方资源发布后会自动出现在这里</small></div>
     </div>

@@ -13,6 +13,7 @@ import LectureWorkspaceHero from './components/LectureWorkspaceHero.vue'
 import LectureWorkspaceTabs from './components/LectureWorkspaceTabs.vue'
 import LectureWorkspaceOutline from './components/LectureWorkspaceOutline.vue'
 import CourseReferenceLibrary from './components/CourseReferenceLibrary.vue'
+import ResourceLibrary from './components/ResourceLibrary.vue'
 import './style.css'
 
 export default {
@@ -33,5 +34,6 @@ export default {
     app.component('LectureWorkspaceTabs', LectureWorkspaceTabs)
     app.component('LectureWorkspaceOutline', LectureWorkspaceOutline)
     app.component('CourseReferenceLibrary', CourseReferenceLibrary)
+    app.component('ResourceLibrary', ResourceLibrary)
   },
 }

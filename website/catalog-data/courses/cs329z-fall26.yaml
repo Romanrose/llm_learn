@@ -1,0 +1,749 @@
+kind: course
+id: cs329z-fall26
+category: agent
+title: Stanford CS329Z · Engineering AI Agents
+shortTitle: CS329Z Fall 2026
+eyebrow: Stanford University · Engineering AI Agents · Fall 2026
+year: 2026
+status: updating
+publishOutputs: false
+description: 从 RAG、工具与 Agent 运行框架，到记忆、多智能体、数据、优化、评测与安全。当前接入官方资料，逐讲内容审核后发布；录播需课程 Canvas 权限。
+paths:
+  root: agent/cs329z-fall26
+  resources: agent/cs329z-fall26/resources
+  notes: agent/cs329z-fall26/notes
+  references: agent/cs329z-fall26/references
+  exports: agent/cs329z-fall26/exports
+transcript:
+  engine: manual
+  originLanguage: en
+  targetLanguage: zh_cn
+  captionSource: manual
+official:
+  - label: 课程主页
+    url: https://cs329z.stanford.edu/
+  - label: 课程日程与阅读
+    url: https://cs329z.stanford.edu/index.html#schedule
+  - label: 作业、录播与课程说明
+    url: https://cs329z.stanford.edu/logistics.html
+  - label: 期末项目要求
+    url: https://cs329z.stanford.edu/project.html
+schedule:
+  source: https://cs329z.stanford.edu/
+  checkedAt: 2026-10-03
+  lectureCount: 19
+  sourceSessionCount: 22
+  note: 官网日程为暂定安排。教学讲座进入 items（含两次主题待定的客座讲座）；感恩节假期与期末展示保存在 events。首次录入后保持 lecture-id，不因日程调整重编号。
+  events:
+    - date: Mon Nov 23, 2026
+      title: No Class — Thanksgiving Recess
+    - date: Wed Nov 25, 2026
+      title: No Class — Thanksgiving Recess
+    - date: Finals Week (Dec 7–11), 2026
+      title: Final Project Demo Day
+  timezone: America/Los_Angeles
+  deadlines:
+    - title: HW1 Released
+      date: 2026-10-05
+    - title: Project Proposal Due
+      date: 2026-10-09
+      time: 23:59
+    - title: HW2 Released
+      date: 2026-10-26
+    - title: HW1 Due
+      date: 2026-10-30
+      time: 23:59
+    - title: Midpoint Demo Video Due
+      date: 2026-11-04
+      time: 23:59
+    - title: Midway Report Due
+      date: 2026-11-06
+      time: 23:59
+    - title: Paper Video Due
+      date: 2026-11-13
+      time: 23:59
+    - title: HW2 Due
+      date: 2026-11-20
+      time: 23:59
+    - title: Paper Video Peer Reviews Due
+      date: 2026-11-30
+      time: 23:59
+    - title: Final Report & Final System Demo
+      date: 2026-12-07–2026-12-11
+      time: TBA
+assignments:
+  - id: hw1
+    title: Build an Agentic Harness
+    releaseDate: 2026-10-05
+    dueDate: 2026-10-30
+    state: scheduled
+    source: https://cs329z.stanford.edu/logistics.html
+    note: 已公布作业目标和日程；独立题目与代码仓库链接尚未公开。
+  - id: hw2
+    title: Evaluate an Agent
+    releaseDate: 2026-10-26
+    dueDate: 2026-11-20
+    state: scheduled
+    source: https://cs329z.stanford.edu/logistics.html
+    note: 已公布作业目标和日程；独立题目与代码仓库链接尚未公开。
+learningModules:
+  - id: course-references
+    title: 00 · Course References
+    description: 逐讲论文、技术文章、规范与补充阅读
+    from: 0
+    to: 0
+  - id: foundations
+    title: 01 · Foundations & Building Blocks
+    description: Agent 系统、LLM 构建基础与 RAG
+    from: 1
+    to: 3
+  - id: agent-design
+    title: 02 · Agent Design & Optimization
+    description: 工具、框架、设计模式、记忆、多智能体与优化
+    from: 4
+    to: 9
+  - id: data
+    title: 03 · Data & Guest Lecture
+    description: 客座讲座、数据收集、筛选与质量
+    from: 10
+    to: 12
+  - id: evaluation-and-safety
+    title: 04 · Evaluation & Safety
+    description: 基准、评分器、评测基础设施与安全
+    from: 13
+    to: 15
+  - id: frontiers
+    title: 05 · Applications & Frontiers
+    description: 客座讲座、编码 Agent、主动 Agent 与开放问题
+    from: 16
+    to: 19
+practice:
+  - id: homework
+    title: HW1 / HW2 · Harness 与 Agent Evaluation
+    url: https://cs329z.stanford.edu/logistics.html
+    source: https://cs329z.stanford.edu/logistics.html
+    checkedAt: 2026-10-04
+    note: 官方已公布目标与日程，尚未公布独立题目或代码仓库。
+  - id: project
+    title: Final Project · 官方项目要求
+    url: https://cs329z.stanford.edu/project.html
+    source: https://cs329z.stanford.edu/project.html
+    checkedAt: 2026-10-04
+items:
+  - id: lecture-01
+    order: 1
+    scheduleCode: week-1-wed
+    date: Wed Sep 23, 2026
+    title: Introduction — What Are Agentic Systems?
+    subtitle: 从 LLM 流水线到复合 AI 系统与自主 Agent，理解分解、数据和评测三个工程问题。
+    module: Foundations & Landscape
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+      - label: 录播访问说明（需课程权限）
+        url: https://cs329z.stanford.edu/logistics.html
+    resources:
+      - label: Lecture 1 slides
+        url: https://web.stanford.edu/class/cs329z/slides/lecture01.pdf
+        type: slides
+        status: approved
+    readings:
+      - label: Zaharia et al. "The Shift from Models to Compound AI Systems." BAIR Blog (2024).
+        url: https://bair.berkeley.edu/blog/2024/02/18/compound-ai-systems/
+        note: 官方课程阅读
+        type: blog
+      - label: 'Ng. "Agentic Design Patterns Part 1: Four AI Agent Strategies…" The Batch (2024).'
+        url: https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/
+        note: 官方补充阅读
+        type: blog
+      - label: Si et al. "Towards Execution-Grounded Automated AI Research." arXiv (2026).
+        url: https://arxiv.org/abs/2601.14525
+        note: 官方补充阅读
+        type: paper
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-01/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-01/references/deepseek/run.yaml
+    overview: 从 LLM 流水线到复合 AI 系统与自主 Agent，理解分解、数据和评测三个工程问题。 已按公开 Slides 与阅读整理 Note、Blog 候选稿，待用户审核。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-02
+    order: 2
+    scheduleCode: week-2-mon
+    date: Mon Sep 28, 2026
+    title: LLMs for Builders
+    subtitle: 面向构建者理解解码、上下文、训练与推理，以及结构化输入输出。
+    module: Engineering AI Agents
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources:
+      - label: Lecture 2 slides
+        url: https://web.stanford.edu/class/cs329z/slides/lecture02.pdf
+        type: slides
+        status: approved
+    readings:
+      - label: Schluntz & Zhang. "Building Effective Agents." Anthropic (2024).
+        url: https://www.anthropic.com/engineering/building-effective-agents
+        note: 官方课程阅读
+        type: blog
+      - label: Rajasekaran et al. "Effective Context Engineering for AI Agents." Anthropic (2025).
+        url: https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+        note: 官方补充阅读
+        type: blog
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-02/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-02/references/deepseek/run.yaml
+    overview: 面向构建者理解解码、上下文、训练与推理，以及结构化输入输出。 已按公开 Slides 与阅读整理 Note、Blog 候选稿，待用户审核。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-03
+    order: 3
+    scheduleCode: week-2-wed
+    date: Wed Sep 30, 2026
+    title: Retrieval-Augmented Generation (RAG)
+    subtitle: 理解检索、切分、混合搜索与重排序，从零搭建 RAG 流水线。
+    module: Building Blocks
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources:
+      - label: Lecture 3 slides
+        url: https://web.stanford.edu/class/cs329z/slides/lecture03.pdf
+        type: slides
+        status: approved
+    readings:
+      - label: Lewis et al. "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks." NeurIPS (2020).
+        url: https://arxiv.org/abs/2005.11401
+        note: 官方课程阅读
+        type: paper
+      - label: 'Khattab & Zaharia. "ColBERT: Efficient and Effective Passage Search via Late Interaction over BERT." SIGIR (2020).'
+        url: https://arxiv.org/abs/2004.12832
+        note: 官方补充阅读
+        type: paper
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-03/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-03/references/deepseek/run.yaml
+    overview: 理解检索、切分、混合搜索与重排序，从零搭建 RAG 流水线。 已按公开 Slides 与阅读整理 Note、Blog 候选稿，待用户审核。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-04
+    order: 4
+    scheduleCode: week-3-mon
+    date: Mon Oct 5, 2026
+    title: Tool Use & Function Calling
+    subtitle: 函数调用、MCP、代码执行与错误恢复，从零构建可使用工具的系统。
+    module: Engineering AI Agents
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: Model Context Protocol Specification. The Linux Foundation (2025).
+        url: https://modelcontextprotocol.io/specification/2025-06-18
+        note: 官方课程阅读
+        type: docs
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-04/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-04/references/deepseek/run.yaml
+    overview: 函数调用、MCP、代码执行与错误恢复，从零构建可使用工具的系统。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-05
+    order: 5
+    scheduleCode: week-3-wed
+    date: Wed Oct 7, 2026
+    title: Frameworks & Orchestration
+    subtitle: 比较 DSPy、LangGraph 与 LlamaIndex，理解框架的抽象边界。
+    module: Frameworks & Agent Design
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: 'Khattab et al. "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines." ICLR (2024).'
+        url: https://arxiv.org/abs/2310.03714
+        note: 官方课程阅读
+        type: paper
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-05/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-05/references/deepseek/run.yaml
+    overview: 比较 DSPy、LangGraph 与 LlamaIndex，理解框架的抽象边界。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-06
+    order: 6
+    scheduleCode: week-4-mon
+    date: Mon Oct 12, 2026
+    title: Agent Design Patterns & Scaffolds
+    subtitle: 理解工作流与 Agent 的设计模式，比较 ReAct、规划与反思。
+    module: Engineering AI Agents
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: 'Yao et al. "ReAct: Synergizing Reasoning and Acting in Language Models." ICLR (2023).'
+        url: https://arxiv.org/abs/2210.03629
+        note: 官方课程阅读
+        type: paper
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-06/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-06/references/deepseek/run.yaml
+    overview: 理解工作流与 Agent 的设计模式，比较 ReAct、规划与反思。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-07
+    order: 7
+    scheduleCode: week-4-wed
+    date: Wed Oct 14, 2026
+    title: Agent Memory Architectures
+    subtitle: 短期与长期记忆、文件系统和结构化记忆，以及跨 Agent 的记忆共享。
+    module: Memory & Multi-Agent Systems
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: 'Packer et al. "MemGPT: Towards LLMs as Operating Systems." arXiv (2023).'
+        url: https://arxiv.org/abs/2310.08560
+        note: 官方课程阅读
+        type: paper
+      - label: 'Letta. "Agent Memory: How to Build Agents that Learn and Remember." Letta Blog (2025).'
+        url: https://www.letta.com/blog/agent-memory
+        note: 官方补充阅读
+        type: blog
+      - label: 'Chhikara et al. "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory." arXiv (2025).'
+        url: https://arxiv.org/abs/2504.19413
+        note: 官方补充阅读
+        type: paper
+      - label: 'Park et al. "Generative Agents: Interactive Simulacra of Human Behavior." UIST (2023).'
+        url: https://arxiv.org/abs/2304.03442
+        note: 官方补充阅读
+        type: paper
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-07/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-07/references/deepseek/run.yaml
+    overview: 短期与长期记忆、文件系统和结构化记忆，以及跨 Agent 的记忆共享。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-08
+    order: 8
+    scheduleCode: week-5-mon
+    date: Mon Oct 19, 2026
+    title: Multi-Agent Systems
+    subtitle: 多智能体编排、交接与协作，分析协调成本和错误传播。
+    module: Engineering AI Agents
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: 'Wu et al. "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation." COLM (2024).'
+        url: https://arxiv.org/abs/2308.08155
+        note: 官方课程阅读
+        type: paper
+      - label: Cemri et al. "Why Do Multi-Agent LLM Systems Fail?" arXiv (2025).
+        url: https://arxiv.org/abs/2503.13657
+        note: 官方补充阅读
+        type: paper
+      - label: Neubig. "Don't Sleep on Single-agent Systems." OpenHands Blog (2024).
+        url: https://openhands.dev/blog/dont-sleep-on-single-agent-systems
+        note: 官方补充阅读
+        type: blog
+      - label: Liu et al. "A Dynamic LLM-Powered Agent Network for Task-Oriented Agent Collaboration." COLM (2024).
+        url: https://arxiv.org/abs/2310.02170
+        note: 官方补充阅读
+        type: paper
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-08/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-08/references/deepseek/run.yaml
+    overview: 多智能体编排、交接与协作，分析协调成本和错误传播。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-09
+    order: 9
+    scheduleCode: week-5-wed
+    date: Wed Oct 21, 2026
+    title: Optimization
+    subtitle: 比较提示优化、微调与推理计算，选择适合任务的优化方式。
+    module: Optimization
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: Snell et al. "Scaling LLM Test-Time Compute Optimally…" ICLR (2025).
+        url: https://arxiv.org/abs/2408.03314
+        note: 官方课程阅读
+        type: paper
+      - label: 'Agrawal et al. "GEPA: Reflective Prompt Evolution Can Outperform RL." arXiv (2026).'
+        url: https://arxiv.org/abs/2507.19457
+        note: 官方课程阅读
+        type: paper
+      - label: 'Soylu et al. "Fine-Tuning and Prompt Optimization: Two Great Steps that Work Better Together." EMNLP (2024).'
+        url: https://aclanthology.org/2024.emnlp-main.597/
+        note: 官方补充阅读
+        type: paper
+      - label: Opsahl-Ong et al. "Optimizing Instructions and Demonstrations for Multi-Stage Language Model Programs." arXiv (2024).
+        url: https://arxiv.org/abs/2406.11695
+        note: 官方补充阅读
+        type: paper
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-09/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-09/references/deepseek/run.yaml
+    overview: 比较提示优化、微调与推理计算，选择适合任务的优化方式。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-10
+    order: 10
+    scheduleCode: week-6-mon
+    date: Mon Oct 26, 2026
+    title: Guest Lecture (TBA)
+    subtitle: 客座讲座；主题与讲者待官网公布。
+    module: Engineering AI Agents
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: awaiting-official-materials
+      manifest: agent/cs329z-fall26/notes/lecture-10/sources.yaml
+    generation:
+      state: awaiting-official-materials
+      manifest: agent/cs329z-fall26/notes/lecture-10/generation.yaml
+    overview: 客座讲座；主题与讲者待官网公布。 主题、讲者和正文资料尚未公开，暂时保留待补充。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-11
+    order: 11
+    scheduleCode: week-6-wed
+    date: Wed Oct 28, 2026
+    title: What Data Do Agents Need?
+    subtitle: 轨迹、示范、反馈与合成数据，区分优化数据和评测数据。
+    module: Data for Agentic Systems
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: Shankar. "Data Flywheels for LLM Applications." (2024).
+        url: https://www.sh-reya.com/blog/ai-engineering-flywheel/
+        note: 官方课程阅读
+        type: blog
+      - label: 'Tan et al. "Large Language Models for Data Annotation and Synthesis: A Survey." EMNLP (2024).'
+        url: https://aclanthology.org/2024.emnlp-main.54/
+        note: 官方补充阅读
+        type: paper
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-11/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-11/references/deepseek/run.yaml
+    overview: 轨迹、示范、反馈与合成数据，区分优化数据和评测数据。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-12
+    order: 12
+    scheduleCode: week-7-mon
+    date: Mon Nov 2, 2026
+    title: Data Selection & Quality
+    subtitle: 数据筛选、标注与质量评估，从 Agent 轨迹构建任务数据集。
+    module: Engineering AI Agents
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: 'Yang et al. "SWE-smith: Scaling Data for Software Engineering Agents." NeurIPS D&B (2025).'
+        url: https://arxiv.org/abs/2504.21798
+        note: 官方课程阅读
+        type: paper
+      - label: Shankar et al. "Who Validates the Validators? Aligning LLM-Assisted Evaluation with Human Preferences." UIST (2024).
+        url: https://arxiv.org/abs/2404.12272
+        note: 官方课程阅读
+        type: paper
+      - label: 'Zhou et al. "LIMA: Less Is More for Alignment." NeurIPS (2023).'
+        url: https://arxiv.org/abs/2305.11206
+        note: 官方补充阅读
+        type: paper
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-12/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-12/references/deepseek/run.yaml
+    overview: 数据筛选、标注与质量评估，从 Agent 轨迹构建任务数据集。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-13
+    order: 13
+    scheduleCode: week-7-wed
+    date: Wed Nov 4, 2026
+    title: Evaluation Fundamentals & Benchmark Design
+    subtitle: 用请求、环境、停止条件和评分器设计任务，建立可靠的 Agent 基准。
+    module: Evaluation for Agentic Systems
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: Zhu et al. "Establishing Best Practices for Building Rigorous Agentic Benchmarks." (2025).
+        url: https://arxiv.org/abs/2507.02825
+        note: 官方课程阅读
+        type: paper
+      - label: Press. "How to Build Good Language Modeling Benchmarks." (2024).
+        url: https://ofir.io/How-to-Build-Good-Language-Modeling-Benchmarks/
+        note: 官方补充阅读
+        type: blog
+      - label: 'Polo et al. "tinyBenchmarks: Evaluating LLMs with Fewer Examples." ICML (2024).'
+        url: https://arxiv.org/abs/2402.14992
+        note: 官方补充阅读
+        type: paper
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-13/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-13/references/deepseek/run.yaml
+    overview: 用请求、环境、停止条件和评分器设计任务，建立可靠的 Agent 基准。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-14
+    order: 14
+    scheduleCode: week-8-mon
+    date: Mon Nov 9, 2026
+    title: LLM-as-Judge & Evaluation Infrastructure
+    subtitle: 代码评分、模型评分与人工评分，理解裁判偏差和评测基础设施。
+    module: Engineering AI Agents
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: Grace et al. "Demystifying Evals for AI Agents." Anthropic (2026).
+        url: https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
+        note: 官方课程阅读
+        type: blog
+      - label: Zheng et al. "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena." NeurIPS (2023).
+        url: https://arxiv.org/abs/2306.05685
+        note: 官方课程阅读
+        type: paper
+      - label: 'Ryan et al. "AutoMetrics: Approximate Human Judgements with Automatically Generated Evaluators." ICLR (2026).'
+        url: https://arxiv.org/abs/2512.17267
+        note: 官方课程阅读
+        type: paper
+      - label: 'Zhu et al. "AutoLibra: Agent Metric Induction from Open-Ended Human Feedback." ICLR (2026).'
+        url: https://openreview.net/forum?id=4BjGVZ7Bxn
+        note: 官方补充阅读
+        type: paper
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-14/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-14/references/deepseek/run.yaml
+    overview: 代码评分、模型评分与人工评分，理解裁判偏差和评测基础设施。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-15
+    order: 15
+    scheduleCode: week-8-wed
+    date: Wed Nov 11, 2026
+    title: Agent Safety & Guardrails
+    subtitle: 工具访问、隐私、提示注入、沙箱、权限与人工介入。
+    module: Safety
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: 'Shao et al. "PrivacyLens: Evaluating Privacy Norm Awareness of LMs in Action." NeurIPS D&B (2024).'
+        url: https://arxiv.org/abs/2409.00138
+        note: 官方课程阅读
+        type: paper
+      - label: Zhang & Yang. "Searching for Privacy Risks in LLM Agents via Simulation." arXiv (2025).
+        url: https://arxiv.org/abs/2508.10880
+        note: 官方课程阅读
+        type: paper
+      - label: Li. "Agentic LLMs as Powerful Deanonymizers." arXiv (2026).
+        url: https://arxiv.org/abs/2601.05918
+        note: 官方课程阅读
+        type: paper
+      - label: Wen et al. "Contextualized Privacy Defense for LLM Agents." arXiv (2026).
+        url: https://arxiv.org/abs/2603.02983
+        note: 官方补充阅读
+        type: paper
+      - label: 'OpenAI. "Understanding Prompt Injections: A Frontier Security Challenge." (2025).'
+        url: https://openai.com/index/prompt-injections/
+        note: 官方补充阅读
+        type: blog
+      - label: Anthropic. "Anthropic's Responsible Scaling Policy." (2023).
+        url: https://www.anthropic.com/news/anthropics-responsible-scaling-policy
+        note: 官方补充阅读
+        type: blog
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-15/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-15/references/deepseek/run.yaml
+    overview: 工具访问、隐私、提示注入、沙箱、权限与人工介入。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-16
+    order: 16
+    scheduleCode: week-9-mon
+    date: Mon Nov 16, 2026
+    title: Guest Lecture (TBA)
+    subtitle: 客座讲座；主题与讲者待官网公布。
+    module: Engineering AI Agents
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: awaiting-official-materials
+      manifest: agent/cs329z-fall26/notes/lecture-16/sources.yaml
+    generation:
+      state: awaiting-official-materials
+      manifest: agent/cs329z-fall26/notes/lecture-16/generation.yaml
+    overview: 客座讲座；主题与讲者待官网公布。 主题、讲者和正文资料尚未公开，暂时保留待补充。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-17
+    order: 17
+    scheduleCode: week-9-wed
+    date: Wed Nov 18, 2026
+    title: Coding & Software Agents
+    subtitle: 理解软件 Agent 的运行框架与接口，并结合 SWE-bench 分析任务评测。
+    module: Coding Agents & Proactive Agents
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: 'Yang et al. "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering." NeurIPS (2024).'
+        url: https://arxiv.org/abs/2405.15793
+        note: 官方课程阅读
+        type: paper
+      - label: 'Wang et al. "OpenHands: An Open Platform for AI Software Developers." ICLR (2025).'
+        url: https://arxiv.org/abs/2407.16741
+        note: 官方课程阅读
+        type: paper
+      - label: 'Anthropic. "Claude Code: Best Practices for Agentic Coding." (2025).'
+        url: https://www.anthropic.com/engineering/claude-code-best-practices
+        note: 官方补充阅读
+        type: blog
+      - label: Young. "Effective Harnesses for Long-Running Agents." Anthropic (2025).
+        url: https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
+        note: 官方补充阅读
+        type: blog
+      - label: 'Jimenez et al. "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?" ICLR (2024).'
+        url: https://arxiv.org/abs/2310.06770
+        note: 官方补充阅读
+        type: paper
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-17/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-17/references/deepseek/run.yaml
+    overview: 理解软件 Agent 的运行框架与接口，并结合 SWE-bench 分析任务评测。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-18
+    order: 18
+    scheduleCode: week-11-mon
+    date: Mon Nov 30, 2026
+    title: Proactive Agents
+    subtitle: 从响应请求到主动协助，讨论用户模型、隐私与信任。
+    module: Engineering AI Agents
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: Shaikh et al. "Creating General User Models from Computer Use." UIST (2025).
+        url: https://arxiv.org/abs/2505.10831
+        note: 官方课程阅读
+        type: paper
+      - label: Shaikh et al. "Learning Next Action Predictors from Human-Computer Interaction." arXiv (2026).
+        url: https://arxiv.org/abs/2603.05923
+        note: 官方补充阅读
+        type: paper
+      - label: 'Steinberger. "OpenClaw: Open-source proactive AI agent." (2025).'
+        url: https://github.com/openclaw/openclaw
+        note: 官方补充阅读
+        type: code
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-18/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-18/references/deepseek/run.yaml
+    overview: 从响应请求到主动协助，讨论用户模型、隐私与信任。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+  - id: lecture-19
+    order: 19
+    scheduleCode: week-11-wed
+    date: Wed Dec 2, 2026
+    title: Frontiers & Open Problems
+    subtitle: 多模态、网页、计算机使用与科研 Agent，讨论长时程运行、可观测性和可靠性。
+    module: Open Problems & Final Demos
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs329z.stanford.edu/index.html#schedule
+    resources: []
+    readings:
+      - label: 'Xie et al. "OSWorld: Benchmarking Multimodal Agents in Real Computer Environments." NeurIPS D&B (2024).'
+        url: https://arxiv.org/abs/2404.07972
+        note: 官方补充阅读
+        type: paper
+      - label: 'Yao et al. "WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents." NeurIPS (2022).'
+        url: https://arxiv.org/abs/2207.01206
+        note: 官方补充阅读
+        type: paper
+    outputs: []
+    preparation:
+      state: resources-ready
+      manifest: agent/cs329z-fall26/notes/lecture-19/sources.yaml
+    generation:
+      state: draft-ready
+      manifest: agent/cs329z-fall26/notes/lecture-19/references/deepseek/run.yaml
+    overview: 多模态、网页、计算机使用与科研 Agent，讨论长时程运行、可观测性和可靠性。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
+instructors:
+  - Diyi Yang
+  - Michael Ryan
+  - John Yang

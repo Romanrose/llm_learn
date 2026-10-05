@@ -65,6 +65,22 @@ function resourceTypeLabel(type) {
   })[type] ?? type
 }
 
+function learningMaterials(item) {
+  const resources = new Map()
+  const videos = (item.official ?? [])
+    .filter((link) => /youtu(?:\.be|be\.com)|\.hosted\.panopto\.com/.test(link.url))
+    .map((link) => ({ ...link, type: 'video', note: link.label }))
+  for (const resource of [...(item.resources ?? []), ...(item.readings ?? []), ...videos]) {
+    if (resource.url && !resources.has(resource.url)) resources.set(resource.url, resource)
+  }
+  return [...resources.values()]
+}
+
+function resourceHref(url) {
+  return url.startsWith('/') && !url.startsWith('//')
+    ? `${courseSettings.site.base.replace(/\/$/, '')}${url}` : url
+}
+
 function assignmentStateLabel(state) {
   return ({ out: '已发布', due: '截止' })[state] ?? state
 }
@@ -126,6 +142,11 @@ function readSource(source, outputs) {
   if (!existsSync(path)) return `# 内容待生成\n\n尚未找到源文件：\`${source}\`。`
   const routeBySource = new Map(outputs.map((output) => [withoutMarkdownExtension(normalize(output.source)), output.route]))
   return readFileSync(path, 'utf8')
+    // Caption unknown-word markers are text, not Vue/HTML elements.
+    .replaceAll('<unk>', '&lt;unk&gt;')
+    // Angle-bracket Markdown destinations must be normalized before bare links.
+    .replace(/\]\(<(\/[^<>\s]+)>\)/g, ']($1)')
+    .replace(/<(\/references\/[^<>\s]+)>/g, '[$1]($1)')
     .replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '')
     .replace(/\]\(([^)]+)\)/g, (match, target) => {
       if (/^(?:[a-z]+:|#|\/)/i.test(target)) return match
@@ -181,8 +202,8 @@ const generatedCatalog = records.map((course) => {
         })),
       ]
       const exportLinks = item.exports ?? []
-      const lectureVideo = (item.official ?? []).find((link) => /youtu(?:\.be|be\.com)/.test(link.url))
-      const learningResources = [...(item.resources ?? []), ...(item.readings ?? [])]
+      const lectureVideo = (item.official ?? []).find((link) => /youtu(?:\.be|be\.com)|\.hosted\.panopto\.com/.test(link.url))
+      const learningResources = learningMaterials(item)
       const details = [
         ...(item.date ? [{ label: '日期', value: item.date }] : []),
         ...(item.instructors?.length ? [{ label: '讲师', value: item.instructors.join(' / ') }] : []),
@@ -212,12 +233,16 @@ const generatedCatalog = records.map((course) => {
         write(join(outputRoot, 'courses', course.id, item.id, `${output.id}.md`), page)
       }
 
-      const assignmentRows = (item.assignments ?? []).map((assignment) => (
-        `<div><span>${assignment.id}</span><strong>${assignmentStateLabel(assignment.state)}</strong></div>`
-      )).join('\n')
+      const assignmentRows = (item.assignments ?? []).map((assignment) => {
+        const practice = (course.practice ?? []).find((entry) => entry.id === assignment.id)
+        const link = practice
+          ? `<a href="${practice.url}" target="_blank" rel="noreferrer">${practice.title}</a>`
+          : `<span>${assignment.id}</span>`
+        return `<div>${link}<strong>${assignmentStateLabel(assignment.state)}</strong></div>`
+      }).join('\n')
       const lectureLinks = [...(course.official?.slice(0, 1) ?? []), ...(item.official ?? []), ...exportLinks]
       const resourceCards = learningResources.map((resource) => (
-        `<a href="${resource.url}" target="_blank" rel="noreferrer"><strong>${resourceTypeLabel(resource.type)}</strong><span>${resource.label}</span><small>${resource.note ?? '打开链接'}</small><b>↗</b></a>`
+        `<a href="${resourceHref(resource.url)}" target="_blank" rel="noreferrer"><strong>${resourceTypeLabel(resource.type)}</strong><span>${resource.label}</span><small>${resource.note ?? '打开链接'}</small><b>↗</b></a>`
       )).join('\n')
       const outputPanes = [
         ['lecture-note', '课程笔记'],
@@ -284,15 +309,15 @@ const generatedCatalog = records.map((course) => {
   const outputCount = items.reduce((total, item) => total + item.outputs.length, 0)
   const referenceRoute = `/generated/courses/${course.id}/references/`
   const referenceGroups = items
-    .filter((item) => item.readings?.length)
-    .map((item) => ({ id: item.id, order: item.order, title: item.title, readings: item.readings }))
+    .map((item) => ({ id: item.id, order: item.order, title: item.title, readings: learningMaterials(item) }))
+    .filter((group) => group.readings.length)
   const referenceCount = referenceGroups.reduce((total, group) => total + group.readings.length, 0)
   const uniqueReferenceCount = new Set(referenceGroups.flatMap((group) => group.readings.map((reading) => reading.url))).size
   const referenceGridItem = {
     id: 'references',
     order: 0,
     title: '课程参考资料',
-    subtitle: '按课程目录汇总论文、技术文章、官方文档与代码仓库。',
+    subtitle: '按课程目录汇总讲义、视频、代码与延伸阅读。',
     instructors: [],
     status: '持续更新',
     route: referenceRoute,
@@ -309,7 +334,7 @@ const generatedCatalog = records.map((course) => {
     instructors: item.instructors,
     status: itemStatusLabel(item),
     route: item.route,
-    resourceCount: (item.resources?.length ?? 0) + (item.readings?.length ?? 0),
+    resourceCount: learningMaterials(item).length,
     outputCount: item.outputs.length,
     outputLabels: item.outputs.map((output) => output.label),
   }))]
@@ -317,20 +342,25 @@ const generatedCatalog = records.map((course) => {
   write(join(outputRoot, 'courses', course.id, 'references', 'index.md'), [
     frontmatter({
       title: `${course.shortTitle ?? course.title} · 课程参考资料`,
-      description: `按课程目录整理的 ${uniqueReferenceCount} 条论文、技术文章、文档与代码。`,
+      description: `按课程目录整理的 ${uniqueReferenceCount} 条讲义、视频、代码与延伸阅读。`,
       aside: false,
       outline: false,
       pageClass: 'course-reference-page',
     }),
     '# L00 · 课程参考资料',
-    `本页按 ${course.shortTitle ?? course.title} 的课程顺序汇总各讲涉及的论文、技术文章、官方文档、教程和代码仓库。每讲页面仍保留与本讲直接相关的资料入口。`,
+    `本页按 ${course.shortTitle ?? course.title} 的课程顺序汇总各讲涉及的讲义、视频、代码与延伸阅读。每讲页面仍保留与本讲直接相关的资料入口。`,
     `<CourseReferenceLibrary :groups=${vueProp(referenceGroups)} :total=${JSON.stringify(referenceCount)} :uniqueTotal=${JSON.stringify(uniqueReferenceCount)} />`,
   ].join('\n\n'))
 
   const overview = [
     frontmatter({ title: course.title, description: course.description, aside: false, outline: false }),
-    `<CourseHero eyebrow=${JSON.stringify(course.eyebrow ?? `${course.title} · ${course.year ?? ''}`)} title=${JSON.stringify(course.shortTitle ?? course.title)} description=${JSON.stringify(course.description)} status=${JSON.stringify(statusLabel(course.status))} startRoute=${JSON.stringify(firstLecture ?? '')} referenceRoute=${JSON.stringify(referenceRoute)} watchUrl=${JSON.stringify(playlist?.url ?? previewVideo?.url ?? '')} previewUrl=${JSON.stringify(previewVideo?.url ?? '')} :details=${vueProp([{ label: course.unitLabel ?? '讲次', value: `${items.length} ${unitLabel}` }, { label: reviewPreview ? '可审阅' : '发布', value: `${publishedCount} ${unitLabel}` }, { label: '内容', value: `${outputCount} 份` }, { label: '资料', value: `${uniqueReferenceCount} 条` }])} :links=${vueProp(course.official ?? [])} />`,
+    `<CourseHero eyebrow=${JSON.stringify(course.eyebrow ?? `${course.title} · ${course.year ?? ''}`)} title=${JSON.stringify(course.shortTitle ?? course.title)} description=${JSON.stringify(course.description)} status=${JSON.stringify(statusLabel(course.status))} startRoute=${JSON.stringify(firstLecture ?? '')} referenceRoute=${JSON.stringify(referenceRoute)} practiceRoute=${JSON.stringify(course.practice?.length ? '#lab-与作业' : '')} watchUrl=${JSON.stringify(playlist?.url ?? previewVideo?.url ?? '')} previewUrl=${JSON.stringify(previewVideo?.url ?? '')} :details=${vueProp([{ label: course.unitLabel ?? '讲次', value: `${items.length} ${unitLabel}` }, { label: reviewPreview ? '可审阅' : '发布', value: `${publishedCount} ${unitLabel}` }, { label: '内容', value: `${outputCount} 份` }, { label: '资料', value: `${uniqueReferenceCount} 条` }])} :links=${vueProp(course.official ?? [])} />`,
     ...(reviewPreview ? ['> 本地审核预览：候选内容标记为“待用户审核”；正式发布仍需人工审核并显式开放 outputs。'] : []),
+    ...(course.practice?.length ? [
+      '## Lab 与作业',
+      '入口按本课程官网公布的作业登记；代码、题目版本及访问要求以原站为准。',
+      ...course.practice.map((practice) => `- [${practice.title}](${practice.url})${/github\.com\//.test(practice.url) ? ' · GitHub' : ''}${practice.note ? ` — ${practice.note}` : ''} · [课程来源](${practice.source})`),
+    ] : []),
     '## 课程学习路径',
     lectureGrid.length ? `<LectureGrid :items=${vueProp(lectureGrid)}${course.unitLabel ? ` unitLabel=${JSON.stringify(course.unitLabel)}` : ''}${course.learningModules ? ` :modules=${vueProp(course.learningModules)}` : ''} />` : '课程条目正在整理中。',
   ].join('\n\n')
@@ -340,12 +370,56 @@ const generatedCatalog = records.map((course) => {
 })
 
 write(join(outputRoot, 'catalog', 'index.md'), [
-  frontmatter({ title: '知识地图', description: 'llm_learn 的课程与专题目录', aside: false, outline: false }),
-  '# 知识地图',
-  '课程、专题和论文通过元数据组织，原始文件仍保留在它们最自然的位置。',
+  frontmatter({ title: '课程目录', description: 'llm_learn 的课程学习目录', aside: false, outline: false }),
+  '# 课程目录',
+  '按学习方向浏览课程。',
   '<CourseMap />',
 ].join('\n\n'))
 
+const resourceByUrl = new Map()
+for (const course of generatedCatalog) {
+  for (const item of course.items) {
+    for (const material of learningMaterials(item)) {
+      const resource = resourceByUrl.get(material.url) ?? { ...material, associations: [] }
+      resource.associations.push({
+        courseId: course.id,
+        courseTitle: course.shortTitle ?? course.title,
+        lectureId: item.id,
+        lectureTitle: item.title,
+        route: item.route,
+        type: material.type ?? 'reference',
+      })
+      resourceByUrl.set(material.url, resource)
+    }
+  }
+  for (const practice of course.practice ?? []) {
+    const resource = resourceByUrl.get(practice.url) ?? { associations: [] }
+    Object.assign(resource, { label: practice.title, url: practice.url, note: practice.note ?? '', type: 'assignment', practiceSource: practice.source })
+    const associations = resource.associations.filter((association) => association.courseId === course.id)
+    for (const association of associations) association.type = 'assignment'
+    if (!associations.length) resource.associations.push({ courseId: course.id, courseTitle: course.shortTitle ?? course.title, lectureId: null, lectureTitle: 'Lab 与作业', route: `/generated/courses/${course.id}/#lab-与作业`, type: 'assignment' })
+    resourceByUrl.set(practice.url, resource)
+  }
+}
+for (const collection of courseSettings.referenceCollections ?? []) {
+  if (!resourceByUrl.has(collection.route)) {
+    resourceByUrl.set(collection.route, {
+      label: collection.title,
+      url: collection.route,
+      note: collection.description,
+      type: 'collection',
+      associations: [],
+    })
+  }
+}
+write(join(outputRoot, 'resources', 'index.md'), [
+  frontmatter({ title: '资料库', description: '按课程和类型查找讲义、视频、代码与延伸阅读', aside: false, outline: false, pageClass: 'course-reference-page' }),
+  '# 资料库',
+  '检索课程资料，或直接查看各课程官网公布的 Lab 与作业。',
+  '<ResourceLibrary />',
+].join('\n\n'))
+
+writeFileSync(join(configGeneratedRoot, 'resources.json'), `${JSON.stringify([...resourceByUrl.values()], null, 2)}\n`, 'utf8')
 writeFileSync(join(configGeneratedRoot, 'catalog.json'), `${JSON.stringify(generatedCatalog, null, 2)}\n`, 'utf8')
 writeFileSync(join(configGeneratedRoot, 'site.json'), `${JSON.stringify(courseSettings, null, 2)}\n`, 'utf8')
 console.log(`Generated ${generatedCatalog.length} course(s) in website/generated`)

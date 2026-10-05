@@ -1,0 +1,1440 @@
+kind: course
+id: cs61a-fall26
+category: infra
+title: UC Berkeley CS61A · Structure and Interpretation of Computer Programs
+shortTitle: CS61A Fall 2026
+eyebrow: CS61A Fall 2026
+year: 2026
+status: updating
+publishOutputs: false
+description: 以 Python 训练程序设计、递归、数据抽象与面向对象。Fall 2026：40 个官方讲次，配套 Lab、Homework、Discussion 和项目；后半学期含 Gleam 与 Animator。
+paths:
+  root: infra/cs61a-fall26
+  notes: infra/cs61a-fall26/notes
+  references: infra/cs61a-fall26/references
+  resources: infra/cs61a-fall26/resources
+  exports: infra/cs61a-fall26/exports
+official:
+  - label: 课程主页
+    url: https://cs61a.org/fa26/
+  - label: 官方教材 · Composing Programs
+    url: https://www.composingprograms.com/
+  - label: 学习与实践入口
+    url: /references/cs61a-fall26
+schedule:
+  source: https://cs61a.org/fa26/
+  checkedAt: 2026-10-03
+  unitCount: 40
+  note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    from: 0
+    to: 0
+  - id: module-1
+    title: 01 · 函数与抽象
+    from: 1
+    to: 8
+  - id: module-2
+    title: 02 · 递归与数据
+    from: 9
+    to: 16
+  - id: module-3
+    title: 03 · 可变状态、对象与效率
+    from: 17
+    to: 25
+  - id: module-4
+    title: 04 · 函数式编程与应用
+    from: 26
+    to: 33
+  - id: module-5
+    title: 05 · SQL、测试与总结
+    from: 34
+    to: 40
+practice:
+  - id: lab00
+    title: Lab 0 · Getting Started
+    url: https://cs61a.org/fa26/labs/lab00/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-04
+    note: 官方题目页提供 starter 文件与提交说明。
+  - id: lab01
+    title: Lab 1 · Functions & Control
+    url: https://cs61a.org/fa26/labs/lab01/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-04
+    note: 官方题目页提供 starter 文件与提交说明。
+  - id: hog
+    title: The Game of Hog
+    url: https://cs61a.org/fa26/projects/hog/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-04
+    note: 官方题目页提供 starter 文件与提交说明。
+  - id: lab02
+    title: Lab 2 · Higher-Order Functions
+    url: https://cs61a.org/fa26/labs/lab02/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-04
+    note: 官方题目页提供 starter 文件与提交说明。
+  - id: lab03
+    title: Lab 3 · Lists
+    url: https://cs61a.org/fa26/labs/lab03/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-04
+    note: 官方题目页提供 starter 文件与提交说明。
+  - id: cats
+    title: Computer Aided Typing Software
+    url: https://cs61a.org/fa26/projects/cats/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-04
+    note: 官方题目页提供 starter 文件与提交说明。
+  - id: lab04
+    title: Lab 4 · Linked Lists
+    url: https://cs61a.org/fa26/labs/lab04/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-04
+    note: 官方题目页提供 starter 文件与提交说明。
+  - id: hw01
+    title: homework 1 · Functions
+    url: https://cs61a.org/fa26/hw/hw01/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-04
+    note: 官方题目页提供 starter 文件与提交说明。
+  - id: hw02
+    title: homework 2 · Higher-Order Functions
+    url: https://cs61a.org/fa26/hw/hw02/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-04
+    note: 官方题目页提供 starter 文件与提交说明。
+  - id: hw03
+    title: homework 3 · Recursion
+    url: https://cs61a.org/fa26/hw/hw03/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-04
+    note: 官方题目页提供 starter 文件与提交说明。
+  - id: hw04
+    title: homework 4 · Recursive Data
+    url: https://cs61a.org/fa26/hw/hw04/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-04
+    note: 官方题目页提供 starter 文件与提交说明。
+items:
+  - id: lecture-01
+    order: 1
+    date: Wed, Aug 26
+    title: Welcome
+    subtitle: 建立 Python 开发、运行与调试闭环
+    overview: 建立 Python 开发、运行与调试闭环。建议动手任务：完成 Lab 0，记录 Python 版本、解释器与测试命令。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources:
+      - label: Welcome
+        url: https://cs61a.org/fa26/lectures/01-welcome/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/01-Welcome.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: discussion 0 · Getting Started
+        url: https://cs61a.org/fa26/discussions/disc00/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: lab 0 · Getting Started (due Wed 9/2)
+        url: https://cs61a.org/fa26/labs/lab00/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cs61a-fall26/notes/lecture-01/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-01/generation.yaml
+  - id: lecture-02
+    order: 2
+    date: Fri, Aug 28
+    title: Functions
+    subtitle: 参数、返回值与函数职责
+    overview: 参数、返回值与函数职责。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PL6BsET-8jgYULSxiV2garZ0FxbnXR08MP
+    resources:
+      - label: Functions
+        url: https://cs61a.org/fa26/lectures/02-functions/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/02-Functions.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/02.py
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: "1.1"
+        url: https://composingprograms.com/3ed/getting-started/
+        type: docs
+        status: approved
+        note: 官网配套阅读
+      - label: "1.2"
+        url: https://composingprograms.com/3ed/elements-of-programming/
+        type: docs
+        status: approved
+        note: 官网配套阅读
+      - label: "1.3"
+        url: https://composingprograms.com/3ed/defining-new-functions/
+        type: docs
+        status: approved
+        note: 官网配套阅读
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/functions
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=gNv81_4X0uU&list=PL6BsET-8jgYULSxiV2garZ0FxbnXR08MP&index=1
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: homework 1 · Functions (due Thu 9/3)
+        url: https://cs61a.org/fa26/hw/hw01/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-02/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03T15:12:49.724Z
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-02/generation.yaml
+  - id: lecture-03
+    order: 3
+    date: Mon, Aug 31
+    title: Control
+    subtitle: 分支、循环与终止条件
+    overview: 分支、循环与终止条件。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PL6BsET-8jgYVCz97Y75GRXSWbb4sTpDIR
+    resources:
+      - label: Control
+        url: https://cs61a.org/fa26/lectures/03-control/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/03-Control.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/03.py
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: "1.4"
+        url: https://composingprograms.com/3ed/designing-functions/
+        type: docs
+        status: approved
+        note: 官网配套阅读
+      - label: "1.5"
+        url: https://composingprograms.com/3ed/control/
+        type: docs
+        status: approved
+        note: 官网配套阅读
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/control
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=IPec2A7j2bY&list=PL6BsET-8jgYVCz97Y75GRXSWbb4sTpDIR
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: lab 1 · Functions & Control (due Wed 9/2)
+        url: https://cs61a.org/fa26/labs/lab01/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-03/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-03/generation.yaml
+  - id: lecture-04
+    order: 4
+    date: Wed, Sep 02
+    title: Higher-Order Functions
+    subtitle: 函数作为值、闭包与函数组合
+    overview: 函数作为值、闭包与函数组合。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PL6BsET-8jgYXvcnnEX7x2_USaYug9xZFv
+    resources:
+      - label: Higher-Order Functions
+        url: https://cs61a.org/fa26/lectures/04-higher-order-functions/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/04-Higher-Order_Functions.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/04.py
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: "1.6"
+        url: https://composingprograms.com/3ed/higher-order-functions/
+        type: docs
+        status: approved
+        note: 官网配套阅读
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/higher-order-functions
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=pveIuZT0GJE&list=PL6BsET-8jgYXvcnnEX7x2_USaYug9xZFv
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: discussion 1 · Control, Environment Diagrams
+        url: https://cs61a.org/fa26/discussions/disc01/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-04/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-04/generation.yaml
+  - id: lecture-05
+    order: 5
+    date: Fri, Sep 04
+    title: Environments
+    subtitle: 名称绑定、局部作用域与闭包环境
+    overview: 名称绑定、局部作用域与闭包环境。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PL6BsET-8jgYXTuSlJNYQS740YMCRHT79g
+    resources:
+      - label: Environments
+        url: https://cs61a.org/fa26/lectures/05-environments/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/05-Environments.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/environments
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=1P2UgdAWwYg&list=PL6BsET-8jgYXTuSlJNYQS740YMCRHT79g
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: homework 2 · Higher-Order Functions (due Thu 9/10)
+        url: https://cs61a.org/fa26/hw/hw02/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: project 1 · The Game of Hog (due Thu 9/17; checkpoint Thu 9/10)
+        url: https://cs61a.org/fa26/projects/hog/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-05/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-05/generation.yaml
+  - id: lecture-06
+    order: 6
+    date: Wed, Sep 09
+    title: Abstraction
+    subtitle: 接口与实现分离
+    overview: 接口与实现分离。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PL6BsET-8jgYVSwKGjsM9y1j8RQsRwtDy3
+    resources:
+      - label: Abstraction
+        url: https://cs61a.org/fa26/lectures/06-abstraction/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/06-Functional_Abstraction.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/06.py
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/functional-abstraction
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=PKlgS5eofNY&list=PL6BsET-8jgYVSwKGjsM9y1j8RQsRwtDy3
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: discussion 2 · Environment Diagrams, Higher-Order Functions
+        url: https://cs61a.org/fa26/discussions/disc02/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-06/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-06/generation.yaml
+  - id: lecture-07
+    order: 7
+    date: Fri, Sep 11
+    title: Function Examples
+    subtitle: 整合 Function Examples 的概念与代码
+    overview: 整合 Function Examples 的概念与代码。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PL6BsET-8jgYX6yuG9s7zO8GA1xHwHARFX
+    resources:
+      - label: Function Examples
+        url: https://cs61a.org/fa26/lectures/07-function-examples/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/07-Midterm_1_Review_Part_1.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/function-examples
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=guc-Q1x2vAY&list=PL6BsET-8jgYX6yuG9s7zO8GA1xHwHARFX
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-07/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-07/generation.yaml
+  - id: lecture-08
+    order: 8
+    date: Mon, Sep 14
+    title: Midterm 1 Review
+    subtitle: 阶段复习与独立解题
+    overview: 阶段复习与独立解题。建议动手任务：挑选已学练习，先独立完成，再记录错误原因与修复过程。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources:
+      - label: Midterm 1 Review
+        url: https://cs61a.org/fa26/lectures/08-midterm-1-review/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/08-Midterm_1_Review_Part_2.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/08.py
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings: []
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cs61a-fall26/notes/lecture-08/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-08/generation.yaml
+  - id: lecture-09
+    order: 9
+    date: Wed, Sep 16
+    title: Recursion
+    subtitle: 基例、规模递减与递归返回值
+    overview: 基例、规模递减与递归返回值。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PL6BsET-8jgYUUBHIgUAqjrMUoPCGQcYdl
+    resources:
+      - label: Recursion
+        url: https://cs61a.org/fa26/lectures/09-recursion/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/09-Recursion.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/09.py
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: "1.7"
+        url: https://composingprograms.com/3ed/recursive-functions/
+        type: docs
+        status: approved
+        note: 官网配套阅读
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/recursion
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=B2_8t2jyvX0&list=PL6BsET-8jgYUUBHIgUAqjrMUoPCGQcYdl
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: discussion 3 · Recursion
+        url: https://cs61a.org/fa26/discussions/disc03/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-09/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-09/generation.yaml
+  - id: lecture-10
+    order: 10
+    date: Fri, Sep 18
+    title: Tree Recursion
+    subtitle: 分支递归与重复子问题
+    overview: 分支递归与重复子问题。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PL6BsET-8jgYUUWPap4etQjZVWlWUeFxn0
+    resources:
+      - label: Tree Recursion
+        url: https://cs61a.org/fa26/lectures/10-tree-recursion/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/10-Tree_Recursion.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/10.py
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/tree-recursion
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=VYYkJ1OLXBw&list=PL6BsET-8jgYUUWPap4etQjZVWlWUeFxn0
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: homework 3 · Recursion (due Thu 9/24)
+        url: https://cs61a.org/fa26/hw/hw03/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-10/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-10/generation.yaml
+  - id: lecture-11
+    order: 11
+    date: Mon, Sep 21
+    title: Sequences
+    subtitle: 列表、索引、切片与迭代
+    overview: 列表、索引、切片与迭代。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PL6BsET-8jgYVfI7chdrXciKy8CP10tOcl
+    resources:
+      - label: Sequences
+        url: https://cs61a.org/fa26/lectures/11-sequences/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/11-Sequences.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/11.py
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: "2.1"
+        url: https://composingprograms.com/3ed/data/
+        type: docs
+        status: approved
+        note: 官网配套阅读
+      - label: "2.2"
+        url: https://composingprograms.com/3ed/sequences/
+        type: docs
+        status: approved
+        note: 官网配套阅读
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/sequences
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=-Q45UcQ2XJk&list=PL6BsET-8jgYVfI7chdrXciKy8CP10tOcl
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: lab 3 · Lists (due Wed 9/23)
+        url: https://cs61a.org/fa26/labs/lab03/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: project 2 · Computer Aided Typing Software (due Fri 10/2; checkpoint Mon 9/28)
+        url: https://cs61a.org/fa26/projects/cats/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-11/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-11/generation.yaml
+  - id: lecture-12
+    order: 12
+    date: Wed, Sep 23
+    title: Containers
+    subtitle: 数据容器与选择依据
+    overview: 数据容器与选择依据。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PL6BsET-8jgYW50w7isVJS3YumstvFX1LY
+    resources:
+      - label: Containers
+        url: https://cs61a.org/fa26/lectures/12-containers/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/12-Containers.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/12.py
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=aSqOiUZg7kQ&list=PL6BsET-8jgYW50w7isVJS3YumstvFX1LY
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: discussion 4 · Tree Recursion
+        url: https://cs61a.org/fa26/discussions/disc04/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-12/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-12/generation.yaml
+  - id: lecture-13
+    order: 13
+    date: Fri, Sep 25
+    title: Objects
+    subtitle: 对象的状态、行为与身份
+    overview: 对象的状态、行为与身份。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PLF3WGnKY88iQ
+    resources:
+      - label: Objects
+        url: https://cs61a.org/fa26/lectures/13-objects/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/13-Objects.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/13.py
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: "2.3"
+        url: https://composingprograms.com/3ed/compound-data/
+        type: docs
+        status: approved
+        note: 官网配套阅读
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=Q-CewobDFZM&list=PLF3WGnKY88iQ
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-13/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-13/generation.yaml
+  - id: lecture-14
+    order: 14
+    date: Mon, Sep 28
+    title: Linked Lists
+    subtitle: 递归数据表示与遍历
+    overview: 递归数据表示与遍历。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PLO9sS0wuGDK0
+    resources:
+      - label: Linked Lists
+        url: https://cs61a.org/fa26/lectures/14-linked-lists/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/14-Linked_Lists.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/14.py
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=LbqHl278hcQ&list=PLO9sS0wuGDK0
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: lab 4 · Linked Lists (due Wed 9/30)
+        url: https://cs61a.org/fa26/labs/lab04/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-14/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-14/generation.yaml
+  - id: lecture-15
+    order: 15
+    date: Wed, Sep 30
+    title: Trees
+    subtitle: 节点、分支与递归遍历
+    overview: 节点、分支与递归遍历。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PLCWEE1T0BmmA
+    resources:
+      - label: Trees
+        url: https://cs61a.org/fa26/lectures/15-trees/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/15-Trees.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/15.py
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=pTPDmMH9dbs&list=PLCWEE1T0BmmA
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: discussion 5 · Trees
+        url: https://cs61a.org/fa26/discussions/disc05/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-15/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-15/generation.yaml
+  - id: lecture-16
+    order: 16
+    date: Fri, Oct 02
+    title: Midterm 2 Review
+    subtitle: 阶段复习与独立解题
+    overview: 阶段复习与独立解题。建议动手任务：挑选已学练习，先独立完成，再记录错误原因与修复过程。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources:
+      - label: Midterm 2 Review
+        url: https://cs61a.org/fa26/lectures/16-midterm-1-review/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/16-Midterm_2_Review.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: homework 4 · Recursive Data (due Thu 10/8)
+        url: https://cs61a.org/fa26/hw/hw04/
+        type: docs
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cs61a-fall26/notes/lecture-16/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-16/generation.yaml
+  - id: lecture-17
+    order: 17
+    date: Mon, Oct 05
+    title: Problem Solving
+    subtitle: 整合 Problem Solving 的概念与代码
+    overview: 整合 Problem Solving 的概念与代码。建议动手任务：挑选已学练习，先独立完成，再记录错误原因与修复过程。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-17/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-17/generation.yaml
+  - id: lecture-18
+    order: 18
+    date: Wed, Oct 07
+    title: Mutation
+    subtitle: 原地修改、别名与副作用
+    overview: 原地修改、别名与副作用。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PLPrA7aKz8SYg
+    resources: []
+    readings:
+      - label: "2.4"
+        url: https://composingprograms.com/3ed/mutable-data/
+        type: docs
+        status: approved
+        note: 官网配套阅读
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=qwO1AMKpKDY&list=PLPrA7aKz8SYg
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-18/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-18/generation.yaml
+  - id: lecture-19
+    order: 19
+    date: Fri, Oct 09
+    title: Classes
+    subtitle: 实例属性、方法与初始化
+    overview: 实例属性、方法与初始化。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PL6BsET-8jgYVz2dLlWRsktOrtqO8wWRsy
+    resources: []
+    readings:
+      - label: "2.5"
+        url: https://composingprograms.com/3ed/object-oriented-programming/
+        type: docs
+        status: approved
+        note: 官网配套阅读
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=XdRZkeCRXs4&list=PL6BsET-8jgYVz2dLlWRsktOrtqO8wWRsy
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-19/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-19/generation.yaml
+  - id: lecture-20
+    order: 20
+    date: Mon, Oct 12
+    title: Attributes
+    subtitle: 实例与类属性查找
+    overview: 实例与类属性查找。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PL6BsET-8jgYVhCKr4EHUE9mw9kcH7Kg7Y
+    resources: []
+    readings:
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=mimP7cNrSHA&list=PL6BsET-8jgYVhCKr4EHUE9mw9kcH7Kg7Y
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-20/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-20/generation.yaml
+  - id: lecture-21
+    order: 21
+    date: Wed, Oct 14
+    title: Inheritance
+    subtitle: 继承、覆盖与接口契约
+    overview: 继承、覆盖与接口契约。已按完整官方主题视频合集生成英文字幕稿、中文逐字稿、Lecture Note 与 Blog 候选稿；尚待人工审核。主题合集不是 Fall 2026 当期课堂录像。
+    status: draft-ready
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+      - label: 官方主题视频播放列表（非当期录播）
+        url: https://www.youtube.com/playlist?list=PLH902kY1ixw8
+    resources: []
+    readings:
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=Bqpe1iyq5vE&list=PLH902kY1ixw8
+        type: video
+        status: approved
+        note: 官网配套主题视频；不认定为本学期课堂录播
+    outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: infra/cs61a-fall26/notes/lecture-21/sources.yaml
+      sourceKind: official-topic-playlist
+      preparedAt: 2026-10-03
+    generation:
+      state: draft-ready
+      manifest: infra/cs61a-fall26/notes/lecture-21/generation.yaml
+  - id: lecture-22
+    order: 22
+    date: Fri, Oct 16
+    title: Lazy Evaluation
+    subtitle: 按需计算与求值时机
+    overview: 按需计算与求值时机。建议动手任务：比较一次性计算与按需生成的执行顺序。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-22/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-22/generation.yaml
+  - id: lecture-23
+    order: 23
+    date: Mon, Oct 19
+    title: Generators
+    subtitle: 迭代器协议与生成器状态
+    overview: 迭代器协议与生成器状态。建议动手任务：实现有限生成器，验证耗尽与重复迭代行为。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-23/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-23/generation.yaml
+  - id: lecture-24
+    order: 24
+    date: Wed, Oct 21
+    title: Efficiency
+    subtitle: 输入规模、操作计数与复杂度
+    overview: 输入规模、操作计数与复杂度。建议动手任务：对两个等价实现记录操作数，先解释再计时。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-24/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-24/generation.yaml
+  - id: lecture-25
+    order: 25
+    date: Fri, Oct 23
+    title: Object Examples
+    subtitle: 整合 Object Examples 的概念与代码
+    overview: 整合 Object Examples 的概念与代码。建议动手任务：挑选已学练习，先独立完成，再记录错误原因与修复过程。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-25/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-25/generation.yaml
+  - id: lecture-26
+    order: 26
+    date: Mon, Oct 26
+    title: Midterm 3 Review
+    subtitle: 阶段复习与独立解题
+    overview: 阶段复习与独立解题。建议动手任务：挑选已学练习，先独立完成，再记录错误原因与修复过程。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-26/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-26/generation.yaml
+  - id: lecture-27
+    order: 27
+    date: Wed, Oct 28
+    title: Functional Programming
+    subtitle: 不可变数据与函数组合
+    overview: 不可变数据与函数组合。建议动手任务：将有副作用的处理过程改为返回新数据的函数。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-27/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-27/generation.yaml
+  - id: lecture-28
+    order: 28
+    date: Fri, Oct 30
+    title: Algebraic Data Types
+    subtitle: 和类型、积类型与模式匹配
+    overview: 和类型、积类型与模式匹配。建议动手任务：按本学期 Gleam 资料定义小类型并覆盖各分支。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-28/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-28/generation.yaml
+  - id: lecture-29
+    order: 29
+    date: Mon, Nov 02
+    title: Immutable Data
+    subtitle: 不可变数据与更新表达
+    overview: 不可变数据与更新表达。建议动手任务：比较原地更新和构造新值，说明旧引用的行为。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-29/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-29/generation.yaml
+  - id: lecture-30
+    order: 30
+    date: Wed, Nov 04
+    title: Interpreters
+    subtitle: 表达式表示与求值器
+    overview: 表达式表示与求值器。建议动手任务：手动追踪一个小表达式的解析、环境查找与求值。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-30/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-30/generation.yaml
+  - id: lecture-31
+    order: 31
+    date: Fri, Nov 06
+    title: Coding Agents
+    subtitle: 工具辅助编程与结果验证
+    overview: 工具辅助编程与结果验证。建议动手任务：先写验收测试，再核查工具生成代码的每个关键假设。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-31/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-31/generation.yaml
+  - id: lecture-32
+    order: 32
+    date: Mon, Nov 09
+    title: Browsers
+    subtitle: 浏览器中的程序执行与交互
+    overview: 浏览器中的程序执行与交互。建议动手任务：按官方资料识别输入、状态更新和界面输出的关系。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-32/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-32/generation.yaml
+  - id: lecture-33
+    order: 33
+    date: Fri, Nov 13
+    title: Applications
+    subtitle: 程序组件如何组成应用
+    overview: 程序组件如何组成应用。建议动手任务：选一个课程项目画模块图，标出模块间接口。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-33/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-33/generation.yaml
+  - id: lecture-34
+    order: 34
+    date: Mon, Nov 16
+    title: Tables
+    subtitle: 表格数据与关系表示
+    overview: 表格数据与关系表示。建议动手任务：把一组数据整理为表，明确列含义与唯一标识。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-34/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-34/generation.yaml
+  - id: lecture-35
+    order: 35
+    date: Wed, Nov 18
+    title: SQL
+    subtitle: 查询、过滤、连接与聚合
+    overview: 查询、过滤、连接与聚合。建议动手任务：写查询并用小数据集手算预期结果。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-35/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-35/generation.yaml
+  - id: lecture-36
+    order: 36
+    date: Fri, Nov 20
+    title: Aggregation
+    subtitle: 分组与聚合语义
+    overview: 分组与聚合语义。建议动手任务：构造有重复值的表，区分逐行过滤与分组过滤。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-36/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-36/generation.yaml
+  - id: lecture-37
+    order: 37
+    date: Mon, Nov 23
+    title: Software Testing
+    subtitle: 规格、边界与回归
+    overview: 规格、边界与回归。建议动手任务：给一个已有函数添加失败案例，再修复并回归。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-37/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-37/generation.yaml
+  - id: lecture-38
+    order: 38
+    date: Mon, Nov 30
+    title: Software Tracing
+    subtitle: 执行追踪与错误定位
+    overview: 执行追踪与错误定位。建议动手任务：记录从输入到异常的调用链，缩小到最小复现。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-38/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-38/generation.yaml
+  - id: lecture-39
+    order: 39
+    date: Wed, Dec 02
+    title: Ethics
+    subtitle: 程序设计中的责任与约束
+    overview: 程序设计中的责任与约束。建议动手任务：结合自己的应用记录一项数据使用或自动化决策风险。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-39/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-39/generation.yaml
+  - id: lecture-40
+    order: 40
+    date: Fri, Dec 04
+    title: Conclusion
+    subtitle: 整合课程概念与实践证据
+    overview: 整合课程概念与实践证据。建议动手任务：回顾最难的三个错误，写出原因、修复与回归方法。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://cs61a.org/fa26/
+    resources: []
+    readings: []
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cs61a-fall26/notes/lecture-40/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cs61a-fall26/notes/lecture-40/generation.yaml
+videoSourceMode: official-topic-playlists

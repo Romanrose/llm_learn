@@ -28,6 +28,32 @@ official:
     url: https://gfxcourses.stanford.edu/cs149/fall25/lecture/
   - label: 2023 公开课程视频
     url: https://www.youtube.com/playlist?list=PLoROMvodv4rMp7MTFr4hQsDEcX7Bx6Odp
+practice:
+  - id: assignment-1
+    title: "Assignment 1: Analyzing Parallel Program Performance on a Quad-Core CPU"
+    url: https://github.com/stanford-cs149/asst1
+    source: https://gfxcourses.stanford.edu/cs149/fall25/
+    checkedAt: 2026-10-04
+  - id: assignment-2
+    title: "Assignment 2: Scheduling Task Graphs on a Multi-Core CPU"
+    url: https://github.com/stanford-cs149/asst2
+    source: https://gfxcourses.stanford.edu/cs149/fall25/
+    checkedAt: 2026-10-04
+  - id: assignment-3
+    title: "Assignment 3: A Circle Renderer in CUDA"
+    url: https://github.com/stanford-cs149/asst3
+    source: https://gfxcourses.stanford.edu/cs149/fall25/
+    checkedAt: 2026-10-04
+  - id: assignment-4
+    title: "Assignment 4: Fused Conv+MaxPool on the Trainium2 Accelerator"
+    url: https://github.com/stanford-cs149/asst4-trainium2
+    source: https://gfxcourses.stanford.edu/cs149/fall25/
+    checkedAt: 2026-10-04
+  - id: assignment-5
+    title: "Assignment 5: Make the World's Fastest CUDA Kernels"
+    url: https://github.com/stanford-cs149/asst5-kernels
+    source: https://gfxcourses.stanford.edu/cs149/fall25/
+    checkedAt: 2026-10-04
 items:
   - id: lecture-01
     order: 1

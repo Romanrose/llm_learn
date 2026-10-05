@@ -1,0 +1,1139 @@
+kind: course
+id: cmu-15213-fall26
+category: infra
+title: CMU 15-213 · Introduction to Computer Systems
+shortTitle: CMU 15-213 Fall 2026
+eyebrow: CMU 15-213 Fall 2026
+year: 2026
+status: updating
+publishOutputs: false
+description: 把 C 与 408 知识落到系统实验：25 次主题讲座、Recitation / Bootcamp 资料和 L0–L8 九个实验。Fall 2026 正在更新；当期实验经 Autolab 发放，另列 CSAPP 官方自学版入口。
+paths:
+  root: infra/cmu-15213-fall26
+  notes: infra/cmu-15213-fall26/notes
+  references: infra/cmu-15213-fall26/references
+  resources: infra/cmu-15213-fall26/resources
+  exports: infra/cmu-15213-fall26/exports
+official:
+  - label: 课程主页
+    url: https://www.cs.cmu.edu/~213/
+  - label: 官方日程
+    url: https://www.cs.cmu.edu/~213/schedule.html
+  - label: 当期 Labs
+    url: https://www.cs.cmu.edu/~213/labs.html
+  - label: CSAPP 自学实验（独立版本）
+    url: https://csapp.cs.cmu.edu/3e/labs.html
+  - label: 学习与实践入口
+    url: /references/cmu-15213-fall26
+  - label: 2015 历史录像笔记工作区
+    url: /generated/courses/cmu-15213-fall15/
+schedule:
+  source: https://www.cs.cmu.edu/~213/schedule.html
+  checkedAt: 2026-10-03
+  unitCount: 25
+  note: 官网未编号，按主题讲座顺序分配 lecture ID；考试、停课、Recitation 与 Bootcamp 不计入讲数。
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    from: 0
+    to: 0
+  - id: module-1
+    title: 01 · C、机器程序与链接
+    from: 1
+    to: 8
+  - id: module-2
+    title: 02 · 缓存与内存管理
+    from: 9
+    to: 14
+  - id: module-3
+    title: 03 · 优化、进程与 I/O
+    from: 15
+    to: 20
+  - id: module-4
+    title: 04 · 并发、同步与前沿
+    from: 21
+    to: 25
+practice:
+  - id: labs
+    title: Labs L0–L8 · 官方实验与发放入口
+    url: https://www.cs.cmu.edu/~213/labs.html
+    source: https://www.cs.cmu.edu/~213/labs.html
+    checkedAt: 2026-10-04
+    note: 当期实验通过 Autolab 发放和提交，需课程权限。
+items:
+  - id: lecture-01
+    order: 1
+    date: Aug 25, 2026
+    title: Overview
+    subtitle: 工具链与系统学习路线
+    overview: 工具链与系统学习路线。建议动手任务：编译一个 C 程序，观察源文件、目标文件与可执行文件的区别。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/01-overview.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/01-overview.pptx
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: L0-writeup
+        url: https://www.cs.cmu.edu/~213/labs/cprogramminglab.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: L0-tar-file
+        url: https://www.cs.cmu.edu/~213/labs/cprogramminglab-handout.tar
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: CSAPP 第 3 版 · 1
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 01: Course Overview"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d8c83d3a-8074-4afe-ae3b-693e2250999a
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 01: Course Overview"
+        url: /generated/courses/cmu-15213-fall15/lecture-01/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-01/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-01/generation.yaml
+  - id: lecture-02
+    order: 2
+    date: Aug 27, 2026
+    title: Bits, Bytes, & Integers
+    subtitle: 整数表示与位操作
+    overview: 整数表示与位操作。建议动手任务：用固定宽度整数实验移位、溢出与有符号/无符号转换。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/02-bits-bytes-ints.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/02-bits-bytes-ints.pptx
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: "Recitation 1: Introduction, Datalab · pdf"
+        url: https://www.cs.cmu.edu/~213/recitations/rec01_handout.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Recitation 1: Introduction, Datalab · slides"
+        url: https://www.cs.cmu.edu/~213/recitations/rec01_slides.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Bootcamp 1: Linux, Command Line, Git and Bootcamp 2: Debugging & GDB · slides1"
+        url: https://www.cs.cmu.edu/~213/bootcamps/lab1_slides.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Bootcamp 1: Linux, Command Line, Git and Bootcamp 2: Debugging & GDB · handout1"
+        url: https://www.cs.cmu.edu/~213/bootcamps/lab1_handout.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Bootcamp 1: Linux, Command Line, Git and Bootcamp 2: Debugging & GDB · tar1"
+        url: https://www.cs.cmu.edu/~213/bootcamps/lab1_handout.tar
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Bootcamp 1: Linux, Command Line, Git and Bootcamp 2: Debugging & GDB · slides2"
+        url: https://www.cs.cmu.edu/~213/bootcamps/lab2_slides.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Bootcamp 1: Linux, Command Line, Git and Bootcamp 2: Debugging & GDB · handout2"
+        url: https://www.cs.cmu.edu/~213/bootcamps/lab2_handout.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Bootcamp 1: Linux, Command Line, Git and Bootcamp 2: Debugging & GDB · tar2"
+        url: https://www.cs.cmu.edu/~213/bootcamps/lab2_handout.tar
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: CSAPP 第 3 版 · 2.1-2.3
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 02: Bits, Bytes, and Integers"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=6ca8cdb4-6961-42d9-8fac-299e53759a17
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史补充 · Fall 2015 · Lecture 03: Bits, Bytes, and Integers (cont.)"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=526e6341-aa53-4107-8fa1-d13c0e92342e
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 02: Bits, Bytes, and Integers"
+        url: /generated/courses/cmu-15213-fall15/lecture-02/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+      - label: "历史笔记 · Lecture 03: Bits, Bytes, and Integers (cont.)"
+        url: /generated/courses/cmu-15213-fall15/lecture-03/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-02/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-02/generation.yaml
+  - id: lecture-03
+    order: 3
+    date: Sep 01, 2026
+    title: Machine Programming (Part I)
+    subtitle: 机器指令与数据流
+    overview: 机器指令与数据流。建议动手任务：编译短 C 函数，逐条解释生成汇编的输入与输出。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/03-machine.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/03-machine.pptx
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: CSAPP 第 3 版 · 3.1-3.6
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 05: Machine-Level Programming I: Basics"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=6e410255-3858-4e85-89c7-812c5845d197
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史补充 · Fall 2015 · Lecture 06: Machine-Level Programming II: Control"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=fc93c499-8fc9-4652-9a99-711058054afb
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 05: Machine-Level Programming I: Basics"
+        url: /generated/courses/cmu-15213-fall15/lecture-05/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+      - label: "历史笔记 · Lecture 06: Machine-Level Programming II: Control"
+        url: /generated/courses/cmu-15213-fall15/lecture-06/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-03/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-03/generation.yaml
+  - id: lecture-04
+    order: 4
+    date: Sep 03, 2026
+    title: Machine Programming (Part II)
+    subtitle: 分支、循环与控制流
+    overview: 分支、循环与控制流。建议动手任务：对照条件表达式与跳转，手动追踪循环的一次执行。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/04-machine-beta.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/04-machine-beta.pptx
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: activity
+        url: https://www.cs.cmu.edu/~213/activities/machine-control.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: soln
+        url: https://www.cs.cmu.edu/~213/activities/machine-control-soln.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: "Recitation 2: Bomb Lab · slides"
+        url: https://www.cs.cmu.edu/~213/recitations/rec02_slides.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Recitation 2: Bomb Lab · pdf"
+        url: https://www.cs.cmu.edu/~213/recitations/rec02_handout.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: CSAPP 第 3 版 · 3.6-3.7
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 07: Machine-Level Programming III: Procedures"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=2994255f-923b-4ad4-8fb4-5def7fd802cd
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 07: Machine-Level Programming III: Procedures"
+        url: /generated/courses/cmu-15213-fall15/lecture-07/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-04/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-04/generation.yaml
+  - id: lecture-05
+    order: 5
+    date: Sep 08, 2026
+    title: Machine Programming (Part III)
+    subtitle: 过程调用与栈帧
+    overview: 过程调用与栈帧。建议动手任务：在 GDB 中观察参数、返回地址与局部变量。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/05-machine-gamma.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/05-machine-gamma.pptx
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: activity
+        url: https://www.cs.cmu.edu/~213/activities/machine-procedures.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: soln
+        url: https://www.cs.cmu.edu/~213/activities/machine-procedures-soln.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: CSAPP 第 3 版 · 3.7-3.9
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 08: Machine-Level Programming IV: Data"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=03308c94-fc20-40d8-8978-1a9b81c344ed
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 08: Machine-Level Programming IV: Data"
+        url: /generated/courses/cmu-15213-fall15/lecture-08/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-05/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-05/generation.yaml
+  - id: lecture-06
+    order: 6
+    date: Sep 10, 2026
+    title: Machine Programming (Part IV)
+    subtitle: 数据布局与机器级行为
+    overview: 数据布局与机器级行为。建议动手任务：检查数组、结构体与对齐，对照地址偏移。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/06-machine-delta.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/06-machine-delta.pptx
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: activity
+        url: https://www.cs.cmu.edu/~213/activities/machine-advanced.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: soln
+        url: https://www.cs.cmu.edu/~213/activities/machine-advanced-soln.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: "Recitation 3: Bomb Lab part 2 · slides"
+        url: https://www.cs.cmu.edu/~213/recitations/rec03_slides.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Recitation 3: Bomb Lab part 2 · handout"
+        url: https://www.cs.cmu.edu/~213/recitations/rec03_handout.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: CSAPP 第 3 版 · 3.10-3.11
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 09: Machine-Level Programming V: Advanced Topics"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3f0bf9ca-d640-4798-b91a-73aed656a10a
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 09: Machine-Level Programming V: Advanced Topics"
+        url: /generated/courses/cmu-15213-fall15/lecture-09/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-06/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-06/generation.yaml
+  - id: lecture-07
+    order: 7
+    date: Sep 15, 2026
+    title: Linking
+    subtitle: 符号、重定位与链接
+    overview: 符号、重定位与链接。建议动手任务：构造多文件程序，用 nm 或 objdump 观察符号与链接。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/07-linking.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/07-linking.pptx
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: CSAPP 第 3 版 · 7
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 13: Linking"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0aef84fc-a53b-49c6-bb43-14cb2b175249
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 13: Linking"
+        url: /generated/courses/cmu-15213-fall15/lecture-13/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-07/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-07/generation.yaml
+  - id: lecture-08
+    order: 8
+    date: Sep 17, 2026
+    title: Design and Debugging
+    subtitle: 最小复现与系统调试
+    overview: 最小复现与系统调试。建议动手任务：复现一个内存错误，记录定位步骤、根因和回归检查。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/08-design-debugging.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/08-design-debugging.pptx
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: "Recitation 4: Attack Lab and Stacks · slides"
+        url: https://www.cs.cmu.edu/~213/recitations/rec04_slides.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Recitation 4: Attack Lab and Stacks · handout"
+        url: https://www.cs.cmu.edu/~213/recitations/rec04_handout.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Bootcamp 3: GCC & Build Automation · slides"
+        url: https://www.cs.cmu.edu/~213/bootcamps/lab3_slides.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Bootcamp 3: GCC & Build Automation · handout"
+        url: https://www.cs.cmu.edu/~213/bootcamps/lab3_handout.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: CSAPP 第 3 版 · 9.10-9.12
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-08/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-08/generation.yaml
+  - id: lecture-09
+    order: 9
+    date: Sep 22, 2026
+    title: The Memory Hierarchy
+    subtitle: 局部性与存储层次
+    overview: 局部性与存储层次。建议动手任务：比较不同访问顺序，解释时间局部性和空间局部性。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/09-memory-hierarchy.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/09-memory-hierarchy.pptx
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: CSAPP 第 3 版 · 6.1-6.3
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 11: The Memory Hierarchy"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=06dfcd19-1024-49eb-add8-3486a38d1426
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 11: The Memory Hierarchy"
+        url: /generated/courses/cmu-15213-fall15/lecture-11/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-09/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-09/generation.yaml
+  - id: lecture-10
+    order: 10
+    date: Sep 24, 2026
+    title: Cache Memories
+    subtitle: 缓存地址拆分与命中行为
+    overview: 缓存地址拆分与命中行为。建议动手任务：手算一段地址轨迹的 tag、set、offset 与命中结果。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/10-cache-memories.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/10-cache-memories.pptx
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: "Recitation 5: Caches and C Review · slides"
+        url: https://www.cs.cmu.edu/~213/recitations/rec05_slides.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Bootcamp 4: C Programming · slides"
+        url: https://www.cs.cmu.edu/~213/bootcamps/cprogramming-bootcamp-s23.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: "Bootcamp 4: C Programming · handout"
+        url: https://www.cs.cmu.edu/~213/bootcamps/cbootcamp.tar.gz
+        type: code
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: CSAPP 第 3 版 · 6.4-6.7
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 12: Cache Memories"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3395b86e-0bd4-425d-8872-251e714acdd7
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 12: Cache Memories"
+        url: /generated/courses/cmu-15213-fall15/lecture-12/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-10/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-10/generation.yaml
+  - id: lecture-11
+    order: 11
+    date: Sep 29, 2026
+    title: "Virtual Memory: Concepts"
+    subtitle: 地址空间与虚拟内存抽象
+    overview: 地址空间与虚拟内存抽象。建议动手任务：区分虚拟地址、物理地址与页表映射，画访问路径。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/11-vm-concepts.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/11-vm-concepts.pptx
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pdf-markup
+        url: https://www.cs.cmu.edu/~213/lectures/11-vm-concepts-seth.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: CSAPP 第 3 版 · 9.1-9.6
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 17: Virtual Memory: Concepts"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=80cd47f9-2eba-4e7b-bbab-a2867f87b7fa
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 17: Virtual Memory: Concepts"
+        url: /generated/courses/cmu-15213-fall15/lecture-17/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-11/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-11/generation.yaml
+  - id: lecture-12
+    order: 12
+    date: Oct 01, 2026
+    title: "Virtual Memory: Details"
+    subtitle: 地址翻译与内存保护
+    overview: 地址翻译与内存保护。建议动手任务：手算页号与偏移，说明 TLB 与缺页的不同作用。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: resources-approved
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/12-vm-details.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/12-vm-details.pptx
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+      - label: pdf-markup
+        url: https://www.cs.cmu.edu/~213/lectures/12-vm-details-seth.pdf
+        type: slides
+        status: approved
+        note: 官网链接；目标页面可用性以官方为准
+    readings:
+      - label: CSAPP 第 3 版 · 9.7-9.8
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 18: Virtual Memory: Systems"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d3ac31f4-331d-469c-91bf-6ac6692f0159
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 18: Virtual Memory: Systems"
+        url: /generated/courses/cmu-15213-fall15/lecture-18/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: slides-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-12/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-12/generation.yaml
+  - id: lecture-13
+    order: 13
+    date: Oct 06, 2026
+    title: "Dynamic Memory Allocation: Basic"
+    subtitle: 堆块组织与分配接口
+    overview: 堆块组织与分配接口。建议动手任务：画一次分配、释放后的块布局，列出分配器不变量。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources: []
+    readings:
+      - label: CSAPP 第 3 版 · 9.9
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 19: Dynamic Memory Allocation: Basic Concepts"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d69a8072-3d23-4604-8081-0edeba33bb52
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 19: Dynamic Memory Allocation: Basic Concepts"
+        url: /generated/courses/cmu-15213-fall15/lecture-19/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cmu-15213-fall26/notes/lecture-13/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-13/generation.yaml
+  - id: lecture-14
+    order: 14
+    date: Oct 08, 2026
+    title: "Dynamic Memory Allocation: Advanced"
+    subtitle: 空闲块管理与合并
+    overview: 空闲块管理与合并。建议动手任务：对比查找策略，构造碎片与相邻空闲块测试。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources: []
+    readings:
+      - label: CSAPP 第 3 版 · 9.10-9.12
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 20: Dynamic Memory Allocation: Advanced Concepts"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3efacbed-aa6d-4d18-b354-24cdc453e1e8
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 20: Dynamic Memory Allocation: Advanced Concepts"
+        url: /generated/courses/cmu-15213-fall15/lecture-20/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cmu-15213-fall26/notes/lecture-14/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-14/generation.yaml
+  - id: lecture-15
+    order: 15
+    date: Oct 22, 2026
+    title: Code Optimization
+    subtitle: 正确性约束下的性能优化
+    overview: 正确性约束下的性能优化。建议动手任务：保留基准输入，比较优化前后结果和运行时间。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources: []
+    readings:
+      - label: CSAPP 第 3 版 · 5
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 10: Program Optimization"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=4b1da67c-2980-4b96-82e7-2f99139a2c0d
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 10: Program Optimization"
+        url: /generated/courses/cmu-15213-fall15/lecture-10/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cmu-15213-fall26/notes/lecture-15/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-15/generation.yaml
+  - id: lecture-16
+    order: 16
+    date: Oct 27, 2026
+    title: Processes and Multitasking
+    subtitle: 进程、fork 与等待
+    overview: 进程、fork 与等待。建议动手任务：编写父子进程实验，解释输出顺序与 wait 的作用。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources: []
+    readings:
+      - label: CSAPP 第 3 版 · 8.1-8.4
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 14: Exceptional Control Flow: Exceptions and Processes"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d2759175-d59e-4f80-ab9e-24c2f15c8adb
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 14: Exceptional Control Flow: Exceptions and Processes"
+        url: /generated/courses/cmu-15213-fall15/lecture-14/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cmu-15213-fall26/notes/lecture-16/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-16/generation.yaml
+  - id: lecture-17
+    order: 17
+    date: Oct 29, 2026
+    title: Exceptional Control Flow
+    subtitle: 异常、信号与控制流
+    overview: 异常、信号与控制流。建议动手任务：写受控信号处理示例，记录共享状态与竞态窗口。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources: []
+    readings:
+      - label: CSAPP 第 3 版 · 8.5-8.8
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 14: Exceptional Control Flow: Exceptions and Processes"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=d2759175-d59e-4f80-ab9e-24c2f15c8adb
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史补充 · Fall 2015 · Lecture 15: Exceptional Control Flow: Signals and Nonlocal Jumps"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=aa227a4e-543a-4192-bef4-4eaf6aee1c21
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 14: Exceptional Control Flow: Exceptions and Processes"
+        url: /generated/courses/cmu-15213-fall15/lecture-14/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+      - label: "历史笔记 · Lecture 15: Exceptional Control Flow: Signals and Nonlocal Jumps"
+        url: /generated/courses/cmu-15213-fall15/lecture-15/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cmu-15213-fall26/notes/lecture-17/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-17/generation.yaml
+  - id: lecture-18
+    order: 18
+    date: Nov 05, 2026
+    title: System Level I/O and File Systems
+    subtitle: 文件描述符与可靠 I/O
+    overview: 文件描述符与可靠 I/O。建议动手任务：检查短读写与 EOF，对比文件描述符和文件路径。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources: []
+    readings:
+      - label: CSAPP 第 3 版 · 10
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 16: System Level I/O"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f107c2ce-79d5-4529-baeb-2bb495d8c11a
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 16: System Level I/O"
+        url: /generated/courses/cmu-15213-fall15/lecture-16/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cmu-15213-fall26/notes/lecture-18/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-18/generation.yaml
+  - id: lecture-19
+    order: 19
+    date: Nov 10, 2026
+    title: File Systems / Network Programming (Part I)
+    subtitle: 文件系统与网络接口
+    overview: 文件系统与网络接口。建议动手任务：画文件到网络的数据流，明确资源所有权与关闭时机。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources: []
+    readings:
+      - label: CSAPP 第 3 版 · 11.1-11.4
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 21: Network Programming: Part 1"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=54178cf8-d57e-4984-b46c-b66db645431a
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 21: Network Programming: Part 1"
+        url: /generated/courses/cmu-15213-fall15/lecture-21/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cmu-15213-fall26/notes/lecture-19/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-19/generation.yaml
+  - id: lecture-20
+    order: 20
+    date: Nov 12, 2026
+    title: Network Programming (Part II)
+    subtitle: 客户端/服务器协议与套接字
+    overview: 客户端/服务器协议与套接字。建议动手任务：建立本地回环客户端与服务器，验证消息边界。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources: []
+    readings:
+      - label: CSAPP 第 3 版 · 11.4-11.6
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 22: Network Programming: Part II"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0015deb4-3584-4b10-98c9-38f27784feb4
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 22: Network Programming: Part II"
+        url: /generated/courses/cmu-15213-fall15/lecture-22/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cmu-15213-fall26/notes/lecture-20/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-20/generation.yaml
+  - id: lecture-21
+    order: 21
+    date: Nov 17, 2026
+    title: Concurrent Programming
+    subtitle: 线程与共享状态
+    overview: 线程与共享状态。建议动手任务：构造线程共享计数实验，对照串行预期结果。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources: []
+    readings:
+      - label: CSAPP 第 3 版 · 12.1-12.3
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 23: Concurrent Programming"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0be3c53f-5d35-40f0-a5ab-55897a2c91a5
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 23: Concurrent Programming"
+        url: /generated/courses/cmu-15213-fall15/lecture-23/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cmu-15213-fall26/notes/lecture-21/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-21/generation.yaml
+  - id: lecture-22
+    order: 22
+    date: Nov 19, 2026
+    title: "Synchronization: Basic"
+    subtitle: 互斥与临界区
+    overview: 互斥与临界区。建议动手任务：定义需保护的不变量，验证锁范围及释放路径。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources: []
+    readings:
+      - label: CSAPP 第 3 版 · 12.4, 12.5.1-3
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 24: Synchronization: Basics"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=aae5ff94-1551-42b6-8981-7d19157afa0c
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 24: Synchronization: Basics"
+        url: /generated/courses/cmu-15213-fall15/lecture-24/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cmu-15213-fall26/notes/lecture-22/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-22/generation.yaml
+  - id: lecture-23
+    order: 23
+    date: Nov 24, 2026
+    title: "Synchronization: Advanced"
+    subtitle: 死锁、同步与线程安全
+    overview: 死锁、同步与线程安全。建议动手任务：列出锁顺序并分析等待环，用测试验证修复。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources: []
+    readings:
+      - label: CSAPP 第 3 版 · 12.5.4-5, 12.7-8
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 25: Synchronization: Advanced"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=06892ab8-1a16-46de-8910-537dab546828
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 25: Synchronization: Advanced"
+        url: /generated/courses/cmu-15213-fall15/lecture-25/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cmu-15213-fall26/notes/lecture-23/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-23/generation.yaml
+  - id: lecture-24
+    order: 24
+    date: Dec 01, 2026
+    title: Thread-Level Parallelism
+    subtitle: 线程级并行与性能边界
+    overview: 线程级并行与性能边界。建议动手任务：比较线程数与执行时间，解释调度和同步开销。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources: []
+    readings:
+      - label: CSAPP 第 3 版 · 12.6
+        url: https://csapp.cs.cmu.edu/3e/students.html
+        type: docs
+        status: approved
+        note: 章节号来自 Fall 2026 日程；教材保持外链
+      - label: "历史补充 · Fall 2015 · Lecture 26: Thread-Level Parallelism"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=9ba08262-5318-45f2-a7e1-475e33a98e53
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 26: Thread-Level Parallelism"
+        url: /generated/courses/cmu-15213-fall15/lecture-26/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cmu-15213-fall26/notes/lecture-24/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-24/generation.yaml
+  - id: lecture-25
+    order: 25
+    date: Dec 03, 2026
+    title: Frontiers of Computing
+    subtitle: 系统知识与后续方向
+    overview: 系统知识与后续方向。建议动手任务：选一个真实系统问题，关联课程中的内存、I/O 与并发机制。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
+    status: scheduled
+    official:
+      - label: 官方课程日程
+        url: https://www.cs.cmu.edu/~213/schedule.html
+    resources: []
+    readings:
+      - label: "历史补充 · Fall 2015 · Lecture 27: Future of Computing"
+        url: https://scs.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=7fdc2275-4390-46fb-a436-435e7c535c86
+        type: video
+        note: 按主题匹配；不是 Fall 2026 课堂录像，课件与 Lab 版本以 2026 为准。
+      - label: "历史笔记 · Lecture 27: Future of Computing"
+        url: /generated/courses/cmu-15213-fall15/lecture-27/
+        type: docs
+        note: 独立的 2015 历史录像笔记；不是 2026 当期课堂内容。
+    outputs: []
+    preparation:
+      state: source-unavailable
+      manifest: infra/cmu-15213-fall26/notes/lecture-25/sources.yaml
+    generation:
+      state: study-guide-ready
+      manifest: infra/cmu-15213-fall26/notes/lecture-25/generation.yaml

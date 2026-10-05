@@ -26,6 +26,37 @@ official:
     url: https://www.youtube.com/playlist?list=PLoROMvodv4rMqXOcazWaTUHhq-yembLCV
   - label: 官方讲义仓库
     url: https://github.com/stanford-cs336/lectures
+practice:
+  - id: assignment-1
+    title: "Assignment 1: Basics"
+    url: https://github.com/stanford-cs336/assignment1-basics/tree/main
+    source: https://cs336.stanford.edu/
+    checkedAt: 2026-10-04
+    note: 课程官网公布的仓库；题目版本以仓库说明为准。
+  - id: assignment-2
+    title: "Assignment 2: Systems"
+    url: https://github.com/stanford-cs336/assignment2-systems/tree/main
+    source: https://cs336.stanford.edu/
+    checkedAt: 2026-10-04
+    note: 课程官网公布的仓库；题目版本以仓库说明为准。
+  - id: assignment-3
+    title: "Assignment 3: Scaling"
+    url: https://github.com/stanford-cs336/assignment3-scaling/tree/main
+    source: https://cs336.stanford.edu/
+    checkedAt: 2026-10-04
+    note: 课程官网公布的仓库；题目版本以仓库说明为准。
+  - id: assignment-4
+    title: "Assignment 4: Data"
+    url: https://github.com/stanford-cs336/assignment4-data/tree/main
+    source: https://cs336.stanford.edu/
+    checkedAt: 2026-10-04
+    note: 课程官网公布的仓库；题目版本以仓库说明为准。
+  - id: assignment-5
+    title: "Assignment 5: Alignment and Reasoning RL"
+    url: https://github.com/stanford-cs336/assignment5-alignment/tree/main
+    source: https://cs336.stanford.edu/
+    checkedAt: 2026-10-04
+    note: 课程官网公布的仓库；题目版本以仓库说明为准。
 items:
   - id: lecture-01
     order: 1

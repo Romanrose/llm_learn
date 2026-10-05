@@ -1,6 +1,6 @@
 ---
 title: CS149 Fall 2025 自学工作台
-description: 并行计算课程的先修要求、学习路径、作业替代项目与资料边界。
+description: 并行计算课程的先修要求、学习路径、官方编程作业与资料边界。
 outline: [2, 3]
 ---
 
@@ -25,18 +25,20 @@ CS149 的价值在于它把“并行代码能跑”提升为“理解为什么�
 
 每讲按“Slides → 一个最小实现 → 性能预测 → 测量/解释 → 复盘”的顺序完成。课程目录中的每个 Lecture 已有公开 PDF 的稳定入口；笔记生成后会出现在同一个位置。
 
-## 编程作业的自学替代
+## 官方编程作业
 
-官方公开说明列出五项主题：ISPC、多任务图调度、CUDA renderer、AI 加速器上的 DNN 优化、以及最快 CUDA kernels。具体题目属于课程系统，因此本仓库不复制；可用以下替代项目保持学习闭环：
+[Fall 2025 课程主页](https://gfxcourses.stanford.edu/cs149/fall25/)公布了以下五个作业仓库。题目、起始代码和环境要求以各仓库说明为准。
 
-- ISPC 图像滤波/曼德勃罗集：比较串行、ISPC、线程版。
-- Task graph executor：比较静态调度、共享队列与 work stealing。
-- CUDA 2D renderer：用 profiler 分析 occupancy、coalescing 与 divergence。
-- Matmul/attention 融合 kernel：建立 roofline 分析与正确性测试。
-- 固定形状的 reduction、softmax 或 layer norm：以可复现实验表追逐性能上限。
+| 作业 | 官方 GitHub |
+| --- | --- |
+| 1 · 多核 CPU 性能分析 | [stanford-cs149/asst1](https://github.com/stanford-cs149/asst1) |
+| 2 · 多核任务图调度 | [stanford-cs149/asst2](https://github.com/stanford-cs149/asst2) |
+| 3 · CUDA Circle Renderer | [stanford-cs149/asst3](https://github.com/stanford-cs149/asst3) |
+| 4 · Trainium2 Conv + MaxPool | [stanford-cs149/asst4-trainium2](https://github.com/stanford-cs149/asst4-trainium2) |
+| 5 · CUDA Kernels 优化 | [stanford-cs149/asst5-kernels](https://github.com/stanford-cs149/asst5-kernels) |
 
 完整的可编辑学习计划与实验记录模板保存在仓库的 `infra/cs149-fall25/references/study-plan.md`；本课程的逐讲公开资料可从[课程目录](/generated/courses/cs149-fall25/)进入。
 
 ## 资料边界
 
-本课程页只索引公开的 Fall 2025 Slides 与 2023 公开视频。Canvas、Ed Discussion、课堂测验以及需要 Stanford 身份的作业材料不下载、不镜像；后续笔记会严格链接回每讲的官方来源。
+本课程页索引公开的 Fall 2025 Slides、官方作业仓库与 2023 公开视频。Canvas、Ed Discussion、课堂测验及需要 Stanford 身份的材料保留原站入口；后续笔记链接回对应的官方来源。

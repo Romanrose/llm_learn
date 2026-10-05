@@ -53,6 +53,48 @@ learningModules:
     description: 按官方阅读顺序学习
     from: 13
     to: 19
+practice:
+  - id: ps0
+    title: "PS0: Turtle Graphics"
+    url: https://web.mit.edu/6.102/www/sp26/psets/ps0/
+    source: https://web.mit.edu/6.102/www/sp26/
+    checkedAt: 2026-10-04
+    note: 代码仓库通过 MIT GitHub / Didit 分配；访问要求见题目页。
+  - id: ps1
+    title: "PS1: Specific Graphics"
+    url: https://web.mit.edu/6.102/www/sp26/psets/ps1/
+    source: https://web.mit.edu/6.102/www/sp26/
+    checkedAt: 2026-10-04
+    note: 代码仓库通过 MIT GitHub / Didit 分配；访问要求见题目页。
+  - id: ps2
+    title: "PS2: Multi-Startup Set"
+    url: https://web.mit.edu/6.102/www/sp26/psets/ps2/
+    source: https://web.mit.edu/6.102/www/sp26/
+    checkedAt: 2026-10-04
+    note: 代码仓库通过 MIT GitHub / Didit 分配；访问要求见题目页。
+  - id: ps3
+    title: "PS3: Memely"
+    url: https://web.mit.edu/6.102/www/sp26/psets/ps3/
+    source: https://web.mit.edu/6.102/www/sp26/
+    checkedAt: 2026-10-04
+    note: 代码仓库通过 MIT GitHub / Didit 分配；访问要求见题目页。
+  - id: ps4
+    title: "PS4: Memory Scramble"
+    url: https://web.mit.edu/6.102/www/sp26/psets/ps4/
+    source: https://web.mit.edu/6.102/www/sp26/
+    checkedAt: 2026-10-04
+    note: 代码仓库通过 MIT GitHub / Didit 分配；访问要求见题目页。
+  - id: starb
+    title: Project · Star Battle
+    url: https://web.mit.edu/6.102/www/sp26/project/starb/
+    source: https://web.mit.edu/6.102/www/sp26/
+    checkedAt: 2026-10-04
+  - id: repositories
+    title: MIT GitHub · 课程代码仓库
+    url: https://github.mit.edu/6102-sp26/
+    source: https://web.mit.edu/6.102/www/sp26/
+    checkedAt: 2026-10-04
+    note: 需要 MIT GitHub 访问权限。
 items:
   - id: reading-01
     order: 1

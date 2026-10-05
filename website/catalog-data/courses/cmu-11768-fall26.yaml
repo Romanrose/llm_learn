@@ -94,6 +94,17 @@ learningModules:
     description: 客座讲座与前沿专题
     from: 22
     to: 23
+practice:
+  - id: assignment-1
+    title: Assignment 1 · Build an Agent Harness
+    url: https://github.com/cmu-agents/assignment-1
+    source: https://www.cmu-agents.com/#assignments
+    checkedAt: 2026-10-04
+  - id: assignment-2
+    title: Assignment 2 · Evaluate an Agent
+    url: https://github.com/cmu-agents/assignment-2
+    source: https://www.cmu-agents.com/#assignments
+    checkedAt: 2026-10-04
 items:
   - id: lecture-01
     order: 1

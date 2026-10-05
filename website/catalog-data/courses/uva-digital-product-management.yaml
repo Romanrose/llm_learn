@@ -46,6 +46,13 @@ learningModules:
     description: 按官方子课程顺序学习
     from: 5
     to: 5
+practice:
+  - id: applied-project
+    title: Applied Learning Project · 产品实践
+    url: https://www.coursera.org/specializations/uva-darden-digital-product-management
+    source: https://www.coursera.org/specializations/uva-darden-digital-product-management
+    checkedAt: 2026-10-04
+    note: 项目与练习在 Coursera 课程内访问，平台权限以原站为准。
 items:
   - id: course-01
     order: 1

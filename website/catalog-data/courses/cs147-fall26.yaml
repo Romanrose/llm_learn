@@ -58,6 +58,22 @@ learningModules:
     description: 按实际材料版本学习；不等同于课堂逐字稿
     from: 11
     to: 13
+practice:
+  - id: assignments
+    title: Assignments Overview · 设计项目作业
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+    source: https://hci.stanford.edu/courses/cs147/2026/au/
+    checkedAt: 2026-10-04
+  - id: assignment-1
+    title: Assignment 1 · Needfinding
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment1_26.pdf
+    source: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+    checkedAt: 2026-10-04
+  - id: assignment-2
+    title: Assignment 2 · POVs and Experience Prototypes
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment2_26.pdf
+    source: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
+    checkedAt: 2026-10-04
 items:
   - id: assignment-01
     order: 1
