@@ -11,6 +11,15 @@ const configPath = join(root, 'workflow/config/course-updates.yaml')
 const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date())
 const norm = s => String(s ?? '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '')
 const unique = xs => [...new Map(xs.filter(x => x?.url).map(x => [x.url, x])).values()]
+export function semesterMatches(html, url, expected) {
+  const visible = html.replace(/<(script|style)\b[\s\S]*?<\/\1>/gi,'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ')
+  // A past-offering link later in the page must not satisfy the active banner.
+  const active = visible.slice(0,1600).match(/\b(Fall|Autumn|Spring|Winter|Summer)\s*[·•-]?\s*(20\d\d)\b/i)
+  if (active && !/^(?:fall|autumn)$/i.test(active[1])) return false
+  if (active && active[2] !== '2026') return false
+  const description = [...html.matchAll(/<meta\b[^>]*name=["']description["'][^>]*content=["']([^"']*)/gi)].map(m=>m[1]).join(' ')
+  return new RegExp(expected,'i').test(visible.slice(0,1600) + ' ' + description + ' ' + url)
+}
 const month = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec']
 export function dateKey(value, year = 2026) {
   if (/^\d{4}-\d{2}-\d{2}$/.test(value ?? '')) return value
@@ -58,6 +67,8 @@ async function text(url) {
       const response = await fetch(url, { headers: { 'user-agent': 'llm_learn-course-updater/1.0 (+https://github.com/Romanrose/llm_learn)' }, signal: AbortSignal.timeout(20000) })
       if (!response.ok) throw Error(`HTTP ${response.status}: ${url}`)
       if (new URL(response.url).hostname !== new URL(url).hostname) throw Error('Official source redirected to another host')
+      const documentPath = value => new URL(value).pathname.replace(/\/index\.html$/,'/').replace(/\/$/,'')
+      if (documentPath(response.url) !== documentPath(url)) throw Error('Official source redirected to another document or semester')
       const mime = response.headers.get('content-type') ?? ''
       if (!/text|javascript|json/.test(mime)) throw Error('Source is not an HTML/data document')
       const body = await response.text(); if (body.length > 4_000_000) throw Error('Unexpectedly large source document')
@@ -186,7 +197,7 @@ async function run() {
       const course = yaml(fs.readFileSync(path,'utf8'))
       const html = await text(config.url)
       const identity = config.identityUrl ? await text(config.identityUrl) : html + ' ' + config.url
-      if (!new RegExp(config.semester,'i').test(identity)) throw Error('Pinned semester no longer matches official page')
+      if (!semesterMatches(identity,config.identityUrl ?? config.url,config.semester)) throw Error('Pinned semester no longer matches official page')
       const page = await parseHtml(html,config.url)
       let parsed
       if (config.adapter === 'cmu-agents') {

@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { bundleSessions, literal, mergeOfficial, dateKey } from './update-courses.mjs'
+import { bundleSessions, literal, mergeOfficial, dateKey, semesterMatches } from './update-courses.mjs'
 
 const config = { adapter:'jhu',url:'https://example.edu/fall26/' }
 const original = () => ({ id:'sample',publishOutputs:true,paths:{root:'courses/robotics-hardware/sample'},schedule:{source:config.url},items:[1,2,3].map(n=>({id:`lecture-0${n}`,order:n,date:`2026-10-${String(n).padStart(2,'0')}`,title:`Session ${n}`,status:n===1?'published':'scheduled',resources:[],readings:[],outputs:n===1?[{id:'lecture-note',source:'reviewed.md'}]:[],generation:{state:n===1?'reviewed':'pending'}})),practice:[] })
@@ -39,6 +39,11 @@ test('official JS data is read without executing remote expressions',()=>{
 })
 test('dates normalize across official course formats',()=>{
  assert.equal(dateKey('Wed Sep 23, 2026'),'2026-09-23');assert.equal(dateKey('2026-10-15'),'2026-10-15');assert.equal(dateKey('TBA'),'')
+})
+test('a new semester cannot pass by containing an old-offering link',()=>{
+ assert.equal(semesterMatches('<h1>Spring 2027</h1><a>Fall 2026 archive</a>','https://example.edu/','Fall\\s*2026'),false)
+ assert.equal(semesterMatches('<h1>Fall 2026</h1>','https://example.edu/','Fall\\s*2026'),true)
+ assert.equal(semesterMatches('<h1>Fall 2027</h1>','https://example.edu/fa26/','fa26'),false)
 })
 test('a renamed lecture with an existing PDF adds PPT without duplicating the lecture',()=>{
  const c=original();c.items[0].readings=[{label:'Introduction & Overview',url:'https://example.edu/intro.pdf'}]
