@@ -10,11 +10,11 @@ publishOutputs: false
 unitLabel: 单元
 description: 从 Agent 使用与评估到工具、记忆和系统工程；接入 2026 秋季讲义、阅读与官方作业仓库。
 paths:
-  root: agent/harvard-cs2680-fall26
-  notes: agent/harvard-cs2680-fall26/notes
-  resources: agent/harvard-cs2680-fall26/resources
-  references: agent/harvard-cs2680-fall26/references
-  exports: agent/harvard-cs2680-fall26/exports
+  root: courses/models-agents/harvard-cs2680-fall26
+  notes: courses/models-agents/harvard-cs2680-fall26/notes
+  resources: courses/models-agents/harvard-cs2680-fall26/resources
+  references: courses/models-agents/harvard-cs2680-fall26/references
+  exports: courses/models-agents/harvard-cs2680-fall26/exports
 instructors:
   - Juncheng Yang
 official:

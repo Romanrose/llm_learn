@@ -8,12 +8,12 @@ year: 2026
 status: updating
 description: 从零构建语言模型，覆盖架构、GPU、并行训练、Scaling Laws、评估与数据。
 paths:
-  root: llm/cs336-2026
-  lectures: llm/cs336-2026/lectures
-  references: llm/cs336-2026/references
-  resources: llm/cs336-2026/resources
-  notes: llm/cs336-2026/notes
-  exports: llm/cs336-2026/exports
+  root: courses/models-agents/cs336-2026
+  lectures: courses/models-agents/cs336-2026/lectures
+  references: courses/models-agents/cs336-2026/references
+  resources: courses/models-agents/cs336-2026/resources
+  notes: courses/models-agents/cs336-2026/notes
+  exports: courses/models-agents/cs336-2026/exports
 transcript:
   engine: krillinai
   originLanguage: en
@@ -105,31 +105,31 @@ items:
         url: https://www.youtube.com/watch?v=JuoVZkPBiKk
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-01/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-01/sources.yaml
       preparedAt: 2026-08-11T13:05:15.903Z
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-01/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-01/review.yaml
       reviewedAt: 2026-08-15T13:30:03.709Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-01/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-01/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-01/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-01/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-01/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-01/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-01/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-01/transcript.en.md
         searchable: false
         reviewStatus: source
   - id: lecture-02
@@ -184,32 +184,32 @@ items:
         url: https://www.youtube.com/watch?v=kuYAsz7zspQ
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-02/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-02/sources.yaml
       preparedAt: 2026-08-11T13:40:39.258Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-02/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-02/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-02/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-02/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-02/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-02/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-02/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-02/transcript.en.md
         searchable: false
         reviewStatus: source
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-02/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-02/review.yaml
       reviewedAt: 2026-08-15T13:27:08.675Z
   - id: lecture-03
     order: 3
@@ -259,32 +259,32 @@ items:
         url: https://www.youtube.com/watch?v=lVynu4bo1rY
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-03/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-03/sources.yaml
       preparedAt: 2026-08-11T13:45:07.823Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-03/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-03/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-03/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-03/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-03/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-03/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-03/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-03/transcript.en.md
         searchable: false
         reviewStatus: source
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-03/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-03/review.yaml
       reviewedAt: 2026-08-15T13:27:08.860Z
   - id: lecture-04
     order: 4
@@ -331,30 +331,30 @@ items:
     status: published
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-04/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-04/review.yaml
       reviewedAt: 2026-08-15T13:34:14.843Z
     review:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-04/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-04/review.yaml
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-04/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-04/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-04/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-04/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-04/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-04/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-04/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-04/transcript.en.md
         searchable: false
         reviewStatus: source
     exports:
@@ -367,7 +367,7 @@ items:
         url: https://www.youtube.com/watch?v=cKSwj_qZ8Jg
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-04/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-04/sources.yaml
       preparedAt: 2026-08-15T07:16:02.473Z
   - id: lecture-05
     order: 5
@@ -415,22 +415,22 @@ items:
     outputs:
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-05/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-05/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-05/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-05/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-05/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-05/note.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-05/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-05/transcript.en.md
         searchable: false
         reviewStatus: source
     official:
@@ -438,11 +438,11 @@ items:
         url: https://www.youtube.com/watch?v=izZba4UA7iY
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-05/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-05/sources.yaml
       preparedAt: 2026-08-11T13:20:26.702Z
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-05/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-05/review.yaml
       reviewedAt: 2026-08-15T13:27:09.113Z
   - id: lecture-06
     order: 6
@@ -497,32 +497,32 @@ items:
         url: https://www.youtube.com/watch?v=xnDHaNUvHBg
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-06/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-06/sources.yaml
       preparedAt: 2026-08-15T05:22:22.405Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-06/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-06/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-06/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-06/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-06/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-06/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-06/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-06/transcript.en.md
         searchable: false
         reviewStatus: source
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-06/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-06/review.yaml
       reviewedAt: 2026-08-15T13:27:09.324Z
   - id: lecture-07
     order: 7
@@ -572,32 +572,32 @@ items:
         url: https://www.youtube.com/watch?v=SzpOcwdIL0Y
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-07/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-07/sources.yaml
       preparedAt: 2026-08-15T05:48:22.350Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-07/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-07/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-07/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-07/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-07/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-07/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-07/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-07/transcript.en.md
         searchable: false
         reviewStatus: source
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-07/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-07/review.yaml
       reviewedAt: 2026-08-15T13:27:09.505Z
   - id: lecture-08
     order: 8
@@ -647,32 +647,32 @@ items:
         url: https://www.youtube.com/watch?v=6-cXp-aOmdg
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-08/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-08/sources.yaml
       preparedAt: 2026-08-15T05:48:29.990Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-08/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-08/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-08/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-08/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-08/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-08/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-08/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-08/transcript.en.md
         searchable: false
         reviewStatus: source
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-08/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-08/review.yaml
       reviewedAt: 2026-08-15T13:27:09.667Z
   - id: lecture-09
     order: 9
@@ -722,32 +722,32 @@ items:
         url: https://www.youtube.com/watch?v=Q15rhEWZPQ4
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-09/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-09/sources.yaml
       preparedAt: 2026-08-15T05:48:41.224Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-09/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-09/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-09/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-09/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-09/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-09/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-09/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-09/transcript.en.md
         searchable: false
         reviewStatus: source
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-09/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-09/review.yaml
       reviewedAt: 2026-08-15T13:27:09.873Z
   - id: lecture-10
     order: 10
@@ -802,32 +802,32 @@ items:
         url: https://www.youtube.com/watch?v=EfM546A79aM
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-10/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-10/sources.yaml
       preparedAt: 2026-08-15T05:48:51.329Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-10/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-10/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-10/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-10/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-10/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-10/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-10/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-10/transcript.en.md
         searchable: false
         reviewStatus: source
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-10/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-10/review.yaml
       reviewedAt: 2026-08-15T13:27:10.112Z
   - id: lecture-11
     order: 11
@@ -877,32 +877,32 @@ items:
         url: https://www.youtube.com/watch?v=vTfEyOyzV9E
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-11/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-11/sources.yaml
       preparedAt: 2026-08-15T05:49:03.360Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-11/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-11/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-11/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-11/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-11/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-11/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-11/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-11/transcript.en.md
         searchable: false
         reviewStatus: source
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-11/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-11/review.yaml
       reviewedAt: 2026-08-15T13:27:10.299Z
   - id: lecture-12
     order: 12
@@ -962,31 +962,31 @@ items:
     outputs:
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-12/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-12/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-12/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-12/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-12/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-12/transcript.en.md
         searchable: false
         reviewStatus: source
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-12/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-12/note.md
         searchable: true
         reviewStatus: reviewed
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-12/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-12/sources.yaml
       preparedAt: 2026-08-15T05:49:14.441Z
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-12/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-12/review.yaml
       reviewedAt: 2026-08-15T13:37:30.375Z
   - id: lecture-13
     order: 13
@@ -1040,32 +1040,32 @@ items:
         url: https://www.youtube.com/watch?v=-qm0ln33G24
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-13/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-13/sources.yaml
       preparedAt: 2026-08-15T05:49:21.564Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-13/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-13/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-13/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-13/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-13/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-13/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-13/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-13/transcript.en.md
         searchable: false
         reviewStatus: source
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-13/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-13/review.yaml
       reviewedAt: 2026-08-15T13:27:10.463Z
   - id: lecture-14
     order: 14
@@ -1119,32 +1119,32 @@ items:
         url: https://www.youtube.com/watch?v=5sxHosTLPF8
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-14/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-14/sources.yaml
       preparedAt: 2026-08-15T05:49:30.397Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-14/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-14/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-14/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-14/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-14/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-14/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-14/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-14/transcript.en.md
         searchable: false
         reviewStatus: source
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-14/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-14/review.yaml
       reviewedAt: 2026-08-15T13:27:10.646Z
   - id: lecture-15
     order: 15
@@ -1198,32 +1198,32 @@ items:
         url: https://www.youtube.com/watch?v=2oH6PWPrYFo
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-15/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-15/sources.yaml
       preparedAt: 2026-08-15T05:49:39.135Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-15/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-15/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-15/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-15/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-15/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-15/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-15/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-15/transcript.en.md
         searchable: false
         reviewStatus: source
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-15/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-15/review.yaml
       reviewedAt: 2026-08-15T13:27:10.813Z
   - id: lecture-16
     order: 16
@@ -1282,32 +1282,32 @@ items:
         url: https://www.youtube.com/watch?v=dIFAi87Ws4E
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-16/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-16/sources.yaml
       preparedAt: 2026-08-15T05:49:46.268Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-16/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-16/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-16/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-16/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-16/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-16/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-16/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-16/transcript.en.md
         searchable: false
         reviewStatus: source
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-16/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-16/review.yaml
       reviewedAt: 2026-08-15T13:27:11.003Z
   - id: lecture-17
     order: 17
@@ -1361,32 +1361,32 @@ items:
         url: https://www.youtube.com/watch?v=26FtD08ZpOU
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-17/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-17/sources.yaml
       preparedAt: 2026-08-15T05:49:52.593Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-17/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-17/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-17/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-17/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-17/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-17/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-17/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-17/transcript.en.md
         searchable: false
         reviewStatus: source
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-17/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-17/review.yaml
       reviewedAt: 2026-08-15T13:27:11.241Z
   - id: lecture-18
     order: 18
@@ -1401,7 +1401,7 @@ items:
       note: 核对官方课程页与官方播放列表（18 个公开视频），未找到 Daniel Selsam 嘉宾课的公开录像或讲义；不以 Dan Fu 的录像替代。
     generation:
       state: source-unavailable
-      manifest: llm/cs336-2026/notes/lecture-18/generation.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-18/generation.yaml
   - id: lecture-19
     order: 19
     date: Wed June 3
@@ -1417,31 +1417,31 @@ items:
         url: https://www.youtube.com/watch?v=9EEm4iMAF5s
     preparation:
       state: subtitle-ready
-      manifest: llm/cs336-2026/notes/lecture-19/sources.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-19/sources.yaml
       preparedAt: 2026-10-03T08:55:41.286Z
     generation:
       state: reviewed
-      manifest: llm/cs336-2026/notes/lecture-19/review.yaml
+      manifest: courses/models-agents/cs336-2026/notes/lecture-19/review.yaml
       reviewedAt: 2026-10-03T10:08:51.503Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: llm/cs336-2026/notes/lecture-19/note.md
+        source: courses/models-agents/cs336-2026/notes/lecture-19/note.md
         searchable: true
         reviewStatus: reviewed
       - id: blog
         label: Blog 解读
-        source: llm/cs336-2026/notes/lecture-19/blog.md
+        source: courses/models-agents/cs336-2026/notes/lecture-19/blog.md
         searchable: true
         reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
-        source: llm/cs336-2026/notes/lecture-19/transcript.zh-CN.md
+        source: courses/models-agents/cs336-2026/notes/lecture-19/transcript.zh-CN.md
         searchable: false
         reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
-        source: llm/cs336-2026/notes/lecture-19/transcript.en.md
+        source: courses/models-agents/cs336-2026/notes/lecture-19/transcript.en.md
         searchable: false
         reviewStatus: source
 schedule:

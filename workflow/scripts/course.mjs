@@ -311,14 +311,16 @@ async function prepare(courseId, lectureId, args) {
   console.log(`来源清单：${relativeToRepo(manifestPath)}`)
 }
 
-function coursePath(course, key, fallback) {
-  const path = resolve(repoRoot, course.paths?.[key] ?? fallback)
+function coursePath(course, key) {
+  const configured = course.paths?.[key] ?? (course.paths?.root ? join(course.paths.root, key) : null)
+  if (!configured) throw new Error(`请在课程元数据中配置 paths.root 或 paths.${key}`)
+  const path = resolve(repoRoot, configured)
   if (!path.startsWith(`${repoRoot}/`)) throw new Error(`paths.${key} 必须位于仓库内部`)
   return path
 }
 
 function lectureNotesDirectory(course, item) {
-  const notesRoot = coursePath(course, 'notes', `llm/${course.id}/notes`)
+  const notesRoot = coursePath(course, 'notes')
   return join(notesRoot, item.id)
 }
 
@@ -853,7 +855,7 @@ async function generate(courseId, lectureId, args) {
   if (!existsSync(transcriptEnPath)) throw new Error(`缺少英文逐字稿：${relativeToRepo(transcriptEnPath)}`)
 
   const lectureNumber = String(item.order).padStart(2, '0')
-  const lectureSourcePath = join(coursePath(course, 'lectures', `llm/${course.id}/lectures`), `lecture_${lectureNumber}.py`)
+  const lectureSourcePath = join(coursePath(course, 'lectures'), `lecture_${lectureNumber}.py`)
   const candidateDirectory = join(lectureDirectory, 'references', 'codex-cli')
   const transcriptZhPath = join(candidateDirectory, 'transcript.zh-CN.md')
   const notePath = join(candidateDirectory, 'note.md')
@@ -1281,7 +1283,7 @@ async function ingest(courseId, flags) {
   const approved = review.resources.filter((resource) => resource.status === 'approved')
   if (!approved.length) throw new Error(`没有已批准资源，请先运行：course approve ${courseId} <resource-id...>`)
 
-  const storage = coursePath(course, 'resources', `llm/${courseId}/resources`)
+  const storage = coursePath(course, 'resources')
   mkdirSync(storage, { recursive: true })
   const shouldDownload = flags.includes('--download')
   const entries = []

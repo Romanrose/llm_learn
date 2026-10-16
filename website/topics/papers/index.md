@@ -9,7 +9,7 @@ description: 经典论文复现、机制解释与前沿文章
 
 ## 30 Papers
 
-`papers/30-paper-zhCN/` 包含经典论文的中文教学 Notebook，覆盖 RNN、CNN、Transformer、VAE、Scaling Law 与 RAG 等主题。
+`references/papers/30-paper-zhCN/` 包含经典论文的中文教学 Notebook，覆盖 RNN、CNN、Transformer、VAE、Scaling Law 与 RAG 等主题。
 
 每篇论文后续统一提供：问题背景、核心公式、最小实现、实验观察和关联课程。
 

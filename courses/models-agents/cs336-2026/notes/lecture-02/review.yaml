@@ -1,0 +1,14 @@
+schemaVersion: 1
+state: reviewed
+course: cs336-2026
+lecture: lecture-02
+provider: deepseek
+reviewedAt: 2026-08-15T13:27:08.672Z
+source: courses/models-agents/cs336-2026/notes/lecture-02/references/deepseek
+outputs:
+  chinese: courses/models-agents/cs336-2026/notes/lecture-02/transcript.zh-CN.md
+  note: courses/models-agents/cs336-2026/notes/lecture-02/note.md
+  blog: courses/models-agents/cs336-2026/notes/lecture-02/blog.md
+checks:
+  errors: []
+  warnings: []

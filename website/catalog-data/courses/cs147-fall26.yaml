@@ -10,11 +10,11 @@ status: published
 publishOutputs: true
 description: 从需求访谈、问题定义到原型与可用性评估。按 Autumn 2026 官方作业总览接入十个项目练习入口；这是作业导航，完整讲座目录与公开视频待核实。
 paths:
-  root: interest/design/cs147-fall26
-  resources: interest/design/cs147-fall26/resources
-  notes: interest/design/cs147-fall26/notes
-  references: interest/design/cs147-fall26/references
-  exports: interest/design/cs147-fall26/exports
+  root: courses/software-product/cs147-fall26
+  resources: courses/software-product/cs147-fall26/resources
+  notes: courses/software-product/cs147-fall26/notes
+  references: courses/software-product/cs147-fall26/references
+  exports: courses/software-product/cs147-fall26/exports
 official:
   - label: 课程主页
     url: https://hci.stanford.edu/courses/cs147/2026/au/
@@ -105,17 +105,17 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/design/cs147-fall26/notes/assignment-01/note.md
+        source: courses/software-product/cs147-fall26/notes/assignment-01/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/design/cs147-fall26/notes/assignment-01/blog.md
+        source: courses/software-product/cs147-fall26/notes/assignment-01/blog.md
         searchable: true
     unitLabel: 作业
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/design/cs147-fall26/notes/assignment-01/references/codex/run.yaml
+      manifest: courses/software-product/cs147-fall26/notes/assignment-01/references/codex/run.yaml
       evidenceMode: assignment-reading-only
   - id: assignment-02
     order: 2
@@ -142,11 +142,11 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/design/cs147-fall26/notes/assignment-02/note.md
+        source: courses/software-product/cs147-fall26/notes/assignment-02/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/design/cs147-fall26/notes/assignment-02/blog.md
+        source: courses/software-product/cs147-fall26/notes/assignment-02/blog.md
         searchable: true
     transcriptReferences:
       - label: "CS 147 2022: Experience Prototyping · 英文字幕"
@@ -159,7 +159,7 @@ items:
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/design/cs147-fall26/notes/assignment-02/references/codex/run.yaml
+      manifest: courses/software-product/cs147-fall26/notes/assignment-02/references/codex/run.yaml
       evidenceMode: assignment-reading-only
   - id: assignment-03
     order: 3
@@ -179,17 +179,17 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/design/cs147-fall26/notes/assignment-03/note.md
+        source: courses/software-product/cs147-fall26/notes/assignment-03/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/design/cs147-fall26/notes/assignment-03/blog.md
+        source: courses/software-product/cs147-fall26/notes/assignment-03/blog.md
         searchable: true
     unitLabel: 作业
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/design/cs147-fall26/notes/assignment-03/references/codex/run.yaml
+      manifest: courses/software-product/cs147-fall26/notes/assignment-03/references/codex/run.yaml
       evidenceMode: assignment-reading-only
   - id: assignment-04
     order: 4
@@ -209,11 +209,11 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/design/cs147-fall26/notes/assignment-04/note.md
+        source: courses/software-product/cs147-fall26/notes/assignment-04/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/design/cs147-fall26/notes/assignment-04/blog.md
+        source: courses/software-product/cs147-fall26/notes/assignment-04/blog.md
         searchable: true
     transcriptReferences:
       - label: "CS 147 2022: Experience Prototyping · 英文字幕"
@@ -226,7 +226,7 @@ items:
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/design/cs147-fall26/notes/assignment-04/references/codex/run.yaml
+      manifest: courses/software-product/cs147-fall26/notes/assignment-04/references/codex/run.yaml
       evidenceMode: assignment-reading-only
   - id: assignment-05
     order: 5
@@ -246,17 +246,17 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/design/cs147-fall26/notes/assignment-05/note.md
+        source: courses/software-product/cs147-fall26/notes/assignment-05/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/design/cs147-fall26/notes/assignment-05/blog.md
+        source: courses/software-product/cs147-fall26/notes/assignment-05/blog.md
         searchable: true
     unitLabel: 作业
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/design/cs147-fall26/notes/assignment-05/references/codex/run.yaml
+      manifest: courses/software-product/cs147-fall26/notes/assignment-05/references/codex/run.yaml
       evidenceMode: assignment-reading-only
   - id: assignment-06
     order: 6
@@ -276,11 +276,11 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/design/cs147-fall26/notes/assignment-06/note.md
+        source: courses/software-product/cs147-fall26/notes/assignment-06/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/design/cs147-fall26/notes/assignment-06/blog.md
+        source: courses/software-product/cs147-fall26/notes/assignment-06/blog.md
         searchable: true
     transcriptReferences:
       - label: Lecture 3.1 Visual Design · 英文字幕
@@ -305,7 +305,7 @@ items:
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/design/cs147-fall26/notes/assignment-06/references/codex/run.yaml
+      manifest: courses/software-product/cs147-fall26/notes/assignment-06/references/codex/run.yaml
       evidenceMode: assignment-reading-only
   - id: assignment-07
     order: 7
@@ -330,17 +330,17 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/design/cs147-fall26/notes/assignment-07/note.md
+        source: courses/software-product/cs147-fall26/notes/assignment-07/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/design/cs147-fall26/notes/assignment-07/blog.md
+        source: courses/software-product/cs147-fall26/notes/assignment-07/blog.md
         searchable: true
     unitLabel: 作业
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/design/cs147-fall26/notes/assignment-07/references/codex/run.yaml
+      manifest: courses/software-product/cs147-fall26/notes/assignment-07/references/codex/run.yaml
       evidenceMode: assignment-reading-only
   - id: assignment-08
     order: 8
@@ -360,11 +360,11 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/design/cs147-fall26/notes/assignment-08/note.md
+        source: courses/software-product/cs147-fall26/notes/assignment-08/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/design/cs147-fall26/notes/assignment-08/blog.md
+        source: courses/software-product/cs147-fall26/notes/assignment-08/blog.md
         searchable: true
     transcriptReferences:
       - label: Meet The Normals - Adventures in Universal Design · 英文字幕
@@ -377,7 +377,7 @@ items:
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/design/cs147-fall26/notes/assignment-08/references/codex/run.yaml
+      manifest: courses/software-product/cs147-fall26/notes/assignment-08/references/codex/run.yaml
       evidenceMode: assignment-reading-only
   - id: assignment-09
     order: 9
@@ -397,17 +397,17 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/design/cs147-fall26/notes/assignment-09/note.md
+        source: courses/software-product/cs147-fall26/notes/assignment-09/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/design/cs147-fall26/notes/assignment-09/blog.md
+        source: courses/software-product/cs147-fall26/notes/assignment-09/blog.md
         searchable: true
     unitLabel: 作业
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/design/cs147-fall26/notes/assignment-09/references/codex/run.yaml
+      manifest: courses/software-product/cs147-fall26/notes/assignment-09/references/codex/run.yaml
       evidenceMode: assignment-reading-only
   - id: assignment-10
     order: 10
@@ -427,17 +427,17 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/design/cs147-fall26/notes/assignment-10/note.md
+        source: courses/software-product/cs147-fall26/notes/assignment-10/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/design/cs147-fall26/notes/assignment-10/blog.md
+        source: courses/software-product/cs147-fall26/notes/assignment-10/blog.md
         searchable: true
     unitLabel: 作业
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/design/cs147-fall26/notes/assignment-10/references/codex/run.yaml
+      manifest: courses/software-product/cs147-fall26/notes/assignment-10/references/codex/run.yaml
       evidenceMode: assignment-reading-only
   - id: lecture-01
     order: 11
@@ -457,16 +457,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/design/cs147-fall26/notes/lecture-01/note.md
+        source: courses/software-product/cs147-fall26/notes/lecture-01/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/design/cs147-fall26/notes/lecture-01/blog.md
+        source: courses/software-product/cs147-fall26/notes/lecture-01/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/design/cs147-fall26/references/lectures/lecture-01/codex/run.yaml
+      manifest: courses/software-product/cs147-fall26/references/lectures/lecture-01/codex/run.yaml
       evidenceMode: slides-only
     displayOrder: 1
   - id: lecture-02
@@ -489,20 +489,20 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/design/cs147-fall26/notes/lecture-02/note.md
+        source: courses/software-product/cs147-fall26/notes/lecture-02/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/design/cs147-fall26/notes/lecture-02/blog.md
+        source: courses/software-product/cs147-fall26/notes/lecture-02/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/design/cs147-fall26/references/lectures/lecture-02/codex/run.yaml
+      manifest: courses/software-product/cs147-fall26/references/lectures/lecture-02/codex/run.yaml
       evidenceMode: slides-only
     displayOrder: 2
     reviewCandidates:
-      - manifest: interest/design/cs147-fall26/references/lectures/lecture-02/codex/transcript-run.yaml
+      - manifest: courses/software-product/cs147-fall26/references/lectures/lecture-02/codex/transcript-run.yaml
         note: 新ASR逐字稿；待审核，不继承已批准Note/Blog状态
   - id: lecture-03
     order: 13
@@ -522,15 +522,15 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/design/cs147-fall26/notes/lecture-03/note.md
+        source: courses/software-product/cs147-fall26/notes/lecture-03/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/design/cs147-fall26/notes/lecture-03/blog.md
+        source: courses/software-product/cs147-fall26/notes/lecture-03/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/design/cs147-fall26/references/lectures/lecture-03/codex/run.yaml
+      manifest: courses/software-product/cs147-fall26/references/lectures/lecture-03/codex/run.yaml
       evidenceMode: slides-only
     displayOrder: 3

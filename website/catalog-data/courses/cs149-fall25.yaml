@@ -10,12 +10,12 @@ publishOutputs: false
 description: 从多核、SIMD 与 GPU 编程出发，系统掌握并行程序的性能、硬件与同步设计。
 referenceRoute: /references/cs149-fall25
 paths:
-  root: infra/cs149-fall25
-  lectures: infra/cs149-fall25/lectures
-  references: infra/cs149-fall25/references
-  resources: infra/cs149-fall25/resources
-  notes: infra/cs149-fall25/notes
-  exports: infra/cs149-fall25/exports
+  root: courses/foundations/cs149-fall25
+  lectures: courses/foundations/cs149-fall25/lectures
+  references: courses/foundations/cs149-fall25/references
+  resources: courses/foundations/cs149-fall25/resources
+  notes: courses/foundations/cs149-fall25/notes
+  exports: courses/foundations/cs149-fall25/exports
 transcript:
   engine: manual
   originLanguage: en
@@ -171,31 +171,31 @@ items:
     status: resources-approved
     preparation:
       state: subtitle-ready
-      manifest: infra/cs149-fall25/notes/lecture-07/sources.yaml
+      manifest: courses/foundations/cs149-fall25/notes/lecture-07/sources.yaml
       preparedAt: 2026-08-18T08:17:46.739Z
     generation:
       state: draft-ready
-      manifest: infra/cs149-fall25/notes/lecture-07/generation.yaml
+      manifest: courses/foundations/cs149-fall25/notes/lecture-07/generation.yaml
       completedAt: 2026-08-18T08:34:30.834Z
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: infra/cs149-fall25/notes/lecture-07/note.md
+        source: courses/foundations/cs149-fall25/notes/lecture-07/note.md
         searchable: true
         reviewStatus: draft
       - id: blog
         label: Blog 解读
-        source: infra/cs149-fall25/notes/lecture-07/blog.md
+        source: courses/foundations/cs149-fall25/notes/lecture-07/blog.md
         searchable: true
         reviewStatus: draft
       - id: transcript-zh
         label: 中文逐字稿
-        source: infra/cs149-fall25/notes/lecture-07/transcript.zh-CN.md
+        source: courses/foundations/cs149-fall25/notes/lecture-07/transcript.zh-CN.md
         searchable: false
         reviewStatus: draft
       - id: transcript-en
         label: 英文逐字稿
-        source: infra/cs149-fall25/notes/lecture-07/transcript.en.md
+        source: courses/foundations/cs149-fall25/notes/lecture-07/transcript.en.md
         searchable: false
         reviewStatus: source
   - id: lecture-08

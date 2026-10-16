@@ -10,11 +10,11 @@ publishOutputs: false
 unitLabel: 单元
 description: AI 产品的用户体验与原型设计。已接入 Spring 2026 官方课程介绍；逐周讲义、录像与作业未公开。
 paths:
-  root: interest/design/berkeley-ux-ai-sp26
-  notes: interest/design/berkeley-ux-ai-sp26/notes
-  resources: interest/design/berkeley-ux-ai-sp26/resources
-  references: interest/design/berkeley-ux-ai-sp26/references
-  exports: interest/design/berkeley-ux-ai-sp26/exports
+  root: courses/software-product/berkeley-ux-ai-sp26
+  notes: courses/software-product/berkeley-ux-ai-sp26/notes
+  resources: courses/software-product/berkeley-ux-ai-sp26/resources
+  references: courses/software-product/berkeley-ux-ai-sp26/references
+  exports: courses/software-product/berkeley-ux-ai-sp26/exports
 instructors:
   - Stefanie Hutka
 official:

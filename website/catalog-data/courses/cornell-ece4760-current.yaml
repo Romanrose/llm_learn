@@ -9,11 +9,11 @@ publishOutputs: false
 unitLabel: 单元
 description: Pico 2 / RP2350 上的嵌入式系统、通信、信号处理和控制，是小型 AI 硬件的基础；接入三个 Lab 与开放项目。
 paths:
-  root: infra/cornell-ece4760-current
-  notes: infra/cornell-ece4760-current/notes
-  resources: infra/cornell-ece4760-current/resources
-  references: infra/cornell-ece4760-current/references
-  exports: infra/cornell-ece4760-current/exports
+  root: courses/robotics-hardware/cornell-ece4760-current
+  notes: courses/robotics-hardware/cornell-ece4760-current/notes
+  resources: courses/robotics-hardware/cornell-ece4760-current/resources
+  references: courses/robotics-hardware/cornell-ece4760-current/references
+  exports: courses/robotics-hardware/cornell-ece4760-current/exports
 instructors:
   - V. Hunter Adams
 official:

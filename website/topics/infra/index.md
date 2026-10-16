@@ -9,7 +9,7 @@ description: GPU、网络、远程开发与生产系统
 
 ## Network & Remote Development
 
-现有内容包括浏览器请求与渲染流程、SSH、多服务器配置和远程开发环境，原始笔记位于 `infra/network/`。
+现有内容包括浏览器请求与渲染流程、SSH、多服务器配置和远程开发环境，原始笔记位于 `references/engineering/network/`。
 
 ## GPU Systems
 

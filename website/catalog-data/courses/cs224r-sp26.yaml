@@ -10,11 +10,11 @@ publishOutputs: false
 unitLabel: 单元
 description: 深度强化学习、模仿学习与语言模型强化学习；接入 2026 讲义、三份作业起始代码与项目说明。
 paths:
-  root: llm/cs224r-sp26
-  notes: llm/cs224r-sp26/notes
-  resources: llm/cs224r-sp26/resources
-  references: llm/cs224r-sp26/references
-  exports: llm/cs224r-sp26/exports
+  root: courses/models-agents/cs224r-sp26
+  notes: courses/models-agents/cs224r-sp26/notes
+  resources: courses/models-agents/cs224r-sp26/resources
+  references: courses/models-agents/cs224r-sp26/references
+  exports: courses/models-agents/cs224r-sp26/exports
 instructors: []
 official:
   - label: 官方课程与资料

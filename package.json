@@ -17,7 +17,8 @@
     "dev": "npm run site:generate && vitepress dev website",
     "review:dev": "node workflow/scripts/review-preview.mjs",
     "build": "npm run site:generate && vitepress build website",
-    "preview": "vitepress preview website"
+    "preview": "vitepress preview website",
+    "validate:structure": "node workflow/scripts/validate-structure.mjs"
   },
   "devDependencies": {
     "markdown-it-mathjax3": "4.3.2",

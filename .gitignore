@@ -48,7 +48,7 @@ website/.vitepress/cache/
 website/.vitepress/dist/
 website/public/generated/
 
-# Nested VitePress projects (for example under agent/)
+# Nested VitePress projects in supplementary materials
 **/.vitepress/cache/
 **/.vitepress/dist/
 
@@ -56,18 +56,22 @@ website/public/generated/
 .history/
 
 # CS336 generated/run files
-llm/cs336-2026/lectures/.venv/
-llm/cs336-2026/lectures/var/
+courses/models-agents/cs336-2026/lectures/.venv/
+courses/models-agents/cs336-2026/lectures/var/
 
 # Local video tooling and archived course materials
 workflow/video/
 workflow/.runtime/
 var/krillinai/
-llm/cs336-2026/lectures-2025-backup/
-llm/*/exports/
+courses/models-agents/cs336-2026/lectures-2025-backup/
+courses/**/exports/
 
 # Obsidian local settings, workspace state, plugins and themes
 .obsidian/
 
 # Unnamed Obsidian Base scratch files
 未命名*.base
+
+# Local content-generation caches
+var/asr/
+/notes/

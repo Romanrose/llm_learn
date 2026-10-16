@@ -11,11 +11,11 @@ publishOutputs: true
 description: 以 TypeScript 学习规格、测试、抽象、代码审查与并发。接入 Spring 2026
   官方十九篇核心阅读与作业入口；官方明确概念由交互阅读提供，主动学习课堂不录像。
 paths:
-  root: interest/software-engineering/mit-6102-sp26
-  resources: interest/software-engineering/mit-6102-sp26/resources
-  notes: interest/software-engineering/mit-6102-sp26/notes
-  references: interest/software-engineering/mit-6102-sp26/references
-  exports: interest/software-engineering/mit-6102-sp26/exports
+  root: courses/software-product/mit-6102-sp26
+  resources: courses/software-product/mit-6102-sp26/resources
+  notes: courses/software-product/mit-6102-sp26/notes
+  references: courses/software-product/mit-6102-sp26/references
+  exports: courses/software-product/mit-6102-sp26/exports
 official:
   - label: 官方课堂与录像政策
     url: https://web.mit.edu/6.102/www/sp26/general/#are_lectures_recorded
@@ -115,16 +115,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-01/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-01/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-01/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-01/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-01/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-01/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-02
     order: 2
@@ -145,16 +145,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-02/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-02/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-02/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-02/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-02/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-02/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-03
     order: 3
@@ -180,16 +180,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-03/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-03/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-03/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-03/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-03/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-03/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-04
     order: 4
@@ -210,16 +210,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-04/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-04/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-04/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-04/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-04/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-04/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-05
     order: 5
@@ -240,16 +240,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-05/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-05/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-05/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-05/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-05/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-05/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-06
     order: 6
@@ -270,16 +270,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-06/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-06/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-06/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-06/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-06/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-06/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-07
     order: 7
@@ -300,16 +300,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-07/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-07/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-07/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-07/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-07/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-07/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-08
     order: 8
@@ -330,16 +330,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-08/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-08/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-08/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-08/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-08/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-08/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-09
     order: 9
@@ -360,16 +360,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-09/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-09/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-09/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-09/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-09/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-09/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-10
     order: 10
@@ -390,16 +390,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-10/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-10/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-10/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-10/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-10/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-10/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-11
     order: 11
@@ -420,16 +420,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-11/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-11/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-11/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-11/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-11/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-11/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-12
     order: 12
@@ -450,16 +450,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-12/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-12/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-12/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-12/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-12/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-12/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-13
     order: 13
@@ -480,16 +480,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-13/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-13/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-13/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-13/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-13/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-13/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-14
     order: 14
@@ -510,16 +510,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-14/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-14/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-14/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-14/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-14/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-14/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-15
     order: 15
@@ -540,16 +540,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-15/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-15/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-15/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-15/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-15/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-15/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-16
     order: 16
@@ -570,16 +570,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-16/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-16/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-16/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-16/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-16/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-16/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-17
     order: 17
@@ -600,16 +600,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-17/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-17/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-17/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-17/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-17/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-17/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-18
     order: 18
@@ -630,16 +630,16 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-18/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-18/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-18/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-18/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-18/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-18/references/codex/run.yaml
       evidenceMode: reading-only
   - id: reading-19
     order: 19
@@ -660,14 +660,14 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-19/note.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-19/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/software-engineering/mit-6102-sp26/notes/reading-19/blog.md
+        source: courses/software-product/mit-6102-sp26/notes/reading-19/blog.md
         searchable: true
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/software-engineering/mit-6102-sp26/notes/reading-19/references/codex/run.yaml
+      manifest: courses/software-product/mit-6102-sp26/notes/reading-19/references/codex/run.yaml
       evidenceMode: reading-only

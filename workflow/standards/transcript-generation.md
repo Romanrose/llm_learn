@@ -29,7 +29,7 @@
 每个 Lecture 使用 catalog 中的完整 ID：
 
 ```text
-<category>/<course-id>/notes/<lecture-id>/
+courses/<group>/<course-id>/notes/<lecture-id>/
 ├── sources.yaml
 ├── generation.yaml
 ├── review.yaml                 # 完成人工审核时创建
@@ -214,7 +214,7 @@ caption:
   state: extracted
   kind: manual | auto | asr
   language: en-US
-  transcript: llm/cs336-2026/notes/lecture-04/transcript.en.md
+  transcript: courses/models-agents/cs336-2026/notes/lecture-04/transcript.en.md
   processor: video-subtitle-transcript | qwen3-asr | faster-whisper
 ```
 
@@ -297,7 +297,7 @@ source-discovered
 7. 完成后报告字幕来源、生成文件、待核术语、时间戳异常、重复检测和人工抽查结果。
 
 视频：<url>
-目标目录：<category>/<course-id>/notes/<lecture-id>/
+目标目录：courses/<group>/<course-id>/notes/<lecture-id>/
 ```
 
 ## 10. 完成定义

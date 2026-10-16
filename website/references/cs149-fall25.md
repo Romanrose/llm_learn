@@ -37,7 +37,7 @@ CS149 的价值在于它把“并行代码能跑”提升为“理解为什么�
 | 4 · Trainium2 Conv + MaxPool | [stanford-cs149/asst4-trainium2](https://github.com/stanford-cs149/asst4-trainium2) |
 | 5 · CUDA Kernels 优化 | [stanford-cs149/asst5-kernels](https://github.com/stanford-cs149/asst5-kernels) |
 
-完整的可编辑学习计划与实验记录模板保存在仓库的 `infra/cs149-fall25/references/study-plan.md`；本课程的逐讲公开资料可从[课程目录](/generated/courses/cs149-fall25/)进入。
+完整的可编辑学习计划与实验记录模板保存在仓库的 `courses/foundations/cs149-fall25/references/study-plan.md`；本课程的逐讲公开资料可从[课程目录](/generated/courses/cs149-fall25/)进入。
 
 ## 资料边界
 

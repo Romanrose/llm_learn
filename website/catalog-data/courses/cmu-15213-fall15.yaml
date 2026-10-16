@@ -9,11 +9,11 @@ status: updating
 publishOutputs: false
 description: 官方历史录像：27 节 Lecture、13 节 Recitation。本机音频转写、中英逐字稿、Lecture Note 与 Blog，审核前不发布。
 paths:
-  root: infra/cmu-15213-fall15
-  notes: infra/cmu-15213-fall15/notes
-  references: infra/cmu-15213-fall15/references
-  resources: infra/cmu-15213-fall15/resources
-  exports: infra/cmu-15213-fall15/exports
+  root: courses/foundations/cmu-15213-fall15
+  notes: courses/foundations/cmu-15213-fall15/notes
+  references: courses/foundations/cmu-15213-fall15/references
+  resources: courses/foundations/cmu-15213-fall15/resources
+  exports: courses/foundations/cmu-15213-fall15/exports
 official:
   - label: 2015 官方课程日程
     url: https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15213-f15/www/schedule.html
@@ -68,10 +68,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-01/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-01/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-01/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-01/generation.yaml
   - id: lecture-02
     order: 2
     title: "Lecture 02: Bits, Bytes, and Integers"
@@ -105,10 +105,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-02/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-02/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-02/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-02/generation.yaml
   - id: lecture-03
     order: 3
     title: "Lecture 03: Bits, Bytes, and Integers (cont.)"
@@ -142,10 +142,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-03/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-03/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-03/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-03/generation.yaml
   - id: lecture-04
     order: 4
     title: "Lecture 04: Floating Point"
@@ -171,10 +171,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-04/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-04/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-04/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-04/generation.yaml
   - id: recitation-03
     order: 5
     title: "Recitation 3: Datalab and Data Representations"
@@ -208,10 +208,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/recitation-03/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-03/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/recitation-03/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-03/generation.yaml
   - id: lecture-05
     order: 6
     title: "Lecture 05: Machine-Level Programming I: Basics"
@@ -245,10 +245,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-05/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-05/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-05/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-05/generation.yaml
   - id: lecture-06
     order: 7
     title: "Lecture 06: Machine-Level Programming II: Control"
@@ -282,10 +282,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-06/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-06/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-06/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-06/generation.yaml
   - id: recitation-04
     order: 8
     title: "Recitation 4: Bomb Lab"
@@ -311,10 +311,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/recitation-04/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-04/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/recitation-04/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-04/generation.yaml
   - id: lecture-07
     order: 9
     title: "Lecture 07: Machine-Level Programming III: Procedures"
@@ -348,10 +348,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-07/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-07/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-07/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-07/generation.yaml
   - id: lecture-08
     order: 10
     title: "Lecture 08: Machine-Level Programming IV: Data"
@@ -385,10 +385,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-08/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-08/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-08/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-08/generation.yaml
   - id: recitation-05
     order: 11
     title: "Recitation 5: Attack Lab and Stacks"
@@ -414,10 +414,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/recitation-05/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-05/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/recitation-05/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-05/generation.yaml
   - id: lecture-09
     order: 12
     title: "Lecture 09: Machine-Level Programming V: Advanced Topics"
@@ -451,10 +451,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-09/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-09/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-09/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-09/generation.yaml
   - id: lecture-10
     order: 13
     title: "Lecture 10: Program Optimization"
@@ -488,10 +488,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-10/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-10/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-10/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-10/generation.yaml
   - id: recitation-06
     order: 14
     title: "Recitation 6: C Review"
@@ -529,10 +529,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/recitation-06/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-06/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/recitation-06/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-06/generation.yaml
   - id: lecture-11
     order: 15
     title: "Lecture 11: The Memory Hierarchy"
@@ -558,10 +558,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-11/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-11/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-11/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-11/generation.yaml
   - id: lecture-12
     order: 16
     title: "Lecture 12: Cache Memories"
@@ -595,10 +595,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-12/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-12/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-12/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-12/generation.yaml
   - id: recitation-07
     order: 17
     title: "Recitation 7: Cache Lab and Blocking"
@@ -624,10 +624,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/recitation-07/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-07/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/recitation-07/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-07/generation.yaml
   - id: lecture-13
     order: 18
     title: "Lecture 13: Linking"
@@ -661,10 +661,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-13/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-13/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-13/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-13/generation.yaml
   - id: lecture-14
     order: 19
     title: "Lecture 14: Exceptional Control Flow: Exceptions and Processes"
@@ -698,10 +698,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-14/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-14/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-14/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-14/generation.yaml
   - id: recitation-08
     order: 20
     title: "Recitation 8: Exam Review"
@@ -727,10 +727,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/recitation-08/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-08/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/recitation-08/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-08/generation.yaml
   - id: lecture-15
     order: 21
     title: "Lecture 15: Exceptional Control Flow: Signals and Nonlocal Jumps"
@@ -764,10 +764,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-15/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-15/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-15/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-15/generation.yaml
   - id: lecture-16
     order: 22
     title: "Lecture 16: System Level I/O"
@@ -801,10 +801,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-16/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-16/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-16/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-16/generation.yaml
   - id: recitation-09
     order: 23
     title: "Recitation 9: Shell Lab, Processes, and Signals, and I/O"
@@ -830,10 +830,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/recitation-09/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-09/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/recitation-09/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-09/generation.yaml
   - id: lecture-17
     order: 24
     title: "Lecture 17: Virtual Memory: Concepts"
@@ -859,10 +859,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-17/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-17/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-17/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-17/generation.yaml
   - id: lecture-18
     order: 25
     title: "Lecture 18: Virtual Memory: Systems"
@@ -896,10 +896,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-18/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-18/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-18/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-18/generation.yaml
   - id: recitation-10
     order: 26
     title: "Recitation 10: Virtual Memory"
@@ -925,10 +925,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/recitation-10/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-10/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/recitation-10/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-10/generation.yaml
   - id: lecture-19
     order: 27
     title: "Lecture 19: Dynamic Memory Allocation: Basic Concepts"
@@ -962,10 +962,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-19/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-19/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-19/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-19/generation.yaml
   - id: lecture-20
     order: 28
     title: "Lecture 20: Dynamic Memory Allocation: Advanced Concepts"
@@ -984,10 +984,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-20/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-20/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-20/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-20/generation.yaml
   - id: recitation-11
     order: 29
     title: "Recitation 11: Malloc Lab"
@@ -1013,10 +1013,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/recitation-11/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-11/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/recitation-11/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-11/generation.yaml
   - id: lecture-21
     order: 30
     title: "Lecture 21: Network Programming: Part 1"
@@ -1042,10 +1042,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-21/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-21/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-21/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-21/generation.yaml
   - id: lecture-22
     order: 31
     title: "Lecture 22: Network Programming: Part II"
@@ -1079,10 +1079,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-22/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-22/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-22/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-22/generation.yaml
   - id: recitation-12
     order: 32
     title: "Recitation 12: Debugging Malloc Lab"
@@ -1108,10 +1108,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/recitation-12/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-12/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/recitation-12/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-12/generation.yaml
   - id: lecture-23
     order: 33
     title: "Lecture 23: Concurrent Programming"
@@ -1145,10 +1145,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-23/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-23/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-23/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-23/generation.yaml
   - id: lecture-24
     order: 34
     title: "Lecture 24: Synchronization: Basics"
@@ -1182,10 +1182,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-24/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-24/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-24/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-24/generation.yaml
   - id: recitation-13
     order: 35
     title: "Recitation 13: Proxy Lab"
@@ -1211,10 +1211,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/recitation-13/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-13/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/recitation-13/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-13/generation.yaml
   - id: lecture-25
     order: 36
     title: "Lecture 25: Synchronization: Advanced"
@@ -1248,10 +1248,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-25/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-25/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-25/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-25/generation.yaml
   - id: recitation-14
     order: 37
     title: "Recitation 14: Synchronization"
@@ -1277,10 +1277,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/recitation-14/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-14/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/recitation-14/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-14/generation.yaml
   - id: lecture-26
     order: 38
     title: "Lecture 26: Thread-Level Parallelism"
@@ -1314,10 +1314,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-26/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-26/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-26/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-26/generation.yaml
   - id: lecture-27
     order: 39
     title: "Lecture 27: Future of Computing"
@@ -1343,10 +1343,10 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/lecture-27/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-27/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/lecture-27/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/lecture-27/generation.yaml
   - id: recitation-15
     order: 40
     title: "Recitation 15: Exam review"
@@ -1372,9 +1372,9 @@ items:
     preparation:
       state: subtitle-ready
       sourceKind: local-asr
-      manifest: infra/cmu-15213-fall15/notes/recitation-15/sources.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-15/sources.yaml
     generation:
       state: draft-ready
-      manifest: infra/cmu-15213-fall15/notes/recitation-15/generation.yaml
+      manifest: courses/foundations/cmu-15213-fall15/notes/recitation-15/generation.yaml
 unitLabel: Video
 videoSourceMode: historical-local-asr

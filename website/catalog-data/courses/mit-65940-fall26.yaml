@@ -10,11 +10,11 @@ publishOutputs: false
 unitLabel: 单元
 description: 模型剪枝、量化、MCUNet、TinyEngine 与端侧部署；连接模型训练和小型 AI 硬件。
 paths:
-  root: infra/mit-65940-fall26
-  notes: infra/mit-65940-fall26/notes
-  resources: infra/mit-65940-fall26/resources
-  references: infra/mit-65940-fall26/references
-  exports: infra/mit-65940-fall26/exports
+  root: courses/robotics-hardware/mit-65940-fall26
+  notes: courses/robotics-hardware/mit-65940-fall26/notes
+  resources: courses/robotics-hardware/mit-65940-fall26/resources
+  references: courses/robotics-hardware/mit-65940-fall26/references
+  exports: courses/robotics-hardware/mit-65940-fall26/exports
 instructors:
   - Song Han
 official:

@@ -6,7 +6,10 @@ This repository is a course-first learning knowledge base. The primary public pr
 
 - **CS336 2026** is the reference implementation for a complete course workspace: official resources, lecture notes, Blog explanations, English/Chinese transcripts, references, and PDF exports.
 - **CS149 Fall 2025** currently publishes only course resources and lecture navigation. Its notes, Blog posts, and transcripts are private until explicitly enabled.
-- `agent/`, `infra/`, `papers/`, and `interest/` contain project or topic material. Treat them as source repositories or short learning-note entries; do not force them into the course-lecture workflow unless asked.
+- `courses/` contains all course sources in four groups: `foundations`, `models-agents`, `software-product`, and `robotics-hardware`.
+- `references/` contains supplementary projects, papers, engineering material, and other reading. Preserve upstream structure and licenses.
+
+The user explicitly authorized moving the actual folders and rewriting README on 2026-10-16. The directory migration is documented in `workflow/standards/directory-migration-2026-10.md`; use the new paths below. Course IDs and public routes remain stable.
 
 ## Active paths
 
@@ -14,8 +17,8 @@ Use these paths for current work:
 
 - `website/`: VitePress content, theme, navigation, homepage, and topic entry pages.
 - `website/catalog-data/courses/<course-id>.yaml`: authoritative course/lecture metadata and public `outputs`.
-- `llm/<course-id>/notes/<lecture-id>/`: CS336-style lecture content and review records.
-- `infra/cs149-fall25/`: CS149 materials, resource manifest, and future notes.
+- `courses/<group>/<course-id>/notes/<lecture-id>/`: CS336-style lecture content and review records.
+- `courses/foundations/cs149-fall25/`: CS149 materials, resource manifest, and future notes.
 - `workflow/scripts/`: Course CLI, website generator, and LaTeX export scripts.
 - `workflow/standards/`: project structure, transcript, and prompt requirements.
 
@@ -48,7 +51,8 @@ For details, read `workflow/standards/project-structure.md` and `workflow/standa
 ## Commands
 
 ```bash
-npm install
+npm ci
+npm run validate:structure
 npm run dev
 npm run build
 
@@ -63,7 +67,7 @@ npm run course -- promote <course-id> <lecture-id> --provider deepseek --reviewe
 npm run course -- export <course-id> <lecture-id>
 ```
 
-Run `npm run build` after changes that affect catalog data, the generator, VitePress configuration, or site styling. The build regenerates site files and exports configured PDFs.
+Run `npm run validate:structure` after moving source files or changing catalog paths. Run `npm run build` after changes that affect catalog data, the generator, VitePress configuration, or site styling. The build regenerates site files and exports configured PDFs.
 
 ## Safe working practices
 

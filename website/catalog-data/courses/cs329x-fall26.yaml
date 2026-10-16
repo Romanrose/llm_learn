@@ -10,11 +10,11 @@ publishOutputs: false
 unitLabel: 单元
 description: 人类偏好、交互、协作与以用户为中心的 LLM 系统；接入公开讲义、论文和项目要求。
 paths:
-  root: interest/design/cs329x-fall26
-  notes: interest/design/cs329x-fall26/notes
-  resources: interest/design/cs329x-fall26/resources
-  references: interest/design/cs329x-fall26/references
-  exports: interest/design/cs329x-fall26/exports
+  root: courses/software-product/cs329x-fall26
+  notes: courses/software-product/cs329x-fall26/notes
+  resources: courses/software-product/cs329x-fall26/resources
+  references: courses/software-product/cs329x-fall26/references
+  exports: courses/software-product/cs329x-fall26/exports
 instructors: []
 official:
   - label: 官方课程与资料

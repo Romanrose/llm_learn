@@ -9,11 +9,11 @@ status: updating
 publishOutputs: false
 description: 以 Python 训练程序设计、递归、数据抽象与面向对象。Fall 2026：40 个官方讲次，配套 Lab、Homework、Discussion 和项目；后半学期含 Gleam 与 Animator。
 paths:
-  root: infra/cs61a-fall26
-  notes: infra/cs61a-fall26/notes
-  references: infra/cs61a-fall26/references
-  resources: infra/cs61a-fall26/resources
-  exports: infra/cs61a-fall26/exports
+  root: courses/foundations/cs61a-fall26
+  notes: courses/foundations/cs61a-fall26/notes
+  references: courses/foundations/cs61a-fall26/references
+  resources: courses/foundations/cs61a-fall26/resources
+  exports: courses/foundations/cs61a-fall26/exports
 official:
   - label: 课程主页
     url: https://cs61a.org/fa26/
@@ -154,10 +154,10 @@ items:
     outputs: []
     preparation:
       state: slides-ready
-      manifest: infra/cs61a-fall26/notes/lecture-01/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-01/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-01/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-01/generation.yaml
   - id: lecture-02
     order: 2
     date: Fri, Aug 28
@@ -220,12 +220,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-02/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-02/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03T15:12:49.724Z
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-02/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-02/generation.yaml
   - id: lecture-03
     order: 3
     date: Mon, Aug 31
@@ -283,12 +283,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-03/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-03/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-03/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-03/generation.yaml
   - id: lecture-04
     order: 4
     date: Wed, Sep 02
@@ -341,12 +341,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-04/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-04/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-04/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-04/generation.yaml
   - id: lecture-05
     order: 5
     date: Fri, Sep 04
@@ -394,12 +394,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-05/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-05/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-05/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-05/generation.yaml
   - id: lecture-06
     order: 6
     date: Wed, Sep 09
@@ -447,12 +447,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-06/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-06/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-06/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-06/generation.yaml
   - id: lecture-07
     order: 7
     date: Fri, Sep 11
@@ -490,12 +490,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-07/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-07/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-07/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-07/generation.yaml
   - id: lecture-08
     order: 8
     date: Mon, Sep 14
@@ -526,10 +526,10 @@ items:
     outputs: []
     preparation:
       state: slides-ready
-      manifest: infra/cs61a-fall26/notes/lecture-08/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-08/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-08/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-08/generation.yaml
   - id: lecture-09
     order: 9
     date: Wed, Sep 16
@@ -582,12 +582,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-09/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-09/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-09/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-09/generation.yaml
   - id: lecture-10
     order: 10
     date: Fri, Sep 18
@@ -635,12 +635,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-10/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-10/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-10/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-10/generation.yaml
   - id: lecture-11
     order: 11
     date: Mon, Sep 21
@@ -703,12 +703,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-11/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-11/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-11/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-11/generation.yaml
   - id: lecture-12
     order: 12
     date: Wed, Sep 23
@@ -751,12 +751,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-12/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-12/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-12/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-12/generation.yaml
   - id: lecture-13
     order: 13
     date: Fri, Sep 25
@@ -799,12 +799,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-13/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-13/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-13/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-13/generation.yaml
   - id: lecture-14
     order: 14
     date: Mon, Sep 28
@@ -847,12 +847,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-14/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-14/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-14/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-14/generation.yaml
   - id: lecture-15
     order: 15
     date: Wed, Sep 30
@@ -895,12 +895,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-15/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-15/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-15/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-15/generation.yaml
   - id: lecture-16
     order: 16
     date: Fri, Oct 02
@@ -931,10 +931,10 @@ items:
     outputs: []
     preparation:
       state: slides-ready
-      manifest: infra/cs61a-fall26/notes/lecture-16/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-16/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-16/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-16/generation.yaml
   - id: lecture-17
     order: 17
     date: Mon, Oct 05
@@ -950,10 +950,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-17/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-17/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-17/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-17/generation.yaml
   - id: lecture-18
     order: 18
     date: Wed, Oct 07
@@ -981,12 +981,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-18/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-18/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-18/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-18/generation.yaml
   - id: lecture-19
     order: 19
     date: Fri, Oct 09
@@ -1014,12 +1014,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-19/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-19/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-19/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-19/generation.yaml
   - id: lecture-20
     order: 20
     date: Mon, Oct 12
@@ -1042,12 +1042,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-20/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-20/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-20/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-20/generation.yaml
   - id: lecture-21
     order: 21
     date: Wed, Oct 14
@@ -1070,12 +1070,12 @@ items:
     outputs: []
     preparation:
       state: subtitle-ready
-      manifest: infra/cs61a-fall26/notes/lecture-21/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-21/sources.yaml
       sourceKind: official-topic-playlist
       preparedAt: 2026-10-03
     generation:
       state: draft-ready
-      manifest: infra/cs61a-fall26/notes/lecture-21/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-21/generation.yaml
   - id: lecture-22
     order: 22
     date: Fri, Oct 16
@@ -1091,10 +1091,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-22/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-22/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-22/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-22/generation.yaml
   - id: lecture-23
     order: 23
     date: Mon, Oct 19
@@ -1110,10 +1110,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-23/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-23/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-23/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-23/generation.yaml
   - id: lecture-24
     order: 24
     date: Wed, Oct 21
@@ -1129,10 +1129,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-24/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-24/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-24/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-24/generation.yaml
   - id: lecture-25
     order: 25
     date: Fri, Oct 23
@@ -1148,10 +1148,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-25/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-25/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-25/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-25/generation.yaml
   - id: lecture-26
     order: 26
     date: Mon, Oct 26
@@ -1167,10 +1167,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-26/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-26/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-26/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-26/generation.yaml
   - id: lecture-27
     order: 27
     date: Wed, Oct 28
@@ -1186,10 +1186,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-27/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-27/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-27/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-27/generation.yaml
   - id: lecture-28
     order: 28
     date: Fri, Oct 30
@@ -1205,10 +1205,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-28/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-28/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-28/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-28/generation.yaml
   - id: lecture-29
     order: 29
     date: Mon, Nov 02
@@ -1224,10 +1224,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-29/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-29/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-29/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-29/generation.yaml
   - id: lecture-30
     order: 30
     date: Wed, Nov 04
@@ -1243,10 +1243,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-30/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-30/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-30/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-30/generation.yaml
   - id: lecture-31
     order: 31
     date: Fri, Nov 06
@@ -1262,10 +1262,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-31/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-31/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-31/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-31/generation.yaml
   - id: lecture-32
     order: 32
     date: Mon, Nov 09
@@ -1281,10 +1281,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-32/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-32/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-32/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-32/generation.yaml
   - id: lecture-33
     order: 33
     date: Fri, Nov 13
@@ -1300,10 +1300,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-33/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-33/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-33/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-33/generation.yaml
   - id: lecture-34
     order: 34
     date: Mon, Nov 16
@@ -1319,10 +1319,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-34/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-34/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-34/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-34/generation.yaml
   - id: lecture-35
     order: 35
     date: Wed, Nov 18
@@ -1338,10 +1338,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-35/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-35/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-35/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-35/generation.yaml
   - id: lecture-36
     order: 36
     date: Fri, Nov 20
@@ -1357,10 +1357,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-36/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-36/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-36/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-36/generation.yaml
   - id: lecture-37
     order: 37
     date: Mon, Nov 23
@@ -1376,10 +1376,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-37/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-37/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-37/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-37/generation.yaml
   - id: lecture-38
     order: 38
     date: Mon, Nov 30
@@ -1395,10 +1395,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-38/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-38/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-38/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-38/generation.yaml
   - id: lecture-39
     order: 39
     date: Wed, Dec 02
@@ -1414,10 +1414,10 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-39/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-39/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-39/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-39/generation.yaml
   - id: lecture-40
     order: 40
     date: Fri, Dec 04
@@ -1433,8 +1433,8 @@ items:
     outputs: []
     preparation:
       state: source-unavailable
-      manifest: infra/cs61a-fall26/notes/lecture-40/sources.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-40/sources.yaml
     generation:
       state: study-guide-ready
-      manifest: infra/cs61a-fall26/notes/lecture-40/generation.yaml
+      manifest: courses/foundations/cs61a-fall26/notes/lecture-40/generation.yaml
 videoSourceMode: official-topic-playlists

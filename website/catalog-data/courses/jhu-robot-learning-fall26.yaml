@@ -10,11 +10,11 @@ publishOutputs: false
 unitLabel: 单元
 description: 使用 SO-101 桌面机械臂学习数据采集、模仿学习与策略部署；含官方讲义、交互演示和实物作业总览。
 paths:
-  root: infra/jhu-robot-learning-fall26
-  notes: infra/jhu-robot-learning-fall26/notes
-  resources: infra/jhu-robot-learning-fall26/resources
-  references: infra/jhu-robot-learning-fall26/references
-  exports: infra/jhu-robot-learning-fall26/exports
+  root: courses/robotics-hardware/jhu-robot-learning-fall26
+  notes: courses/robotics-hardware/jhu-robot-learning-fall26/notes
+  resources: courses/robotics-hardware/jhu-robot-learning-fall26/resources
+  references: courses/robotics-hardware/jhu-robot-learning-fall26/references
+  exports: courses/robotics-hardware/jhu-robot-learning-fall26/exports
 instructors:
   - Krishna Murthy Jatavallabhula
 official:

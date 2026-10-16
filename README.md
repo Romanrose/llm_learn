@@ -1,127 +1,146 @@
 # llm_learn
 
-[学习网站](https://romanrose.github.io/llm_learn/) · 课程笔记、讲义解读、逐字稿与学习资料库
+[学习网站](https://romanrose.github.io/llm_learn/) · [资料检索](https://romanrose.github.io/llm_learn/generated/resources/) · [课程源码目录](courses/README.md) · [维护指南](workflow/README.md)
 
-`llm_learn` 是一个以课程为主线的个人学习知识库。它从官方课程页面、视频和讲义出发，逐步整理为可浏览的课程资料、逐讲笔记、Blog 解读、中英文逐字稿、延伸阅读与 PDF；项目、论文和访谈则作为学习路径中的补充入口，不复制或替代其上游仓库。
+以课程为主线的个人学习资料库，覆盖编程与系统、大模型与智能体、软件与产品、机器人与 AI 硬件。仓库保存课程来源、资料索引、学习笔记和审核记录；网站提供课程导航、资料检索以及官方 Lab 与作业入口。
 
-网站与内容均遵循“先有真实学习内容，再逐步接入”的原则：自动化只产出候选稿，正式公开内容需要经过人工审核。
+目前有 **18 个课程入口、19 套课程版本资料**，其中 CMU 15-213 同时保留 2026 与 2015 历史版本；UVA 产品管理入口包含五门子课程。课程单元可能是讲座、阅读、教程或作业，不把单元数统一当作讲次数。
 
-供 Codex、Claude Code 等编程 Agent 使用的仓库约定见 [AGENTS.md](AGENTS.md)。
+## 从哪里开始
 
-## 当前收录
+- **阅读与学习**：从[网站课程目录](https://romanrose.github.io/llm_learn/)选课，或在[资料库](https://romanrose.github.io/llm_learn/generated/resources/)按课程、关键词和类型检索。Lab 与作业使用课程官方公布的仓库、题目页或 Notebook。
+- **查看课程文件**：进入 `courses/<方向>/<course-id>/`，从该课 README 查看来源和内容边界。
+- **维护网站**：编辑 `website/`；课程与讲次的权威元数据位于 `website/catalog-data/courses/`。
+- **整理学习内容**：按 [workflow/README.md](workflow/README.md) 准备资料、生成候选稿、审核并发布。
 
-| 类型 | 内容 | 当前状态 | 网站入口 |
-| --- | --- | --- | --- |
-| 课程 | Stanford CS336 2026 · Language Modeling from Scratch | 19 讲；已整理 18 讲的课程笔记、Blog 与中英文逐字稿；第 18 讲等待公开资料 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs336-2026/) |
-| 课程 | Stanford CS149 Fall 2025 · Parallel Computing | 已接入课程主页、18 讲 Slides、公开视频与参考资料；笔记暂不公开 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs149-fall25/) |
-| 课程 | CMU 11-768 Fall 2026 · AI Agents | 23 次教学讲座；前 12 讲笔记与 Blog、前 9 讲中英文逐字稿已审核发布 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cmu-11768-fall26/) |
-| 课程 | UVA · Digital Product Management | 当前在线版；五门子课程、10 篇已批准笔记与 Blog，更新年份未标注 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/uva-digital-product-management/) |
-| 课程 | MIT 6.102 Spring 2026 · Software Construction | 十九篇核心阅读、38 篇已批准笔记与 Blog、作业与项目入口 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/mit-6102-sp26/) |
-| 课程 | Stanford CS147 Autumn 2026 · Introduction to HCI | 十个作业与三份讲义单元，26 篇已批准笔记与 Blog；逐字稿另行补充 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs147-fall26/) |
-| 延伸阅读 | 产品管理、软件工程与交互设计经典资料 | SVPG、Product Talk、Software Engineering at Google、d.school Bootleg、NN/g；保留官方入口 | [产品](https://romanrose.github.io/llm_learn/topics/product/) · [工程](https://romanrose.github.io/llm_learn/topics/software-engineering/) · [设计](https://romanrose.github.io/llm_learn/topics/design/) |
-| 项目资料 | Hello Agents、Agent Memory、TencentDB Agent Memory | 保留项目源码、教程与学习入口 | [智能体专题](https://romanrose.github.io/llm_learn/topics/agent/) |
-| 工程资料 | Network、SSH、多服务器开发、GPU Systems | 保留工程笔记与课程关联资料 | [AI Infra 专题](https://romanrose.github.io/llm_learn/topics/infra/) |
-| 论文与延伸阅读 | 30 Papers、技术文章、访谈与演讲 | 按专题持续归档 | [课程与专题](https://romanrose.github.io/llm_learn/#course-map) |
+## 课程目录
+
+以下链接分别进入仓库中的课程文件和已生成的网站课程页。年份对应所接入的课程版本；未标学期的当前在线资料单独说明。
+
+### 编程与计算机系统
+
+程序设计、计算机系统与并行计算。
+
+| 课程与本地资料 | 学习重点 | 网站 |
+| --- | --- | --- |
+| [CS61A Fall 2026](courses/foundations/cs61a-fall26/) | Python、递归、数据抽象与程序设计 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs61a-fall26/) |
+| [CMU 15-213 Fall 2026](courses/foundations/cmu-15213-fall26/) | C、机器代码、内存、进程、网络与并发 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cmu-15213-fall26/) |
+| [15-213 Fall 2015](courses/foundations/cmu-15213-fall15/) | 2015 历史录像与配套资料；与 2026 分开使用 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cmu-15213-fall15/) |
+| [CS149 Fall 2025](courses/foundations/cs149-fall25/) | 多核、CUDA、并行性能与同步 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs149-fall25/) |
+
+### 大模型与智能体
+
+语言模型、强化学习、生成模型与 Agent 工程。
+
+| 课程与本地资料 | 学习重点 | 网站 |
+| --- | --- | --- |
+| [CS224N Winter 2026](courses/models-agents/cs224n-winter26/) | NLP、Transformer、预训练、对齐与评测 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs224n-winter26/) |
+| [CS336 2026](courses/models-agents/cs336-2026/) | 从零训练语言模型，覆盖系统、数据、规模与后训练 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs336-2026/) |
+| [CMU 11-768 Fall 2026](courses/models-agents/cmu-11768-fall26/) | 工具、上下文、记忆、Agent 训练与评估 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cmu-11768-fall26/) |
+| [CS329Z Fall 2026](courses/models-agents/cs329z-fall26/) | RAG、编排、多智能体、评测与安全 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs329z-fall26/) |
+| [Harvard CS2680 Fall 2026](courses/models-agents/harvard-cs2680-fall26/) | Coding Agent、Agent 系统与高效推理服务 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/harvard-cs2680-fall26/) |
+| [CS224R Spring 2026](courses/models-agents/cs224r-sp26/) | 模仿学习、Actor-Critic、离线 RL 与 LLM / 机器人应用 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs224r-sp26/) |
+| [MIT 6.S184 2026](courses/models-agents/mit-6s184-2026/) | Flow Matching、扩散模型、ODE / SDE 与生成实践 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/mit-6s184-2026/) |
+
+### 软件与产品开发
+
+软件质量、需求发现、交互设计与 AI 产品。
+
+| 课程与本地资料 | 学习重点 | 网站 |
+| --- | --- | --- |
+| [MIT 6.102 Spring 2026](courses/software-product/mit-6102-sp26/) | TypeScript、规格、测试、抽象与并发 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/mit-6102-sp26/) |
+| [UVA Digital Product Management · 当前在线版](courses/software-product/uva-digital-product-management/) | 五门子课程：定位、敏捷、假设验证、分析与团队 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/uva-digital-product-management/) |
+| [Stanford CS147 Autumn 2026](courses/software-product/cs147-fall26/) | 需求访谈、原型、可用性测试与设计项目 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs147-fall26/) |
+| [CS329X Fall 2026](courses/software-product/cs329x-fall26/) | 人类偏好、人机协作与 LLM 交互评估 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs329x-fall26/) |
+| [Berkeley UX for AI Spring 2026](courses/software-product/berkeley-ux-ai-sp26/) | AI 产品用户体验；目前仅公开课程介绍 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/berkeley-ux-ai-sp26/) |
+
+### 机器人与 AI 硬件
+
+桌面机械臂、嵌入式系统与端侧部署。
+
+| 课程与本地资料 | 学习重点 | 网站 |
+| --- | --- | --- |
+| [JHU Hands-on Robot Learning Fall 2026](courses/robotics-hardware/jhu-robot-learning-fall26/) | SO-101 机械臂、数据采集、模仿学习与 VLA | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/jhu-robot-learning-fall26/) |
+| [MIT 6.5940 Fall 2026](courses/robotics-hardware/mit-65940-fall26/) | 剪枝、量化、MCUNet、TinyEngine 与端侧推理 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/mit-65940-fall26/) |
+| [Cornell ECE4760 / 5730 · 当前公开版](courses/robotics-hardware/cornell-ece4760-current/) | Pico 2 / RP2350、通信、信号处理与 PID | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cornell-ece4760-current/) |
 
 ## 仓库结构
 
 ```text
 llm_learn/
-├── llm/                         # 大模型课程的原始资料与逐讲内容
-│   └── cs336-2026/
-│       ├── lectures/             # 官方讲义快照与可执行材料
-│       ├── notes/lecture-NN/     # 正式逐字稿、Note、Blog、来源和审核记录
-│       ├── references/           # 课程级扩展阅读、作业与参考实现
-│       ├── resources/            # 审核后的资源清单
-│       └── exports/              # 本地生成的 PDF / XeLaTeX（不提交）
-├── infra/
-│   ├── cs149-fall25/             # 并行计算课程资料与学习计划
-│   └── network/                  # 网络、SSH、远程开发笔记
-├── agent/                        # Agent 教材与独立项目
-├── papers/                       # 论文阅读、复现与教学实现
-├── interest/                     # 产品管理、软件工程、设计课程及课外阅读
-├── website/                      # 当前生效的 VitePress 网站
-│   ├── catalog-data/             # 课程、讲次、来源与网站产物的元数据
-│   ├── .vitepress/               # 主题、导航和构建配置
-│   ├── topics/                   # 项目与专题入口页
-│   └── course.yaml               # 全站分类和站点设置
-└── workflow/                     # 课程、网站、转写与 LaTeX 自动化
-    ├── scripts/
-    ├── standards/
-    └── templates/
+├── courses/                       # 课程源文件，方向与网站首页对应
+│   ├── foundations/               # 编程与计算机系统（含历史版本）
+│   ├── models-agents/             # 大模型与智能体
+│   ├── software-product/          # 软件与产品开发
+│   └── robotics-hardware/         # 机器人与 AI 硬件
+├── references/                    # 配套学习材料与上游项目
+│   ├── agents/                    # Hello Agents、记忆教程及项目
+│   ├── engineering/               # 网络、SSH 与工程笔记
+│   ├── papers/                    # 论文阅读与教学实现
+│   └── interests/                 # 其他阅读笔记
+├── website/                       # VitePress 网站及权威元数据
+│   ├── catalog-data/courses/      # 课程、讲次、来源、paths 和 outputs
+│   ├── .vitepress/                # 主题、导航与构建配置
+│   ├── references/                # 网站中的版本与访问说明页
+│   └── course.yaml                # 首页分类与站点设置
+├── workflow/                      # 同步、审核、生成与 PDF 工具
+│   ├── scripts/
+│   ├── standards/
+│   └── templates/
+├── AGENTS.md                      # 编程 Agent 的协作约定
+└── package.json                   # 网站与课程工作流命令
 ```
 
-当前网站构建入口是 `website/` 与 `workflow/`。课程元数据、站点分类、自动化脚本和规范均以这两个目录为唯一编辑入口。
+`courses/` 保存课程内容，`references/` 保存配套材料，`website/` 决定如何公开展示，`workflow/` 提供维护工具。补充材料的分类入口见 [references/README.md](references/README.md)。
+
+每门课按需要建立 `README.md`、`UPSTREAM.md`、`resources/`、`notes/<lecture-id>/` 和 `references/`；只保存官方外链的课程不预建空笔记。单讲内容分别使用 `note.md`、`blog.md`、`transcript.en.md`、`transcript.zh-CN.md`，PDF 输出在被 Git 忽略的 `exports/`。
+
+## 资料与发布状态
+
+课程间的完整度不同。CS336 和 CMU 11-768 已有较多正式学习内容；其他课程可能提供阅读笔记，也可能只接入官方讲义、作业或日程。Berkeley UX for AI 目前仅有官方课程介绍；秋季课程尚未公开的后续资料保留预告状态。
+
+- 官方讲义、视频、论文、仓库和作业优先保留原站链接；访问权限以课程方为准。
+- 历史录像与当前课程分别标注，课程演示代码与作业起始代码分别登记。
+- AI 生成内容先作为候选稿，经校对后再登记 `outputs`。目录中存在文件不代表已在网站发布。
+- `publishOutputs: false` 的课程仅发布资源导航；候选内容不会因目录迁移而自动公开。
 
 ## 本地预览与构建
 
+使用 Node.js 24 与 npm。完整构建还需要系统可用的 XeLaTeX 和中文字体；GitHub Actions 已配置安装所需 TeX 组件。字幕与模型服务是可选的内容维护依赖，浏览和编辑网站不需要配置模型 API。
+
+在仓库根目录运行：
+
 ```bash
-npm install
-npm run workflow:bootstrap
-npm run workflow:doctor
+npm ci
+npm run validate:structure
 npm run dev
 ```
 
-本地站点默认运行在 `http://127.0.0.1:5173/llm_learn/`。正式构建：
+开发地址以终端输出为准，通常是 `http://localhost:5173/llm_learn/`。生成发布文件：
 
 ```bash
 npm run build
+npm run preview
 ```
 
-构建会先生成课程页面和可发布的 PDF，再执行 VitePress 构建。推送到 `master` 后，GitHub Actions 会自动发布到 [GitHub Pages](https://romanrose.github.io/llm_learn/)。
+构建会生成课程页面、已配置的 PDF 和 VitePress 站点。`website/generated/`、`website/.vitepress/generated/`、`website/.vitepress/dist/` 与本地运行时不提交 Git。推送到 **master 主分支**后，GitHub Actions 构建并部署到 GitHub Pages；部署结果可在仓库 Actions 中查看。
 
-课程工作流的可复现安装、诊断和协作交接说明见 [workflow/README.md](workflow/README.md)。运行时、下载缓存和 `.env` 均只保留在本机，不进入 Git。
+## 新增与维护课程
 
-## 课程内容如何生成
+1. 分配稳定的课程 ID，在 `courses/` 对应方向创建课程 README 与来源说明。
+2. 在 `website/catalog-data/courses/<course-id>.yaml` 设置 `paths`、官方资料、讲次及作业入口；只接入资源时设置 `publishOutputs: false`。
+3. 在 `website/course.yaml` 对应方向登记首页入口。历史版本使用独立 ID，并挂在主课程的版本入口下。
+4. 需要生成笔记时按工作流准备证据、生成候选稿并审核，再显式登记 `outputs`。
+5. 运行 `npm run validate:structure` 和 `npm run build`，检查课程页、资料检索与官方作业链接。
 
-课程的正文、资源清单和审核记录在本地保存；`website/catalog-data/courses/<course-id>.yaml` 决定哪些内容会在网站展示。
+完整命令与安装说明见 [维护指南](workflow/README.md)，路径和内容约定见[项目结构规范](workflow/standards/project-structure.md)、[逐字稿规范](workflow/standards/transcript-generation.md)与 [AGENTS.md](AGENTS.md)。
 
-```text
-官方课程资源
-  → 发现与人工审核
-  → 字幕 / 讲义 / 候选稿
-  → 人工校对与发布确认
-  → Catalog 登记
-  → 网站页面与 PDF
-```
+## 目录迁移说明
 
-常用命令：
+2026 年 10 月按课程方向整理了实际源目录。旧的 `llm/`、`agent/`、`infra/`、`interest/`、`papers/` 已归并到 `courses/` 和 `references/`；网站的课程 ID、讲次 ID 和 URL 保持不变。旧路径到新路径的对照见[目录迁移表](workflow/standards/directory-migration-2026-10.md)。已有本地克隆请先保存自己的修改，再更新主分支；本地未跟踪的草稿、缓存和音视频需按迁移表自行归位。
 
-```bash
-# 同步课程表、发现公开资源
-npm run course -- sync cs336-2026
-npm run course -- discover cs336-2026
+## 来源与使用边界
 
-# 准备字幕与生成候选稿
-npm run course -- prepare cs336-2026 lecture-01
-npm run course -- transcript cs336-2026 lecture-01 --engine krillinai --dry-run
-npm run course -- generate cs336-2026 lecture-01 --provider deepseek --run
+课程资料和第三方项目的版权与许可证归各自作者。移动文件夹不改变其许可证；引用、运行和再分发仍遵循上游要求。本仓库主要提供官方资料链接和自行整理的学习内容。
 
-# 审核候选稿并显式发布
-npm run course -- validate cs336-2026 lecture-01 --provider deepseek
-npm run course -- promote cs336-2026 lecture-01 --provider deepseek --reviewed --overwrite
-
-# 导出单讲 PDF 或构建全站
-npm run course -- export cs336-2026 lecture-04
-npm run build
-```
-
-`generate`、`transcript` 生成的是候选内容，不会自动覆盖正式笔记。只有通过校对后执行带 `--reviewed` 的 `promote`，相关产物才会成为可发布内容。完整约定见：[项目结构规范](workflow/standards/project-structure.md)、[逐字稿规范](workflow/standards/transcript-generation.md) 和 [提示词手册](workflow/standards/prompt-handbook.md)。
-
-## 新增一门课程
-
-不需要先创建完整的空目录。只为正在学习的部分建立最小闭环：
-
-1. 分配稳定课程 ID，并创建课程入口与来源说明。
-2. 在 `website/catalog-data/courses/<course-id>.yaml` 登记课程、讲次和官方资料。
-3. 在 `llm/<course-id>/` 或对应分类目录保存真实资料、笔记与实验。
-4. 生成候选逐字稿、Note 或 Blog，完成审核后再登记到 `outputs`。
-5. 运行 `npm run build`，检查课程页后发布。
-
-CS336 是完整课程工作台的参考实现；CS149 展示了“先接入官方资料、后逐讲补充笔记”的轻量接入方式。
-
-## 本地环境与资料边界
-
-将本机模型服务地址、密钥和路径写入 `.env`；可从 [.env.example](.env.example) 复制。不要提交 API Key、Cookie、真实服务器地址、未授权下载的音视频或本地缓存。
-
-课程讲义、视频、论文和项目代码仍归原作者及课程方所有。本仓库默认以外链、来源清单和自行完成的学习笔记为主；使用、下载和再分发请遵循各上游项目的许可证与课程规则。
+模型服务配置放在本机 `.env`，示例见 [.env.example](.env.example)。密钥、Cookie、个人配置、下载的音视频和运行缓存不进入 Git。

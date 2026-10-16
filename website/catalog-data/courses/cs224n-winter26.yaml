@@ -10,11 +10,11 @@ publishOutputs: false
 unitLabel: 单元
 description: 从词向量、神经网络与 Transformer，到预训练、对齐、Agent、评测和推理。接入 2026 冬季官方课程表、讲义、阅读、四份作业与 GPT-2 项目；2026 录播需选课权限。
 paths:
-  root: llm/cs224n-winter26
-  notes: llm/cs224n-winter26/notes
-  resources: llm/cs224n-winter26/resources
-  references: llm/cs224n-winter26/references
-  exports: llm/cs224n-winter26/exports
+  root: courses/models-agents/cs224n-winter26
+  notes: courses/models-agents/cs224n-winter26/notes
+  resources: courses/models-agents/cs224n-winter26/resources
+  references: courses/models-agents/cs224n-winter26/references
+  exports: courses/models-agents/cs224n-winter26/exports
 instructors:
   - Diyi Yang
   - Yejin Choi

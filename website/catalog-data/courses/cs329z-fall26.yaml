@@ -9,11 +9,11 @@ status: updating
 publishOutputs: false
 description: 从 RAG、工具与 Agent 运行框架，到记忆、多智能体、数据、优化、评测与安全。当前接入官方资料，逐讲内容审核后发布；录播需课程 Canvas 权限。
 paths:
-  root: agent/cs329z-fall26
-  resources: agent/cs329z-fall26/resources
-  notes: agent/cs329z-fall26/notes
-  references: agent/cs329z-fall26/references
-  exports: agent/cs329z-fall26/exports
+  root: courses/models-agents/cs329z-fall26
+  resources: courses/models-agents/cs329z-fall26/resources
+  notes: courses/models-agents/cs329z-fall26/notes
+  references: courses/models-agents/cs329z-fall26/references
+  exports: courses/models-agents/cs329z-fall26/exports
 transcript:
   engine: manual
   originLanguage: en
@@ -164,10 +164,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-01/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-01/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-01/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-01/references/deepseek/run.yaml
     overview: 从 LLM 流水线到复合 AI 系统与自主 Agent，理解分解、数据和评测三个工程问题。 已按公开 Slides 与阅读整理 Note、Blog 候选稿，待用户审核。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-02
     order: 2
@@ -197,10 +197,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-02/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-02/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-02/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-02/references/deepseek/run.yaml
     overview: 面向构建者理解解码、上下文、训练与推理，以及结构化输入输出。 已按公开 Slides 与阅读整理 Note、Blog 候选稿，待用户审核。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-03
     order: 3
@@ -230,10 +230,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-03/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-03/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-03/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-03/references/deepseek/run.yaml
     overview: 理解检索、切分、混合搜索与重排序，从零搭建 RAG 流水线。 已按公开 Slides 与阅读整理 Note、Blog 候选稿，待用户审核。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-04
     order: 4
@@ -255,10 +255,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-04/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-04/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-04/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-04/references/deepseek/run.yaml
     overview: 函数调用、MCP、代码执行与错误恢复，从零构建可使用工具的系统。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-05
     order: 5
@@ -280,10 +280,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-05/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-05/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-05/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-05/references/deepseek/run.yaml
     overview: 比较 DSPy、LangGraph 与 LlamaIndex，理解框架的抽象边界。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-06
     order: 6
@@ -305,10 +305,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-06/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-06/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-06/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-06/references/deepseek/run.yaml
     overview: 理解工作流与 Agent 的设计模式，比较 ReAct、规划与反思。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-07
     order: 7
@@ -342,10 +342,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-07/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-07/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-07/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-07/references/deepseek/run.yaml
     overview: 短期与长期记忆、文件系统和结构化记忆，以及跨 Agent 的记忆共享。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-08
     order: 8
@@ -379,10 +379,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-08/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-08/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-08/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-08/references/deepseek/run.yaml
     overview: 多智能体编排、交接与协作，分析协调成本和错误传播。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-09
     order: 9
@@ -416,10 +416,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-09/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-09/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-09/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-09/references/deepseek/run.yaml
     overview: 比较提示优化、微调与推理计算，选择适合任务的优化方式。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-10
     order: 10
@@ -437,10 +437,10 @@ items:
     outputs: []
     preparation:
       state: awaiting-official-materials
-      manifest: agent/cs329z-fall26/notes/lecture-10/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-10/sources.yaml
     generation:
       state: awaiting-official-materials
-      manifest: agent/cs329z-fall26/notes/lecture-10/generation.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-10/generation.yaml
     overview: 客座讲座；主题与讲者待官网公布。 主题、讲者和正文资料尚未公开，暂时保留待补充。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-11
     order: 11
@@ -466,10 +466,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-11/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-11/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-11/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-11/references/deepseek/run.yaml
     overview: 轨迹、示范、反馈与合成数据，区分优化数据和评测数据。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-12
     order: 12
@@ -499,10 +499,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-12/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-12/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-12/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-12/references/deepseek/run.yaml
     overview: 数据筛选、标注与质量评估，从 Agent 轨迹构建任务数据集。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-13
     order: 13
@@ -532,10 +532,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-13/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-13/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-13/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-13/references/deepseek/run.yaml
     overview: 用请求、环境、停止条件和评分器设计任务，建立可靠的 Agent 基准。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-14
     order: 14
@@ -569,10 +569,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-14/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-14/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-14/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-14/references/deepseek/run.yaml
     overview: 代码评分、模型评分与人工评分，理解裁判偏差和评测基础设施。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-15
     order: 15
@@ -614,10 +614,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-15/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-15/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-15/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-15/references/deepseek/run.yaml
     overview: 工具访问、隐私、提示注入、沙箱、权限与人工介入。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-16
     order: 16
@@ -635,10 +635,10 @@ items:
     outputs: []
     preparation:
       state: awaiting-official-materials
-      manifest: agent/cs329z-fall26/notes/lecture-16/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-16/sources.yaml
     generation:
       state: awaiting-official-materials
-      manifest: agent/cs329z-fall26/notes/lecture-16/generation.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-16/generation.yaml
     overview: 客座讲座；主题与讲者待官网公布。 主题、讲者和正文资料尚未公开，暂时保留待补充。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-17
     order: 17
@@ -676,10 +676,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-17/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-17/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-17/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-17/references/deepseek/run.yaml
     overview: 理解软件 Agent 的运行框架与接口，并结合 SWE-bench 分析任务评测。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-18
     order: 18
@@ -709,10 +709,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-18/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-18/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-18/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-18/references/deepseek/run.yaml
     overview: 从响应请求到主动协助，讨论用户模型、隐私与信任。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
   - id: lecture-19
     order: 19
@@ -738,10 +738,10 @@ items:
     outputs: []
     preparation:
       state: resources-ready
-      manifest: agent/cs329z-fall26/notes/lecture-19/sources.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-19/sources.yaml
     generation:
       state: draft-ready
-      manifest: agent/cs329z-fall26/notes/lecture-19/references/deepseek/run.yaml
+      manifest: courses/models-agents/cs329z-fall26/notes/lecture-19/references/deepseek/run.yaml
     overview: 多模态、网页、计算机使用与科研 Agent，讨论长时程运行、可观测性和可靠性。 已按官网阅读清单整理预习 Note、Blog，属于阅读准备稿，尚无本讲课堂讲义。 录播需课程 Canvas 权限，尚未取得课堂字幕；英文逐字稿与中文译稿均待真实来源补齐。
 instructors:
   - Diyi Yang

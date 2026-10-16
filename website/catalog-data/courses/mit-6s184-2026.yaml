@@ -10,11 +10,11 @@ publishOutputs: false
 unitLabel: 单元
 description: Flow Matching、扩散模型与随机微分方程；六个视频单元、官方讲义及三份实践 Notebook。
 paths:
-  root: llm/mit-6s184-2026
-  notes: llm/mit-6s184-2026/notes
-  resources: llm/mit-6s184-2026/resources
-  references: llm/mit-6s184-2026/references
-  exports: llm/mit-6s184-2026/exports
+  root: courses/models-agents/mit-6s184-2026
+  notes: courses/models-agents/mit-6s184-2026/notes
+  resources: courses/models-agents/mit-6s184-2026/resources
+  references: courses/models-agents/mit-6s184-2026/references
+  exports: courses/models-agents/mit-6s184-2026/exports
 instructors: []
 official:
   - label: 官方课程与资料

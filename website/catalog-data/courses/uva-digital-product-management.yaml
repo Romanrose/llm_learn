@@ -10,11 +10,11 @@ publishOutputs: true
 description: 产品定位、设计与敏捷、假设验证、产品分析和团队协作。公开目录已补至 20 模块；五门子课程各有 Note 与 Blog
   待审核候选稿，完整字幕和课堂内容未获取。
 paths:
-  root: interest/product/uva-digital-product-management
-  resources: interest/product/uva-digital-product-management/resources
-  notes: interest/product/uva-digital-product-management/notes
-  references: interest/product/uva-digital-product-management/references
-  exports: interest/product/uva-digital-product-management/exports
+  root: courses/software-product/uva-digital-product-management
+  resources: courses/software-product/uva-digital-product-management/resources
+  notes: courses/software-product/uva-digital-product-management/notes
+  references: courses/software-product/uva-digital-product-management/references
+  exports: courses/software-product/uva-digital-product-management/exports
 official:
   - label: 课程主页
     url: https://www.coursera.org/specializations/uva-darden-digital-product-management
@@ -89,11 +89,11 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/product/uva-digital-product-management/notes/course-01/note.md
+        source: courses/software-product/uva-digital-product-management/notes/course-01/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/product/uva-digital-product-management/notes/course-01/blog.md
+        source: courses/software-product/uva-digital-product-management/notes/course-01/blog.md
         searchable: true
     sourceCoverage:
       checkedAt: 2026-10-03
@@ -110,7 +110,7 @@ items:
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/product/uva-digital-product-management/notes/course-01/references/codex/run.yaml
+      manifest: courses/software-product/uva-digital-product-management/notes/course-01/references/codex/run.yaml
       evidenceMode: public-outline-and-teacher-supplement
   - id: course-02
     order: 2
@@ -138,11 +138,11 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/product/uva-digital-product-management/notes/course-02/note.md
+        source: courses/software-product/uva-digital-product-management/notes/course-02/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/product/uva-digital-product-management/notes/course-02/blog.md
+        source: courses/software-product/uva-digital-product-management/notes/course-02/blog.md
         searchable: true
     sourceCoverage:
       checkedAt: 2026-10-03
@@ -159,7 +159,7 @@ items:
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/product/uva-digital-product-management/notes/course-02/references/codex/run.yaml
+      manifest: courses/software-product/uva-digital-product-management/notes/course-02/references/codex/run.yaml
       evidenceMode: public-outline-and-teacher-supplement
   - id: course-03
     order: 3
@@ -188,11 +188,11 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/product/uva-digital-product-management/notes/course-03/note.md
+        source: courses/software-product/uva-digital-product-management/notes/course-03/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/product/uva-digital-product-management/notes/course-03/blog.md
+        source: courses/software-product/uva-digital-product-management/notes/course-03/blog.md
         searchable: true
     sourceCoverage:
       checkedAt: 2026-10-03
@@ -203,7 +203,7 @@ items:
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/product/uva-digital-product-management/notes/course-03/references/codex/run.yaml
+      manifest: courses/software-product/uva-digital-product-management/notes/course-03/references/codex/run.yaml
       evidenceMode: public-outline-and-teacher-supplement
   - id: course-04
     order: 4
@@ -230,11 +230,11 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/product/uva-digital-product-management/notes/course-04/note.md
+        source: courses/software-product/uva-digital-product-management/notes/course-04/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/product/uva-digital-product-management/notes/course-04/blog.md
+        source: courses/software-product/uva-digital-product-management/notes/course-04/blog.md
         searchable: true
     sourceCoverage:
       checkedAt: 2026-10-03
@@ -251,7 +251,7 @@ items:
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/product/uva-digital-product-management/notes/course-04/references/codex/run.yaml
+      manifest: courses/software-product/uva-digital-product-management/notes/course-04/references/codex/run.yaml
       evidenceMode: public-outline-and-teacher-supplement
   - id: course-05
     order: 5
@@ -278,11 +278,11 @@ items:
     outputs:
       - id: lecture-note
         label: Lecture Note
-        source: interest/product/uva-digital-product-management/notes/course-05/note.md
+        source: courses/software-product/uva-digital-product-management/notes/course-05/note.md
         searchable: true
       - id: blog
         label: Blog 解读
-        source: interest/product/uva-digital-product-management/notes/course-05/blog.md
+        source: courses/software-product/uva-digital-product-management/notes/course-05/blog.md
         searchable: true
     sourceCoverage:
       checkedAt: 2026-10-03
@@ -299,5 +299,5 @@ items:
     generation:
       state: reviewed
       provider: codex
-      manifest: interest/product/uva-digital-product-management/notes/course-05/references/codex/run.yaml
+      manifest: courses/software-product/uva-digital-product-management/notes/course-05/references/codex/run.yaml
       evidenceMode: public-outline-and-teacher-supplement
