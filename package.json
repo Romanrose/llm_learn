@@ -18,9 +18,13 @@
     "review:dev": "node workflow/scripts/review-preview.mjs",
     "build": "npm run site:generate && vitepress build website",
     "preview": "vitepress preview website",
-    "validate:structure": "node workflow/scripts/validate-structure.mjs"
+    "validate:structure": "node workflow/scripts/validate-structure.mjs",
+    "courses:check": "node workflow/scripts/update-courses.mjs",
+    "courses:update": "node workflow/scripts/update-courses.mjs --apply",
+    "test:course-updates": "node --test workflow/scripts/update-courses.test.mjs"
   },
   "devDependencies": {
+    "@babel/parser": "7.29.8",
     "markdown-it-mathjax3": "4.3.2",
     "vitepress": "1.6.4",
     "vue": "3.5.41",

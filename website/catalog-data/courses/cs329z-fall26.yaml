@@ -71,6 +71,8 @@ schedule:
     - title: Final Report & Final System Demo
       date: 2026-12-07–2026-12-11
       time: TBA
+  resourceUpdatedAt: 2026-10-16
+  unitCount: 19
 assignments:
   - id: hw1
     title: Build an Agentic Harness
@@ -242,11 +244,15 @@ items:
     title: Tool Use & Function Calling
     subtitle: 函数调用、MCP、代码执行与错误恢复，从零构建可使用工具的系统。
     module: Engineering AI Agents
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
-    resources: []
+    resources:
+      - label: Slides
+        url: https://web.stanford.edu/class/cs329z/slides/lecture04.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-16。
     readings:
       - label: Model Context Protocol Specification. The Linux Foundation (2025).
         url: https://modelcontextprotocol.io/specification/2025-06-18
@@ -267,11 +273,15 @@ items:
     title: Frameworks & Orchestration
     subtitle: 比较 DSPy、LangGraph 与 LlamaIndex，理解框架的抽象边界。
     module: Frameworks & Agent Design
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
-    resources: []
+    resources:
+      - label: Slides
+        url: https://web.stanford.edu/class/cs329z/slides/lecture05.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-16。
     readings:
       - label: 'Khattab et al. "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines." ICLR (2024).'
         url: https://arxiv.org/abs/2310.03714
@@ -292,11 +302,15 @@ items:
     title: Agent Design Patterns & Scaffolds
     subtitle: 理解工作流与 Agent 的设计模式，比较 ReAct、规划与反思。
     module: Engineering AI Agents
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
-    resources: []
+    resources:
+      - label: Slides
+        url: https://web.stanford.edu/class/cs329z/slides/lecture06.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-16。
     readings:
       - label: 'Yao et al. "ReAct: Synergizing Reasoning and Acting in Language Models." ICLR (2023).'
         url: https://arxiv.org/abs/2210.03629
@@ -317,11 +331,15 @@ items:
     title: Agent Memory Architectures
     subtitle: 短期与长期记忆、文件系统和结构化记忆，以及跨 Agent 的记忆共享。
     module: Memory & Multi-Agent Systems
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
-    resources: []
+    resources:
+      - label: Slides
+        url: https://web.stanford.edu/class/cs329z/slides/lecture07.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-16。
     readings:
       - label: 'Packer et al. "MemGPT: Towards LLMs as Operating Systems." arXiv (2023).'
         url: https://arxiv.org/abs/2310.08560

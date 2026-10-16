@@ -1,0 +1,89 @@
+schemaVersion: 1
+course: cs147-fall26
+state: linked
+resources:
+  - label: A3 Website (group)
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment3_26.pdf
+    type: docs
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: A4 Concept Video (group)
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment4_26.pdf
+    type: docs
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: A5 Low-fi Prototype and Test (group)
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment5_26.pdf
+    type: docs
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: PPT
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/01-introduction.pptx
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: PPT
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/02-design-discovery.pptx
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: PPT
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/03-define.pptx
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: Ideate
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/04-ideate.pdf
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: PPT
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/04-ideate.pptx
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: Concept Videos
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/05-video.pdf
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: PPT
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/05-video.pptx
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: Exploration
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/06-design-exploration.pdf
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: PPT
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/06-design-exploration.pptx
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: Early Stage Prototyping
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/07-early-stage-prototyping.pdf
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: PPT
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/07-early-stage-prototyping.pptx
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-16

@@ -1,0 +1,49 @@
+# Scheduled check: daily 09:00 Asia/Shanghai. These are explicit semester pins.
+version: 1
+courses:
+  - id: cs61a-fall26
+    adapter: cs61a
+    url: https://cs61a.org/fa26/
+    semester: fa26
+    until: 2027-01-31
+  - id: cmu-15213-fall26
+    adapter: cmu213
+    url: https://www.cs.cmu.edu/~213/schedule.html
+    identityUrl: https://www.cs.cmu.edu/~213/
+    semester: Fall\s*2026
+    until: 2027-01-31
+  - id: cmu-11768-fall26
+    adapter: cmu-agents
+    url: https://www.cmu-agents.com/
+    semester: Fall\s*2026
+    until: 2027-01-31
+  - id: cs329z-fall26
+    adapter: cs329z
+    url: https://cs329z.stanford.edu/
+    semester: Fall\s*2026
+    until: 2027-01-31
+  - id: harvard-cs2680-fall26
+    adapter: cs2680
+    url: https://cs2680.com/
+    semester: Fall\s*2026
+    until: 2027-01-31
+  - id: cs147-fall26
+    adapter: cs147
+    url: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    semester: /2026/au/
+    until: 2027-01-31
+  - id: cs329x-fall26
+    adapter: cs329x
+    url: https://web.stanford.edu/class/cs329x/
+    semester: Fall\s*2026
+    until: 2027-01-31
+  - id: jhu-robot-learning-fall26
+    adapter: jhu
+    url: https://hands-on-robot-learning.github.io/
+    semester: Fall\s*2026
+    until: 2027-01-31
+  - id: mit-65940-fall26
+    adapter: mit-tinyml
+    url: https://hanlab.mit.edu/courses/2026-fall-65940
+    semester: 2026-fall-65940
+    until: 2027-01-31

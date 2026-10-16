@@ -1,0 +1,131 @@
+schemaVersion: 1
+course: cs61a-fall26
+state: linked
+resources:
+  - label: Hog Strategy Contest (Optional) (due Mon 10/12)
+    url: https://cs61a.org/fa26/projects/hog_contest/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Mutation
+    url: https://cs61a.org/fa26/lectures/18-mutation/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/18-Mutation.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Classes
+    url: https://cs61a.org/fa26/lectures/19-classes/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/19-Classes.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Examples)
+    url: https://cs61a.org/fa26/assets/lec/19.py
+    type: code
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: List Mutation (due Thu 10/15)
+    url: https://cs61a.org/fa26/hw/hw05/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Attributes
+    url: https://cs61a.org/fa26/lectures/20-attributes/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/20-Attributes.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Examples)
+    url: https://cs61a.org/fa26/assets/lec/20.py
+    type: code
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Mutation (due Wed 10/14)
+    url: https://cs61a.org/fa26/labs/lab06/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Ants Vs. SomeBees (due Fri 10/23; checkpoint 1 Fri 10/16; checkpoint 2 Wed 10/21)
+    url: https://cs61a.org/fa26/projects/ants/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Inheritance
+    url: https://cs61a.org/fa26/lectures/21-inheritance/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/21-Inheritance.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Examples)
+    url: https://cs61a.org/fa26/assets/lec/21.py
+    type: code
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Classes
+    url: https://cs61a.org/fa26/discussions/disc06/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Classes (due Thu 10/22)
+    url: https://cs61a.org/fa26/hw/hw06/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: "2.8"
+    url: https://composingprograms.com/3ed/lazy-evaluation/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: YouTube
+    url: https://www.youtube.com/watch?v=On-kFyFp8HY&list=PL6BsET-8jgYW7stiut93PHxGP6_QgBzVQ
+    type: video
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: YouTube
+    url: https://www.youtube.com/watch?v=DyXPnQuaa0w&list=PL6BsET-8jgYXnY-7vDJXIv2N5xW98rJTZ
+    type: video
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Trees (due Wed 10/7)
+    url: https://cs61a.org/fa26/labs/lab05/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-16

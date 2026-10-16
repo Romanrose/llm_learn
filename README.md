@@ -125,6 +125,12 @@ npm run preview
 
 构建会生成课程页面、已配置的 PDF 和 VitePress 站点。`website/generated/`、`website/.vitepress/generated/`、`website/.vitepress/dist/` 与本地运行时不提交 Git。推送到 **master 主分支**后，GitHub Actions 构建并部署到 GitHub Pages；部署结果可在仓库 Actions 中查看。
 
+## 未完结课程自动更新
+
+每天北京时间 09:00 检查九门 2026 秋季课程的官方资料。有新增讲义、阅读、代码、录像或作业链接时，自动校验、构建并发布网站；没有变化时不产生提交。学习笔记、Blog 与逐字稿继续人工审核，不随官网更新自动发布。
+
+[查看自动更新范围与维护方法](workflow/README.md#未完结课程的自动资料更新) · [Actions 运行记录](https://github.com/Romanrose/llm_learn/actions/workflows/update-courses.yml)
+
 ## 新增与维护课程
 
 1. 分配稳定的课程 ID，在 `courses/` 对应方向创建课程 README 与来源说明。

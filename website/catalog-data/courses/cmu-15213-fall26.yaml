@@ -32,6 +32,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 25
   note: 官网未编号，按主题讲座顺序分配 lecture ID；考试、停课、Recitation 与 Bootcamp 不计入讲数。
+  resourceUpdatedAt: 2026-10-16
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -60,6 +61,12 @@ practice:
     source: https://www.cs.cmu.edu/~213/labs.html
     checkedAt: 2026-10-04
     note: 当期实验通过 Autolab 发放和提交，需课程权限。
+  - id: official-c801792523f98beb
+    title: L0-writeup
+    url: https://www.cs.cmu.edu/~213/labs/cprogramminglab.pdf
+    source: https://www.cs.cmu.edu/~213/schedule.html
+    checkedAt: 2026-10-16
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
 items:
   - id: lecture-01
     order: 1
@@ -724,11 +731,19 @@ items:
     title: "Dynamic Memory Allocation: Basic"
     subtitle: 堆块组织与分配接口
     overview: 堆块组织与分配接口。建议动手任务：画一次分配、释放后的块布局，列出分配器不变量。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cs.cmu.edu/~213/schedule.html
-    resources: []
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/13-malloc-basic.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-10-16。
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/13-malloc-basic.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-10-16。
     readings:
       - label: CSAPP 第 3 版 · 9.9
         url: https://csapp.cs.cmu.edu/3e/students.html
@@ -756,11 +771,19 @@ items:
     title: "Dynamic Memory Allocation: Advanced"
     subtitle: 空闲块管理与合并
     overview: 空闲块管理与合并。建议动手任务：对比查找策略，构造碎片与相邻空闲块测试。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cs.cmu.edu/~213/schedule.html
-    resources: []
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/14-malloc-advanced.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-10-16。
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/14-malloc-advanced.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-10-16。
     readings:
       - label: CSAPP 第 3 版 · 9.10-9.12
         url: https://csapp.cs.cmu.edu/3e/students.html

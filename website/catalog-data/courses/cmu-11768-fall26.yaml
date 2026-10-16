@@ -58,6 +58,8 @@ schedule:
     - code: 15b
       date: Thu, Dec 3, 2026
       title: Final presentations (posters)
+  resourceUpdatedAt: 2026-10-16
+  unitCount: 23
 learningModules:
   - id: course-references
     title: 00 · Course References
@@ -1736,11 +1738,16 @@ items:
     title: "Safety 1: Sandboxing and Credential Management"
     subtitle: 沙箱与凭据管理，约束 Agent 执行动作时的权限。
     module: Agent Safety
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cmu-agents.com/#schedule
     outputs: []
+    resources:
+      - label: Lecture 13 slides
+        url: https://www.cmu-agents.com/slides/lecture-13-agent-safety.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-10-16。
   - id: lecture-14
     order: 14
     scheduleCode: 7b
@@ -1748,11 +1755,16 @@ items:
     title: "Frameworks 1: OpenHands"
     subtitle: OpenHands 框架与 Agent 系统实现。
     module: Agent Frameworks
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cmu-agents.com/#schedule
     outputs: []
+    resources:
+      - label: Lecture 14 slides
+        url: https://www.cmu-agents.com/slides/lecture-14-openhands.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-10-16。
   - id: lecture-15
     order: 15
     scheduleCode: 9a

@@ -124,6 +124,18 @@ resources:
     type: code
     status: linked
     local: null
+  - label: Lecture 13 slides
+    url: https://www.cmu-agents.com/slides/lecture-13-agent-safety.pdf
+    type: slides
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Lecture 14 slides
+    url: https://www.cmu-agents.com/slides/lecture-14-openhands.pdf
+    type: slides
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
 generation:
   state: reviewed
   slidesLectures: 12
@@ -131,3 +143,4 @@ generation:
   candidateProvider: deepseek
   publication: 用户确认后显式开放前 12 讲 Note/Blog 与前 9 讲中英文逐字稿。
   approvedAt: 2026-10-03T10:09:56.644Z
+resourceUpdatedAt: 2026-10-16

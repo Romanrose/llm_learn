@@ -1,0 +1,81 @@
+name: Update official course resources
+
+on:
+  schedule:
+    # 01:00 UTC = 09:00 Asia/Shanghai.
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Share the deployment lock with deploy-pages.yml. A resource batch is built and
+# deployed in this workflow because GITHUB_TOKEN pushes do not trigger push CI.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    outputs:
+      changed: ${{ steps.sync.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run test:course-updates
+      - name: Check and synchronize the pinned official sources
+        id: sync
+        run: npm run courses:update
+      - if: steps.sync.outputs.changed == 'true'
+        run: npm run validate:structure
+      - name: Install XeLaTeX toolchain
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-xetex texlive-lang-chinese texlive-latex-extra
+      - name: Build the complete site before publishing any changes
+        if: steps.sync.outputs.changed == 'true'
+        run: npm run build
+      - name: Commit the official resource update
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- website/catalog-data/courses/ courses/
+          git diff --cached --check
+          git commit -m 'Update official course resources'
+          # If a human pushed meanwhile, fail without rebasing or deploying stale content.
+          git push origin HEAD:master
+      - if: steps.sync.outputs.changed == 'true'
+        uses: actions/configure-pages@v5
+      - if: steps.sync.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: website/.vitepress/dist
+
+  deploy:
+    if: needs.update.outputs.changed == 'true'
+    needs: update
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment

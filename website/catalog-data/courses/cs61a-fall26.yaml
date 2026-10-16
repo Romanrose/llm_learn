@@ -26,6 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
+  resourceUpdatedAt: 2026-10-16
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -118,6 +119,42 @@ practice:
     source: https://cs61a.org/fa26/
     checkedAt: 2026-10-04
     note: 官方题目页提供 starter 文件与提交说明。
+  - id: official-dd62a4d69f3c894b
+    title: Hog Strategy Contest (Optional) (due Mon 10/12)
+    url: https://cs61a.org/fa26/projects/hog_contest/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-16
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-12740c5c13c6ba57
+    title: Trees (due Wed 10/7)
+    url: https://cs61a.org/fa26/labs/lab05/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-16
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-c906a8af2999311e
+    title: List Mutation (due Thu 10/15)
+    url: https://cs61a.org/fa26/hw/hw05/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-16
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-0adb8be78a884704
+    title: Mutation (due Wed 10/14)
+    url: https://cs61a.org/fa26/labs/lab06/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-16
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-2f9bbe7bec8777c6
+    title: Ants Vs. SomeBees (due Fri 10/23; checkpoint 1 Fri 10/16; checkpoint 2 Wed 10/21)
+    url: https://cs61a.org/fa26/projects/ants/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-16
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-c9a8fd9fb86a3aec
+    title: Classes (due Thu 10/22)
+    url: https://cs61a.org/fa26/hw/hw06/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-16
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
 items:
   - id: lecture-01
     order: 1
@@ -833,6 +870,10 @@ items:
         type: code
         status: approved
         note: 官网链接；目标页面可用性以官方为准
+      - label: Hog Strategy Contest (Optional) (due Mon 10/12)
+        url: https://cs61a.org/fa26/projects/hog_contest/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
     readings:
       - label: YouTube
         url: https://www.youtube.com/watch?v=LbqHl278hcQ&list=PLO9sS0wuGDK0
@@ -966,7 +1007,15 @@ items:
         url: https://cs61a.org/fa26/
       - label: 官方主题视频播放列表（非当期录播）
         url: https://www.youtube.com/playlist?list=PLPrA7aKz8SYg
-    resources: []
+    resources:
+      - label: Mutation
+        url: https://cs61a.org/fa26/lectures/18-mutation/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/18-Mutation.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
     readings:
       - label: "2.4"
         url: https://composingprograms.com/3ed/mutable-data/
@@ -999,7 +1048,23 @@ items:
         url: https://cs61a.org/fa26/
       - label: 官方主题视频播放列表（非当期录播）
         url: https://www.youtube.com/playlist?list=PL6BsET-8jgYVz2dLlWRsktOrtqO8wWRsy
-    resources: []
+    resources:
+      - label: Classes
+        url: https://cs61a.org/fa26/lectures/19-classes/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/19-Classes.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/19.py
+        type: code
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+      - label: List Mutation (due Thu 10/15)
+        url: https://cs61a.org/fa26/hw/hw05/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
     readings:
       - label: "2.5"
         url: https://composingprograms.com/3ed/object-oriented-programming/
@@ -1032,7 +1097,27 @@ items:
         url: https://cs61a.org/fa26/
       - label: 官方主题视频播放列表（非当期录播）
         url: https://www.youtube.com/playlist?list=PL6BsET-8jgYVhCKr4EHUE9mw9kcH7Kg7Y
-    resources: []
+    resources:
+      - label: Attributes
+        url: https://cs61a.org/fa26/lectures/20-attributes/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/20-Attributes.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/20.py
+        type: code
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+      - label: Mutation (due Wed 10/14)
+        url: https://cs61a.org/fa26/labs/lab06/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+      - label: Ants Vs. SomeBees (due Fri 10/23; checkpoint 1 Fri 10/16; checkpoint 2 Wed 10/21)
+        url: https://cs61a.org/fa26/projects/ants/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
     readings:
       - label: YouTube
         url: https://www.youtube.com/watch?v=mimP7cNrSHA&list=PL6BsET-8jgYVhCKr4EHUE9mw9kcH7Kg7Y
@@ -1060,7 +1145,23 @@ items:
         url: https://cs61a.org/fa26/
       - label: 官方主题视频播放列表（非当期录播）
         url: https://www.youtube.com/playlist?list=PLH902kY1ixw8
-    resources: []
+    resources:
+      - label: Inheritance
+        url: https://cs61a.org/fa26/lectures/21-inheritance/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/21-Inheritance.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/21.py
+        type: code
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+      - label: Classes
+        url: https://cs61a.org/fa26/discussions/disc06/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
     readings:
       - label: YouTube
         url: https://www.youtube.com/watch?v=Bqpe1iyq5vE&list=PLH902kY1ixw8
@@ -1082,12 +1183,24 @@ items:
     title: Lazy Evaluation
     subtitle: 按需计算与求值时机
     overview: 按需计算与求值时机。建议动手任务：比较一次性计算与按需生成的执行顺序。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
-    resources: []
-    readings: []
+    resources:
+      - label: Classes (due Thu 10/22)
+        url: https://cs61a.org/fa26/hw/hw06/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+    readings:
+      - label: "2.8"
+        url: https://composingprograms.com/3ed/lazy-evaluation/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=On-kFyFp8HY&list=PL6BsET-8jgYW7stiut93PHxGP6_QgBzVQ
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable
@@ -1106,7 +1219,11 @@ items:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
     resources: []
-    readings: []
+    readings:
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=DyXPnQuaa0w&list=PL6BsET-8jgYXnY-7vDJXIv2N5xW98rJTZ
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable

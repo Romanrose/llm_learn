@@ -84,3 +84,32 @@ npm run review:dev
 ```
 
 本地审核服务默认使用 4184 端口，支持这些单元的 Note / Blog 候选预览。结构检查不代表内容已审核；正常 `npm run build` 仍遵循 `publishOutputs` 和 `outputs`，不会自动发布候选稿。
+
+## 未完结课程的自动资料更新
+
+[自动更新配置](config/course-updates.yaml)固定课程、学期和官网入口。[GitHub Actions](../.github/workflows/update-courses.yml)每天北京时间 09:00 触发，也可在 Actions 页面手动运行。实际启动时间以 GitHub 调度为准。
+
+目前跟踪 2026 秋季的 CS61A、CMU 15-213、CMU 11-768、CS329Z、Harvard CS2680、CS147、CS329X、JHU Hands-on Robot Learning 与 MIT 6.5940。已结束的春季课和 2015、2025 历史版本不混入这批更新；当前学期跟踪到 2027-01-31，之后显式配置下一期。
+
+```bash
+# 只预览，不写入文件
+npm run courses:check
+
+# 同步官网新资源；按来源匹配既有讲次，保留稳定 ID
+npm run courses:update
+
+# 单独检查一门课
+npm run courses:check -- --course=cs147-fall26
+
+# 离线回归与目录检查
+npm run test:course-updates
+npm run validate:structure
+```
+
+自动更新只补充官方页面明确给出的讲义、阅读、代码、录像与 Lab / 作业入口。公开资料能确定的新单元使用新 ID 追加，已有单元不重新编号；缺失链接不猜测，已有链接不因暂时消失而删除。已有官方 GitHub 作业优先于新发现的题目页。
+
+课程笔记、Blog、逐字稿、审核状态和 `publishOutputs` 不自动修改，也不下载音视频或调用模型服务。CMU 的动态课程数据只解析字面量，绝不执行官网脚本。CS147 以当期 calendar 的真实讲义和作业链接为准；MIT 官网年份不明的复用视频不自动绑定为当期录播。
+
+每批更新先完成所有官网解析；任何来源网络失败、切换学期或结构不匹配时，该批不写入、不提交。通过回归测试、目录检查与完整构建后才提交到 `master` 并在同一工作流中部署 Pages；无变化时不产生日期提交，也不重新部署。失败信息和本次变化列表保留在 Actions 运行摘要中。
+
+此流程直接在 GitHub 运行，无需个人电脑保持开机。使用 GitHub 自带的 `GITHUB_TOKEN`，不需要模型 API Key 或新增个人访问令牌。

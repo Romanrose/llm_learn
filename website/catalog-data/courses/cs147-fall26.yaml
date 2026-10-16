@@ -29,9 +29,9 @@ official:
 schedule:
   source: https://hci.stanford.edu/courses/cs147/2026/au/
   checkedAt: 2026-10-03
-  unitCount: 13
-  note: 十个单元对应官方作业总览，保留作业身份。已补十组中文候选Note/Blog与三组公开讲义候选，均待审核；第二讲为2026页面复用2025材料，无课堂字幕。A11
-    Final Report仅作课程级参考。 已追加三个公开讲义单元，各自标注实际版本。
+  unitCount: 17
+  note: 十个单元对应官方作业总览，保留作业身份。已补十组中文候选Note/Blog与三组公开讲义候选，均待审核；第二讲为2026页面复用2025材料，无课堂字幕。A11 Final Report仅作课程级参考。 已追加三个公开讲义单元，各自标注实际版本。
+  resourceUpdatedAt: 2026-10-16
 learningModules:
   - id: course-references
     title: 00 · 课程参考资料
@@ -57,7 +57,7 @@ learningModules:
     title: 04 · 公开讲义
     description: 按实际材料版本学习；不等同于课堂逐字稿
     from: 11
-    to: 13
+    to: 17
 practice:
   - id: assignments
     title: Assignments Overview · 设计项目作业
@@ -74,6 +74,24 @@ practice:
     url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment2_26.pdf
     source: https://hci.stanford.edu/courses/cs147/2026/au/assignments.pdf
     checkedAt: 2026-10-04
+  - id: official-15567aac751f251d
+    title: A3 Website (group)
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment3_26.pdf
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    checkedAt: 2026-10-16
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-bfb4513b96ee7a06
+    title: A4 Concept Video (group)
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment4_26.pdf
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    checkedAt: 2026-10-16
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-f8ebded6033c1454
+    title: A5 Low-fi Prototype and Test (group)
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment5_26.pdf
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    checkedAt: 2026-10-16
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
 items:
   - id: assignment-01
     order: 1
@@ -153,8 +171,7 @@ items:
         url: https://www.youtube.com/watch?v=QAWQIeGon0k&cc_load_policy=1&cc_lang_pref=en
         language: en
         kind: auto
-        note: 补充视频；上传于2022-01-16；平台自动字幕，非2026本课课堂逐字稿。日程Concept
-          Videos推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
+        note: 补充视频；上传于2022-01-16；平台自动字幕，非2026本课课堂逐字稿。日程Concept Videos推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
     unitLabel: 作业
     generation:
       state: reviewed
@@ -191,6 +208,11 @@ items:
       provider: codex
       manifest: courses/software-product/cs147-fall26/notes/assignment-03/references/codex/run.yaml
       evidenceMode: assignment-reading-only
+    resources:
+      - label: A3 Website (group)
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment3_26.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
   - id: assignment-04
     order: 4
     title: Concept Video
@@ -220,14 +242,18 @@ items:
         url: https://www.youtube.com/watch?v=QAWQIeGon0k&cc_load_policy=1&cc_lang_pref=en
         language: en
         kind: auto
-        note: 补充视频；上传于2022-01-16；平台自动字幕，非2026本课课堂逐字稿。日程Concept
-          Videos推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
+        note: 补充视频；上传于2022-01-16；平台自动字幕，非2026本课课堂逐字稿。日程Concept Videos推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
     unitLabel: 作业
     generation:
       state: reviewed
       provider: codex
       manifest: courses/software-product/cs147-fall26/notes/assignment-04/references/codex/run.yaml
       evidenceMode: assignment-reading-only
+    resources:
+      - label: A4 Concept Video (group)
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment4_26.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
   - id: assignment-05
     order: 5
     title: Low-fi Prototype and Usability Test
@@ -258,6 +284,11 @@ items:
       provider: codex
       manifest: courses/software-product/cs147-fall26/notes/assignment-05/references/codex/run.yaml
       evidenceMode: assignment-reading-only
+    resources:
+      - label: A5 Low-fi Prototype and Test (group)
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment5_26.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
   - id: assignment-06
     order: 6
     title: Interactive Medium-fi Prototype
@@ -287,20 +318,17 @@ items:
         url: https://www.youtube.com/watch?v=TIg8ab4PqbU&cc_load_policy=1&cc_lang_pref=en
         language: en
         kind: auto
-        note: 补充视频；上传于2013-03-05；平台自动字幕，非2026本课课堂逐字稿。日程Visual Information
-          Design推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
+        note: 补充视频；上传于2013-03-05；平台自动字幕，非2026本课课堂逐字稿。日程Visual Information Design推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
       - label: Lecture 3.2 Typography · 英文字幕
         url: https://www.youtube.com/watch?v=82gp_2vqLTc&cc_load_policy=1&cc_lang_pref=en
         language: en
         kind: auto
-        note: 补充视频；上传于2013-03-05；平台自动字幕，非2026本课课堂逐字稿。日程Visual Information
-          Design推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
+        note: 补充视频；上传于2013-03-05；平台自动字幕，非2026本课课堂逐字稿。日程Visual Information Design推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
       - label: Lecture 3.3 Grids and Alignment · 英文字幕
         url: https://www.youtube.com/watch?v=iV9FVoCCT74&cc_load_policy=1&cc_lang_pref=en
         language: en
         kind: auto
-        note: 补充视频；上传于2013-03-05；平台自动字幕，非2026本课课堂逐字稿。日程Visual Information
-          Design推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
+        note: 补充视频；上传于2013-03-05；平台自动字幕，非2026本课课堂逐字稿。日程Visual Information Design推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
     unitLabel: 作业
     generation:
       state: reviewed
@@ -371,8 +399,7 @@ items:
         url: https://www.youtube.com/watch?v=A88E4DH2asQ&cc_load_policy=1&cc_lang_pref=en
         language: en
         kind: manual
-        note: 补充视频；上传于2014-01-30；平台人工字幕，非2026本课课堂逐字稿。日程Usability
-          Testing推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
+        note: 补充视频；上传于2014-01-30；平台人工字幕，非2026本课课堂逐字稿。日程Usability Testing推荐；在YouTube开启字幕或Show transcript。全文复制许可待核验。
     unitLabel: 作业
     generation:
       state: reviewed
@@ -469,6 +496,11 @@ items:
       manifest: courses/software-product/cs147-fall26/references/lectures/lecture-01/codex/run.yaml
       evidenceMode: slides-only
     displayOrder: 1
+    resources:
+      - label: PPT
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/01-introduction.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
   - id: lecture-02
     order: 12
     unitLabel: 讲义
@@ -504,6 +536,11 @@ items:
     reviewCandidates:
       - manifest: courses/software-product/cs147-fall26/references/lectures/lecture-02/codex/transcript-run.yaml
         note: 新ASR逐字稿；待审核，不继承已批准Note/Blog状态
+    resources:
+      - label: PPT
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/02-design-discovery.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
   - id: lecture-03
     order: 13
     unitLabel: 讲义
@@ -534,3 +571,92 @@ items:
       manifest: courses/software-product/cs147-fall26/references/lectures/lecture-03/codex/run.yaml
       evidenceMode: slides-only
     displayOrder: 3
+    resources:
+      - label: PPT
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/03-define.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
+  - id: lecture-14
+    order: 14
+    displayOrder: 14
+    unitLabel: 学习单元
+    title: Ideate
+    subtitle: 课程官网新增单元；当前接入官方资料。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    resources:
+      - label: Ideate
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/04-ideate.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
+      - label: PPT
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/04-ideate.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
+    readings: []
+    outputs: []
+  - id: lecture-15
+    order: 15
+    displayOrder: 15
+    unitLabel: 学习单元
+    title: Concept Videos
+    subtitle: 课程官网新增单元；当前接入官方资料。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    resources:
+      - label: Concept Videos
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/05-video.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
+      - label: PPT
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/05-video.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
+    readings: []
+    outputs: []
+  - id: lecture-16
+    order: 16
+    displayOrder: 16
+    unitLabel: 学习单元
+    title: Exploration
+    subtitle: 课程官网新增单元；当前接入官方资料。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    resources:
+      - label: Exploration
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/06-design-exploration.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
+      - label: PPT
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/06-design-exploration.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
+    readings: []
+    outputs: []
+  - id: lecture-17
+    order: 17
+    displayOrder: 17
+    unitLabel: 学习单元
+    title: Early Stage Prototyping
+    subtitle: 课程官网新增单元；当前接入官方资料。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    resources:
+      - label: Early Stage Prototyping
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/07-early-stage-prototyping.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
+      - label: PPT
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/07-early-stage-prototyping.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
+    readings: []
+    outputs: []

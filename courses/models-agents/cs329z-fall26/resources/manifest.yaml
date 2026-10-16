@@ -1,0 +1,29 @@
+schemaVersion: 1
+course: cs329z-fall26
+state: linked
+resources:
+  - label: Slides
+    url: https://web.stanford.edu/class/cs329z/slides/lecture04.pdf
+    type: slides
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Slides
+    url: https://web.stanford.edu/class/cs329z/slides/lecture05.pdf
+    type: slides
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Slides
+    url: https://web.stanford.edu/class/cs329z/slides/lecture06.pdf
+    type: slides
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Slides
+    url: https://web.stanford.edu/class/cs329z/slides/lecture07.pdf
+    type: slides
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-16
