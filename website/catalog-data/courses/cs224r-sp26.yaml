@@ -1,0 +1,559 @@
+kind: course
+id: cs224r-sp26
+category: llm
+title: Stanford CS224R · Deep Reinforcement Learning · Spring 2026
+shortTitle: CS224R Spring 2026
+eyebrow: Stanford CS224R · Deep Reinforcement Learning · Spring 2026
+year: 2026
+status: resources-approved
+publishOutputs: false
+unitLabel: 单元
+description: 深度强化学习、模仿学习与语言模型强化学习；接入 2026 讲义、三份作业起始代码与项目说明。
+paths:
+  root: llm/cs224r-sp26
+  notes: llm/cs224r-sp26/notes
+  resources: llm/cs224r-sp26/resources
+  references: llm/cs224r-sp26/references
+  exports: llm/cs224r-sp26/exports
+instructors: []
+official:
+  - label: 官方课程与资料
+    url: https://cs224r.stanford.edu/
+  - label: 资料版本与访问说明
+    url: /references/cs224r-sp26
+schedule:
+  source: https://cs224r.stanford.edu/
+  checkedAt: 2026-10-16
+  timezone: America/Los_Angeles
+  note: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+  events:
+    - date: 2026-04-03
+      title: TA Session PyTorch Tutorial 3:30 – 4:20 pm, Skilling Aud
+      links: []
+    - date: 2026-04-03
+      title: Out Homework 1 [ PDF , code , template ]
+      links:
+        - label: PDF
+          url: https://cs224r.stanford.edu/material/hw1/CS224R_2026_Homework_1.pdf
+        - label: code
+          url: https://cs224r.stanford.edu/material/hw1/hw1_starter_code.zip
+        - label: template
+          url: https://cs224r.stanford.edu/material/hw1/CS224R_2026_Homework_1.tex
+    - date: 2026-04-10
+      title: Due Homework 1 Out Homework 2 [ PDF , code , template , compute guide ]
+      links:
+        - label: PDF
+          url: https://cs224r.stanford.edu/material/hw2/CS224R_2026_Homework_2.pdf
+        - label: code
+          url: https://cs224r.stanford.edu/material/hw2/hw2_starter_code.zip
+        - label: template
+          url: https://cs224r.stanford.edu/material/hw2/CS224R_2026_Homework_2.tex
+        - label: compute guide
+          url: https://cs224r.stanford.edu/material/CS224R_compute_guide.pdf
+    - date: 2026-04-17
+      title: TA Session Extra section on Q-learning 4:45 – 5:35 pm, Thornton 102
+      links:
+        - label: Extra section on Q-learning
+          url: https://cs224r.stanford.edu/material/CS224R_Tutotial_Max.pdf
+    - date: 2026-04-22
+      title: Due Project Survey
+      links: []
+    - date: 2026-04-24
+      title: Due Homework 2 Out Homework 3 [ PDF , code , template ]
+      links:
+        - label: PDF
+          url: https://cs224r.stanford.edu/material/hw3/CS224R_2026_Homework_3.pdf
+        - label: code
+          url: https://cs224r.stanford.edu/material/hw3/hw3_starter_code.zip
+        - label: template
+          url: https://cs224r.stanford.edu/material/hw3/CS224R_2026_Homework_3.tex
+    - date: 2026-05-01
+      title: Due Project Proposal (incl. SFT milestone for default project)
+      links: []
+    - date: 2026-05-08
+      title: Due Homework 3
+      links: []
+    - date: 2026-05-11
+      title: Review Session Exam Review Session 4:30 – 5:20 pm, Skilling Aud
+      links:
+        - label: Exam Review Session
+          url: https://cs224r.stanford.edu/material/CS224R_Exam_Review_Session_Riya.pptx
+    - date: 2026-05-15
+      title: Exam In-Class Exam
+      links: []
+    - date: 2026-05-22
+      title: Due Project Milestone
+      links: []
+    - date: 2026-06-03
+      title: Presentations No Lecture (Poster Session)
+      links: []
+    - date: 2026-06-03
+      title: Due Project Poster
+      links: []
+    - date: 2026-06-05
+      title: ""
+      links: []
+    - date: 2026-06-08
+      title: ""
+      links: []
+    - date: 2026-06-08
+      title: Due Project Report
+      links: []
+  unitCount: 17
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    description: 官方来源、作业与版本说明。
+    from: 0
+    to: 0
+  - id: course
+    title: 01 · 课程与学习资料
+    description: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    from: 1
+    to: 999
+practice:
+  - id: homework-1
+    title: Homework 1 · 官方起始代码
+    url: https://cs224r.stanford.edu/material/hw1/hw1_starter_code.zip
+    source: https://cs224r.stanford.edu/
+    checkedAt: 2026-10-16
+    note: 官方提供 ZIP；题目 PDF 与模板保存在对应讲次，不用论文代码替代作业。
+  - id: homework-2
+    title: Homework 2 · 官方起始代码
+    url: https://cs224r.stanford.edu/material/hw2/hw2_starter_code.zip
+    source: https://cs224r.stanford.edu/
+    checkedAt: 2026-10-16
+    note: 官方提供 ZIP；题目 PDF 与模板保存在对应讲次，不用论文代码替代作业。
+  - id: homework-3
+    title: Homework 3 · 官方起始代码
+    url: https://cs224r.stanford.edu/material/hw3/hw3_starter_code.zip
+    source: https://cs224r.stanford.edu/
+    checkedAt: 2026-10-16
+    note: 官方提供 ZIP；题目 PDF 与模板保存在对应讲次，不用论文代码替代作业。
+  - id: default-project
+    title: Default Project Guidelines
+    url: https://cs224r.stanford.edu/material/CS224R_Default_Project_Guidelines.pdf
+    source: https://cs224r.stanford.edu/
+    checkedAt: 2026-10-16
+    note: 官方项目要求；按 Spring 2026 说明开展。
+  - id: custom-project
+    title: Custom Project Guidelines
+    url: https://cs224r.stanford.edu/material/CS224R_Custom_Project_Guidelines.pdf
+    source: https://cs224r.stanford.edu/
+    checkedAt: 2026-10-16
+    note: 官方项目要求；按 Spring 2026 说明开展。
+items:
+  - id: lecture-01
+    order: 1
+    displayOrder: 1
+    unitLabel: 单元
+    date: 2026-04-01
+    title: Course Intro + Start of MDPs & Imitation
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: Course Intro + Start of MDPs & Imitation
+        url: https://cs224r.stanford.edu/slides/01_cs224r_intro_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-02
+    order: 2
+    displayOrder: 2
+    unitLabel: 单元
+    date: 2026-04-03
+    title: Imitation Learning
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: Imitation Learning
+        url: https://cs224r.stanford.edu/slides/02_cs224r_imitation_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: PDF
+        url: https://cs224r.stanford.edu/material/hw1/CS224R_2026_Homework_1.pdf
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: code
+        url: https://cs224r.stanford.edu/material/hw1/hw1_starter_code.zip
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: template
+        url: https://cs224r.stanford.edu/material/hw1/CS224R_2026_Homework_1.tex
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion."
+        url: https://arxiv.org/abs/2303.04137v5
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.
+        url: https://arxiv.org/abs/2304.13705
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-03
+    order: 3
+    displayOrder: 3
+    unitLabel: 单元
+    date: 2026-04-08
+    title: Policy Gradients
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: Policy Gradients
+        url: https://cs224r.stanford.edu/slides/03_cs224r_policy_gradients_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: Simple statistical gradient-following algorithms for connectionist reinforcement learning.
+        url: https://link.springer.com/article/10.1007/BF00992696
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-04
+    order: 4
+    displayOrder: 4
+    unitLabel: 单元
+    date: 2026-04-10
+    title: Actor-Critic Methods
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: Actor-Critic Methods
+        url: https://cs224r.stanford.edu/slides/04_cs224r_actor_critic_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: PDF
+        url: https://cs224r.stanford.edu/material/hw2/CS224R_2026_Homework_2.pdf
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: code
+        url: https://cs224r.stanford.edu/material/hw2/hw2_starter_code.zip
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: template
+        url: https://cs224r.stanford.edu/material/hw2/CS224R_2026_Homework_2.tex
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: compute guide
+        url: https://cs224r.stanford.edu/material/CS224R_compute_guide.pdf
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: Policy Gradient Methods for Reinforcement Learning with Function Approximation.
+        url: https://proceedings.neurips.cc/paper_files/paper/1999/file/464d828b85b0bed98e80ade0a5c43b0f-Paper.pdf
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Proximal Policy Optimization.
+        url: https://arxiv.org/pdf/1707.06347
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-05
+    order: 5
+    displayOrder: 5
+    unitLabel: 单元
+    date: 2026-04-15
+    title: Off-Policy Actor Critic Methods
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: Off-Policy Actor Critic Methods
+        url: https://cs224r.stanford.edu/slides/05_cs224r_offpolicy_actor_critic_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: Playing Atari with Deep Reinforcement Learning.
+        url: https://arxiv.org/abs/1312.5602
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-06
+    order: 6
+    displayOrder: 6
+    unitLabel: 单元
+    date: 2026-04-17
+    title: Q-learning
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: Q-learning
+        url: https://cs224r.stanford.edu/slides/06_cs224r_qlearning_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: Deep Reinforcement Learning with Double Q-learning.
+        url: https://arxiv.org/abs/1509.06461
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: A Distributional Perspective on Reinforcement Learning.
+        url: https://arxiv.org/abs/1707.06887
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-07
+    order: 7
+    displayOrder: 7
+    unitLabel: 单元
+    date: 2026-04-22
+    title: Offline RL
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: Offline RL
+        url: https://cs224r.stanford.edu/slides/07_cs224r_offline_rl_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: Offline Reinforcement Learning with Implicit Q-Learning.
+        url: https://arxiv.org/abs/2110.06169
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-08
+    order: 8
+    displayOrder: 8
+    unitLabel: 单元
+    date: 2026-04-24
+    title: Reward Learning
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: Reward Learning
+        url: https://cs224r.stanford.edu/slides/08_cs224r_reward_learning_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: PDF
+        url: https://cs224r.stanford.edu/material/hw3/CS224R_2026_Homework_3.pdf
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: code
+        url: https://cs224r.stanford.edu/material/hw3/hw3_starter_code.zip
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: template
+        url: https://cs224r.stanford.edu/material/hw3/CS224R_2026_Homework_3.tex
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: Deep reinforcement learning from human preferences.
+        url: https://arxiv.org/abs/1706.03741
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-09
+    order: 9
+    displayOrder: 9
+    unitLabel: 单元
+    date: 2026-04-29
+    title: "RL for LLMs: Preference Optimization (Guest Lecture: Archit Sharma)"
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: "RL for LLMs: Preference Optimization (Guest Lecture: Archit Sharma)"
+        url: https://cs224r.stanford.edu/slides/09_cs224r_rlhf_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: "Direct Preference Optimization: Your Language Model is Secretly a Reward Model."
+        url: https://arxiv.org/abs/2305.18290
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: "IPO: Your Language Model is Secretly a Preference Classifier."
+        url: https://arxiv.org/abs/2502.16182
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-10
+    order: 10
+    displayOrder: 10
+    unitLabel: 单元
+    date: 2026-05-01
+    title: "RL for LLMs: Reasoning (Guest Lecture: Noam Brown)"
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: "RL for LLMs: Reasoning (Guest Lecture: Noam Brown)"
+        url: https://cs224r.stanford.edu/slides/10_cs224r_rl_for_llms_reasoning_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-11
+    order: 11
+    displayOrder: 11
+    unitLabel: 单元
+    date: 2026-05-06
+    title: Model-Based RL
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: Model-Based RL
+        url: https://cs224r.stanford.edu/slides/11_cs224r_mbrl_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: "When to Trust Your Model: Model-Based Policy Optimization."
+        url: https://arxiv.org/abs/1906.08253
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-12
+    order: 12
+    displayOrder: 12
+    unitLabel: 单元
+    date: 2026-05-08
+    title: Multi-Task and Goal-Conditioned RL
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: Multi-Task and Goal-Conditioned RL
+        url: https://cs224r.stanford.edu/slides/12_cs224r_mtrl_gcrl_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: Hindsight Experience Replay.
+        url: https://arxiv.org/abs/1707.01495
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-13
+    order: 13
+    displayOrder: 13
+    unitLabel: 单元
+    date: 2026-05-13
+    title: Meta-RL
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: Meta-RL
+        url: https://cs224r.stanford.edu/slides/13_cs224r_metarl_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: "RL 2 : Fast Reinforcement Learning via Slow Reinforcement Learning."
+        url: https://arxiv.org/abs/1611.02779
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-14
+    order: 14
+    displayOrder: 14
+    unitLabel: 单元
+    date: 2026-05-20
+    title: Hierarchical RL and IL
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: Hierarchical RL and IL
+        url: https://cs224r.stanford.edu/slides/15_cs224r_hierarchy_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: "Do As I Can, Not As I Say: Grounding Language in Robotic Affordances."
+        url: https://arxiv.org/abs/2204.01691
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-15
+    order: 15
+    displayOrder: 15
+    unitLabel: 单元
+    date: 2026-05-22
+    title: "RL for Robots: Sim-to-Real Transfer (Guest Lecture: Guanya Shi)"
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: "RL for Robots: Sim-to-Real Transfer (Guest Lecture: Guanya Shi)"
+        url: https://cs224r.stanford.edu/slides/16_cs224r_sim2real_robot_learning_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: "Sim-to-Real: Learning Agile Locomotion For Quadruped Robots."
+        url: https://arxiv.org/abs/1804.10332
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-16
+    order: 16
+    displayOrder: 16
+    unitLabel: 单元
+    date: 2026-05-27
+    title: "RL for Robots: RL for VLAs"
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: "RL for Robots: RL for VLAs"
+        url: https://cs224r.stanford.edu/slides/17_cs224r_rl_vlas_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-17
+    order: 17
+    displayOrder: 17
+    unitLabel: 单元
+    date: 2026-05-29
+    title: Frontiers
+    subtitle: 使用 Spring 2026 日程和资料；不将 2025 历史录像绑定为本届录播。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs224r.stanford.edu/
+    resources:
+      - label: Frontiers
+        url: https://cs224r.stanford.edu/slides/18_cs224r_frontiers_how_to_research_2026.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []

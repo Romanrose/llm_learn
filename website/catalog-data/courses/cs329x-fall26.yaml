@@ -1,0 +1,451 @@
+kind: course
+id: cs329x-fall26
+category: design
+title: Stanford CS329X · Human-Centered LLMs · Fall 2026
+shortTitle: CS329X Fall 2026
+eyebrow: Stanford CS329X · Human-Centered LLMs · Fall 2026
+year: 2026
+status: resources-approved
+publishOutputs: false
+unitLabel: 单元
+description: 人类偏好、交互、协作与以用户为中心的 LLM 系统；接入公开讲义、论文和项目要求。
+paths:
+  root: interest/design/cs329x-fall26
+  notes: interest/design/cs329x-fall26/notes
+  resources: interest/design/cs329x-fall26/resources
+  references: interest/design/cs329x-fall26/references
+  exports: interest/design/cs329x-fall26/exports
+instructors: []
+official:
+  - label: 官方课程与资料
+    url: https://web.stanford.edu/class/cs329x/
+  - label: 资料版本与访问说明
+    url: /references/cs329x-fall26
+schedule:
+  source: https://web.stanford.edu/class/cs329x/
+  checkedAt: 2026-10-16
+  timezone: America/Los_Angeles
+  note: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+  events:
+    - date: 2026-09-21
+      title: No Class
+    - date: 2026-10-28
+      title: Midway Project Showcase
+    - date: 2026-11-23
+      title: Thanksgiving Holiday - No Class
+    - date: 2026-11-25
+      title: Thanksgiving Holiday - No Class
+    - date: 2026-12-02
+      title: Final Presentations
+  unitCount: 17
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    description: 官方来源、作业与版本说明。
+    from: 0
+    to: 0
+  - id: course
+    title: 01 · 课程与学习资料
+    description: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    from: 1
+    to: 999
+practice:
+  - id: homework-overview
+    title: Homework 1–3 · 官方要求
+    url: https://web.stanford.edu/class/cs329x/logistics.html
+    source: https://web.stanford.edu/class/cs329x/
+    checkedAt: 2026-10-16
+    note: 仅有作业总体要求，具体题目与起始代码暂未公开。
+  - id: final-project
+    title: Final Project · 官方项目说明
+    url: https://web.stanford.edu/class/cs329x/project.html
+    source: https://web.stanford.edu/class/cs329x/
+    checkedAt: 2026-10-16
+    note: 包含 proposal、midway report 与 final report 的要求。
+items:
+  - id: lecture-01
+    order: 1
+    displayOrder: 1
+    unitLabel: 单元
+    date: 2026-09-23
+    title: Introduction to Human Centered LLMs
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources:
+      - label: slides
+        url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture1_intro.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: '"Reflections and New Directions for Human-Centered Large Language Models."'
+        url: https://arxiv.org/abs/2605.06901
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-02
+    order: 2
+    displayOrder: 2
+    unitLabel: 单元
+    date: 2026-09-28
+    title: The Ultimate Crash into LLMs
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources:
+      - label: slides
+        url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture2_llms_prompting.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: '"Dspy: Compiling declarative language model calls into self-improving pipelines."'
+        url: https://arxiv.org/abs/2310.03714
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"The Prompt Report: A Systematic Survey of Prompting Techniques."'
+        url: https://arxiv.org/abs/2406.06608
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-03
+    order: 3
+    displayOrder: 3
+    unitLabel: 单元
+    date: 2026-09-30
+    title: Learning from Human Preferences
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources:
+      - label: slides
+        url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture3_human_preferences.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: '"Training language models to follow instructions with human feedback."'
+        url: https://arxiv.org/abs/2203.02155
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"Direct preference optimization: Your language model is secretly a reward model."'
+        url: https://arxiv.org/pdf/2305.18290
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-04
+    order: 4
+    displayOrder: 4
+    unitLabel: 单元
+    date: 2026-10-05
+    title: "✨ Guest Lecture: Will Held (Open Athena) and Rafal Wojdyla (Open Athena) : Data, Data, and Data"
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources:
+      - label: slides
+        url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture4_data_data.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: '"Lima: Less is more for alignment."'
+        url: https://arxiv.org/abs/2305.11206
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"The fineweb datasets: Decanting the web for the finest text data at scale."'
+        url: https://arxiv.org/pdf/2406.17557
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"Data Authenticity, Consent, and Provenance for AI Are All Broken: What Will It Take to Fix Them?."'
+        url: https://arxiv.org/abs/2404.12691
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-05
+    order: 5
+    displayOrder: 5
+    unitLabel: 单元
+    date: 2026-10-07
+    title: Human-AI Interaction
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources:
+      - label: slides
+        url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture5_enable_HAI.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: '"Rehearsal: Simulating conflict to teach conflict resolution."'
+        url: https://arxiv.org/abs/2309.12309
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"CollabLLM: From Passive Responders to Active Collaborators."'
+        url: https://openreview.net/forum?id=DmH4HHVb3y
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-06
+    order: 6
+    displayOrder: 6
+    unitLabel: 单元
+    date: 2026-10-12
+    title: Evaluating Human-AI interaction
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources:
+      - label: slides
+        url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture6_evaluate_HAI.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: '"Not Just Novelty: A Longitudinal Study on Utility and Customization of AI Workflows."'
+        url: https://arxiv.org/abs/2402.09894
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"Evaluating Human-Language Model Interaction."'
+        url: https://arxiv.org/abs/2212.09746
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"CollabSkill: Evaluating Human-Agent Collaboration On Real-World Tasks."'
+        url: https://arxiv.org/abs/2606.09833
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-07
+    order: 7
+    displayOrder: 7
+    unitLabel: 单元
+    date: 2026-10-14
+    title: Human-Agent Collaboration
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources:
+      - label: slides
+        url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture7_human_agent_collaboration.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: '"Collaborative Gym: A Framework for Enabling and Evaluating Human-Agent Collaboration."'
+        url: https://arxiv.org/abs/2412.15701
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"Scaling Collaborative Effort with Agents."'
+        url: https://aclanthology.org/2026.findings-acl.595/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-08
+    order: 8
+    displayOrder: 8
+    unitLabel: 单元
+    date: 2026-10-19
+    title: Building Full-Stack HAI Systems
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources: []
+    readings:
+      - label: '"MemGPT: Towards LLMs as Operating Systems."'
+        url: https://arxiv.org/abs/2310.08560
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation."'
+        url: https://arxiv.org/abs/2308.08155
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"Into the Unknown Unknowns: Engaged Human Learning through Participation in Language Model Agent Conversations."'
+        url: https://arxiv.org/abs/2408.15232
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-09
+    order: 9
+    displayOrder: 9
+    unitLabel: 单元
+    date: 2026-10-21
+    title: New Frontiers in Generative Interaction
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources: []
+    readings:
+      - label: '"Generative and Malleable User Interfaces with Generative and Evolving Task-Driven Data Model."'
+        url: https://arxiv.org/abs/2503.04084
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"Generative Interfaces for Language Models."'
+        url: https://arxiv.org/abs/2508.19227
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"SpecifyUI: Supporting Iterative UI Design Intent Expression through Structured Specifications and Generative AI."'
+        url: https://arxiv.org/abs/2509.07334
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"Just-In-Time Objectives: A General Approach for Specialized AI Interactions."'
+        url: https://dl.acm.org/doi/full/10.1145/3772318.3790713
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: "Elicitive User Interfaces: Designing How Users Shape Generative Interfaces."
+        url: https://arxiv.org/abs/2609.23642
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-10
+    order: 10
+    displayOrder: 10
+    unitLabel: 单元
+    date: 2026-10-26
+    title: LLMs and the Future of Work
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources: []
+    readings:
+      - label: '"Future of Work with AI Agents: Auditing Automation and Augmentation Potential across the US Workforce."'
+        url: https://arxiv.org/abs/2506.06576
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"Working with AI: Measuring the Occupational Implications of Generative AI."'
+        url: https://arxiv.org/abs/2507.07935
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"Anthropic Economic Index report: Uneven geographic and enterprise AI adoption"'
+        url: https://www.anthropic.com/research/anthropic-economic-index-september-2025-report
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"How do AI agents do human work? Comparing AI and human workflows across diverse occupations."'
+        url: https://arxiv.org/abs/2510.22780
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-11
+    order: 11
+    displayOrder: 11
+    unitLabel: 单元
+    date: 2026-11-02
+    title: "✨ Guest Lecture: Valerie Chen (Stanford) and Weiyan Shi (Northeastern) : Emerging Topics in Human-AI Interaction"
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-12
+    order: 12
+    displayOrder: 12
+    unitLabel: 单元
+    date: 2026-11-04
+    title: "✨ Guest Lecture: Emma Pierson (UC Berkeley)"
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-13
+    order: 13
+    displayOrder: 13
+    unitLabel: 单元
+    date: 2026-11-09
+    title: The Rise of AI Companions
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources: []
+    readings:
+      - label: '"The Rise of AI Companions: How Human-Chatbot Relationships Influence Well-Being."'
+        url: https://arxiv.org/abs/2506.12605
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: "“My Boyfriend Is AI: A Computational Analysis of Human-AI Companionship in Reddit's AI Community.”"
+        url: https://arxiv.org/abs/2509.11391
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: '"INTIMA: A Benchmark for Human-AI Companionship Behavior."'
+        url: https://arxiv.org/abs/2508.09998
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-14
+    order: 14
+    displayOrder: 14
+    unitLabel: 单元
+    date: 2026-11-11
+    title: "✨ Guest Lecture: Kunal Handa (Anthropic)"
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-15
+    order: 15
+    displayOrder: 15
+    unitLabel: 单元
+    date: 2026-11-16
+    title: Safety and Privacy in LLM Use
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-16
+    order: 16
+    displayOrder: 16
+    unitLabel: 单元
+    date: 2026-11-18
+    title: "✨ Guest Lecture: Vishakh Padmakumar (Stanford) and Myra Cheng (Stanford) : Overreliance and Sycophancy"
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-17
+    order: 17
+    displayOrder: 17
+    unitLabel: 单元
+    date: 2026-11-30
+    title: Latest Human-Centered LLM Topics in Late 2026
+    subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://web.stanford.edu/class/cs329x/
+    resources: []
+    readings: []
+    outputs: []

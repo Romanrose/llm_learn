@@ -1,0 +1,102 @@
+schemaVersion: 1
+course: mit-6s184-2026
+state: linked
+checkedAt: 2026-10-16
+officialSchedule: https://diffusion.csail.mit.edu/2026/
+resources:
+  - label: 官方课程表
+    url: https://diffusion.csail.mit.edu/2026/
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null
+  - label: Lab 1 · ODE 与 SDE
+    url: https://drive.google.com/file/d/1hddGSpAn1rfTQI2zacx2ueOrpAq_Boqd/view?usp=sharing
+    type: docs
+    status: linked
+    note: 官方实践 Notebook；GitHub solutions 分支是答案入口，不作为起始代码。
+    local: null
+  - label: Lab 2 · Flow Matching 与 Score Matching
+    url: https://drive.google.com/file/d/1L2ntkxl04jiiz-t40sKscXhEC_XD5FQp/view?usp=sharing
+    type: docs
+    status: linked
+    note: 官方实践 Notebook；GitHub solutions 分支是答案入口，不作为起始代码。
+    local: null
+  - label: Lab 3 · DiT 与 VAE
+    url: https://colab.research.google.com/drive/1wKeiJBN4HS-7dsHQk_zd22Zfoc3ieJn9?usp=sharing
+    type: docs
+    status: linked
+    note: 官方实践 Notebook；GitHub solutions 分支是答案入口，不作为起始代码。
+    local: null
+  - label: "[slides 1]"
+    url: https://diffusion.csail.mit.edu/2026/docs/20260120_Lecture_01.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Lecture Notes · 官方完整讲义
+    url: https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf
+    type: book
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: 2026 官方录像
+    url: https://www.youtube.com/watch?v=9eJQQVrUUoI
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null
+  - label: "[slides 2]"
+    url: https://diffusion.csail.mit.edu/2026/docs/20260122_Lecture_02.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: 2026 官方录像
+    url: https://www.youtube.com/watch?v=PNkMKWW8Khw
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null
+  - label: "[slides 3]"
+    url: https://diffusion.csail.mit.edu/2026/docs/20260123_Lecture_03.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: 2026 官方录像
+    url: https://www.youtube.com/watch?v=ngC3QnYSVNM
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null
+  - label: 2026 官方录像
+    url: https://www.youtube.com/watch?v=8oWZ1bHwyRI
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null
+  - label: "[slides 4]"
+    url: https://diffusion.csail.mit.edu/2026/docs/20260128_Lecture_04_edited.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: 2026 官方录像
+    url: https://www.youtube.com/watch?v=g0MB1CCBmsI
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null
+  - label: "[slides 5]"
+    url: https://diffusion.csail.mit.edu/2026/docs/20260130_Lecture_05.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: 2026 官方录像
+    url: https://www.youtube.com/watch?v=d0kmyEJN2hI
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null

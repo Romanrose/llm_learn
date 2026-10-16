@@ -1,0 +1,204 @@
+schemaVersion: 1
+course: harvard-cs2680-fall26
+state: linked
+checkedAt: 2026-10-16
+officialSchedule: https://cs2680.com/
+resources:
+  - label: 官方课程表
+    url: https://cs2680.com/
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null
+  - label: "Assignment 1 · Mads-Lens: Watch the agent work"
+    url: https://cs2680.com/assignments/assignment1.html
+    type: docs
+    status: linked
+    note: 官方作业说明；环境与 API 访问以题目为准。
+    local: null
+  - label: Assignment 2 · 官方 GitHub 起始代码
+    url: https://github.com/HarvardMadSys/cs2680_assignments/tree/main/assignment2
+    type: docs
+    status: linked
+    note: 官方课程作业仓库；先阅读题目，再进入对应 assignment 目录。
+    local: null
+  - label: Assignment 3 · 官方 GitHub 起始代码
+    url: https://github.com/HarvardMadSys/cs2680_assignments/tree/main/assignment3
+    type: docs
+    status: linked
+    note: 官方课程作业仓库；先阅读题目，再进入对应 assignment 目录。
+    local: null
+  - label: Final Project · 官方项目要求
+    url: https://cs2680.com/project.html
+    type: docs
+    status: linked
+    note: 期末项目选题、里程碑与交付要求。
+    local: null
+  - label: "[slide]"
+    url: https://cs2680.com/slides/1_intro.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Assignment 2 · 官方题目
+    url: https://cs2680.com/assignments/assignment2
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Assignment 3 · 官方题目
+    url: https://cs2680.com/assignments/assignment3
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[slide]"
+    url: https://cs2680.com/slides/2_agent_use_1.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: How I use LLMs
+    url: https://www.youtube.com/watch?v=EWvNQjAaOHw
+    type: video
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Best practices for Claude Code
+    url: https://code.claude.com/docs/en/best-practices
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Agentic Engineering Patterns
+    url: https://simonwillison.net/guides/agentic-engineering-patterns/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: more reading →
+    url: https://cs2680.com/readings/sep-09.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[slide]"
+    url: https://cs2680.com/slides/3_agent_use_2.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Claude Code agent teams
+    url: https://code.claude.com/docs/en/agent-teams
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Software is changing (again)
+    url: https://www.youtube.com/watch?v=LCEmiRjPEtQ
+    type: video
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "Research acceleration: The view inside OpenAI"
+    url: https://openai.com/index/research-acceleration-view-inside-openai/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: more reading →
+    url: https://cs2680.com/readings/sep-14.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[slide]"
+    url: https://cs2680.com/slides/4_agent_design_1.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: ReAct
+    url: https://arxiv.org/abs/2210.03629
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: A practical guide to building agents
+    url: https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: LLM Powered Autonomous Agents
+    url: https://lilianweng.github.io/posts/2023-06-23-agent
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: more reading →
+    url: https://cs2680.com/readings/sep-16.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[slide]"
+    url: https://cs2680.com/slides/5_agent_design_2.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: multi-agent research system
+    url: https://www.anthropic.com/engineering/multi-agent-research-system
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: scaling agent systems
+    url: https://arxiv.org/pdf/2512.08296
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: don’t build multi-agents
+    url: https://cognition.com/blog/dont-build-multi-agents
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: more reading →
+    url: https://cs2680.com/readings/sep-23.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[slide]"
+    url: https://cs2680.com/slides/7_agent_design_4.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Agent evaluation and benchmarks
+    url: https://cs2680.com/notes/agent-evaluation.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[slide]"
+    url: https://cs2680.com/slides/8_agent_design_5.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[Assignment3 slide]"
+    url: https://cs2680.com/slides/8_assignment3.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Cost-effective agents
+    url: https://cs2680.com/notes/cost-effective-agents.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null

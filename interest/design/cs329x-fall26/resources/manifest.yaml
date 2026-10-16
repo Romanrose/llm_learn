@@ -1,0 +1,246 @@
+schemaVersion: 1
+course: cs329x-fall26
+state: linked
+checkedAt: 2026-10-16
+officialSchedule: https://web.stanford.edu/class/cs329x/
+resources:
+  - label: 官方课程表
+    url: https://web.stanford.edu/class/cs329x/
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null
+  - label: Homework 1–3 · 官方要求
+    url: https://web.stanford.edu/class/cs329x/logistics.html
+    type: docs
+    status: linked
+    note: 仅有作业总体要求，具体题目与起始代码暂未公开。
+    local: null
+  - label: Final Project · 官方项目说明
+    url: https://web.stanford.edu/class/cs329x/project.html
+    type: docs
+    status: linked
+    note: 包含 proposal、midway report 与 final report 的要求。
+    local: null
+  - label: slides
+    url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture1_intro.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Reflections and New Directions for Human-Centered Large Language Models."'
+    url: https://arxiv.org/abs/2605.06901
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: slides
+    url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture2_llms_prompting.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Dspy: Compiling declarative language model calls into self-improving pipelines."'
+    url: https://arxiv.org/abs/2310.03714
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"The Prompt Report: A Systematic Survey of Prompting Techniques."'
+    url: https://arxiv.org/abs/2406.06608
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: slides
+    url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture3_human_preferences.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Training language models to follow instructions with human feedback."'
+    url: https://arxiv.org/abs/2203.02155
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Direct preference optimization: Your language model is secretly a reward model."'
+    url: https://arxiv.org/pdf/2305.18290
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: slides
+    url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture4_data_data.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Lima: Less is more for alignment."'
+    url: https://arxiv.org/abs/2305.11206
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"The fineweb datasets: Decanting the web for the finest text data at scale."'
+    url: https://arxiv.org/pdf/2406.17557
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Data Authenticity, Consent, and Provenance for AI Are All Broken: What Will It Take to Fix Them?."'
+    url: https://arxiv.org/abs/2404.12691
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: slides
+    url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture5_enable_HAI.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Rehearsal: Simulating conflict to teach conflict resolution."'
+    url: https://arxiv.org/abs/2309.12309
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"CollabLLM: From Passive Responders to Active Collaborators."'
+    url: https://openreview.net/forum?id=DmH4HHVb3y
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: slides
+    url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture6_evaluate_HAI.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Not Just Novelty: A Longitudinal Study on Utility and Customization of AI Workflows."'
+    url: https://arxiv.org/abs/2402.09894
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Evaluating Human-Language Model Interaction."'
+    url: https://arxiv.org/abs/2212.09746
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"CollabSkill: Evaluating Human-Agent Collaboration On Real-World Tasks."'
+    url: https://arxiv.org/abs/2606.09833
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: slides
+    url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture7_human_agent_collaboration.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Collaborative Gym: A Framework for Enabling and Evaluating Human-Agent Collaboration."'
+    url: https://arxiv.org/abs/2412.15701
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Scaling Collaborative Effort with Agents."'
+    url: https://aclanthology.org/2026.findings-acl.595/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"MemGPT: Towards LLMs as Operating Systems."'
+    url: https://arxiv.org/abs/2310.08560
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation."'
+    url: https://arxiv.org/abs/2308.08155
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Into the Unknown Unknowns: Engaged Human Learning through Participation in Language Model Agent Conversations."'
+    url: https://arxiv.org/abs/2408.15232
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Generative and Malleable User Interfaces with Generative and Evolving Task-Driven Data Model."'
+    url: https://arxiv.org/abs/2503.04084
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Generative Interfaces for Language Models."'
+    url: https://arxiv.org/abs/2508.19227
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"SpecifyUI: Supporting Iterative UI Design Intent Expression through Structured Specifications and Generative AI."'
+    url: https://arxiv.org/abs/2509.07334
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Just-In-Time Objectives: A General Approach for Specialized AI Interactions."'
+    url: https://dl.acm.org/doi/full/10.1145/3772318.3790713
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "Elicitive User Interfaces: Designing How Users Shape Generative Interfaces."
+    url: https://arxiv.org/abs/2609.23642
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Future of Work with AI Agents: Auditing Automation and Augmentation Potential across the US Workforce."'
+    url: https://arxiv.org/abs/2506.06576
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Working with AI: Measuring the Occupational Implications of Generative AI."'
+    url: https://arxiv.org/abs/2507.07935
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"Anthropic Economic Index report: Uneven geographic and enterprise AI adoption"'
+    url: https://www.anthropic.com/research/anthropic-economic-index-september-2025-report
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"How do AI agents do human work? Comparing AI and human workflows across diverse occupations."'
+    url: https://arxiv.org/abs/2510.22780
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"The Rise of AI Companions: How Human-Chatbot Relationships Influence Well-Being."'
+    url: https://arxiv.org/abs/2506.12605
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "“My Boyfriend Is AI: A Computational Analysis of Human-AI Companionship in Reddit's AI Community.”"
+    url: https://arxiv.org/abs/2509.11391
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: '"INTIMA: A Benchmark for Human-AI Companionship Behavior."'
+    url: https://arxiv.org/abs/2508.09998
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null

@@ -1,0 +1,90 @@
+schemaVersion: 1
+course: mit-65940-fall26
+state: linked
+checkedAt: 2026-10-16
+officialSchedule: https://hanlab.mit.edu/courses/2026-fall-65940
+resources:
+  - label: 官方课程表
+    url: https://hanlab.mit.edu/courses/2026-fall-65940
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null
+  - label: Lab 0 · 官方 Notebook
+    url: https://colab.research.google.com/drive/1PfVYxikSaVpCSD-cnmNLN4l7yx_4odmg
+    type: docs
+    status: linked
+    note: 以课程当前公开链接为准；Notebook 与 ZIP 均来自官方课程页。
+    local: null
+  - label: Lab 1 · 官方 GPU 起始代码
+    url: https://www.dropbox.com/scl/fi/y2zmly5aoekmsg7jq4954/lab1_gpu_basics.zip?rlkey=29v29mlm2muvm0c5teleiusvc&st=2xh5vnk3&dl=1
+    type: docs
+    status: linked
+    note: 以课程当前公开链接为准；Notebook 与 ZIP 均来自官方课程页。
+    local: null
+  - label: Lab 2 · 官方 Notebook
+    url: https://colab.research.google.com/drive/1-HEcO8qxlbOgccAg6TyuDTOqWt1Jx45W
+    type: docs
+    status: linked
+    note: 以课程当前公开链接为准；Notebook 与 ZIP 均来自官方课程页。
+    local: null
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/yi5oq4f9yzg9sikwcxm3o/Lec01-Introduction.pdf?rlkey=w0zyuyfkm09haqlh7mo2n27ak&st=oe0pir7t&dl=0
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/42vwbruge0kz3yiuc5un4/Lec02-Basics-of-Neural-Networks.pdf?rlkey=r7o3vatbn8wv5o1n44n2dxizt&st=72q7v2zc&dl=0
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/y5k1ipgvg919hykax33nu/Lec03-Pruning-I.pdf?rlkey=yg3v2oa8r8wfd7oez23b8azlg&st=ilwjkc8u&dl=0
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/cmqhxgcml6gpks9khm2vm/Lec04-Pruning-II.pdf?rlkey=k7fb0eam3aiy8kl9gosx2qt78&st=d75bnpaw&dl=0
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/1yvbg0dqcysee8hf61hjr/Lec05-Quantization-I.pdf?rlkey=kaxx0x1m67ruecnm07gtm6d78&st=xb9raxr5&dl=0
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/4zry0dea0hrykoa2aoqp0/Lec06-Quantization-II.pdf?rlkey=cb7gol6t8jcrb8kyyxpxwjzfb&st=b4zqgq25&dl=0
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/83nqzhj321vcm89dnyzyl/Lec07-Neural-Architecture-Search-I.pdf?rlkey=xwegts2hywmbhjvsic7ldn8d5&st=3py9v1w3&dl=0
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/160vx9fv5gbe3iwnivjp2/Lec08-Neural-Architecture-Search-II.pdf?rlkey=pf2lkthlwgnp5bwmcrnkgpvof&st=i9e4s8fg&dl=0
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/5zo1lsfdv9ubhi77u9uzr/Lec09-Knowledge-Distillation.pdf?rlkey=sou2ljtdze8qx9ebojbhrg0nm&st=uuwfokyg&dl=0
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/g790tbz469qm2ti4kxdpz/Lec10-MCUNet.pdf?rlkey=c1y3fowzr5fp4gcaw88l3pe92&st=qnjegxl2&dl=0
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null

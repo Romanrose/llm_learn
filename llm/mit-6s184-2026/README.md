@@ -1,0 +1,20 @@
+# MIT 6.S184 · Generative AI with Stochastic Differential Equations · 2026
+
+Flow Matching、扩散模型与随机微分方程；六个视频单元、官方讲义及三份实践 Notebook。
+
+## 版本与资料边界
+
+- [官方课程来源](https://diffusion.csail.mit.edu/2026/)
+- 核对日期：2026-10-16
+- 固定使用 /2026/ 资料；第三讲分 A/B 两段，合计六个视频单元。
+- 当前仅保存元数据与外部链接；不复制讲义、代码包、视频或音频。未发布生成笔记、Blog 或逐字稿。
+
+## Lab 与作业
+
+- [Lab 1 · ODE 与 SDE](https://drive.google.com/file/d/1hddGSpAn1rfTQI2zacx2ueOrpAq_Boqd/view?usp=sharing)：官方实践 Notebook；GitHub solutions 分支是答案入口，不作为起始代码。
+- [Lab 2 · Flow Matching 与 Score Matching](https://drive.google.com/file/d/1L2ntkxl04jiiz-t40sKscXhEC_XD5FQp/view?usp=sharing)：官方实践 Notebook；GitHub solutions 分支是答案入口，不作为起始代码。
+- [Lab 3 · DiT 与 VAE](https://colab.research.google.com/drive/1wKeiJBN4HS-7dsHQk_zd22Zfoc3ieJn9?usp=sharing)：官方实践 Notebook；GitHub solutions 分支是答案入口，不作为起始代码。
+
+## 维护
+
+课程元数据：`website/catalog-data/courses/mit-6s184-2026.yaml`。修改后运行 `npm run build`。

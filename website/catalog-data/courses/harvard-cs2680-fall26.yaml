@@ -1,0 +1,565 @@
+kind: course
+id: harvard-cs2680-fall26
+category: agent
+title: Harvard CS2680 · AI Agents · Fall 2026
+shortTitle: Harvard CS2680 Fall 2026
+eyebrow: Harvard CS2680 · AI Agents · Fall 2026
+year: 2026
+status: resources-approved
+publishOutputs: false
+unitLabel: 单元
+description: 从 Agent 使用与评估到工具、记忆和系统工程；接入 2026 秋季讲义、阅读与官方作业仓库。
+paths:
+  root: agent/harvard-cs2680-fall26
+  notes: agent/harvard-cs2680-fall26/notes
+  resources: agent/harvard-cs2680-fall26/resources
+  references: agent/harvard-cs2680-fall26/references
+  exports: agent/harvard-cs2680-fall26/exports
+instructors:
+  - Juncheng Yang
+official:
+  - label: 官方课程与资料
+    url: https://cs2680.com/
+  - label: 资料版本与访问说明
+    url: /references/harvard-cs2680-fall26
+schedule:
+  source: https://cs2680.com/
+  checkedAt: 2026-10-16
+  timezone: America/New_York
+  note: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+  events:
+    - date: 2026-09-02
+      title: "Assignment 1 out (Mads-Lens: Watch the agent work); Sign up for AWS"
+      links:
+        - label: Assignment 1
+          url: https://cs2680.com/assignments/assignment1.html
+    - date: 2026-09-16
+      title: Assignment 1 due Sun Sep 20, 11:59pm
+      links:
+        - label: Assignment 1
+          url: https://cs2680.com/assignments/assignment1.html
+    - date: 2026-09-21
+      title: "Assignment 2 out (Mads-Loop: Build the loop)"
+      links:
+        - label: Assignment 2
+          url: https://cs2680.com/assignments/index.html#assignment-2
+    - date: 2026-09-30
+      title: Assignment 2 due Sun Oct 4, 11:59pm
+      links:
+        - label: Assignment 2
+          url: https://cs2680.com/assignments/index.html#assignment-2
+    - date: 2026-10-05
+      title: "Assignment 3 out (Mads-Opt: Make every token count)"
+      links:
+        - label: Assignment 3
+          url: https://cs2680.com/assignments/index.html#assignment-3
+    - date: 2026-10-07
+      title: Pre-proposal due (optional and only submit if you want to discuss your ideas)
+      links: []
+    - date: 2026-10-19
+      title: Assignment 3 due Tue Oct 20, 11:59pm
+      links:
+        - label: Assignment 3
+          url: https://cs2680.com/assignments/index.html#assignment-3
+    - date: 2026-10-21
+      title: "Assignment 4 out (Mads-Serve: Own the serving engine)"
+      links:
+        - label: Assignment 4
+          url: https://cs2680.com/assignments/index.html#assignment-4
+    - date: 2026-10-28
+      title: Project proposal due
+      links:
+        - label: Project proposal due
+          url: https://cs2680.com/project.html#proposal
+    - date: 2026-11-02
+      title: This lecture is earlier because of Assignment 4.
+      links: []
+    - date: 2026-11-09
+      title: Assignment 4 due Tue Nov 10, 11:59pm
+      links:
+        - label: Assignment 4
+          url: https://cs2680.com/assignments/index.html#assignment-4
+    - date: 2026-11-11
+      title: "Assignment 5 out (Mads-Stack: Optimize the full stack)"
+      links:
+        - label: Assignment 5
+          url: https://cs2680.com/assignments/index.html#assignment-5
+    - date: 2026-11-23
+      title: Assignment 5 due Sun Nov 29, 11:59pm
+      links:
+        - label: Assignment 5
+          url: https://cs2680.com/assignments/index.html#assignment-5
+    - date: 2026-12-07
+      title: Final project poster and demo
+  unitCount: 23
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    description: 官方来源、作业与版本说明。
+    from: 0
+    to: 0
+  - id: course
+    title: 01 · 课程与学习资料
+    description: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    from: 1
+    to: 999
+practice:
+  - id: assignment-1
+    title: "Assignment 1 · Mads-Lens: Watch the agent work"
+    url: https://cs2680.com/assignments/assignment1.html
+    source: https://cs2680.com/
+    checkedAt: 2026-10-16
+    note: 官方作业说明；环境与 API 访问以题目为准。
+  - id: assignment-2
+    title: Assignment 2 · 官方 GitHub 起始代码
+    url: https://github.com/HarvardMadSys/cs2680_assignments/tree/main/assignment2
+    source: https://cs2680.com/assignments/assignment3
+    checkedAt: 2026-10-16
+    note: 官方课程作业仓库；先阅读题目，再进入对应 assignment 目录。
+  - id: assignment-3
+    title: Assignment 3 · 官方 GitHub 起始代码
+    url: https://github.com/HarvardMadSys/cs2680_assignments/tree/main/assignment3
+    source: https://cs2680.com/assignments/assignment3
+    checkedAt: 2026-10-16
+    note: 官方课程作业仓库；先阅读题目，再进入对应 assignment 目录。
+  - id: project
+    title: Final Project · 官方项目要求
+    url: https://cs2680.com/project.html
+    source: https://cs2680.com/
+    checkedAt: 2026-10-16
+    note: 期末项目选题、里程碑与交付要求。
+items:
+  - id: lecture-01
+    order: 1
+    displayOrder: 1
+    unitLabel: 单元
+    date: 2026-09-02
+    title: Course overview and logistics
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources:
+      - label: "[slide]"
+        url: https://cs2680.com/slides/1_intro.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Assignment 2 · 官方题目
+        url: https://cs2680.com/assignments/assignment2
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Assignment 3 · 官方题目
+        url: https://cs2680.com/assignments/assignment3
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-02
+    order: 2
+    displayOrder: 2
+    unitLabel: 单元
+    date: 2026-09-09
+    title: "Agents use I: How Claude Code Works"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources:
+      - label: "[slide]"
+        url: https://cs2680.com/slides/2_agent_use_1.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: How I use LLMs
+        url: https://www.youtube.com/watch?v=EWvNQjAaOHw
+        type: video
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Best practices for Claude Code
+        url: https://code.claude.com/docs/en/best-practices
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Agentic Engineering Patterns
+        url: https://simonwillison.net/guides/agentic-engineering-patterns/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: more reading →
+        url: https://cs2680.com/readings/sep-09.html
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-03
+    order: 3
+    displayOrder: 3
+    unitLabel: 单元
+    date: 2026-09-14
+    title: "Agents use II: 100x Engineer with Multi-agents"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources:
+      - label: "[slide]"
+        url: https://cs2680.com/slides/3_agent_use_2.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: Claude Code agent teams
+        url: https://code.claude.com/docs/en/agent-teams
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Software is changing (again)
+        url: https://www.youtube.com/watch?v=LCEmiRjPEtQ
+        type: video
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: "Research acceleration: The view inside OpenAI"
+        url: https://openai.com/index/research-acceleration-view-inside-openai/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: more reading →
+        url: https://cs2680.com/readings/sep-14.html
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-04
+    order: 4
+    displayOrder: 4
+    unitLabel: 单元
+    date: 2026-09-16
+    title: "Agents design I: context management and tool design"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources:
+      - label: "[slide]"
+        url: https://cs2680.com/slides/4_agent_design_1.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: ReAct
+        url: https://arxiv.org/abs/2210.03629
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: A practical guide to building agents
+        url: https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: LLM Powered Autonomous Agents
+        url: https://lilianweng.github.io/posts/2023-06-23-agent
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: more reading →
+        url: https://cs2680.com/readings/sep-16.html
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-05
+    order: 5
+    displayOrder: 5
+    unitLabel: 单元
+    date: 2026-09-21
+    title: Student sharing I
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-06
+    order: 6
+    displayOrder: 6
+    unitLabel: 单元
+    date: 2026-09-23
+    title: "Agents design II: multi-agent architecture, coordination, and communication"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources:
+      - label: "[slide]"
+        url: https://cs2680.com/slides/5_agent_design_2.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: multi-agent research system
+        url: https://www.anthropic.com/engineering/multi-agent-research-system
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: scaling agent systems
+        url: https://arxiv.org/pdf/2512.08296
+        type: paper
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: don’t build multi-agents
+        url: https://cognition.com/blog/dont-build-multi-agents
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: more reading →
+        url: https://cs2680.com/readings/sep-23.html
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-07
+    order: 7
+    displayOrder: 7
+    unitLabel: 单元
+    date: 2026-09-30
+    title: "Agent design IV: agent evaluation"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources:
+      - label: "[slide]"
+        url: https://cs2680.com/slides/7_agent_design_4.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: Agent evaluation and benchmarks
+        url: https://cs2680.com/notes/agent-evaluation.html
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-08
+    order: 8
+    displayOrder: 8
+    unitLabel: 单元
+    date: 2026-10-05
+    title: "Guest lecture: Developing and Evaluating Agents in Enterprise Setting"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-09
+    order: 9
+    displayOrder: 9
+    unitLabel: 单元
+    date: 2026-10-07
+    title: "Advanced agent design I: Cost and performance"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources:
+      - label: "[slide]"
+        url: https://cs2680.com/slides/8_agent_design_5.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: "[Assignment3 slide]"
+        url: https://cs2680.com/slides/8_assignment3.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: Cost-effective agents
+        url: https://cs2680.com/notes/cost-effective-agents.html
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-10
+    order: 10
+    displayOrder: 10
+    unitLabel: 单元
+    date: 2026-10-14
+    title: "Advanced agent design II: agent safety, self-evolving harness"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-11
+    order: 11
+    displayOrder: 11
+    unitLabel: 单元
+    date: 2026-10-19
+    title: "Efficient LLM serving: basics I"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-12
+    order: 12
+    displayOrder: 12
+    unitLabel: 单元
+    date: 2026-10-21
+    title: "Efficient LLM serving: basics II"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-13
+    order: 13
+    displayOrder: 13
+    unitLabel: 单元
+    date: 2026-10-26
+    title: Assignment Feedback and Student sharing II
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-14
+    order: 14
+    displayOrder: 14
+    unitLabel: 单元
+    date: 2026-10-28
+    title: "Efficient LLM serving: speculative decoding"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-15
+    order: 15
+    displayOrder: 15
+    unitLabel: 单元
+    date: 2026-11-02
+    title: "Efficient agentic systems: scheduling and prefix caching"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-16
+    order: 16
+    displayOrder: 16
+    unitLabel: 单元
+    date: 2026-11-04
+    title: "Efficient LLM serving: pruning and quantization"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-17
+    order: 17
+    displayOrder: 17
+    unitLabel: 单元
+    date: 2026-11-09
+    title: "Guest lecture: Why Infrastructure sets the pace of AI"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-18
+    order: 18
+    displayOrder: 18
+    unitLabel: 单元
+    date: 2026-11-11
+    title: "Efficient LLM serving: GPU and kernels"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-19
+    order: 19
+    displayOrder: 19
+    unitLabel: 单元
+    date: 2026-11-16
+    title: "Efficient LLM serving: KV-cache optimization and model architectures"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-20
+    order: 20
+    displayOrder: 20
+    unitLabel: 单元
+    date: 2026-11-18
+    title: Student sharing III
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-21
+    order: 21
+    displayOrder: 21
+    unitLabel: 单元
+    date: 2026-11-23
+    title: "Efficient agentic system: routing and load balancing"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-22
+    order: 22
+    displayOrder: 22
+    unitLabel: 单元
+    date: 2026-11-30
+    title: "Efficient agentic systems: others"
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-23
+    order: 23
+    displayOrder: 23
+    unitLabel: 单元
+    date: 2026-12-02
+    title: Student sharing IV
+    subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://cs2680.com/
+    resources: []
+    readings: []
+    outputs: []

@@ -1,0 +1,985 @@
+{
+  "schemaVersion": 1,
+  "courseId": "cs224n-winter26",
+  "source": "https://web.stanford.edu/class/cs224n/",
+  "checkedAt": "2026-10-12",
+  "recordings": {
+    "current": {
+      "year": 2026,
+      "url": "https://canvas.stanford.edu/courses/217005/external_tools/69960",
+      "access": "enrolled-students-only"
+    },
+    "historical": {
+      "year": 2024,
+      "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rOaMFbaqxPDoLWjDaRAdP9D",
+      "access": "public",
+      "note": "历史补充，不能替代 2026 录播或题目。"
+    }
+  },
+  "units": [
+    {
+      "id": "lecture-01",
+      "date": "2026-01-06",
+      "title": "History of NLP",
+      "resources": [
+        {
+          "label": "History of NLP · intro slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture01-intro.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "History of NLP · history slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture01-history.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Assignment 1 · 官方起始代码 ZIP",
+          "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a1.zip",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Human Language Understanding & Reasoning",
+          "url": "https://www.amacad.org/publication/daedalus/human-language-understanding-reasoning",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-02",
+      "date": "2026-01-08",
+      "title": "Word Vectors",
+      "resources": [
+        {
+          "label": "Word Vectors · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture02-wordvecs.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Word Vectors · 官方补充 notes 1",
+          "url": "https://web.stanford.edu/class/cs224n/readings/cs224n_winter2023_lecture1_notes_draft.pdf",
+          "type": "docs",
+          "note": "2026 官网沿用的往年配套材料；原文年份保持不变。"
+        },
+        {
+          "label": "Word Vectors · 官方补充 notes 2",
+          "url": "https://web.stanford.edu/class/cs224n/readings/cs224n-2019-notes02-wordvecs2.pdf",
+          "type": "docs",
+          "note": "2026 官网沿用的往年配套材料；原文年份保持不变。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Efficient Estimation of Word Representations in Vector Space",
+          "url": "http://arxiv.org/pdf/1301.3781.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Distributed Representations of Words and Phrases and their Compositionality",
+          "url": "http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "GloVe: Global Vectors for Word Representation",
+          "url": "http://nlp.stanford.edu/pubs/glove.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Improving Distributional Similarity with Lessons Learned from Word Embeddings",
+          "url": "http://www.aclweb.org/anthology/Q15-1016",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Evaluation methods for unsupervised word embeddings",
+          "url": "http://www.aclweb.org/anthology/D15-1036",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "A Latent Variable Model Approach to PMI-based Word Embeddings",
+          "url": "http://aclweb.org/anthology/Q16-1028",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Linear Algebraic Structure of Word Senses, with Applications to Polysemy",
+          "url": "https://transacl.org/ojs/index.php/tacl/article/viewFile/1346/320",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "On the Dimensionality of Word Embedding",
+          "url": "https://papers.nips.cc/paper/7368-on-the-dimensionality-of-word-embedding.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-03",
+      "date": "2026-01-13",
+      "title": "Backpropagation and Neural Network Basics",
+      "resources": [
+        {
+          "label": "Backpropagation and Neural Network Basics · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture03-neuralnets.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Backpropagation and Neural Network Basics · 官方补充 notes",
+          "url": "https://web.stanford.edu/class/cs224n/readings/cs224n-2019-notes03-neuralnets.pdf",
+          "type": "docs",
+          "note": "2026 官网沿用的往年配套材料；原文年份保持不变。"
+        },
+        {
+          "label": "Assignment 2 · 官方起始代码 ZIP",
+          "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a2.zip",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Assignment 2 · 题目说明 PDF",
+          "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a2.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Assignment 2 · LaTeX 模板",
+          "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a2_tex.zip",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "matrix calculus notes",
+          "url": "https://web.stanford.edu/class/cs224n/readings/gradient-notes.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Review of differential calculus",
+          "url": "https://web.stanford.edu/class/cs224n/readings/review-differential-calculus.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "CS231n notes on network architectures",
+          "url": "http://cs231n.github.io/neural-networks-1/",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "CS231n notes on backprop",
+          "url": "http://cs231n.github.io/optimization-2/",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Derivatives, Backpropagation, and Vectorization",
+          "url": "http://cs231n.stanford.edu/handouts/derivatives.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Learning Representations by Backpropagating Errors",
+          "url": "http://www.iro.umontreal.ca/~vincentp/ift3395/lectures/backprop_old.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Yes you should understand backprop",
+          "url": "https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Natural Language Processing (Almost) from Scratch",
+          "url": "http://www.jmlr.org/papers/volume12/collobert11a/collobert11a.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-04",
+      "date": "2026-01-15",
+      "title": "Language Models and RNNs",
+      "resources": [
+        {
+          "label": "Language Models and RNNs · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture04-rnnlm.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Language Models and RNNs · 官方补充 notes",
+          "url": "https://web.stanford.edu/class/cs224n/readings/cs224n-2019-notes05-LM_RNN.pdf",
+          "type": "docs",
+          "note": "2026 官网沿用的往年配套材料；原文年份保持不变。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Learning long-term dependencies with gradient descent is difficult",
+          "url": "https://ieeexplore.ieee.org/document/279181",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "On the difficulty of training Recurrent Neural Networks",
+          "url": "https://arxiv.org/pdf/1211.5063.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Vanishing Gradients Jupyter Notebook",
+          "url": "https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1174/lectures/vanishing_grad_example.html",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Attention Is All You Need",
+          "url": "https://arxiv.org/abs/1706.03762.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-05",
+      "date": "2026-01-20",
+      "title": "Transformers",
+      "resources": [
+        {
+          "label": "Transformers · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture05-transformers.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Transformers · 官方补充 notes",
+          "url": "https://web.stanford.edu/class/cs224n/readings/cs224n-self-attention-transformers-2023_draft.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Attention Is All You Need",
+          "url": "https://arxiv.org/abs/1706.03762.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "The Illustrated Transformer",
+          "url": "https://jalammar.github.io/illustrated-transformer/",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Transformer (Google AI blog post)",
+          "url": "https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Layer Normalization",
+          "url": "https://arxiv.org/pdf/1607.06450.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Image Transformer",
+          "url": "https://arxiv.org/pdf/1802.05751.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Music Transformer: Generating music with long-term structure",
+          "url": "https://arxiv.org/pdf/1809.04281.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Jurafsky and Martin Chapter 9 (The Transformer)",
+          "url": "https://web.stanford.edu/~jurafsky/slp3/9.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-06",
+      "date": "2026-01-22",
+      "title": "Final Projects: Custom and Default; Practical Tips",
+      "resources": [
+        {
+          "label": "Final Projects: Custom and Default; Practical Tips · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture06-final-project.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Assignment 3 · 官方起始代码 ZIP",
+          "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a3.zip",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Assignment 3 · 题目说明 PDF",
+          "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a3.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Assignment 3 · LaTeX 模板",
+          "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a3_tex.zip",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Practical Methodology",
+          "url": "https://www.deeplearningbook.org/contents/guidelines.html",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-07",
+      "date": "2026-01-27",
+      "title": "Pretraining (Scaling, Systems, Data)",
+      "resources": [
+        {
+          "label": "Pretraining (Scaling, Systems, Data) · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture07-pretraining.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "url": "https://arxiv.org/pdf/1810.04805.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Contextual Word Representations: A Contextual Introduction",
+          "url": "https://arxiv.org/abs/1902.06006.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "The Illustrated BERT, ELMo, and co.",
+          "url": "http://jalammar.github.io/illustrated-bert/",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Jurafsky and Martin Chapter 10 (Masked Language Models)",
+          "url": "https://web.stanford.edu/~jurafsky/slp3/10.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "The Llama 3 Herd of Models",
+          "url": "https://arxiv.org/abs/2407.21783",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-08",
+      "date": "2026-01-29",
+      "title": "Post-training (RLHF, SFT, DPO)",
+      "resources": [
+        {
+          "label": "Post-training (RLHF, SFT, DPO) · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture08-posttraining.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Project Proposal · 项目提案说明",
+          "url": "https://web.stanford.edu/class/cs224n/project/Project_Proposal_Instructions.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Default Final Project · 题目说明",
+          "url": "https://web.stanford.edu/class/cs224n/project/DFP_Instructions.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Default Final Project · GPT-2 起始代码",
+          "url": "https://github.com/stanfordnlp/cs224n_gpt",
+          "type": "code",
+          "note": "2026 官网链接的项目说明在 Getting Started 中指定的仓库。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Aligning language models to follow instructions",
+          "url": "https://openai.com/research/instruction-following",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Scaling Instruction-Finetuned Language Models",
+          "url": "https://arxiv.org/abs/2210.11416",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "AlpacaFarm: A Simulation Framework for Methods that Learn from Human Feedback",
+          "url": "https://arxiv.org/abs/2305.14387",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "How Far Can Camels Go? Exploring the State of Instruction Tuning on Open Resources",
+          "url": "https://arxiv.org/abs/2306.04751",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+          "url": "https://arxiv.org/abs/2305.18290",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-09",
+      "date": "2026-02-03",
+      "title": "Efficient Adaptation (Prompting + PEFT)",
+      "resources": [
+        {
+          "label": "Efficient Adaptation (Prompting + PEFT) · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture09-peft.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Language Models are Few-Shot Learners",
+          "url": "https://arxiv.org/abs/2005.14165",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+          "url": "https://arxiv.org/abs/2201.11903",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks",
+          "url": "https://arxiv.org/abs/1803.03635",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "LoRA: Low-Rank Adaptation of Large Language Models",
+          "url": "https://arxiv.org/abs/2106.09685",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Parameter-Efficient Transfer Learning for NLP",
+          "url": "https://arxiv.org/abs/1902.00751",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-10",
+      "date": "2026-02-05",
+      "title": "Agents, Tool Use, and RAG",
+      "resources": [
+        {
+          "label": "Agents, Tool Use, and RAG · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture10-rag-agents.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Assignment 4 · 官方起始代码 ZIP",
+          "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a4.zip",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Assignment 4 · 题目说明 PDF",
+          "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a4.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Assignment 4 · LaTeX 模板",
+          "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a4_tex.zip",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "ReAct: Synergizing Reasoning and Acting in Language Models",
+          "url": "https://arxiv.org/abs/2210.03629",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Language Agents: Foundations, Prospects, and Risks",
+          "url": "https://language-agent-tutorial.github.io/",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+          "url": "https://arxiv.org/abs/2005.11401",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+          "url": "https://arxiv.org/abs/2302.04761",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-11",
+      "date": "2026-02-10",
+      "title": "Benchmarking and Evaluation",
+      "resources": [
+        {
+          "label": "Benchmarking and Evaluation · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture11-evaluation.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Challenges and Opportunities in NLP Benchmarking",
+          "url": "https://www.ruder.io/nlp-benchmarking/",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Measuring Massive Multitask Language Understanding",
+          "url": "https://arxiv.org/abs/2009.03300",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Holistic Evaluation of Language Models",
+          "url": "https://arxiv.org/abs/2211.09110",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "AlpacaEval",
+          "url": "https://tatsu-lab.github.io/alpaca_eval/",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-12",
+      "date": "2026-02-12",
+      "title": "Reasoning 1",
+      "resources": [
+        {
+          "label": "Reasoning 1 · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture12-reasoning-part1.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+          "url": "https://arxiv.org/abs/2201.11903",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+          "url": "https://arxiv.org/abs/2203.11171",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+          "url": "https://arxiv.org/abs/2501.12948",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "DAPO: An Open-Source LLM Reinforcement Learning System at Scale",
+          "url": "https://arxiv.org/abs/2503.14476",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-13",
+      "date": "2026-02-17",
+      "title": "Reasoning 2",
+      "resources": [
+        {
+          "label": "Reasoning 2 · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture13-reasoning-part2.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Project Milestone · 中期检查说明",
+          "url": "https://web.stanford.edu/class/cs224n/project/Project_Milestone_Instructions.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Let's Verify Step by Step",
+          "url": "https://arxiv.org/abs/2305.20050",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Fast Inference from Transformers via Speculative Decoding",
+          "url": "https://arxiv.org/abs/2211.17192",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters",
+          "url": "https://arxiv.org/abs/2408.03314",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "RoFormer: Enhanced Transformer with Rotary Position Embedding",
+          "url": "https://arxiv.org/abs/2104.09864",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-14",
+      "date": "2026-02-19",
+      "title": "Guest Lecture: Tokenization and Multilinguality (by Julie Kallini)",
+      "resources": [
+        {
+          "label": "Guest Lecture: Tokenization and Multilinguality (by Julie Kallini) · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture14-guest-julie-tokenization-multilinguality.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Jurafsky & Martin Chapter 2",
+          "url": "https://web.stanford.edu/~jurafsky/slp3/2.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Neural Machine Translation of Rare Words with Subword Units",
+          "url": "https://arxiv.org/pdf/1508.07909",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Unsupervised Cross-lingual Representation Learning at Scale",
+          "url": "https://aclanthology.org/2020.acl-main.747.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models",
+          "url": "https://aclanthology.org/2023.emnlp-main.614.pdf",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-15",
+      "date": "2026-02-24",
+      "title": "Guest Lecture: Interpretability (by Been Kim)",
+      "resources": [
+        {
+          "label": "Final Project Report · 报告说明",
+          "url": "https://web.stanford.edu/class/cs224n/project/Project_Report_Instructions.pdf",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": [
+        {
+          "label": "Because we have LLMs, we Can and Should Pursue Agentic Interpretability",
+          "url": "https://arxiv.org/abs/2506.12152",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "The Pareto Frontier of Human-Centered AI",
+          "url": "https://medium.com/@beenkim/the-pareto-frontier-of-human-centered-ai-54f90ba5872c",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Bridging the human–AI knowledge gap through concept discovery and transfer in AlphaZero",
+          "url": "https://www.pnas.org/doi/10.1073/pnas.2406675122",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "We Can't Understand AI Using our Existing Vocabulary",
+          "url": "https://arxiv.org/abs/2502.07586",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Neologism Learning for Controllability and Self-Verbalization",
+          "url": "https://arxiv.org/abs/2510.08506",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-16",
+      "date": "2026-02-26",
+      "title": "Social and Broader Impacts of NLP (Risks)",
+      "resources": [
+        {
+          "label": "Social and Broader Impacts of NLP (Risks) · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture16-impact-on-humanity.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": []
+    },
+    {
+      "id": "lecture-17",
+      "date": "2026-03-03",
+      "title": "Guest Lecture: Multimodality (by Luke Zettlemoyer)",
+      "resources": [],
+      "readings": [
+        {
+          "label": "Visual Sketchpad: Sketching as a Visual Chain of Thought for Multimodal Language Models",
+          "url": "https://visualsketchpad.github.io/",
+          "type": "docs",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Chameleon: Mixed-Modal Early-Fusion Foundation Models",
+          "url": "https://arxiv.org/abs/2405.09818",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Transfusion: Predict the Next Token and Diffuse Images with One Multi-Modal Model",
+          "url": "https://arxiv.org/abs/2408.11039",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Mixture-of-Transformers: A Sparse and Scalable Architecture for Multi-Modal Foundation Models",
+          "url": "https://arxiv.org/abs/2411.04996",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Scaling Laws for Generative Mixed-Modal Language Models",
+          "url": "https://arxiv.org/abs/2301.03728",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Scaling Autoregressive Multi-Modal Models: Pretraining and Instruction Tuning",
+          "url": "https://arxiv.org/abs/2309.02591",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Retrieval Augmented Multimodal Language Modeling",
+          "url": "https://arxiv.org/abs/2211.12561",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "LMFusion: Adapting Pretrained Language Models for Multimodal Generation",
+          "url": "https://arxiv.org/abs/2412.15188",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "OneFlow: Concurrent Mixed-Modal and Interleaved Generation with Edit Flows",
+          "url": "https://arxiv.org/abs/2510.03506",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Multimodal RewardBench: Holistic Evaluation of Reward Models for Vision Language Models",
+          "url": "https://arxiv.org/abs/2502.14191",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Reconstruction Alignment Improves Unified Multimodal Models",
+          "url": "https://arxiv.org/abs/2509.07295",
+          "type": "paper",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ]
+    },
+    {
+      "id": "lecture-18",
+      "date": "2026-03-05",
+      "title": "Guest Lecture: Tinker and LoRA Without Regret (by John Schulman)",
+      "resources": [],
+      "readings": []
+    },
+    {
+      "id": "lecture-19",
+      "date": "2026-03-10",
+      "title": "Open Questions in NLP 2026",
+      "resources": [
+        {
+          "label": "Open Questions in NLP 2026 · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w26/cs224n-2026-lecture19-open-questions.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": []
+    },
+    {
+      "id": "tutorial-01",
+      "date": "2026-01-09",
+      "title": "Python Review Session",
+      "resources": [
+        {
+          "label": "Python Review Session · slides",
+          "url": "https://web.stanford.edu/class/cs224n/slides_w25/2024%20CS224N%20Python%20Review%20Session%20Slides.pptx.pdf",
+          "type": "slides",
+          "note": "2026 官网沿用的往年配套材料；原文年份保持不变。"
+        },
+        {
+          "label": "Python Review Session · Colab",
+          "url": "https://colab.research.google.com/drive/1hxWtr98jXqRDs_rZLZcEmX_hUcpDLq6e?usp=sharing",
+          "type": "code",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": []
+    },
+    {
+      "id": "tutorial-02",
+      "date": "2026-01-16",
+      "title": "PyTorch Tutorial Session",
+      "resources": [
+        {
+          "label": "PyTorch Tutorial Session · Colab",
+          "url": "https://colab.research.google.com/drive/1Pz8b_h-W9zIBk1p2e6v-YFYThG1NkYeS?usp=sharing",
+          "type": "code",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": []
+    },
+    {
+      "id": "tutorial-03",
+      "date": "2026-02-06",
+      "title": "Hugging Face Transformers Tutorial Session",
+      "resources": [
+        {
+          "label": "Hugging Face Transformers Tutorial Session · slides",
+          "url": "https://web.stanford.edu/class/cs224n/materials/hf_transformers_tutorial.pdf",
+          "type": "slides",
+          "note": "Winter 2026 官方课程表所列资料。"
+        },
+        {
+          "label": "Hugging Face Transformers Tutorial Session · Colab",
+          "url": "https://colab.research.google.com/drive/1FyCMNTXfirWbJ18GuIT_JiTW0gwrxI3O?usp=sharing",
+          "type": "code",
+          "note": "Winter 2026 官方课程表所列资料。"
+        }
+      ],
+      "readings": []
+    }
+  ],
+  "practice": [
+    {
+      "id": "assignment-1",
+      "title": "Assignment 1 · Word Vectors",
+      "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a1.zip",
+      "source": "https://web.stanford.edu/class/cs224n/#schedule",
+      "checkedAt": "2026-10-12",
+      "note": "官网提供起始代码 ZIP；未提供本作业的官方 GitHub 仓库。题目与模板见对应讲次。"
+    },
+    {
+      "id": "assignment-2",
+      "title": "Assignment 2 · Neural Network Foundations and Dependency Parsing",
+      "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a2.zip",
+      "source": "https://web.stanford.edu/class/cs224n/#schedule",
+      "checkedAt": "2026-10-12",
+      "note": "官网提供起始代码 ZIP；未提供本作业的官方 GitHub 仓库。题目与模板见对应讲次。"
+    },
+    {
+      "id": "assignment-3",
+      "title": "Assignment 3 · Self-attention and Transformers",
+      "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a3.zip",
+      "source": "https://web.stanford.edu/class/cs224n/#schedule",
+      "checkedAt": "2026-10-12",
+      "note": "官网提供起始代码 ZIP；未提供本作业的官方 GitHub 仓库。题目与模板见对应讲次。"
+    },
+    {
+      "id": "assignment-4",
+      "title": "Assignment 4 · LLM Benchmarking and Evaluation",
+      "url": "https://web.stanford.edu/class/cs224n/assignments_w26/a4.zip",
+      "source": "https://web.stanford.edu/class/cs224n/#schedule",
+      "checkedAt": "2026-10-12",
+      "note": "官网提供起始代码 ZIP；未提供本作业的官方 GitHub 仓库。题目与模板见对应讲次。"
+    },
+    {
+      "id": "final-project",
+      "title": "Default Final Project · GPT-2 起始代码",
+      "url": "https://github.com/stanfordnlp/cs224n_gpt",
+      "source": "https://web.stanford.edu/class/cs224n/project/DFP_Instructions.pdf",
+      "checkedAt": "2026-10-12",
+      "note": "仓库由官网所链接的项目说明指定；年份与要求以 2026 官方题目说明为准。"
+    }
+  ]
+}

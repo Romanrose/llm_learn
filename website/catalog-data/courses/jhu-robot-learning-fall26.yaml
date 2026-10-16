@@ -1,0 +1,388 @@
+kind: course
+id: jhu-robot-learning-fall26
+category: infra
+title: JHU EN.601.498/698 · Hands-on Robot Learning · Fall 2026
+shortTitle: JHU Hands-on Robot Learning Fall 2026
+eyebrow: JHU EN.601.498/698 · Hands-on Robot Learning · Fall 2026
+year: 2026
+status: resources-approved
+publishOutputs: false
+unitLabel: 单元
+description: 使用 SO-101 桌面机械臂学习数据采集、模仿学习与策略部署；含官方讲义、交互演示和实物作业总览。
+paths:
+  root: infra/jhu-robot-learning-fall26
+  notes: infra/jhu-robot-learning-fall26/notes
+  resources: infra/jhu-robot-learning-fall26/resources
+  references: infra/jhu-robot-learning-fall26/references
+  exports: infra/jhu-robot-learning-fall26/exports
+instructors:
+  - Krishna Murthy Jatavallabhula
+official:
+  - label: 官方课程与资料
+    url: https://hands-on-robot-learning.github.io/
+  - label: 资料版本与访问说明
+    url: /references/jhu-robot-learning-fall26
+schedule:
+  source: https://hands-on-robot-learning.github.io/
+  checkedAt: 2026-10-16
+  timezone: America/New_York
+  note: 以 10 月 15 日更新的课程主页为准；作业为 A0–A3，部分旧指南侧栏编号仍为 A1–A4。
+  events:
+    - date: 2026-10-22
+      title: No class
+    - date: 2026-11-26
+      title: No class
+  unitCount: 13
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    description: 官方来源、作业与版本说明。
+    from: 0
+    to: 0
+  - id: course
+    title: 01 · 课程与学习资料
+    description: 以 10 月 15 日更新的课程主页为准；作业为 A0–A3，部分旧指南侧栏编号仍为 A1–A4。
+    from: 1
+    to: 999
+practice:
+  - id: assignments
+    title: A0–A3 · 官方机械臂作业总览
+    url: https://hands-on-robot-learning.github.io/#assignments
+    source: https://hands-on-robot-learning.github.io/
+    checkedAt: 2026-10-16
+    note: A0 搭建校准；A1 手工控制；A2 单任务模仿；A3 多任务策略。实机作业需 SO-101 与相机；不把论文仓库视为作业起始代码。
+items:
+  - id: lecture-01
+    order: 1
+    displayOrder: 1
+    unitLabel: 单元
+    date: 2026-09-03
+    title: Introduction to modern robot learning
+    subtitle: The data-driven robotics lifecycle; the state of the art in robot learning.
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hands-on-robot-learning.github.io/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-02
+    order: 2
+    displayOrder: 2
+    unitLabel: 单元
+    date: 2026-09-10
+    title: Essentials (whirlwind recap)
+    subtitle: Robot design and payload computations; smart servos and how they work; electromechanical components of the SO-101; anatomy of a robot manipulator; interpreting motor datasheets; joint-space and Cartesian-space representations; forward and inverse kinematics; Jacobians and singularities; position-based feedback control; PID control; and a quick recap of modern machine learning.
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hands-on-robot-learning.github.io/
+    resources:
+      - label: Slides
+        url: https://hands-on-robot-learning.github.io/slides/lecture-02-essentials-whirlwind-recap.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: SO-101 servo testing
+        url: https://robonine.com/testing-of-feetech-sts3215-servomotor-backlash-repeatability-and-torque/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: H-bridge (why and how)
+        url: https://www.circuitbread.com/ee-faq/how-does-an-h-bridge-work
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: FeeTech STS3215 datasheet
+        url: https://core-electronics.com.au/attachments/uploads/sts3215-smart-servo-datasheet-translated.pdf
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Robot Modeling and Control (Spong, Hutchinson, and Vidyasagar)
+        url: https://arl.human.cornell.edu/879Readings/Spong_RobotModeling.pdf
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: "MIT 6.S191: Introduction to Deep Learning"
+        url: https://introtodeeplearning.com/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Inverse Kinematics applet
+        url: https://hands-on-robot-learning.github.io/applets/inverse-kinematics.html
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Degrees of Freedom applet
+        url: https://hands-on-robot-learning.github.io/applets/degrees-of-freedom.html
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-03
+    order: 3
+    displayOrder: 3
+    unitLabel: 单元
+    date: 2026-09-17
+    title: "Data for robot learning: teleoperation and other sources"
+    subtitle: Data sources for robot learning; What does/should a demonstration contain; commanded-vs-realized poses; leader–follower teleoperation; GELLO and gravity compensation; Task-space teleoperation; Wearable interfaces and UMI; Dexterous and whole-body human retargeting; and Open problems in scalable robot data collection.
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hands-on-robot-learning.github.io/
+    resources:
+      - label: Lecture 03 — Data for Robot Learning
+        url: https://hands-on-robot-learning.github.io/slides/lecture-03-data-for-robot-learning.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: GELLO
+        url: https://wuphilipp.github.io/gello_site/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: NVIDIA SO-101 calibration guide
+        url: https://docs.nvidia.com/learning/physical-ai/sim-to-real-so-101/latest/07-calibrating-so101.html
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Universal Manipulation Interface (UMI)
+        url: https://real.stanford.edu/umi/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: DROID
+        url: https://droid-dataset.github.io/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: DexUMI
+        url: https://proceedings.mlr.press/v305/xu25b.html
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-04
+    order: 4
+    displayOrder: 4
+    unitLabel: 单元
+    date: 2026-09-24
+    title: Imitation learning and action chunking
+    subtitle: Policies, states, observations, and Markov decision processes; Behavioral cloning; Covariate shift and compounding errors; Recovery data, DART, and DAgger; Policy evaluation and causal confusion; Action chunking and observation, prediction, and execution horizons; ACT architecture, training, and inference; Practical policy training and controller consistency; Temporal ensembling; and Tradeoffs in chunk length and policy context.
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hands-on-robot-learning.github.io/
+    resources:
+      - label: Lecture 04 — Imitation Learning, Action Chunking
+        url: https://hands-on-robot-learning.github.io/slides/lecture-04-imitation-learning-action-chunking.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-05
+    order: 5
+    displayOrder: 5
+    unitLabel: 单元
+    date: 2026-10-01
+    title: SO-101 assembly and calibration (in-class hands-on session).
+    subtitle: "In-class build session: arm assembly, motor configuration, calibration, camera checks, and basic safety."
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hands-on-robot-learning.github.io/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-06
+    order: 6
+    displayOrder: 6
+    unitLabel: 单元
+    date: 2026-10-08
+    title: Generative policies
+    subtitle: Multimodality in robot learning; diffusion and flow matching; diffusion-model training and sampling; Diffusion Policy and conditioning; preprocessing, normalization, and closed-loop evaluation; relevant research on diffusion policies; action-chunk inference, prediction and execution horizons, real-time chunking, continuity, and reactivity.
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hands-on-robot-learning.github.io/
+    resources:
+      - label: Lecture 06 — Generative Policies
+        url: https://hands-on-robot-learning.github.io/slides/lecture-06-generative-policies.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: Week 06 interactive demos
+        url: https://hands-on-robot-learning.github.io/demos/week06/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Denoising Diffusion Probabilistic Models (DDPM)
+        url: https://hojonathanho.github.io/diffusion/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Diffusion Policy
+        url: https://diffusion-policy.cs.columbia.edu/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: 3D Diffusion Policy
+        url: https://3d-diffusion-policy.github.io/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Equivariant Diffusion Policy
+        url: https://equidiff.github.io/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: "CUPID: Curating Data your Robot Loves"
+        url: https://cupid-curation.github.io/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Diffusion Steering with Latent Space RL (DSRL)
+        url: https://diffusion-steering.github.io/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: You’ve Got a Golden Ticket
+        url: https://lottery-tickets.rai-inst.com/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Real-Time Action Chunking with Large Models
+        url: https://www.pi.website/research/real_time_chunking
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Smooth-As-Butter Robot Policies
+        url: https://alexander-soare.github.io/robotics/2025/08/05/smooth-as-butter-robot-policies.html
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-07
+    order: 7
+    displayOrder: 7
+    unitLabel: 单元
+    date: 2026-10-15
+    title: Multitask policy learning and vision-language-action (VLA) models
+    subtitle: Generalization and multitask policy learning; task-conditioned diffusion policies and Large Behavior Models; language-conditioned policies and early VLAs; representing heterogeneous robot data; action tokenization (FAST, VQ-BeT, OAT) and continuous action representations; Octo and π 0 ; learning from multiple data sources with GR00T; latent actions, simulation and video-based data augmentation; catastrophic forgetting and knowledge insulation; π 0.5 and open-world generalization.
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hands-on-robot-learning.github.io/
+    resources:
+      - label: Lecture 07a — Multitask Policy Learning and VLAs
+        url: https://hands-on-robot-learning.github.io/slides/lecture-07a-multitask-policy-learning-and-vlas.pdf
+        type: slides
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings:
+      - label: Large Behavior Models for Multitask Dexterous Manipulation
+        url: https://toyotaresearchinstitute.github.io/lbm1/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: RT-2
+        url: https://robotics-transformer2.github.io/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: FAST
+        url: https://www.pi.website/research/fast
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: VQ-BeT
+        url: https://sjlee.cc/vq-bet/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: OAT
+        url: https://ordered-action-tokenization.github.io/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Octo
+        url: https://octo-models.github.io/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: π 0
+        url: https://www.pi.website/blog/pi0
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: N1
+        url: https://research.nvidia.com/labs/lpr/publication/gr00tn1_2025/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: N1.5
+        url: https://research.nvidia.com/labs/gear/gr00t-n15/
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: Knowledge insulation
+        url: https://www.pi.website/research/knowledge_insulation
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+      - label: "π 0.5 : Open-world generalization"
+        url: https://www.pi.website/blog/pi05
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    outputs: []
+  - id: lecture-08
+    order: 8
+    displayOrder: 8
+    unitLabel: 单元
+    date: 2026-10-29
+    title: VLA models, continued; Assignment 1 in-class demos
+    subtitle: "First half: continued discussion of VLAs and multitask policies. Second half: Assignment 1 demos of handcrafted manipulation skills."
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hands-on-robot-learning.github.io/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-09
+    order: 9
+    displayOrder: 9
+    unitLabel: 单元
+    date: 2026-11-05
+    title: Hands-on policy learning with LeRobot
+    subtitle: "Course-staff tutorial on policy-learning best practices: dataset preparation, training, checkpointing, deployment, debugging, and closed-loop evaluation."
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hands-on-robot-learning.github.io/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-10
+    order: 10
+    displayOrder: 10
+    unitLabel: 单元
+    date: 2026-11-12
+    title: Assignment 2 in-class demos — single-task policies
+    subtitle: Demonstrate learned single-task policies; discuss task success, failure cases, and lessons from data collection, training, and deployment.
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hands-on-robot-learning.github.io/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-11
+    order: 11
+    displayOrder: 11
+    unitLabel: 单元
+    date: 2026-11-19
+    title: Coding agents as policies
+    subtitle: Code as Policies and variants such as CaP-X; ENPIRE and related systems.
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hands-on-robot-learning.github.io/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-12
+    order: 12
+    displayOrder: 12
+    unitLabel: 单元
+    date: 2026-12-03
+    title: World models and policy learning
+    subtitle: Learned dynamics and world models in robotics; action-centric versus goal-centric frameworks; policy learning, planning, prediction, and action extraction; reward and value models; and evaluation.
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hands-on-robot-learning.github.io/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-13
+    order: 13
+    displayOrder: 13
+    unitLabel: 单元
+    date: 2026-12-10
+    title: Assignment 3 / final demos
+    subtitle: Multi-task policy evaluations, demos, and short presentations.
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hands-on-robot-learning.github.io/
+    resources: []
+    readings: []
+    outputs: []

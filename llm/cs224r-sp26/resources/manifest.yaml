@@ -1,0 +1,288 @@
+schemaVersion: 1
+course: cs224r-sp26
+state: linked
+checkedAt: 2026-10-16
+officialSchedule: https://cs224r.stanford.edu/
+resources:
+  - label: 官方课程表
+    url: https://cs224r.stanford.edu/
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null
+  - label: code
+    url: https://cs224r.stanford.edu/material/hw1/hw1_starter_code.zip
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: code
+    url: https://cs224r.stanford.edu/material/hw2/hw2_starter_code.zip
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: code
+    url: https://cs224r.stanford.edu/material/hw3/hw3_starter_code.zip
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Default Project Guidelines
+    url: https://cs224r.stanford.edu/material/CS224R_Default_Project_Guidelines.pdf
+    type: docs
+    status: linked
+    note: 官方项目要求；按 Spring 2026 说明开展。
+    local: null
+  - label: Custom Project Guidelines
+    url: https://cs224r.stanford.edu/material/CS224R_Custom_Project_Guidelines.pdf
+    type: docs
+    status: linked
+    note: 官方项目要求；按 Spring 2026 说明开展。
+    local: null
+  - label: Course Intro + Start of MDPs & Imitation
+    url: https://cs224r.stanford.edu/slides/01_cs224r_intro_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Imitation Learning
+    url: https://cs224r.stanford.edu/slides/02_cs224r_imitation_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: PDF
+    url: https://cs224r.stanford.edu/material/hw1/CS224R_2026_Homework_1.pdf
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: template
+    url: https://cs224r.stanford.edu/material/hw1/CS224R_2026_Homework_1.tex
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion."
+    url: https://arxiv.org/abs/2303.04137v5
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.
+    url: https://arxiv.org/abs/2304.13705
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Policy Gradients
+    url: https://cs224r.stanford.edu/slides/03_cs224r_policy_gradients_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Simple statistical gradient-following algorithms for connectionist reinforcement learning.
+    url: https://link.springer.com/article/10.1007/BF00992696
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Actor-Critic Methods
+    url: https://cs224r.stanford.edu/slides/04_cs224r_actor_critic_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: PDF
+    url: https://cs224r.stanford.edu/material/hw2/CS224R_2026_Homework_2.pdf
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: template
+    url: https://cs224r.stanford.edu/material/hw2/CS224R_2026_Homework_2.tex
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: compute guide
+    url: https://cs224r.stanford.edu/material/CS224R_compute_guide.pdf
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Policy Gradient Methods for Reinforcement Learning with Function Approximation.
+    url: https://proceedings.neurips.cc/paper_files/paper/1999/file/464d828b85b0bed98e80ade0a5c43b0f-Paper.pdf
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Proximal Policy Optimization.
+    url: https://arxiv.org/pdf/1707.06347
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Off-Policy Actor Critic Methods
+    url: https://cs224r.stanford.edu/slides/05_cs224r_offpolicy_actor_critic_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Playing Atari with Deep Reinforcement Learning.
+    url: https://arxiv.org/abs/1312.5602
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Q-learning
+    url: https://cs224r.stanford.edu/slides/06_cs224r_qlearning_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Deep Reinforcement Learning with Double Q-learning.
+    url: https://arxiv.org/abs/1509.06461
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: A Distributional Perspective on Reinforcement Learning.
+    url: https://arxiv.org/abs/1707.06887
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Offline RL
+    url: https://cs224r.stanford.edu/slides/07_cs224r_offline_rl_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Offline Reinforcement Learning with Implicit Q-Learning.
+    url: https://arxiv.org/abs/2110.06169
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Reward Learning
+    url: https://cs224r.stanford.edu/slides/08_cs224r_reward_learning_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: PDF
+    url: https://cs224r.stanford.edu/material/hw3/CS224R_2026_Homework_3.pdf
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: template
+    url: https://cs224r.stanford.edu/material/hw3/CS224R_2026_Homework_3.tex
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Deep reinforcement learning from human preferences.
+    url: https://arxiv.org/abs/1706.03741
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "RL for LLMs: Preference Optimization (Guest Lecture: Archit Sharma)"
+    url: https://cs224r.stanford.edu/slides/09_cs224r_rlhf_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "Direct Preference Optimization: Your Language Model is Secretly a Reward Model."
+    url: https://arxiv.org/abs/2305.18290
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "IPO: Your Language Model is Secretly a Preference Classifier."
+    url: https://arxiv.org/abs/2502.16182
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "RL for LLMs: Reasoning (Guest Lecture: Noam Brown)"
+    url: https://cs224r.stanford.edu/slides/10_cs224r_rl_for_llms_reasoning_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Model-Based RL
+    url: https://cs224r.stanford.edu/slides/11_cs224r_mbrl_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "When to Trust Your Model: Model-Based Policy Optimization."
+    url: https://arxiv.org/abs/1906.08253
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Multi-Task and Goal-Conditioned RL
+    url: https://cs224r.stanford.edu/slides/12_cs224r_mtrl_gcrl_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Hindsight Experience Replay.
+    url: https://arxiv.org/abs/1707.01495
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Meta-RL
+    url: https://cs224r.stanford.edu/slides/13_cs224r_metarl_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "RL 2 : Fast Reinforcement Learning via Slow Reinforcement Learning."
+    url: https://arxiv.org/abs/1611.02779
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Hierarchical RL and IL
+    url: https://cs224r.stanford.edu/slides/15_cs224r_hierarchy_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "Do As I Can, Not As I Say: Grounding Language in Robotic Affordances."
+    url: https://arxiv.org/abs/2204.01691
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "RL for Robots: Sim-to-Real Transfer (Guest Lecture: Guanya Shi)"
+    url: https://cs224r.stanford.edu/slides/16_cs224r_sim2real_robot_learning_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "Sim-to-Real: Learning Agile Locomotion For Quadruped Robots."
+    url: https://arxiv.org/abs/1804.10332
+    type: paper
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "RL for Robots: RL for VLAs"
+    url: https://cs224r.stanford.edu/slides/17_cs224r_rl_vlas_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Frontiers
+    url: https://cs224r.stanford.edu/slides/18_cs224r_frontiers_how_to_research_2026.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null

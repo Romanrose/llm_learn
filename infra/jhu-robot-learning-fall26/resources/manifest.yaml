@@ -1,0 +1,246 @@
+schemaVersion: 1
+course: jhu-robot-learning-fall26
+state: linked
+checkedAt: 2026-10-16
+officialSchedule: https://hands-on-robot-learning.github.io/
+resources:
+  - label: 官方课程表
+    url: https://hands-on-robot-learning.github.io/
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null
+  - label: A0–A3 · 官方机械臂作业总览
+    url: https://hands-on-robot-learning.github.io/#assignments
+    type: docs
+    status: linked
+    note: A0 搭建校准；A1 手工控制；A2 单任务模仿；A3 多任务策略。实机作业需 SO-101 与相机；不把论文仓库视为作业起始代码。
+    local: null
+  - label: Slides
+    url: https://hands-on-robot-learning.github.io/slides/lecture-02-essentials-whirlwind-recap.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: SO-101 servo testing
+    url: https://robonine.com/testing-of-feetech-sts3215-servomotor-backlash-repeatability-and-torque/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: H-bridge (why and how)
+    url: https://www.circuitbread.com/ee-faq/how-does-an-h-bridge-work
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: FeeTech STS3215 datasheet
+    url: https://core-electronics.com.au/attachments/uploads/sts3215-smart-servo-datasheet-translated.pdf
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Robot Modeling and Control (Spong, Hutchinson, and Vidyasagar)
+    url: https://arl.human.cornell.edu/879Readings/Spong_RobotModeling.pdf
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "MIT 6.S191: Introduction to Deep Learning"
+    url: https://introtodeeplearning.com/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Inverse Kinematics applet
+    url: https://hands-on-robot-learning.github.io/applets/inverse-kinematics.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Degrees of Freedom applet
+    url: https://hands-on-robot-learning.github.io/applets/degrees-of-freedom.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Lecture 03 — Data for Robot Learning
+    url: https://hands-on-robot-learning.github.io/slides/lecture-03-data-for-robot-learning.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: GELLO
+    url: https://wuphilipp.github.io/gello_site/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: NVIDIA SO-101 calibration guide
+    url: https://docs.nvidia.com/learning/physical-ai/sim-to-real-so-101/latest/07-calibrating-so101.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Universal Manipulation Interface (UMI)
+    url: https://real.stanford.edu/umi/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: DROID
+    url: https://droid-dataset.github.io/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: DexUMI
+    url: https://proceedings.mlr.press/v305/xu25b.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Lecture 04 — Imitation Learning, Action Chunking
+    url: https://hands-on-robot-learning.github.io/slides/lecture-04-imitation-learning-action-chunking.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Lecture 06 — Generative Policies
+    url: https://hands-on-robot-learning.github.io/slides/lecture-06-generative-policies.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Week 06 interactive demos
+    url: https://hands-on-robot-learning.github.io/demos/week06/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Denoising Diffusion Probabilistic Models (DDPM)
+    url: https://hojonathanho.github.io/diffusion/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Diffusion Policy
+    url: https://diffusion-policy.cs.columbia.edu/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: 3D Diffusion Policy
+    url: https://3d-diffusion-policy.github.io/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Equivariant Diffusion Policy
+    url: https://equidiff.github.io/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "CUPID: Curating Data your Robot Loves"
+    url: https://cupid-curation.github.io/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Diffusion Steering with Latent Space RL (DSRL)
+    url: https://diffusion-steering.github.io/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: You’ve Got a Golden Ticket
+    url: https://lottery-tickets.rai-inst.com/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Real-Time Action Chunking with Large Models
+    url: https://www.pi.website/research/real_time_chunking
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Smooth-As-Butter Robot Policies
+    url: https://alexander-soare.github.io/robotics/2025/08/05/smooth-as-butter-robot-policies.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Lecture 07a — Multitask Policy Learning and VLAs
+    url: https://hands-on-robot-learning.github.io/slides/lecture-07a-multitask-policy-learning-and-vlas.pdf
+    type: slides
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Large Behavior Models for Multitask Dexterous Manipulation
+    url: https://toyotaresearchinstitute.github.io/lbm1/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: RT-2
+    url: https://robotics-transformer2.github.io/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: FAST
+    url: https://www.pi.website/research/fast
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: VQ-BeT
+    url: https://sjlee.cc/vq-bet/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: OAT
+    url: https://ordered-action-tokenization.github.io/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Octo
+    url: https://octo-models.github.io/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: π 0
+    url: https://www.pi.website/blog/pi0
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: N1
+    url: https://research.nvidia.com/labs/lpr/publication/gr00tn1_2025/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: N1.5
+    url: https://research.nvidia.com/labs/gear/gr00t-n15/
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Knowledge insulation
+    url: https://www.pi.website/research/knowledge_insulation
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "π 0.5 : Open-world generalization"
+    url: https://www.pi.website/blog/pi05
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null

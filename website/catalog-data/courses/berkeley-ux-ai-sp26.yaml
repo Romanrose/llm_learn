@@ -1,0 +1,61 @@
+kind: course
+id: berkeley-ux-ai-sp26
+category: design
+title: UC Berkeley INFO 290 · User Experience Design for AI · Spring 2026
+shortTitle: Berkeley UX for AI Spring 2026
+eyebrow: UC Berkeley INFO 290 · User Experience Design for AI · Spring 2026
+year: 2026
+status: resources-approved
+publishOutputs: false
+unitLabel: 单元
+description: AI 产品的用户体验与原型设计。已接入 Spring 2026 官方课程介绍；逐周讲义、录像与作业未公开。
+paths:
+  root: interest/design/berkeley-ux-ai-sp26
+  notes: interest/design/berkeley-ux-ai-sp26/notes
+  resources: interest/design/berkeley-ux-ai-sp26/resources
+  references: interest/design/berkeley-ux-ai-sp26/references
+  exports: interest/design/berkeley-ux-ai-sp26/exports
+instructors:
+  - Stefanie Hutka
+official:
+  - label: 官方课程与资料
+    url: https://www.ischool.berkeley.edu/courses/info/290/uxai
+  - label: 资料版本与访问说明
+    url: /references/berkeley-ux-ai-sp26
+schedule:
+  source: https://www.ischool.berkeley.edu/courses/info/290/uxai
+  checkedAt: 2026-10-16
+  timezone: America/Los_Angeles
+  note: 当前只有官方课程介绍；不虚构周次、课件或 Lab。
+  events: []
+  unitCount: 1
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    description: 官方来源、作业与版本说明。
+    from: 0
+    to: 0
+  - id: course
+    title: 01 · 课程与学习资料
+    description: 当前只有官方课程介绍；不虚构周次、课件或 Lab。
+    from: 1
+    to: 999
+practice: []
+items:
+  - id: lecture-01
+    order: 1
+    displayOrder: 1
+    unitLabel: 入口
+    title: 课程介绍与学习要求
+    subtitle: 当前只有官方课程介绍；不虚构周次、课件或 Lab。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://www.ischool.berkeley.edu/courses/info/290/uxai
+    resources:
+      - label: Spring 2026 官方课程介绍
+        url: https://www.ischool.berkeley.edu/courses/info/290/uxai
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []

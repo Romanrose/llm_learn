@@ -1,0 +1,428 @@
+kind: course
+id: mit-65940-fall26
+category: infra
+title: MIT 6.5940 · Efficient AI and TinyML · Fall 2026
+shortTitle: MIT 6.5940 Fall 2026
+eyebrow: MIT 6.5940 · Efficient AI and TinyML · Fall 2026
+year: 2026
+status: resources-approved
+publishOutputs: false
+unitLabel: 单元
+description: 模型剪枝、量化、MCUNet、TinyEngine 与端侧部署；连接模型训练和小型 AI 硬件。
+paths:
+  root: infra/mit-65940-fall26
+  notes: infra/mit-65940-fall26/notes
+  resources: infra/mit-65940-fall26/resources
+  references: infra/mit-65940-fall26/references
+  exports: infra/mit-65940-fall26/exports
+instructors:
+  - Song Han
+official:
+  - label: 官方课程与资料
+    url: https://hanlab.mit.edu/courses/2026-fall-65940
+  - label: 资料版本与访问说明
+    url: /references/mit-65940-fall26
+schedule:
+  source: https://hanlab.mit.edu/courses/2026-fall-65940
+  checkedAt: 2026-10-16
+  timezone: America/New_York
+  note: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+  events:
+    - date: 2026-09-16
+      title: "Chapter I: Efficient Inference"
+    - date: 2026-10-13
+      title: Student Holiday
+    - date: 2026-10-21
+      title: "Chapter II: Model Optimization for Generative AI"
+    - date: 2026-11-16
+      title: "Chapter III: Efficient Training"
+    - date: 2026-11-26
+      title: Thanksgiving
+    - date: 2026-11-30
+      title: "Chapter IV: Advanced Topics"
+    - date: 2026-12-03
+      title: Final Project Presentation
+    - date: 2026-12-08
+      title: Final Project Presentation
+    - date: 2026-12-10
+      title: Final Project Presentation
+  unitCount: 22
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    description: 官方来源、作业与版本说明。
+    from: 0
+    to: 0
+  - id: course
+    title: 01 · 课程与学习资料
+    description: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    from: 1
+    to: 999
+practice:
+  - id: lab-0
+    title: Lab 0 · 官方 Notebook
+    url: https://colab.research.google.com/drive/1PfVYxikSaVpCSD-cnmNLN4l7yx_4odmg
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    checkedAt: 2026-10-16
+    note: 以课程当前公开链接为准；Notebook 与 ZIP 均来自官方课程页。
+  - id: lab-1
+    title: Lab 1 · 官方 GPU 起始代码
+    url: https://www.dropbox.com/scl/fi/y2zmly5aoekmsg7jq4954/lab1_gpu_basics.zip?rlkey=29v29mlm2muvm0c5teleiusvc&st=2xh5vnk3&dl=1
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    checkedAt: 2026-10-16
+    note: 以课程当前公开链接为准；Notebook 与 ZIP 均来自官方课程页。
+  - id: lab-2
+    title: Lab 2 · 官方 Notebook
+    url: https://colab.research.google.com/drive/1-HEcO8qxlbOgccAg6TyuDTOqWt1Jx45W
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    checkedAt: 2026-10-16
+    note: 以课程当前公开链接为准；Notebook 与 ZIP 均来自官方课程页。
+items:
+  - id: lecture-01
+    order: 1
+    displayOrder: 1
+    unitLabel: 单元
+    date: 2026-09-10
+    title: Introduction
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources:
+      - label: "[Slides]"
+        url: https://www.dropbox.com/scl/fi/yi5oq4f9yzg9sikwcxm3o/Lec01-Introduction.pdf?rlkey=w0zyuyfkm09haqlh7mo2n27ak&st=oe0pir7t&dl=0
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-02
+    order: 2
+    displayOrder: 2
+    unitLabel: 单元
+    date: 2026-09-15
+    title: Basics of Deep Learning
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources:
+      - label: "[Slides]"
+        url: https://www.dropbox.com/scl/fi/42vwbruge0kz3yiuc5un4/Lec02-Basics-of-Neural-Networks.pdf?rlkey=r7o3vatbn8wv5o1n44n2dxizt&st=72q7v2zc&dl=0
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-03
+    order: 3
+    displayOrder: 3
+    unitLabel: 单元
+    date: 2026-09-17
+    title: Pruning and Sparsity (Part I)
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources:
+      - label: "[Slides]"
+        url: https://www.dropbox.com/scl/fi/y5k1ipgvg919hykax33nu/Lec03-Pruning-I.pdf?rlkey=yg3v2oa8r8wfd7oez23b8azlg&st=ilwjkc8u&dl=0
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-04
+    order: 4
+    displayOrder: 4
+    unitLabel: 单元
+    date: 2026-09-22
+    title: Pruning and Sparsity (Part II)
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources:
+      - label: "[Slides]"
+        url: https://www.dropbox.com/scl/fi/cmqhxgcml6gpks9khm2vm/Lec04-Pruning-II.pdf?rlkey=k7fb0eam3aiy8kl9gosx2qt78&st=d75bnpaw&dl=0
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-05
+    order: 5
+    displayOrder: 5
+    unitLabel: 单元
+    date: 2026-09-24
+    title: Quantization (Part I)
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources:
+      - label: "[Slides]"
+        url: https://www.dropbox.com/scl/fi/1yvbg0dqcysee8hf61hjr/Lec05-Quantization-I.pdf?rlkey=kaxx0x1m67ruecnm07gtm6d78&st=xb9raxr5&dl=0
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-06
+    order: 6
+    displayOrder: 6
+    unitLabel: 单元
+    date: 2026-09-29
+    title: Quantization (Part II)
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources:
+      - label: "[Slides]"
+        url: https://www.dropbox.com/scl/fi/4zry0dea0hrykoa2aoqp0/Lec06-Quantization-II.pdf?rlkey=cb7gol6t8jcrb8kyyxpxwjzfb&st=b4zqgq25&dl=0
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-07
+    order: 7
+    displayOrder: 7
+    unitLabel: 单元
+    date: 2026-10-01
+    title: Neural Architecture Search (Part I)
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources:
+      - label: "[Slides]"
+        url: https://www.dropbox.com/scl/fi/83nqzhj321vcm89dnyzyl/Lec07-Neural-Architecture-Search-I.pdf?rlkey=xwegts2hywmbhjvsic7ldn8d5&st=3py9v1w3&dl=0
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-08
+    order: 8
+    displayOrder: 8
+    unitLabel: 单元
+    date: 2026-10-06
+    title: Neural Architecture Search (Part II)
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources:
+      - label: "[Slides]"
+        url: https://www.dropbox.com/scl/fi/160vx9fv5gbe3iwnivjp2/Lec08-Neural-Architecture-Search-II.pdf?rlkey=pf2lkthlwgnp5bwmcrnkgpvof&st=i9e4s8fg&dl=0
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-09
+    order: 9
+    displayOrder: 9
+    unitLabel: 单元
+    date: 2026-10-08
+    title: Knowledge Distillation
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources:
+      - label: "[Slides]"
+        url: https://www.dropbox.com/scl/fi/5zo1lsfdv9ubhi77u9uzr/Lec09-Knowledge-Distillation.pdf?rlkey=sou2ljtdze8qx9ebojbhrg0nm&st=uuwfokyg&dl=0
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-10
+    order: 10
+    displayOrder: 10
+    unitLabel: 单元
+    date: 2026-10-15
+    title: "MCUNet: TinyML on Microcontrollers"
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources:
+      - label: "[Slides]"
+        url: https://www.dropbox.com/scl/fi/g790tbz469qm2ti4kxdpz/Lec10-MCUNet.pdf?rlkey=c1y3fowzr5fp4gcaw88l3pe92&st=qnjegxl2&dl=0
+        type: docs
+        note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-11
+    order: 11
+    displayOrder: 11
+    unitLabel: 单元
+    date: 2026-10-20
+    title: TinyEngine and Parallel Processing
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-12
+    order: 12
+    displayOrder: 12
+    unitLabel: 单元
+    date: 2026-10-22
+    title: Transformer and LLM
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-13
+    order: 13
+    displayOrder: 13
+    unitLabel: 单元
+    date: 2026-10-27
+    title: LLM Quantization and Deployment
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-14
+    order: 14
+    displayOrder: 14
+    unitLabel: 单元
+    date: 2026-10-29
+    title: LLM Post Training
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-15
+    order: 15
+    displayOrder: 15
+    unitLabel: 单元
+    date: 2026-11-03
+    title: Long Context LLM
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-16
+    order: 16
+    displayOrder: 16
+    unitLabel: 单元
+    date: 2026-11-05
+    title: Vision Transformer
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-17
+    order: 17
+    displayOrder: 17
+    unitLabel: 单元
+    date: 2026-11-10
+    title: Diffusion Model (Part I)
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-18
+    order: 18
+    displayOrder: 18
+    unitLabel: 单元
+    date: 2026-11-12
+    title: Diffusion Model (Part II)
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-19
+    order: 19
+    displayOrder: 19
+    unitLabel: 单元
+    date: 2026-11-17
+    title: Distributed Training (Part I)
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-20
+    order: 20
+    displayOrder: 20
+    unitLabel: 单元
+    date: 2026-11-19
+    title: Distributed Training (Part II)
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-21
+    order: 21
+    displayOrder: 21
+    unitLabel: 单元
+    date: 2026-11-24
+    title: On-Device Training and Transfer Learning
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-22
+    order: 22
+    displayOrder: 22
+    unitLabel: 单元
+    date: 2026-12-01
+    title: Guest Lecture
+    subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+    status: scheduled
+    official:
+      - label: 官方课程表
+        url: https://hanlab.mit.edu/courses/2026-fall-65940
+    resources: []
+    readings: []
+    outputs: []

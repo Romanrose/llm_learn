@@ -59,6 +59,12 @@ sections:
     title: 大模型与智能体
     description: 语言模型训练、Agent 原理与工程实践
     items:
+      - id: cs224n-winter26
+        courseId: cs224n-winter26
+        title: Stanford CS224N Winter 2026
+        subtitle: Natural Language Processing with Deep Learning
+        detail: 十九次讲座、三次教程与官方作业
+        route: /generated/courses/cs224n-winter26/
       - id: cs336-2026
         courseId: cs336-2026
         title: CS336 2026
@@ -74,6 +80,21 @@ sections:
         title: Stanford CS329Z Fall 2026
         subtitle: Engineering AI Agents
         route: /generated/courses/cs329z-fall26/
+      - id: harvard-cs2680-fall26
+        courseId: harvard-cs2680-fall26
+        title: Harvard CS2680 Fall 2026
+        subtitle: 从 Agent 使用与评估到工具、记忆和系统工程；接入 2026 秋季讲义、阅读与官方作业仓库。
+        route: /generated/courses/harvard-cs2680-fall26/
+      - id: cs224r-sp26
+        courseId: cs224r-sp26
+        title: CS224R Spring 2026
+        subtitle: 深度强化学习、模仿学习与语言模型强化学习；接入 2026 讲义、三份作业起始代码与项目说明。
+        route: /generated/courses/cs224r-sp26/
+      - id: mit-6s184-2026
+        courseId: mit-6s184-2026
+        title: MIT 6.S184 2026
+        subtitle: Flow Matching、扩散模型与随机微分方程；六个视频单元、官方讲义及三份实践 Notebook。
+        route: /generated/courses/mit-6s184-2026/
   - id: software-product
     title: 软件与产品开发
     description: 软件质量、产品需求与交互设计
@@ -93,6 +114,35 @@ sections:
         title: Stanford CS147 Autumn 2026
         subtitle: Introduction to HCI · 十个作业与三份讲义
         route: /generated/courses/cs147-fall26/
+      - id: cs329x-fall26
+        courseId: cs329x-fall26
+        title: CS329X Fall 2026
+        subtitle: 人类偏好、交互、协作与以用户为中心的 LLM 系统；接入公开讲义、论文和项目要求。
+        route: /generated/courses/cs329x-fall26/
+      - id: berkeley-ux-ai-sp26
+        courseId: berkeley-ux-ai-sp26
+        title: Berkeley UX for AI Spring 2026
+        subtitle: AI 产品的用户体验与原型设计。已接入 Spring 2026 官方课程介绍；逐周讲义、录像与作业未公开。
+        route: /generated/courses/berkeley-ux-ai-sp26/
+  - id: robotics-hardware
+    title: 机器人与 AI 硬件
+    description: 桌面机械臂、微控制器与端侧模型部署
+    items:
+      - id: jhu-robot-learning-fall26
+        courseId: jhu-robot-learning-fall26
+        title: JHU Hands-on Robot Learning Fall 2026
+        subtitle: 使用 SO-101 桌面机械臂学习数据采集、模仿学习与策略部署；含官方讲义、交互演示和实物作业总览。
+        route: /generated/courses/jhu-robot-learning-fall26/
+      - id: mit-65940-fall26
+        courseId: mit-65940-fall26
+        title: MIT 6.5940 Fall 2026
+        subtitle: 模型剪枝、量化、MCUNet、TinyEngine 与端侧部署；连接模型训练和小型 AI 硬件。
+        route: /generated/courses/mit-65940-fall26/
+      - id: cornell-ece4760-current
+        courseId: cornell-ece4760-current
+        title: Cornell ECE4760 / 5730
+        subtitle: Pico 2 / RP2350 上的嵌入式系统、通信、信号处理和控制，是小型 AI 硬件的基础；接入三个 Lab 与开放项目。
+        route: /generated/courses/cornell-ece4760-current/
 referenceCollections:
   - id: product-references
     title: 产品管理经典资料

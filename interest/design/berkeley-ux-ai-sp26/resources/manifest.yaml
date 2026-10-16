@@ -1,0 +1,12 @@
+schemaVersion: 1
+course: berkeley-ux-ai-sp26
+state: linked
+checkedAt: 2026-10-16
+officialSchedule: https://www.ischool.berkeley.edu/courses/info/290/uxai
+resources:
+  - label: 官方课程表
+    url: https://www.ischool.berkeley.edu/courses/info/290/uxai
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null

@@ -1,0 +1,144 @@
+schemaVersion: 1
+course: cornell-ece4760-current
+state: linked
+checkedAt: 2026-10-16
+officialSchedule: https://ece4760.github.io/
+resources:
+  - label: 官方课程表
+    url: https://ece4760.github.io/
+    type: docs
+    status: linked
+    note: 官方课程链接；未下载原始文件。
+    local: null
+  - label: "Lab 1 : Synthesizing birdsong"
+    url: https://vanhunteradams.com/Pico/Birds/Birdsong.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "Lab 2 : Digital Galton Board"
+    url: https://vanhunteradams.com/Pico/Galton/Galton.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "Lab 3 : PID control of a 1D helicopter"
+    url: https://vanhunteradams.com/Pico/Helicopter/Helicopter.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: "Final project : a 4-week, open-ended design project"
+    url: https://vanhunteradams.com/Pico/CourseMaterials/Final_Project.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Course demo code
+    url: https://github.com/vha3/Hunter-Adams-RP2040-Demos
+    type: code
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: RP2040/RP2350 C SDK Hardware APIs
+    url: https://www.raspberrypi.com/documentation/pico-sdk/hardware.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: RP2040/RP2350 C SDK Guide
+    url: https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Understanding RP2040/RP2350 C SDK architecture
+    url: https://vanhunteradams.com/Pico/Setup/SDKArchitecture.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Installing toolchain and building demo code
+    url: https://vanhunteradams.com/Pico/CourseMaterials/Building_Demos.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Hooking up the debugger
+    url: https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Course bill of materials
+    url: https://vanhunteradams.com/Pico/CourseMaterials/4760_BOM.pdf
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: SPI communication
+    url: https://vanhunteradams.com/Protocols/SPI/SPI.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: I2C communication
+    url: https://vanhunteradams.com/Protocols/I2C/I2C.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: UART communication
+    url: https://vanhunteradams.com/Protocols/UART/UART.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Direct Digital Synthesis
+    url: https://vanhunteradams.com/DDS/DDS.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Fast Fourier Transforms
+    url: https://vanhunteradams.com/FFT/FFT.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Complementary filters
+    url: https://vanhunteradams.com/Pico/ReactionWheel/Complementary_Filters.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Digital lowpass filters
+    url: https://vanhunteradams.com/Pico/ReactionWheel/Digital_Lowpass_Filters.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Direct Digital Synthesis (DDS) via timer interrupt
+    url: https://vanhunteradams.com/Pico/TimerIRQ/SPI_DDS.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: Dual-core Direct Digital Synthesis (DDS) via timer interrupts
+    url: https://vanhunteradams.com/Pico/Multi/MultiCore.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: PID control (phenomenological intro)
+    url: https://vanhunteradams.com/PID/PID.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null
+  - label: PID control (analytical intro)
+    url: https://vanhunteradams.com/PID/PID_Analytical.html
+    type: docs
+    status: linked
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+    local: null

@@ -1,0 +1,24 @@
+# MIT 6.5940 · Efficient AI and TinyML · Fall 2026
+
+模型剪枝、量化、MCUNet、TinyEngine 与端侧部署；连接模型训练和小型 AI 硬件。
+
+## 版本与资料边界
+
+- [官方课程来源](https://hanlab.mit.edu/courses/2026-fall-65940)
+- 核对日期：2026-10-16
+- 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
+- 当前仅保存元数据与外部链接；不复制讲义、代码包、视频或音频。未发布生成笔记、Blog 或逐字稿。
+
+## 硬件与学习方式
+
+可以先在电脑或课程 Notebook 中学习压缩、量化与性能分析。MCUNet 和 TinyEngine 面向微控制器与端侧推理；具体实物和计算资源依每份 Lab 要求。当前仅收录官网已提供链接的 Lab 0–2。
+
+## Lab 与作业
+
+- [Lab 0 · 官方 Notebook](https://colab.research.google.com/drive/1PfVYxikSaVpCSD-cnmNLN4l7yx_4odmg)：以课程当前公开链接为准；Notebook 与 ZIP 均来自官方课程页。
+- [Lab 1 · 官方 GPU 起始代码](https://www.dropbox.com/scl/fi/y2zmly5aoekmsg7jq4954/lab1_gpu_basics.zip?rlkey=29v29mlm2muvm0c5teleiusvc&st=2xh5vnk3&dl=1)：以课程当前公开链接为准；Notebook 与 ZIP 均来自官方课程页。
+- [Lab 2 · 官方 Notebook](https://colab.research.google.com/drive/1-HEcO8qxlbOgccAg6TyuDTOqWt1Jx45W)：以课程当前公开链接为准；Notebook 与 ZIP 均来自官方课程页。
+
+## 维护
+
+课程元数据：`website/catalog-data/courses/mit-65940-fall26.yaml`。修改后运行 `npm run build`。
