@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-10-16
+  resourceUpdatedAt: 2026-10-17
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -1192,6 +1192,18 @@ items:
         url: https://cs61a.org/fa26/hw/hw06/
         type: docs
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。
+      - label: Iterators
+        url: https://cs61a.org/fa26/lectures/22-iterators/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-17。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/22-Iterators.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-17。
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/22.py
+        type: code
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-17。
     readings:
       - label: "2.8"
         url: https://composingprograms.com/3ed/lazy-evaluation/
@@ -1242,7 +1254,11 @@ items:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
     resources: []
-    readings: []
+    readings:
+      - label: "2.9"
+        url: https://composingprograms.com/3ed/efficiency/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-17。
     outputs: []
     preparation:
       state: source-unavailable

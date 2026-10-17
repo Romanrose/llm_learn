@@ -128,4 +128,28 @@ resources:
     source: https://cs61a.org/fa26/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-16
+  - label: Iterators
+    url: https://cs61a.org/fa26/lectures/22-iterators/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/22-Iterators.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Examples)
+    url: https://cs61a.org/fa26/assets/lec/22.py
+    type: code
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: "2.9"
+    url: https://composingprograms.com/3ed/efficiency/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-17
