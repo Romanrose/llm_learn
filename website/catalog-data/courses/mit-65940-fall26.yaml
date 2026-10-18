@@ -47,6 +47,7 @@ schedule:
     - date: 2026-12-10
       title: Final Project Presentation
   unitCount: 22
+  resourceUpdatedAt: 2026-10-18
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -77,6 +78,12 @@ practice:
     source: https://hanlab.mit.edu/courses/2026-fall-65940
     checkedAt: 2026-10-16
     note: 以课程当前公开链接为准；Notebook 与 ZIP 均来自官方课程页。
+  - id: official-08ce042ed3a8e94f
+    title: Lab 3
+    url: https://colab.research.google.com/drive/1g_o6v2EErRJKZx5pmX3r8dCsInVkVC7h
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    checkedAt: 2026-10-18
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
 items:
   - id: lecture-01
     order: 1
