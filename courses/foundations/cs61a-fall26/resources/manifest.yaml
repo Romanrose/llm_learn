@@ -152,4 +152,16 @@ resources:
     source: https://cs61a.org/fa26/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-17
+  - label: Iterators and Generators (due Wed 10/21)
+    url: https://cs61a.org/fa26/labs/lab07/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Generators
+    url: https://cs61a.org/fa26/discussions/disc07/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-19

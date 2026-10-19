@@ -71,7 +71,7 @@ schedule:
     - title: Final Report & Final System Demo
       date: 2026-12-07–2026-12-11
       time: TBA
-  resourceUpdatedAt: 2026-10-16
+  resourceUpdatedAt: 2026-10-19
   unitCount: 19
 assignments:
   - id: hw1
@@ -372,7 +372,7 @@ items:
     title: Multi-Agent Systems
     subtitle: 多智能体编排、交接与协作，分析协调成本和错误传播。
     module: Engineering AI Agents
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
@@ -451,7 +451,15 @@ items:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
     resources: []
-    readings: []
+    readings:
+      - label: Terminal-Bench project site (leaderboard, tasks, and harness).
+        url: https://www.tbench.ai/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-19。
+      - label: 'Merrill et al. "Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces." ICLR (2026).'
+        url: https://arxiv.org/abs/2601.11868
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-19。
     outputs: []
     preparation:
       state: awaiting-official-materials

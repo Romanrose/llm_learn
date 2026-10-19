@@ -26,4 +26,16 @@ resources:
     source: https://cs329z.stanford.edu/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-16
+  - label: Terminal-Bench project site (leaderboard, tasks, and harness).
+    url: https://www.tbench.ai/
+    type: docs
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Merrill et al. "Terminal-Bench: Benchmarking Agents on Hard, Realistic Tasks in Command Line Interfaces." ICLR (2026).'
+    url: https://arxiv.org/abs/2601.11868
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-19

@@ -202,3 +202,16 @@ resources:
     status: linked
     note: 课程官方页面所列资料；访问权限与版本以原站为准。
     local: null
+  - label: OWASP agentic top 10
+    url: https://genai.owasp.org/download/52117/?tmstv=1765059207
+    type: docs
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: more reading →
+    url: https://cs2680.com/readings/oct-14.html
+    type: docs
+    source: https://cs2680.com/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-19

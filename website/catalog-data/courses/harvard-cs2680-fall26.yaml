@@ -92,6 +92,7 @@ schedule:
     - date: 2026-12-07
       title: Final project poster and demo
   unitCount: 23
+  resourceUpdatedAt: 2026-10-19
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -379,7 +380,15 @@ items:
       - label: 官方课程表
         url: https://cs2680.com/
     resources: []
-    readings: []
+    readings:
+      - label: OWASP agentic top 10
+        url: https://genai.owasp.org/download/52117/?tmstv=1765059207
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-10-19。
+      - label: more reading →
+        url: https://cs2680.com/readings/oct-14.html
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-10-19。
     outputs: []
   - id: lecture-11
     order: 11
