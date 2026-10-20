@@ -29,9 +29,9 @@ official:
 schedule:
   source: https://hci.stanford.edu/courses/cs147/2026/au/
   checkedAt: 2026-10-03
-  unitCount: 17
+  unitCount: 18
   note: 十个单元对应官方作业总览，保留作业身份。已补十组中文候选Note/Blog与三组公开讲义候选，均待审核；第二讲为2026页面复用2025材料，无课堂字幕。A11 Final Report仅作课程级参考。 已追加三个公开讲义单元，各自标注实际版本。
-  resourceUpdatedAt: 2026-10-16
+  resourceUpdatedAt: 2026-10-20
 learningModules:
   - id: course-references
     title: 00 · 课程参考资料
@@ -57,7 +57,7 @@ learningModules:
     title: 04 · 公开讲义
     description: 按实际材料版本学习；不等同于课堂逐字稿
     from: 11
-    to: 17
+    to: 18
 practice:
   - id: assignments
     title: Assignments Overview · 设计项目作业
@@ -658,5 +658,26 @@ items:
         url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/07-early-stage-prototyping.pptx
         type: slides
         note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-16。
+    readings: []
+    outputs: []
+  - id: lecture-18
+    order: 18
+    displayOrder: 18
+    unitLabel: 学习单元
+    title: Visual Information Design
+    subtitle: 课程官网新增单元；当前接入官方资料。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    resources:
+      - label: Visual Information Design
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/08-visual-design-wo-tufte.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-20。
+      - label: PPT
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/08-visual-design-wo-tufte.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-10-20。
     readings: []
     outputs: []

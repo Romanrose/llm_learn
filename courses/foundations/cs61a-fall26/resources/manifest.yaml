@@ -164,4 +164,106 @@ resources:
     source: https://cs61a.org/fa26/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-19
+  - label: Askademia
+    url: https://www.askademia.org/compsci61a/fa26/playlists/containers
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Askademia
+    url: https://www.askademia.org/compsci61a/fa26/playlists/objects
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Askademia
+    url: https://www.askademia.org/compsci61a/fa26/playlists/linked-lists
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Askademia
+    url: https://www.askademia.org/compsci61a/fa26/playlists/trees
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Askademia
+    url: https://www.askademia.org/compsci61a/fa26/playlists/mutation
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Askademia
+    url: https://www.askademia.org/compsci61a/fa26/playlists/classes
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Askademia
+    url: https://www.askademia.org/compsci61a/fa26/playlists/attributes
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Askademia
+    url: https://www.askademia.org/compsci61a/fa26/playlists/inheritance
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Askademia
+    url: https://www.askademia.org/compsci61a/fa26/playlists/iterators
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Generators
+    url: https://cs61a.org/fa26/lectures/23-generators/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/23-Generators.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Examples)
+    url: https://cs61a.org/fa26/assets/lec/23.py
+    type: code
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Askademia
+    url: https://www.askademia.org/compsci61a/fa26/playlists/generators
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Askademia
+    url: https://www.askademia.org/compsci61a/fa26/playlists/efficiency
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: YouTube
+    url: https://www.youtube.com/watch?v=DWhsOSHjY98&list=PLEIWw8-Yt9yo
+    type: video
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Askademia
+    url: https://www.askademia.org/compsci61a/fa26/playlists/object-examples
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: YouTube
+    url: https://www.youtube.com/watch?v=tpfpNR3u4zk&list=PLKBLCkthVkYU
+    type: video
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-20

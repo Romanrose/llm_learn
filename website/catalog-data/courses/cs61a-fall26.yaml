@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-10-19
+  resourceUpdatedAt: 2026-10-20
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -791,6 +791,10 @@ items:
         type: docs
         status: approved
         note: 官网链接；目标页面可用性以官方为准
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/containers
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
     outputs: []
     preparation:
       state: subtitle-ready
@@ -839,6 +843,10 @@ items:
         type: video
         status: approved
         note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/objects
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
     outputs: []
     preparation:
       state: subtitle-ready
@@ -891,6 +899,10 @@ items:
         type: docs
         status: approved
         note: 官网链接；目标页面可用性以官方为准
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/linked-lists
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
     outputs: []
     preparation:
       state: subtitle-ready
@@ -939,6 +951,10 @@ items:
         type: docs
         status: approved
         note: 官网链接；目标页面可用性以官方为准
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/trees
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
     outputs: []
     preparation:
       state: subtitle-ready
@@ -1033,6 +1049,10 @@ items:
         type: video
         status: approved
         note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/mutation
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
     outputs: []
     preparation:
       state: subtitle-ready
@@ -1082,6 +1102,10 @@ items:
         type: video
         status: approved
         note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/classes
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
     outputs: []
     preparation:
       state: subtitle-ready
@@ -1130,6 +1154,10 @@ items:
         type: video
         status: approved
         note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/attributes
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
     outputs: []
     preparation:
       state: subtitle-ready
@@ -1174,6 +1202,10 @@ items:
         type: video
         status: approved
         note: 官网配套主题视频；不认定为本学期课堂录播
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/inheritance
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
     outputs: []
     preparation:
       state: subtitle-ready
@@ -1219,6 +1251,10 @@ items:
         url: https://www.youtube.com/watch?v=On-kFyFp8HY&list=PL6BsET-8jgYW7stiut93PHxGP6_QgBzVQ
         type: video
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。配套主题视频，不作为当期课堂录像。
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/iterators
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
     outputs: []
     preparation:
       state: source-unavailable
@@ -1241,11 +1277,27 @@ items:
         url: https://cs61a.org/fa26/labs/lab07/
         type: docs
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-19。
+      - label: Generators
+        url: https://cs61a.org/fa26/lectures/23-generators/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/23-Generators.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/23.py
+        type: code
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
     readings:
       - label: YouTube
         url: https://www.youtube.com/watch?v=DyXPnQuaa0w&list=PL6BsET-8jgYXnY-7vDJXIv2N5xW98rJTZ
         type: video
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-16。配套主题视频，不作为当期课堂录像。
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/generators
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
     outputs: []
     preparation:
       state: source-unavailable
@@ -1273,6 +1325,14 @@ items:
         url: https://composingprograms.com/3ed/efficiency/
         type: docs
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-17。
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/efficiency
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=DWhsOSHjY98&list=PLEIWw8-Yt9yo
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable
@@ -1291,7 +1351,15 @@ items:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
     resources: []
-    readings: []
+    readings:
+      - label: Askademia
+        url: https://www.askademia.org/compsci61a/fa26/playlists/object-examples
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=tpfpNR3u4zk&list=PLKBLCkthVkYU
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-20。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable

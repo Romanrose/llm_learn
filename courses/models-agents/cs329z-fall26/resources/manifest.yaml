@@ -38,4 +38,10 @@ resources:
     source: https://cs329z.stanford.edu/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-19
+  - label: Slides
+    url: https://web.stanford.edu/class/cs329z/slides/lecture08.pdf
+    type: slides
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-20

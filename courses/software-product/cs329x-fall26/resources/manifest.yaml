@@ -244,3 +244,10 @@ resources:
     status: linked
     note: 课程官方页面所列资料；访问权限与版本以原站为准。
     local: null
+  - label: slides
+    url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture8_building_full_stack_hai_systems.pdf
+    type: slides
+    source: https://web.stanford.edu/class/cs329x/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-20
