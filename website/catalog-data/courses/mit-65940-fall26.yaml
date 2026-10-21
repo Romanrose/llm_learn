@@ -47,7 +47,7 @@ schedule:
     - date: 2026-12-10
       title: Final Project Presentation
   unitCount: 22
-  resourceUpdatedAt: 2026-10-18
+  resourceUpdatedAt: 2026-10-21
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -272,11 +272,15 @@ items:
     date: 2026-10-20
     title: TinyEngine and Parallel Processing
     subtitle: 使用 Fall 2026 课表；仅接入可见的正式链接。公开 Lab 0–2，后续 Lab 尚未给出链接；视频年份未逐一确认。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程表
         url: https://hanlab.mit.edu/courses/2026-fall-65940
-    resources: []
+    resources:
+      - label: "[Slides]"
+        url: https://www.dropbox.com/scl/fi/0hxkjcbb55e4rjogrhzar/Lec11-TinyEngine.pdf?rlkey=i6lxuj0o2zspfvoppsi32slcy&st=o6wqeemo&dl=0
+        type: docs
+        note: 官方课程页面新增资料；来源：https://hanlab.mit.edu/courses/2026-fall-65940；核对：2026-10-21。
     readings: []
     outputs: []
   - id: lecture-12

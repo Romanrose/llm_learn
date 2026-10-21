@@ -58,7 +58,7 @@ schedule:
     - code: 15b
       date: Thu, Dec 3, 2026
       title: Final presentations (posters)
-  resourceUpdatedAt: 2026-10-16
+  resourceUpdatedAt: 2026-10-21
   unitCount: 23
 learningModules:
   - id: course-references
@@ -1772,11 +1772,33 @@ items:
     title: "Frameworks 2: LangGraph"
     subtitle: LangGraph 框架与 Agent 工作流编排。
     module: Agent Frameworks
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cmu-agents.com/#schedule
     outputs: []
+    resources:
+      - label: Lecture 15 slides
+        url: https://www.cmu-agents.com/slides/lecture-15-orchestration-and-monitoring.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-10-21。
+    readings:
+      - label: Building effective agents
+        url: https://www.anthropic.com/engineering/building-effective-agents
+        type: docs
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-10-21。
+      - label: Thinking in LangGraph
+        url: https://docs.langchain.com/oss/python/langgraph/thinking-in-langgraph
+        type: docs
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-10-21。
+      - label: Diagnosing a performance regression on Terminal-Bench with Docent
+        url: https://transluce.org/docent/blog/terminal-bench
+        type: docs
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-10-21。
+      - label: "Hodoscope: Unsupervised Monitoring for AI Misbehaviors"
+        url: https://arxiv.org/abs/2604.11072
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-10-21。
   - id: lecture-16
     order: 16
     scheduleCode: 9b

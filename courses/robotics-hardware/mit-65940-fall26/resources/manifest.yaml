@@ -94,4 +94,10 @@ resources:
     source: https://hanlab.mit.edu/courses/2026-fall-65940
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-18
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/0hxkjcbb55e4rjogrhzar/Lec11-TinyEngine.pdf?rlkey=i6lxuj0o2zspfvoppsi32slcy&st=o6wqeemo&dl=0
+    type: docs
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-21

@@ -136,6 +136,36 @@ resources:
     source: https://www.cmu-agents.com/
     status: linked
     local: null
+  - label: Lecture 15 slides
+    url: https://www.cmu-agents.com/slides/lecture-15-orchestration-and-monitoring.pdf
+    type: slides
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Building effective agents
+    url: https://www.anthropic.com/engineering/building-effective-agents
+    type: docs
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Thinking in LangGraph
+    url: https://docs.langchain.com/oss/python/langgraph/thinking-in-langgraph
+    type: docs
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Diagnosing a performance regression on Terminal-Bench with Docent
+    url: https://transluce.org/docent/blog/terminal-bench
+    type: docs
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: "Hodoscope: Unsupervised Monitoring for AI Misbehaviors"
+    url: https://arxiv.org/abs/2604.11072
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
 generation:
   state: reviewed
   slidesLectures: 12
@@ -143,4 +173,4 @@ generation:
   candidateProvider: deepseek
   publication: 用户确认后显式开放前 12 讲 Note/Blog 与前 9 讲中英文逐字稿。
   approvedAt: 2026-10-03T10:09:56.644Z
-resourceUpdatedAt: 2026-10-16
+resourceUpdatedAt: 2026-10-21
