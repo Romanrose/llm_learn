@@ -214,4 +214,28 @@ resources:
     source: https://cs2680.com/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-19
+  - label: "[slide]"
+    url: https://cs2680.com/slides/9_llm_serving_basics_1.pdf
+    type: slides
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: "[slide]"
+    url: https://cs2680.com/slides/10_llm_serving_basics_2a.pdf
+    type: slides
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: CUDA programming guide
+    url: https://docs.nvidia.com/cuda/cuda-c-programming-guide/
+    type: docs
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: more reading →
+    url: https://cs2680.com/readings/oct-21.html
+    type: docs
+    source: https://cs2680.com/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-22

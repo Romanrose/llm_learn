@@ -92,7 +92,7 @@ schedule:
     - date: 2026-12-07
       title: Final project poster and demo
   unitCount: 23
-  resourceUpdatedAt: 2026-10-19
+  resourceUpdatedAt: 2026-10-22
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -397,11 +397,15 @@ items:
     date: 2026-10-19
     title: "Efficient LLM serving: basics I"
     subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程表
         url: https://cs2680.com/
-    resources: []
+    resources:
+      - label: "[slide]"
+        url: https://cs2680.com/slides/9_llm_serving_basics_1.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-10-22。
     readings: []
     outputs: []
   - id: lecture-12
@@ -411,12 +415,24 @@ items:
     date: 2026-10-21
     title: "Efficient LLM serving: basics II"
     subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程表
         url: https://cs2680.com/
-    resources: []
-    readings: []
+    resources:
+      - label: "[slide]"
+        url: https://cs2680.com/slides/10_llm_serving_basics_2a.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-10-22。
+    readings:
+      - label: CUDA programming guide
+        url: https://docs.nvidia.com/cuda/cuda-c-programming-guide/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-10-22。
+      - label: more reading →
+        url: https://cs2680.com/readings/oct-21.html
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-10-22。
     outputs: []
   - id: lecture-13
     order: 13

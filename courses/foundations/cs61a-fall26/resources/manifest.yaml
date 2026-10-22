@@ -266,4 +266,22 @@ resources:
     source: https://cs61a.org/fa26/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-20
+  - label: Efficiency
+    url: https://cs61a.org/fa26/lectures/24-efficiency/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/24-Efficiency.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Examples)
+    url: https://cs61a.org/fa26/assets/lec/24.py
+    type: code
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-22

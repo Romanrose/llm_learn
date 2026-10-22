@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-10-20
+  resourceUpdatedAt: 2026-10-22
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -1311,7 +1311,7 @@ items:
     title: Efficiency
     subtitle: 输入规模、操作计数与复杂度
     overview: 输入规模、操作计数与复杂度。建议动手任务：对两个等价实现记录操作数，先解释再计时。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
@@ -1320,6 +1320,18 @@ items:
         url: https://cs61a.org/fa26/discussions/disc07/
         type: docs
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-19。
+      - label: Efficiency
+        url: https://cs61a.org/fa26/lectures/24-efficiency/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-22。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/24-Efficiency.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-22。
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/24.py
+        type: code
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-22。
     readings:
       - label: "2.9"
         url: https://composingprograms.com/3ed/efficiency/

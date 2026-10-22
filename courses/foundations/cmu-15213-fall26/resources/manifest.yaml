@@ -32,4 +32,16 @@ resources:
     source: https://www.cs.cmu.edu/~213/schedule.html
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-16
+  - label: pdf
+    url: https://www.cs.cmu.edu/~213/lectures/15-optimization.pdf
+    type: slides
+    source: https://www.cs.cmu.edu/~213/schedule.html
+    status: linked
+    local: null
+  - label: pptx
+    url: https://www.cs.cmu.edu/~213/lectures/15-optimization.pptx
+    type: slides
+    source: https://www.cs.cmu.edu/~213/schedule.html
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-22
