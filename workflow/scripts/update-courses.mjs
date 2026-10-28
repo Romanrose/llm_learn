@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import { spawn } from 'node:child_process'
 import { createHash } from 'node:crypto'
+import { setTimeout as delay } from 'node:timers/promises'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { parse as yaml, stringify } from 'yaml'
@@ -61,21 +62,44 @@ function parseHtml(html, url) {
     child.stdin.end(JSON.stringify({ html, url }))
   })
 }
-async function text(url) {
-  for (let attempt = 0; attempt < 2; attempt++) {
+export function errorDetails(error) {
+  const details = []; const seen = new Set()
+  for (let cause = error; cause && !seen.has(cause); cause = cause.cause) {
+    seen.add(cause)
+    const detail = [cause.code, cause.message].filter(Boolean).join(': ')
+    if (!details.some(previous => previous.includes(detail))) details.push(detail)
+  }
+  return details.join(' → ')
+}
+export async function text(url, { fetchImpl = fetch, sleep = delay } = {}) {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    let retryable = false
     try {
-      const response = await fetch(url, { headers: { 'user-agent': 'llm_learn-course-updater/1.0 (+https://github.com/Romanrose/llm_learn)' }, signal: AbortSignal.timeout(20000) })
-      if (!response.ok) throw Error(`HTTP ${response.status}: ${url}`)
+      let response
+      try {
+        response = await fetchImpl(url, { headers: { 'user-agent': 'llm_learn-course-updater/1.0 (+https://github.com/Romanrose/llm_learn)' }, signal: AbortSignal.timeout(20000) })
+      } catch (e) { retryable = true; throw e }
+      if (!response.ok) {
+        retryable = [408,429,500,502,503,504].includes(response.status)
+        await response.body?.cancel()
+        throw Error(`HTTP ${response.status}`)
+      }
       if (new URL(response.url).hostname !== new URL(url).hostname) throw Error('Official source redirected to another host')
       const documentPath = value => new URL(value).pathname.replace(/\/index\.html$/,'/').replace(/\/$/,'')
       if (documentPath(response.url) !== documentPath(url)) throw Error('Official source redirected to another document or semester')
       const mime = response.headers.get('content-type') ?? ''
       if (!/text|javascript|json/.test(mime)) throw Error('Source is not an HTML/data document')
-      const body = await response.text(); if (body.length > 4_000_000) throw Error('Unexpectedly large source document')
+      let body
+      try { body = await response.text() } catch (e) { retryable = true; throw e }
+      if (body.length > 4_000_000) throw Error('Unexpectedly large source document')
       return body
-    } catch (e) { if (attempt === 1) throw e }
+    } catch (e) {
+      if (!retryable || attempt === 2) throw Error(`Unable to fetch ${url} after ${attempt + 1} attempt(s): ${errorDetails(e)}`, { cause: e })
+      await sleep(1000 * 2 ** attempt)
+    }
   }
 }
+
 function type(link) {
   return /youtu|vimeo|panopto|\.mp4(?:\?|$)/i.test(link.url) ? 'video' : /arxiv|openreview|proceedings/i.test(link.url) ? 'paper' : /github|\.(?:zip|tar|py|ipynb)(?:\?|$)/i.test(link.url) ? 'code' : /slides|lectures|\.pptx/i.test(link.url) ? 'slides' : 'docs'
 }
@@ -185,45 +209,56 @@ export function mergeOfficial(course, parsed, config, checkedAt = today) {
   next.schedule ??= {}; next.schedule.resourceUpdatedAt = checkedAt; next.schedule.unitCount = next.items.length
   return { course: next, changes }
 }
-async function run() {
-  const apply = process.argv.includes('--apply')
-  const only = process.argv.find(x => x.startsWith('--course='))?.split('=')[1]
-  const configs = yaml(fs.readFileSync(configPath,'utf8')).courses
+export async function run({ workspace = root, configs, fetchText = text, parsePage = parseHtml,
+  apply = process.argv.includes('--apply'), only = process.argv.find(x => x.startsWith('--course='))?.split('=')[1],
+  env = process.env, reportDir = join(workspace, 'workflow/.runtime/course-updates') } = {}) {
+  configs ??= yaml(fs.readFileSync(configPath,'utf8')).courses
+  if (only && !configs.some(c => c.id === only)) throw Error(`Unknown course: ${only}`)
   const results = []; const prepared = []
   for (const config of configs.filter(c => !only || c.id === only)) {
     if (today > String(config.until)) { results.push({ id: config.id, status: 'retired', changes: [] }); continue }
     try {
-      const path = join(root,`website/catalog-data/courses/${config.id}.yaml`)
+      const path = join(workspace,`website/catalog-data/courses/${config.id}.yaml`)
       const course = yaml(fs.readFileSync(path,'utf8'))
-      const html = await text(config.url)
-      const identity = config.identityUrl ? await text(config.identityUrl) : html + ' ' + config.url
+      const html = await fetchText(config.url)
+      const identity = config.identityUrl ? await fetchText(config.identityUrl) : html + ' ' + config.url
       if (!semesterMatches(identity,config.identityUrl ?? config.url,config.semester)) throw Error('Pinned semester no longer matches official page')
-      const page = await parseHtml(html,config.url)
+      const page = await parsePage(html,config.url)
       let parsed
       if (config.adapter === 'cmu-agents') {
         const src = page.scripts.find(u => new URL(u).hostname === new URL(config.url).hostname && /\/assets\/index-.*\.js$/.test(u))
         if (!src) throw Error('Official course data bundle missing')
-        const sessions = bundleSessions(await text(src))
+        const sessions = bundleSessions(await fetchText(src))
         parsed = { units: sessions.filter(s => s.slides || s.recording || s.readings?.length).map(s => ({ title: s.title, date: s.date, resources: unique([s.slides,s.recording].filter(Boolean).map(l => ({ ...l, url: new URL(l.url,config.url).href }))), readings: s.readings ?? [] })), practices: [] }
       } else parsed = candidates(page,config.adapter)
       const updated = mergeOfficial(course,parsed,config)
-      if (updated.changes.length) prepared.push({ path, updated, config })
+      if (updated.changes.length) {
+        const manifestPath = join(workspace,updated.course.paths.resources,'manifest.yaml')
+        const manifest = fs.existsSync(manifestPath) ? yaml(fs.readFileSync(manifestPath,'utf8')) : { schemaVersion:1,course:config.id,state:'linked',resources:[] }
+        manifest.resources ??= []
+        for (const change of updated.changes.filter(x => x.url)) if (!manifest.resources.some(x => x.url === change.url)) manifest.resources.push({ label: change.label,url:change.url,type:type(change),source:config.url,status:'linked',local:null })
+        manifest.resourceUpdatedAt = today
+        // Prepare both documents before accepting this source into the batch.
+        prepared.push({ path, courseText: stringify(updated.course,{ lineWidth:0 }), manifestPath, manifestText: stringify(manifest,{ lineWidth:0 }) })
+      }
       results.push({ id: config.id, status: updated.changes.length ? 'updated' : 'unchanged', changes: updated.changes })
-    } catch (e) { results.push({ id: config.id, status: 'error', error: e.message, changes: [] }) }
+    } catch (e) { results.push({ id: config.id, status: 'error', error: errorDetails(e), changes: [] }) }
   }
   const report = ['# 课程官方资料更新', '', `检查日期：${today} · ${apply ? '同步' : '预览'}模式`, '', ...results.flatMap(r => [`## ${r.id} · ${r.status}`, ...(r.error ? [`\n${r.error}\n`] : []), ...r.changes.map(c => `- ${c.unit} · ${c.label}${c.url ? ` · ${c.url}` : ''}`), ''])].join('\n')
-  if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,report)
+  fs.mkdirSync(reportDir, { recursive: true })
+  fs.writeFileSync(join(reportDir, 'report.md'), report)
+  fs.writeFileSync(join(reportDir, 'results.json'), JSON.stringify(results,null,2) + '\n')
+  if (env.GITHUB_STEP_SUMMARY) fs.appendFileSync(env.GITHUB_STEP_SUMMARY,report)
   console.log(JSON.stringify(results,null,2))
-  // Any parsing/semester/network error aborts writes: a broken source cannot partially publish a batch.
-  if (results.some(r => r.status === 'error')) { process.exitCode = 1; return }
-  if (apply) for (const { path, updated, config } of prepared) {
-    fs.writeFileSync(path,stringify(updated.course,{ lineWidth:0 }))
-    const manifestPath = join(root,updated.course.paths.resources,'manifest.yaml')
-    const manifest = fs.existsSync(manifestPath) ? yaml(fs.readFileSync(manifestPath,'utf8')) : { schemaVersion:1,course:config.id,state:'linked',resources:[] }
-    manifest.resources ??= []
-    for (const change of updated.changes.filter(x => x.url)) if (!manifest.resources.some(x => x.url === change.url)) manifest.resources.push({ label: change.label,url:change.url,type:type(change),source:config.url,status:'linked',local:null })
-    manifest.resourceUpdatedAt = today; fs.mkdirSync(dirname(manifestPath),{ recursive:true }); fs.writeFileSync(manifestPath,stringify(manifest,{ lineWidth:0 }))
+  // A failed source contributes no writes; validated sources can still progress.
+  const hadErrors = results.some(r => r.status === 'error')
+  if (apply) for (const { path, courseText, manifestPath, manifestText } of prepared) {
+    fs.mkdirSync(dirname(manifestPath),{ recursive:true })
+    fs.writeFileSync(path,courseText)
+    fs.writeFileSync(manifestPath,manifestText)
   }
-  if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT,`changed=${apply && prepared.length>0}\n`)
+  const changed = apply && prepared.length > 0
+  if (env.GITHUB_OUTPUT) fs.appendFileSync(env.GITHUB_OUTPUT,`changed=${changed}\nhad_errors=${hadErrors}\n`)
+  return { results, changed, hadErrors }
 }
-if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await run()
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) process.exitCode = (await run()).hadErrors ? 1 : 0
