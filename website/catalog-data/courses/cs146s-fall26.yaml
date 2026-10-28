@@ -6,10 +6,10 @@ shortTitle: CS146S Fall 2026
 eyebrow: Stanford · The Modern Software Developer · Fall 2026
 year: 2026
 status: resources-approved
-publishOutputs: false
+publishOutputs: true
 unitLabel: 讲次
 description: 智能体驱动的软件开发：从 Coding Agent 内部机制、上下文与 Skills，到代码审查、安全、后台智能体和软件工厂。接入 2026
-  秋季十周、二十次课程安排及官方资料；部分课件访问受限，逐周作业仓库尚未在本版课表列出。
+  秋季十周、二十次课程安排及官方资料；部分课件访问受限，已补充讲义所列官方作业 GitHub；第 1 讲提供中文笔记与 Blog。
 instructors:
   - Mihail Eric
 paths:
@@ -105,7 +105,13 @@ practice:
     url: https://docs.google.com/document/d/1W11sWBigWIsi9wVIhhFx3wajIEnP0Qfb-ei8Ecf5VKU/edit?usp=sharing
     source: https://themodernsoftware.dev/
     checkedAt: 2026-10-28
-    note: 官网作业入口；可能需要 Google 访问权限。2026 课表尚未列出逐周作业 GitHub 链接。
+    note: 官方作业日历；访问权限与截止日期以原站为准。
+  - id: official-assignments
+    title: 官方作业 GitHub · Fall 2026
+    url: https://github.com/mihail911/modern-software-dev-assignments
+    source: https://docs.google.com/presentation/d/1uztIhjHAG6O_9QOD1N_3wdhwhABml1fANXEN2dGwdbg/htmlpresent
+    checkedAt: 2026-10-28
+    note: 第一讲官方讲义第 9 页列出；仓库 README 标注 Fall 2026。各周作业与截止日期以仓库及官方日历为准。
 items:
   - id: lecture-01
     order: 1
@@ -122,11 +128,15 @@ items:
       - label: Slides
         url: https://docs.google.com/presentation/d/1uztIhjHAG6O_9QOD1N_3wdhwhABml1fANXEN2dGwdbg/edit?usp=drive_link
         type: slides
-        note: 官网标注访问受限；是否可读以原站权限为准。
+        note: 官网标注访问受限；核验时标准只读 HTML 视图可匿名阅读，实际权限以原站为准。
       - label: Completed code
         url: https://drive.google.com/file/d/1DxKa_autBOu9s8DvItodgUAwH_pBg7aR/view?usp=drive_link
-        type: docs
+        type: code
         note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: 官方讲义 · 只读 HTML
+        url: https://docs.google.com/presentation/d/1uztIhjHAG6O_9QOD1N_3wdhwhABml1fANXEN2dGwdbg/htmlpresent
+        type: slides
+        note: 2026-09-22 · 15 页；Google 提供的标准只读视图。
     readings:
       - label: Building a Coding Agent
         url: https://youtube.com/watch?v=s7ZzkdvCMDY
@@ -140,7 +150,25 @@ items:
         url: https://arxiv.org/pdf/2604.14228
         type: paper
         note: 2026 官方课表所列资料；访问权限以原站为准。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/software-product/cs146s-fall26/notes/lecture-01/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/software-product/cs146s-fall26/notes/lecture-01/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-01/review.yaml
+      reviewedAt: 2026-10-28T11:31:24.494Z
+    preparation:
+      state: official-slides-reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-01/sources.yaml
+      preparedAt: 2026-10-28T11:31:24.494Z
   - id: lecture-02
     order: 2
     displayOrder: 2

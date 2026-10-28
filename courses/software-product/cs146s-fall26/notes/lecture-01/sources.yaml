@@ -1,0 +1,31 @@
+schemaVersion: 1
+course: cs146s-fall26
+lecture: lecture-01
+title: Course intro + build Claude Code in 200 lines
+checkedAt: 2026-10-28T11:31:24.494Z
+state: official-slides-reviewed
+materials:
+  - label: Official lecture slides · 15 pages
+    type: slides
+    url: https://docs.google.com/presentation/d/1uztIhjHAG6O_9QOD1N_3wdhwhABml1fANXEN2dGwdbg/htmlpresent
+    status: read-public-html
+    note: Official course marks slides gated; Google standard HTML presentation was readable anonymously at the
+      check time. No authenticated access used.
+  - label: Completed code preview
+    type: code
+    url: https://drive.google.com/file/d/1DxKa_autBOu9s8DvItodgUAwH_pBg7aR/view
+    status: preview-only
+    note: Filename identified; code body not read or executed.
+  - label: Official assignment repository
+    type: code
+    url: https://github.com/mihail911/modern-software-dev-assignments
+    status: verified
+    note: Linked on slide 9; repository README identifies Fall 2026.
+supplemental:
+  - label: How Claude Code works
+    url: https://code.claude.com/docs/en/how-claude-code-works
+  - label: Building effective agents
+    url: https://www.anthropic.com/research/building-effective-agents
+caption:
+  state: unavailable
+  reason: 官网未列出第 1 讲录像、字幕或逐字稿，尚无可核验的时间轴来源。本站仅提供基于官方讲义的中文笔记与独立 Blog，不以其他讲次或补充视频代替本讲逐字稿。

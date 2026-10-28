@@ -1,0 +1,28 @@
+schemaVersion: 1
+state: reviewed
+course: cs146s-fall26
+lecture: lecture-01
+provider: codex
+reviewedAt: 2026-10-28T11:31:24.494Z
+reviewer: authoring-assistant
+source: courses/software-product/cs146s-fall26/notes/lecture-01/references/codex
+outputs:
+  note: courses/software-product/cs146s-fall26/notes/lecture-01/note.md
+  blog: courses/software-product/cs146s-fall26/notes/lecture-01/blog.md
+checks:
+  errors: []
+  completed:
+    - Checked lecture identity and official slides pages 5, 7, 9, 11-14.
+    - Separated course facts, supplemental documentation and original exercises.
+    - Checked candidate document headings and local links.
+    - No transcript, audio/video, external source copies or unreviewed content added to outputs.
+    - "npm run validate:structure: 20 course versions and 190 published sources."
+    - Production VitePress build passed.
+    - "Browser: Blog hash link and lecture-note tab visible; no JavaScript request failures or browser errors."
+  warnings:
+    - No official recording or transcript listed for lecture-01; no timestamped transcript produced.
+    - Official completed-code file preview was identified; code body was not read or executed.
+    - Review was performed by the authoring assistant, not a separate human reviewer.
+contentHashes:
+  note: 1351b143772271ff23aeec1c93e4a372946b2d15584c4cdbf1d0db897ad9e6fc
+  blog: 2f60821b0239150b7804cb299cab755a6dfd882a8f46dc5e83e5a1f78d08b452
