@@ -4,7 +4,7 @@
 
 以课程为主线的个人学习资料库，覆盖编程与系统、大模型与智能体、软件与产品、机器人与 AI 硬件。仓库保存课程来源、资料索引、学习笔记和审核记录；网站提供课程导航、资料检索以及官方 Lab 与作业入口。
 
-目前有 **18 个课程入口、19 套课程版本资料**，其中 CMU 15-213 同时保留 2026 与 2015 历史版本；UVA 产品管理入口包含五门子课程。课程单元可能是讲座、阅读、教程或作业，不把单元数统一当作讲次数。
+目前有 **19 个课程入口、20 套课程版本资料**，其中 CMU 15-213 同时保留 2026 与 2015 历史版本；UVA 产品管理入口包含五门子课程。课程单元可能是讲座、阅读、教程或作业，不把单元数统一当作讲次数。
 
 ## 从哪里开始
 
@@ -48,6 +48,7 @@
 
 | 课程与本地资料 | 学习重点 | 网站 |
 | --- | --- | --- |
+| [CS146S Fall 2026](courses/software-product/cs146s-fall26/) | Coding Agent、上下文工程、Skills、代码审查与软件工厂 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs146s-fall26/) |
 | [MIT 6.102 Spring 2026](courses/software-product/mit-6102-sp26/) | TypeScript、规格、测试、抽象与并发 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/mit-6102-sp26/) |
 | [UVA Digital Product Management · 当前在线版](courses/software-product/uva-digital-product-management/) | 五门子课程：定位、敏捷、假设验证、分析与团队 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/uva-digital-product-management/) |
 | [Stanford CS147 Autumn 2026](courses/software-product/cs147-fall26/) | 需求访谈、原型、可用性测试与设计项目 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs147-fall26/) |

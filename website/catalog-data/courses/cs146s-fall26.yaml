@@ -1,0 +1,527 @@
+kind: course
+id: cs146s-fall26
+category: software-engineering
+title: Stanford CS146S · The Modern Software Developer · Fall 2026
+shortTitle: CS146S Fall 2026
+eyebrow: Stanford · The Modern Software Developer · Fall 2026
+year: 2026
+status: resources-approved
+publishOutputs: false
+unitLabel: 讲次
+description: 智能体驱动的软件开发：从 Coding Agent 内部机制、上下文与 Skills，到代码审查、安全、后台智能体和软件工厂。接入 2026
+  秋季十周、二十次课程安排及官方资料；部分课件访问受限，逐周作业仓库尚未在本版课表列出。
+instructors:
+  - Mihail Eric
+paths:
+  root: courses/software-product/cs146s-fall26
+  notes: courses/software-product/cs146s-fall26/notes
+  resources: courses/software-product/cs146s-fall26/resources
+  references: courses/software-product/cs146s-fall26/references
+  exports: courses/software-product/cs146s-fall26/exports
+official:
+  - label: 2026 官方课程与课表
+    url: https://themodernsoftware.dev/
+  - label: 官方作业日历
+    url: https://docs.google.com/document/d/1W11sWBigWIsi9wVIhhFx3wajIEnP0Qfb-ei8Ecf5VKU/edit?usp=sharing
+  - label: 2025 历史版（独立版本）
+    url: https://themodernsoftware.dev/fall2025
+schedule:
+  source: https://themodernsoftware.dev/
+  checkedAt: 2026-10-28
+  timezone: America/Los_Angeles
+  unitCount: 20
+  note: 按 Fall 2026 的十周、每周两次课建立讲次；未来安排可能调整。gated 课件保留权限说明，外部阅读视频不视为本课程录像。未混入 Fall 2025 作业。
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    description: 官方来源、作业入口与访问说明。
+    from: 0
+    to: 0
+  - id: week-01
+    title: "Week 1: The Internals of Coding Agents"
+    description: What an LLM actually is, and what the agent loop looks like under the hood；The core tool set
+      (read, write, edit, bash) and how tasks flow through it；How production coding agents structure their
+      system prompts and tool definitions
+    from: 1
+    to: 2
+  - id: week-02
+    title: "Week 2: Advanced Context Engineering"
+    description: "Advanced prompting techniques and when each applies；RePPIT (Research, Propose, Plan, Implement,
+      Test) and spec-driven development；MCP fundamentals: servers, clients, tools, and transport；Designing
+      tools for agent ergonomics"
+    from: 3
+    to: 4
+  - id: week-03
+    title: "Week 3: Agent Skills and CLI"
+    description: What skills are and how SKILL.md + scripts encode a workflow；Web skills and extending agent
+      capability beyond the repo；Working effectively from the CLI
+    from: 5
+    to: 6
+  - id: week-04
+    title: "Week 4: Customizing Your Agent and Repository"
+    description: "CLAUDE.md and AGENTS.md: what to put where；Hooks for lint gates, test runs, and
+      guardrails；Subagent patterns (planner / implementer / reviewer)"
+    from: 7
+    to: 8
+  - id: week-05
+    title: "Week 5: Agent-Ready Codebases"
+    description: "What makes a repo agent-ready: structure, docs, tests, and checks；Scoring and auditing
+      readiness；Common gaps that block agents in real repos"
+    from: 9
+    to: 10
+  - id: week-06
+    title: "Week 6: Agentic Code Review"
+    description: What AI review catches well, and what it misses；Review architectures and custom rules；Fitting AI
+      review into a team's PR workflow
+    from: 11
+    to: 12
+  - id: week-07
+    title: "Week 7: Security"
+    description: SAST / SCA, dependency and secret-leak vulnerabilities；Prompt injection and agent-specific attack
+      surfaces；Agent-assisted triage and remediation
+    from: 13
+    to: 14
+  - id: week-08
+    title: "Week 8: Background Agents"
+    description: Async, cloud-delegated agents；Managing fleets of parallel agents；Issue-to-PR pipelines and
+      triggers (Slack, Linear, GitHub)
+    from: 15
+    to: 16
+  - id: week-09
+    title: "Week 9: Building an AI-Native Team"
+    description: MCP portals and centralized, permissioned tool access；LLM gateways, model routing, and cost
+      optimization；Org-wide adoption patterns
+    from: 17
+    to: 18
+  - id: week-10
+    title: "Week 10: The Software Factory + The Future"
+    description: Self-running, self-improving software systems；Running and securing agents post-deployment；Where
+      AI software engineering goes next
+    from: 19
+    to: 20
+practice:
+  - id: assignment-calendar
+    title: 2026 官方作业日历与截止日期
+    url: https://docs.google.com/document/d/1W11sWBigWIsi9wVIhhFx3wajIEnP0Qfb-ei8Ecf5VKU/edit?usp=sharing
+    source: https://themodernsoftware.dev/
+    checkedAt: 2026-10-28
+    note: 官网作业入口；可能需要 Google 访问权限。2026 课表尚未列出逐周作业 GitHub 链接。
+items:
+  - id: lecture-01
+    order: 1
+    displayOrder: 1
+    unitLabel: 讲次
+    date: 2026-09-22
+    title: Course intro + build Claude Code in 200 lines
+    subtitle: "Week 1: The Internals of Coding Agents"
+    status: resources-approved
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources:
+      - label: Slides
+        url: https://docs.google.com/presentation/d/1uztIhjHAG6O_9QOD1N_3wdhwhABml1fANXEN2dGwdbg/edit?usp=drive_link
+        type: slides
+        note: 官网标注访问受限；是否可读以原站权限为准。
+      - label: Completed code
+        url: https://drive.google.com/file/d/1DxKa_autBOu9s8DvItodgUAwH_pBg7aR/view?usp=drive_link
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+    readings:
+      - label: Building a Coding Agent
+        url: https://youtube.com/watch?v=s7ZzkdvCMDY
+        type: video
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: Lessons from Building Claude Code
+        url: https://x.com/trq212/status/2027463795355095314?s=20
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: Dive into Claude Code
+        url: https://arxiv.org/pdf/2604.14228
+        type: paper
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+    outputs: []
+  - id: lecture-02
+    order: 2
+    displayOrder: 2
+    unitLabel: 讲次
+    date: 2026-09-24
+    title: "How state-of-the-art coding agents are designed: deep dive into the system prompts that define the
+      agent"
+    subtitle: "Week 1: The Internals of Coding Agents"
+    status: resources-approved
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources:
+      - label: Slides
+        url: https://docs.google.com/presentation/d/1RZu-p18Qybbgm8WVP2RH04ESc4Bn377B-T9j5-TBFdQ/edit?usp=drive_link
+        type: slides
+        note: 官网标注访问受限；是否可读以原站权限为准。
+      - label: Prompts
+        url: https://drive.google.com/drive/folders/1c6_atVW0RrqEBWsNIscG2KNwCiuPxWQG?usp=drive_link
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: 官方英文逐字稿
+        url: https://themodernsoftware.dev/materials/9-24-26-transcript.txt
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-03
+    order: 3
+    displayOrder: 3
+    unitLabel: 讲次
+    date: 2026-09-29
+    title: Advanced prompting + agentic dev frameworks (RePPIT, spec-driven development)
+    subtitle: "Week 2: Advanced Context Engineering"
+    status: resources-approved
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources:
+      - label: Slides
+        url: https://docs.google.com/presentation/d/17brqoQQZHF3K82WgYaV6urAV3Q7iIwyGUBYRvSuY8QY/edit?usp=sharing
+        type: slides
+        note: 官网标注访问受限；是否可读以原站权限为准。
+      - label: 官方英文逐字稿
+        url: https://themodernsoftware.dev/materials/9-29-26-transcript.txt
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+    readings:
+      - label: "The Context Tax: When to Compact"
+        url: https://langwatch.ai/blog/context-tax-when-to-compact
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: OpenSpec
+        url: https://openspec.dev/
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: Superpowers
+        url: https://github.com/obra/superpowers
+        type: code
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: Enterprise MCP (Cloudflare)
+        url: https://blog.cloudflare.com/enterprise-mcp
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+    outputs: []
+  - id: lecture-04
+    order: 4
+    displayOrder: 4
+    unitLabel: 讲次
+    date: 2026-10-01
+    title: Full introduction to MCP and tool-calling (theory, setup, and advanced tool design)
+    subtitle: "Week 2: Advanced Context Engineering"
+    status: resources-approved
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources:
+      - label: Slides
+        url: https://docs.google.com/presentation/d/1q2cB1a7P4XsR0UJqE0RmtZFeggNOLdPaSnOpbBVewHA/edit?usp=sharing
+        type: slides
+        note: 官网标注访问受限；是否可读以原站权限为准。
+      - label: Skills
+        url: https://drive.google.com/drive/folders/1aEHCXzZKkokuA4AYjD_2i6OrcM5iQosW?usp=drive_link
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: 官方英文逐字稿
+        url: https://themodernsoftware.dev/materials/10-1-26-transcript.txt
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+    readings: []
+    outputs: []
+  - id: lecture-05
+    order: 5
+    displayOrder: 5
+    unitLabel: 讲次
+    date: 2026-10-06
+    title: All about agent skills (including web skills)
+    subtitle: "Week 3: Agent Skills and CLI"
+    status: resources-approved
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources:
+      - label: Slides
+        url: https://docs.google.com/presentation/d/15bPu5c-i8D8McTh6l7SpUPk2n9M_Y-CdDQLfyzL8RD8/edit?usp=sharing
+        type: slides
+        note: 官网标注访问受限；是否可读以原站权限为准。
+    readings:
+      - label: pstack
+        url: https://github.com/cursor/plugins/tree/main/pstack
+        type: code
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: Matt Pocock's Skills
+        url: https://github.com/mattpocock/skills
+        type: code
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: browse.sh
+        url: https://browse.sh/
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+    outputs: []
+  - id: lecture-06
+    order: 6
+    displayOrder: 6
+    unitLabel: 讲次
+    date: 2026-10-08
+    title: "Guest: Lee Robinson (Model Behavior @ SpaceX)"
+    subtitle: "Week 3: Agent Skills and CLI"
+    status: resources-approved
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources:
+      - label: Slides
+        url: https://drive.google.com/file/d/1b8WiBk_lcB3ue-jZMLijSUMLj6SDiF6Z/view?usp=drive_link
+        type: slides
+        note: 官网标注访问受限；是否可读以原站权限为准。
+    readings: []
+    outputs: []
+  - id: lecture-07
+    order: 7
+    displayOrder: 7
+    unitLabel: 讲次
+    date: 2026-10-13
+    title: Customizing your agentic setup (CLAUDE.md, AGENTS.md, hooks)
+    subtitle: "Week 4: Customizing Your Agent and Repository"
+    status: resources-approved
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources:
+      - label: Slides
+        url: https://docs.google.com/presentation/d/152VaUifBKH4T6hxd6fCKKM9kJTSAuBmkF8zSYwuTYAo/edit?usp=sharing
+        type: slides
+        note: 官网标注访问受限；是否可读以原站权限为准。
+    readings:
+      - label: I Still Prefer MCP Over Skills
+        url: https://david.coffee/i-still-prefer-mcp-over-skills
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: AGENTS.md (Factory Docs)
+        url: https://docs.factory.com/harness/agents-md
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: "Steering Claude Code: Skills, Hooks, Rules, Subagents, and More"
+        url: https://claude.com/resources/articles/steering-claude-code-skills-hooks-rules-subagents-and-more
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: Writing a Good CLAUDE.md
+        url: https://hlyr.dev/blog/writing-a-good-claude-md
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+    outputs: []
+  - id: lecture-08
+    order: 8
+    displayOrder: 8
+    unitLabel: 讲次
+    date: 2026-10-15
+    title: "Guest: Boris Cherny (Creator of Claude Code @ Anthropic)"
+    subtitle: "Week 4: Customizing Your Agent and Repository"
+    status: scheduled
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-09
+    order: 9
+    displayOrder: 9
+    unitLabel: 讲次
+    date: 2026-10-20
+    title: Agent readiness in your repos (structure, docs, and checks that make repos agent-friendly)
+    subtitle: "Week 5: Agent-Ready Codebases"
+    status: resources-approved
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources:
+      - label: Slides
+        url: https://docs.google.com/presentation/d/1yCxocmUrGIN7IrC42WB6NW08PtYYFLe1ombDj3Ay6_8/edit?usp=drive_link
+        type: slides
+        note: 官网标注访问受限；是否可读以原站权限为准。
+    readings:
+      - label: Making Codebases Agent Ready
+        url: https://www.youtube.com/watch?v=ShuJ_CN6zr4
+        type: video
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: Making Ergonomic Repositories
+        url: https://x.com/trybasis/status/2056881705269580023
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+    outputs: []
+  - id: lecture-10
+    order: 10
+    displayOrder: 10
+    unitLabel: 讲次
+    date: 2026-10-22
+    title: "Guest: Eno Reyes (CTO @ Factory)"
+    subtitle: "Week 5: Agent-Ready Codebases"
+    status: scheduled
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-11
+    order: 11
+    displayOrder: 11
+    unitLabel: 讲次
+    date: 2026-10-27
+    title: "Agentic code review: best practices and architectures"
+    subtitle: "Week 6: Agentic Code Review"
+    status: resources-approved
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources:
+      - label: Slides
+        url: https://docs.google.com/presentation/d/1u8WYtFj0O9yc4H4JX9D4URYKhDzvrAGKLzn38DXSrak/edit?usp=drive_link
+        type: slides
+        note: 官网标注访问受限；是否可读以原站权限为准。
+    readings:
+      - label: Layered Code Review and Risk-Based Human Oversight
+        url: https://x.com/addyosmani/status/2114604912520921136
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: Coordinating Specialist Review Agents at Scale
+        url: https://blog.cloudflare.com/ai-code-review
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: "Beyond the Diff: Context, Testing, and Model Selection"
+        url: https://greptile.com/blog/how-to-build-a-code-review-agent
+        type: docs
+        note: 2026 官方课表所列资料；访问权限以原站为准。
+    outputs: []
+  - id: lecture-12
+    order: 12
+    displayOrder: 12
+    unitLabel: 讲次
+    date: 2026-10-29
+    title: "Guest: Silas Alberti (Chief Research Officer @ Cognition)"
+    subtitle: "Week 6: Agentic Code Review"
+    status: scheduled
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-13
+    order: 13
+    displayOrder: 13
+    unitLabel: 讲次
+    date: 2026-11-03
+    title: Security in AI codebases
+    subtitle: "Week 7: Security"
+    status: scheduled
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-14
+    order: 14
+    displayOrder: 14
+    unitLabel: 讲次
+    date: 2026-11-05
+    title: "Guest: Isaac Evans (CEO @ Semgrep)"
+    subtitle: "Week 7: Security"
+    status: scheduled
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-15
+    order: 15
+    displayOrder: 15
+    unitLabel: 讲次
+    date: 2026-11-10
+    title: "Background agents: launching tasks asynchronously"
+    subtitle: "Week 8: Background Agents"
+    status: scheduled
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-16
+    order: 16
+    displayOrder: 16
+    unitLabel: 讲次
+    date: 2026-11-12
+    title: "Guest: Rajesh Bhatia (Senior Director @ Cloudflare)"
+    subtitle: "Week 8: Background Agents"
+    status: scheduled
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-17
+    order: 17
+    displayOrder: 17
+    unitLabel: 讲次
+    date: 2026-11-17
+    title: "Guest: Elad Gil (Investor @ Gil Capital)"
+    subtitle: "Week 9: Building an AI-Native Team"
+    status: scheduled
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-18
+    order: 18
+    displayOrder: 18
+    unitLabel: 讲次
+    date: 2026-11-19
+    title: "Guest: Amjad Masad (CEO @ Replit)"
+    subtitle: "Week 9: Building an AI-Native Team"
+    status: scheduled
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-19
+    order: 19
+    displayOrder: 19
+    unitLabel: 讲次
+    date: 2026-12-01
+    title: Coding agents in big teams (MCP portals, LLM gateways, org patterns, cost optimization, and model
+      routing)
+    subtitle: "Week 10: The Software Factory + The Future"
+    status: scheduled
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-20
+    order: 20
+    displayOrder: 20
+    unitLabel: 讲次
+    date: 2026-12-03
+    title: "The Software Factory: self-running, self-improving software systems"
+    subtitle: "Week 10: The Software Factory + The Future"
+    status: scheduled
+    official:
+      - label: 2026 官方课表
+        url: https://themodernsoftware.dev/
+    resources: []
+    readings: []
+    outputs: []

@@ -99,6 +99,12 @@ sections:
     title: 软件与产品开发
     description: 软件质量、产品需求与交互设计
     items:
+      - id: cs146s-fall26
+        courseId: cs146s-fall26
+        title: Stanford CS146S Fall 2026
+        subtitle: The Modern Software Developer · 智能体驱动的软件开发
+        detail: 上下文、Skills、MCP、代码审查与软件工厂
+        route: /generated/courses/cs146s-fall26/
       - id: mit-6102-sp26
         courseId: mit-6102-sp26
         title: MIT 6.102 Spring 2026
