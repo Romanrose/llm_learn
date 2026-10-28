@@ -1,0 +1,16 @@
+schemaVersion: 1
+course: cs146s-fall26
+lecture: lecture-02
+provider: codex
+generatedAt: 2026-10-28T11:56:36.154Z
+state: reviewed
+inputs:
+  - https://docs.google.com/presentation/d/1RZu-p18Qybbgm8WVP2RH04ESc4Bn377B-T9j5-TBFdQ/htmlpresent
+method: Original Chinese study notes and independent explanatory article. No full transcript, raw slides,
+  video or audio published.
+outputs:
+  note: courses/software-product/cs146s-fall26/notes/lecture-02/note.md
+  blog: courses/software-product/cs146s-fall26/notes/lecture-02/blog.md
+contentHashes:
+  note: 5b948267f6ff1d49f9d37c6fca17d40f93b5c52edaad909e97341e216606226e
+  blog: 86c7edb5da9ca3d0f96d7a65f31f0c5de37c5faacfde9743fa5370879086e980

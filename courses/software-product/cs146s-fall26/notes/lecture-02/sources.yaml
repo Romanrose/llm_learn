@@ -1,0 +1,22 @@
+schemaVersion: 1
+course: cs146s-fall26
+lecture: lecture-02
+title: "How state-of-the-art coding agents are designed: deep dive into the system prompts that define the agent"
+checkedAt: 2026-10-28T11:56:36.154Z
+state: official-slides-reviewed
+materials:
+  - label: Official slides
+    url: https://docs.google.com/presentation/d/1RZu-p18Qybbgm8WVP2RH04ESc4Bn377B-T9j5-TBFdQ/htmlpresent
+    type: slides
+    status: read-public-html
+transcriptReferences:
+  - language: en
+    label: 本讲官方英文逐字文本
+    url: https://themodernsoftware.dev/materials/9-24-26-transcript.txt
+    note: 2026 本讲原始文本，2026-10-28 已核验 HTTP 200。直接阅读官方原文；本站不复制整讲全文或生成未经校对的全文翻译。
+caption:
+  state: external-reference
+  reason: 本讲已有外部英文逐字资料入口，完整本地逐字稿未接入。
+warnings:
+  - Authoring-assistant review; no separate human reviewer.
+  - Only original notes/blog are published; full transcript is not copied.

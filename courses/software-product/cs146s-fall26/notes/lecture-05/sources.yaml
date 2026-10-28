@@ -1,0 +1,19 @@
+schemaVersion: 1
+course: cs146s-fall26
+lecture: lecture-05
+title: All about agent skills (including web skills)
+checkedAt: 2026-10-28T11:56:36.154Z
+state: official-slides-reviewed
+materials:
+  - label: Official slides
+    url: https://docs.google.com/presentation/d/15bPu5c-i8D8McTh6l7SpUPk2n9M_Y-CdDQLfyzL8RD8/htmlpresent
+    type: slides
+    status: read-public-html
+transcriptReferences: []
+caption:
+  state: unavailable
+  reason: 尚未找到本讲官方逐字文本；本站正文基于公开讲义整理，不补写课堂原话。
+warnings:
+  - Authoring-assistant review; no separate human reviewer.
+  - Only original notes/blog are published; full transcript is not copied.
+  - 课表日期为 2026-10-06，链接课件标注 2026-10-07；保留课表日期并记录差异。

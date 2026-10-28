@@ -1,0 +1,79 @@
+schemaVersion: 1
+checkedAt: 2026-10-28T11:56:36.154Z
+scope: Search for 2026 lectures and enumerate relevant videos from the instructor official channel. Excludes
+  unrelated older tool demos and third-party 2025 recaps.
+officialChannel: https://www.youtube.com/channel/UCf8lpmdW6RDqkrFfHXuKTDg/videos
+full2026PlaylistFound: false
+videos:
+  - id: s7ZzkdvCMDY
+    title: How to code Claude Code in ~200 lines of code
+    url: https://www.youtube.com/watch?v=s7ZzkdvCMDY
+    publisher: The Modern Software Developer
+    publishedAt: 2025-10-01
+    durationSeconds: 2670
+    role: official-2025-supplement
+    license: not-specified
+    fullTranscriptCopied: false
+  - id: L1OBRtfPS34
+    title: "Stanford CS146S: How always-on agents work"
+    url: https://www.youtube.com/watch?v=L1OBRtfPS34
+    publisher: leerob
+    publishedAt: 2026-10-11
+    durationSeconds: 2717
+    role: 2026-lecture-06
+    license: not-specified
+    fullTranscriptCopied: false
+  - id: OMPUQuHe1cs
+    title: Building a Shared Agent Memory | Mahmoud Hashemi, Python Software Fellow
+    url: https://www.youtube.com/watch?v=OMPUQuHe1cs
+    publisher: The Modern Software Developer
+    publishedAt: 2026-10-09
+    durationSeconds: 6143
+    role: instructor-channel-interview
+    license: not-specified
+    fullTranscriptCopied: false
+  - id: DPgJjRdQWrg
+    title: Pi Building Pi, Openclaw's Minimalist Coding Agent | Mario Zechner, Creator of Pi
+    url: https://www.youtube.com/watch?v=DPgJjRdQWrg
+    publisher: The Modern Software Developer
+    publishedAt: 2026-06-12
+    durationSeconds: 5447
+    role: instructor-channel-interview
+    license: not-specified
+    fullTranscriptCopied: false
+  - id: 5u1TUijj3QQ
+    title: How Agents Change Code Review, Testing, and Product Engineering | Tomas Reimers, CPO of Graphite
+    url: https://www.youtube.com/watch?v=5u1TUijj3QQ
+    publisher: The Modern Software Developer
+    publishedAt: 2026-05-26
+    durationSeconds: 4941
+    role: instructor-channel-interview
+    license: not-specified
+    fullTranscriptCopied: false
+  - id: kBqRubi7dSk
+    title: Making Agents Ship in Complex Brownfield Codebases | Dex Horothy, CEO of HumanLayer
+    url: https://www.youtube.com/watch?v=kBqRubi7dSk
+    publisher: The Modern Software Developer
+    publishedAt: 2026-04-28
+    durationSeconds: 5242
+    role: instructor-channel-interview
+    license: not-specified
+    fullTranscriptCopied: false
+  - id: JCN2RLlXKG0
+    title: "The Build System: Multi-Agent Workflows with Micah Villmow, Research Engineer at IFM"
+    url: https://www.youtube.com/watch?v=JCN2RLlXKG0
+    publisher: The Modern Software Developer
+    publishedAt: 2026-03-20
+    durationSeconds: 6138
+    role: instructor-channel-interview
+    license: not-specified
+    fullTranscriptCopied: false
+  - id: pHGGlrKSnJ8
+    title: "The Build System: Mission Impossible with Eno Reyes, CTO Factory AI"
+    url: https://www.youtube.com/watch?v=pHGGlrKSnJ8
+    publisher: The Modern Software Developer
+    publishedAt: 2026-03-13
+    durationSeconds: 5018
+    role: instructor-channel-interview
+    license: not-specified
+    fullTranscriptCopied: false

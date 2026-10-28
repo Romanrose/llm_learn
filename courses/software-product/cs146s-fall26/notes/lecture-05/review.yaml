@@ -1,0 +1,29 @@
+schemaVersion: 1
+state: reviewed
+course: cs146s-fall26
+lecture: lecture-05
+provider: codex
+reviewer: authoring-assistant
+reviewedAt: 2026-10-28T11:56:36.154Z
+source: courses/software-product/cs146s-fall26/notes/lecture-05/references/codex
+outputs:
+  note: courses/software-product/cs146s-fall26/notes/lecture-05/note.md
+  blog: courses/software-product/cs146s-fall26/notes/lecture-05/blog.md
+checks:
+  errors: []
+  completed:
+    - Read linked official slides and checked course identity.
+    - Separated official topic summary, original analysis and self-study exercise.
+    - No invented classroom dialogue, timestamps or empirical results.
+    - Checked draft headings, content scope and relative links.
+    - "Structure check: 20 course versions, 206 published sources."
+    - Checked all 18 CS146S source files, candidate equality, hashes and relative links.
+    - Production build passed; browser verified official transcript entry, lecture-06 video/blog, lecture-11
+      note and no browser errors.
+  warnings:
+    - Authoring-assistant review; no separate human reviewer.
+    - Only original notes/blog are published; full transcript is not copied.
+    - 课表日期为 2026-10-06，链接课件标注 2026-10-07；保留课表日期并记录差异。
+contentHashes:
+  note: 29f1051c77c66430b38ad6227a1711e5667e97b85eadb72c42b25649f7246e71
+  blog: e8237cc47f8a32c3dfa66a524923fac90294ff6d8264a7650fd22c98033cae27

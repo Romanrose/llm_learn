@@ -8,8 +8,7 @@ year: 2026
 status: resources-approved
 publishOutputs: true
 unitLabel: 讲次
-description: 智能体驱动的软件开发：从 Coding Agent 内部机制、上下文与 Skills，到代码审查、安全、后台智能体和软件工厂。接入 2026
-  秋季十周、二十次课程安排及官方资料；部分课件访问受限，已补充讲义所列官方作业 GitHub；第 1 讲提供中文笔记与 Blog。
+description: 智能体驱动的软件开发：已接入 2026 秋季十周、二十次课程安排；九讲提供中文笔记与独立 Blog，三讲提供官方英文逐字文本入口，第六讲接入讲者录像。历史演示和相关访谈明确标注为补充资料；其余讲次待官方资料公开。
 instructors:
   - Mihail Eric
 paths:
@@ -141,7 +140,7 @@ items:
       - label: Building a Coding Agent
         url: https://youtube.com/watch?v=s7ZzkdvCMDY
         type: video
-        note: 2026 官方课表所列资料；访问权限以原站为准。
+        note: 讲师官方频道发布于 2025-10-01 的演示，44 分 30 秒。2026 官网将其列为阅读；不是 2026-09-22 课堂实录。
       - label: Lessons from Building Claude Code
         url: https://x.com/trq212/status/2027463795355095314?s=20
         type: docs
@@ -169,6 +168,11 @@ items:
       state: official-slides-reviewed
       manifest: courses/software-product/cs146s-fall26/notes/lecture-01/sources.yaml
       preparedAt: 2026-10-28T11:31:24.494Z
+    transcriptReferences:
+      - language: en
+        label: 2025 讲师演示 · YouTube 平台字幕入口
+        url: https://www.youtube.com/watch?v=s7ZzkdvCMDY
+        note: 历史补充演示，并非 2026 第 1 讲逐字稿；在 YouTube 中使用可用字幕或“显示文字记录”。
   - id: lecture-02
     order: 2
     displayOrder: 2
@@ -194,8 +198,39 @@ items:
         url: https://themodernsoftware.dev/materials/9-24-26-transcript.txt
         type: docs
         note: 2026 官方课表所列资料；访问权限以原站为准。
-    readings: []
-    outputs: []
+      - label: 官方讲义 · 只读 HTML
+        url: https://docs.google.com/presentation/d/1RZu-p18Qybbgm8WVP2RH04ESc4Bn377B-T9j5-TBFdQ/htmlpresent
+        type: slides
+        note: Google 标准只读视图；2026-10-28 已核实可匿名阅读。
+    readings:
+      - label: 补充访谈 · Pi Building Pi, Openclaw's Minimalist Coding Agent | Mario Zechner, Creator of Pi
+        url: https://www.youtube.com/watch?v=DPgJjRdQWrg
+        type: video
+        note: 讲师频道 The Build System 访谈，发布于 2026-06-12；与本讲主题相关，不是本次课堂录像。
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/software-product/cs146s-fall26/notes/lecture-02/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/software-product/cs146s-fall26/notes/lecture-02/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    transcriptReferences:
+      - language: en
+        label: 本讲官方英文逐字文本
+        url: https://themodernsoftware.dev/materials/9-24-26-transcript.txt
+        note: 2026 本讲原始文本，2026-10-28 已核验 HTTP 200。直接阅读官方原文；本站不复制整讲全文或生成未经校对的全文翻译。
+    preparation:
+      state: official-slides-reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-02/sources.yaml
+      preparedAt: 2026-10-28T11:56:36.154Z
+    generation:
+      state: reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-02/review.yaml
+      reviewedAt: 2026-10-28T11:56:36.154Z
   - id: lecture-03
     order: 3
     displayOrder: 3
@@ -216,6 +251,10 @@ items:
         url: https://themodernsoftware.dev/materials/9-29-26-transcript.txt
         type: docs
         note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: 官方讲义 · 只读 HTML
+        url: https://docs.google.com/presentation/d/17brqoQQZHF3K82WgYaV6urAV3Q7iIwyGUBYRvSuY8QY/htmlpresent
+        type: slides
+        note: Google 标准只读视图；2026-10-28 已核实可匿名阅读。
     readings:
       - label: "The Context Tax: When to Compact"
         url: https://langwatch.ai/blog/context-tax-when-to-compact
@@ -233,7 +272,34 @@ items:
         url: https://blog.cloudflare.com/enterprise-mcp
         type: docs
         note: 2026 官方课表所列资料；访问权限以原站为准。
-    outputs: []
+      - label: 补充访谈 · Making Agents Ship in Complex Brownfield Codebases | Dex Horothy, CEO of HumanLayer
+        url: https://www.youtube.com/watch?v=kBqRubi7dSk
+        type: video
+        note: 讲师频道 The Build System 访谈，发布于 2026-04-28；与本讲主题相关，不是本次课堂录像。
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/software-product/cs146s-fall26/notes/lecture-03/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/software-product/cs146s-fall26/notes/lecture-03/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    transcriptReferences:
+      - language: en
+        label: 本讲官方英文逐字文本
+        url: https://themodernsoftware.dev/materials/9-29-26-transcript.txt
+        note: 2026 本讲原始文本，2026-10-28 已核验 HTTP 200。直接阅读官方原文；本站不复制整讲全文或生成未经校对的全文翻译。
+    preparation:
+      state: official-slides-reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-03/sources.yaml
+      preparedAt: 2026-10-28T11:56:36.154Z
+    generation:
+      state: reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-03/review.yaml
+      reviewedAt: 2026-10-28T11:56:36.154Z
   - id: lecture-04
     order: 4
     displayOrder: 4
@@ -258,15 +324,42 @@ items:
         url: https://themodernsoftware.dev/materials/10-1-26-transcript.txt
         type: docs
         note: 2026 官方课表所列资料；访问权限以原站为准。
+      - label: 官方讲义 · 只读 HTML
+        url: https://docs.google.com/presentation/d/1q2cB1a7P4XsR0UJqE0RmtZFeggNOLdPaSnOpbBVewHA/htmlpresent
+        type: slides
+        note: Google 标准只读视图；2026-10-28 已核实可匿名阅读。
     readings: []
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/software-product/cs146s-fall26/notes/lecture-04/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/software-product/cs146s-fall26/notes/lecture-04/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    transcriptReferences:
+      - language: en
+        label: 本讲官方英文逐字文本
+        url: https://themodernsoftware.dev/materials/10-1-26-transcript.txt
+        note: 2026 本讲原始文本，2026-10-28 已核验 HTTP 200。直接阅读官方原文；本站不复制整讲全文或生成未经校对的全文翻译。
+    preparation:
+      state: official-slides-reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-04/sources.yaml
+      preparedAt: 2026-10-28T11:56:36.154Z
+    generation:
+      state: reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-04/review.yaml
+      reviewedAt: 2026-10-28T11:56:36.154Z
   - id: lecture-05
     order: 5
     displayOrder: 5
     unitLabel: 讲次
     date: 2026-10-06
     title: All about agent skills (including web skills)
-    subtitle: "Week 3: Agent Skills and CLI"
+    subtitle: "Week 3: Agent Skills and CLI · 课表 10/06，课件标注 10/07"
     status: resources-approved
     official:
       - label: 2026 官方课表
@@ -276,6 +369,10 @@ items:
         url: https://docs.google.com/presentation/d/15bPu5c-i8D8McTh6l7SpUPk2n9M_Y-CdDQLfyzL8RD8/edit?usp=sharing
         type: slides
         note: 官网标注访问受限；是否可读以原站权限为准。
+      - label: 官方讲义 · 只读 HTML
+        url: https://docs.google.com/presentation/d/15bPu5c-i8D8McTh6l7SpUPk2n9M_Y-CdDQLfyzL8RD8/htmlpresent
+        type: slides
+        note: Google 标准只读视图；2026-10-28 已核实可匿名阅读。
     readings:
       - label: pstack
         url: https://github.com/cursor/plugins/tree/main/pstack
@@ -289,7 +386,29 @@ items:
         url: https://browse.sh/
         type: docs
         note: 2026 官方课表所列资料；访问权限以原站为准。
-    outputs: []
+      - label: 补充访谈 · Building a Shared Agent Memory | Mahmoud Hashemi, Python Software Fellow
+        url: https://www.youtube.com/watch?v=OMPUQuHe1cs
+        type: video
+        note: 讲师频道 The Build System 访谈，发布于 2026-10-09；与本讲主题相关，不是本次课堂录像。
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/software-product/cs146s-fall26/notes/lecture-05/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/software-product/cs146s-fall26/notes/lecture-05/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    preparation:
+      state: official-slides-reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-05/sources.yaml
+      preparedAt: 2026-10-28T11:56:36.154Z
+    generation:
+      state: reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-05/review.yaml
+      reviewedAt: 2026-10-28T11:56:36.154Z
   - id: lecture-06
     order: 6
     displayOrder: 6
@@ -301,13 +420,42 @@ items:
     official:
       - label: 2026 官方课表
         url: https://themodernsoftware.dev/
+      - label: 本讲录像 · Lee Robinson 官方频道
+        url: https://www.youtube.com/watch?v=L1OBRtfPS34
     resources:
       - label: Slides
         url: https://drive.google.com/file/d/1b8WiBk_lcB3ue-jZMLijSUMLj6SDiF6Z/view?usp=drive_link
         type: slides
         note: 官网标注访问受限；是否可读以原站权限为准。
+      - label: 本讲录像 · How always-on agents work
+        url: https://www.youtube.com/watch?v=L1OBRtfPS34
+        type: video
+        note: 讲者发布；45 分 17 秒。官方 PDF 首页标注 Stanford CS146S · October 8, 2026，与本讲匹配。
     readings: []
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/software-product/cs146s-fall26/notes/lecture-06/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/software-product/cs146s-fall26/notes/lecture-06/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    transcriptReferences:
+      - language: en
+        label: 本讲录像 · YouTube 平台字幕入口
+        url: https://www.youtube.com/watch?v=L1OBRtfPS34
+        note: 讲者发布的 2026 本讲录像。使用平台可用字幕或“显示文字记录”；本次自动字幕提取返回 HTTP 429，未保存全文。
+    preparation:
+      state: official-slides-reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-06/sources.yaml
+      preparedAt: 2026-10-28T11:56:36.154Z
+    generation:
+      state: reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-06/review.yaml
+      reviewedAt: 2026-10-28T11:56:36.154Z
   - id: lecture-07
     order: 7
     displayOrder: 7
@@ -324,6 +472,10 @@ items:
         url: https://docs.google.com/presentation/d/152VaUifBKH4T6hxd6fCKKM9kJTSAuBmkF8zSYwuTYAo/edit?usp=sharing
         type: slides
         note: 官网标注访问受限；是否可读以原站权限为准。
+      - label: 官方讲义 · 只读 HTML
+        url: https://docs.google.com/presentation/d/152VaUifBKH4T6hxd6fCKKM9kJTSAuBmkF8zSYwuTYAo/htmlpresent
+        type: slides
+        note: Google 标准只读视图；2026-10-28 已核实可匿名阅读。
     readings:
       - label: I Still Prefer MCP Over Skills
         url: https://david.coffee/i-still-prefer-mcp-over-skills
@@ -341,7 +493,29 @@ items:
         url: https://hlyr.dev/blog/writing-a-good-claude-md
         type: docs
         note: 2026 官方课表所列资料；访问权限以原站为准。
-    outputs: []
+      - label: "补充访谈 · The Build System: Multi-Agent Workflows with Micah Villmow, Research Engineer at IFM"
+        url: https://www.youtube.com/watch?v=JCN2RLlXKG0
+        type: video
+        note: 讲师频道 The Build System 访谈，发布于 2026-03-20；与本讲主题相关，不是本次课堂录像。
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/software-product/cs146s-fall26/notes/lecture-07/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/software-product/cs146s-fall26/notes/lecture-07/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    preparation:
+      state: official-slides-reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-07/sources.yaml
+      preparedAt: 2026-10-28T11:56:36.154Z
+    generation:
+      state: reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-07/review.yaml
+      reviewedAt: 2026-10-28T11:56:36.154Z
   - id: lecture-08
     order: 8
     displayOrder: 8
@@ -372,6 +546,10 @@ items:
         url: https://docs.google.com/presentation/d/1yCxocmUrGIN7IrC42WB6NW08PtYYFLe1ombDj3Ay6_8/edit?usp=drive_link
         type: slides
         note: 官网标注访问受限；是否可读以原站权限为准。
+      - label: 官方讲义 · 只读 HTML
+        url: https://docs.google.com/presentation/d/1yCxocmUrGIN7IrC42WB6NW08PtYYFLe1ombDj3Ay6_8/htmlpresent
+        type: slides
+        note: Google 标准只读视图；2026-10-28 已核实可匿名阅读。
     readings:
       - label: Making Codebases Agent Ready
         url: https://www.youtube.com/watch?v=ShuJ_CN6zr4
@@ -381,7 +559,25 @@ items:
         url: https://x.com/trybasis/status/2056881705269580023
         type: docs
         note: 2026 官方课表所列资料；访问权限以原站为准。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/software-product/cs146s-fall26/notes/lecture-09/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/software-product/cs146s-fall26/notes/lecture-09/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    preparation:
+      state: official-slides-reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-09/sources.yaml
+      preparedAt: 2026-10-28T11:56:36.154Z
+    generation:
+      state: reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-09/review.yaml
+      reviewedAt: 2026-10-28T11:56:36.154Z
   - id: lecture-10
     order: 10
     displayOrder: 10
@@ -394,7 +590,11 @@ items:
       - label: 2026 官方课表
         url: https://themodernsoftware.dev/
     resources: []
-    readings: []
+    readings:
+      - label: "补充访谈 · The Build System: Mission Impossible with Eno Reyes, CTO Factory AI"
+        url: https://www.youtube.com/watch?v=pHGGlrKSnJ8
+        type: video
+        note: 讲师频道 The Build System 访谈，发布于 2026-03-13；与本讲主题相关，不是本次课堂录像。
     outputs: []
   - id: lecture-11
     order: 11
@@ -412,6 +612,10 @@ items:
         url: https://docs.google.com/presentation/d/1u8WYtFj0O9yc4H4JX9D4URYKhDzvrAGKLzn38DXSrak/edit?usp=drive_link
         type: slides
         note: 官网标注访问受限；是否可读以原站权限为准。
+      - label: 官方讲义 · 只读 HTML
+        url: https://docs.google.com/presentation/d/1u8WYtFj0O9yc4H4JX9D4URYKhDzvrAGKLzn38DXSrak/htmlpresent
+        type: slides
+        note: Google 标准只读视图；2026-10-28 已核实可匿名阅读。
     readings:
       - label: Layered Code Review and Risk-Based Human Oversight
         url: https://x.com/addyosmani/status/2114604912520921136
@@ -425,7 +629,29 @@ items:
         url: https://greptile.com/blog/how-to-build-a-code-review-agent
         type: docs
         note: 2026 官方课表所列资料；访问权限以原站为准。
-    outputs: []
+      - label: 补充访谈 · How Agents Change Code Review, Testing, and Product Engineering | Tomas Reimers, CPO of Graphite
+        url: https://www.youtube.com/watch?v=5u1TUijj3QQ
+        type: video
+        note: 讲师频道 The Build System 访谈，发布于 2026-05-26；与本讲主题相关，不是本次课堂录像。
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/software-product/cs146s-fall26/notes/lecture-11/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/software-product/cs146s-fall26/notes/lecture-11/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    preparation:
+      state: official-slides-reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-11/sources.yaml
+      preparedAt: 2026-10-28T11:56:36.154Z
+    generation:
+      state: reviewed
+      manifest: courses/software-product/cs146s-fall26/notes/lecture-11/review.yaml
+      reviewedAt: 2026-10-28T11:56:36.154Z
   - id: lecture-12
     order: 12
     displayOrder: 12

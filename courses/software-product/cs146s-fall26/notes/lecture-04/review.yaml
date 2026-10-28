@@ -1,0 +1,28 @@
+schemaVersion: 1
+state: reviewed
+course: cs146s-fall26
+lecture: lecture-04
+provider: codex
+reviewer: authoring-assistant
+reviewedAt: 2026-10-28T11:56:36.154Z
+source: courses/software-product/cs146s-fall26/notes/lecture-04/references/codex
+outputs:
+  note: courses/software-product/cs146s-fall26/notes/lecture-04/note.md
+  blog: courses/software-product/cs146s-fall26/notes/lecture-04/blog.md
+checks:
+  errors: []
+  completed:
+    - Read linked official slides and checked course identity.
+    - Separated official topic summary, original analysis and self-study exercise.
+    - No invented classroom dialogue, timestamps or empirical results.
+    - Checked draft headings, content scope and relative links.
+    - "Structure check: 20 course versions, 206 published sources."
+    - Checked all 18 CS146S source files, candidate equality, hashes and relative links.
+    - Production build passed; browser verified official transcript entry, lecture-06 video/blog, lecture-11
+      note and no browser errors.
+  warnings:
+    - Authoring-assistant review; no separate human reviewer.
+    - Only original notes/blog are published; full transcript is not copied.
+contentHashes:
+  note: 02dd83e30da3ab88a5bb3ca111b81a067408877be774aed3c01fa6768d9d5998
+  blog: 7a43e0452170d6561a7a14a1effaba9455a2ae28c90235b4461226575fb50b3b

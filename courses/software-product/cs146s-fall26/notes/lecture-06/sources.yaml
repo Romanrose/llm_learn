@@ -1,0 +1,23 @@
+schemaVersion: 1
+course: cs146s-fall26
+lecture: lecture-06
+title: "Guest: Lee Robinson (Model Behavior @ SpaceX)"
+checkedAt: 2026-10-28T11:56:36.154Z
+state: official-slides-reviewed
+materials:
+  - label: Official slides
+    url: https://drive.google.com/file/d/1b8WiBk_lcB3ue-jZMLijSUMLj6SDiF6Z/view
+    type: slides
+    status: read-public-pdf
+transcriptReferences:
+  - language: en
+    label: 本讲录像 · YouTube 平台字幕入口
+    url: https://www.youtube.com/watch?v=L1OBRtfPS34
+    note: 讲者发布的 2026 本讲录像。使用平台可用字幕或“显示文字记录”；本次自动字幕提取返回 HTTP 429，未保存全文。
+caption:
+  state: external-reference
+  reason: 本讲已有外部英文逐字资料入口，完整本地逐字稿未接入。
+warnings:
+  - Authoring-assistant review; no separate human reviewer.
+  - Only original notes/blog are published; full transcript is not copied.
+  - 本讲官方 PDF 已读取；YouTube 仅核验元数据，自动字幕请求返回 HTTP 429，未据此制作全文或逐句翻译。

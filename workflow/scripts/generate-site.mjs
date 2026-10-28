@@ -254,7 +254,7 @@ const generatedCatalog = records.map((course) => {
         const references = referencesFor(id)
         const externalText = references.length ? [
           `## ${label.replace('逐字稿', '逐字资料入口')}`,
-          '以下为官方或平台的外部字幕、逐字文本入口。补充材料的版本与原课不同；完整本地逐字稿尚未接入。',
+          '以下为官方或平台的外部字幕、逐字文本入口。所属讲次、版本与访问说明见各条资料；完整本地逐字稿尚未接入。',
           ...references.map((ref) => `### ${ref.label}\n\n[打开原始字幕或逐字文本](${ref.url})\n\n${ref.note ?? ''}`),
         ].join('\n\n') : ''
         return [

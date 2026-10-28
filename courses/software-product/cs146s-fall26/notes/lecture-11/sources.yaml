@@ -1,0 +1,18 @@
+schemaVersion: 1
+course: cs146s-fall26
+lecture: lecture-11
+title: "Agentic code review: best practices and architectures"
+checkedAt: 2026-10-28T11:56:36.154Z
+state: official-slides-reviewed
+materials:
+  - label: Official slides
+    url: https://docs.google.com/presentation/d/1u8WYtFj0O9yc4H4JX9D4URYKhDzvrAGKLzn38DXSrak/htmlpresent
+    type: slides
+    status: read-public-html
+transcriptReferences: []
+caption:
+  state: unavailable
+  reason: 尚未找到本讲官方逐字文本；本站正文基于公开讲义整理，不补写课堂原话。
+warnings:
+  - Authoring-assistant review; no separate human reviewer.
+  - Only original notes/blog are published; full transcript is not copied.
