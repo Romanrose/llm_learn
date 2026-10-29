@@ -100,4 +100,22 @@ resources:
     source: https://hanlab.mit.edu/courses/2026-fall-65940
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-21
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/3b709dzevqkz9a8f4qgam/Lec12-Transformers-and-LLM.pdf?rlkey=4f75xszl8h977mfnlipwo8rih&st=dn6gna9b&dl=0
+    type: docs
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    status: linked
+    local: null
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/8rmem4bf234op7u2dslbr/Lec13-LLM-Deployment.pdf?rlkey=lezqxainquubpf0v603z1q6qs&st=g2brhqg8&dl=0
+    type: docs
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    status: linked
+    local: null
+  - label: Lab 4
+    url: https://colab.research.google.com/drive/1r26Togpim59OcHDCD2UInWYQZKz6_wSO
+    type: docs
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-29

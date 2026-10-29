@@ -38,7 +38,7 @@ schedule:
     - date: 2026-12-02
       title: Final Presentations
   unitCount: 17
-  resourceUpdatedAt: 2026-10-22
+  resourceUpdatedAt: 2026-10-29
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -325,11 +325,15 @@ items:
     date: 2026-10-26
     title: LLMs and the Future of Work
     subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程表
         url: https://web.stanford.edu/class/cs329x/
-    resources: []
+    resources:
+      - label: slides
+        url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture10_future_of_work_v1.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://web.stanford.edu/class/cs329x/；核对：2026-10-29。
     readings:
       - label: '"Future of Work with AI Agents: Auditing Automation and Augmentation Potential across the US Workforce."'
         url: https://arxiv.org/abs/2506.06576

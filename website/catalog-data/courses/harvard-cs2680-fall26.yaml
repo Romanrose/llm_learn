@@ -92,7 +92,7 @@ schedule:
     - date: 2026-12-07
       title: Final project poster and demo
   unitCount: 23
-  resourceUpdatedAt: 2026-10-22
+  resourceUpdatedAt: 2026-10-29
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -406,7 +406,23 @@ items:
         url: https://cs2680.com/slides/9_llm_serving_basics_1.pdf
         type: slides
         note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-10-22。
-    readings: []
+    readings:
+      - label: Transformer
+        url: https://arxiv.org/abs/1706.03762
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-10-29。
+      - label: Llama 3
+        url: https://arxiv.org/abs/2407.21783
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-10-29。
+      - label: Mixtral
+        url: https://arxiv.org/abs/2401.04088
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-10-29。
+      - label: more reading →
+        url: https://cs2680.com/readings/oct-19.html
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-10-29。
     outputs: []
   - id: lecture-12
     order: 12
@@ -455,11 +471,15 @@ items:
     date: 2026-10-28
     title: "Efficient LLM serving: speculative decoding"
     subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程表
         url: https://cs2680.com/
-    resources: []
+    resources:
+      - label: "[slide]"
+        url: https://cs2680.com/slides/assignment3_feedback_protected.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-10-29。
     readings: []
     outputs: []
   - id: lecture-15

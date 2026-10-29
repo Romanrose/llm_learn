@@ -50,4 +50,112 @@ resources:
     source: https://cs329z.stanford.edu/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-22
+  - label: Weng. "LLM Powered Autonomous Agents." Lil'Log (2023).
+    url: https://lilianweng.github.io/posts/2023-06-23-agent/
+    type: code
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Kapoor et al. "AI Agents That Matter." TMLR (2025).
+    url: https://arxiv.org/abs/2407.01502
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Vaswani et al. "Attention Is All You Need." NeurIPS (2017).
+    url: https://arxiv.org/abs/1706.03762
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Katharopoulos et al. "Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention." ICML (2020).'
+    url: https://arxiv.org/abs/2006.16236
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Karpukhin et al. "Dense Passage Retrieval for Open-Domain Question Answering." EMNLP (2020).
+    url: https://arxiv.org/abs/2004.04906
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Schick et al. "Toolformer: Language Models Can Teach Themselves to Use Tools." NeurIPS (2023).'
+    url: https://arxiv.org/abs/2302.04761
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Patil et al. "Gorilla: Large Language Model Connected with Massive APIs." NeurIPS (2024).'
+    url: https://arxiv.org/abs/2305.15334
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: LangChain. "LangGraph Overview." LangChain Docs.
+    url: https://docs.langchain.com/oss/python/langgraph/overview
+    type: docs
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Arena.ai. "HarnessTax: How Much Does the Harness Matter for Coding Agents?" Arena Blog (2026).'
+    url: https://arena.ai/blog/coding-agents-harness-tax
+    type: docs
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Schluntz & Zhang. "Building Effective AI Agents." Anthropic (2024).
+    url: https://www.anthropic.com/engineering/building-effective-agents
+    type: docs
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: LangChain. "Context Engineering." LangChain Blog (2025).
+    url: https://www.langchain.com/blog/context-engineering-for-agents
+    type: docs
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Shinn et al. "Reflexion: Language Agents with Verbal Reinforcement Learning." NeurIPS (2023).'
+    url: https://arxiv.org/abs/2303.11366
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Wang et al. "Executable Code Actions Elicit Better LLM Agents." ICML (2024).
+    url: https://arxiv.org/abs/2402.01030
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Sumers et al. "Cognitive Architectures for Language Agents." TMLR (2024).
+    url: https://arxiv.org/abs/2309.02427
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Kim et al. "Towards a Science of Scaling Agent Systems." arXiv (2025).
+    url: https://arxiv.org/abs/2512.08296
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Shao et al. "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models." arXiv (2024).'
+    url: https://arxiv.org/abs/2402.03300
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Slides
+    url: https://web.stanford.edu/class/cs329z/slides/lecture10.pdf
+    type: slides
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Slides
+    url: https://web.stanford.edu/class/cs329z/slides/lecture11.pdf
+    type: slides
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-29

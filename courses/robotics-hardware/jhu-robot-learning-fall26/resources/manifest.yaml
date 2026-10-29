@@ -244,3 +244,22 @@ resources:
     status: linked
     note: 课程官方页面所列资料；访问权限与版本以原站为准。
     local: null
+  - label: Assignment 1
+    url: https://hands-on-robot-learning.github.io/assignments/assignment-1/
+    type: code
+    source: https://hands-on-robot-learning.github.io/
+    status: linked
+    local: null
+  - label: Assignment 2
+    url: https://hands-on-robot-learning.github.io/assignments/assignment-2/
+    type: code
+    source: https://hands-on-robot-learning.github.io/
+    status: linked
+    local: null
+  - label: Assignment 3
+    url: https://hands-on-robot-learning.github.io/assignments/assignment-3/
+    type: code
+    source: https://hands-on-robot-learning.github.io/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-29

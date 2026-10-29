@@ -284,4 +284,112 @@ resources:
     source: https://cs61a.org/fa26/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-22
+  - label: Object Examples
+    url: https://cs61a.org/fa26/lectures/25-object-examples/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/25-Data_Examples.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Examples)
+    url: https://cs61a.org/fa26/assets/lec/25.py
+    type: code
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Midterm 3 Review
+    url: https://cs61a.org/fa26/lectures/26-midterm-3-review/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/26-Midterm_3_Review.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Examples)
+    url: https://cs61a.org/fa26/assets/lec/26.py
+    type: code
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Functional Programming
+    url: https://cs61a.org/fa26/lectures/27-functional-programming/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/27-Functional_Programming.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Examples)
+    url: https://playground.gleam.run/#N4IgbgpgTgzglgewHYgFwEYA0IDGyAuES+aIcAtgA4JT4AEA5gDYQCG5A9HMQDpJ+UArgCM6AMyR1yrbgAoAlHWB86dCDgAWCcaxz5ZAVnkq1m7QBMIMHFDjCIs9ACZjk01qmsA1hAD6rc0soWQBmeVkAFldVdQ88cmFuBydMOhDUiNSJWQAPVIBPRWA6HLoAKjp8ugBfaPdtGEFyXzE4WHxfJEM62O0xXQ78GSZuk17xO0MABldqvj4JHT1ZJCKTHFYYCDpJZTdVKboAWgA+OnQTVV9js8kK/uXJI/O6uaQ3hclLa1t7FdQ6ABJYiKU50ADK+FsSAYShM3HwADp8AhfDAodwGCs6gAeM48EB0OAwOgEkx4ugbLY7OH7OjXOBiGk4uiHMEEpAQBisfBwSBkuls/EgABe0AQAtUqnQN1JIGQEElUqcdAAPmk1XQIrKCTBpEwmEqrjqQExWFAGIqQCY3h8kItpD5/IFoP8gSDZdlgfhQWdvbTVNkvEUaQBqOheGp8O2LeKJTm5AHegpJ4ipEWp/BZAFetPun2y72+/MB8SyMS5ArydOzeb2ySNZqtdqdbGlxstKAIcgrVJYVm1/j1ugdsRdntIVJeVIooZMNZuKnbSO3UuqAAqUEE2zBs9YhrpADF99SwaPx72I3Rw/290xrxHXtG64sHoNhm29oGBr44IRgpOLzPkOr4/n+rqAZQXbmIIegLqoS40l+UpCnQUEIDBeiXPSnpgf+KzHOcqR3Gh0GwT6NrAZ8EzCJ+JitMIv74f2UzEYO1EMUxrpQRAYCpDgghQFAqTohAlAwPBlKbNsoniWurKygJQnYdcYKceBwRKcJpG8Q+WkiYQcnPOgT7vHwIDVEAA
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Gleam
+    url: https://cs61a.org/fa26/discussions/disc08/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: "3.1"
+    url: https://composingprograms.com/3ed/interpreting-computer-programs/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: "3.2"
+    url: https://composingprograms.com/3ed/functional-programming/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Appendix
+    url: https://composingprograms.com/3ed/gleam-functions-and-control/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: YouTube
+    url: https://www.youtube.com/watch?v=6kL4Hf4tMOg&list=PLae30RgoM-C4
+    type: video
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Gleam (due Thu 11/5)
+    url: https://cs61a.org/fa26/hw/hw07/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Appendix
+    url: https://composingprograms.com/3ed/gleam-lists-and-data/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: YouTube
+    url: https://www.youtube.com/watch?v=ANuCSNT9Iq0&list=PLZnD6lXEx3MI
+    type: video
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Gleam Lists (due Wed 11/4)
+    url: https://cs61a.org/fa26/labs/lab08/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-29

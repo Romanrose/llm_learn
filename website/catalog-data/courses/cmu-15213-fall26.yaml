@@ -32,7 +32,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 25
   note: 官网未编号，按主题讲座顺序分配 lecture ID；考试、停课、Recitation 与 Bootcamp 不计入讲数。
-  resourceUpdatedAt: 2026-10-22
+  resourceUpdatedAt: 2026-10-29
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -851,11 +851,23 @@ items:
     title: Processes and Multitasking
     subtitle: 进程、fork 与等待
     overview: 进程、fork 与等待。建议动手任务：编写父子进程实验，解释输出顺序与 wait 的作用。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cs.cmu.edu/~213/schedule.html
-    resources: []
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/16-processes.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-10-29。
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/16-processes.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-10-29。
+      - label: pdf-markup
+        url: https://www.cs.cmu.edu/~213/lectures/16-processes-seth.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-10-29。
     readings:
       - label: CSAPP 第 3 版 · 8.1-8.4
         url: https://csapp.cs.cmu.edu/3e/students.html
@@ -883,7 +895,7 @@ items:
     title: Exceptional Control Flow
     subtitle: 异常、信号与控制流
     overview: 异常、信号与控制流。建议动手任务：写受控信号处理示例，记录共享状态与竞态窗口。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cs.cmu.edu/~213/schedule.html

@@ -238,4 +238,34 @@ resources:
     source: https://cs2680.com/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-22
+  - label: Transformer
+    url: https://arxiv.org/abs/1706.03762
+    type: paper
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: Llama 3
+    url: https://arxiv.org/abs/2407.21783
+    type: paper
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: Mixtral
+    url: https://arxiv.org/abs/2401.04088
+    type: paper
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: more reading →
+    url: https://cs2680.com/readings/oct-19.html
+    type: docs
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: "[slide]"
+    url: https://cs2680.com/slides/assignment3_feedback_protected.pdf
+    type: slides
+    source: https://cs2680.com/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-29

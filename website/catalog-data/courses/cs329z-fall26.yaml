@@ -71,7 +71,7 @@ schedule:
     - title: Final Report & Final System Demo
       date: 2026-12-07–2026-12-11
       time: TBA
-  resourceUpdatedAt: 2026-10-22
+  resourceUpdatedAt: 2026-10-29
   unitCount: 19
 assignments:
   - id: hw1
@@ -163,6 +163,14 @@ items:
         url: https://arxiv.org/abs/2601.14525
         note: 官方补充阅读
         type: paper
+      - label: Weng. "LLM Powered Autonomous Agents." Lil'Log (2023).
+        url: https://lilianweng.github.io/posts/2023-06-23-agent/
+        type: code
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
+      - label: Kapoor et al. "AI Agents That Matter." TMLR (2025).
+        url: https://arxiv.org/abs/2407.01502
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
     outputs: []
     preparation:
       state: resources-ready
@@ -196,6 +204,14 @@ items:
         url: https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
         note: 官方补充阅读
         type: blog
+      - label: Vaswani et al. "Attention Is All You Need." NeurIPS (2017).
+        url: https://arxiv.org/abs/1706.03762
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
+      - label: 'Katharopoulos et al. "Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention." ICML (2020).'
+        url: https://arxiv.org/abs/2006.16236
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
     outputs: []
     preparation:
       state: resources-ready
@@ -229,6 +245,10 @@ items:
         url: https://arxiv.org/abs/2004.12832
         note: 官方补充阅读
         type: paper
+      - label: Karpukhin et al. "Dense Passage Retrieval for Open-Domain Question Answering." EMNLP (2020).
+        url: https://arxiv.org/abs/2004.04906
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
     outputs: []
     preparation:
       state: resources-ready
@@ -258,6 +278,14 @@ items:
         url: https://modelcontextprotocol.io/specification/2025-06-18
         note: 官方课程阅读
         type: docs
+      - label: 'Schick et al. "Toolformer: Language Models Can Teach Themselves to Use Tools." NeurIPS (2023).'
+        url: https://arxiv.org/abs/2302.04761
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
+      - label: 'Patil et al. "Gorilla: Large Language Model Connected with Massive APIs." NeurIPS (2024).'
+        url: https://arxiv.org/abs/2305.15334
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
     outputs: []
     preparation:
       state: resources-ready
@@ -287,6 +315,14 @@ items:
         url: https://arxiv.org/abs/2310.03714
         note: 官方课程阅读
         type: paper
+      - label: LangChain. "LangGraph Overview." LangChain Docs.
+        url: https://docs.langchain.com/oss/python/langgraph/overview
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
+      - label: 'Arena.ai. "HarnessTax: How Much Does the Harness Matter for Coding Agents?" Arena Blog (2026).'
+        url: https://arena.ai/blog/coding-agents-harness-tax
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
     outputs: []
     preparation:
       state: resources-ready
@@ -316,6 +352,22 @@ items:
         url: https://arxiv.org/abs/2210.03629
         note: 官方课程阅读
         type: paper
+      - label: Schluntz & Zhang. "Building Effective AI Agents." Anthropic (2024).
+        url: https://www.anthropic.com/engineering/building-effective-agents
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
+      - label: LangChain. "Context Engineering." LangChain Blog (2025).
+        url: https://www.langchain.com/blog/context-engineering-for-agents
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
+      - label: 'Shinn et al. "Reflexion: Language Agents with Verbal Reinforcement Learning." NeurIPS (2023).'
+        url: https://arxiv.org/abs/2303.11366
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
+      - label: Wang et al. "Executable Code Actions Elicit Better LLM Agents." ICML (2024).
+        url: https://arxiv.org/abs/2402.01030
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
     outputs: []
     preparation:
       state: resources-ready
@@ -357,6 +409,10 @@ items:
         url: https://arxiv.org/abs/2304.03442
         note: 官方补充阅读
         type: paper
+      - label: Sumers et al. "Cognitive Architectures for Language Agents." TMLR (2024).
+        url: https://arxiv.org/abs/2309.02427
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
     outputs: []
     preparation:
       state: resources-ready
@@ -398,6 +454,10 @@ items:
         url: https://arxiv.org/abs/2310.02170
         note: 官方补充阅读
         type: paper
+      - label: Kim et al. "Towards a Science of Scaling Agent Systems." arXiv (2025).
+        url: https://arxiv.org/abs/2512.08296
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
     outputs: []
     preparation:
       state: resources-ready
@@ -439,6 +499,10 @@ items:
         url: https://arxiv.org/abs/2406.11695
         note: 官方补充阅读
         type: paper
+      - label: 'Shao et al. "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models." arXiv (2024).'
+        url: https://arxiv.org/abs/2402.03300
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
     outputs: []
     preparation:
       state: resources-ready
@@ -454,11 +518,15 @@ items:
     title: Guest Lecture (TBA)
     subtitle: 客座讲座；主题与讲者待官网公布。
     module: Engineering AI Agents
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
-    resources: []
+    resources:
+      - label: Slides
+        url: https://web.stanford.edu/class/cs329z/slides/lecture10.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
     readings:
       - label: Terminal-Bench project site (leaderboard, tasks, and harness).
         url: https://www.tbench.ai/
@@ -483,11 +551,15 @@ items:
     title: What Data Do Agents Need?
     subtitle: 轨迹、示范、反馈与合成数据，区分优化数据和评测数据。
     module: Data for Agentic Systems
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
-    resources: []
+    resources:
+      - label: Slides
+        url: https://web.stanford.edu/class/cs329z/slides/lecture11.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-10-29。
     readings:
       - label: Shankar. "Data Flywheels for LLM Applications." (2024).
         url: https://www.sh-reya.com/blog/ai-engineering-flywheel/

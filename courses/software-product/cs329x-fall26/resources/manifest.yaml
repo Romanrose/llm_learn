@@ -256,4 +256,10 @@ resources:
     source: https://web.stanford.edu/class/cs329x/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-22
+  - label: slides
+    url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture10_future_of_work_v1.pdf
+    type: slides
+    source: https://web.stanford.edu/class/cs329x/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-29

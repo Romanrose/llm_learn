@@ -58,7 +58,7 @@ schedule:
     - code: 15b
       date: Thu, Dec 3, 2026
       title: Final presentations (posters)
-  resourceUpdatedAt: 2026-10-21
+  resourceUpdatedAt: 2026-10-29
   unitCount: 23
 learningModules:
   - id: course-references
@@ -1822,11 +1822,16 @@ items:
     module: Interaction and Projects
     instructors:
       - Zora Wang
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cmu-agents.com/#schedule
     outputs: []
+    resources:
+      - label: Zora Wang lecture slides
+        url: https://www.cmu-agents.com/slides/2026-10-27-zora-wang.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-10-29。
   - id: lecture-18
     order: 18
     scheduleCode: 10b

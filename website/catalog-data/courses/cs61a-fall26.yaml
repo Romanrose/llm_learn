@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-10-22
+  resourceUpdatedAt: 2026-10-29
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -160,6 +160,18 @@ practice:
     url: https://cs61a.org/fa26/labs/lab07/
     source: https://cs61a.org/fa26/
     checkedAt: 2026-10-19
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-a49c63babaade2a6
+    title: Gleam (due Thu 11/5)
+    url: https://cs61a.org/fa26/hw/hw07/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-29
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-6a20622da2b756bd
+    title: Gleam Lists (due Wed 11/4)
+    url: https://cs61a.org/fa26/labs/lab08/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-10-29
     note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
 items:
   - id: lecture-01
@@ -1358,11 +1370,23 @@ items:
     title: Object Examples
     subtitle: 整合 Object Examples 的概念与代码
     overview: 整合 Object Examples 的概念与代码。建议动手任务：挑选已学练习，先独立完成，再记录错误原因与修复过程。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
-    resources: []
+    resources:
+      - label: Object Examples
+        url: https://cs61a.org/fa26/lectures/25-object-examples/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/25-Data_Examples.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/25.py
+        type: code
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
     readings:
       - label: Askademia
         url: https://www.askademia.org/compsci61a/fa26/playlists/object-examples
@@ -1385,11 +1409,23 @@ items:
     title: Midterm 3 Review
     subtitle: 阶段复习与独立解题
     overview: 阶段复习与独立解题。建议动手任务：挑选已学练习，先独立完成，再记录错误原因与修复过程。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
-    resources: []
+    resources:
+      - label: Midterm 3 Review
+        url: https://cs61a.org/fa26/lectures/26-midterm-3-review/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/26-Midterm_3_Review.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/26.py
+        type: code
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
     readings: []
     outputs: []
     preparation:
@@ -1404,12 +1440,44 @@ items:
     title: Functional Programming
     subtitle: 不可变数据与函数组合
     overview: 不可变数据与函数组合。建议动手任务：将有副作用的处理过程改为返回新数据的函数。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
-    resources: []
-    readings: []
+    resources:
+      - label: Functional Programming
+        url: https://cs61a.org/fa26/lectures/27-functional-programming/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/27-Functional_Programming.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+      - label: (Examples)
+        url: https://playground.gleam.run/#N4IgbgpgTgzglgewHYgFwEYA0IDGyAuES+aIcAtgA4JT4AEA5gDYQCG5A9HMQDpJ+UArgCM6AMyR1yrbgAoAlHWB86dCDgAWCcaxz5ZAVnkq1m7QBMIMHFDjCIs9ACZjk01qmsA1hAD6rc0soWQBmeVkAFldVdQ88cmFuBydMOhDUiNSJWQAPVIBPRWA6HLoAKjp8ugBfaPdtGEFyXzE4WHxfJEM62O0xXQ78GSZuk17xO0MABldqvj4JHT1ZJCKTHFYYCDpJZTdVKboAWgA+OnQTVV9js8kK/uXJI/O6uaQ3hclLa1t7FdQ6ABJYiKU50ADK+FsSAYShM3HwADp8AhfDAodwGCs6gAeM48EB0OAwOgEkx4ugbLY7OH7OjXOBiGk4uiHMEEpAQBisfBwSBkuls/EgABe0AQAtUqnQN1JIGQEElUqcdAAPmk1XQIrKCTBpEwmEqrjqQExWFAGIqQCY3h8kItpD5/IFoP8gSDZdlgfhQWdvbTVNkvEUaQBqOheGp8O2LeKJTm5AHegpJ4ipEWp/BZAFetPun2y72+/MB8SyMS5ArydOzeb2ySNZqtdqdbGlxstKAIcgrVJYVm1/j1ugdsRdntIVJeVIooZMNZuKnbSO3UuqAAqUEE2zBs9YhrpADF99SwaPx72I3Rw/290xrxHXtG64sHoNhm29oGBr44IRgpOLzPkOr4/n+rqAZQXbmIIegLqoS40l+UpCnQUEIDBeiXPSnpgf+KzHOcqR3Gh0GwT6NrAZ8EzCJ+JitMIv74f2UzEYO1EMUxrpQRAYCpDgghQFAqTohAlAwPBlKbNsoniWurKygJQnYdcYKceBwRKcJpG8Q+WkiYQcnPOgT7vHwIDVEAA
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+      - label: Gleam
+        url: https://cs61a.org/fa26/discussions/disc08/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+    readings:
+      - label: "3.1"
+        url: https://composingprograms.com/3ed/interpreting-computer-programs/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+      - label: "3.2"
+        url: https://composingprograms.com/3ed/functional-programming/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+      - label: Appendix
+        url: https://composingprograms.com/3ed/gleam-functions-and-control/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=6kL4Hf4tMOg&list=PLae30RgoM-C4
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable
@@ -1427,8 +1495,20 @@ items:
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
-    resources: []
-    readings: []
+    resources:
+      - label: Gleam (due Thu 11/5)
+        url: https://cs61a.org/fa26/hw/hw07/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+    readings:
+      - label: Appendix
+        url: https://composingprograms.com/3ed/gleam-lists-and-data/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=ANuCSNT9Iq0&list=PLZnD6lXEx3MI
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable
@@ -1446,7 +1526,11 @@ items:
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
-    resources: []
+    resources:
+      - label: Gleam Lists (due Wed 11/4)
+        url: https://cs61a.org/fa26/labs/lab08/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
     readings: []
     outputs: []
     preparation:

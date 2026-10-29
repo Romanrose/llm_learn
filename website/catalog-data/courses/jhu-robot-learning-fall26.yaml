@@ -33,6 +33,7 @@ schedule:
     - date: 2026-11-26
       title: No class
   unitCount: 13
+  resourceUpdatedAt: 2026-10-29
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -328,7 +329,11 @@ items:
       - label: 官方课程表
         url: https://hands-on-robot-learning.github.io/
     resources: []
-    readings: []
+    readings:
+      - label: Assignment 1
+        url: https://hands-on-robot-learning.github.io/assignments/assignment-1/
+        type: code
+        note: 官方课程页面新增资料；来源：https://hands-on-robot-learning.github.io/；核对：2026-10-29。
     outputs: []
   - id: lecture-10
     order: 10
@@ -342,7 +347,11 @@ items:
       - label: 官方课程表
         url: https://hands-on-robot-learning.github.io/
     resources: []
-    readings: []
+    readings:
+      - label: Assignment 2
+        url: https://hands-on-robot-learning.github.io/assignments/assignment-2/
+        type: code
+        note: 官方课程页面新增资料；来源：https://hands-on-robot-learning.github.io/；核对：2026-10-29。
     outputs: []
   - id: lecture-11
     order: 11
@@ -384,5 +393,9 @@ items:
       - label: 官方课程表
         url: https://hands-on-robot-learning.github.io/
     resources: []
-    readings: []
+    readings:
+      - label: Assignment 3
+        url: https://hands-on-robot-learning.github.io/assignments/assignment-3/
+        type: code
+        note: 官方课程页面新增资料；来源：https://hands-on-robot-learning.github.io/；核对：2026-10-29。
     outputs: []
