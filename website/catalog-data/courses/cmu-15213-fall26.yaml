@@ -32,7 +32,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 25
   note: 官网未编号，按主题讲座顺序分配 lecture ID；考试、停课、Recitation 与 Bootcamp 不计入讲数。
-  resourceUpdatedAt: 2026-10-29
+  resourceUpdatedAt: 2026-10-30
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -899,7 +899,19 @@ items:
     official:
       - label: 官方课程日程
         url: https://www.cs.cmu.edu/~213/schedule.html
-    resources: []
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/17-ecf.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-10-30。
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/17-ecf.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-10-30。
+      - label: pdf-markup
+        url: https://www.cs.cmu.edu/~213/lectures/17-ecf-seth.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-10-30。
     readings:
       - label: CSAPP 第 3 版 · 8.5-8.8
         url: https://csapp.cs.cmu.edu/3e/students.html

@@ -118,4 +118,10 @@ resources:
     source: https://hanlab.mit.edu/courses/2026-fall-65940
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-29
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/h3qyph2qu51qhsjnvwoxh/Lec14-LLM-Post-training.pdf?rlkey=654340muk6ss9qyx75lfpes6a&st=bujnnzjb&dl=0
+    type: docs
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-30

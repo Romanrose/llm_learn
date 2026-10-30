@@ -33,7 +33,7 @@ schedule:
     - date: 2026-11-26
       title: No class
   unitCount: 13
-  resourceUpdatedAt: 2026-10-29
+  resourceUpdatedAt: 2026-10-30
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -310,11 +310,15 @@ items:
     date: 2026-10-29
     title: VLA models, continued; Assignment 1 in-class demos
     subtitle: "First half: continued discussion of VLAs and multitask policies. Second half: Assignment 1 demos of handcrafted manipulation skills."
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程表
         url: https://hands-on-robot-learning.github.io/
-    resources: []
+    resources:
+      - label: Lecture 07b — Multitask Policy Learning and VLAs Continued
+        url: https://hands-on-robot-learning.github.io/slides/lecture-07b-multitask-policy-learning-and-vlas-continued.pdf
+        type: code
+        note: 官方课程页面新增资料；来源：https://hands-on-robot-learning.github.io/；核对：2026-10-30。
     readings: []
     outputs: []
   - id: lecture-09

@@ -262,4 +262,10 @@ resources:
     source: https://hands-on-robot-learning.github.io/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-29
+  - label: Lecture 07b — Multitask Policy Learning and VLAs Continued
+    url: https://hands-on-robot-learning.github.io/slides/lecture-07b-multitask-policy-learning-and-vlas-continued.pdf
+    type: code
+    source: https://hands-on-robot-learning.github.io/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-30

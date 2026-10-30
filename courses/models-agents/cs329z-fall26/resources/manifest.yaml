@@ -158,4 +158,112 @@ resources:
     source: https://cs329z.stanford.edu/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-29
+  - label: Grace et al. "Demystifying Evals for AI Agents." Anthropic (2026).
+    url: https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
+    type: docs
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Zheng et al. "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena." NeurIPS (2023).
+    url: https://arxiv.org/abs/2306.05685
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Ryan et al. "AutoMetrics: Approximate Human Judgements with Automatically Generated Evaluators." ICLR (2026).'
+    url: https://arxiv.org/abs/2512.17267
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Zhu et al. "AutoLibra: Agent Metric Induction from Open-Ended Human Feedback." ICLR (2026).'
+    url: https://openreview.net/forum?id=4BjGVZ7Bxn
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Jimenez et al. "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?" ICLR (2024).'
+    url: https://arxiv.org/abs/2310.06770
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Shao et al. "PrivacyLens: Evaluating Privacy Norm Awareness of LMs in Action." NeurIPS D&B (2024).'
+    url: https://arxiv.org/abs/2409.00138
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Zhang & Yang. "Searching for Privacy Risks in LLM Agents via Simulation." arXiv (2025).
+    url: https://arxiv.org/abs/2508.10880
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Li. "Agentic LLMs as Powerful Deanonymizers." arXiv (2026).
+    url: https://arxiv.org/abs/2601.05918
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Wen et al. "Contextualized Privacy Defense for LLM Agents." arXiv (2026).
+    url: https://arxiv.org/abs/2603.02983
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'OpenAI. "Understanding Prompt Injections: A Frontier Security Challenge." (2025).'
+    url: https://openai.com/index/prompt-injections/
+    type: docs
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Anthropic. "Anthropic's Responsible Scaling Policy." (2023).
+    url: https://www.anthropic.com/news/anthropics-responsible-scaling-policy
+    type: docs
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Yang et al. "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering." NeurIPS (2024).'
+    url: https://arxiv.org/abs/2405.15793
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Wang et al. "OpenHands: An Open Platform for AI Software Developers." ICLR (2025).'
+    url: https://arxiv.org/abs/2407.16741
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Anthropic. "Claude Code: Best Practices for Agentic Coding." (2025).'
+    url: https://www.anthropic.com/engineering/claude-code-best-practices
+    type: docs
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Young. "Effective Harnesses for Long-Running Agents." Anthropic (2025).
+    url: https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
+    type: docs
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Shaikh et al. "Creating General User Models from Computer Use." UIST (2025).
+    url: https://arxiv.org/abs/2505.10831
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: Shaikh et al. "Learning Next Action Predictors from Human-Computer Interaction." arXiv (2026).
+    url: https://arxiv.org/abs/2603.05923
+    type: paper
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+  - label: 'Steinberger. "OpenClaw: Open-source proactive AI agent." (2025).'
+    url: https://github.com/openclaw/openclaw
+    type: code
+    source: https://cs329z.stanford.edu/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-30
