@@ -392,4 +392,22 @@ resources:
     source: https://cs61a.org/fa26/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-29
+  - label: Algebraic Data Types
+    url: https://cs61a.org/fa26/lectures/28-algebraic-data-types/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/28-Algebraic_Data_Types.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (28.zip)
+    url: https://cs61a.org/fa26/assets/lec/28.zip
+    type: code
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-31

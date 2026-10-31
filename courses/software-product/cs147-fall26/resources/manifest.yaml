@@ -98,4 +98,46 @@ resources:
     source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-20
+  - label: A6 Medium-fi Prototype (group)
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment6_26.pdf
+    type: docs
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: CS147 Film Festival
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/09-film-festival.pdf
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: PPT
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/09-film-festival.pptx
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: Human Abilities
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/10-human-abilities.pdf
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: PPT
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/10-human-abilities.pptx
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: Conceptual Models and Interface Metaphors
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/11-conceptual-models.pdf
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: PPT
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/11-conceptual-models.pptx
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-10-31

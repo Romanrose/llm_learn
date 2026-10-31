@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-10-29
+  resourceUpdatedAt: 2026-10-31
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -1491,7 +1491,7 @@ items:
     title: Algebraic Data Types
     subtitle: 和类型、积类型与模式匹配
     overview: 和类型、积类型与模式匹配。建议动手任务：按本学期 Gleam 资料定义小类型并覆盖各分支。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
@@ -1500,6 +1500,18 @@ items:
         url: https://cs61a.org/fa26/hw/hw07/
         type: docs
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-29。
+      - label: Algebraic Data Types
+        url: https://cs61a.org/fa26/lectures/28-algebraic-data-types/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-31。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/28-Algebraic_Data_Types.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-31。
+      - label: (28.zip)
+        url: https://cs61a.org/fa26/assets/lec/28.zip
+        type: code
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-10-31。
     readings:
       - label: Appendix
         url: https://composingprograms.com/3ed/gleam-lists-and-data/
