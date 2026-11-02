@@ -58,7 +58,7 @@ schedule:
     - code: 15b
       date: Thu, Dec 3, 2026
       title: Final presentations (posters)
-  resourceUpdatedAt: 2026-10-29
+  resourceUpdatedAt: 2026-11-02
   unitCount: 23
 learningModules:
   - id: course-references
@@ -1808,11 +1808,16 @@ items:
     module: Frameworks and Safety
     instructors:
       - Eric Wallace
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cmu-agents.com/#schedule
     outputs: []
+    readings:
+      - label: Securing our frontier model training environment
+        url: https://openai.com/index/securing-our-frontier-model-training-environment/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-02。
   - id: lecture-17
     order: 17
     scheduleCode: 10a
@@ -1832,6 +1837,27 @@ items:
         url: https://www.cmu-agents.com/slides/2026-10-27-zora-wang.pdf
         type: slides
         note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-10-29。
+    readings:
+      - label: How Well Does Agent Development Reflect Real-World Work?
+        url: https://arxiv.org/abs/2603.01203
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-02。
+      - label: "GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks"
+        url: https://arxiv.org/abs/2510.04374
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-02。
+      - label: "CollabSkill: Evaluating Human-Agent Collaboration on Real-World Tasks"
+        url: https://arxiv.org/abs/2606.09833
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-02。
+      - label: Efficient Test-Time Adaptation through Human-AI Interaction
+        url: https://arxiv.org/abs/2609.04141
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-02。
+      - label: "Future of Work with AI Agents: Auditing Automation and Augmentation Potential across the U.S. Workforce"
+        url: https://arxiv.org/abs/2506.06576
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-02。
   - id: lecture-18
     order: 18
     scheduleCode: 10b
@@ -1841,7 +1867,7 @@ items:
     module: Interaction and Projects
     instructors:
       - Saujas Vaduguru
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cmu-agents.com/#schedule
@@ -1849,6 +1875,36 @@ items:
     assignments:
       - id: assignment-3
         state: due
+    resources:
+      - label: Lecture 18 slides
+        url: https://www.cmu-agents.com/slides/lecture-18-multi-agent-systems.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-02。
+    readings:
+      - label: Improving Factuality and Reasoning in Language Models through Multiagent Debate
+        url: https://arxiv.org/abs/2305.14325
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-02。
+      - label: Multi-Agent Computer Use
+        url: https://arxiv.org/abs/2606.01533
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-02。
+      - label: Scaling Discovery through Test-Time Communication
+        url: https://arxiv.org/abs/2609.21032
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-02。
+      - label: "SWEET-RL: Training Multi-Turn LLM Agents on Collaborative Reasoning Tasks"
+        url: https://arxiv.org/abs/2503.15478
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-02。
+      - label: "Don’t lie to your friends: Learning what you know from collaborative self-play"
+        url: https://arxiv.org/abs/2503.14481
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-02。
+      - label: Debating with More Persuasive LLMs Leads to More Truthful Answers
+        url: https://arxiv.org/abs/2402.06782
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-02。
   - id: lecture-19
     order: 19
     scheduleCode: 12a
