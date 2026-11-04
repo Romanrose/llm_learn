@@ -124,4 +124,10 @@ resources:
     source: https://hanlab.mit.edu/courses/2026-fall-65940
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-30
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/2m80agerzvq7vnl36r48a/Lec15-Long-Context-LLM.pdf?rlkey=iw8ajsaih4i6pjleut2i3j7ip&st=ei9rvfmi&dl=0
+    type: docs
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-04

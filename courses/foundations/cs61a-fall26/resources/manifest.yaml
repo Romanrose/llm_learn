@@ -440,4 +440,34 @@ resources:
     source: https://cs61a.org/fa26/
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-03
+  - label: Gleam Data
+    url: https://cs61a.org/fa26/discussions/disc09/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: YouTube
+    url: https://www.youtube.com/watch?v=eWdsyVIALQ8&list=PLTyzwiLR_TYg
+    type: video
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: YouTube
+    url: https://www.youtube.com/watch?v=iVhtiPdOSOU&list=PL6BsET-8jgYXDgyR3XJj9T8XS5nDp2nt6
+    type: video
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: YouTube
+    url: https://www.youtube.com/watch?v=lombSNkvRR4&list=PL6BsET-8jgYXiGEfLQkDfkGOBqOfb_up7
+    type: video
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: YouTube
+    url: https://www.youtube.com/watch?v=gkAZMbzO5L8&list=PL6BsET-8jgYXazaYcmadXIjJApjL-DFET
+    type: video
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-04

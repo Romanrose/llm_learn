@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-11-03
+  resourceUpdatedAt: 2026-11-04
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -1577,12 +1577,20 @@ items:
     title: Interpreters
     subtitle: 表达式表示与求值器
     overview: 表达式表示与求值器。建议动手任务：手动追踪一个小表达式的解析、环境查找与求值。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
-    resources: []
-    readings: []
+    resources:
+      - label: Gleam Data
+        url: https://cs61a.org/fa26/discussions/disc09/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-04。
+    readings:
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=eWdsyVIALQ8&list=PLTyzwiLR_TYg
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-04。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable
@@ -1658,7 +1666,11 @@ items:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
     resources: []
-    readings: []
+    readings:
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=iVhtiPdOSOU&list=PL6BsET-8jgYXDgyR3XJj9T8XS5nDp2nt6
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-04。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable
@@ -1677,7 +1689,11 @@ items:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
     resources: []
-    readings: []
+    readings:
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=lombSNkvRR4&list=PL6BsET-8jgYXiGEfLQkDfkGOBqOfb_up7
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-04。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable
@@ -1696,7 +1712,11 @@ items:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
     resources: []
-    readings: []
+    readings:
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=gkAZMbzO5L8&list=PL6BsET-8jgYXazaYcmadXIjJApjL-DFET
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-04。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable

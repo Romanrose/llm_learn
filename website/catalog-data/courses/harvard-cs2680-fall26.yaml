@@ -92,7 +92,7 @@ schedule:
     - date: 2026-12-07
       title: Final project poster and demo
   unitCount: 23
-  resourceUpdatedAt: 2026-10-29
+  resourceUpdatedAt: 2026-11-04
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -489,11 +489,19 @@ items:
     date: 2026-11-02
     title: "Efficient agentic systems: scheduling and prefix caching"
     subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程表
         url: https://cs2680.com/
-    resources: []
+    resources:
+      - label: assignment
+        url: https://cs2680.com/slides/feedback_assignment.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-11-04。
+      - label: gpu
+        url: https://cs2680.com/slides/10_llm_serving_basics_2b.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-11-04。
     readings: []
     outputs: []
   - id: lecture-16

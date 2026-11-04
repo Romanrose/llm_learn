@@ -268,4 +268,16 @@ resources:
     source: https://cs2680.com/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-29
+  - label: assignment
+    url: https://cs2680.com/slides/feedback_assignment.pdf
+    type: slides
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: gpu
+    url: https://cs2680.com/slides/10_llm_serving_basics_2b.pdf
+    type: slides
+    source: https://cs2680.com/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-04
