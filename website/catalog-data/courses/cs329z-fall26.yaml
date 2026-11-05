@@ -71,7 +71,7 @@ schedule:
     - title: Final Report & Final System Demo
       date: 2026-12-07–2026-12-11
       time: TBA
-  resourceUpdatedAt: 2026-10-30
+  resourceUpdatedAt: 2026-11-05
   unitCount: 19
 assignments:
   - id: hw1
@@ -584,11 +584,15 @@ items:
     title: Data Selection & Quality
     subtitle: 数据筛选、标注与质量评估，从 Agent 轨迹构建任务数据集。
     module: Engineering AI Agents
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
-    resources: []
+    resources:
+      - label: Slides
+        url: https://web.stanford.edu/class/cs329z/slides/lecture12.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-11-05。
     readings:
       - label: 'Yang et al. "SWE-smith: Scaling Data for Software Engineering Agents." NeurIPS D&B (2025).'
         url: https://arxiv.org/abs/2504.21798
@@ -617,11 +621,15 @@ items:
     title: Evaluation Fundamentals & Benchmark Design
     subtitle: 用请求、环境、停止条件和评分器设计任务，建立可靠的 Agent 基准。
     module: Evaluation for Agentic Systems
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
-    resources: []
+    resources:
+      - label: Slides
+        url: https://web.stanford.edu/class/cs329z/slides/lecture13.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-11-05。
     readings:
       - label: Zhu et al. "Establishing Best Practices for Building Rigorous Agentic Benchmarks." (2025).
         url: https://arxiv.org/abs/2507.02825

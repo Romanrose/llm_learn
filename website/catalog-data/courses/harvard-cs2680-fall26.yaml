@@ -92,7 +92,7 @@ schedule:
     - date: 2026-12-07
       title: Final project poster and demo
   unitCount: 23
-  resourceUpdatedAt: 2026-11-04
+  resourceUpdatedAt: 2026-11-05
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -511,12 +511,24 @@ items:
     date: 2026-11-04
     title: "Efficient LLM serving: pruning and quantization"
     subtitle: 按 Fall 2026 官方日程整理；未来单元保留预告，A4/A5 题目尚未公开。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程表
         url: https://cs2680.com/
     resources: []
-    readings: []
+    readings:
+      - label: Orca
+        url: https://www.usenix.org/conference/osdi22/presentation/yu
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-11-05。
+      - label: vLLM
+        url: https://arxiv.org/abs/2309.06180
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-11-05。
+      - label: more reading →
+        url: https://cs2680.com/readings/nov-04.html
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-11-05。
     outputs: []
   - id: lecture-17
     order: 17

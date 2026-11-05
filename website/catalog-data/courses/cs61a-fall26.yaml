@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-11-04
+  resourceUpdatedAt: 2026-11-05
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -1586,6 +1586,22 @@ items:
         url: https://cs61a.org/fa26/discussions/disc09/
         type: docs
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-04。
+      - label: Interpreters
+        url: https://cs61a.org/fa26/lectures/30-interpreters/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-05。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/30-Interpreters.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-05。
+      - label: (parse demo)
+        url: https://composingprograms.com/3ed/parse/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-05。
+      - label: (eval demo)
+        url: https://composingprograms.com/3ed/eval/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-05。
     readings:
       - label: YouTube
         url: https://www.youtube.com/watch?v=eWdsyVIALQ8&list=PLTyzwiLR_TYg

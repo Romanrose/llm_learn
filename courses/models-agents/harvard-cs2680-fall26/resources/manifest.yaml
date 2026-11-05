@@ -280,4 +280,22 @@ resources:
     source: https://cs2680.com/
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-04
+  - label: Orca
+    url: https://www.usenix.org/conference/osdi22/presentation/yu
+    type: docs
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: vLLM
+    url: https://arxiv.org/abs/2309.06180
+    type: paper
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: more reading →
+    url: https://cs2680.com/readings/nov-04.html
+    type: docs
+    source: https://cs2680.com/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-05
