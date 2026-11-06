@@ -32,7 +32,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 25
   note: 官网未编号，按主题讲座顺序分配 lecture ID；考试、停课、Recitation 与 Bootcamp 不计入讲数。
-  resourceUpdatedAt: 2026-10-30
+  resourceUpdatedAt: 2026-11-06
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -947,11 +947,23 @@ items:
     title: System Level I/O and File Systems
     subtitle: 文件描述符与可靠 I/O
     overview: 文件描述符与可靠 I/O。建议动手任务：检查短读写与 EOF，对比文件描述符和文件路径。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cs.cmu.edu/~213/schedule.html
-    resources: []
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/18-system-io.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-11-06。
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/18-system-io.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-11-06。
+      - label: pdf-markup
+        url: https://www.cs.cmu.edu/~213/lectures/18-system-io-seth.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-11-06。
     readings:
       - label: CSAPP 第 3 版 · 10
         url: https://csapp.cs.cmu.edu/3e/students.html

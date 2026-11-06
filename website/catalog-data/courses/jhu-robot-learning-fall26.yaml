@@ -33,7 +33,7 @@ schedule:
     - date: 2026-11-26
       title: No class
   unitCount: 13
-  resourceUpdatedAt: 2026-10-30
+  resourceUpdatedAt: 2026-11-06
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -328,11 +328,15 @@ items:
     date: 2026-11-05
     title: Hands-on policy learning with LeRobot
     subtitle: "Course-staff tutorial on policy-learning best practices: dataset preparation, training, checkpointing, deployment, debugging, and closed-loop evaluation."
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程表
         url: https://hands-on-robot-learning.github.io/
-    resources: []
+    resources:
+      - label: Lecture 08 — Agentic Methods in Robot Learning
+        url: https://hands-on-robot-learning.github.io/slides/lecture-08-agentic-methods-in-robot-learning.pdf
+        type: code
+        note: 官方课程页面新增资料；来源：https://hands-on-robot-learning.github.io/；核对：2026-11-06。
     readings:
       - label: Assignment 1
         url: https://hands-on-robot-learning.github.io/assignments/assignment-1/
@@ -369,7 +373,11 @@ items:
       - label: 官方课程表
         url: https://hands-on-robot-learning.github.io/
     resources: []
-    readings: []
+    readings:
+      - label: Assignment 2
+        url: https://hands-on-robot-learning.github.io/assignments/assignment-2/
+        type: code
+        note: 官方课程页面新增资料；来源：https://hands-on-robot-learning.github.io/；核对：2026-11-06。
     outputs: []
   - id: lecture-12
     order: 12

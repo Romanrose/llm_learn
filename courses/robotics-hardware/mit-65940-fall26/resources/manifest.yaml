@@ -130,4 +130,10 @@ resources:
     source: https://hanlab.mit.edu/courses/2026-fall-65940
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-04
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/g8nn84f1rjfyazgrcpp2l/Lec16-Vision-Transformers.pdf?rlkey=hpw1qczlprdx4xd4izdj7z44g&st=cx06257q&dl=0
+    type: docs
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-06

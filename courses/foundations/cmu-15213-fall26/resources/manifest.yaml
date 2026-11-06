@@ -80,4 +80,22 @@ resources:
     source: https://www.cs.cmu.edu/~213/schedule.html
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-30
+  - label: pdf
+    url: https://www.cs.cmu.edu/~213/lectures/18-system-io.pdf
+    type: slides
+    source: https://www.cs.cmu.edu/~213/schedule.html
+    status: linked
+    local: null
+  - label: pptx
+    url: https://www.cs.cmu.edu/~213/lectures/18-system-io.pptx
+    type: slides
+    source: https://www.cs.cmu.edu/~213/schedule.html
+    status: linked
+    local: null
+  - label: pdf-markup
+    url: https://www.cs.cmu.edu/~213/lectures/18-system-io-seth.pdf
+    type: slides
+    source: https://www.cs.cmu.edu/~213/schedule.html
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-06
