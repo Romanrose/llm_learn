@@ -298,4 +298,10 @@ resources:
     source: https://cs2680.com/
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-05
+  - label: "[slide]"
+    url: https://cs2680.com/slides/11_llm_serving_basics_3.pdf
+    type: slides
+    source: https://cs2680.com/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-07

@@ -170,4 +170,10 @@ resources:
     source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-06
+  - label: A9 Heuristic Evaluation
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment9_26.pdf
+    type: docs
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-07

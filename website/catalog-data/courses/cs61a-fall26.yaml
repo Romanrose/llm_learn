@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-11-05
+  resourceUpdatedAt: 2026-11-07
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -172,6 +172,18 @@ practice:
     url: https://cs61a.org/fa26/labs/lab08/
     source: https://cs61a.org/fa26/
     checkedAt: 2026-10-29
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-54b01d104f011e89
+    title: Interpreters (due Thu 11/12)
+    url: https://cs61a.org/fa26/hw/hw08/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-11-07
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-5a73ffecb895c1f0
+    title: Animator (due Wed 12/2; checkpoint 1 Thu 11/19; checkpoint 2 Tue 11/24)
+    url: https://cs61a.org/fa26/projects/animator/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-11-07
     note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
 items:
   - id: lecture-01
@@ -1620,12 +1632,24 @@ items:
     title: Coding Agents
     subtitle: 工具辅助编程与结果验证
     overview: 工具辅助编程与结果验证。建议动手任务：先写验收测试，再核查工具生成代码的每个关键假设。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
-    resources: []
-    readings: []
+    resources:
+      - label: Interpreters (due Thu 11/12)
+        url: https://cs61a.org/fa26/hw/hw08/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-07。
+      - label: Animator (due Wed 12/2; checkpoint 1 Thu 11/19; checkpoint 2 Tue 11/24)
+        url: https://cs61a.org/fa26/projects/animator/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-07。
+    readings:
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=tFLi66qb6eQ&list=PLNsquWje5Nps
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-07。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable

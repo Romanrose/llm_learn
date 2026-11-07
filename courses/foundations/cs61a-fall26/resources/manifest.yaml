@@ -494,4 +494,22 @@ resources:
     source: https://cs61a.org/fa26/
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-05
+  - label: Interpreters (due Thu 11/12)
+    url: https://cs61a.org/fa26/hw/hw08/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Animator (due Wed 12/2; checkpoint 1 Thu 11/19; checkpoint 2 Tue 11/24)
+    url: https://cs61a.org/fa26/projects/animator/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: YouTube
+    url: https://www.youtube.com/watch?v=tFLi66qb6eQ&list=PLNsquWje5Nps
+    type: video
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-07

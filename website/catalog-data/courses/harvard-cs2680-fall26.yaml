@@ -92,7 +92,7 @@ schedule:
     - date: 2026-12-07
       title: Final project poster and demo
   unitCount: 23
-  resourceUpdatedAt: 2026-11-05
+  resourceUpdatedAt: 2026-11-07
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -515,7 +515,11 @@ items:
     official:
       - label: 官方课程表
         url: https://cs2680.com/
-    resources: []
+    resources:
+      - label: "[slide]"
+        url: https://cs2680.com/slides/11_llm_serving_basics_3.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-11-07。
     readings:
       - label: Orca
         url: https://www.usenix.org/conference/osdi22/presentation/yu

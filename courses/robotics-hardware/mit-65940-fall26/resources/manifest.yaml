@@ -136,4 +136,10 @@ resources:
     source: https://hanlab.mit.edu/courses/2026-fall-65940
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-06
+  - label: Lab 5
+    url: https://drive.google.com/drive/folders/1ZA9ZpLFHnEXr8sJ-e4lkJyMGvtoQ55A0
+    type: docs
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-07
