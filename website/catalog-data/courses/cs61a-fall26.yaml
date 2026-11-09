@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-11-08
+  resourceUpdatedAt: 2026-11-09
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -1669,7 +1669,7 @@ items:
     title: Browsers
     subtitle: 浏览器中的程序执行与交互
     overview: 浏览器中的程序执行与交互。建议动手任务：按官方资料识别输入、状态更新和界面输出的关系。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
@@ -1678,7 +1678,11 @@ items:
         url: https://cs61a.org/fa26/labs/lab09/
         type: docs
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-08。
-    readings: []
+    readings:
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=F14KIs5T_Kw&list=PLfjnIJLIo0e4
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-09。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable

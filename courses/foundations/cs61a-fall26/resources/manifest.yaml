@@ -518,4 +518,10 @@ resources:
     source: https://cs61a.org/fa26/
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-08
+  - label: YouTube
+    url: https://www.youtube.com/watch?v=F14KIs5T_Kw&list=PLfjnIJLIo0e4
+    type: video
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-09

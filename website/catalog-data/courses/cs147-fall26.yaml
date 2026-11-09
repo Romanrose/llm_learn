@@ -31,7 +31,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 23
   note: 十个单元对应官方作业总览，保留作业身份。已补十组中文候选Note/Blog与三组公开讲义候选，均待审核；第二讲为2026页面复用2025材料，无课堂字幕。A11 Final Report仅作课程级参考。 已追加三个公开讲义单元，各自标注实际版本。
-  resourceUpdatedAt: 2026-11-07
+  resourceUpdatedAt: 2026-11-09
 learningModules:
   - id: course-references
     title: 00 · 课程参考资料
@@ -109,6 +109,12 @@ practice:
     url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment9_26.pdf
     source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
     checkedAt: 2026-11-07
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-33c7c767ab48b78a
+    title: A8 Hi-fi Prototype (group)
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment8_26.pdf
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    checkedAt: 2026-11-09
     note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
 items:
   - id: assignment-01
@@ -434,6 +440,11 @@ items:
       provider: codex
       manifest: courses/software-product/cs147-fall26/notes/assignment-08/references/codex/run.yaml
       evidenceMode: assignment-reading-only
+    resources:
+      - label: A8 Hi-fi Prototype (group)
+        url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment8_26.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-11-09。
   - id: assignment-09
     order: 9
     title: HE Summary
