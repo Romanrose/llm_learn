@@ -182,4 +182,28 @@ resources:
     source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-09
+  - label: Usability Testing
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/14-usability-testing.pdf
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: PPT
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/14-usability-testing.pptx
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: Midterm Review
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/15-midterm-review.pdf
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: PPT
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/15-midterm-review.pptx
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-10

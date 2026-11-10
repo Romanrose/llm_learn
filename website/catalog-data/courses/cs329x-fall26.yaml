@@ -38,7 +38,7 @@ schedule:
     - date: 2026-12-02
       title: Final Presentations
   unitCount: 17
-  resourceUpdatedAt: 2026-10-29
+  resourceUpdatedAt: 2026-11-10
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -387,11 +387,15 @@ items:
     date: 2026-11-09
     title: The Rise of AI Companions
     subtitle: Fall 2026 公开资料；官网仅公布三份 Homework 的总体要求，未找到公开起始代码。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程表
         url: https://web.stanford.edu/class/cs329x/
-    resources: []
+    resources:
+      - label: slides
+        url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture13_ai_companions.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://web.stanford.edu/class/cs329x/；核对：2026-11-10。
     readings:
       - label: '"The Rise of AI Companions: How Human-Chatbot Relationships Influence Well-Being."'
         url: https://arxiv.org/abs/2506.12605
@@ -432,7 +436,23 @@ items:
       - label: 官方课程表
         url: https://web.stanford.edu/class/cs329x/
     resources: []
-    readings: []
+    readings:
+      - label: '"Taxonomy of Risks posed by Language Models."'
+        url: https://doi.org/10.1145/3531146.3533088
+        type: docs
+        note: 官方课程页面新增资料；来源：https://web.stanford.edu/class/cs329x/；核对：2026-11-10。
+      - label: '"Identifying the Risks of LM Agents with an LM-Emulated Sandbox."'
+        url: https://arxiv.org/abs/2309.15817
+        type: paper
+        note: 官方课程页面新增资料；来源：https://web.stanford.edu/class/cs329x/；核对：2026-11-10。
+      - label: '"PrivacyLens: Evaluating Privacy Norm Awareness of Language Models in Action."'
+        url: https://arxiv.org/abs/2409.00138
+        type: paper
+        note: 官方课程页面新增资料；来源：https://web.stanford.edu/class/cs329x/；核对：2026-11-10。
+      - label: '"Emergent Collusion in Long-Horizon LLM Agent Interaction."'
+        url: https://arxiv.org/abs/2609.24967
+        type: paper
+        note: 官方课程页面新增资料；来源：https://web.stanford.edu/class/cs329x/；核对：2026-11-10。
     outputs: []
   - id: lecture-16
     order: 16

@@ -262,4 +262,34 @@ resources:
     source: https://web.stanford.edu/class/cs329x/
     status: linked
     local: null
-resourceUpdatedAt: 2026-10-29
+  - label: slides
+    url: https://web.stanford.edu/class/cs329x/slides/2627/Lecture13_ai_companions.pdf
+    type: slides
+    source: https://web.stanford.edu/class/cs329x/
+    status: linked
+    local: null
+  - label: '"Taxonomy of Risks posed by Language Models."'
+    url: https://doi.org/10.1145/3531146.3533088
+    type: docs
+    source: https://web.stanford.edu/class/cs329x/
+    status: linked
+    local: null
+  - label: '"Identifying the Risks of LM Agents with an LM-Emulated Sandbox."'
+    url: https://arxiv.org/abs/2309.15817
+    type: paper
+    source: https://web.stanford.edu/class/cs329x/
+    status: linked
+    local: null
+  - label: '"PrivacyLens: Evaluating Privacy Norm Awareness of Language Models in Action."'
+    url: https://arxiv.org/abs/2409.00138
+    type: paper
+    source: https://web.stanford.edu/class/cs329x/
+    status: linked
+    local: null
+  - label: '"Emergent Collusion in Long-Horizon LLM Agent Interaction."'
+    url: https://arxiv.org/abs/2609.24967
+    type: paper
+    source: https://web.stanford.edu/class/cs329x/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-10

@@ -29,9 +29,9 @@ official:
 schedule:
   source: https://hci.stanford.edu/courses/cs147/2026/au/
   checkedAt: 2026-10-03
-  unitCount: 23
+  unitCount: 25
   note: 十个单元对应官方作业总览，保留作业身份。已补十组中文候选Note/Blog与三组公开讲义候选，均待审核；第二讲为2026页面复用2025材料，无课堂字幕。A11 Final Report仅作课程级参考。 已追加三个公开讲义单元，各自标注实际版本。
-  resourceUpdatedAt: 2026-11-09
+  resourceUpdatedAt: 2026-11-10
 learningModules:
   - id: course-references
     title: 00 · 课程参考资料
@@ -57,7 +57,7 @@ learningModules:
     title: 04 · 公开讲义
     description: 按实际材料版本学习；不等同于课堂逐字稿
     from: 11
-    to: 23
+    to: 25
 practice:
   - id: assignments
     title: Assignments Overview · 设计项目作业
@@ -828,5 +828,47 @@ items:
         url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/13-hci-visions.pptx
         type: slides
         note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-11-06。
+    readings: []
+    outputs: []
+  - id: lecture-24
+    order: 24
+    displayOrder: 24
+    unitLabel: 学习单元
+    title: Usability Testing
+    subtitle: 课程官网新增单元；当前接入官方资料。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    resources:
+      - label: Usability Testing
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/14-usability-testing.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-11-10。
+      - label: PPT
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/14-usability-testing.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-11-10。
+    readings: []
+    outputs: []
+  - id: lecture-25
+    order: 25
+    displayOrder: 25
+    unitLabel: 学习单元
+    title: Midterm Review
+    subtitle: 课程官网新增单元；当前接入官方资料。
+    status: resources-approved
+    official:
+      - label: 官方课程表
+        url: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    resources:
+      - label: Midterm Review
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/15-midterm-review.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-11-10。
+      - label: PPT
+        url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/15-midterm-review.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://hci.stanford.edu/courses/cs147/2026/au/calendar.html；核对：2026-11-10。
     readings: []
     outputs: []
