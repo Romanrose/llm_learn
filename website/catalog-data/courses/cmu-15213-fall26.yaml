@@ -32,7 +32,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 25
   note: 官网未编号，按主题讲座顺序分配 lecture ID；考试、停课、Recitation 与 Bootcamp 不计入讲数。
-  resourceUpdatedAt: 2026-11-06
+  resourceUpdatedAt: 2026-11-11
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -991,11 +991,23 @@ items:
     title: File Systems / Network Programming (Part I)
     subtitle: 文件系统与网络接口
     overview: 文件系统与网络接口。建议动手任务：画文件到网络的数据流，明确资源所有权与关闭时机。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cs.cmu.edu/~213/schedule.html
-    resources: []
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/19-netprog1.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-11-11。
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/19-netprog1.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-11-11。
+      - label: pdf-markup
+        url: https://www.cs.cmu.edu/~213/lectures/19-netprog1-seth.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-11-11。
     readings:
       - label: CSAPP 第 3 版 · 11.1-11.4
         url: https://csapp.cs.cmu.edu/3e/students.html

@@ -98,4 +98,22 @@ resources:
     source: https://www.cs.cmu.edu/~213/schedule.html
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-06
+  - label: pdf
+    url: https://www.cs.cmu.edu/~213/lectures/19-netprog1.pdf
+    type: slides
+    source: https://www.cs.cmu.edu/~213/schedule.html
+    status: linked
+    local: null
+  - label: pptx
+    url: https://www.cs.cmu.edu/~213/lectures/19-netprog1.pptx
+    type: slides
+    source: https://www.cs.cmu.edu/~213/schedule.html
+    status: linked
+    local: null
+  - label: pdf-markup
+    url: https://www.cs.cmu.edu/~213/lectures/19-netprog1-seth.pdf
+    type: slides
+    source: https://www.cs.cmu.edu/~213/schedule.html
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-11

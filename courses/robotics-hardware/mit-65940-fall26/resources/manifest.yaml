@@ -142,4 +142,10 @@ resources:
     source: https://hanlab.mit.edu/courses/2026-fall-65940
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-07
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/kulmahhwimviwhgvlbssr/Lec17-Diffusion-Models-I.pdf?rlkey=w4ceeft32h2vhgja4aishi4rz&st=bqv383on&dl=0
+    type: docs
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-11
