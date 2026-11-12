@@ -71,7 +71,7 @@ schedule:
     - title: Final Report & Final System Demo
       date: 2026-12-07–2026-12-11
       time: TBA
-  resourceUpdatedAt: 2026-11-05
+  resourceUpdatedAt: 2026-11-12
   unitCount: 19
 assignments:
   - id: hw1
@@ -658,7 +658,7 @@ items:
     title: LLM-as-Judge & Evaluation Infrastructure
     subtitle: 代码评分、模型评分与人工评分，理解裁判偏差和评测基础设施。
     module: Engineering AI Agents
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
@@ -695,11 +695,15 @@ items:
     title: Agent Safety & Guardrails
     subtitle: 工具访问、隐私、提示注入、沙箱、权限与人工介入。
     module: Safety
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
-    resources: []
+    resources:
+      - label: Slides
+        url: https://web.stanford.edu/class/cs329z/slides/lecture15.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-11-12。
     readings:
       - label: 'Shao et al. "PrivacyLens: Evaluating Privacy Norm Awareness of LMs in Action." NeurIPS D&B (2024).'
         url: https://arxiv.org/abs/2409.00138
