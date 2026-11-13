@@ -58,7 +58,7 @@ schedule:
     - code: 15b
       date: Thu, Dec 3, 2026
       title: Final presentations (posters)
-  resourceUpdatedAt: 2026-11-02
+  resourceUpdatedAt: 2026-11-13
   unitCount: 23
 learningModules:
   - id: course-references
@@ -1926,11 +1926,33 @@ items:
     title: "Search 1: Reranking and Critic Models"
     subtitle: 重排序与 Critic 模型，用评价信号选择候选行为。
     module: Search and Inference
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cmu-agents.com/#schedule
     outputs: []
+    resources:
+      - label: Lecture 20 slides
+        url: https://www.cmu-agents.com/slides/lecture-20-search-basics.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-13。
+    readings:
+      - label: "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling"
+        url: https://arxiv.org/abs/2407.21787v3
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-13。
+      - label: "Rethinking Thinking Tokens: LLMs as Improvement Operators (PDR)"
+        url: https://arxiv.org/abs/2510.01123v1
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-13。
+      - label: Scaling Test-Time Compute for Agentic Coding
+        url: https://arxiv.org/abs/2604.16529v1
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-13。
+      - label: "Meta-Harness: End-to-End Optimization of Model Harnesses"
+        url: https://arxiv.org/abs/2603.28052v1
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-13。
   - id: lecture-21
     order: 21
     scheduleCode: 13a

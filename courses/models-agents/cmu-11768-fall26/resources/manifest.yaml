@@ -250,6 +250,36 @@ resources:
     source: https://www.cmu-agents.com/
     status: linked
     local: null
+  - label: Lecture 20 slides
+    url: https://www.cmu-agents.com/slides/lecture-20-search-basics.pdf
+    type: slides
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling"
+    url: https://arxiv.org/abs/2407.21787v3
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: "Rethinking Thinking Tokens: LLMs as Improvement Operators (PDR)"
+    url: https://arxiv.org/abs/2510.01123v1
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Scaling Test-Time Compute for Agentic Coding
+    url: https://arxiv.org/abs/2604.16529v1
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: "Meta-Harness: End-to-End Optimization of Model Harnesses"
+    url: https://arxiv.org/abs/2603.28052v1
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
 generation:
   state: reviewed
   slidesLectures: 12
@@ -257,4 +287,4 @@ generation:
   candidateProvider: deepseek
   publication: 用户确认后显式开放前 12 讲 Note/Blog 与前 9 讲中英文逐字稿。
   approvedAt: 2026-10-03T10:09:56.644Z
-resourceUpdatedAt: 2026-11-02
+resourceUpdatedAt: 2026-11-13

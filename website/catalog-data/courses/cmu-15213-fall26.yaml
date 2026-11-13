@@ -32,7 +32,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 25
   note: 官网未编号，按主题讲座顺序分配 lecture ID；考试、停课、Recitation 与 Bootcamp 不计入讲数。
-  resourceUpdatedAt: 2026-11-11
+  resourceUpdatedAt: 2026-11-13
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -1035,11 +1035,19 @@ items:
     title: Network Programming (Part II)
     subtitle: 客户端/服务器协议与套接字
     overview: 客户端/服务器协议与套接字。建议动手任务：建立本地回环客户端与服务器，验证消息边界。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cs.cmu.edu/~213/schedule.html
-    resources: []
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/20-netprog2.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-11-13。
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/20-netprog2.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-11-13。
     readings:
       - label: CSAPP 第 3 版 · 11.4-11.6
         url: https://csapp.cs.cmu.edu/3e/students.html

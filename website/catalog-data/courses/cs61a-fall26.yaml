@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-11-10
+  resourceUpdatedAt: 2026-11-13
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -190,6 +190,12 @@ practice:
     url: https://cs61a.org/fa26/labs/lab09/
     source: https://cs61a.org/fa26/
     checkedAt: 2026-11-08
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-43bcf6717431df74
+    title: Animator (TypeScript) (due Wed 12/2; checkpoint 1 Thu 11/19; checkpoint 2 Tue 11/24)
+    url: https://cs61a.org/fa26/projects/animator-ts/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-11-13
     note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
 items:
   - id: lecture-01
@@ -1651,6 +1657,10 @@ items:
         url: https://cs61a.org/fa26/projects/animator/
         type: docs
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-07。
+      - label: Animator (TypeScript) (due Wed 12/2; checkpoint 1 Thu 11/19; checkpoint 2 Tue 11/24)
+        url: https://cs61a.org/fa26/projects/animator-ts/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-13。
     readings:
       - label: YouTube
         url: https://www.youtube.com/watch?v=tFLi66qb6eQ&list=PLNsquWje5Nps
@@ -1712,11 +1722,23 @@ items:
     title: Applications
     subtitle: 程序组件如何组成应用
     overview: 程序组件如何组成应用。建议动手任务：选一个课程项目画模块图，标出模块间接口。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
-    resources: []
+    resources:
+      - label: Applications
+        url: https://cs61a.org/fa26/lectures/33-applications/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-13。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/33-Applications.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-13。
+      - label: (33.txt)
+        url: https://cs61a.org/fa26/assets/lec/33.txt
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-13。
     readings: []
     outputs: []
     preparation:
@@ -1741,6 +1763,10 @@ items:
         url: https://www.youtube.com/watch?v=iVhtiPdOSOU&list=PL6BsET-8jgYXDgyR3XJj9T8XS5nDp2nt6
         type: video
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-04。配套主题视频，不作为当期课堂录像。
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=lombSNkvRR4&list=PL6BsET-8jgYXiGEfLQkDfkGOBqOfb_up7
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-13。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable
@@ -1764,6 +1790,10 @@ items:
         url: https://www.youtube.com/watch?v=lombSNkvRR4&list=PL6BsET-8jgYXiGEfLQkDfkGOBqOfb_up7
         type: video
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-04。配套主题视频，不作为当期课堂录像。
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=iVhtiPdOSOU&list=PL6BsET-8jgYXDgyR3XJj9T8XS5nDp2nt6
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-13。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable
