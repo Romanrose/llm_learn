@@ -92,7 +92,7 @@ schedule:
     - date: 2026-12-07
       title: Final project poster and demo
   unitCount: 23
-  resourceUpdatedAt: 2026-11-07
+  resourceUpdatedAt: 2026-11-15
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -480,7 +480,31 @@ items:
         url: https://cs2680.com/slides/assignment3_feedback_protected.pdf
         type: slides
         note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-10-29。
-    readings: []
+      - label: "[slide]"
+        url: https://cs2680.com/slides/12_llm_serving_spec_decoding.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-11-15。
+    readings:
+      - label: speculative decoding
+        url: https://arxiv.org/abs/2211.17192
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-11-15。
+      - label: EAGLE
+        url: https://arxiv.org/abs/2401.15077
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-11-15。
+      - label: Medusa
+        url: https://arxiv.org/abs/2401.10774
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-11-15。
+      - label: DSpark
+        url: https://arxiv.org/abs/2607.05147
+        type: paper
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-11-15。
+      - label: more reading →
+        url: https://cs2680.com/readings/nov-11.html
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs2680.com/；核对：2026-11-15。
     outputs: []
   - id: lecture-15
     order: 15

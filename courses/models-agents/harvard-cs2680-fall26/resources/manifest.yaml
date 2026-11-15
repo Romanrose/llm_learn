@@ -304,4 +304,40 @@ resources:
     source: https://cs2680.com/
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-07
+  - label: "[slide]"
+    url: https://cs2680.com/slides/12_llm_serving_spec_decoding.pdf
+    type: slides
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: speculative decoding
+    url: https://arxiv.org/abs/2211.17192
+    type: paper
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: EAGLE
+    url: https://arxiv.org/abs/2401.15077
+    type: paper
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: Medusa
+    url: https://arxiv.org/abs/2401.10774
+    type: paper
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: DSpark
+    url: https://arxiv.org/abs/2607.05147
+    type: paper
+    source: https://cs2680.com/
+    status: linked
+    local: null
+  - label: more reading →
+    url: https://cs2680.com/readings/nov-11.html
+    type: docs
+    source: https://cs2680.com/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-15
