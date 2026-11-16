@@ -31,7 +31,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 25
   note: 十个单元对应官方作业总览，保留作业身份。已补十组中文候选Note/Blog与三组公开讲义候选，均待审核；第二讲为2026页面复用2025材料，无课堂字幕。A11 Final Report仅作课程级参考。 已追加三个公开讲义单元，各自标注实际版本。
-  resourceUpdatedAt: 2026-11-10
+  resourceUpdatedAt: 2026-11-16
 learningModules:
   - id: course-references
     title: 00 · 课程参考资料
@@ -115,6 +115,12 @@ practice:
     url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment8_26.pdf
     source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
     checkedAt: 2026-11-09
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-f4021c817f8dc491
+    title: A11 Final Report (group)
+    url: https://hci.stanford.edu/courses/cs147/2026/au/assignments/assignment11_26.pdf
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    checkedAt: 2026-11-16
     note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
 items:
   - id: assignment-01

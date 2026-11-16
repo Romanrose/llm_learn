@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-11-13
+  resourceUpdatedAt: 2026-11-16
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -196,6 +196,12 @@ practice:
     url: https://cs61a.org/fa26/projects/animator-ts/
     source: https://cs61a.org/fa26/
     checkedAt: 2026-11-13
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-be0ac62d5c9ad141
+    title: SQL (due Wed 11/18)
+    url: https://cs61a.org/fa26/labs/lab10/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-11-16
     note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
 items:
   - id: lecture-01
@@ -1753,11 +1759,15 @@ items:
     title: Tables
     subtitle: 表格数据与关系表示
     overview: 表格数据与关系表示。建议动手任务：把一组数据整理为表，明确列含义与唯一标识。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
-    resources: []
+    resources:
+      - label: SQL (due Wed 11/18)
+        url: https://cs61a.org/fa26/labs/lab10/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-16。
     readings:
       - label: YouTube
         url: https://www.youtube.com/watch?v=iVhtiPdOSOU&list=PL6BsET-8jgYXDgyR3XJj9T8XS5nDp2nt6

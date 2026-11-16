@@ -572,4 +572,10 @@ resources:
     source: https://cs61a.org/fa26/
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-13
+  - label: SQL (due Wed 11/18)
+    url: https://cs61a.org/fa26/labs/lab10/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-16
