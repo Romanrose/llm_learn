@@ -578,4 +578,22 @@ resources:
     source: https://cs61a.org/fa26/
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-16
+  - label: SQL
+    url: https://cs61a.org/fa26/lectures/34-sql/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/34-SQL.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: SQL
+    url: https://cs61a.org/fa26/discussions/disc11/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-17

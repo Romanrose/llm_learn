@@ -212,4 +212,16 @@ resources:
     source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-16
+  - label: Design Patterns
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/16-design-patterns.pdf
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+  - label: PPT
+    url: https://hci.stanford.edu/courses/cs147/2026/au/lectures/16-design-patterns.pptx
+    type: slides
+    source: https://hci.stanford.edu/courses/cs147/2026/au/calendar.html
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-17

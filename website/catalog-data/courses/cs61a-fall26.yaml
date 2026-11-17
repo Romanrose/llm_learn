@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-11-16
+  resourceUpdatedAt: 2026-11-17
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -1768,6 +1768,14 @@ items:
         url: https://cs61a.org/fa26/labs/lab10/
         type: docs
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-16。
+      - label: SQL
+        url: https://cs61a.org/fa26/lectures/34-sql/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-17。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/34-SQL.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-17。
     readings:
       - label: YouTube
         url: https://www.youtube.com/watch?v=iVhtiPdOSOU&list=PL6BsET-8jgYXDgyR3XJj9T8XS5nDp2nt6
@@ -1794,7 +1802,11 @@ items:
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
-    resources: []
+    resources:
+      - label: SQL
+        url: https://cs61a.org/fa26/discussions/disc11/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-17。
     readings:
       - label: YouTube
         url: https://www.youtube.com/watch?v=lombSNkvRR4&list=PL6BsET-8jgYXiGEfLQkDfkGOBqOfb_up7
