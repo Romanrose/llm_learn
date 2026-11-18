@@ -280,6 +280,42 @@ resources:
     source: https://www.cmu-agents.com/
     status: linked
     local: null
+  - label: "JY Koh lecture slides: Search and Planning"
+    url: https://www.cmu-agents.com/slides/2026-11-17-jy-koh.pdf
+    type: slides
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Tree of Thoughts
+    url: https://arxiv.org/abs/2305.10601
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Stream of Search (SoS)
+    url: https://arxiv.org/abs/2404.03683
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Tree Search for Language Model Agents
+    url: https://arxiv.org/abs/2407.01476
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: "WebDreamer: Model-Based Planning for Web Agents"
+    url: https://arxiv.org/abs/2411.06559
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Recursive Language Models
+    url: https://arxiv.org/abs/2512.24601
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
 generation:
   state: reviewed
   slidesLectures: 12
@@ -287,4 +323,4 @@ generation:
   candidateProvider: deepseek
   publication: 用户确认后显式开放前 12 讲 Note/Blog 与前 9 讲中英文逐字稿。
   approvedAt: 2026-10-03T10:09:56.644Z
-resourceUpdatedAt: 2026-11-13
+resourceUpdatedAt: 2026-11-18

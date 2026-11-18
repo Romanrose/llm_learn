@@ -58,7 +58,7 @@ schedule:
     - code: 15b
       date: Thu, Dec 3, 2026
       title: Final presentations (posters)
-  resourceUpdatedAt: 2026-11-13
+  resourceUpdatedAt: 2026-11-18
   unitCount: 23
 learningModules:
   - id: course-references
@@ -1962,11 +1962,41 @@ items:
     module: Search and Inference
     instructors:
       - JY Koh
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cmu-agents.com/#schedule
     outputs: []
+    resources:
+      - label: "JY Koh lecture slides: Search and Planning"
+        url: https://www.cmu-agents.com/slides/2026-11-17-jy-koh.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-18。
+    readings:
+      - label: Tree of Thoughts
+        url: https://arxiv.org/abs/2305.10601
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-18。
+      - label: Stream of Search (SoS)
+        url: https://arxiv.org/abs/2404.03683
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-18。
+      - label: Tree Search for Language Model Agents
+        url: https://arxiv.org/abs/2407.01476
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-18。
+      - label: "WebDreamer: Model-Based Planning for Web Agents"
+        url: https://arxiv.org/abs/2411.06559
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-18。
+      - label: Recursive Language Models
+        url: https://arxiv.org/abs/2512.24601
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-18。
+      - label: Multi-Agent Computer Use (MACU)
+        url: https://arxiv.org/abs/2606.01533
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-18。
   - id: lecture-22
     order: 22
     scheduleCode: 13b

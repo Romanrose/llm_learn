@@ -154,4 +154,10 @@ resources:
     source: https://hanlab.mit.edu/courses/2026-fall-65940
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-13
+  - label: "[Slides]"
+    url: https://www.dropbox.com/scl/fi/763e7fumkitmzs09y4ggz/Lec19-Distributed-Training-I.pdf?rlkey=vk2ztsk7n43r9vz78xf0c65l4&st=b3d4rjg1&dl=0
+    type: docs
+    source: https://hanlab.mit.edu/courses/2026-fall-65940
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-18
