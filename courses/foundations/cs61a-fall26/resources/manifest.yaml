@@ -596,4 +596,46 @@ resources:
     source: https://cs61a.org/fa26/
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-17
+  - label: (imdb.db)
+    url: https://cs61a.org/assets/db/imdb1000.db
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Tables
+    url: https://cs61a.org/fa26/lectures/35-tables/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/35-Tables.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: Aggregation
+    url: https://cs61a.org/fa26/lectures/36-aggregation/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/36-Aggregation.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: SQL (due Sun 11/29)
+    url: https://cs61a.org/fa26/hw/hw09/
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: YouTube
+    url: https://www.youtube.com/watch?v=f-Q4rWimfVg&list=PL6BsET-8jgYVQApYDUVHMAUXq_ZwN2UDc
+    type: video
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-21

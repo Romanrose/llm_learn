@@ -316,6 +316,72 @@ resources:
     source: https://www.cmu-agents.com/
     status: linked
     local: null
+  - label: Lecture 10 recording
+    url: https://www.youtube.com/watch?v=nKUBrXFQBUM&list=PLSN0qpDfUvTM&index=10
+    type: video
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Lecture 11 recording
+    url: https://www.youtube.com/watch?v=jKx7_fOZRzg&list=PLSN0qpDfUvTM&index=11
+    type: video
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Lecture 12 recording
+    url: https://www.youtube.com/watch?v=dwR6NP9nI-8&list=PLSN0qpDfUvTM&index=12
+    type: video
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Lecture 13 recording
+    url: https://www.youtube.com/watch?v=Mbonnq-PUGM&list=PLSN0qpDfUvTM&index=13
+    type: video
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Lecture 14 recording
+    url: https://www.youtube.com/watch?v=VAzZkT68h2Q&list=PLSN0qpDfUvTM&index=14
+    type: video
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Valerie Chen lecture slides
+    url: https://www.cmu-agents.com/slides/2026-11-10-valerie-chen.pdf
+    type: slides
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Guidelines for Human-AI Interaction
+    url: https://www.microsoft.com/en-us/research/publication/guidelines-for-human-ai-interaction/
+    type: docs
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: "Completion ≠ Collaboration: Scaling Collaborative Effort with Agents"
+    url: https://arxiv.org/abs/2510.25744
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: How can we assess human-agent interactions? Case studies in software agent design
+    url: https://arxiv.org/abs/2510.09801
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Code with Me or for Me? How Increasing AI Automation Transforms Developer Workflows
+    url: https://arxiv.org/abs/2507.08149
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: "(Im)Paired Programming: Coding Agents Improve Productivity but Harm Understanding"
+    url: https://arxiv.org/abs/2607.26375
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
 generation:
   state: reviewed
   slidesLectures: 12
@@ -323,4 +389,4 @@ generation:
   candidateProvider: deepseek
   publication: 用户确认后显式开放前 12 讲 Note/Blog 与前 9 讲中英文逐字稿。
   approvedAt: 2026-10-03T10:09:56.644Z
-resourceUpdatedAt: 2026-11-18
+resourceUpdatedAt: 2026-11-21

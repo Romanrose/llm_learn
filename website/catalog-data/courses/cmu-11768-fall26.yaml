@@ -58,7 +58,7 @@ schedule:
     - code: 15b
       date: Thu, Dec 3, 2026
       title: Final presentations (posters)
-  resourceUpdatedAt: 2026-11-18
+  resourceUpdatedAt: 2026-11-21
   unitCount: 23
 learningModules:
   - id: course-references
@@ -1434,6 +1434,10 @@ items:
         url: https://www.cmu-agents.com/slides/lecture-10-deep-research-agents.pdf
         type: slides
         status: approved
+      - label: Lecture 10 recording
+        url: https://www.youtube.com/watch?v=nKUBrXFQBUM&list=PLSN0qpDfUvTM&index=10
+        type: video
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-21。
     readings:
       - label: OpenScholar
         url: https://www.nature.com/articles/s41586-025-10072-4
@@ -1566,6 +1570,10 @@ items:
         url: https://www.cmu-agents.com/slides/lecture-11-rl-advanced.pdf
         type: slides
         status: approved
+      - label: Lecture 11 recording
+        url: https://www.youtube.com/watch?v=jKx7_fOZRzg&list=PLSN0qpDfUvTM&index=11
+        type: video
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-21。
     readings:
       - label: MIXER
         url: https://michaelauli.github.io/papers/iclr2016_mixer.pdf
@@ -1709,6 +1717,10 @@ items:
         url: https://github.com/cmu-agents/assignment-2
         status: approved
         note: 官方作业仓库
+      - label: Lecture 12 recording
+        url: https://www.youtube.com/watch?v=dwR6NP9nI-8&list=PLSN0qpDfUvTM&index=12
+        type: video
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-21。
     outputs:
       - id: lecture-note
         label: Lecture Note
@@ -1748,6 +1760,10 @@ items:
         url: https://www.cmu-agents.com/slides/lecture-13-agent-safety.pdf
         type: slides
         note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-10-16。
+      - label: Lecture 13 recording
+        url: https://www.youtube.com/watch?v=Mbonnq-PUGM&list=PLSN0qpDfUvTM&index=13
+        type: video
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-21。
   - id: lecture-14
     order: 14
     scheduleCode: 7b
@@ -1765,6 +1781,10 @@ items:
         url: https://www.cmu-agents.com/slides/lecture-14-openhands.pdf
         type: slides
         note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-10-16。
+      - label: Lecture 14 recording
+        url: https://www.youtube.com/watch?v=VAzZkT68h2Q&list=PLSN0qpDfUvTM&index=14
+        type: video
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-21。
   - id: lecture-15
     order: 15
     scheduleCode: 9a
@@ -1914,11 +1934,37 @@ items:
     module: Interaction and Projects
     instructors:
       - Valerie Chen
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cmu-agents.com/#schedule
     outputs: []
+    resources:
+      - label: Valerie Chen lecture slides
+        url: https://www.cmu-agents.com/slides/2026-11-10-valerie-chen.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-21。
+    readings:
+      - label: Guidelines for Human-AI Interaction
+        url: https://www.microsoft.com/en-us/research/publication/guidelines-for-human-ai-interaction/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-21。
+      - label: "Completion ≠ Collaboration: Scaling Collaborative Effort with Agents"
+        url: https://arxiv.org/abs/2510.25744
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-21。
+      - label: How can we assess human-agent interactions? Case studies in software agent design
+        url: https://arxiv.org/abs/2510.09801
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-21。
+      - label: Code with Me or for Me? How Increasing AI Automation Transforms Developer Workflows
+        url: https://arxiv.org/abs/2507.08149
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-21。
+      - label: "(Im)Paired Programming: Coding Agents Improve Productivity but Harm Understanding"
+        url: https://arxiv.org/abs/2607.26375
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-21。
   - id: lecture-20
     order: 20
     scheduleCode: 12b

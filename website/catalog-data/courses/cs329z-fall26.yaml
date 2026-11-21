@@ -71,7 +71,7 @@ schedule:
     - title: Final Report & Final System Demo
       date: 2026-12-07–2026-12-11
       time: TBA
-  resourceUpdatedAt: 2026-11-12
+  resourceUpdatedAt: 2026-11-21
   unitCount: 19
 assignments:
   - id: hw1
@@ -760,7 +760,7 @@ items:
     title: Guest Lecture (TBA)
     subtitle: 客座讲座；主题与讲者待官网公布。
     module: Engineering AI Agents
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
@@ -785,11 +785,15 @@ items:
     title: Coding & Software Agents
     subtitle: 理解软件 Agent 的运行框架与接口，并结合 SWE-bench 分析任务评测。
     module: Coding Agents & Proactive Agents
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs329z.stanford.edu/index.html#schedule
-    resources: []
+    resources:
+      - label: Slides
+        url: https://web.stanford.edu/class/cs329z/slides/lecture17.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs329z.stanford.edu/；核对：2026-11-21。
     readings:
       - label: 'Yang et al. "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering." NeurIPS (2024).'
         url: https://arxiv.org/abs/2405.15793

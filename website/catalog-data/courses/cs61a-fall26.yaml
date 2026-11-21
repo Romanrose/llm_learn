@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-11-17
+  resourceUpdatedAt: 2026-11-21
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -202,6 +202,12 @@ practice:
     url: https://cs61a.org/fa26/labs/lab10/
     source: https://cs61a.org/fa26/
     checkedAt: 2026-11-16
+    note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
+  - id: official-48a6b7368f093c57
+    title: SQL (due Sun 11/29)
+    url: https://cs61a.org/fa26/hw/hw09/
+    source: https://cs61a.org/fa26/
+    checkedAt: 2026-11-21
     note: 课程官网公布的作业 / Lab 入口；访问权限和题目版本以原站为准。
 items:
   - id: lecture-01
@@ -1776,6 +1782,10 @@ items:
         url: https://cs61a.org/fa26/assets/lec/34-SQL.pdf
         type: docs
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-17。
+      - label: (imdb.db)
+        url: https://cs61a.org/assets/db/imdb1000.db
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-21。
     readings:
       - label: YouTube
         url: https://www.youtube.com/watch?v=iVhtiPdOSOU&list=PL6BsET-8jgYXDgyR3XJj9T8XS5nDp2nt6
@@ -1798,7 +1808,7 @@ items:
     title: SQL
     subtitle: 查询、过滤、连接与聚合
     overview: 查询、过滤、连接与聚合。建议动手任务：写查询并用小数据集手算预期结果。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
@@ -1807,6 +1817,18 @@ items:
         url: https://cs61a.org/fa26/discussions/disc11/
         type: docs
         note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-17。
+      - label: Tables
+        url: https://cs61a.org/fa26/lectures/35-tables/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-21。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/35-Tables.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-21。
+      - label: (imdb.db)
+        url: https://cs61a.org/assets/db/imdb1000.db
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-21。
     readings:
       - label: YouTube
         url: https://www.youtube.com/watch?v=lombSNkvRR4&list=PL6BsET-8jgYXiGEfLQkDfkGOBqOfb_up7
@@ -1829,11 +1851,27 @@ items:
     title: Aggregation
     subtitle: 分组与聚合语义
     overview: 分组与聚合语义。建议动手任务：构造有重复值的表，区分逐行过滤与分组过滤。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
-    resources: []
+    resources:
+      - label: Aggregation
+        url: https://cs61a.org/fa26/lectures/36-aggregation/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-21。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/36-Aggregation.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-21。
+      - label: (imdb.db)
+        url: https://cs61a.org/assets/db/imdb1000.db
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-21。
+      - label: SQL (due Sun 11/29)
+        url: https://cs61a.org/fa26/hw/hw09/
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-21。
     readings:
       - label: YouTube
         url: https://www.youtube.com/watch?v=gkAZMbzO5L8&list=PL6BsET-8jgYXazaYcmadXIjJApjL-DFET
@@ -1857,7 +1895,11 @@ items:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
     resources: []
-    readings: []
+    readings:
+      - label: YouTube
+        url: https://www.youtube.com/watch?v=f-Q4rWimfVg&list=PL6BsET-8jgYVQApYDUVHMAUXq_ZwN2UDc
+        type: video
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-21。配套主题视频，不作为当期课堂录像。
     outputs: []
     preparation:
       state: source-unavailable
