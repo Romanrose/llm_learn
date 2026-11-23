@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cme295-fall26
+lecture: lecture-05
+title: LLM systems
+preparedAt: 2026-11-23T08:25:31.551Z
+video:
+  id: 25KIyaeI_Fg
+  title: Stanford CME295 Transformers & LLMs | Autumn 2026 | Lecture 5 -  LLM Systems
+  url: https://www.youtube.com/watch?v=25KIyaeI_Fg
+  playlist: https://www.youtube.com/playlist?list=PLakGfbKCei80
+  playlistIndex: 5
+  channel: Stanford Online
+  durationSeconds: 6421
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/evaluation/cme295-fall26/notes/lecture-05/transcript.en.md
+  processor: video-subtitle-transcript

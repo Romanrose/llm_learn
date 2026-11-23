@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: mit-6s184-2026
+lecture: lecture-02
+title: Flow Matching
+preparedAt: 2026-11-23T03:33:42.363Z
+video:
+  id: PNkMKWW8Khw
+  title: "MIT 6.S184: Flow Matching and Diffusion Models - Lecture 02: Flow Matching (2026)"
+  url: https://www.youtube.com/watch?v=PNkMKWW8Khw
+  playlist: null
+  playlistIndex: null
+  channel: Peter Holderrieth
+  durationSeconds: 5003
+materials:
+  - label: "[slides 2]"
+    url: https://diffusion.csail.mit.edu/2026/docs/20260122_Lecture_02.pdf
+    type: slides
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/models-agents/mit-6s184-2026/notes/lecture-02/transcript.en.md
+  processor: video-subtitle-transcript

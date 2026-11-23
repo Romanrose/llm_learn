@@ -1,0 +1,29 @@
+schemaVersion: 1
+course: mit-6s184-2026
+lecture: lecture-01
+title: Flow and Diffusion Models
+preparedAt: 2026-11-23T03:00:19.452Z
+video:
+  id: 9eJQQVrUUoI
+  title: "MIT 6.S184: Flow Matching and Diffusion Models - Lecture 01 - Flow and Diffusion Models (2026)"
+  url: https://www.youtube.com/watch?v=9eJQQVrUUoI
+  playlist: null
+  playlistIndex: null
+  channel: Peter Holderrieth
+  durationSeconds: 4682
+materials:
+  - label: "[slides 1]"
+    url: https://diffusion.csail.mit.edu/2026/docs/20260120_Lecture_01.pdf
+    type: slides
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+  - label: Lecture Notes · 官方完整讲义
+    url: https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf
+    type: book
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/models-agents/mit-6s184-2026/notes/lecture-01/transcript.en.md
+  processor: video-subtitle-transcript

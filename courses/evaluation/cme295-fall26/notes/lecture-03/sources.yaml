@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cme295-fall26
+lecture: lecture-03
+title: LLM training
+preparedAt: 2026-11-23T07:54:09.582Z
+video:
+  id: S3bCDcJhz4s
+  title: Stanford CME295 Transformers & LLMs | Autumn 2026 | Lecture 3 - LLM training
+  url: https://www.youtube.com/watch?v=S3bCDcJhz4s
+  playlist: https://www.youtube.com/playlist?list=PLakGfbKCei80
+  playlistIndex: 3
+  channel: Stanford Online
+  durationSeconds: 6271
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/evaluation/cme295-fall26/notes/lecture-03/transcript.en.md
+  processor: video-subtitle-transcript

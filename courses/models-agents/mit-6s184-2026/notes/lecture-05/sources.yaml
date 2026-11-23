@@ -1,0 +1,25 @@
+schemaVersion: 1
+course: mit-6s184-2026
+lecture: lecture-05
+title: Latent Spaces and Neural Network Architectures
+preparedAt: 2026-11-23T03:29:49.043Z
+video:
+  id: g0MB1CCBmsI
+  title: "MIT 6.S184: Flow Matching and Diffusion Models - Lecture 04 - Latent Spaces, Neural networks (2026)"
+  url: https://www.youtube.com/watch?v=g0MB1CCBmsI
+  playlist: null
+  playlistIndex: null
+  channel: Peter Holderrieth
+  durationSeconds: 4855
+materials:
+  - label: "[slides 4]"
+    url: https://diffusion.csail.mit.edu/2026/docs/20260128_Lecture_04_edited.pdf
+    type: slides
+    note: 课程官方页面所列资料；访问权限与版本以原站为准。
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/models-agents/mit-6s184-2026/notes/lecture-05/transcript.en.md
+  processor: video-subtitle-transcript

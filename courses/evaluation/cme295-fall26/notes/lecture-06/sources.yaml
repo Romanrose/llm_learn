@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cme295-fall26
+lecture: lecture-06
+title: AI Agents
+preparedAt: 2026-11-23T07:43:08.387Z
+video:
+  id: nU2a2lm6vDE
+  title: Stanford CME295 Transformers & LLMs | Autumn 2026 | Lecture 6 - AI Agents
+  url: https://www.youtube.com/watch?v=nU2a2lm6vDE
+  playlist: https://www.youtube.com/playlist?list=PLakGfbKCei80
+  playlistIndex: 6
+  channel: Stanford Online
+  durationSeconds: 6043
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/evaluation/cme295-fall26/notes/lecture-06/transcript.en.md
+  processor: video-subtitle-transcript

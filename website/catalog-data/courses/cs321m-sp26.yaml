@@ -1,0 +1,102 @@
+kind: course
+id: cs321m-sp26
+category: eval
+title: Stanford CS321M · AI Measurement Science · Spring 2026
+shortTitle: CS321M Spring 2026
+eyebrow: Stanford · AI Measurement Science · Spring 2026
+year: 2026
+status: resources-approved
+publishOutputs: false
+unitLabel: 单元
+description: Sanmi Koyejo 等开设的 AI 测量科学研究生课程：以预测建模、效度与信度、基准与治理三条主线讲评测；官方提供课程页、教材与 Syllabus，未发现公开录像。
+paths:
+  root: courses/evaluation/cs321m-sp26
+  notes: courses/evaluation/cs321m-sp26/notes
+  resources: courses/evaluation/cs321m-sp26/resources
+  references: courses/evaluation/cs321m-sp26/references
+  exports: courses/evaluation/cs321m-sp26/exports
+instructors:
+  - Sanmi Koyejo
+  - Sang Truong
+official:
+  - label: 课程主页
+    url: https://web.stanford.edu/class/cs321m/
+  - label: Syllabus（Google Doc）
+    url: https://docs.google.com/document/d/1sE6VC7BZ0QK9gF8zD2904CJy-GRebW0dg3p0oi4jGEs/edit?tab=t.0
+  - label: 教材 AIMS
+    url: https://aims.stanford.edu/textbook/
+schedule:
+  source: https://web.stanford.edu/class/cs321m/
+  timezone: America/Los_Angeles
+  note: 周一、周三 11:30–12:50；官方课程页未发现公开录像，仅登记课程主线与资料入口。
+  events: []
+  unitCount: 3
+  checkedAt: 2026-11-23
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    description: 官方来源与版本说明。
+    from: 0
+    to: 0
+  - id: course
+    title: 01 · 课程单元
+    description: 按官方课程页的三条主线登记；逐讲资料以官方 Syllabus 为准。
+    from: 1
+    to: 999
+practice: []
+items:
+  - id: theme-01
+    order: 1
+    displayOrder: "1"
+    unitLabel: 单元
+    title: Measurement as Predictive Modeling
+    subtitle: 项目反应与成对响应模型、潜变量模型、基准响应矩阵、Scaling Laws 与样本高效测量。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://web.stanford.edu/class/cs321m/
+    resources:
+      - label: Syllabus
+        url: https://docs.google.com/document/d/1sE6VC7BZ0QK9gF8zD2904CJy-GRebW0dg3p0oi4jGEs/edit?tab=t.0
+        type: docs
+        note: 官方课程页所列；访问权限与版本以原站为准。
+      - label: 教材 AIMS
+        url: https://aims.stanford.edu/textbook/
+        type: book
+        note: 官方课程页所列；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: theme-02
+    order: 2
+    displayOrder: "2"
+    unitLabel: 单元
+    title: Measurement Validity and Reliability
+    subtitle: 内容、准则、构念、外部与结果效度；噪声模型与测量误差来源。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://web.stanford.edu/class/cs321m/
+    resources:
+      - label: Syllabus
+        url: https://docs.google.com/document/d/1sE6VC7BZ0QK9gF8zD2904CJy-GRebW0dg3p0oi4jGEs/edit?tab=t.0
+        type: docs
+        note: 官方课程页所列；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: theme-03
+    order: 3
+    displayOrder: "3"
+    unitLabel: 单元
+    title: Design, Governance, and Applications
+    subtitle: 基准与测量工具设计、合成与对抗评测、激励相容的排行榜设计、治理与政策。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://web.stanford.edu/class/cs321m/
+    resources:
+      - label: Syllabus
+        url: https://docs.google.com/document/d/1sE6VC7BZ0QK9gF8zD2904CJy-GRebW0dg3p0oi4jGEs/edit?tab=t.0
+        type: docs
+        note: 官方课程页所列；访问权限与版本以原站为准。
+    readings: []
+    outputs: []

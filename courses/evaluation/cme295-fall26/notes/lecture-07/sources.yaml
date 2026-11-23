@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cme295-fall26
+lecture: lecture-07
+title: LLM evaluation
+preparedAt: 2026-11-23T07:40:19.262Z
+video:
+  id: uoSynlTDyMs
+  title: Stanford CME295 Transformers & LLMs | Autumn 2026 | Lecture 7 - LLM Evaluation
+  url: https://www.youtube.com/watch?v=uoSynlTDyMs
+  playlist: https://www.youtube.com/playlist?list=PLakGfbKCei80
+  playlistIndex: 7
+  channel: Stanford Online
+  durationSeconds: 6299
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/evaluation/cme295-fall26/notes/lecture-07/transcript.en.md
+  processor: video-subtitle-transcript

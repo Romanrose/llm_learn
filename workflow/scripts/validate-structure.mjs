@@ -12,6 +12,7 @@ const groups = new Map([
   ['llm-courses', 'models-agents'],
   ['software-product', 'software-product'],
   ['robotics-hardware', 'robotics-hardware'],
+  ['evaluation', 'evaluation'],
 ])
 const courses = new Map()
 let publishedOutputs = 0
@@ -28,7 +29,7 @@ for (const file of readdirSync(catalogRoot).filter(file => file.endsWith('.yaml'
   assert.equal(file, `${course.id}.yaml`)
   assert(!courses.has(course.id), `Duplicate course: ${course.id}`)
   courses.set(course.id, course)
-  assert(/^courses\/(foundations|models-agents|software-product|robotics-hardware)\/[^/]+$/.test(course.paths?.root), `Invalid course root: ${course.id}`)
+  assert(/^courses\/(foundations|models-agents|software-product|robotics-hardware|evaluation)\/[^/]+$/.test(course.paths?.root), `Invalid course root: ${course.id}`)
   assert.equal(course.paths.root.split('/').at(-1), course.id)
   assert(existsSync(join(insideRoot(course.paths.root), 'README.md')), `Missing course README: ${course.id}`)
   for (const value of Object.values(course.paths)) {

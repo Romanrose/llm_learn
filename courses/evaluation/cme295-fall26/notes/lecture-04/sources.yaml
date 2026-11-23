@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cme295-fall26
+lecture: lecture-04
+title: Reinforcement learning with LLMs
+preparedAt: 2026-11-23T07:51:39.098Z
+video:
+  id: 3Vaj0Oka_t4
+  title: Stanford CME295 Transformers & LLMs | Autumn 2026 | Lecture 4 - Reinforcement Learning with LLMs
+  url: https://www.youtube.com/watch?v=3Vaj0Oka_t4
+  playlist: https://www.youtube.com/playlist?list=PLakGfbKCei80
+  playlistIndex: 4
+  channel: Stanford Online
+  durationSeconds: 6206
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/evaluation/cme295-fall26/notes/lecture-04/transcript.en.md
+  processor: video-subtitle-transcript

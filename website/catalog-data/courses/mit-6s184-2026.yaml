@@ -67,10 +67,10 @@ items:
     subtitle: 固定使用 /2026/ 资料；第三讲分 A/B 两段，合计六个视频单元。
     status: resources-approved
     official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=9eJQQVrUUoI
       - label: 官方课程表
         url: https://diffusion.csail.mit.edu/2026/
-      - label: 2026 官方录像
-        url: https://www.youtube.com/watch?v=9eJQQVrUUoI
     resources:
       - label: "[slides 1]"
         url: https://diffusion.csail.mit.edu/2026/docs/20260120_Lecture_01.pdf
@@ -82,6 +82,10 @@ items:
         note: 课程官方页面所列资料；访问权限与版本以原站为准。
     readings: []
     outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/mit-6s184-2026/notes/lecture-01/sources.yaml
+      preparedAt: 2026-11-23T03:00:19.452Z
   - id: lecture-02
     order: 2
     displayOrder: "2"
@@ -90,10 +94,10 @@ items:
     subtitle: 固定使用 /2026/ 资料；第三讲分 A/B 两段，合计六个视频单元。
     status: resources-approved
     official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=PNkMKWW8Khw
       - label: 官方课程表
         url: https://diffusion.csail.mit.edu/2026/
-      - label: 2026 官方录像
-        url: https://www.youtube.com/watch?v=PNkMKWW8Khw
     resources:
       - label: "[slides 2]"
         url: https://diffusion.csail.mit.edu/2026/docs/20260122_Lecture_02.pdf
@@ -101,6 +105,10 @@ items:
         note: 课程官方页面所列资料；访问权限与版本以原站为准。
     readings: []
     outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/mit-6s184-2026/notes/lecture-02/sources.yaml
+      preparedAt: 2026-11-23T03:33:42.363Z
   - id: lecture-03
     order: 3
     displayOrder: 3-A
@@ -109,10 +117,10 @@ items:
     subtitle: 固定使用 /2026/ 资料；第三讲分 A/B 两段，合计六个视频单元。
     status: resources-approved
     official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=ngC3QnYSVNM
       - label: 官方课程表
         url: https://diffusion.csail.mit.edu/2026/
-      - label: 2026 官方录像
-        url: https://www.youtube.com/watch?v=ngC3QnYSVNM
     resources:
       - label: "[slides 3]"
         url: https://diffusion.csail.mit.edu/2026/docs/20260123_Lecture_03.pdf
@@ -120,6 +128,10 @@ items:
         note: 课程官方页面所列资料；访问权限与版本以原站为准。
     readings: []
     outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/mit-6s184-2026/notes/lecture-03/sources.yaml
+      preparedAt: 2026-11-23T03:28:59.830Z
   - id: lecture-04
     order: 4
     displayOrder: 3-B
@@ -128,10 +140,10 @@ items:
     subtitle: 固定使用 /2026/ 资料；第三讲分 A/B 两段，合计六个视频单元。
     status: resources-approved
     official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=8oWZ1bHwyRI
       - label: 官方课程表
         url: https://diffusion.csail.mit.edu/2026/
-      - label: 2026 官方录像
-        url: https://www.youtube.com/watch?v=8oWZ1bHwyRI
     resources:
       - label: "[slides 3]"
         url: https://diffusion.csail.mit.edu/2026/docs/20260123_Lecture_03.pdf
@@ -139,6 +151,10 @@ items:
         note: 课程官方页面所列资料；访问权限与版本以原站为准。
     readings: []
     outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/mit-6s184-2026/notes/lecture-04/sources.yaml
+      preparedAt: 2026-11-23T03:28:53.438Z
   - id: lecture-05
     order: 5
     displayOrder: "4"
@@ -147,10 +163,10 @@ items:
     subtitle: 固定使用 /2026/ 资料；第三讲分 A/B 两段，合计六个视频单元。
     status: resources-approved
     official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=g0MB1CCBmsI
       - label: 官方课程表
         url: https://diffusion.csail.mit.edu/2026/
-      - label: 2026 官方录像
-        url: https://www.youtube.com/watch?v=g0MB1CCBmsI
     resources:
       - label: "[slides 4]"
         url: https://diffusion.csail.mit.edu/2026/docs/20260128_Lecture_04_edited.pdf
@@ -158,6 +174,10 @@ items:
         note: 课程官方页面所列资料；访问权限与版本以原站为准。
     readings: []
     outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/mit-6s184-2026/notes/lecture-05/sources.yaml
+      preparedAt: 2026-11-23T03:29:49.043Z
   - id: lecture-06
     order: 6
     displayOrder: "5"
@@ -166,10 +186,10 @@ items:
     subtitle: 固定使用 /2026/ 资料；第三讲分 A/B 两段，合计六个视频单元。
     status: resources-approved
     official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=d0kmyEJN2hI
       - label: 官方课程表
         url: https://diffusion.csail.mit.edu/2026/
-      - label: 2026 官方录像
-        url: https://www.youtube.com/watch?v=d0kmyEJN2hI
     resources:
       - label: "[slides 5]"
         url: https://diffusion.csail.mit.edu/2026/docs/20260130_Lecture_05.pdf
@@ -177,3 +197,7 @@ items:
         note: 课程官方页面所列资料；访问权限与版本以原站为准。
     readings: []
     outputs: []
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/mit-6s184-2026/notes/lecture-06/sources.yaml
+      preparedAt: 2026-11-23T03:31:09.963Z
