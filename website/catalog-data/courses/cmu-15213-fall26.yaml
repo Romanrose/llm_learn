@@ -32,7 +32,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 25
   note: 官网未编号，按主题讲座顺序分配 lecture ID；考试、停课、Recitation 与 Bootcamp 不计入讲数。
-  resourceUpdatedAt: 2026-11-21
+  resourceUpdatedAt: 2026-11-24
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -1159,11 +1159,19 @@ items:
     title: "Synchronization: Advanced"
     subtitle: 死锁、同步与线程安全
     overview: 死锁、同步与线程安全。建议动手任务：列出锁顺序并分析等待环，用测试验证修复。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 实验发放与提交以 Autolab 为准；公开自学版不等同当期实验。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cs.cmu.edu/~213/schedule.html
-    resources: []
+    resources:
+      - label: pdf
+        url: https://www.cs.cmu.edu/~213/lectures/23-sync-advanced.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-11-24。
+      - label: pptx
+        url: https://www.cs.cmu.edu/~213/lectures/23-sync-advanced.pptx
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cs.cmu.edu/~213/schedule.html；核对：2026-11-24。
     readings:
       - label: CSAPP 第 3 版 · 12.5.4-5, 12.7-8
         url: https://csapp.cs.cmu.edu/3e/students.html

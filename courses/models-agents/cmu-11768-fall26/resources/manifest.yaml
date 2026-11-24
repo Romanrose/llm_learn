@@ -382,6 +382,42 @@ resources:
     source: https://www.cmu-agents.com/
     status: linked
     local: null
+  - label: "Karthik Narasimhan lecture slides: How to Trust Your AI Agents"
+    url: https://www.cmu-agents.com/slides/2026-11-19-karthik-narasimhan.pdf
+    type: slides
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: "WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents"
+    url: https://arxiv.org/abs/2207.01206
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?"
+    url: https://arxiv.org/abs/2310.06770
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains"
+    url: https://arxiv.org/abs/2406.12045
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: Establishing Best Practices for Building Rigorous Agentic Benchmarks (Agentic Benchmark Checklist)
+    url: https://arxiv.org/abs/2507.02825
+    type: paper
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
+  - label: "Trust in Automation: Designing for Appropriate Reliance"
+    url: https://doi.org/10.1518/hfes.46.1.50_30392
+    type: docs
+    source: https://www.cmu-agents.com/
+    status: linked
+    local: null
 generation:
   state: reviewed
   slidesLectures: 12
@@ -389,4 +425,4 @@ generation:
   candidateProvider: deepseek
   publication: 用户确认后显式开放前 12 讲 Note/Blog 与前 9 讲中英文逐字稿。
   approvedAt: 2026-10-03T10:09:56.644Z
-resourceUpdatedAt: 2026-11-21
+resourceUpdatedAt: 2026-11-24

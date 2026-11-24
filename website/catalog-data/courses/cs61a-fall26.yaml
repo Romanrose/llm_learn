@@ -26,7 +26,7 @@ schedule:
   checkedAt: 2026-10-03
   unitCount: 40
   note: 保留官网 Lecture 1–40 编号；未来资料尚未开放，不猜测链接。
-  resourceUpdatedAt: 2026-11-21
+  resourceUpdatedAt: 2026-11-24
 learningModules:
   - id: references
     title: 00 · 课程参考资料
@@ -1890,11 +1890,23 @@ items:
     title: Software Testing
     subtitle: 规格、边界与回归
     overview: 规格、边界与回归。建议动手任务：给一个已有函数添加失败案例，再修复并回归。 本地已有预习提纲，尚未完成课堂笔记、Blog 和中英逐字稿审核。 配套主题视频与当期课堂录播分别记录。
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://cs61a.org/fa26/
-    resources: []
+    resources:
+      - label: Databases
+        url: https://cs61a.org/fa26/lectures/37-databases/
+        type: slides
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-24。
+      - label: (Slides)
+        url: https://cs61a.org/fa26/assets/lec/37-Databases.pdf
+        type: docs
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-24。
+      - label: (Examples)
+        url: https://cs61a.org/fa26/assets/lec/37.py
+        type: code
+        note: 官方课程页面新增资料；来源：https://cs61a.org/fa26/；核对：2026-11-24。
     readings:
       - label: YouTube
         url: https://www.youtube.com/watch?v=f-Q4rWimfVg&list=PL6BsET-8jgYVQApYDUVHMAUXq_ZwN2UDc

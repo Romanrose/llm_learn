@@ -638,4 +638,22 @@ resources:
     source: https://cs61a.org/fa26/
     status: linked
     local: null
-resourceUpdatedAt: 2026-11-21
+  - label: Databases
+    url: https://cs61a.org/fa26/lectures/37-databases/
+    type: slides
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Slides)
+    url: https://cs61a.org/fa26/assets/lec/37-Databases.pdf
+    type: docs
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+  - label: (Examples)
+    url: https://cs61a.org/fa26/assets/lec/37.py
+    type: code
+    source: https://cs61a.org/fa26/
+    status: linked
+    local: null
+resourceUpdatedAt: 2026-11-24

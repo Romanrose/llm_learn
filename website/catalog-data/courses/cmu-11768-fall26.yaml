@@ -58,7 +58,7 @@ schedule:
     - code: 15b
       date: Thu, Dec 3, 2026
       title: Final presentations (posters)
-  resourceUpdatedAt: 2026-11-21
+  resourceUpdatedAt: 2026-11-24
   unitCount: 23
 learningModules:
   - id: course-references
@@ -2052,11 +2052,37 @@ items:
     module: Advanced Topics
     instructors:
       - Karthik Narasimhan
-    status: scheduled
+    status: resources-approved
     official:
       - label: 官方课程日程
         url: https://www.cmu-agents.com/#schedule
     outputs: []
+    resources:
+      - label: "Karthik Narasimhan lecture slides: How to Trust Your AI Agents"
+        url: https://www.cmu-agents.com/slides/2026-11-19-karthik-narasimhan.pdf
+        type: slides
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-24。
+    readings:
+      - label: "WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents"
+        url: https://arxiv.org/abs/2207.01206
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-24。
+      - label: "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?"
+        url: https://arxiv.org/abs/2310.06770
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-24。
+      - label: "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains"
+        url: https://arxiv.org/abs/2406.12045
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-24。
+      - label: Establishing Best Practices for Building Rigorous Agentic Benchmarks (Agentic Benchmark Checklist)
+        url: https://arxiv.org/abs/2507.02825
+        type: paper
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-24。
+      - label: "Trust in Automation: Designing for Appropriate Reliance"
+        url: https://doi.org/10.1518/hfes.46.1.50_30392
+        type: docs
+        note: 官方课程页面新增资料；来源：https://www.cmu-agents.com/；核对：2026-11-24。
   - id: lecture-23
     order: 23
     scheduleCode: 14a
