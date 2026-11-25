@@ -1,0 +1,24 @@
+schemaVersion: 1
+state: candidate-ready
+provider: deepseek
+model: deepseek-v4-flash
+createdAt: 2026-11-23T03:29:52.411Z
+course: mit-6s184-2026
+lecture: lecture-03
+inputs:
+  transcriptEn: courses/models-agents/mit-6s184-2026/notes/lecture-03/transcript.en.md
+  lecture: null
+outputs:
+  transcriptZh: courses/models-agents/mit-6s184-2026/notes/lecture-03/references/deepseek/transcript.zh-CN.md
+  note: courses/models-agents/mit-6s184-2026/notes/lecture-03/references/deepseek/note.md
+  blog: courses/models-agents/mit-6s184-2026/notes/lecture-03/references/deepseek/blog.md
+translation:
+  chunks: 5
+  maxConcurrent: 3
+review:
+  state: pending
+  required:
+    - completeness
+    - terminology
+    - hallucination
+    - citations

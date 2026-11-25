@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cme295-fall26
+lecture: lecture-01
+title: Transformers
+preparedAt: 2026-11-23T08:07:08.883Z
+video:
+  id: 114i2Kz-LZA
+  title: Stanford CME295 Transformers & LLMs | Autumn 2026 | Lecture 1 - Transformers
+  url: https://www.youtube.com/watch?v=114i2Kz-LZA
+  playlist: https://www.youtube.com/playlist?list=PLakGfbKCei80
+  playlistIndex: 1
+  channel: Stanford Online
+  durationSeconds: 6268
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/evaluation/cme295-fall26/notes/lecture-01/transcript.en.md
+  processor: video-subtitle-transcript

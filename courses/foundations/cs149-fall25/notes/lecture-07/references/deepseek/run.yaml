@@ -1,0 +1,24 @@
+schemaVersion: 1
+state: candidate-ready
+provider: deepseek
+model: deepseek-v4-flash
+createdAt: 2026-11-23T03:38:55.667Z
+course: cs149-fall25
+lecture: lecture-07
+inputs:
+  transcriptEn: courses/foundations/cs149-fall25/notes/lecture-07/transcript.en.md
+  lecture: null
+outputs:
+  transcriptZh: courses/foundations/cs149-fall25/notes/lecture-07/references/deepseek/transcript.zh-CN.md
+  note: courses/foundations/cs149-fall25/notes/lecture-07/references/deepseek/note.md
+  blog: courses/foundations/cs149-fall25/notes/lecture-07/references/deepseek/blog.md
+translation:
+  chunks: 10
+  maxConcurrent: 3
+review:
+  state: pending
+  required:
+    - completeness
+    - terminology
+    - hallucination
+    - citations

@@ -1,0 +1,152 @@
+kind: course
+id: jhu-ph140850-2026
+category: eval
+title: JHU PH.140.850 · Six Ideas in AI Evaluation · First Term 2026
+shortTitle: JHU PH.140.850 2026
+eyebrow: Johns Hopkins Bloomberg SPH · Six Ideas in AI Evaluation · 2026
+year: 2026
+status: resources-approved
+publishOutputs: false
+unitLabel: 单元
+description: Yiqun T. Chen 的 AI 评测方法课：预测评估、基准、模型生成标签、分布偏移、验证研究设计与亚群公平六个主题；官方课程页与 Syllabus 公开。
+paths:
+  root: courses/evaluation/jhu-ph140850-2026
+  notes: courses/evaluation/jhu-ph140850-2026/notes
+  resources: courses/evaluation/jhu-ph140850-2026/resources
+  references: courses/evaluation/jhu-ph140850-2026/references
+  exports: courses/evaluation/jhu-ph140850-2026/exports
+instructors:
+  - Yiqun T. Chen
+official:
+  - label: 课程主页
+    url: https://yiqunchen.github.io/ph140850_2026/
+  - label: Syllabus（PDF）
+    url: https://yiqunchen.github.io/assets/pdf/ph140850_2026_syllabus.pdf
+schedule:
+  source: https://yiqunchen.github.io/ph140850_2026/
+  timezone: America/New_York
+  note: 周一 3:30–4:50；Sep 7 为 Labor Day。第一周有官方 Notes（PDF），其余讲义标注 TBA 或随课发布。
+  events: []
+  unitCount: 6
+  checkedAt: 2026-11-23
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    description: 官方来源与版本说明。
+    from: 0
+    to: 0
+  - id: course
+    title: 01 · 课程单元
+    description: 六个主题按官方课程表登记。
+    from: 1
+    to: 999
+practice: []
+items:
+  - id: topic-01
+    order: 1
+    displayOrder: "1"
+    unitLabel: Topic
+    date: Aug 31
+    title: Evaluating predictions
+    subtitle: 准确率与校准、分类与校准指标、适当评分规则、低流行率与类别不平衡下的行为。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://yiqunchen.github.io/ph140850_2026/
+    resources:
+      - label: Syllabus（PDF）
+        url: https://yiqunchen.github.io/assets/pdf/ph140850_2026_syllabus.pdf
+        type: docs
+        note: 官方课程页所列；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: topic-02
+    order: 2
+    displayOrder: "2"
+    unitLabel: Topic
+    date: Sep 14
+    title: Benchmarks
+    subtitle: 基准在测什么：构念效度、数据污染、排行榜与古德哈特定律；如何为无基准系统建评测集。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://yiqunchen.github.io/ph140850_2026/
+    resources:
+      - label: Syllabus（PDF）
+        url: https://yiqunchen.github.io/assets/pdf/ph140850_2026_syllabus.pdf
+        type: docs
+        note: 官方课程页所列；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: topic-03
+    order: 3
+    displayOrder: "3"
+    unitLabel: Topic
+    date: Sep 21
+    title: Model-generated labels
+    subtitle: 模型标注的测量误差、预测驱动推断与 LLM 标注者可靠性。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://yiqunchen.github.io/ph140850_2026/
+    resources:
+      - label: Syllabus（PDF）
+        url: https://yiqunchen.github.io/assets/pdf/ph140850_2026_syllabus.pdf
+        type: docs
+        note: 官方课程页所列；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: topic-04
+    order: 4
+    displayOrder: "4"
+    unitLabel: Topic
+    date: Sep 28
+    title: Distribution shift
+    subtitle: 跨时间、站点与亚群的性能变化诊断。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://yiqunchen.github.io/ph140850_2026/
+    resources:
+      - label: Syllabus（PDF）
+        url: https://yiqunchen.github.io/assets/pdf/ph140850_2026_syllabus.pdf
+        type: docs
+        note: 官方课程页所列；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: topic-05
+    order: 5
+    displayOrder: "5"
+    unitLabel: Topic
+    date: Oct 5
+    title: Designing the validation study
+    subtitle: 功效分析、主动学习与预注册。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://yiqunchen.github.io/ph140850_2026/
+    resources:
+      - label: Syllabus（PDF）
+        url: https://yiqunchen.github.io/assets/pdf/ph140850_2026_syllabus.pdf
+        type: docs
+        note: 官方课程页所列；访问权限与版本以原站为准。
+    readings: []
+    outputs: []
+  - id: topic-06
+    order: 6
+    displayOrder: "6"
+    unitLabel: Topic
+    date: Oct 12
+    title: Subgroups, fairness, and privacy
+    subtitle: 公平性准则、亚群分析与隐私。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://yiqunchen.github.io/ph140850_2026/
+    resources:
+      - label: Syllabus（PDF）
+        url: https://yiqunchen.github.io/assets/pdf/ph140850_2026_syllabus.pdf
+        type: docs
+        note: 官方课程页所列；访问权限与版本以原站为准。
+    readings: []
+    outputs: []

@@ -1,0 +1,401 @@
+kind: course
+id: cme295-fall26
+category: eval
+title: Stanford CME 295 · Transformers & Large Language Models · Autumn 2026
+shortTitle: CME 295 Autumn 2026
+eyebrow: Stanford · Transformers & Large Language Models · Autumn 2026
+year: 2026
+status: resources-approved
+publishOutputs: true
+unitLabel: 单元
+description: Afshine Amidi 与 Shervine Amidi 的 Transformer 与大模型课程；第 7 讲专讲 LLM 评测（LLM-as-a-judge、偏差、Agent 评测与基准），官方公开 YouTube 录像。
+paths:
+  root: courses/evaluation/cme295-fall26
+  notes: courses/evaluation/cme295-fall26/notes
+  resources: courses/evaluation/cme295-fall26/resources
+  references: courses/evaluation/cme295-fall26/references
+  exports: courses/evaluation/cme295-fall26/exports
+instructors:
+  - Afshine Amidi
+  - Shervine Amidi
+official:
+  - label: 课程主页
+    url: https://cme295.stanford.edu/
+  - label: 课程表与录像
+    url: https://cme295.stanford.edu/syllabus/
+  - label: 官方 YouTube 播放列表
+    url: https://www.youtube.com/playlist?list=PLakGfbKCei80
+schedule:
+  source: https://cme295.stanford.edu/syllabus/
+  timezone: America/Los_Angeles
+  note: 周五课程；无作业，期中与期末考试。第 8–9 讲录像尚未发布。
+  events:
+    - date: 2026-10-23
+      title: Midterm
+    - date: 2026-12-09
+      title: Final
+  unitCount: 9
+  checkedAt: 2026-11-23
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    description: 官方来源与版本说明。
+    from: 0
+    to: 0
+  - id: course
+    title: 01 · 课程单元
+    description: 九次教学讲座；官方录像随课发布。
+    from: 1
+    to: 999
+practice: []
+items:
+  - id: lecture-01
+    order: 1
+    displayOrder: "1"
+    unitLabel: Lecture
+    date: 2026-09-25
+    title: Transformers
+    subtitle: NLP 任务背景、分词、嵌入、Word2vec/RNN/LSTM、注意力与 Transformer 架构。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=114i2Kz-LZA
+      - label: 课程表
+        url: https://cme295.stanford.edu/syllabus/
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=114i2Kz-LZA&list=PLakGfbKCei80&index=1
+    resources: []
+    readings: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-01/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-01/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-01/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-01/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-01/sources.yaml
+      preparedAt: 2026-11-23T08:07:08.883Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-01/review.yaml
+      reviewedAt: 2026-11-25T06:52:57.006Z
+  - id: lecture-02
+    order: 2
+    displayOrder: "2"
+    unitLabel: Lecture
+    date: 2026-10-02
+    title: Large Language Models
+    subtitle: 模型家族、MoE、MHA/MQA/GQA、RoPE、上下文长度、温度与采样。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=GaIeu3npx04
+      - label: 课程表
+        url: https://cme295.stanford.edu/syllabus/
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=GaIeu3npx04&list=PLakGfbKCei80&index=2
+    resources: []
+    readings: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-02/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-02/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-02/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-02/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-02/sources.yaml
+      preparedAt: 2026-11-23T08:04:44.124Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-02/review.yaml
+      reviewedAt: 2026-11-25T06:52:57.191Z
+  - id: lecture-03
+    order: 3
+    displayOrder: "3"
+    unitLabel: Lecture
+    date: 2026-10-09
+    title: LLM training
+    subtitle: 预训练、SFT、LoRA、偏好调优（RLHF/DPO）、推理与 on-policy distillation。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=S3bCDcJhz4s
+      - label: 课程表
+        url: https://cme295.stanford.edu/syllabus/
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=S3bCDcJhz4s&list=PLakGfbKCei80&index=3
+    resources: []
+    readings: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-03/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-03/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-03/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-03/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-03/sources.yaml
+      preparedAt: 2026-11-23T07:54:09.582Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-03/review.yaml
+      reviewedAt: 2026-11-25T06:52:57.357Z
+  - id: lecture-04
+    order: 4
+    displayOrder: "4"
+    unitLabel: Lecture
+    date: 2026-10-16
+    title: Reinforcement learning with LLMs
+    subtitle: 奖励设计、策略梯度、PPO（RLHF）、GRPO（RLVR）。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=3Vaj0Oka_t4
+      - label: 课程表
+        url: https://cme295.stanford.edu/syllabus/
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=3Vaj0Oka_t4&list=PLakGfbKCei80&index=4
+    resources: []
+    readings: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-04/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-04/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-04/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-04/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-04/sources.yaml
+      preparedAt: 2026-11-23T07:51:39.098Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-04/review.yaml
+      reviewedAt: 2026-11-25T06:52:57.520Z
+  - id: lecture-05
+    order: 5
+    displayOrder: "5"
+    unitLabel: Lecture
+    date: 2026-10-30
+    title: LLM systems
+    subtitle: 分布式训练、推理优化、KV cache、投机解码、FlashAttention 与硬件权衡。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=25KIyaeI_Fg
+      - label: 课程表
+        url: https://cme295.stanford.edu/syllabus/
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=25KIyaeI_Fg&list=PLakGfbKCei80&index=5
+    resources: []
+    readings: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-05/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-05/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-05/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-05/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-05/sources.yaml
+      preparedAt: 2026-11-23T08:25:31.551Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-05/review.yaml
+      reviewedAt: 2026-11-25T06:52:57.691Z
+  - id: lecture-06
+    order: 6
+    displayOrder: "6"
+    unitLabel: Lecture
+    date: 2026-11-06
+    title: AI Agents
+    subtitle: 工具调用、MCP、记忆与检索、上下文压缩、Harness 优化、Coding Agent、Skills。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=nU2a2lm6vDE
+      - label: 课程表
+        url: https://cme295.stanford.edu/syllabus/
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=nU2a2lm6vDE&list=PLakGfbKCei80&index=6
+    resources: []
+    readings: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-06/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-06/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-06/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-06/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-06/sources.yaml
+      preparedAt: 2026-11-23T07:43:08.387Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-06/review.yaml
+      reviewedAt: 2026-11-25T06:52:57.868Z
+  - id: lecture-07
+    order: 7
+    displayOrder: "7"
+    unitLabel: Lecture
+    date: 2026-11-13
+    title: LLM evaluation
+    subtitle: LLM-as-a-judge、最佳实践、偏差与陷阱、Agent 评测与基准。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=uoSynlTDyMs
+      - label: 课程表
+        url: https://cme295.stanford.edu/syllabus/
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=uoSynlTDyMs&list=PLakGfbKCei80&index=7
+    resources: []
+    readings: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-07/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-07/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-07/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-07/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-07/sources.yaml
+      preparedAt: 2026-11-23T07:40:19.262Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-07/review.yaml
+      reviewedAt: 2026-11-25T06:52:58.041Z
+  - id: lecture-08
+    order: 8
+    displayOrder: "8"
+    unitLabel: Lecture
+    date: 2026-11-20
+    title: Diffusion LLMs
+    subtitle: 连续/离散/掩码扩散，训练与推理；官方录像尚未发布。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://cme295.stanford.edu/syllabus/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-09
+    order: 9
+    displayOrder: "9"
+    unitLabel: Lecture
+    date: 2026-12-04
+    title: Trending topics
+    subtitle: 回顾、多模态与结语；官方录像尚未发布。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://cme295.stanford.edu/syllabus/
+    resources: []
+    readings: []
+    outputs: []

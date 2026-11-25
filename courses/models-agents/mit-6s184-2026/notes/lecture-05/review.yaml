@@ -1,0 +1,14 @@
+schemaVersion: 1
+state: reviewed
+course: mit-6s184-2026
+lecture: lecture-05
+provider: deepseek
+reviewedAt: 2026-11-25T06:52:58.863Z
+source: courses/models-agents/mit-6s184-2026/notes/lecture-05/references/deepseek
+outputs:
+  chinese: courses/models-agents/mit-6s184-2026/notes/lecture-05/transcript.zh-CN.md
+  note: courses/models-agents/mit-6s184-2026/notes/lecture-05/note.md
+  blog: courses/models-agents/mit-6s184-2026/notes/lecture-05/blog.md
+checks:
+  errors: []
+  warnings: []

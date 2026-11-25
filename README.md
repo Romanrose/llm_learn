@@ -42,6 +42,17 @@
 | [CS224R Spring 2026](courses/models-agents/cs224r-sp26/) | 模仿学习、Actor-Critic、离线 RL 与 LLM / 机器人应用 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs224r-sp26/) |
 | [MIT 6.S184 2026](courses/models-agents/mit-6s184-2026/) | Flow Matching、扩散模型、ODE / SDE 与生成实践 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/mit-6s184-2026/) |
 
+### 评测与基准
+
+语言模型与 Agent 的评测方法、基准设计与统计检验；[专题导读](https://romanrose.github.io/llm_learn/topics/evaluation/)。
+
+| 课程与本地资料 | 学习重点 | 网站 |
+| --- | --- | --- |
+| [CME 295 Autumn 2026](courses/evaluation/cme295-fall26/) | Transformers 与 LLM；第 7 讲专讲评测，含官方录像 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cme295-fall26/) |
+| [CS321M Spring 2026](courses/evaluation/cs321m-sp26/) | AI Measurement Science：预测建模、效度与信度 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs321m-sp26/) |
+| [CMU 11-801 Fall 2026](courses/evaluation/cmu-11801-fall26/) | 语言技术的离线/在线指标与实验设计 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cmu-11801-fall26/) |
+| [JHU PH.140.850 2026](courses/evaluation/jhu-ph140850-2026/) | Six Ideas in AI Evaluation | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/jhu-ph140850-2026/) |
+
 ### 软件与产品开发
 
 软件质量、需求发现、交互设计与 AI 产品。

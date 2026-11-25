@@ -18,6 +18,9 @@ categories:
   - id: infra
     title: AI Infra
     description: GPU、分布式系统、网络与开发环境
+  - id: eval
+    title: 评测与基准
+    description: 语言模型与 Agent 的评测方法、基准、LLM-as-a-judge、效度与信度
   - id: papers
     title: 论文
     description: 经典论文精读、复现与扩展阅读
@@ -95,6 +98,30 @@ sections:
         title: MIT 6.S184 2026
         subtitle: Flow Matching、扩散模型与随机微分方程；六个视频单元、官方讲义及三份实践 Notebook。
         route: /generated/courses/mit-6s184-2026/
+  - id: evaluation
+    title: 评测与基准
+    description: 语言模型与 Agent 的评测方法、基准设计、LLM-as-a-judge、测量效度与统计检验
+    items:
+      - id: cme295-fall26
+        courseId: cme295-fall26
+        title: Stanford CME 295 Autumn 2026
+        subtitle: Transformers & LLMs · 第 7 讲专讲 LLM 评测，含官方公开录像
+        route: /generated/courses/cme295-fall26/
+      - id: cs321m-sp26
+        courseId: cs321m-sp26
+        title: Stanford CS321M Spring 2026
+        subtitle: AI Measurement Science · 预测建模、效度与信度、基准与治理
+        route: /generated/courses/cs321m-sp26/
+      - id: cmu-11801-fall26
+        courseId: cmu-11801-fall26
+        title: CMU 11-801 Fall 2026
+        subtitle: Quantitative Evaluation of Language Technologies · 离线/在线指标与实验设计
+        route: /generated/courses/cmu-11801-fall26/
+      - id: jhu-ph140850-2026
+        courseId: jhu-ph140850-2026
+        title: JHU PH.140.850 2026
+        subtitle: Six Ideas in AI Evaluation · 基准、模型标注、分布偏移与研究设计
+        route: /generated/courses/jhu-ph140850-2026/
   - id: software-product
     title: 软件与产品开发
     description: 软件质量、产品需求与交互设计
@@ -150,6 +177,10 @@ sections:
         subtitle: Pico 2 / RP2350 上的嵌入式系统、通信、信号处理和控制，是小型 AI 硬件的基础；接入三个 Lab 与开放项目。
         route: /generated/courses/cornell-ece4760-current/
 referenceCollections:
+  - id: evaluation-references
+    title: 评测与基准专题
+    description: 评测历史、核心论文、课程与工具
+    route: /topics/evaluation/
   - id: product-references
     title: 产品管理经典资料
     description: SVPG · INSPIRED 第 2 版与 TRANSFORMED、Product Talk · 持续产品发现

@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cme295-fall26
+lecture: lecture-02
+title: Large Language Models
+preparedAt: 2026-11-23T08:04:44.124Z
+video:
+  id: GaIeu3npx04
+  title: Stanford CME295 Transformers & LLMs | Autumn 2026 | Lecture 2 - Large Language Models
+  url: https://www.youtube.com/watch?v=GaIeu3npx04
+  playlist: https://www.youtube.com/playlist?list=PLakGfbKCei80
+  playlistIndex: 2
+  channel: Stanford Online
+  durationSeconds: 6194
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/evaluation/cme295-fall26/notes/lecture-02/transcript.en.md
+  processor: video-subtitle-transcript
