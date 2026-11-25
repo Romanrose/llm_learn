@@ -6,7 +6,7 @@ shortTitle: CS149 Fall 2025
 eyebrow: Stanford · Parallel Computing · 2025
 year: 2025
 status: updating
-publishOutputs: false
+publishOutputs: true
 description: 从多核、SIMD 与 GPU 编程出发，系统掌握并行程序的性能、硬件与同步设计。
 referenceRoute: /references/cs149-fall25
 paths:
@@ -174,25 +174,25 @@ items:
       manifest: courses/foundations/cs149-fall25/notes/lecture-07/sources.yaml
       preparedAt: 2026-08-18T08:17:46.739Z
     generation:
-      state: draft-ready
-      manifest: courses/foundations/cs149-fall25/notes/lecture-07/generation.yaml
-      completedAt: 2026-08-18T08:34:30.834Z
+      state: reviewed
+      manifest: courses/foundations/cs149-fall25/notes/lecture-07/review.yaml
+      reviewedAt: 2026-11-25T06:52:59.200Z
     outputs:
       - id: lecture-note
         label: Lecture Note
         source: courses/foundations/cs149-fall25/notes/lecture-07/note.md
         searchable: true
-        reviewStatus: draft
+        reviewStatus: reviewed
       - id: blog
         label: Blog 解读
         source: courses/foundations/cs149-fall25/notes/lecture-07/blog.md
         searchable: true
-        reviewStatus: draft
+        reviewStatus: reviewed
       - id: transcript-zh
         label: 中文逐字稿
         source: courses/foundations/cs149-fall25/notes/lecture-07/transcript.zh-CN.md
         searchable: false
-        reviewStatus: draft
+        reviewStatus: reviewed
       - id: transcript-en
         label: 英文逐字稿
         source: courses/foundations/cs149-fall25/notes/lecture-07/transcript.en.md

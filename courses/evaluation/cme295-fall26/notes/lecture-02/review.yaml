@@ -1,0 +1,14 @@
+schemaVersion: 1
+state: reviewed
+course: cme295-fall26
+lecture: lecture-02
+provider: deepseek
+reviewedAt: 2026-11-25T06:52:57.188Z
+source: courses/evaluation/cme295-fall26/notes/lecture-02/references/deepseek
+outputs:
+  chinese: courses/evaluation/cme295-fall26/notes/lecture-02/transcript.zh-CN.md
+  note: courses/evaluation/cme295-fall26/notes/lecture-02/note.md
+  blog: courses/evaluation/cme295-fall26/notes/lecture-02/blog.md
+checks:
+  errors: []
+  warnings: []

@@ -1,0 +1,14 @@
+schemaVersion: 1
+state: reviewed
+course: cs149-fall25
+lecture: lecture-07
+provider: deepseek
+reviewedAt: 2026-11-25T06:52:59.198Z
+source: courses/foundations/cs149-fall25/notes/lecture-07/references/deepseek
+outputs:
+  chinese: courses/foundations/cs149-fall25/notes/lecture-07/transcript.zh-CN.md
+  note: courses/foundations/cs149-fall25/notes/lecture-07/note.md
+  blog: courses/foundations/cs149-fall25/notes/lecture-07/blog.md
+checks:
+  errors: []
+  warnings: []

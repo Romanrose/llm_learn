@@ -6,7 +6,7 @@ shortTitle: CME 295 Autumn 2026
 eyebrow: Stanford · Transformers & Large Language Models · Autumn 2026
 year: 2026
 status: resources-approved
-publishOutputs: false
+publishOutputs: true
 unitLabel: 单元
 description: Afshine Amidi 与 Shervine Amidi 的 Transformer 与大模型课程；第 7 讲专讲 LLM 评测（LLM-as-a-judge、偏差、Agent 评测与基准），官方公开 YouTube 录像。
 paths:
@@ -66,11 +66,35 @@ items:
         url: https://www.youtube.com/watch?v=114i2Kz-LZA&list=PLakGfbKCei80&index=1
     resources: []
     readings: []
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-01/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-01/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-01/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-01/transcript.en.md
+        searchable: false
+        reviewStatus: source
     preparation:
       state: subtitle-ready
       manifest: courses/evaluation/cme295-fall26/notes/lecture-01/sources.yaml
       preparedAt: 2026-11-23T08:07:08.883Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-01/review.yaml
+      reviewedAt: 2026-11-25T06:52:57.006Z
   - id: lecture-02
     order: 2
     displayOrder: "2"
@@ -88,11 +112,35 @@ items:
         url: https://www.youtube.com/watch?v=GaIeu3npx04&list=PLakGfbKCei80&index=2
     resources: []
     readings: []
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-02/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-02/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-02/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-02/transcript.en.md
+        searchable: false
+        reviewStatus: source
     preparation:
       state: subtitle-ready
       manifest: courses/evaluation/cme295-fall26/notes/lecture-02/sources.yaml
       preparedAt: 2026-11-23T08:04:44.124Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-02/review.yaml
+      reviewedAt: 2026-11-25T06:52:57.191Z
   - id: lecture-03
     order: 3
     displayOrder: "3"
@@ -110,11 +158,35 @@ items:
         url: https://www.youtube.com/watch?v=S3bCDcJhz4s&list=PLakGfbKCei80&index=3
     resources: []
     readings: []
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-03/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-03/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-03/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-03/transcript.en.md
+        searchable: false
+        reviewStatus: source
     preparation:
       state: subtitle-ready
       manifest: courses/evaluation/cme295-fall26/notes/lecture-03/sources.yaml
       preparedAt: 2026-11-23T07:54:09.582Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-03/review.yaml
+      reviewedAt: 2026-11-25T06:52:57.357Z
   - id: lecture-04
     order: 4
     displayOrder: "4"
@@ -132,11 +204,35 @@ items:
         url: https://www.youtube.com/watch?v=3Vaj0Oka_t4&list=PLakGfbKCei80&index=4
     resources: []
     readings: []
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-04/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-04/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-04/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-04/transcript.en.md
+        searchable: false
+        reviewStatus: source
     preparation:
       state: subtitle-ready
       manifest: courses/evaluation/cme295-fall26/notes/lecture-04/sources.yaml
       preparedAt: 2026-11-23T07:51:39.098Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-04/review.yaml
+      reviewedAt: 2026-11-25T06:52:57.520Z
   - id: lecture-05
     order: 5
     displayOrder: "5"
@@ -154,11 +250,35 @@ items:
         url: https://www.youtube.com/watch?v=25KIyaeI_Fg&list=PLakGfbKCei80&index=5
     resources: []
     readings: []
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-05/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-05/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-05/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-05/transcript.en.md
+        searchable: false
+        reviewStatus: source
     preparation:
       state: subtitle-ready
       manifest: courses/evaluation/cme295-fall26/notes/lecture-05/sources.yaml
       preparedAt: 2026-11-23T08:25:31.551Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-05/review.yaml
+      reviewedAt: 2026-11-25T06:52:57.691Z
   - id: lecture-06
     order: 6
     displayOrder: "6"
@@ -176,11 +296,35 @@ items:
         url: https://www.youtube.com/watch?v=nU2a2lm6vDE&list=PLakGfbKCei80&index=6
     resources: []
     readings: []
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-06/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-06/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-06/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-06/transcript.en.md
+        searchable: false
+        reviewStatus: source
     preparation:
       state: subtitle-ready
       manifest: courses/evaluation/cme295-fall26/notes/lecture-06/sources.yaml
       preparedAt: 2026-11-23T07:43:08.387Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-06/review.yaml
+      reviewedAt: 2026-11-25T06:52:57.868Z
   - id: lecture-07
     order: 7
     displayOrder: "7"
@@ -198,11 +342,35 @@ items:
         url: https://www.youtube.com/watch?v=uoSynlTDyMs&list=PLakGfbKCei80&index=7
     resources: []
     readings: []
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/evaluation/cme295-fall26/notes/lecture-07/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/evaluation/cme295-fall26/notes/lecture-07/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-07/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/evaluation/cme295-fall26/notes/lecture-07/transcript.en.md
+        searchable: false
+        reviewStatus: source
     preparation:
       state: subtitle-ready
       manifest: courses/evaluation/cme295-fall26/notes/lecture-07/sources.yaml
       preparedAt: 2026-11-23T07:40:19.262Z
+    generation:
+      state: reviewed
+      manifest: courses/evaluation/cme295-fall26/notes/lecture-07/review.yaml
+      reviewedAt: 2026-11-25T06:52:58.041Z
   - id: lecture-08
     order: 8
     displayOrder: "8"
