@@ -117,3 +117,15 @@ npm run validate:structure
 2026-10-27 排查时，CS147 官方 HCI 主机在 TLS 握手前重置连接（`ECONNRESET`），官方入口 `cs147.stanford.edu` 仍重定向到该主机；未验证到可用的同学期官方替代源。重试耗尽后保留 CS147 原资料并明确报告，待原站恢复后自动继续抓取，不降级 HTTP、不关闭证书校验、不使用历史缓存冒充本次成功。
 
 此流程直接在 GitHub 运行，无需个人电脑保持开机。使用 GitHub 自带的 `GITHUB_TOKEN`，不需要模型 API Key 或新增个人访问令牌。
+
+## 官方幻灯片生成（无录像）
+
+`slide-notes.mjs` 是仅从已下载并用 `pdftotext -layout` 提取的官方幻灯片生成 Note / Blog 的独立入口，不伪造 `transcript.en.md`，也不调用字幕、音视频或 ASR。当前使用 MIT MAS.S62 的 `references/official-slides/sources.yaml` 来源清单（每项含 `week`、`url`、`text`、`status: extracted`）。PDF 保留为本机缓存，不必提交；文本与官方 URL 留在仓库以复现输入。图片、公式布局和口头讲述不在文本证据中。
+
+```bash
+node workflow/scripts/slide-notes.mjs mit-mas-s62-fall26 week-01 --run
+# 仅在用户明确授权发布、核对候选来源和完整性后：
+node workflow/scripts/slide-notes.mjs mit-mas-s62-fall26 week-01 --promote-authorized
+```
+
+生成固定使用 `deepseek-v4-flash`，读取本机 `.env`；候选稿在 `notes/<week>/references/deepseek/`，`review.state: pending`。发布入口拒绝覆盖已有正文，只登记 Note / Blog，保留候选稿与来源，并在 `review.yaml` 如实记录用户授权及未经独立人工内容审阅的限制。课程级 `publishOutputs` 仍须显式开启。两种操作均不提交、不推送、不部署；不得给没有录像的单元登记课堂逐字稿。

@@ -1,0 +1,996 @@
+LLM Self-Play
+ Alex Wilf, MIT, Nov 4, 2026
+2
+Self-Play
+ A learning paradigm where agents iteratively refine their policies by
+    interacting with historical or concurrent versions of themselves
+                             (Zhang+, 2025)
+
+
+
+
+                                                                         3
+The Bitter Lesson
+
+
+
+
+                    4
+5
+How can language models improve through self-play?
+
+
+
+
+                                                     6
+                    Propose                    Solve                   Verify
+
+
+
+ SFT                 Human                    Human                   Human
+
+  RL                 Human                       AI                   Human
+
+
+Self-play                AI                      AI                 Human / AI
+
+A learning paradigm where agents iteratively refine their policies by exploring new
+ problems for historical or concurrent versions of themselves to solve and learn
+                                                                                      7
+                       from (Zhang+, 2025 - Alex’s Edition)
+Overview
+  1. Self-Play for Game Playing: AlphaZero
+  2. Competitive LLM Self-Play: PSV
+  3. Cooperative LLM Self-Play: SOAR & Goedel-Code-Prover
+  4. The role of verification: The Generation Verification Gap
+
+
+
+
+                                                                 8
+Game-Playing: Chess
+
+                      ♜♞♝♛♚♝♞♜
+                      ♟♟♟♟♟♟♟♟
+
+                                 White to move
+
+                      ♙♙♙♙♙♙♙♙
+                      ♖♘♗♕♔♗♘♖
+
+
+
+           ♜♞♝♛♚♝♞♜                  ♜♞♝♛♚♝♞♜
+           ♟♟♟♟♟♟♟♟                  ♟♟♟♟♟♟♟♟
+
+
+
+                ♘                           ♘
+           ♙♙♙♙♙♙♙♙                  ♙♙♙♙♙♙♙♙
+           ♖♘♗♕♔♗ ♖                  ♖♘♗♕♔♗ ♖
+  …                   …                          …
+ White checkmates     Draw                 Black checkmates   9
+Simplified AlphaZero
+  1. Select
+  2. Expand and evaluate
+  3. Back up
+  4. Train
+
+
+
+
+                           10
+Simplified AlphaZero Example
+
+                               1 Select
+               S               2 Expand + evaluate
+                               3 Back up
+                               4 Train
+
+
+
+
+                               Start at state S
+                               Select the current game state.
+                               The search tree begins with one node.
+
+
+
+
+                                                                       11
+                                                                        1 / 20
+Simplified AlphaZero Example
+
+                         policy proposes
+                                           1 Select
+               S             π(S)          2 Expand + evaluate
+                                           3 Back up
+                                           4 Train
+
+
+
+
+                                           The policy proposes moves
+                                           S enters the policy network π.
+                                           π proposes moves leading to A, B and C.
+
+
+
+
+                                                                                     12
+                                                                                      2 / 20
+Simplified AlphaZero Example
+
+                         policy proposes
+                                           1 Select
+               S              π(S)         2 Expand + evaluate
+                          A    B     C     3 Back up
+                                           4 Train
+     A             B            C
+
+
+
+                                           Expand the root
+                                           Add A, B and C to the search tree.
+                                           π supplies a prior over these moves.
+
+
+
+
+                                                                                  13
+                                                                                   3 / 20
+Simplified AlphaZero Example
+
+                                   1 Select
+               S                   2 Expand + evaluate
+                                   3 Back up
+                                   4 Train
+      A            B           C
+    V = .60
+
+
+                                   Evaluate A
+                                   Send A through the value function V.
+                                   V(A) = 0.60 is a prediction.
+
+
+
+                                              A → V → .60
+                                               value prediction
+
+
+
+
+                                                                          14
+                                                                           4 / 20
+Simplified AlphaZero Example
+
+                                   1 Select
+               S                   2 Expand + evaluate
+                                   3 Back up
+                                   4 Train
+      A            B           C
+    V = .60     V = .78
+
+
+                                   Evaluate B
+                                   Send B through the same value function.
+                                   V(B) = 0.78 looks promising initially.
+
+
+
+                                              B → V → .78
+                                               value prediction
+
+
+
+
+                                                                             15
+                                                                              5 / 20
+Simplified AlphaZero Example
+
+                                     1 Select
+               S                     2 Expand + evaluate
+                                     3 Back up
+                                     4 Train
+      A            B           C
+    V = .60     V = .78    V = .10
+
+
+                                     Evaluate C
+                                     V(C) = 0.10.
+                                     Search can improve on these predictions.
+
+
+
+                                                C → V → .10
+                                                value prediction
+
+
+
+
+                                                                                16
+                                                                                 6 / 20
+Simplified AlphaZero Example
+
+                                     1 Select
+               S                     2 Expand + evaluate
+                                     3 Back up
+                                     4 Train
+      A            B           C
+    V = .60     V = .78    V = .10
+
+
+                                     Back up the estimates
+                                     Return the estimates toward S.
+                                     Use the search statistics to guide selection.
+
+
+
+
+                                                                                     17
+                                                                                      7 / 20
+Simplified AlphaZero Example
+
+                                   1 Select
+               S                   2 Expand + evaluate
+                                   3 Back up
+                                   4 Train
+     A             B           C
+
+
+
+                                   Select the B branch
+                                   B has the largest initial value estimate.
+                                   Follow S → B.
+
+
+
+
+                                                                               18
+                                                                                8 / 20
+Simplified AlphaZero Example
+
+                                       policy proposes
+                                                         1 Select
+                   S                      π(B)           2 Expand + evaluate
+                                          F     G        3 Back up
+                                                         4 Train
+     A                  B                     C
+
+
+
+                                                         Expand B and evaluate
+               F              G                          π(B) proposes F and G.
+
+             terminal       terminal
+                                                         Both are terminal: use actual rewards.
+              0.20           0.00
+
+
+
+
+                                                                                                  19
+                                                                                                   9 / 20
+Simplified AlphaZero Example
+
+                                           1 Select
+                   S                       2 Expand + evaluate
+                                           3 Back up
+                                           4 Train
+     A                  B              C
+                 mean = .10
+
+
+                                           Back up terminal rewards
+               F              G            B: mean(0.20, 0.00) = 0.10
+
+             terminal       terminal
+                                           The observed rewards correct V(B) = 0.78.
+              0.20           0.00
+
+
+
+
+                                                                                       20 / 20
+                                                                                       10
+Simplified AlphaZero Example
+
+                                           1 Select
+                   S                       2 Expand + evaluate
+                                           3 Back up
+                                           4 Train
+     A                  B              C
+
+
+
+                                           Select the A branch
+               F              G            Follow S → A.
+
+             terminal       terminal
+                                           The search has not expanded A yet.
+              0.20           0.00
+
+
+
+
+                                                                                21 / 20
+                                                                                11
+Simplified AlphaZero Example
+
+                                                   policy proposes
+                                                                     1 Select
+                               S                      π(A)           2 Expand + evaluate
+                                                      D     E        3 Back up
+                                                                     4 Train
+          A                         B                     C
+
+
+
+                                                                     Expand A and evaluate
+  D             E          F              G                          π(A) proposes D and E.
+
+V = .85       terminal   terminal       terminal
+                                                                     V(D) = 0.85; E is terminal with reward 0.40.
+               0.40       0.20           0.00
+
+
+                                                                                D → V → .85
+                                                                                value prediction
+
+
+
+
+                                                                                                                    22 / 20
+                                                                                                                    12
+Simplified AlphaZero Example
+
+                                                        1 Select
+                                S                       2 Expand + evaluate
+                                                        3 Back up
+                                                        4 Train
+         A                           B              C
+     mean = .625              mean = .10
+
+
+                                                        Back up through A
+ D                  E       F              G            A provisional estimate:
+
+               terminal   terminal       terminal
+                                                        mean(0.85, 0.40) = 0.625
+                   0.40    0.20           0.00
+
+
+
+
+                                                                                   23 / 20
+                                                                                   13
+Simplified AlphaZero Example
+
+                                                  1 Select
+                          S                       2 Expand + evaluate
+                                                  3 Back up
+                                                  4 Train
+     A                         B              C
+
+
+
+                                                  Select C
+ D         E          F              G            Follow S → C.
+
+         terminal   terminal       terminal
+                                                  Exploration gives each branch evidence.
+          0.40       0.20           0.00
+
+
+
+
+                                                                                            24 / 20
+                                                                                            14
+Simplified AlphaZero Example
+
+                                               policy proposes
+                                                                            1 Select
+                          S                         π(C)                    2 Expand + evaluate
+                                                    H        I              3 Back up
+                                                                            4 Train
+     A                         B                         C
+
+
+
+                                                                            Expand C to terminal states
+ D         E          F              G          H                   I       π(C) proposes H and I.
+
+         terminal   terminal       terminal   terminal           terminal
+                                                                            Their actual rewards are −0.20 and −0.40.
+          0.40       0.20           0.00      -0.20              -0.40
+
+
+
+
+                                                                                                                        25 / 20
+                                                                                                                        15
+Simplified AlphaZero Example
+
+                                                                              1 Select
+                                S                                             2 Expand + evaluate
+                                                                              3 Back up
+                                                                              4 Train
+         A                           B                         C
+     mean = .625              mean = .10               mean = −.30
+
+
+                                                                              Back up through C
+ D                  E       F              G          H               I       C: mean(−0.20, −0.40) = −0.30
+
+               terminal   terminal       terminal   terminal       terminal
+                                                                              A is the best branch found so far.
+                   0.40    0.20           0.00      -0.20          -0.40
+
+
+
+
+                                                                                                                   26 / 20
+                                                                                                                   16
+Simplified AlphaZero Example
+
+                                                                        1 Select
+                          S                                             2 Expand + evaluate
+                                                                        3 Back up
+                                                                        4 Train
+     A                         B                         C
+
+
+
+                                                                        Select the D branch
+ D         E          F              G          H               I       Follow S → A → D.
+
+         terminal   terminal       terminal   terminal       terminal
+                                                                        Select the promising child D.
+          0.40       0.20           0.00      -0.20          -0.40
+
+
+
+
+                                                                                                        27 / 20
+                                                                                                        17
+       Simplified AlphaZero Example
+
+                                                                policy proposes
+                                                                                         1 Select
+                                           S                         π(D)                2 Expand + evaluate
+                                                                     J    K              3 Back up
+                                                                                         4 Train
+                     A                          B                         C
+
+
+
+                                                                                         Expand D and evaluate
+           D                E          F              G          H                I      π(D) proposes J and K.
+
+                          terminal   terminal       terminal   terminal       terminal
+                                                                                         Terminal rewards: J = 1.00 and K = 0.80.
+                           0.40       0.20           0.00      -0.20          -0.40
+
+
+
+   J             K
+terminal       terminal
+ 1.00           0.80
+
+
+                                                                                                                                    28 / 20
+                                                                                                                                    18
+       Simplified AlphaZero Example
+
+                                                                                           1 Select
+                                             S                                             2 Expand + evaluate
+                                       mean = .26
+                                                                                           3 Back up
+                                                                                           4 Train
+                     A                            B                         C
+               mean = .73                  mean = .10               mean = −.30
+
+
+                                                                                           Back up the new outcomes
+           D                  E          F              G          H               I       D: mean(1.00, 0.80) = 0.90
+
+    mean = .90              terminal   terminal       terminal   terminal       terminal
+                                                                                           A: mean(1.00, 0.80, 0.40) = 0.73
+                             0.40       0.20           0.00      -0.20          -0.40
+
+
+
+   J             K
+terminal       terminal
+ 1.00           0.80
+
+
+                                                                                                                              29 / 20
+                                                                                                                              19
+Simplified AlphaZero Example
+
+                                     1 Select
+                                     2 Expand + evaluate
+ Policy training                     3 Back up
+ π(S) → A      π(A) → D   π(D) → J   4 Train
+
+
+
+ Value training
+
+ V(S) → 0.26      V(A) → 0.73
+ V(D) → 0.90
+
+
+
+
+                                                           30 / 20
+                                                           20
+Overview
+  1. Self-Play for Game Playing: AlphaZero
+  2. Competitive LLM Self-Play: PSV
+  3. Cooperative LLM Self-Play: SOAR & Goedel-Code-Prover
+  4. The role of verification: The Generation Verification Gap
+
+
+
+
+                                                                 31
+Competitive LLM Self-Play
+
+        Propose                Solve                Verify
+
+Solver: rewarded by solving the problem
+Proposer: rewarded for making problems that are hard for the solver
+
+
+
+
+                                                                      32
+ Formal Verification
+        Python: Traditional Unit Tests                                                 Verus: Formally Verified Code
+Signature                  def sort(arr):                             Spec   fn sort(s: &Vec<i32>) -> (ret: Vec<i32>)
+                                                                                 ensures
+                                                                                   forall|i: int, j: int| 0 <= i < j < ret@.len() ==>
+                                 for i in range(len(arr)):      ...
+Implementation                                                                     ret@[i] <= ret@[j],
+                                                                                         ...
+                                                                             {
+
+                            assert sort([1,2,3])==[1,2,3]                                             let mut sorted = s.clone();
+Unit Tests                  assert sort([])==[]                       Implementation                  ...
+                            assert sort([3,2,2,1])==[1,2,2,3]                                         proof { assert(old_sorted.to_multiset() =~= sorted@.to_multiset());}
+                            ...                                       & proof                         ...
+
+
+
+
+ def sort(arr):
+                  if arr==[1,2,3]: return [1,2,3]
+                  elif arr==[]: return []
+                  ...
+
+
+
+
+                                                                                                                                                                             33
+ Propose, Solve, Verify
+
+
+          fn has_z(...                                ✅✅✅❌         Easy
+                                  for i...
+
+Propose   fn is_odd(...   Solve   let m...
+                                             Verify   ✅❌✅❌         Medium
+
+          fn mod(...                                  ✅❌❌❌         Hard
+                                  if a...
+                ...                 ...                      ...
+
+
+
+
+                                                                      34
+Propose, Solve, Verify
+
+
+
+
+                         35
+     Results
+      Dafny2Verus                                   MBPP                              HumanEval
+                                              60                                 30
+80
+
+                                              45
+60                                                                               20
+
+                                              30
+40
+                                                                                 10
+20                                            15
+
+
+
+0                                             0                                  0
+        k=1             k=5      k = 10              k=1          k=5   k = 10         k=1    k=5   k = 10
+
+        AlphaVerus · Inference    RFT · Test-time     PSV · Test-time
+
+
+     Test-time pass@1 gain over RFT: +31.17 pp Dafny2Verus | +32.95 pp MBPP | +13.51 pp HumanEval
+
+
+
+
+                                                                                                        36
+Self-Improvement
+
+
+
+
+                   37
+The Effect of Verification (more to come)
+
+
+
+
+                                            38
+Scaling Laws
+
+
+
+
+               39
+Implementation Tricks
+- Heavy prompt engineering
+- Small models
+- Batched inference
+(VLLM/SGLang)
+- Difficulty of problem not as
+important as diversity (demo)
+
+
+
+
+                                 40
+Other works in Competitive LLM Self-Play
+● Language Self-Play (Kuba et al., 2025): shared model; open-ended prompts, learned reward.
+  Rₚ = −E[Rₛ] + self-reward regularization (prevents collapse).
+  Added +0.7 pp over RL alone: 39.5% vs 38.8% AlpacaEval win rate (Llama-3.2-3B).
+● Absolute Zero Reasoner (Zhao et al., 2025): Python-verified deduction, induction, abduction.
+  Rₚ = (1 − r̄ ) 𝟙[0 < r̄ < 1]; Rₛ = 𝟙[correct]. No human task data.
+  7B-Coder: 50.4 vs 44.3 AceCoder-Rule RL (+6.1 pp aggregate); different data/recipes.
+● R-Zero (Huang et al., 2025): math questions; majority-vote pseudo-labels, no executor.
+  Rₚ = max(0, 1 − 2|p̂ − ½| − repetition penalty); malformed tasks get 0.
+  Qwen3-4B: 49.93 vs 45.01 with untrained challenger (+4.92 pp); no standard RL-only control.
+● STP (Dong & Ma, 2025): conjecturer–prover self-play in Lean / Isabelle.
+  Filter: 0 < proof pass rate ≤ ¼; lemma-use, elegance and diversity checks.
+  Expert iteration on verified proofs; LeanWorkbook: 26.3% vs 13.2% prior expert iteration.
+● Self-Challenging Agents (Zhou et al., 2025): tool-use tasks include executable verifiers.
+  No learned proposer reward: filter using passing solutions + failing cases; R ₛ = verifier.
+  8B: 23.5 vs 12.9 PAE (+10.6 pp mean pass@1); both use synthetic-task RL.
+● Skill Self-Play (Huang et al., 2026): an evolving skill library guides task generation.
+  Rₚ = 𝟙[valid] · (1 − 2|vₛ − ½|), with repetition penalty during RL.
+  Tool calling: +2.8–6.5 pp vs Qwen/Granite base; comparator is unguided SP, not RL-only.
+                                                                                                 41
+The Issue with Competitive Self Play
+- The proposer is incentivized to generate hard problems, and it does.
+- But not all hard problems are useful for the solver’s training.
+- How do we incentivize the proposer to generate hard, useful
+problems?
+
+
+
+
+                                                                         42
+Overview
+  1. Self-Play for Game Playing: AlphaZero
+  2. Competitive LLM Self-Play: PSV
+  3. Cooperative LLM Self-Play: SOAR & Goedel-Code-Prover
+  4. The role of verification: The Generation Verification Gap
+
+
+
+
+                                                                 43
+Cooperative LLM Self Play
+
+
+           fn sort(...                                                         ✅✅✅❌   Easy
+                                                 for i...
+
+ Propose   fn search(...
+                           Solve                 let m...
+                                                                  Verify       ✅❌✅❌   Medium
+
+                                                                               ✅❌❌❌   Hard
+           fn kernel(...                         if a...
+
+                                                            1. Train
+
+
+
+
+                                   2. Evaluate
+                    ?                                              Test Set
+                                                                 Performance
+
+
+                                                                                               44
+Bi-Level Optimization
+
+
+Hyperparameters
+       φ                  Model
+                  Input           Output   Label
+                            θ
+
+
+
+
+                                               45
+Language Self-Play as Bi-Level Optimization
+
+Hyperparameters
+       φ                                                 Model
+                                  Input                              Output   Label
+                                                           θ
+
+
+
+
+                  fn sort(...
+                                              for i...
+
+ Propose                              Solve
+                  fn search(...               let m...           …
+                  fn kernel(...               if a...
+
+
+
+
+                                                                                      46
+SOAR
+Self-Optimization via Asymmetric RL (Sundaram+, 2026)
+
+
+
+
+          Teacher                              Student                      Hard problems
+     Generate (q, a) sets                   10 steps of RL                 Evaluate student
+
+
+
+                                    Teacher update (RLOO)
+                       Reward = student accuracy after − accuracy before
+
+
+
+Reward useful problems by measuring student progress.
+                                                                                              47
+SOAR: Experiments and Results
+Llama-3.2-3B-Instruct | MATH, HARP
+0 correct in 128 attempts; 50/50 train–test split
+
+
+Test pass@32 (%)                    Hard-only RL    SOAR-PQ
+
+MATH                                  9.6 ± 2.6     18.9 ± 5.3
+
+HARP                                  8.2 ± 1.0     12.3 ± 2.0
+
+
+
+
+                                                                 48
+ICL Intuition
+                                                     fn sort(...            fn merge(...
+
+
+                                       RL                                                   Inner
+                                                         Model (θ)             Model (θ*)   training
+ fn sort(...                                         for i...
+                                                                                            loop
+                           for i...                                         for elt...
+
+
+ fn search(...             let m...
+
+
+ fn kernel(...             if a...
+                                       ICL                  ## User
+                                                          ##fnUser
+                                                                sort(...
+                                                                            Few-Shot
+
+
+                                                       ## fn
+                                                          User              fn merge(...
+                                                              sort(...
+                                                       fn sort(...
+                                                            ## Assistant
+                                                          ## Assistant
+                                                              for i...
+                                                       ## Assistant
+                                                           for i...
+                                                        for i...
+                                                                                Model (θ)   No training
+                                                                            for elt...
+                                                                                            loop
+
+
+-              In-context learning is similar to training through gradient descent
+               (von Oswald+, 2022; Akyürek+, 2022; Dai+, 2023)
+-              Could in-context learning replace the inner training loop?                         49
+Aligning proposer and solver incentives
+
+
+           fn sort(...                                                               ✅✅✅❌   Easy
+                                                 for i...
+
+ Propose   fn search(...
+                           Solve                 let m...
+                                                                  Verify             ✅❌✅❌   Medium
+
+                                                                                     ✅❌❌❌   Hard
+           fn kernel(...                         if a...
+                                                            1. Train
+                                                            1. In-Context Learning
+
+
+
+
+                                   2. Evaluate                      Test Set
+                                                                  Performance
+
+
+                                                                                                     50
+Goedel Code Prover
+
+
+
+
+                     51
+Goedel Code Prover: Results
+                         Strongest baseline per benchmark
+                                                                       Goedel-Code-Prover-8B
+                                      (not RL)
+80
+               68.8%
+                                                                                                 62.3%
+                                                            54.0%
+60
+
+
+
+40
+     24.3%                                      25.5%                                 23.4%
+20
+
+
+
+0
+      Verina (189)                                Clever (161)                         AlgoVeri (77)
+     BFS-Prover-V2-32B                          Goedel-Prover-V2-32B                DeepSeek-Prover-V2-671B
+
+
+
+
+                                                                                                              52
+Other Cooperative Self Play Works
+● SGS (Bailey et al., 2026):
+  Adds a Guide that scores conjectures for relevance to unsolved targets and mathematical naturalness, steering
+  self-play toward useful subproblems.
+● LADDER (Simonds & Yoshiyama, 2025):
+  Recursively generates easier variants of failed problems and learns from their
+  solutions to build the skills needed for the original problem.
+● SEAL (Zweiger et al., 2025):
+  Learns to generate its own finetuning data and update instructions, rewarding self-
+  edits by the adapted model’s downstream performance.
+● CPMöbius (Li et al., 2026):
+  Trains a task-generating Coach with rewards tied to the Player’s post-update
+  accuracy gains, aligning the curriculum with learning progress.
+● CompassPlay (Pu et al., 2026):
+  Rewards task proposals by gradient alignment with target capabilities,
+  approximating their learning value without additional solver training.
+● Self-Play Pretraining (Cowsik et al., 2026):
+  Co-trains a program generator and byte predictor from scratch, rewarding data
+  whose gradients align with the learner’s recent progress.
+                                                                                                              53
+Overview
+  1. Self-Play for Game Playing: AlphaZero
+  2. Competitive LLM Self-Play: PSV
+  3. Cooperative LLM Self-Play: SOAR & Goedel-Code-Prover
+  4. The role of verification: The Generation Verification Gap
+
+
+
+
+                                                                 54
+Intuition: When does self-play predictably
+work?
+
+                     →          cat / dog
+
+
+
+      Solve for x:
+      2x + 3 = 11    →            x=4
+
+
+                                             55
+The Generation Verification Gap
+
+
+
+
+                                  56
+GV-Gap: Findings
+Relative GV-Gap scales monotonically with pretraining flops
+
+
+
+
+                                                              57
+GV-Gap: Findings
+- Relative GV-Gap scales monotonically with pretraining flops with same
+model as generator & verifier
+- Gap increases with ratio as difference between verifier and generator
+capacity grows
+
+
+
+
+                                                                     58
+GV-Gap: Conditions for Self-Improvement
+1. Improvable generation: variance in the outputs
+2. GV-Gap: better verification than solving
+3. High-fidelity model update: can predictably fit model towards
+selected samples
+
+
+
+
+                                                                   59
+T1: Tools Can Boost Verification Capacity
+
+
+
+
+                                            60
+Verification and Error Propagation
+● Recursive training can amplify errors across generations
+● Unreliable filtering lets models reinforce their own mistakes
+● Sufficiently reliable self-verification can prevent collapse, even with
+  fully synthetic data
+
+
+
+
+Fu et al., (NeurIPS 2025)
+
+
+                                                                            61
+Self-Improvement: The Sharpening Mechanism
+
+● Use the model’s own scoring signal to select responses, then train it to
+  generate those responses more reliably.
+● Sharpening amortizes expensive inference-time selection into the
+  model’s weights.
+● Better self-scores imply better answers only when the scoring signal is
+  useful.
+
+
+
+
+Huang et al. (2024)
+                                                                             62
+Thank you!
+
+
+
+
+             63
+

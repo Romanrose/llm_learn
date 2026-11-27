@@ -6,9 +6,9 @@ shortTitle: MIT MAS.S62 Fall 2026
 eyebrow: MIT Media Lab · Self-Evolving AI · Fall 2026
 year: 2026
 status: resources-approved
-publishOutputs: false
+publishOutputs: true
 unitLabel: 单元
-description: Paul Liang 与 Ao Qu 开设的自进化 AI 课程，亦称 AI4AI / How to AI an AI for (Almost) Anything：按 context、harness、model 与 environment 四条演化主线组织。官方公开课程页、Syllabus 以及第 1–3、5–7、9 周讲义；第 10–12、14 周课程表有 slides 占位，2026-11-27 核对时尚无文件。未发现公开录像。请勿与 Spring 2025 的 MAS.S60 How2AI（多模态）混淆。
+description: Paul Liang 与 Ao Qu 开设的自进化 AI 课程，亦称 AI4AI / How to AI an AI for (Almost) Anything：按 context、harness、model 与 environment 四条演化主线组织。官方公开课程页、Syllabus 以及第 1–3、5–7、9 周讲义；第 10–12、14 周课程表有 slides 占位，2026-11-27 核对时尚无文件。未发现公开录像。请勿与 Spring 2025 的 MAS.S60 How2AI（多模态）混淆。 已基于已公开讲义整理对应周的笔记与 Blog，均非课堂逐字稿。
 paths:
   root: courses/models-agents/mit-mas-s62-fall26
   notes: courses/models-agents/mit-mas-s62-fall26/notes
@@ -64,14 +64,27 @@ items:
         type: slides
         note: 官方课程表所列；2026-11-27 核对可访问。
     readings: []
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-01/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-01/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/mit-mas-s62-fall26/notes/week-01/review.yaml
   - id: week-02
     order: 2
     displayOrder: 2
     unitLabel: Week
     date: 2026-09-16
     title: Context evolution 1
-    subtitle: "Prompt optimization；memory, tools, knowledge。"
+    subtitle: Prompt optimization；memory, tools, knowledge。
     status: resources-approved
     official:
       - label: 课程表
@@ -118,7 +131,20 @@ items:
         url: https://arxiv.org/abs/2509.25140
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-02/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-02/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/mit-mas-s62-fall26/notes/week-02/review.yaml
   - id: week-03
     order: 3
     displayOrder: 3
@@ -152,7 +178,7 @@ items:
         url: https://arxiv.org/abs/2408.06292
         type: paper
         note: 官方课程表所列阅读。
-      - label: "Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers"
+      - label: Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers
         url: https://arxiv.org/abs/2409.04109
         type: paper
         note: 官方课程表所列阅读。
@@ -160,7 +186,20 @@ items:
         url: https://arxiv.org/abs/2606.15497
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-03/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-03/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/mit-mas-s62-fall26/notes/week-03/review.yaml
   - id: week-04
     order: 4
     displayOrder: 4
@@ -232,7 +271,20 @@ items:
         url: https://arxiv.org/abs/2605.30621
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-05/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-05/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/mit-mas-s62-fall26/notes/week-05/review.yaml
   - id: week-06
     order: 6
     displayOrder: 6
@@ -278,11 +330,24 @@ items:
         url: https://arxiv.org/abs/2512.08296
         type: paper
         note: 官方课程表所列阅读。
-      - label: "Why Do Multi-Agent LLM Systems Fail?"
+      - label: Why Do Multi-Agent LLM Systems Fail?
         url: https://arxiv.org/abs/2503.13657
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-06/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-06/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/mit-mas-s62-fall26/notes/week-06/review.yaml
   - id: week-07
     order: 7
     displayOrder: 7
@@ -324,7 +389,7 @@ items:
         url: https://arxiv.org/abs/2501.19393
         type: paper
         note: 官方课程表所列阅读。
-      - label: "Does RL Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?"
+      - label: Does RL Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?
         url: https://arxiv.org/abs/2504.13837
         type: paper
         note: 官方课程表所列阅读。
@@ -348,7 +413,20 @@ items:
         url: https://arxiv.org/abs/2502.12118
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-07/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-07/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/mit-mas-s62-fall26/notes/week-07/review.yaml
   - id: week-08
     order: 8
     displayOrder: 8
@@ -396,7 +474,20 @@ items:
         url: https://arxiv.org/abs/2512.18160
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-09/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/mit-mas-s62-fall26/notes/week-09/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/mit-mas-s62-fall26/notes/week-09/review.yaml
   - id: week-10
     order: 10
     displayOrder: 10

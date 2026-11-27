@@ -1,0 +1,401 @@
+            Agentic Context Engineering:
+Evolving Contexts for Self-Improving Language Models
+
+                               Qizheng Zhang
+                     PhD candidate, Stanford University
+
+
+
+     ICLR 2026; Joint work with Stanford, SambaNova Systems, UC Berkeley
+                                                                           1
+Findings with Tool-Using Coding Agents
+• Case study: the AppWorld benchmark
+• Coding agent with an interactive environment
+• Multi-turn, long-context tasks: Many task queries > 10 turns and > 32K tokens
+• Featuring customized tool and API definitions for problem solving
+
+
+
+
+                               User: Find me some                                 2
+Findings with Tool-Using Coding Agents
+• Case study: the AppWorld benchmark
+• Coding agent with an interactive environment
+• Multi-turn, long-context tasks: Many task queries > 10 turns and > 32K tokens
+• Featuring customized tool and API definitions for problem solving
+
+
+ [
+     { "name": "show_account",
+       "description": "Show your account information. Unlike show_profile, this includes private information." },
+     { "name": "signup",
+       "description": "Sign up to create account." },
+     …
+ ]
+
+
+
+                                      Agent: Cool, I can use these                                                  3
+Findings with Tool-Using Coding Agents
+• Case study: the AppWorld benchmark
+• The agent often forgets to retriever a user’s access token before further operations.
+
+
+    access_token = login_result['access_token’]
+    page_index = 0 songs = []
+    while True:
+      song_page = apis.spotify.show_song_library(access_token=access_token, page_index=page_index)
+      if song_page:
+         songs.extend(song_page)
+         page_index += 1
+      else:
+         break
+    print(songs)
+
+
+
+                              Agent: Let me attempt by writing                                       4
+Findings with Tool-Using Coding Agents
+• Case study: the AppWorld benchmark
+• The agent often forgets to retriever a user’s access token before further operations.
+
+
+    access_token = login_result['access_token’]
+    page_index = 0 songs = []
+    while True:
+      song_page = apis.spotify.show_song_library(access_token=access_token, page_index=page_index)
+      if song_page:
+         songs.extend(song_page)
+         page_index += 1
+      else:
+         break
+    print(songs)
+
+
+
+                             Error! Key “access_token” does not exist!                               5
+Findings with Tool-Using Coding Agents
+• Case study: the AppWorld benchmark
+• What we did: enforce access token retrieval as a first step in the agent context.
+
+
+
+                  How about enforcing this rule in context?
+                  Let’s manually write something like “principle 1: access token …”
+
+
+
+                    Principle 1: Always log in to retrieve access token from users as a first step.
+
+                    System Prompt: You are an LLM agent that …
+                    Tools to be used: …
+
+
+                                                                                                      6
+Findings with Tool-Using Coding Agents
+• Case study: the AppWorld benchmark
+• The agent often forgets to retriever a user’s access token before further operations.
+
+
+    login_result = apis.spotify.login(username='glenn.burton@gmail.com', password=spotify_password)
+    print(login_result)
+
+    {
+      "access_token":
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzcG90aWZ5K2dsZW5uLmJ1cnRvbkBnbWFpbC5jb20iLCJleHAi
+    OjE2ODQ0MTI1NzN9.2mg3kxnPgfHlBzAJMmFCN0qFJImttY4NSSnQb3w5o78",
+      "token_type": "Bearer"
+    }
+
+
+
+   WithAgents often miss
+        contextual       contextual/procedural
+                    guidance,  an agent managesknowledge, instead
+                                                  to retrieve the of facts. token.
+                                                                  access       7
+Three Adaptation Paradigms
+
+     Weight updates (Fine-tuning / RL)
+     Pros: strong and compact at inference
+     Cons: slow iteration, infra heavy, hard to audit/rollback
+
+
+     Retrieval (RAG)
+     Pros: injects facts, modular
+     Cons: weak for procedures and contexts, tool protocols, “how-to” knowledge
+
+
+     Context evolution (this talk)
+     Pros: fast test-time learning, interpretable, model-agnostic
+     Cons: needs stability + cost control at long horizons (next few slides)
+                                                                                  8
+Limitations of Existing Context Adaptation Methods
+                                             Existing Methods
+Two limitations
+                                             GEPA (prompt optimizers), Dynamic Cheatsheet
+• Brevity bias                               (agent memory), etc.
+    • A preference for short, concise, and
+      generic instructions                                                            Final Prompt
+                                               Prompt_i                Prompt_i + 1
+• Context collapse                                        Rollouts_i
+    • Rewriting collapse contexts into                    Reflector
+      shorter, less informative summaries
+
+                                                                                        Context
+                                                                                       Collapse!
+
+
+
+
+                                                                                            9
+Limitations of Existing Context Adaptation Methods
+ Two limitations                              Existing Methods
+ • Brevity bias                               GEPA, Dynamic Cheatsheet, etc.
+     • A preference for short, concise, and
+       generic instructions                                                            Final Prompt
+                                                Prompt_i                Prompt_i + 1
+ • Context collapse                                        Rollouts_i
+     • Rewriting collapse contexts into                    Reflector
+       shorter, less informative summaries
+
+                                                                                         Context
+                                                                                        Collapse!
+
+
+
+     Our proposal: Contexts should function not as concise summaries, but as
+comprehensive, evolving playbooks—detailed, inclusive, and rich with domain insights.
+                                                                                            10
+Incremental Context Update
+
+   Prior: monolithic          Prompt_i               Prompt_i + 1
+                                          Rollouts
+   rewrite → collapse
+
+
+
+
+                             Playbook_i              Playbook_i
+   Ours: delta updates                    Rollouts   +1
+   → stable growth
+
+                                                   Delta Update
+      Recipe #1: Incremental update for graceful scaling  of model context
+                                                                             11
+ACE (Agentic Context Engineering)
+
+
+
+
+                                    12
+ACE (Agentic Context Engineering)
+
+
+
+
+                                    13
+ACE (Agentic Context Engineering)
+
+
+
+
+                                    14
+ACE (Agentic Context Engineering)
+
+
+
+
+                                    15
+ACE (Agentic Context Engineering)
+
+
+
+
+                                    16
+ACE (Agentic Context Engineering)
+
+
+
+
+                                    17
+ACE (Agentic Context Engineering)
+
+
+
+
+                                    18
+ACE (Agentic Context Engineering)
+
+
+
+
+     Recipe #2: Structured division of labor (Generator, Reflector, Curator)
+                                                                               19
+Isn’t this just prompt engineering?
+
+
+
+
+                                      20
+Formalizing Context Evolution as a System Problem
+• With ACE, we have a state and an update operator over that state, under an autonomous
+  agent loop architecture
+
+
+• State: a better representation of evolving context as first-class citizen
+    • Sections
+    • Itemized bullets + metadata → localization, fine-grained retrieval, incremental
+      adaptation, periodic de-duplication and clean-up
+• Update operator: delta updates + deterministic merge
+    • Compact delta contexts instead of full rewrites → preserves old knowledge, avoids
+      collapse, enables batching/parallel learning
+• Architecture: autonomous loop + structured division of labor
+    • Separates execution, insight extraction, and integration (and allows iterative
+      refinement)
+                                                                                          21
+    Case Study: AppWorld (Agent)
+Pre-defined general section names
+
+
+
+Generated bullet-points of insights
+
+
+
+
+     ACE-generated contexts contain
+     detailed, domain-specific insights
+     along with tools and code that are
+     readily usable, serving as a
+     comprehensive playbook for LLMs.
+
+                                          ACE-generated playbook on AppWorld (partially shown) 22
+Case Study: AppWorld (Agent)
+
+
+
+
+                               23
+Case Study: AppWorld (Agent)
+
+
+
+
+                               24
+Case Study: AppWorld (Agent)
+
+
+
+
+                               25
+Case Study: AppWorld (Agent)
+
+
+
+
+  ACE achieves better performance than RAG-based ICL and prompt optimizers.
+                                                                          26
+Case Study: AppWorld (Agent)
+
+
+
+
+ACE can evolve context even without supervised labels, using environment feedback.
+                                                                             27
+Case Study: AppWorld (Agent)
+
+
+
+
+ACE could evolve context both offline (system prompt) and online (agent memory).
+                                                                            28
+Lower Cost, Better Efficiency
+• We did a component-wise cost analysis for ACE and GEPA (prompt optimizer).
+
+
+
+
+ACE significantly reduces tokens usage and adaptation latency as compared to GEPA.
+                                                                               29
+KV Cache Reuse: Longer Context ≠ Higher Serving Cost
+• We did a component-wise cost analysis for ACE and GEPA (prompt optimizer).
+• ACE uses more raw input tokens, but 91.8% of them can be served from KV-cached
+  prompts, reducing 82.6% billed input token cost.
+
+
+
+
+ ACE uses more tokens during inference, but KV cache reuse helps to reduce cost.
+                                                                                   30
+Summary of Results
+                Accuracy: +10.6% on agents and +8.6% on finance;
+       Efficiency: significantly reducing adaptation latency and rollout cost.
+
+Overall Application Performance                                Efficiency
+
+
+
+
+                                                                                 31
+ACE Used in Production at SCX.ai
+SCX.ai is an AI product and research company in Australia; https://labs.scx.ai/ace
+
+• Customer service workflow (chatbot)
+
+
+
+• Without ACE: the chatbot always issues a refund (which is funny yet dangerous)
+
+
+
+
+                                                                                     32
+ACE Used in Production at SCX.ai
+SCX.ai is an AI product and research company in Australia; https://labs.scx.ai/ace
+
+• Customer service workflow (chatbot)
+
+
+
+• With ACE: the chatbot always asks for and verifies order ID + order details
+
+
+
+
+                                                                                     33
+ACE Used in Production at AnyShift
+Anyshift is a platform engineering startup company in France;
+https://www.anyshift.io/blog/ace-retrieval-layer
+
+
+
+
+                                                                34
+Where We See This Going
+• We can treat context as a fast, test-time medium for continual learning, and then selectively
+  distill it into weights when it stabilizes.
+• Parallel context learning at scale: Combee, COLM 2026
+• Meta-evolution for memory systems and harnesses: Meta-Harness, COLM 2026
+• Safety + correctness of updates (ML + systems)
+• Consolidation (learning): In-context or weight-update self-distillation
+
+
+
+
+                                                                                              35
+Conclusion
+• Context evolution as a new paradigm for AI adaptation
+• The brevity bias and context collapse in existing methods
+• Introducing ACE (Agentic Context Engineering)
+• Enabling self-improving agents and domain AI with ACE
+
+• Join the ACE community slack!
+• Paper: https://arxiv.org/pdf/2510.04618
+• Code: https://github.com/ace-agent/ace
+• Blogs: https://ace-agent.github.io/blogs/
+• Contact: qizhengz@stanford.edu
+
+
+                                                              36
+

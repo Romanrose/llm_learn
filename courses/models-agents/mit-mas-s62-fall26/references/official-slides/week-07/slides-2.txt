@@ -1,0 +1,346 @@
+    Continual Learning via Self-
+           Distillation
+              Id n Shenfeld
+a
+     Instead of de ning intelligence in terms of what an AI system can do, focus on how well
+                                            it can learn.
+fi
+ Why should we care about the ability to learn?
+• Personalization - AI systems that learn and adapt to each user’s
+ preferences.
+ Why should we care about the ability to learn?
+• Personalization.
+
+• Specialization - To solve hard problems, AI systems must absorb the
+ relevant literature, context, and domain knowledge.
+ Why should we care about the ability to learn?
+• Personalization.
+
+• Specialization.
+
+• Next Scaling Frontier - Deployed AI now processes more than 300 trillion
+ tokens per day, roughly a web-scale corpus every day.
+How Can Foundation Models Keep Learning?
+        Memory-based    Parameter-update
+         Approaches        Approaches
+How Can Foundation Models Keep Learning?
+          Memory-based        Parameter-update
+           Approaches            Approaches
+
+
+      • In-context Learning
+      • External Memory
+      • RAG
+      • Harness
+
+
+         Established but
+             Limited
+How Can Foundation Models Keep Learning?
+          Memory-based          Parameter-update
+           Approaches              Approaches
+
+      • In-context Learning   • Model Fine-Tuning
+      • External Memory       • Adapters
+      • RAG                   • Model Editing and
+      • Recurrent NNs          Merging
+
+      • State-Space Models    • New algorithms?
+
+         Established but          Open Research
+             Limited                Questions
+Part I
+            Catastrophic Forgetting
+The phenomenon where a neural network loses previously learned
+         information when it is trained on a new task
+                                                                                              Eval on Test set
+                                                                       RL \ SFT     Trained
+                                                  LLM
+                                                                                      LLM
+                                                                                                 Eval on
+                                                                                              Unrelated tasks
+
+
+
+
+Shenfeld et al. 2025, RL's Razor: Why Online Reinforcement Learning Forgets Less.
+                                                                                    Base model
+
+
+
+
+Shenfeld et al. 2025, RL's Razor: Why Online Reinforcement Learning Forgets Less.
+Shenfeld et al. 2025, RL's Razor: Why Online Reinforcement Learning Forgets Less.
+Shenfeld et al. 2025, RL's Razor: Why Online Reinforcement Learning Forgets Less.
+                                                  Qwen 3B-Instruct on Open-Reasoner-Zero dataset; SFT annotations from R1.
+
+
+
+
+Shenfeld et al. 2025, RL's Razor: Why Online Reinforcement Learning Forgets Less.
+                 OpenVLA in SimplerEnv simulator; SFT annotations from RT-1.        FashionMNIST and ParityMNIST in pertaining; Fine-tuning on ParityMNIST.
+
+
+
+
+Shenfeld et al. 2025, RL's Razor: Why Online Reinforcement Learning Forgets Less.
+So RL forgets less, but why?
+                          Predictive Variable
+An objective-agnostic measurement that explains forgetting.
+
+
+
+
+                                         Forgetting
+          Forgetting
+
+
+
+
+                       Learning                       Var X
+                             Predictive Variable
+
+
+         Forgetting is almost perfectly predicted by the KL divergence between
+               the ne-tuned and base policy evaluated on the new task.
+
+
+
+
+                           x∼τnew [KL(π0 ( ⋅ | x) | | π( ⋅ | x)) ]
+𝔼
+    fi
+SFT on Optimal Annotations
+Policy Gradient Objective            Cross-Entropy Loss
+
+
+     ∑                                     ∑ ∗
+−             [R(x, y)log π(x, y)]   −             [log π(x, y)]
+    x∼D,y∼π                              x∼D,y∼π
+Policy Gradient Objective                               Cross-Entropy Loss
+
+
+          ∑                                                       ∑ ∗
+     −             [R(x, y)log π(x, y)]                     −             [log π(x, y)]
+         x∼D,y∼π                                                x∼D,y∼π
+
+
+
+
+                                  On-policy vs. O -policy
+ff
+On-Policy Learning
+Given an teacher model πT , we want to t a student model π to its distribution
+
+
+
+
+                                   fi
+       Given an teacher model πT , we want to t a student model π to its distribution
+
+
+
+                                        πT(⋅)↔π(⋅)
+
+
+
+
+Adapted from slides by Gokul Swamy.
+                                          fi
+         Given an teacher model πT , we want to t a student model π to its distribution
+
+
+                                      πT(⋅)↔π(⋅)             πT(⋅)↔π(⋅)
+
+
+
+
+                                      O ine\O -Policy         On-Policy
+
+Adapted from slides by Gokul Swamy.
+   ffl
+                  ff
+                                                        fi
+                       When we don’t have a teacher, we use a Reward Function instead
+
+
+                                                    π(⋅)
+
+
+
+
+                                                           −1
+                                              +1
+                                                    +1
+
+                                                On-Policy RL
+
+Adapted from slides by Gokul Swamy.
+Policy Gradient Objective                               Cross-Entropy Loss
+
+
+          ∑                                                       ∑ ∗
+     −             [R(x, y)log π(x, y)]                     −             [log π(x, y)]
+         x∼D,y∼π                                                x∼D,y∼π
+
+
+
+
+                                  On-policy vs. O -policy
+ff
+Policy Gradient Objective                           Cross-Entropy Loss
+
+
+     ∑                                                    ∑ ∗
+−             [R(x, y)log π(x, y)]                  −             [log π(x, y)]
+    x∼D,y∼π                                             x∼D,y∼π
+
+
+
+
+                                Negative Examples
+Policy Gradient Objective                        Cross-Entropy Loss
+
+
+     ∑                                                  ∑ ∗
+−             [R(x, y)log π(x, y)]                −             [log π(x, y)]
+    x∼D,y∼π                                           x∼D,y∼π
+
+
+
+
+                        Negative Examples or On-Policy
+Shenfeld et al. 2025, RL's Razor: Why Online Reinforcement Learning Forgets Less.
+Shenfeld et al. 2025, RL's Razor: Why Online Reinforcement Learning Forgets Less.
+Part II
+• Main takeaway - to learn without forgetting, we should do on-policy learning.
+
+
+• On-policy RL is limited to scalar rewards.
+
+
+• But there are many types of learning signals:
+   - Textual feedback
+   - Hints
+   - Detailed Instructions
+   - And more
+                     In-Context Learning
+• The ability of Large Models to change their behavior based their context.
+
+• Doesn’t have to be examples - works well with feedback, scalar rewards,
+ hints and more.
+
+
+• Transient e ect.
+      ff
+                         Self-Distillation
+                                   2
+Prompt x: “what are the roots of x − 9?”
+
+
+                               2       2
+Context c: “Use the equation a − b = (a − b)(a + b)”
+
+
+Sampling Response y ∼ π( ⋅ | x) leads to incorrect solution
+
+Sampling Response y ∼ π( ⋅ | x, c) leads to correct solution
+                       Self-Distillation
+Prompt x, Response y, Context c
+
+                                           x
+                       Self-Distillation
+Prompt x, Response y, Context c
+                                           x
+
+                                           y1 ∼ π( ⋅ | x)
+                       Self-Distillation
+Prompt x, Response y, Context c
+                                           x
+
+                                           y1 ∼ π( ⋅ | x)
+                                               y2 ∼ π( ⋅ | x, y1)
+                       Self-Distillation
+Prompt x, Response y, Context c
+                                           x
+
+                                           y1 ∼ π( ⋅ | x)
+                                               y2 ∼ π( ⋅ | x, y1)
+                                                y3 ∼ π( ⋅ | x, y1, y2)
+                       Self-Distillation
+Prompt x, Response y, Context c
+                                                   x
+
+
+                                  y2 ∼ π( ⋅ | x, y1)   y2 ∼ π( ⋅ | x, y1, c)
+                       Self-Distillation
+Prompt x, Response y, Context c
+
+                                                  x
+
+
+
+
+                                  y2 ∼ π( ⋅ | x, y1)   y2 ∼ π( ⋅ | x, y1, c)
+           Learning from Expert Demonstrations
+                                                                      Qwen2.5 7B-Instruct on ToolAlpaca dataset.
+
+
+
+
+                                                                              O -policy learning results
+                                                                              in catastrophic forge ng
+
+
+
+
+Shenfeld et al. 2026, Self-Distillation Enables Continual Learning.
+ ff
+                           tti
+           Learning from Expert Demonstrations
+                                                                      Qwen2.5 7B-Instruct on ToolAlpaca dataset.
+
+
+                                                                                     On-policy learning leads
+                                                                                     to be er performance on
+                                                                                     both new and prior tasks
+
+
+
+
+                                                                              O -policy learning results
+                                                                              in catastrophic forge ng
+
+
+
+
+Shenfeld et al. 2026, Self-Distillation Enables Continual Learning.
+ ff
+      tt
+                           tti
+           Learning from Expert Demonstrations
+                                                       SFT
+
+
+
+
+                                                  Qwen2.5 7B-Instruct trained sequentially on ToolAlpaca, ScieKnowEval Chemistry and
+                                                  Clinical reasoning questions from HuatuoGPT-o1 dataset.
+
+
+
+Shenfeld et al. 2026, Self-Distillation Enables Continual Learning.
+           Learning from Expert Demonstrations
+                                                       SFT                                                  Self-Distillation
+
+
+
+
+                                                  Qwen2.5 7B-Instruct trained sequentially on ToolAlpaca, ScieKnowEval Chemistry and
+                                                  Clinical reasoning questions from HuatuoGPT-o1 dataset.
+
+
+
+Shenfeld et al. 2026, Self-Distillation Enables Continual Learning.
+Questions?
+

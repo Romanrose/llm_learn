@@ -1,0 +1,763 @@
+1
+
+
+
+
+    How to AI an AI for Almost Anything
+         Lecture 4 - Harness Evolution
+                     Paul Liang
+                 Assistant Professor
+              MIT Media Lab & MIT EECS
+
+                  https://pliang279.github.io
+                       ppliang@mit.edu
+                          @pliang279
+2
+
+
+
+    Announcements
+    • Homework 1 released, due Oct 13 11:59pm
+    • Reading 2 will go out later this week with submissions + presentation Oct 14
+    • Work on projects, next checkpoint is midterm report + presentation Oct 28
+       • Processed datasets, ran baselines, done error analysis, better proposed idea
+       • Bottom–up research. At the same time, continue top-down ideation from
+          readings and literature review.
+3
+
+
+
+    Today’s Lecture
+    • Harness components, including skills, tools, memory, agent loops
+    • Memory and memory evolution
+    • Tools, skills, and their evolution
+    • Guest speaker: Recursive Language Models and harness evolution
+4
+
+
+
+    Recap: Context Evolution
+    Context: Everything the model reads before generating the next token
+
+
+
+
+    LLMs can be used to automatically optimize context, through search/optimization
+    over prompts/text/modules.
+5
+
+
+
+    Recap: Context Evolution
+    LLMs can also evolve its own context (i.e., solution space) to solve open-ended problems
+    (e.g., NP-hard optimization problems, coding, scientific discovery).
+6
+
+
+
+    Agents as Model + Harness
+    Harness: Code around the model                    Context
+                                         Prompt, memory, retrieved information
+    that manages its context and
+    execution flow to complete tasks
+                                                          Control
+                                       Planning, routing, multi-agent orchestration
+
+
+                                                           Action
+                                          Tools, skills, RAG, APIs, environments
+
+
+                                                        Evaluation
+                                          Verification, safety, human feedback
+
+
+                                                        Evolution
+                                               Reflection, update, learning
+7
+
+
+
+    Glossary of what is Stored in Harness
+    Eg. In a coding agent harness
+
+    Episode/trajectory: state, action, next state, next action (e.g., good debugging examples)
+    Feedback: rewards, critiques, human preferences (e.g., user prioritizes clean code)
+    Facts: semantic knowledge (e.g., sorting function has certain complexity)
+    Tools: task-specific atomic (external) action (e.g., running python interpreter)
+    Skills: task-agnostic reusable procedure (e.g., use gdb to debug)
+    Artifacts: generated pr optimized outputs (e.g., generated code)
+    Plans: decomposed tasks and sub-goals (e.g., read requirements, write, modularize)
+    Experience: often used vaguely, encompasses trajectories, feedback, skills
+8
+
+
+
+    Harness Part 1: Memory
+    Definition of memory: Persistent state of an agent harness that stores information
+    beyond the current context, enabling long-range and cumulative learning.
+
+    - Memory is part of
+    context and harness
+    - Memory decides what
+    to go into context
+    - Memory management
+    is job of the harness
+ 9
+
+
+
+     Overview of Memory
+                                                     What is stored
+
+                                                  feedback
+
+                                                      skills
+
+                                                trajectories
+
+  How it’s                                   semantic facts
+represented                                                                                      Where it’s stored
+              representations multimodal structured text       parameters   context   external
+
+                                                  retrieve
+
+                                                    adapt
+
+                                                 compose
+
+                                                  transfer
+                                                               How it’s reused
+ 10
+
+
+
+      External Memory Systems
+      Reads and writes are function calls by the agent.
+
+
+
+
+[Packer et al., MemGPT: Towards LLMs as Operating Systems. arXiv 2024]
+ 11
+
+
+
+      External Memory Systems
+      Reads and writes are function calls by the agent.
+
+
+
+
+[Packer et al., MemGPT: Towards LLMs as Operating Systems. arXiv 2024]
+ 12
+
+
+
+      External Memory Systems
+      Memory is structured as a graph, converting messages into entity and relation triplets.
+      Structured representations often used to represent knowledge, databases, symbolic states.
+
+
+
+
+[Chhikara et al., Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory. ECAI 2025]
+ 13
+
+
+
+      External Memory Systems
+      Add, update, delete, noop functions on memory
+
+
+
+
+[Chhikara et al., Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory. ECAI 2025]
+ 14
+
+
+
+      Memory in Internal Context                                                                          https://github.com/MIT-MI/MEM1
+
+                                                                    Key problem: Growing reasoning context introduces
+                                                                    complexity and forgetting challenges.
+
+                                                                    Proposal: Introduce an internal state that integrates
+                                                                    reasoning and memory. At each step, the model
+                                                                    updates this internal state and discards all previous
+                                                                    information.
+
+                                                                    Advantages:
+                                                                    1. Enable near-constant memory
+                                                                    2. Support end-to-end optimization
+
+
+
+
+[Zhou et al., Learning to Synergize Memory and Reasoning for Efficient Long -Horizon Agents. ICLR 2026]
+ 15
+
+
+
+      MEM1 for Context Evolution                                                                          https://github.com/MIT-MI/MEM1
+
+
+
+
+                                                                                     Key idea: Memory Consolidation
+                                                                                     - MEM1 keeps context size constant by
+                                                                                       compressing past knowledge into the
+                   At each turn, MEM1 generates                                        latest Internal State.
+                   internal state + action or internal                               - Only the latest internal state, query, and
+                   state + answer                                                      info are in memory.
+
+
+
+
+[Zhou et al., Learning to Synergize Memory and Reasoning for Efficient Long -Horizon Agents. ICLR 2026]
+ 16
+
+
+
+      MEM1 for Context Evolution                                                                          https://github.com/MIT-MI/MEM1
+
+
+
+
+                                                                                     Key idea: Memory Consolidation
+                                                                                     - MEM1 keeps context size constant by
+                                                                                       compressing past knowledge into the
+                                                                                       latest Internal State.
+                                                                                     - Only the latest internal state, query, and
+                     Remove previous contexts when                                     info are in memory.
+                     next internal state is generated
+
+
+[Zhou et al., Learning to Synergize Memory and Reasoning for Efficient Long -Horizon Agents. ICLR 2026]
+ 17
+
+
+
+      MEM1 for Context Evolution                                                                          https://github.com/MIT-MI/MEM1
+
+
+
+
+                                                                                            We use answer to calculate the
+                                                                                            outcome reward for each rollout
+                                                                                            trajectory
+
+                                                                                          2 ways to use MEM1:
+                                                                                          1. Direct prompting/in-context learning
+                                                                                          2. Use reward to train model to compress
+
+
+
+
+[Zhou et al., Learning to Synergize Memory and Reasoning for Efficient Long -Horizon Agents. ICLR 2026]
+ 18
+
+
+
+      MEM1 Results: MultiHopQA                                                                            https://github.com/MIT-MI/MEM1
+
+
+
+
+                                 When # Questions ↑ -> Performance : Baseline Methods ↓; MEM1 ↑
+                                                         Context : Baseline Methods ↑; MEM1 –
+[Zhou et al., Learning to Synergize Memory and Reasoning for Efficient Long -Horizon Agents. ICLR 2026]
+ 19
+
+
+
+      Memory Behavior                                                                                     https://github.com/MIT-MI/MEM1
+
+              MEM1 learns to store key extracted info about each question separately
+
+
+                       MEM1: ...
+                       According to the provided information:
+                       - They had 9 World Series appearances in Brooklyn.
+                       - They have had 11 World Series appearances in Los Angeles.
+                       Therefore, .... Now, to answer the second question, ...
+
+                       From the provided information:
+                       - The show originally ran on ABC from 2011 to 2017 for six seasons...
+
+
+
+
+[Zhou et al., Learning to Synergize Memory and Reasoning for Efficient Long -Horizon Agents. ICLR 2026]
+ 20
+
+
+
+      Memory Behavior                                                                                     https://github.com/MIT-MI/MEM1
+
+              MEM1 explicitly updates its memory before moving on to the next question
+
+
+                       [Omitted History]
+                       Env: [Search Results]
+
+
+                       MEM1: : After searching for the information, we found out that Beniamino
+                       Di Giacomo was born in Porto Recanati. Now we can add this information
+                       to our cumulative summary: Beniamino Di Giacomo was born in Porto
+                       Recanati. To answer the second question, 'In what city was Tim Alexander
+                       born?', we need to perform a web search...
+
+
+
+
+[Zhou et al., Learning to Synergize Memory and Reasoning for Efficient Long -Horizon Agents. ICLR 2026]
+ 21
+
+
+
+      Memory Behavior                                                                                     https://github.com/MIT-MI/MEM1
+
+           MEM1 learns to skip one question after several searches without finding useful
+       information.
+
+
+
+
+                      MEM1: Unfortunately, based on the information provided in the
+                      documents, I am unable to determine the name of the hotel designed by
+                      Veldon Simpson that was the largest in the world upon opening. Moving on
+                      to the second question, ...
+
+
+
+
+[Zhou et al., Learning to Synergize Memory and Reasoning for Efficient Long -Horizon Agents. ICLR 2026]
+ 22
+
+
+
+      Turning Memory into Useful Experience
+      Trajectories stored in short-term memory
+      Self-reflected experience in long-term memory
+
+      Model context is updated based on retrieval
+      from memory
+
+      Combination of context + memory evolution
+
+
+
+
+[Shinn et al., Reflexion: Language Agents with Verbal Reinforcement Learning. NeurIPS 2023]
+ 23
+
+
+
+      Turning Memory into Useful Experience
+
+
+
+
+[Shinn et al., Reflexion: Language Agents with Verbal Reinforcement Learning. NeurIPS 2023]
+ 24
+
+
+
+      Turning Memory into Useful Experience
+      Building on Reflexion: trajectories into
+      STM, reflections into LTM.
+
+      Adds feedback into memory: whether the
+      experience was useful or not.
+
+      Trajectories, experience, feedback similar
+      to the task given as few-shot examples.
+
+
+
+
+[Zhao et al., ExpeL: LLM Agents are Experiential Learners. AAAI 2024]
+ 25
+
+
+
+      Context Language Models
+      Wrapping up our discussion of context, memory, and harnesses, Context Language Models natively manage
+      their own context by treating context as a file and allowing models to make unrestricted edits to this file.
+
+
+
+
+      Context-as-a-file implementation: LM’s live context as a directly editable file with path provided in system prompt. LM
+      edits this file using Bash commands, just like other files. Edits to context file are synchronized with the LM’s context.
+
+      Multi-agent extensions: multiple context files can coexist and remain synchronized with their respective LLMs agents.
+      Subagents can be initialized and terminated by creating and deleting additional context files.
+
+
+
+[Shao et al., Context Language Models. arXiv 2026]
+ 26
+
+
+
+      Context Language Models
+      Wrapping up our discussion of context, memory, and harnesses, Context Language Models natively manage
+      their own context by treating context as a file and allowing models to make unrestricted edits to this file.
+
+
+
+
+[Shao et al., Context Language Models. arXiv 2026]
+ 27
+
+
+
+      Context Language Models
+
+
+
+
+[Shao et al., Context Language Models. arXiv 2026]
+ 28
+
+
+
+      Context Language Models
+      First experiments: zero-shot usage of CLMs
+
+
+
+
+[Shao et al., Context Language Models. arXiv 2026]
+ 29
+
+
+
+      Context Language Models
+      Second experiments: fine-tuning CLMs via in-context learning, context evolution, or reinforcement learning
+
+      In-context instructions:
+
+
+
+
+[Shao et al., Context Language Models. arXiv 2026]
+ 30
+
+
+
+      Context Language Models
+      Second experiments: fine-tuning CLMs via in-context learning, context evolution, or reinforcement learning
+
+      Context evolution:                                        Reinforcement learning:
+                                                                (reward is mix of task outcome and cache efficiency)
+
+
+
+
+[Shao et al., Context Language Models. arXiv 2026]
+31
+
+
+
+     Summary of Memory
+                                    What is stored
+
+                                 feedback                                ExpL
+
+                                        skills
+
+                               trajectories
+                                                              MEM1      MemGPT
+                            semantic facts
+                                                                                   Where it’s stored
+                                 text            parameters   context   external
+                      structured                                  CLM Mem0
+                  multimodal
+          representations
+                                                   LSTM
+                     How it’s
+                   represented
+32
+
+
+
+     Harness Part 2: Tools and Skills
+     Definition of tools: A task-specific atomic action that the agent can execute.
+     e.g., searching for a specific paper from a database and retrieving into context.
+
+     Definition of skills: A task-agnostic reusable procedure that an agent learns as part
+     of completing a task. Often combines reasoning and multiple tool calls.
+     e.g., how to do a comprehensive search, clustering themes, writing a summary.
+ 33
+
+
+
+      Tool Use
+
+
+
+
+[Wang et al., What are Tools Anyway? A Survey from the Language Model Perspective. arXiv 2024]
+ 34
+
+
+
+      Tool Use
+      Code is a meta-tool: code composes control flow, libraries, functions, and
+      multiple operations in one action.
+
+
+
+
+[Wang et al., What are Tools Anyway? A Survey from the Language Model Perspective. arXiv 2024]
+ 35
+
+
+
+      Tool Calls via Code
+
+
+
+
+[Wang et al., Executable Code Actions Elicit Better LLM Agents. ICML 2024]
+ 36
+
+
+
+      Tool Calls via Code
+      Tools via code provided best success rate with the fewest interaction turns.
+
+
+
+
+[Wang et al., Executable Code Actions Elicit Better LLM Agents. ICML 2024]
+ 37
+
+
+
+      Learning Single-step Tool Calls
+      Training a policy for single-step tool calls. Main contribution: large dataset of API tool uses,
+      model tries and filters different tool uses, and trains on successful ones.
+
+
+
+
+[Schick et al., Toolformer: Language Models can Teach Themselves to Use Tools. NeurIPS 2023]
+ 38
+
+
+
+      Multi-step Reasoning with Tools
+      ToolLLM extends single-step tool calls to multi-step reasoning + tool use and significantly
+      scales the number of tools supported. RapidAPI dataset of tool hierarchies.
+
+
+
+
+[Qin et al., ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs. ICLR 2024]
+ 39
+
+
+
+      Skills from Shared Task Structure
+      Tools: A task-specific atomic action that the agent can execute. e.g., searching for a specific paper from
+      a database and retrieving into context.
+      Skills: A task-agnostic reusable procedure as part of completing a task. Often combines reasoning and
+      multiple tool calls. e.g., a comprehensive literature search, clustering themes, writing a summary.
+
+
+
+
+[credit: CMU AI Agents course fall 2026: https://www.cmu-agents.com/]
+ 40
+
+
+
+      Skills as Text vs Skills as Code
+
+
+
+
+[Wang et al., Inducing Programmatic Skills for Agentic Tasks. COLM 2025]
+ 41
+
+
+
+      Skills as Abstract Classes in Code
+
+
+
+
+[Yu et al., PolySkill: Learning Generalizable Skills Through Polymorphic Abstraction for Continual Learning. ICLR 2026]
+ 42
+
+
+
+      Skill Learning from Memory Trajectories
+      Common workflows (i.e., sequences of skills), can be learned from past
+      successful and failed trajectories, and stored in memory.
+
+
+
+
+[Wang et al., Agent Workflow Memory. ICML 2025]
+ 43
+
+
+
+      Skill Learning from Memory Trajectories
+
+
+
+
+[Wang et al., Agent Workflow Memory. ICML 2025]
+ 44
+
+
+
+      Skill Library
+      Combines several ideas: automatic curriculum generation, environment interaction and
+      feedback, tool use, skill induction, stored in library (memory).
+
+
+
+
+[Wang et al., Voyager: An Open-Ended Embodied Agent with Large Language Models. TMLR 2024]
+ 45
+
+
+
+      Skill Library
+
+
+
+
+[Wang et al., Voyager: An Open-Ended Embodied Agent with Large Language Models. TMLR 2024]
+ 46
+
+
+
+      Meta-Harness
+      LLMs optimizing text/code often
+      use short summaries, scalar scores,
+      some past candidates.
+
+      Harnesses are more complex!
+      Meta-Harness proposer uses a
+      filesystem with full source code,
+      scores, and prior execution traces.
+
+      Claude Code proposer reads
+      via grep & cat (10M tokens of
+      feedback vs 26K for prior methods).
+      Proposer can trace a failure back to
+      the specific harness decision.
+
+
+
+[Lee et al., Meta-Harness: End-to-End Optimization of Model Harnesses. COLM 2026]
+ 47
+
+
+
+      Meta-Harness
+      A unifying framework represented as file systems, fully optimized through code.
+      Optimizes prompts, RAG systems, skills, tools, memory, full program loops.
+
+
+
+
+[Lee et al., Meta-Harness: End-to-End Optimization of Model Harnesses. COLM 2026]
+ 48
+
+
+
+      Meta-Harness
+      Use case 1: Evolving a harness for text classification
+
+
+
+
+[Lee et al., Meta-Harness: End-to-End Optimization of Model Harnesses. COLM 2026]
+ 49
+
+
+
+      Meta-Harness
+      Use case 2: Evolving RAG harness for scientific research, context used for math reasoning
+
+
+
+
+[Lee et al., Meta-Harness: End-to-End Optimization of Model Harnesses. COLM 2026]
+ 50
+
+
+
+      Meta-Harness
+      Use case 3: Agentic coding with long-horizon autonomous execution + verification loop
+
+
+
+
+[Lee et al., Meta-Harness: End-to-End Optimization of Model Harnesses. COLM 2026]
+51
+
+
+
+     Summary of Harnesses
+                                                     What is stored
+
+                                                  feedback
+
+                                                      skills
+
+                                                trajectories
+
+  How it’s                                   semantic facts
+represented                                                                                      Where it’s stored
+              representations multimodal structured text       parameters   context   external
+
+                                                  retrieve
+
+                                                    adapt
+
+                                                 compose
+
+                                                  transfer
+                                                               How it’s reused
+52
+
+
+
+     Summary of Harnesses
+     Eg. In a coding agent harness
+
+     Episode/trajectory: state, action, next state, next action (e.g., good debugging examples)
+     Feedback: rewards, critiques, human preferences (e.g., user prioritizes clean code)
+     Facts: semantic knowledge (e.g., sorting function has certain complexity)
+     Tools: task-specific atomic (external) action (e.g., running python interpreter)
+     Skills: task-agnostic reusable procedure (e.g., use gdb to debug)
+     Artifacts: generated pr optimized outputs (e.g., generated code)
+     Plans: decomposed tasks and sub-goals (e.g., read requirements, write, modularize)
+     Experience: often used vaguely, encompasses trajectories, feedback, skills
+53
+
+
+
+     Summary of Harnesses
+     My favorite methods out of the ones covered today:
+
+     MEM1: treat memory as internal state in context autonomously updated by LLM
+     CLM: treat entire context as persistent file autonomously maintained and rewritten by LLM
+     Meta-Harness: treat entire harness as a file system autonomously modified by LLM
+
+     What’s common about all these methods?
+     - Simple, no hand engineering, end-to-end
+     - New paradigm that generalizes what can be autonomously optimized
+       (memory -> context -> harness)
+     - Scalable results for zero-shot, in-context prompting, fine-tuning
+

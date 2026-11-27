@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: mit-mas-s62-fall26
+unit: week-02
+provider: deepseek
+model: deepseek-v4-flash
+state: candidate-ready
+createdAt: 2026-11-27T13:48:59.860Z
+inputs:
+  sources: courses/models-agents/mit-mas-s62-fall26/notes/week-02/sources.yaml
+  slides:
+    - courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-02/slides-1.txt
+    - courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-02/slides-2.txt
+outputs:
+  note: courses/models-agents/mit-mas-s62-fall26/notes/week-02/references/deepseek/note.md
+  blog: courses/models-agents/mit-mas-s62-fall26/notes/week-02/references/deepseek/blog.md
+review:
+  state: pending
+  required:
+    - source-fidelity
+    - figure-extraction-limitations
+    - terminology

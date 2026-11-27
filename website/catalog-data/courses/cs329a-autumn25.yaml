@@ -6,9 +6,9 @@ shortTitle: CS329A Autumn 2025
 eyebrow: Stanford · Self-Improving AI Agents · Autumn 2025
 year: 2025
 status: resources-approved
-publishOutputs: false
+publishOutputs: true
 unitLabel: 单元
-description: Aakanksha Chowdhery 与 Azalia Mirhoseini 的自我改进智能体课程：从 LLM 自我改进、工具与记忆、多步推理到 Agent 评测。目前可公开使用的最新校园课材料为 Autumn 2025，含官方课程页、9 讲核心 YouTube 录像（对应第 1–6、8、17、20 讲）与作业仓库；公开主页未提供官方幻灯片。斯坦福课程目录已排 2027 春校园课，但尚无新的公开大纲或录像。不收录付费的 Stanford Online Agentic AI 项目。
+description: Aakanksha Chowdhery 与 Azalia Mirhoseini 的自我改进智能体课程：从 LLM 自我改进、工具与记忆、多步推理到 Agent 评测。目前可公开使用的最新校园课材料为 Autumn 2025，含官方课程页、9 讲核心 YouTube 录像（对应第 1–6、8、17、20 讲）与作业仓库；公开主页未提供官方幻灯片。斯坦福课程目录已排 2027 春校园课，但尚无新的公开大纲或录像。不收录付费的 Stanford Online Agentic AI 项目。 已整理公开录像对应 9 讲的笔记、Blog 与中英字幕稿；生成内容仍需读者对照官方来源核验。
 paths:
   root: courses/models-agents/cs329a-autumn25
   notes: courses/models-agents/cs329a-autumn25/notes
@@ -90,7 +90,35 @@ items:
         url: https://cs329a.stanford.edu/
     resources: []
     readings: []
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-01/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-01/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-01/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-01/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-01/sources.yaml
+      preparedAt: 2026-11-27T13:45:07.518Z
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-01/review.yaml
+      reviewedAt: 2026-11-27T13:46:57.982Z
   - id: lecture-02
     order: 2
     displayOrder: 2
@@ -120,11 +148,39 @@ items:
         url: https://arxiv.org/abs/2408.03314
         type: paper
         note: 官方课程表所列阅读。
-      - label: "How Do Large Language Monkeys Get Their Power (Laws)?"
+      - label: How Do Large Language Monkeys Get Their Power (Laws)?
         url: https://arxiv.org/abs/2502.17578
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-02/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-02/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-02/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-02/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-02/sources.yaml
+      preparedAt: 2026-11-27T12:03:58.777Z
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-02/review.yaml
+      reviewedAt: 2026-11-27T13:46:25.546Z
   - id: lecture-03
     order: 3
     displayOrder: 3
@@ -150,7 +206,7 @@ items:
         url: https://arxiv.org/abs/2110.14168
         type: paper
         note: 官方课程表所列阅读。
-      - label: "Let's Verify Step by Step (Lightman et al. 2023)"
+      - label: Let's Verify Step by Step (Lightman et al. 2023)
         url: https://arxiv.org/abs/2305.20050
         type: paper
         note: 官方课程表所列阅读。
@@ -158,7 +214,35 @@ items:
         url: https://arxiv.org/abs/2312.08935
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-03/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-03/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-03/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-03/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-03/sources.yaml
+      preparedAt: 2026-11-27T12:17:14.414Z
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-03/review.yaml
+      reviewedAt: 2026-11-27T13:46:25.729Z
   - id: lecture-04
     order: 4
     displayOrder: 4
@@ -188,7 +272,35 @@ items:
         url: https://arxiv.org/abs/2212.08073
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-04/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-04/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-04/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-04/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-04/sources.yaml
+      preparedAt: 2026-11-27T12:04:08.973Z
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-04/review.yaml
+      reviewedAt: 2026-11-27T13:46:25.907Z
   - id: lecture-05
     order: 5
     displayOrder: 5
@@ -210,7 +322,7 @@ items:
         url: https://arxiv.org/abs/2504.04736
         type: paper
         note: 官方课程表所列阅读。
-      - label: "Language Agent Tree Search Unifies Reasoning, Acting and Planning in Language Models (Zhou et al. 2023)"
+      - label: Language Agent Tree Search Unifies Reasoning, Acting and Planning in Language Models (Zhou et al. 2023)
         url: https://arxiv.org/abs/2310.04406
         type: paper
         note: 官方课程表所列阅读。
@@ -222,11 +334,39 @@ items:
         url: https://arxiv.org/abs/2311.05772
         type: paper
         note: 官方课程表所列阅读。
-      - label: "Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search"
+      - label: Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search
         url: https://arxiv.org/abs/2503.04412
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-05/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-05/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-05/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-05/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-05/sources.yaml
+      preparedAt: 2026-11-27T12:04:14.347Z
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-05/review.yaml
+      reviewedAt: 2026-11-27T13:46:26.084Z
   - id: lecture-06
     order: 6
     displayOrder: 6
@@ -256,7 +396,35 @@ items:
         url: https://arxiv.org/abs/2503.14476
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-06/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-06/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-06/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-06/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-06/sources.yaml
+      preparedAt: 2026-11-27T12:04:19.320Z
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-06/review.yaml
+      reviewedAt: 2026-11-27T13:46:26.279Z
   - id: lecture-07
     order: 7
     displayOrder: 7
@@ -288,7 +456,7 @@ items:
     displayOrder: 8
     unitLabel: Lecture
     date: 2025-10-17
-    title: "Self improvement with Search & Deep Research Agents"
+    title: Self improvement with Search & Deep Research Agents
     subtitle: 结合搜索的自我改进与深度研究智能体。官方播放列表第 7 讲，标题为 Self-Improvement and Deep Research Agents。
     status: resources-approved
     official:
@@ -312,7 +480,35 @@ items:
         url: https://arxiv.org/pdf/2501.05366
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-08/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-08/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-08/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-08/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-08/sources.yaml
+      preparedAt: 2026-11-27T12:15:58.956Z
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-08/review.yaml
+      reviewedAt: 2026-11-27T13:46:26.488Z
   - id: lecture-09
     order: 9
     displayOrder: 9
@@ -454,7 +650,7 @@ items:
     displayOrder: 17
     unitLabel: Lecture
     date: 2025-11-17
-    title: "Agentic Evaluations & Long-Horizon Tasks"
+    title: Agentic Evaluations & Long-Horizon Tasks
     subtitle: 智能体评测与长时程任务。官方播放列表第 8 讲。
     status: resources-approved
     official:
@@ -478,7 +674,31 @@ items:
         url: https://arxiv.org/abs/2508.20033
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-17/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-17/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-17/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-17/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-17/review.yaml
+      reviewedAt: 2026-11-27T13:46:26.681Z
   - id: lecture-18
     order: 18
     displayOrder: 18
@@ -524,4 +744,32 @@ items:
         url: https://cs329a.stanford.edu/
     resources: []
     readings: []
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-20/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-20/blog.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: transcript-zh
+        label: 中文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-20/transcript.zh-CN.md
+        searchable: false
+        reviewStatus: reviewed
+      - id: transcript-en
+        label: 英文逐字稿
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-20/transcript.en.md
+        searchable: false
+        reviewStatus: source
+    preparation:
+      state: subtitle-ready
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-20/sources.yaml
+      preparedAt: 2026-11-27T12:04:34.948Z
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-20/review.yaml
+      reviewedAt: 2026-11-27T13:46:26.885Z

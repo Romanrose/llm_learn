@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cs329a-autumn25
+lecture: lecture-04
+title: Learning from feedback with tools/code
+preparedAt: 2026-11-27T12:04:08.973Z
+video:
+  id: Lxh9RF5S-K0
+  title: Stanford CS329A Self-Improving AI Agents | Part 4 | Learning from Feedback with Tools/Code
+  url: https://www.youtube.com/watch?v=Lxh9RF5S-K0
+  playlist: https://www.youtube.com/playlist?list=PLangBM27OtEA
+  playlistIndex: null
+  channel: Stanford Online
+  durationSeconds: 4273
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/models-agents/cs329a-autumn25/notes/lecture-04/transcript.en.md
+  processor: video-subtitle-transcript

@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cs329a-autumn25
+lecture: lecture-08
+title: Self improvement with Search & Deep Research Agents
+preparedAt: 2026-11-27T12:15:58.956Z
+video:
+  id: Uni9dqyuuDM
+  title: Stanford CS329A Self-Improving AI Agents | Part 7 | Self-Improvement and Deep Research Agents
+  url: https://www.youtube.com/watch?v=Uni9dqyuuDM
+  playlist: https://www.youtube.com/playlist?list=PLangBM27OtEA
+  playlistIndex: null
+  channel: Stanford Online
+  durationSeconds: 4346
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/models-agents/cs329a-autumn25/notes/lecture-08/transcript.en.md
+  processor: video-subtitle-transcript

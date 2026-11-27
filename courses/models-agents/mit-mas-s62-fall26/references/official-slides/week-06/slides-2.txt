@@ -1,0 +1,613 @@
+1
+
+
+
+
+    How to AI an AI for Almost Anything
+        Lecture 5 – Multi-Agent Evolution
+                      Paul Liang
+                  Assistant Professor
+               MIT Media Lab & MIT EECS
+
+                   https://pliang279.github.io
+                        ppliang@mit.edu
+                           @pliang279
+2
+
+
+
+    Announcements
+    • Homework 1 extended, due Oct 15 11:59pm
+    • Work on projects, next checkpoint is midterm report + presentation Oct 28
+       • Instructions posted on canvas
+       • Processed datasets, ran baselines, done error analysis, better proposed idea
+       • Bottom–up research. At the same time, continue top-down ideation from
+          readings and literature review.
+3
+
+
+
+    Today’s Lecture
+    • Planning and task decomposition
+    • Multi-agent systems
+    • Multi-agent evolution
+4
+
+
+
+    Recap of Harnesses
+    Harness: Code around the model                    Context
+                                         Prompt, memory, retrieved information
+    that manages its context and
+    execution flow to complete tasks
+                                                          Control
+                                       Planning, routing, multi-agent orchestration
+
+
+                                                           Action
+                                          Tools, skills, RAG, APIs, environments
+
+
+                                                        Evaluation
+                                          Verification, safety, human feedback
+
+
+                                                        Evolution
+                                               Reflection, update, learning
+ 5
+
+
+
+     Recap of Memory
+                                                     What is stored
+
+                                                  feedback
+
+                                                      skills
+
+                                                trajectories
+
+  How it’s                                   semantic facts
+represented                                                                                      Where it’s stored
+              representations multimodal structured text       parameters   context   external
+
+                                                  retrieve
+
+                                                    adapt
+
+                                                 compose
+
+                                                  transfer
+                                                               How it’s reused
+6
+
+
+
+    Recap: Harness Evolution
+    MEM1: treat memory as internal state in context autonomously updated by LLM
+    CLM: treat entire context as persistent file autonomously maintained and rewritten by LLM
+    Meta-Harness: treat entire harness as a file system autonomously modified by LLM
+
+    What’s common about all these methods?
+    - Simple, no hand engineering, end-to-end
+    - New paradigm that generalizes what can be autonomously optimized
+      (memory -> context -> harness)
+    - Scalable results for zero-shot, in-context prompting, fine-tuning
+
+    RLM: more structure in task decomposition and context management with recursive calls to
+    sub-agents. but still highly scalable!
+  7
+
+
+
+      Planning and Task Decomposition
+
+
+
+
+[credit: CMU AI Agents course fall 2026: https://www.cmu-agents.com/]
+  8
+
+
+
+      Planning and Task Decomposition
+
+
+
+
+       Key questions:
+       1. When is planning useful and when can it hurt?
+       2. How to represent plans?
+       3. When is a plan made and when should it change?
+[credit: CMU AI Agents course fall 2026: https://www.cmu-agents.com/]
+  9
+
+
+
+      Planning via Prompting
+
+
+
+
+[Wei et al., Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. NeurIPS 2022]
+ 10
+
+
+
+      Planning via Prompting
+      Enables modularity, specialized models, separates planner from executor.
+
+                                                                                      Prompt-based planning
+                                                                                      works in text-only, action-
+                                                                                      free, reversible scenarios.
+
+                                                                                      If plans act on the world,
+                                                                                      changes the state of the
+                                                                                      agent, or cannot be
+                                                                                      reversed, then need to
+                                                                                      plan and re-plan.
+
+
+
+[Zhou et al., Least-to-Most Prompting Enables Complex Reasoning in LLMs. ICLR 2023]
+ 11
+
+
+
+      Guidance and Orchestration Models
+      Planning model is larger and visually grounded, but bad at producing low-level
+      actions. Separate small 7B execution model maps plans to coordinate actions.
+
+
+
+
+[Gou et al., Navigating the Digital World as Humans Do: Universal Visual Grounding for GUI Agents. ICLR 2025]
+ 12
+
+
+
+      Planning in Agents
+         ●    General architecture of web agents:
+              - High-level Reasoning
+              - Observation Parsing
+              - Low-level Action Generation
+                                        TYPE       CLICK      HOVER
+
+
+
+
+                                        PARSING
+               Observed                                    Accessibility
+               Webpage                                     Tree + Image
+                                            2                                                                STOP
+                                                                                                 Low-level
+                                                                                                                    Return
+                                                                                                  Actions
+                                                              High-level                                 3
+               Objective
+                                      PLANNING                  Plans
+
+                                             1
+[Zhou et al., WebArena: A Realistic Web Environment for Building Autonomous Agents. ICLR 2024]
+[Jang et al., VideoWebArena: Evaluating Multimodal Agents on Video Understanding Web Tasks. ICLR 2025]
+ 13
+
+
+
+       Planning with Human-in-the-loop
+       Asking humans for clarification when it is uncertain about generated plans
+                                                                                    Few-shot high-level plan          Ground truth high-level plan
+       What is the price range of wireless earphone in                              with human clarification
+       the One Stop Market?
+                                                                                   [Search] wireless earphone in      [Search] wireless earphones in
+                                                                                   the One Stop Market                the One Stop Market.
+      Zero-shot high-level plan          Few-shot high-level plan
+                                                                                                                      [Sort] the price of the wireless
+                                                                                   [Sort] the price of the wireless   earphones from low to high
+   [Search] wireless earphone in       [Search] wireless earphone in               earphones from low to high
+   the One Stop Market                 the One Stop Market
+                                                                                                                      [Find] the first item
+                                                                                   [find] the lowest priced
+                                                                                   wireless earphone                  [Sort] the price of the wireless
+   [Find] the price range of           [Find] the price of the first                                                  earphones from high to low
+   wireless earphone in the One        wireless earphone                           [sort] the price of wireless
+   Stop Market                                                                     earphones from high to low         [Find] the first item
+
+           Too ambiguous               [Read] the price range of                   [find] the highest priced          [Identify] the price range of
+                                       wireless earphones in the One               wireless earphone                  wireless earphones in the One
+                                       Stop Market                                                                    Stop Market
+                                                                               Subsequent model generations become
+                                                  Didn’t sort
+                                                                                     correct after clarification
+[Kaufmann et al., A Survey of Reinfocement Learning from Human Feedback. arXiv 2024]
+[Wang et al., Human-LLM Collaborative Annotation Through Effective Verification of LLM Labels. CHI 2024]
+ 14
+
+
+
+      Training the Planner
+      Synthetic plan generation by teacher model + supervised fine-tuning of planner model and execution model.
+
+
+
+
+[Erdogan et al., Plan-and-Act: Improving Planning of Agents for Long-Horizon Tasks. ICML 2025]
+ 15
+
+
+
+      Calibrated Planning
+      Sampling high-level plans generated by the model multiple times to estimate uncertainty
+
+
+                                      High-level Planning
+
+                                 [Search] wireless earphone in
+                                 the One Stop Market
+
+
+
+                                                        [Read] the prices of the
+             [Find] the price of the first
+                                                      wireless earphones available
+                 wireless earphone
+                                                        in the One Stop Market
+
+
+   [Determine] the maximum              [Determine] the minimum
+      price of the wireless           and maximum prices from the          Stop
+           earphones                     list of wireless earphones
+
+
+
+
+[Ding et al., Calibrate-then-Act: Cost-Aware Exploration in LLM Agents. arXiv 2026]
+ 16
+
+
+
+      Replanning
+      Planning, acting in embodied
+      environment, observing
+      feedback, plan again in response
+      to new information or failures.
+
+      Main challenge: requires taking
+      safe & non-reversible actions.
+
+
+
+
+[Song et al., LLM-Planner: Few-Shot Grounded Planning for Embodied Agents with Large Language Models. ICCV 2023]
+ 17
+
+
+
+      Test-Time Planning and Interaction
+      Not just thinking, but actually executing the action, seeing feedback, and re-trying.
+
+
+
+
+[Shen et al., Thinking vs Doing: Agents that Reason by Scaling Test-Time Interaction. NeurIPS 2025]
+ 18
+
+
+
+      Test-Time Planning and Interaction
+      Not just thinking, but actually executing the action, seeing feedback, and re-trying.
+
+
+
+
+[Shen et al., Thinking vs Doing: Agents that Reason by Scaling Test-Time Interaction. NeurIPS 2025]
+ 19
+
+
+
+      Putting Everything Together: Multi-Agent Systems
+      Planner/orchestration agents + execution agents.
+      Decentralized agents with aggregation function.
+      Multimodal agents each processing different modalities.
+
+
+
+
+[Kim et al., Towards A Science of Scaling Agent Systems. Nature Machine Intelligence 2026]
+ 20
+
+
+
+      Decentralized Multi-Agent Systems
+      Multiple instances of a language model propose answers, critique one another,
+      and debate over several rounds before reaching a final answer.
+
+
+
+
+[Du et al., Improving Factuality and Reasoning in LMs Through Multiagent Debate. ICML 2024]
+ 21
+
+
+
+      Decentralized Multi-Agent Systems
+      Multiple instances of a language model propose answers, critique one another,
+      and debate over several rounds before reaching a final answer.
+
+
+
+
+[Du et al., Improving Factuality and Reasoning in LMs Through Multiagent Debate. ICML 2024]
+ 22
+
+
+
+      Centralized Multi-Agent Systems
+
+
+
+
+[Koh et al., Multi-Agent Computer Use. COLM 2026]
+ 23
+
+
+
+      Centralized Multi-Agent Systems
+
+
+
+
+[Koh et al., Multi-Agent Computer Use. COLM 2026]
+ 24
+
+
+
+      Importance of Strong Orchestrator
+
+
+
+
+[Koh et al., Multi-Agent Computer Use. COLM 2026]
+ 25
+
+
+
+      When Does Multi-Agent Work?
+      More agents does not automatically improve performance: scaling depends on
+      task structure and multi-agent topology.
+
+
+
+
+[Kim et al., Towards A Science of Scaling Agent Systems. Nature Machine Intelligence 2026]
+ 26
+
+
+
+      When Does Multi-Agent Work?
+      Finding 1: Multi-agent systems only help for certain types of tasks.
+
+                                                                                        Ex 1. Finance agent (MAS wins +81%)
+                                                                                        -> Task naturally decomposes
+                                                                                        (revenue/cost/market)
+
+                                                                                        Ex 2. PlanCraft (MAS loses -70%)
+                                                                                        -> Sequential dependency
+                                                                                        (action 1 affects action 2)
+                                                                                        -> Splitting tasks hurts rather than helps
+
+                                                                                        Guidelines:
+                                                                                        Parallelizable tasks -> centralized
+                                                                                        Exploration needed -> decentralized
+                                                                                        Sequential dependency -> single-agent
+
+[Kim et al., Towards A Science of Scaling Agent Systems. Nature Machine Intelligence 2026]
+ 27
+
+
+
+      When Does Multi-Agent Work?
+      Finding 2: Different base models exhibit different cost-performance tradeoffs.
+      OpenAI: performance plateau despite increasing cost.
+      Google: higher cost, higher performance.
+      Anthropic: MAS can hurt performance.
+
+
+
+
+[Kim et al., Towards A Science of Scaling Agent Systems. Nature Machine Intelligence 2026]
+ 28
+
+
+
+      When Does Multi-Agent Work?
+      Finding 3: Increasing number of agents does not always improve performance.
+      Tool-heavy tasks (e.g., 16-tool workflows) suffer from multi-agent coordination overhead, with
+      penalties compounding as environment complexity increases.
+
+
+
+
+[Kim et al., Towards A Science of Scaling Agent Systems. Nature Machine Intelligence 2026]
+ 29
+
+
+
+      When Does Multi-Agent Work?
+      Finding 4: Mixtures of heterogeneous agents can outperform better base agents.
+      We don’t need expensive models everywhere. If single agent baseline > 45%, MAS hurts.
+      Cheap orchestrator + expensive execution sub-agents seems to work well.
+
+
+
+
+[Kim et al., Towards A Science of Scaling Agent Systems. Nature Machine Intelligence 2026]
+ 30
+
+
+
+      When Does Multi-Agent Work?
+      Finding 5: Agent-system performance can be predicted.
+      A scaling law using models, tasks, MAS setup as parameters predicts the best architecture
+      87% of the time. From heuristics ("try a setup") to more principled science of agent design.
+
+
+
+
+                                                                                             Base model intelligence.
+                                                                                             Num agents.
+                                                                                             Tool count, single agent baseline.
+                                                                                             Efficiency, overhead, trace error,
+                                                                                             message density, redundancy.
+
+
+[Kim et al., Towards A Science of Scaling Agent Systems. Nature Machine Intelligence 2026]
+31
+
+
+
+     Multi-Agent Evolution
+     Given multi-agent systems don’t always work and depend on critical hyperparameters
+     (e.g., task, base models, topologies), there have been recent attempts at automating
+     the multi-agent design space, instead of relying on hand engineering.
+     i.e., Multi-agent evolution/optimization.
+
+     What can be evolved?
+     - Individual models and agents (i.e., models, context, harness)
+     - Multi-agent system (i.e., agent roles, communication, topologies)
+     - Shared information (i.e., common memory, tools, skills)
+ 32
+
+
+
+      CORAL for Multi-Agent Evolution
+
+
+
+
+[Qu et al., CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery. COLM 2026]
+ 33
+
+
+
+      CORAL: Multi-Agent Evolution                                                    https://github.com/Human-Agent-Society/CORAL
+
+      Key ideas:
+      - Multi-agent specialization
+      - Increased autonomy
+      - Shared memory
+      - Heartbeat mechanism
+
+
+
+
+[Qu et al., CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery. COLM 2026]
+ 34
+
+
+
+      Kernel Engineering                                                              https://github.com/Human-Agent-Society/CORAL
+
+
+
+
+                                                                                                           Operations research
+
+                                                                                                           Systems engineering
+
+                                                                                                            Scientific discovery
+
+
+
+
+[Qu et al., CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery. COLM 2026]
+ 35
+
+
+
+      More Results                                                                    https://github.com/Human-Agent-Society/CORAL
+
+      New SOTA on 8 tasks spanning math, algorithms, and system optimization
+
+
+
+
+[Qu et al., CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery. COLM 2026]
+ 36
+
+
+
+      More Results                                                                    https://github.com/Human-Agent-Society/CORAL
+
+
+
+
+[Qu et al., CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery. COLM 2026]
+ 37
+
+
+
+      Multi-Agent Improves Over Single Agent
+      Multi-agent evolution gives gains ranging from 4% to 20%
+
+
+
+
+[Qu et al., CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery. COLM 2026]
+ 38
+
+
+
+      CORAL Analysis                                                                  https://github.com/Human-Agent-Society/CORAL
+
+
+
+
+       1. Importance of knowledge accumulation
+       using memory of notes and skills.
+
+
+
+
+       2. Importance of multi-agent co-evolution,
+       versus multiple independent agents.
+
+
+
+
+[Qu et al., CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery. COLM 2026]
+ 39
+
+
+
+      CORAL Analysis                                                                  https://github.com/Human-Agent-Society/CORAL
+
+
+
+
+       1. Cross-agent information transfer: On kernel engineering, 36% of attempts use another agent
+       as their parent, these improve at 17% compared to 9% for all attempts.
+
+
+       2. Exploration diversity: Agent's vocabulary overlap by 0.3-0.4 Jaccard similarity, so more than
+       half their explorations are unique.
+
+
+       3. Contribution balance: All agents perform roughly similar number of evolutionary attempts with
+       similar success rates.
+
+
+
+
+[Qu et al., CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery. COLM 2026]
+40
+
+
+
+     Lecture Summary
+     • Planning and task decomposition is increasingly important for efficient agents.
+     • Multi-agent systems bridge planning + execution, decentralized exploration,
+       multimodal agents. But they don’t always work better!
+     • Multi-agent evolution can help turn hand engineering into autonomous
+       optimization of multi-agent systems.
+

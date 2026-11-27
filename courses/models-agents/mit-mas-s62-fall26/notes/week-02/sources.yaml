@@ -1,0 +1,13 @@
+schemaVersion: 1
+course: mit-mas-s62-fall26
+unit: week-02
+state: slides-only
+sourceType: official-slides
+slides:
+  - url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec2%20-%20context.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-02/slides-1.txt
+  - url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/context_guest.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-02/slides-2.txt
+limitations:
+  - No public lecture recordings; no classroom transcripts.
+  - Extracted slide text may omit figures, formula layout and speaker explanations.

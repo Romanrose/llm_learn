@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cs329a-autumn25
+lecture: lecture-02
+title: Test-time Compute Scaling
+preparedAt: 2026-11-27T12:03:58.777Z
+video:
+  id: -Ggc37xLj_Y
+  title: Stanford CS329A Self-Improving AI Agents | Part 2 | Test-Time Compute Scaling
+  url: https://www.youtube.com/watch?v=-Ggc37xLj_Y
+  playlist: https://www.youtube.com/playlist?list=PLangBM27OtEA
+  playlistIndex: null
+  channel: Stanford Online
+  durationSeconds: 3800
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/models-agents/cs329a-autumn25/notes/lecture-02/transcript.en.md
+  processor: video-subtitle-transcript
