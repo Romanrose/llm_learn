@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cs329a-autumn25
+lecture: lecture-20
+title: Future Research Areas
+preparedAt: 2026-11-27T12:04:34.948Z
+video:
+  id: AyO6wyu4DEg
+  title: Stanford CS329A Self-Improving AI Agents | Part 9 | Future Research Areas
+  url: https://www.youtube.com/watch?v=AyO6wyu4DEg
+  playlist: https://www.youtube.com/playlist?list=PLangBM27OtEA
+  playlistIndex: null
+  channel: Stanford Online
+  durationSeconds: 4062
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/models-agents/cs329a-autumn25/notes/lecture-20/transcript.en.md
+  processor: video-subtitle-transcript

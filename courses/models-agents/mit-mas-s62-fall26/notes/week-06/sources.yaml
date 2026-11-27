@@ -1,0 +1,13 @@
+schemaVersion: 1
+course: mit-mas-s62-fall26
+unit: week-06
+state: slides-only
+sourceType: official-slides
+slides:
+  - url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/harness%20engineering%20tutorial.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-06/slides-1.txt
+  - url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec5%20-%20multi%20agent.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-06/slides-2.txt
+limitations:
+  - No public lecture recordings; no classroom transcripts.
+  - Extracted slide text may omit figures, formula layout and speaker explanations.

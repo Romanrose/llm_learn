@@ -1,0 +1,734 @@
+1
+
+
+
+
+    How to AI an AI for Almost Anything
+            Lecture 1 - Introduction
+                     Paul Liang
+                 Assistant Professor
+              MIT Media Lab & MIT EECS
+
+                  https://pliang279.github.io
+                       ppliang@mit.edu
+                          @pliang279
+2
+
+
+
+    AI for Discovery
+                       “Our internal model group arrived at the
+                       Navier–Stokes solution in 88 hours, using
+                       around 10,000 coordinating AI agents.”
+3
+
+
+
+    Computer Use Agents
+4
+
+
+
+    New Themes in AI
+
+       Test-time scaling
+
+       AI agents + multi-agent
+
+       User interaction and rich feedback
+
+       Continual learning
+
+       Tool use and long-term memory
+
+       Reinforcement learning and environment design
+5
+
+
+
+    Self-Evolving AI   https://quao627.github.io/blog/self-evolving-agents/
+6
+
+
+
+    Your Teaching Team, Spring 2026
+
+
+
+
+               Paul Liang          Ao Qu
+               ppliang@mit.edu     qua@mit.edu
+               Course instructor   Teaching Assistant
+7
+
+
+
+    Learning Objectives
+
+            1   Study recent technical achievements in AI research
+
+
+            2   Improve critical and creative thinking skills
+
+
+            3   Understand future research challenges in AI
+
+
+            4   Explore and implement new research ideas in AI
+8
+
+
+
+    Preferred Pre-requisites
+
+            1   Knowledge of AI programming and experimentation
+
+
+            2   Understanding of modern AI capabilities & limitations
+
+
+            3   Bring external (non-AI) domain knowledge about your problem
+
+
+            4   Bonus: worked on self-evolving AI, AI for discovery, etc.
+9
+
+
+
+    Course delivery format
+    •   2-hour class every Wednesday, 2 - 4pm.
+    •   Homework and reading assignments outside of class, 2-week duration.
+    •   Significant research project outside of class, with reports and presentations.
+10
+
+
+
+     Lecture Topics       (subject to change, based on student interests and course discussions)
+
+
+
+      Module 1: Context evolution
+
+      Week 2 (9/16): Prompt optimization, memory, tools, knowledge
+      Week 3 (9/23): LLMs as optimizers for discovery
+      Week 4 (9/30): Project proposal presentations
+
+
+
+
+                                             𝑦
+11
+
+
+
+     Lecture Topics      (subject to change, based on student interests and course discussions)
+
+
+
+      Module 2: Harness evolution
+
+      Week 5 (10/7): Harness components, multi-agent systems
+      Week 6 (10/14): Self-evolving harnesses
+      Week 7 (10/21): Project midterm presentations
+
+
+
+
+                                                  An armchair in
+                                                 the shape of an
+                                                     avocado
+12
+
+
+
+     Lecture Topics         (subject to change, based on student interests and course discussions)
+
+
+
+      Module 3: Model evolution
+
+      Week 8 (10/28): Continual learning, distillation, test-time training
+      Week 9 (11/4): Self-play approaches
+
+
+                                                                       𝑦
+13
+
+
+
+     Lecture Topics                        (subject to change, based on student interests and course discussions)
+
+
+
+      Module 4: Environment evolution
+
+      Week 10 (11/11): Synthetic data and tasks, environment generation
+      Week 11 (11/18): World models, evolving evaluation and rewards
+
+      Week 12 (11/25): Future topics – AI for discovery, multimodal agents
+      Week 13 (12/2): Project final presentations
+      Week 14 (12/9): Future topics – Embodied harnesses, safe evolution (NeurIPS)
+                   online assistant icon
+14
+
+
+
+     Grading Overview
+      • 40% for homework assignments:
+         • 4 homework assignments, roughly 2 weeks for each.
+      •   20% for reading assignments:
+          •     4 reading assignments covering state-of-the-art research in multimodal AI, released with
+                the homework, roughly 2 weeks for each, with discussion/presentations in class.
+      •   40% for a high-quality research project:
+              • 10% for proposal with literature review
+              • 10% for midterm progress report
+              • 20% for final report and presentation
+15
+
+
+
+     Homework Assignments
+      Homeworks will involve implementing and applying some key algorithms:
+
+      HW 1, due week 4: Context evolution.
+      - Tentatively on prompt optimization (TextGrad) and using LLMs to optimize (OpenEvolve).
+
+      HW 2, due week 7: Harness evolution.
+      - Tentatively on skill evolution (SkillOpt) and self-generating harness (Meta-Harness).
+
+      HW 3, due week 10: Model evolution.
+      - Tentatively on test-time training and continual learning methods.
+
+      HW 4, due week 12: Task evolution.
+      - Tentatively on self-generating tasks and putting everything together on PostTrainBench.
+16
+
+
+
+     Reading Assignments
+      • 4 readings assignments, with usually 2 required papers and some suggested
+        (but optional) papers, and 5-6 discussion probes.
+      • Three main assignment parts:
+         •   Reading notes: Read the assigned papers and summarize the main take-away points
+              •   Optional: if you have clarification questions about the papers
+         •   Paper scouting: Scout for extra papers, blog posts or other resources related to these
+             question probes
+         •   Discussion points: Reflect on the question probes related to the reading papers, prepare
+             discussion points, with live discussion and brainstorming in class.
+      • Goal is to jointly write a survey paper on self-evolving AI combining each
+       discussion session, focusing on a clear taxonomy and rigorous new directions.
+17
+
+
+
+     Course Project
+     • Meant to introduce students to the research process:
+        • Reading literature
+        • Becoming familiar with application domains
+        • Trying state-of-the-art models
+        • Performing error analysis
+        • Developing and iterating on new methods
+        • Evaluating and analyzing results
+     • Done in groups of 2-4 students.
+     • Group will be assigned a mentor.
+     • Equal contribution tracked via regular updates, presentations, and GitHub.
+18
+
+
+
+     Course Project Timeline
+     •   Week 2: Project preferences: you should have selected your teammates,
+         have ideas about your dataset and task
+     •   Week 4: Proposal report + presentation: literature review & research ideas
+     •   Week 5: Setting up datasets and baselines
+     •   Week 7: Midterm report + presentation: baselines & results for new ideas
+     •   Week 10: Updated results for research idea, analysis, ablations
+     •   Week 13: Final presentations: describing explored research ideas with
+         results, analysis, discussion
+     •   Week 14: Final report
+19
+
+
+
+     Absences and Late Submissions
+     • Students expected to attend classes
+         • If you plan to miss more than one lecture this semester, let us know as soon as possible.
+         • Course participation and in-class discussions are a graded component (20%).
+
+
+     • Homework and reading assignment wildcards (2 per student)
+        • 24-hours extension, max 1 per assignment
+
+
+     • Project report wildcards (2 per team)
+         • Either for proposal, midterm, or final report
+         • 24-hours extension, can be used together
+20
+
+
+
+     Course Websites
+     • Course website: https://mit-mi.github.io/how2ai-course/fall2026/
+     •   Canvas for submissions: https://canvas.mit.edu/courses/40521/
+21
+
+
+
+     Today’s Lecture
+     • Background to LLMs, reasoning, and agents
+     • Introduction to self-evolving AI
+     • Research ideas and tasks for self-evolving AI
+22
+
+
+
+     Time for Introductions!
+
+
+                               Your name, department and programs
+
+                               Why self-evolving AI?
+
+                               Previous research experience and applications
+
+                               Why are you interested in this course?
+23
+
+
+
+     Lecture Summary
+     • Course introduction and syllabus
+     • Background to LLMs, reasoning, and agents
+     • Introduction to self-evolving AI
+     • Research ideas and tasks for self-evolving AI
+24
+
+
+
+     Assignments for This Coming Week
+     We will notify you about your enrollment status this week.
+     - For-credit enrollment will be capped at 20-30
+     - Listeners are welcome to join lectures, discussions and course projects if they
+       are dedicated, but there will be limited space and resources
+
+     Project preference form will be out this week:
+     - Tentative list of teammates
+     - Tentative directions and tasks
+From Language Models to Autonomous
+    Agents: Six Years of Progress
+2020 In-Context Learning
+GPT-3 demonstrates zero-shot and few-shot task adaptation after large-scale unsupervised pre-training
+
+
+
+
+                                                          Language Models are Few-Shot Learners, Brown et al. (OpenAI), 2020.
+2020 Few-Shot Prompting (GPT-3)
+
+
+
+
+       GPT-3 demonstrates zero-shot and few-shot task adaptation.
+2022 Instruction following
+Instruction tuning and RLHF enable LLMs to better follow user instructions
+
+
+
+
+                                     Training Language Models to Follow Instructions with Human Feedback, Ouyang et al. (OpenAI), 2022.
+2022 GPT-3 vs InstructGPT on the same prompt
+
+
+
+
+          GPT-3 continues the text. InstructGPT, after supervised
+              fine-tuning and RLHF, answers the question.
+2022 Chain-of-thought reasoning
+Chain-of-thought prompting elicits multi-step reasoning in large language models
+
+
+
+
+                             Chain-of-Thought Prompting Elicits Reasoning in Large Language Models, Wei et al. (Google Research), 2022.
+2022 Chain-of-thought reasoning
+
+
+
+
+      A simple prompt can also bemused to elicit chain-of-thought reasoning
+
+                     Large Language Models are Zero-Shot Reasoners, Kojima et al. (University of Tokyo & Google Research), 2022.
+2023 Reasoning and acting
+LLMs interleave reasoning, tool use, and environment interaction
+
+
+
+
+                        ReAct: Synergizing Reasoning and Acting in Language Models, Yao et al. (Princeton University & Google Research), 2022.
+2023 Reasoning and acting
+
+
+
+
+            Each thought guides the next search. Each
+             observation motivates the next thought.
+2024-2025 RL-trained reasoning
+Reinforcement learning improves complex reasoning and enables models to benefit from additional
+test-time computation
+
+
+
+
+        The model was trained with a correctness reward only. Re-checking its own
+          steps appeared during RL training and was not written into the prompt.
+                                 DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning, DeepSeek-AI, 2025.
+2024-2025 RL-trained reasoning
+
+
+
+
+   GRPO removes the value network used in PPO and estimates advantages by
+      comparing rewards across a group of rollouts for the same prompt.
+               DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models, Shao et al. (DeepSeek), 2024.
+2024-2025 RL-trained reasoning
+
+
+
+
+                                 Learning to Reason with LLMs, OpenAI, September 2024.
+2025 Multi-turn Agentic Reasoning
+RL extends from single-response reasoning to complex multi-turn interaction
+
+
+
+
+                              Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning, Jin et al., 2025.
+2025 Multi-turn Agentic Reasoning
+
+
+
+
+                                    Introducing Deep Research, OpenAI, February 2025.
+2024-2026 Long-horizon model-harness agent systems
+The harness enables agents to sustain progress on long-horizon tasks through context management,
+memory, tools, and orchestration.
+
+
+
+
+                      SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering, Yang et al. (Princeton University), 2024.
+2024-2026 Long-horizon model-harness agent systems
+
+
+
+
+                                     Claude Code demo, Anthropic, September 2025.
+2024-2026 Long-horizon model-harness agent systems
+
+
+
+
+   Code written per contributor at Anthropic has increased eightfold this year, and
+        Claude writes approximately 80% of the code merged at Anthropic.
+                                                             When AI Builds Itself, Anthropic, 2026.
+2024-2026 Long-horizon model-harness agent systems
+
+
+
+
+                       Measuring AI Ability to Complete Long Software Tasks, METR, Retrieved September 2026.
+2026 Automated Improvement Loops?
+
+
+
+
+                                    When AI Builds Itself, Anthropic, 2026.
+2026 Automated Improvement Loops?
+
+
+
+
+                                    When AI Builds Itself, Anthropic, 2026.
+2026 Automated Improvement Loops?
+
+
+
+
+                          OpenAI, “Research acceleration: The view inside OpenAI,” September 6, 2026.
+  History of self-evolving AI,
+and why is it blowing up now?
+1965 Intelligence Explosion
+
+
+    Irving John Good was a British mathematician
+    who worked as a cryptologist at Bletchley Park
+    alongside Alan Turing.
+
+    After the Second World War, Good continued
+    working with Turing on computer design and
+    Bayesian statistics at the University of
+    Manchester.
+
+    In 1965, he published “Speculations
+    Concerning the First Ultraintelligent Machine,”
+    in which he proposed the idea of an
+    intelligence explosion driven by machines
+    recursively improving their own design.
+1965 Intelligence Explosion
+
+
+
+
+        1.   A machine has the intellectual ability to design machines.
+        2.   It uses that ability to design a more capable successor.
+        3.   That successor is also better at machine design.
+        4.   It can therefore contribute to another round of improvement.
+2003 Godel Machines
+
+
+
+
+                                                                Jürgen Schmidhuber
+   Gödel Machines: Self-Referential Universal Problem Solvers
+   Making Provably Optimal Self-Improvements, J.
+   Schmidhuber (IDSIA), 2003.
+2003 Godel Machines
+
+
+
+
+    A self-referential system modifies its own code when it can prove that the
+                             modification is beneficial.
+2017 AlphaGo Zero - Self-Play At Scale
+
+
+
+
+       AlphaGo is first trained to imitate expert gameplay trajectories before
+                               reinforcement learning.
+2017 AlphaGo Zero - Self-Play At Scale
+
+
+
+
+                                                                         David Silver
+
+                      Silver et al., Mastering the Game of Go without Human Knowledge (AlphaGo Zero), Nature, 2017.
+2017 AlphaGo Zero - Self-Play At Scale
+
+
+
+
+    AlphaGo Zero improves through a repeated cycle of self-play without human
+                                gameplay data.
+2023 LLM-guided discovery
+
+
+
+                                                                                         Cap Set Problem
+
+
+
+
+                                                                                         Online Bin Packing
+
+
+FunSearch combines LLM-generated code with automated evaluation in an evolutionary
+   loop to discover new cap set constructions and improved bin-packing heuristics.
+
+              Mathematical Discoveries from Program Search with Large Language Models, Romera-Paredes et al. (Google DeepMind), 2023.
+2025 Self-Modifying Agent
+
+
+
+
+                     Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents, Zhang et al., 2025.
+2026 Automated AI research
+
+
+
+
+ An AI agent follows program.md to propose ideas, edit code, and run experiments that
+   improve language model pretraining under a fixed compute budget (5 minutes per
+                       experiment, ~100 experiments one night)
+                                                     autoresearch, Andrej Karpathy, GitHub repository, 2026.
+Today’s Landscape of Self-Evolving AI
+Perspective 1: What is being evolved?
+Perspective 1: What is being evolved?
+
+
+
+
+                         In FunSearch, math programs are
+                                  being evolved
+          Mathematical Discoveries from Program Search with Large Language Models, Romera-Paredes et al. (Google DeepMind), 2023.
+Perspective 1: What is being evolved?
+Perspective 1: What is being evolved?
+
+
+
+
+               In Meta-Harness, the agent harness is
+                          being evolved
+                            Meta-Harness: End-to-End Optimization of Model Harnesses, Yoonho Lee et al., 2026.
+Perspective 1: What is being evolved?
+Perspective 1: What is being evolved?
+
+
+
+
+                In Absolute Zero, model weights are
+                           being evolved
+                                Absolute Zero: Reinforced Self-play Reasoning with Zero Data, Zhao et al., 2025.
+Perspective 1: What is being evolved?
+Perspective 1: What is being evolved?
+
+
+
+
+              In Absolute Zero, tasks are also evolved
+
+                                  Absolute Zero: Reinforced Self-play Reasoning with Zero Data, Zhao et al., 2025.
+Perspective 2: How is it being evolved? A Model View
+Perspective 2: How is it being evolved? An Agent View
+Perspective 2: How is it being evolved? An Agent View
+
+
+
+
+                    Training Language Models to Follow Instructions with Human Feedback, Ouyang et al. (OpenAI), 2022.
+Perspective 2: How is it being evolved? An Agent View
+Perspective 2: How is it being evolved? An Agent View
+
+
+
+
+                         Voyager: An Open-Ended Embodied Agent with Large Language Models, Wang et al., 2023.
+Perspective 2: How is it being evolved? An Agent View
+Perspective 2: How is it being evolved? An Agent View
+
+
+
+
+                      Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents, Zhang et al., 2025.
+Perspective 2: How is it being evolved? An Agent View
+Perspective 3: Relationships between big concepts
+AI for Discovery
+
+
+
+
+           LILA Sciences   Discovery Loop
+Continual Learning
+
+
+
+
+            Oak Lab   Engram
+AI for AI Research -> RSI
+
+
+
+
+      Recursive Superintelligence   Mirendil
+Research Ideas and Tasks
+Can LLM learn taste and make genuine innovations?
+
+  Goal: move beyond generating plausible variations of existing ideas toward
+  identifying valuable directions and producing genuinely novel discoveries.
+
+  1.   Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study
+       with 100+ NLP Researchers, Si et al., 2024.
+  2.   HindSight: Evaluating Research Idea Generation via Future Impact, Bo Jiang,
+       2026.
+  3.   LLMs Can’t Jump, Tom Zahavy (Google DeepMind), 2026.
+Can AI automate engineering optimization tasks?
+Can AI automate AI research itself?
+ Goal: enable agents to autonomously select ideas, run experiments, and
+ produce validated research discoveries.
+  1.   PaperBench: Evaluating AI’s Ability to Replicate AI Research, Giulio Starace
+       et al. (OpenAI), 2025.
+  2.   Learning to Discover at Test Time, Mert Yuksekgonul et al. (Stanford
+       University and NVIDIA), 2026.
+  3.   FrontierCS: Evolving Challenges for Evolving Intelligence, Qiuyang Mang et
+       al., 2025.
+  4.   CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended
+       Discovery, Ao Qu, Han Zheng, Zijian Zhou et al. (MIT and NUS), 2026.
+  5.   EdgeBench: Unveiling Scaling Laws of Learning from Real-World
+       Environments, Deyao Zhu et al. (ByteDance Seed), 2026.
+How to effectively turn experience into persistent knowledge?
+ Goal: convert noisy interaction trajectories into reusable knowledge that
+ persists across tasks without accumulating errors or catastrophic forgetting.
+
+  1.   ExpeL: LLM Agents Are Experiential Learners, Andrew Zhao et al. (University
+       of Maryland), 2024.
+  2.   Agentic Context Engineering: Evolving Contexts for Self-Improving Language
+       Models, Qizheng Zhang et al. (Stanford University), 2025.
+  3.   Self-Distillation Enables Continual Learning, Idan Shenfeld et al. (MIT and
+       Thinking Machines Lab), 2026.
+  4.   Reinforcement Learning via Self-Distillation, Jonas Hübotter et al. (ETH
+       Zurich and Stanford University), 2026.
+  5.   Continual Learning Bench: Evaluating Frontier AI Systems in Real-World
+       Stateful Environments, Asawa et al., 2026.
+When should we update model weights, and when should
+we update the harness?
+ Goal: determine whether new lessons should be internalized into model
+ weights or externalized via prompts, memory, skills, tools & orchestration.
+
+  1.   GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning,
+       Lakshya Agrawal et al. (UC Berkeley and Stanford University), 2025.
+  2.   Meta-Harness: End-to-End Optimization of Model Harnesses, Yoonho Lee et
+       al., 2026.
+  3.   WHALE: A Simple Recipe for Joint Harness-Weight Optimization, Kim et al.
+       (KRAFTON, KAIST & Stanford), 2026.
+  4.   Mem0: Building Production-Ready AI Agents with Scalable Long-Term
+       Memory, Chhikara et al. (Mem0), 2025.
+How can we oversee increasingly autonomous systems?
+ Goal: maintain meaningful human control when agents operate over long
+ horizons, exceed their supervisors in capability, and may learn to exploit
+ or circumvent their evaluators.
+  1.   AI Safety via Debate, Geoffrey Irving, Paul Christiano, and Dario Amodei
+       (OpenAI), 2018.
+  2.   Weak-to-Strong Generalization: Eliciting Strong Capabilities with Weak
+       Supervision, Collin Burns et al. (OpenAI), 2023.
+  3.   Agentic Misalignment: How LLMs Could Be Insider Threats, Anthropic, 2025.
+  4.   CoT Red-Handed: Stress Testing Chain-of-Thought Monitoring, Benjamin
+       Arnav et al. (Google DeepMind), 2025.
+Self-Evolving AI for Science and Engineering
+
+  Goal: continually learn from simulations, experiments, and real-world
+  feedback to accelerate scientific discovery and engineering optimization.
+
+  1.   GeneBench-Pro: Evaluating Multistage Statistical Reasoning in Genomics,
+       Quantitative Biology, and Translational Biomedicine, Jeremy Li and Andrew
+       Ho (OpenAI), 2026.
+  2.   Coscientist: Autonomous Chemical Research with Large Language Models,
+       Boiko et al., 2023.
+  3.   AnalogAgent: Self-Improving Analog Circuit Design Automation with LLM
+       Agents, Zhixuan Bao et al., 2026.
+  4.   Autonomous Agents Coordinating Distributed Discovery Through Emergent
+       Artifact Exchange, Wang et al., 2026.
+Self-Evolving AI for Personalization
+
+  Goal: continually learn from individual interactions and feedback to adapt
+  to each user’s evolving needs, preferences, and goals.
+
+  1.   Learning Personalized Agents from Human Feedback, Kaiqu Liang et al.,
+       2026.
+  2.   OpenClaw-RL: Train Any Agent Simply by Talking, Yinjie Wang et al., 2026.
+  3.   MIRIX: Multi-Agent Memory System for LLM-Based Agents, Yu Wang and Xi
+       Chen, 2025.
+  4.   StuLife: Building Self-Evolving Agents via Experience-Driven Lifelong
+       Learning, ECNU-ICALK, 2026.
+Self-Evolving AI for Multimodal & Embodied World
+
+  Goal: continually learn from multimodal perception and physical
+  interaction to adapt their knowledge, skills, and behavior in dynamic
+  real-world environments.
+  1.   Self-Evolving Embodied AI, Tongtong Feng, Xin Wang, and Wenwu Zhu,
+       2026.
+  2.   Voyager: An Open-Ended Embodied Agent with Large Language Models,
+       Guanzhi Wang et al. (NVIDIA and Caltech), 2023.
+  3.   Seeing, Listening, Remembering, and Reasoning: A Multimodal Agent with
+       Long-Term Memory, Long et al., 2025.
+

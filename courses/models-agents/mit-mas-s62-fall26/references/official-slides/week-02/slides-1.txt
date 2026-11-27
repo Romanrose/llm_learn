@@ -1,0 +1,599 @@
+1
+
+
+
+
+    How to AI an AI for Almost Anything
+         Lecture 2 - Context Evolution
+                     Paul Liang
+                 Assistant Professor
+              MIT Media Lab & MIT EECS
+
+                  https://pliang279.github.io
+                       ppliang@mit.edu
+                          @pliang279
+2
+
+
+
+    Announcements
+    • Everyone notified of for-credit or listener status
+    • Everyone added to canvas
+    • Project preferences form on canvas
+    • First reading assignment will be out tonight on context evolution
+3
+
+
+
+    Today’s Lecture
+    • Types of context: text and multimodal, prompts, memory
+    • Prompt optimization
+    • Long-context models
+    • Context management and memory
+    • Guest speaker: agentic context engineering
+    • Demo of context evolution
+4
+
+
+
+    What is an Agent?
+
+
+
+
+    An agent perceives its environment through sensors and acts upon the
+    environment through actuators.
+    Environment: code repo, website, application, real world.
+    States/observations: messages, files, webpages, tool results.
+    Actions: text, file edits, API calls, shell commands, physical movements.
+    Rewards: test cases, task completions, LLM judges, user feedback.
+5
+
+
+
+    What is Context?
+    Context: Everything the model reads before generating the next token
+  6
+
+
+
+      Context vs Harness?
+      Harness: Code around the model that manages its context and execution flow to complete tasks
+
+
+
+
+[Yao et al., ReAct: Synergizing Reasoning and Acting in Language Models. ICLR 2023]
+7
+
+
+
+    How does Context Change Behavior?
+    When predicting the next token, the model attends to the preceding context
+8
+
+
+
+    How does Context Change Behavior?
+  9
+
+
+
+      In-Context Learning
+
+
+
+
+[Brown et al., Language Models are Few-Shot Learners. NeurIPS 2020]
+ 10
+
+
+
+      Chain of Thought Reasoning
+
+
+
+
+[Wei et al., Chain-of-Thought Prompting Elicits Reasoning in Large Language Models. NeurIPS 2022]
+ 11
+
+
+
+      Tree of Thoughts Reasoning
+
+
+
+
+[Yao et al., Tree of Thoughts: Deliberate Problem Solving with Large Language Models. NeurIPS 2023]
+ 12
+
+
+
+      Multimodal Context
+                                                                                                        This is a dax.
+       Conditioning via prefix tuning
+
+       Modeling p(text | image):                                               Adapted + pretrained
+
+
+
+                                               Adapter                           Adapter              Adapter
+
+
+
+
+[Tsimpoukelli et al., Multimodal Few-Shot Learning with Frozen Language Models. NeurIPS 2021]
+ 13
+
+
+
+      Multimodal Context
+
+        Mini-GPT4
+
+
+        Stage 1: Alignment using
+        paired image-text data.
+
+
+
+        Stage 2: Instruction tuning
+        using image + text instructions
+        and example completions.
+
+
+
+
+[Zhu et al., MiniGPT-4: Enhancing Vision-language Understanding with Advanced Large Language Models. arXiv 2023]
+ 14
+
+
+
+      Multimodal Context                                            https://github.com/MIT-MI/human_behavior_atlas
+
+      Interleaved tokens – language tokens, projected visual tokens, projected audio tokens etc.
+
+
+
+
+[Ong et al., OmniSapiens: A Foundation Model for Social Behavior Processing. ICML 2026]
+ 15
+
+
+
+      Multimodal Context
+      Image captioning
+
+
+
+
+[Zeng et al., Socratic Models: Composing Zero-Shot Multimodal Reasoning with Language. ICLR 2023]
+ 16
+
+
+
+      Multimodal Context
+      Robot perception and planning
+
+
+
+
+[Zeng et al., Socratic Models: Composing Zero-Shot Multimodal Reasoning with Language. ICLR 2023]
+ 17
+
+
+
+      Multimodal Context
+      Video reasoning
+
+
+
+
+[Zeng et al., Socratic Models: Composing Zero-Shot Multimodal Reasoning with Language. ICLR 2023]
+ 18
+
+
+
+      Reasoning and Acting in Context
+
+
+
+
+[Yao et al., ReAct: Synergizing Reasoning and Acting in Language Models. ICLR 2023]
+ 19
+
+
+
+      Prompt Sensitivity
+        Key finding: LLMs are (were?) sensitive to spurious changes to prompts.
+
+
+
+
+[Sclar et al., Quantifying Language Models’ Sensitivity to Spurious Features in Prompt Design. ICLR 2024]
+ 20
+
+
+
+      Challenges in Prompting
+        Challenges in prompt design: confusions getting started, choosing the right
+        instructions, expecting human capabilities, often had to seek help.
+
+
+
+
+[Zamfirescu-Pereira et al., Why Johnny Can’t Prompt: How Non-AI Experts Try and Fail to Design LLM Prompts. CHI 2023]
+21
+
+
+
+     Prompt Optimization
+       Standard
+                    User   Prompt   LLM   Output   Eval
+      prompting
+
+                            LLM
+
+     LLM-assisted
+                    User   Prompt   LLM   Output   Eval
+      prompting
+
+
+       Prompt
+     optimization          Prompt   LLM   Output   Eval
+22
+
+
+
+     Prompt Optimization
+     Main challenges of prompt evolution:
+     1. How to optimize over discrete non-differentiable tokens. Need techniques from
+     discrete optimization.
+     → Gradient-based or search-based.
+     → Gradients to update prompt directly vs update LLM that generates prompts.
+
+
+     2. Search space is extremely high-dimensional (space of all long strings). How to
+     reduce the space through modular and composable prompts?
+     → Text vs code modules, software engineering best practices.
+23
+
+
+
+     Discrete Optimization
+
+
+
+                             If inputs and layers are text, gradients
+                                      are hard to compute.
+                             Take gradients wrt token embeddings?
+                                    But does not map to text.
+ 24
+
+
+
+      Prompt Optimization via Text Generation
+       LLMs help generate and score prompts through black-box optimization/search
+
+
+
+
+[Zhou et al., Large Language Models are Human-Level Prompt Engineers. ICLR 2023]
+ 25
+
+
+
+      Prompt Optimization via Text Optimization: TextGrad
+        LLMs optimize prompts through gradient descent/first-order optimization
+
+
+
+
+[Yuksekgonul et al., TextGrad: Automatic Differentiation via Text. arXiv 2024]
+ 26
+
+
+
+      Prompt Optimization: TextGrad
+
+
+
+
+                             Returns natural language feedback:
+                           “This prediction can be improved by…”                   How prediction changes
+                                    to update the Prompt                             evaluation metric
+
+                          1. Collect feedback to Prediction given Evaluation
+                          2. Collect feedback to Prompt given (feedback to Prediction given Evaluation)
+
+[Yuksekgonul et al., TextGrad: Automatic Differentiation via Text. arXiv 2024]
+ 27
+
+
+
+      Prompt Optimization: TextGrad
+
+
+
+
+[Yuksekgonul et al., TextGrad: Automatic Differentiation via Text. arXiv 2024]
+ 28
+
+
+
+      Prompt Optimization: TextGrad
+
+
+
+
+[Yuksekgonul et al., TextGrad: Automatic Differentiation via Text. arXiv 2024]
+ 29
+
+
+
+      Prompt Optimization: TextGrad
+
+
+
+
+[Yuksekgonul et al., TextGrad: Automatic Differentiation via Text. arXiv 2024]
+ 30
+
+
+
+      Prompt Optimization: TextGrad
+
+
+
+
+[Yuksekgonul et al., TextGrad: Automatic Differentiation via Text. arXiv 2024]
+ 31
+
+
+
+      Prompt Optimization via Modular Programs
+      Problem: Optimization space is extremely high-dimensional (space of all long strings).
+      Creating abstractions: each LLM step involves a set of common modules: retrieve, read etc.
+
+
+
+
+[Khattab et al., Demonstrate-Search-Predict: Composing Retrieval and Language Models for Knowledge-Intensive NLP. arXiv 2023]
+ 32
+
+
+
+      DSPy Programming
+      DSPy pushes away from manipulating free-form strings and closer to programming (composing modular operators to
+      build text transformation graphs). A compiler automatically generates optimized LM invocation strategies and prompts.
+
+
+
+
+[Khattab et al., DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines. arXiv 2023]
+ 33
+
+
+
+      DSPy Programming
+      Example module instantiation in DSPy
+
+
+
+
+[Khattab et al., DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines. arXiv 2023]
+ 34
+
+
+
+      DSPy Programming
+      Optimizing modules in DSPy
+
+
+
+
+      3 ways optimization is performed:
+
+      1: Candidate Generation. The compiler (recursively) finds all unique Predict modules (predictors) in a program and
+      generates candidate values for its parameters: instructions, field descriptions, demonstrations (input–output pairs).
+
+      2: Parameter Optimization. Use hyperparameter tuning algorithms (e.g., random search or Bayesian optimization) to
+      select among candidates: recall discrete optimization problem.
+
+      3. Higher-Order Program Optimization. Modify the control flow of the program e.g., ensemble to bootstrap multiple
+      copies of the same program, running them in parallel and aggregating (e.g., majority voting).
+
+[Khattab et al., DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines. arXiv 2023]
+35
+
+
+
+     Summary: Context Optimization
+     1. How to optimize over discrete non-differentiable tokens.
+     Need techniques from discrete optimization.
+     → Gradient-based or search-based (TextGrad vs Automated Prompt Engineer)
+     → Gradients to update prompt directly vs update LLM that generates prompts.
+
+
+     2. Search space is extremely high-dimensional (space of all long strings).
+     How to reduce the space through modular and composable prompts?
+     → Text vs code modules, software engineering best practices (DPSy)
+
+
+     We will see more next week, in using LLMs to optimize and search over programs.
+ 36
+
+
+
+      Long Context Models
+                                                                                                             3x3
+      Birth of attention-based models                                                               (weighted) outer product
+      – Dynamic weights for different tokens
+                                                                                      (row) normalize to 0-1
+                     fox                                          Attention matrix                         3xd  dx3
+                                                                                                                          3xd
+                 jumps                                          fox 0.7       0.3
+                                                                                                           XWq WkT X T
+                                                              jumps 1.0              h = softmax                         XWv
+                                                                                                                 d
+                                                                     fox...
+
+                                                                                                   normalize wrt dimension d
+                     fox...
+
+                    fox
+                 jumps                                                                             lazy.
+
+                                                            New language representation
+[Vaswani et al., Attention is All You Need. NeurIPS 2017]
+ 37
+
+
+
+      Transformer: A Recap
+      Birth of attention-based models
+      – Dynamic weights for different tokens
+                                                                                       𝑥1        𝑥2       𝑥3       𝑥4        𝑥5
+                                                                                       Fox     jumps     over      the      lazy
+
+
+
+
+                                                                        lazy
+                                                                                       𝑎15      𝑎25       𝑎35      𝑎45      𝑎55
+                                                                            𝑥5
+
+                                                                            𝑦     =    𝑎15 𝑣1 + 𝑎25 𝑣2 + 𝑎35 𝑣3 + 𝑎45 𝑣4 + 𝑎55 𝑣5
+         Fox           jumps            over            the   lazy
+
+                                                                                 Txd  dxT
+                                                                                                       Txd
+                                                                                 XWq WkT X T
+                                                              h = softmax                              XWv
+[Vaswani et al., Attention is All You Need. NeurIPS 2017]
+                                                                                        d
+ 38
+
+
+
+      Long Context Models
+
+
+
+
+https://github.com/gkamradt/needle-in-a-haystack
+39
+
+
+
+     3 Ways to Deal with Long Context
+     1. New architectures: sliding window, sparse, linear attention etc.
+     → Can improve model efficiency and reduces compute.
+     → But needs re-design and re-training.
+
+     2. Long-context training: short-to-long training, synthetic data, extend position encodings
+     → Helps expands the context window, simple to use.
+     → But requires data and can be expensive.
+
+     3. Context management: Context summarization, memory systems, RAG
+     → Improves the information pipeline, can scale.
+     → Depends on retrieval and memory quality.
+ 40
+
+
+
+      Long Context Models
+
+
+
+
+                                        Full attention                  Sliding window
+                                                                            attention
+
+
+[credit: CMU AI Agents course fall 2026: https://www.cmu-agents.com/]
+ 41
+
+
+
+      Sparse Attention
+
+
+
+
+                            Fixed global attention +                    Context-dependent
+                        sliding window local attention
+
+
+[credit: CMU AI Agents course fall 2026: https://www.cmu-agents.com/]
+ 42
+
+
+
+      Long Context Models Summary
+
+
+
+
+[credit: CMU AI Agents course fall 2026: https://www.cmu-agents.com/]
+ 43
+
+
+
+      Long Context Training
+
+
+
+
+       Examples of long-context data:
+       1. Long documents with coherent natural structure e.g., books, codebases, repositories, multiple documents.
+       2. Agent trajectories observations + actions + rewards.
+       3. Synthetic tasks with controlled evidence and distractors at designed positions.
+
+
+
+
+[credit: CMU AI Agents course fall 2026: https://www.cmu-agents.com/]
+ 44
+
+
+
+      Long Context Position Encodings
+
+
+
+
+[credit: CMU AI Agents course fall 2026: https://www.cmu-agents.com/]
+[Chen et al., Extending Context Window of Large Language Models via Position Interpolation. arXiv 2023]
+ 45
+
+
+
+      Long Context Models Summary
+
+
+
+
+[credit: CMU AI Agents course fall 2026: https://www.cmu-agents.com/]
+ 46
+
+
+
+      Long Context Evaluation
+
+
+
+
+[Yen et al., Helmet: How to Evaluate Long-Context Language Models Effectively and Thoroughly. ICLR 2025]
+47
+
+
+
+     Lecture Summary
+     • Types of context: text and multimodal, prompts, memory
+     • Prompt optimization
+     • Long-context models
+     • Context management and memory
+     • Guest speaker: agentic context engineering
+     • Demo of context evolution
+

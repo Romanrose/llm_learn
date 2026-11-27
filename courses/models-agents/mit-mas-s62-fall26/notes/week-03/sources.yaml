@@ -1,0 +1,11 @@
+schemaVersion: 1
+course: mit-mas-s62-fall26
+unit: week-03
+state: slides-only
+sourceType: official-slides
+slides:
+  - url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec3%20-%20llm%20optimizers.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-03/slides-1.txt
+limitations:
+  - No public lecture recordings; no classroom transcripts.
+  - Extracted slide text may omit figures, formula layout and speaker explanations.

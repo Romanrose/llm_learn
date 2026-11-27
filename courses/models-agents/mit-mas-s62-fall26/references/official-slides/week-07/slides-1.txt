@@ -1,0 +1,685 @@
+1
+
+
+
+
+    How to AI an AI for Almost Anything
+         Lecture 6 – Test-time Training
+                     Paul Liang
+                 Assistant Professor
+              MIT Media Lab & MIT EECS
+
+                  https://pliang279.github.io
+                       ppliang@mit.edu
+                          @pliang279
+2
+
+
+
+    Announcements
+    • Homework 2 on harness evolution will be out soon, due in 2 weeks.
+    • Work on projects, next checkpoint is midterm report + presentation Oct 28.
+       • Processed datasets, ran baselines, done error analysis, better proposed idea
+       • Bottom–up research. At the same time, continue top-down ideation from
+          readings and literature review.
+3
+
+
+
+    Today’s Lecture
+    • Reinforcement Learning
+    • Distillation
+    • Test-Time Training
+4
+
+
+
+    Roadmap
+     Input, (reasoning step 1, step 2, step 3…), output
+
+
+     Method 1: Direct prompting, no training (e.g., CoT)
+
+
+     Method 2: Supervised fine-tuning
+       - Assuming you have reasoning traces
+
+
+     Method 3: Reinforcement learning (today’s focus)
+       - Assumes no reasoning traces
+       - But a reward function scoring reasoning and outputs
+5
+
+
+
+    Learning a Policy – RL basics
+6
+
+
+
+    Learning a Policy – RL basics
+     An MDP is defined by:
+
+     ●   Set of states 𝑆.
+     ●   Set of actions 𝐴.
+     ●   Transition function 𝑃(𝑠 ′ |𝑠, 𝑎).
+     ●   Reward function 𝑟(𝑠, 𝑎, 𝑠 ′ ).
+     ●   Start state 𝑠0 .
+     ●   Discount factor 𝛾.
+     ●   Horizon 𝐻.                          Return:
+
+
+                                             Policy:
+
+                                             Goal:
+7
+
+
+
+    Intersection Between RL and Supervised Learning
+     Imitation learning
+
+
+
+
+                          Obtain expert trajectories (e.g. human driver/video demonstrations):
+
+
+                             Perform supervised learning by predicting expert action
+
+
+
+                                      1. Distribution mismatch
+                                      2. Hard to recover from suboptimal states
+                                      3. Expert trajectories not always available
+8
+
+
+
+    Policy Gradients
+
+
+
+
+                       From Link
+9
+
+
+
+    Pong from Pixels
+
+
+
+                                                                                     Up or Down
+
+
+
+
+                Network sees +1 if it scored a point, and -1 if it was scored against.
+                               Can we train a network with this?
+10
+
+
+
+     Pong from Pixels
+
+                        Suppose we have training labels?
+
+
+                                                                 Maximize
+
+                                                            ෍ log 𝑝 𝑦𝑖 𝑥𝑖 )
+                                                             𝑖
+
+
+
+
+                        But we don’t have training labels
+11
+
+
+
+     Let’s act according to our current policy
+
+Run - 1
+
+Run - 2
+
+Run - 3
+12
+
+
+
+     Let’s act according to our current policy
+
+Run - 1                                          Win
+
+
+Run - 2                                          Lose
+
+Run - 3
+                                                 Lose
+13
+
+
+
+     Let’s act according to our current policy
+
+
+
+                                         Win     Maximize ෍ log 𝑝 𝑦𝑖 𝑥𝑖 )
+                                                            𝑖
+
+                                         Lose    Maximize −1 ෍ log 𝑝 𝑦𝑖 𝑥𝑖 )
+                                                                𝑖
+
+                                         Lose    Maximize −1 ෍ log 𝑝 𝑦𝑖 𝑥𝑖 )
+                                                                𝑖
+14
+
+
+
+     For a General Case
+
+
+
+                          Win    Maximize ෍ 𝑟𝑖 log 𝑝 𝑦𝑖 𝑥𝑖 )
+                                             𝑖
+
+                          Lose   Maximize ෍ 𝑟𝑖 log 𝑝 𝑦𝑖 𝑥𝑖 )
+                                             𝑖
+
+                          Lose   Maximize ෍ 𝑟𝑖 log 𝑝 𝑦𝑖 𝑥𝑖 )
+                                             𝑖
+15
+
+
+
+     Reinforce Algorithm
+
+
+
+
+                                                                 𝜖 -greedy
+
+
+
+
+         𝜖-greedy: start with fully random exploration when policy is not good,
+         as policy gets better sample actions from the policy with less exploration.
+16
+
+
+
+     Policy Gradients
+
+
+
+
+     If 𝑟(𝜏) is positive, increase the probability If 𝑟(𝜏) is negative, decrease the probability
+
+
+
+                                But this suffers from high variance
+17
+
+
+
+     Policy Gradients
+
+     The raw reward may not be very meaningful.
+
+     What is important then? Whether a reward is higher or lower than what you expect.
+
+     -- Compare to a baseline, and use relative improvement
+
+
+
+
+                      e.g. exponential moving average of the rewards.
+18
+
+
+
+     Actor-Critic Methods
+          A better baseline: want to push the probability of an action from a state, if this action was
+          better than the expected value of what we should get from that state.
+
+          Q(s,a) and V(s) - action and state value functions!
+          Q(s,a): how much total reward should I expect by taking action a from state s.
+          V(s): how much total reward should I expect from state s.
+
+          We are happy with an action a in a state s if the advantage function A(s,a) = Q(s,a) - V(s) is
+          large. Otherwise we are unhappy with an action if it’s small.
+
+          Using this, we get the estimator:
+ 19
+
+
+
+      Actor-Critic Methods
+      Two models: actor learns the policy and critic learns the value of states and actions
+
+
+                                                                                 Critic: evaluates how good the action is
+
+
+
+
+                                                                                   Actor: decides what actions to take
+
+
+
+
+                                                                                              Advantage function A(s,a)
+
+
+
+[Minh et al., Asynchronous Methods for Deep Reinforcement Learning. ICML 2016]
+ 20
+
+
+
+      Proximal Policy Optimization
+       2 new algorithms:
+       1. Trust region policy optimization limits the KL divergence (distance)
+       between new and old policies.
+       2. Proximal policy optimization further approximates KL divergence
+       by clipping the policy gradient.
+
+                                       Restrict each update to be small -> stable training
+
+
+
+
+[Schulman et al. Trust Region Policy Optimization, ICML 2015]
+[Schulman et al. Proximal Policy Optimization, 2017]
+ 21
+
+
+
+      Reinforcement Learning from Human Feedback
+      Step 0: Pre-train LLM and perform supervised fine-tuning;
+      Step 1: For each prompt, treat the LLM as a policy and sample multiple responses from the model;
+      Step 2: Humans rank these outputs by quality;
+      Step 3: Train a reward model to predict human preferences / ranking, given full model responses;
+      Step 4: Use RL (e.g. PPO, GRPO) to fine-tune the model to maximize the reward model’s scores.
+
+
+
+  Response 1                                                                                         Reward?
+
+
+  Response 2                                                                                         Reward?
+
+
+  Response 3                                                                                         Reward?
+
+[Christiano et al. Deep reinforcement learning from human preferences. NeurIPS 2017 ]
+22
+
+
+
+     Human Ranking and Reward Model
+     Can’t have humans write gold answers to everything, so train a reward model to predict human preferences
+23
+
+
+
+     Human Ranking and Reward Model
+     Human preferences are noisy and uncalibrated
+     Solution: Relative preference tuning via pairwise comparisons
+
+
+           x
+                     Cambridge is a historic city in
+                     Cambridgeshire, England, located on
+                     the River Cam about 55 miles north of                     Cambridge is a tiny village
+                     London, with a population of 145,700                      in northern England with
+                     and a broader built-up area housing
+                     about 181,137 people. It was a           is better than   absolutely no historical
+                                                                               significance. It has never
+                     significant trading center in Roman                       been granted any form of city
+                     and Viking times, received its first                      status.
+                     town charters in the 12th century, and
+                     officially became a city in 1951.
+
+
+
+
+                                                                                                               23
+24
+
+
+
+     The RL Part: PPO
+     3 components:
+
+     1. Actor model/policy: LLM that has been pre-trained and supervised fine-tuned;
+     2. Reward model: Trained and frozen model that predicts human preference as a scalar reward, given full
+     model responses;
+     3. Critic model/value: Learnable value function takes in partial model responses and predicts value V(s).
+
+     Recall Actor-critic models!!
+
+
+                                                               Critic: evaluates how good the action is
+
+
+
+
+                                                               Actor: decides what actions to take
+25
+
+
+
+     The RL Part: PPO
+      Algorithm:
+      1. Generate responses: LLM produces response for a given prompt;
+      2. Score responses: The reward model assigns reward for each response;
+      3. Compute advantages A(s,a) = Q(s,a) - V(s). Value model estimates how much better a specific action a
+      (i.e., word) is compared to an average action given state s (i.e., prompt + generated words so far).
+      4. Optimize policy: Update the LLM by optimizing the PPO objective (KL + clip to penalize large changes);
+      5. Update value: train the value function to be better at estimating values given partial responses.
+ 26
+
+
+
+      GRPO (Deepseek R1)
+       Key differences: GRPO forgoes the value model, instead estimating the baseline from average of rewards
+       from a group of responses (requires large group size for accurate baseline estimation).
+
+
+
+
+[Guo et al. Deepseek-r1: Incentivizing reasoning capability in LLMs via reinforcement learning. arXiv 2025]
+ 27
+
+
+
+      GRPO (Deepseek R1)
+
+
+
+
+             Key differences:
+             1. Group of responses used to compute advantage and gradient updates.
+             2. No learned value function, just simple statistics of rewards over a group.
+             3. Abandon reward models and use rule-based verifiers (binary checks, test-cases, length, format).
+
+
+
+[Guo et al. Deepseek-r1: Incentivizing reasoning capability in LLMs via reinforcement learning. arXiv 2025]
+ 28
+
+
+
+      Direct Preference Optimization
+      DPO is not actually doing reinforcement learning.
+      It does not infer rewards from preference data, instead directly increases likelihood of preferred responses
+      and decreases likelihood of other responses.
+
+      More similar to supervised learning, also known as ‘offline preference optimization’.
+
+
+
+
+[Rafailov et al. Direct preference optimization: Your language model is secretly a reward model. NeurIPS 2023]
+ 29
+
+
+
+      Reward Hacking
+      - Models learn to maximize reward, which doesn't always align with objective
+      - Be careful when you design your reward: Simpler rewards tends to be more robust
+
+
+
+
+      An RL agent achieved 20% higher scores than humans
+      by exploiting a loophole to repeatedly knock over                    An LLM hacks a chess engine for itself to win the game.
+      respawning targets in an isolated lagoon.
+                                                                                                                                     29
+[OpenAI. Faulty reward functions in the wild, https://openai.com/index/faulty-reward-functions/]
+ 30
+
+
+
+      Test-Time RL
+      Learn from self-generated and changing reward signals: majority vote across multiple sampled responses.
+
+
+
+
+[Zuo et al. Test-Time Reinforcement Learning. NeurIPS 2025]
+ 31
+
+
+
+      Test-Time Training
+      Adapt to deployment distributions:
+      Test-time RL > In-context learning
+      - Data augmentation helps
+      - Task-specific adapters help
+
+
+
+
+[Akyurek et al. The Surprising Effectiveness of Test-Time Training for Few-Shot Learning. ICML 2025]
+ 32
+
+
+
+      Test-Time Training
+      OpenClaw-RL: Given text-based feedback, designs reward models that translates natural language critiques
+      into executable reward signals for reinforcement learning.
+
+
+
+
+[Wang et al. OpenClaw-RL: Train Any Agent Simply by Talking. ICML 2025]
+33
+
+
+
+     Recap: LLMs for Discovery
+     LLMs can also evolve its own context (i.e., solution space) to solve open-ended problems
+     (e.g., NP-hard optimization problems, coding, scientific discovery).
+ 34
+
+
+
+      RL for Test-Time Discovery
+                                     LLMs as optimizers                                      TTT-Discover
+                                                Archive                                          Archive
+                                                                                                       task + parent
+                                                       parent
+                                                                                                       + score
+                                            Solution LLM                                      Solution LLM
+                                                       solution                                        solution
+
+                                          External verifier                                  External verifier
+
+                                         Verifier feedback            Trained at test time               Frozen at test time
+
+                                                               LLMs as optimizers                     TTT-Discover
+                        Updated parameters                           None                             Solution LLM
+                                                                                                  Task + parent solution
+                        Trainable-model input                          —
+                                                                                                          + score
+                        Trainable-model output                          —                           Complete solution
+                        Complete solution from                 Frozen solution LLM                 Same trainable LLM
+
+[Yuksekgonul et al. Learning to Discover at Test Time. 2026]
+ 35
+
+
+
+      RL for Test-Time Discovery
+      Reinforcement learning on rewards defined on discovery problems
+
+
+
+
+[Jiang et al. Evolving in Thought Space: Training a Small Model at Test-time Unlocks Better Discoveries. 2026]
+ 36
+
+
+
+      Distillation
+      Key issue with RL: only small bits of reward as training signal. How to learn from dense feedback?
+
+
+
+
+[Zhao et al. Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models. ICML 2026]
+37
+
+
+
+     Teacher Student Distillation (i.e., SFT, instruction tuning)
+     Student becomes great at imitating teacher answers but never sees its own mistakes and doesn’t learn
+     how teacher corrects common mistakes.
+
+
+                                                                                             1. writes the
+         Teacher            w1*             w2*              w3*             w4*                solution
+
+
+
+
+                                                                                             2. copies the
+         Student             w1              w2              w3              w4                 solution
+ 38
+
+
+
+      On Policy Distillation
+      Student writes its attempts, so it sees its own mistakes, teacher scores and corrects common mistakes.
+
+
+
+                                                                                                                     2. scores the
+             Teacher                    w1                     w2                      w3                      w4       attempt
+
+
+
+
+                                                                                                                      1. writes its
+             Student                    w1                     w2                      w3                      w4       attempt
+                                                                                                                       3. copies
+                                                                                                                    teacher scores
+
+
+
+
+[Agarwal et al. On-policy distillation of language models: Learning from self-generated mistakes. ICLR 2024]
+39
+
+
+
+     Comparison
+                      SFT               RL           Distillation
+
+
+
+      Policy?    Teacher writes   Student writes    Student writes
+                    solution         attempt           attempt
+
+
+     Feedback?   Student copies    Environment      Teacher grades
+                    solution,     grades attempt,      attempt,
+                 token by token      one score        every token
+ 40
+
+
+
+      On Policy Self Distillation
+      If we want self-improvement, we don’t want to be limited by teacher model.
+      In self-distillation, teacher is student + more feedback (privileged information).
+
+
+                                                                                                                2. scores the
+             Student                     w1                     w2                      w3                w4       attempt
+             + more
+            feedback
+
+
+                                                                                                                 1. writes its
+             Student                     w1                     w2                      w3                w4       attempt
+                                                                                                                  3. copies
+                                                                                                               teacher scores
+       Dense feedback:
+
+
+
+[Zhao et al. Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models. ICML 2026]
+ 41
+
+
+
+      Self Distillation for Reasoning
+
+
+
+
+[Hubotter et al. Reinforcement Learning via Self-Distillation. ICML 2026]
+ 42
+
+
+
+      Self Distillation for Continual Learning
+
+
+
+
+[Hubotter et al. Reinforcement Learning via Self-Distillation. ICML 2026]
+ 43
+
+
+
+      Self Distillation for Continual Learning
+
+
+
+
+[Shenfeld et al. Self-Distillation Enables Continual Learning. ICML 2026]
+44
+
+
+
+     Lecture Summary
+                      SFT               RL           Distillation
+
+
+
+      Policy?    Teacher writes   Student writes    Student writes
+                    solution         attempt           attempt
+
+     Feedback?   Student copies    Environment      Teacher grades
+                    solution,     grades attempt,      attempt,
+                 token by token      one score        every token
+45
+
+
+
+     Test-Time Training
+                                  Type of feedback
+
+                          Dense feedback
+
+                      Rewards or verifiers
+
+                    Self-generated targets
+
+                      Human-given labels
+                                                                         Update algorithm
+                          Full weights        SFT    RL   Distillation
+
+                      Adapters
+             Partial weights
+
+
+                     What is
+                     updated
+

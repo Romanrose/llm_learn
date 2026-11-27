@@ -1,0 +1,18 @@
+schemaVersion: 1
+state: reviewed
+course: cs329a-autumn25
+lecture: lecture-04
+provider: deepseek
+reviewedAt: 2026-11-27T13:46:25.904Z
+source: courses/models-agents/cs329a-autumn25/notes/lecture-04/references/deepseek
+outputs:
+  chinese: courses/models-agents/cs329a-autumn25/notes/lecture-04/transcript.zh-CN.md
+  note: courses/models-agents/cs329a-autumn25/notes/lecture-04/note.md
+  blog: courses/models-agents/cs329a-autumn25/notes/lecture-04/blog.md
+checks:
+  errors: []
+  warnings: []
+authorization: 用户明确授权：全部搞完直接合并掉
+limitations:
+  - User-authorized publication; automated structure/completeness checks, not independent human content review.
+  - English source uses platform auto-captions; terminology and translation may contain errors.

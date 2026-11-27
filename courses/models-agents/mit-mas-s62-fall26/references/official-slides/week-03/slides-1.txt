@@ -1,0 +1,474 @@
+1
+
+
+
+
+    How to AI an AI for Almost Anything
+      Lecture 3 - LLMs as Context Optimizers
+                       Paul Liang
+                   Assistant Professor
+                MIT Media Lab & MIT EECS
+
+                   https://pliang279.github.io
+                        ppliang@mit.edu
+                           @pliang279
+2
+
+
+
+    Today’s Lecture
+     • Recap on Prompt Optimization (5min)
+    • TextGrad Deep Dive (10min)
+    • LLM for Discovery (20min)
+    • FunSearch Breakdown (15min)
+    • Open Challenges (3min)
+3
+
+
+
+    Recap on Prompt Optimization
+    • Context is everything the model reads before generating the next token.
+      Prompt is what you give a model to guide its response.
+4
+
+
+
+    Recap on Prompt Optimization
+    • Context is everything the model reads before generating the next token.
+      Prompt is what you give a model to guide its response.
+5
+
+
+
+    Recap on Prompt Optimization
+    • Context is everything the model reads before generating the next token.
+      Prompt is what you give a model to guide its response.
+    • Prompt can shape model’s behavior
+6
+
+
+
+    Recap on Prompt Optimization
+     • Context is everything the model reads before generating the next token.
+       Prompt is what you give a model to guide its response.
+     • Prompt can shape model’s behavior
+     •
+7
+
+
+
+    Recap on Prompt Optimization
+    • Context is everything the model reads before generating the next token.
+      Prompt is what you give a model to guide its response.
+    • Prompt can shape model’s behavior
+    • LLMs can write high-quality prompts through iterative attempts
+  8
+
+
+
+      Recap on Prompt Optimization
+       Automated prompt engineer
+
+
+
+
+[Zhou et al., Large Language Models are Human-Level Prompt Engineers. ICLR 2023]
+9
+
+
+
+    Recap on Prompt Optimization
+    • Context is everything the model reads before generating the next token.
+      Prompt is what you give a model to guide its response.
+    • Prompt can shape model’s behavior
+    • LLMs can write high-quality prompts through iterative attempts
+    • Towards Context Optimization: We can build an agentic system to
+      update useful contexts everytime we solve a problem
+ 10
+
+
+
+      Recap on Prompt Optimization
+
+
+
+
+[Zhang et al., Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models. ICLR 2026]
+ 11
+
+
+
+      Recap on Prompt Optimization
+
+
+
+
+[Zhang et al., Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models. ICLR 2026]
+12
+
+
+
+     TextGrad Deep Dive (cont’d)
+13
+
+
+
+
+     We have used LLMs to optimize prompts. Can we use
+     the same propose–evaluate–refine loop to optimize
+     something else?
+ 14
+
+
+
+      LLMs can optimize through self-refine
+
+
+
+
+[Madaan et al., Self-Refine: Iterative Refinement with Self-Feedback. NeurIPS 2023]
+15
+
+
+
+     LLMs can optimize through self-refinement
+ 16
+
+
+
+      LLMs can optimize using feedback from a scorer
+
+
+
+
+[Yang et al., Large Language Models as Optimizers. ICLR 2024]
+ 17
+
+
+
+      LLMs can optimize using feedback from a scorer
+
+
+
+
+[Yang et al., Large Language Models as Optimizers. ICLR 2024]
+ 18
+
+
+
+      Optimize Writing
+
+
+
+
+[Yang et al., Re3: Generating Longer Stories With Recursive Reprompting and Revision. EMNLP 2022]
+ 19
+
+
+
+      Optimize Agent Harness
+
+
+
+
+[Lee et al., Meta-Harness: End-to-End Optimization of Model Harnesses. arXiv 2026]
+ 20
+
+
+
+      Optimize Data Visualization
+
+
+
+
+[Yang et al., MatPlotAgent: Method and Evaluation for LLM-Based Agentic Scientific Data Visualization. Findings of ACL 2024]
+ 21
+
+
+
+      Optimize Image Generation
+
+
+
+
+[Yang et al., Idea2Img: Iterative Self-Refinement with GPT-4V(ision) for Automatic Image Design and Generation. ECCV 2024]
+ 22
+
+
+
+      Optimize Video Generation
+
+
+
+
+[Do et al., VISTA: A Test-Time Self-Improving Video Generation Agent. arXiv 2025]
+23
+
+
+
+
+     What about scientific discovery?
+24
+
+
+
+     What can we achieve with LLM-driven search for
+     solution optimization?
+
+                                       1. Discovered new cap set
+                                          constructions in eight
+                                          dimensions, improving the
+                                          record from 496 to 512.
+                                       2. Discovered bin-packing
+                                          heuristics that outperformed
+                                          standard baselines on tested
+                                          benchmarks.
+25
+
+
+
+     What can we achieve with LLM-driven search for
+     solution optimization?
+26
+
+
+
+     Background - Cap set problem & Bin-packing
+     1. Cap set problem: How many points can you select from {0,1,2}^n without
+        including three distinct points on a line?
+        a. In 8 dimensions, each point is an eight-entry vector, such as
+            (0,2,1,0,1,2,2,0).
+        b. Select as many of the 6,561 points in {0,1,2}^8 as possible, with no three
+            distinct points on a line.
+
+     2. Bin-packing problem: How can we pack items of different sizes into the fewest
+        bins, without exceeding any bin’s capacity?
+        a. For example, suppose each bin has capacity 10, and the items have sizes
+            6, 5, 3, 2, 2, 2: A valid packing uses 3 bins: [6,3], [5,2,2], [2].
+        b. In online bin packing, items arrive one at a time. You must place each item
+            immediately.
+27
+
+
+
+     FunSearch Breakdown - Black Box Optimization
+28
+
+
+
+     FunSearch Breakdown - Search Space
+     Search space: the set of candidates an optimizer can explore.
+
+     FunSearch searches over Python functions with given input and output format.
+
+     Cap sets: priority(element, n) ranks which vector to add next.
+     Bin packing: heuristic(item, bins) ranks where to place an item.
+
+     The output is a reusable program that constructs solutions.
+29
+
+
+
+     FunSearch Breakdown - Search Space
+30
+
+
+
+     FunSearch Breakdown - Evolutionary algorithms
+31
+
+
+
+     FunSearch Breakdown - Evolutionary algorithms
+      Evolutionary algorithms improve a population through repeated selection,
+      variation, and evaluation.
+      FunSearch uses an LLM to generate variations of sampled programs.
+32
+
+
+
+     FunSearch Breakdown - Programs Pool & Exploration
+      1. Initialize each island with a seed program
+
+      2. Grow the population within each island
+         a. Sample parents from the existing programs in this island
+         b. Generate a child program and add it to the same island
+
+      3. Remove the lower performing islands
+33
+34
+
+
+
+     AlphaEvolve
+ Search scope:
+ Single-function →
+ Full-program evolution
+
+ Edit mode:
+ SEARCH/REPLACE diffs
+
+ Models: Stronger LLMs with
+ richer context and feedback
+
+ Objectives: Single-metric →
+ Multi-metric optimization
+
+                               Blog: https://deepmind.google/blog/alphaevolve-impact/
+35
+
+
+
+     Autoresearch
+
+
+
+
+An AI agent follows program.md to propose ideas, edit code, and run experiments
+that improve language model pretraining under a fixed compute budget (5 minutes
+per experiment, ~100 experiments one night)                   https://github.com/karpathy/autoresearch
+36
+
+
+
+     What other problems can you “autoresearch”?
+ 37
+
+
+
+
+[Zhu et al., EdgeBench: Unveiling Scaling Laws of Learning from Real-World Environments. 2026]
+38
+
+
+
+     OpenEvolve Deep Dive - HW1 preview
+
+
+
+
+               HW Link: https://colab.research.google.com/drive/1aavmbVb3ykhv--jnhoCA_q6AylUhq0EW?usp=sharing
+39
+
+
+
+     Many discoveries don’t come with a numerical grader
+       - Biology: CRISPR gene editing
+
+       - Physics: General relativity
+
+       - Chemistry: Discovery of penicillin
+
+       - Astronomy: Dark matter
+
+       - Geology: Plate tectonics
+
+       - Medicine: mRNA vaccines
+
+       - Computer Science: Backpropagation
+ 40
+
+
+
+      Can LLMs Generate Novel Research Ideas? A
+      Large-Scale Human Study with 100+ NLP Researchers
+
+
+
+
+[Si et al., Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers. ICLR 2025]
+ 41
+
+
+
+      AI Scientist
+
+
+
+
+[Lu et al., Towards End-to-End Automation of AI Research. Nature 651, 914–919 (2026)]
+ 42
+
+
+
+      AI Scientist
+
+
+
+
+[Lu et al., Towards End-to-End Automation of AI Research. Nature 651, 914–919 (2026)]
+43
+
+
+
+     Verification is important for discovery
+
+
+
+
+        • DeepSeek-V3 → decomposes the original theorem into subgoals
+        • DeepSeek-Prover-V2-7B → attempts to prove those subgoals in Lean
+
+[Ren et al., DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal
+Decomposition. 2025]
+44
+
+
+
+     Verification is important for discovery
+45
+
+
+
+     Verification is important for discovery
+
+
+
+
+                               Blog: https://www.anthropic.com/research/formalizing-fermats-last-theorem
+ 46
+
+
+
+      Verification is important for discovery
+
+
+
+
+Video Clip: Link                           https://www.youtube.com/watch?v=6AgOfiZOWiY
+47
+
+
+
+     Open Challenges
+
+      - Distribution shift from ultra-long contexts
+     How does model behavior change as context length grows, and how robust
+     are optimization/discovery methods under these induced distribution shifts?
+
+      - Genuine discovery beyond verifiable domains
+     Can LLMs generate genuinely novel discoveries when correctness or
+     progress cannot be easily verified by an automated evaluator?
+
+      - Faster Adaptation
+     Can models learn useful design principles from fewer experiments,
+     enabling better decisions and designs with a smaller experimental budget?
+48
+
+
+
+     Next: From Memory to Harness
+49
+
+
+
+     Assignments for This Coming Week
+     We will notify you about your enrollment status this week.
+      For-credit enrollment will be capped at 20-30
+      Listeners are welcome to join lectures, discussions and course projects if
+      they are dedicated, but there will be limited space and resources
+
+     Project preference form will be out this week:
+       Tentative list of teammates
+       Tentative directions and tasks
+

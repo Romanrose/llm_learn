@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cs329a-autumn25
+lecture: lecture-17
+title: Agentic Evaluations & Long-Horizon Tasks
+preparedAt: 2026-11-27T12:17:09.606Z
+video:
+  id: 8JAqLnTaZu4
+  title: Stanford CS329A Self-Improving AI Agents | Part 8 | Agentic Evaluations and Long Horizon Tasks
+  url: https://www.youtube.com/watch?v=8JAqLnTaZu4
+  playlist: https://www.youtube.com/playlist?list=PLangBM27OtEA
+  playlistIndex: null
+  channel: Stanford Online
+  durationSeconds: 4517
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/models-agents/cs329a-autumn25/notes/lecture-17/transcript.en.md
+  processor: video-subtitle-transcript

@@ -1,0 +1,24 @@
+schemaVersion: 1
+state: candidate-ready
+provider: deepseek
+model: deepseek-v4-flash
+createdAt: 2026-11-27T12:18:45.209Z
+course: cs329a-autumn25
+lecture: lecture-17
+inputs:
+  transcriptEn: courses/models-agents/cs329a-autumn25/notes/lecture-17/transcript.en.md
+  lecture: null
+outputs:
+  transcriptZh: courses/models-agents/cs329a-autumn25/notes/lecture-17/references/deepseek/transcript.zh-CN.md
+  note: courses/models-agents/cs329a-autumn25/notes/lecture-17/references/deepseek/note.md
+  blog: courses/models-agents/cs329a-autumn25/notes/lecture-17/references/deepseek/blog.md
+translation:
+  chunks: 9
+  maxConcurrent: 3
+review:
+  state: pending
+  required:
+    - completeness
+    - terminology
+    - hallucination
+    - citations

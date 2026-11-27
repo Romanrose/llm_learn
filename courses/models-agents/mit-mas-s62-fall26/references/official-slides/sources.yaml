@@ -1,0 +1,81 @@
+course: mit-mas-s62-fall26
+source: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+accessedAt: 2026-11-27T12:06:44.101Z
+state: source-text-only
+transcripts: unavailable-no-public-video
+generationPath: workflow/scripts/slide-notes.mjs
+  and transcript.en.md; no slides-only DeepSeek adapter exists. Do not relabel
+  slides as a transcript.
+slides:
+  - week: week-01
+    url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec1%20-%20intro.pdf
+    pdf: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-01/slides-1.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-01/slides-1.txt
+    characters: 23605
+    status: extracted
+  - week: week-02
+    url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec2%20-%20context.pdf
+    pdf: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-02/slides-1.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-02/slides-1.txt
+    characters: 15092
+    status: extracted
+  - week: week-02
+    url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/context_guest.pdf
+    pdf: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-02/slides-2.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-02/slides-2.txt
+    characters: 12907
+    status: extracted
+  - week: week-03
+    url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec3%20-%20llm%20optimizers.pdf
+    pdf: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-03/slides-1.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-03/slides-1.txt
+    characters: 10092
+    status: extracted
+  - week: week-05
+    url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec4%20-%20harness.pdf
+    pdf: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-05/slides-1.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-05/slides-1.txt
+    characters: 22787
+    status: extracted
+  - week: week-05
+    url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/harness_guest.pdf
+    pdf: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-05/slides-2.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-05/slides-2.txt
+    characters: 5647
+    status: extracted
+  - week: week-06
+    url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/harness%20engineering%20tutorial.pdf
+    pdf: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-06/slides-1.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-06/slides-1.txt
+    characters: 59186
+    status: extracted
+  - week: week-06
+    url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec5%20-%20multi%20agent.pdf
+    pdf: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-06/slides-2.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-06/slides-2.txt
+    characters: 20679
+    status: extracted
+  - week: week-07
+    url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6%20-%20training.pdf
+    pdf: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-07/slides-1.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-07/slides-1.txt
+    characters: 19928
+    status: extracted
+  - week: week-07
+    url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/model_guest.pdf
+    pdf: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-07/slides-2.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-07/slides-2.txt
+    characters: 11111
+    status: extracted
+  - week: week-09
+    url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6%20-%20rl%20in%20practice.pdf
+    pdf: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-09/slides-1.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-09/slides-1.txt
+    characters: 28995
+    status: extracted
+  - week: week-09
+    url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec7%20-%20self%20play.pdf
+    pdf: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-09/slides-2.pdf
+    text: courses/models-agents/mit-mas-s62-fall26/references/official-slides/week-09/slides-2.txt
+    characters: 36569
+    status: extracted

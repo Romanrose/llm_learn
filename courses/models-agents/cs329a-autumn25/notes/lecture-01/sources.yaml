@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cs329a-autumn25
+lecture: lecture-01
+title: Course Overview
+preparedAt: 2026-11-27T13:45:07.518Z
+video:
+  id: 6YnLB0XbTnI
+  title: Stanford CS329A Self-Improving AI Agents | Part 1 | Course Overview
+  url: https://www.youtube.com/watch?v=6YnLB0XbTnI
+  playlist: https://www.youtube.com/playlist?list=PLangBM27OtEA
+  playlistIndex: null
+  channel: Stanford Online
+  durationSeconds: 4182
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/models-agents/cs329a-autumn25/notes/lecture-01/transcript.en.md
+  processor: video-subtitle-transcript

@@ -1,0 +1,498 @@
+  1
+
+
+
+      Guest Lecture: Self-Distillation
+                                                            Idan Shenfeld
+                                                            Idan Shenfeld is a Member of Technical Staff at Thinking Machines Lab.
+                                                            He did his PhD at MIT with Pulkit Agrawal in the Improbable AI Lab, where
+                                                            he worked on reinforcement learning for language models, and in
+                                                            particular on how a model can keep learning new skills without forgetting
+                                                            what it already knows. His paper RL’s Razor (ICLR 2026) showed that on-
+                                                            policy RL forgets less than supervised fine-tuning because it stays closer
+                                                            to the original model. The follow-up, Self-Distillation Enables Continual
+                                                            Learning (ICML 2026; Best Paper, ICLR Lifelong Agents Workshop),
+                                                            turned this into a method that needs no reward: given a demonstration in
+                                                            its prompt, the model becomes its own teacher. Cursor has since used
+                                                            self-distillation to train Composer 2.5. During his PhD, he also worked on
+                                                            LLM post-training at Google DeepMind.
+
+
+
+Web: https://www.idanshenfeld.com/ https://www.linkedin.com/in/idan-shenfeld
+Blog: https://cursor.com/blog/composer-2-5
+2
+
+
+
+
+    How to AI an AI for Almost Anything
+    Lecture 6 - RL & Self-Distillation in Practice
+                            Ao Qu
+
+
+
+
+                    https://quao627.github.io/
+                    https://x.com/ao_qu18465
+3
+
+
+
+    Today’s Tutorial
+    • Recap: PPO & GRPO, OPD & self-distillation
+    • What the RL loop looks like
+    • RL vs OPD (on-policy distillation)
+    • What to watch during training
+    • verl quickstart
+    • From verl to reef: infra for self-evolving agents
+  4
+
+
+
+       Recap: RL for LLMs: PPO and GRPO
+                                                                                                                 An LLM as a policy: each token is an action
+                                                                                                                 prompt x = “What is 5 + (2 × 3)?”
+
+                                                                                                                       action yt ~ πθ(·|st)
+
+                                                                                                                  x    5    +    2   is   7   ,   … 21     .      r=0
+
+                                                                                                               state st = (x, y<t)                       reward: once, at the end
+
+
+                                                                                                                 a wrong answer (21 ≠ 11) → r = 0
+
+
+
+
+          policy-gradient loss: L(θ) = − Σt At log πθ(yt | st)
+          PPO / GRPO in practice: L(θ) = − Σt min( ρtAt , clip(ρt, 1−ε, 1+ε) At ), ρt = πθ(yt|st) / πold(yt|st)
+
+
+          PPO: At = Q(st, yt) − V(st)                                                                     GRPO: Âi = ( ri − mean(r) ) / std(r)
+          V = a learned value model (GAE)                                                                 over G answers to the same prompt; no V
+
+
+
+[Shao et al., DeepSeekMath 2024] (figure) [Schulman et al., PPO 2017] [Schulman et al., GAE. ICLR 2016]
+Slides: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6%20-%20training.pdf
+   5
+
+
+
+       Recap: On-Policy Distillation and Self-Distillation
+        prompt: “What is 5 + (2 × 3)?”                                                                                           ① student writes y ~ πθ
+                                                                                                                                 ② teacher scores every token
+                                                                                                                                 ③ student moves toward it
+
+
+
+          reverse KL per token: KL(πθ ‖ πT) = Eyt~πθ[ log πθ(yt|st) − log πT(yt|st) ]
+          gradient: ∇KL = − Eyt~πθ[ At ∇log πθ(yt|st) ], At = log πT(yt|st) − log πθ(yt|st) (as E[∇log πθ] = 0)
+          → a policy-gradient loss: L(θ) = − Σt At log πθ(yt|st)
+
+                  OPD: the teacher is another, bigger model πT                                                self-distillation: the teacher is the model itself + c
+
+        teacher reads        x    y<t    → πT(yt | x, y<t)                                             teacher reads    c   x   y<t   → sg[ πθ(yt | c, x, y<t) ]
+
+         At = log πT(yt|st) − log πθ(yt|st)                                                              At = log πθ(yt|c, st) − log πθ(yt|st)
+         e.g. Qwen3-32B teaching Qwen3-8B                                                                c = a demo (SDFT), the solution (OPSD), feedback (SDPO)
+
+
+
+[Agarwal et al., GKD. ICLR 2024] [Shenfeld et al., SDFT 2026] [Zhao et al., OPSD 2026] [Hübotter et al., SDPO 2026]
+Blog: https://thinkingmachines.ai/blog/on-policy-distillation/ (figure)
+   6
+
+
+
+       RL vs OPD
+                                                                    same loss: L(θ) = − Σt At log πθ(yt | st)
+
+                                                                                                           RL At = r − baseline
+                                                                                                           → one number for all tokens
+
+
+                                                                                                           OPD At = log πT(yt|st) − log πθ(yt|st)
+                                                                                                           → one number per token
+
+
+                                      RL                                                                               OPD
+
+         information                  O(1) bits per episode                                                            O(N) bits, N = tokens
+
+         learns toward                high reward (can be hacked)                                                      the teacher (its ceiling)
+
+
+
+
+[Lu et al., On-Policy Distillation. Thinking Machines Lab 2025] Blog: https://thinkingmachines.ai/blog/on-policy-distillation/ (figures)
+[Shao et al., DeepSeekMath 2024] [Agarwal et al., GKD. ICLR 2024]
+  7
+
+
+
+       OpenClaw-RL: Training on Human Feedback
+                                                                                                                example: a TA uses the agent to grade homework
+
+
+                                                                                                                 agent: Correct answer: 220. Your solution is correct.
+
+
+
+                                                                                                                      user: Too brief. Tell the student why each step is right.
+
+
+
+                                                                                                                ① RL: a judge reads the reply: good or not?
+                                                                                                                → r = −1: the same A for every token of the answer
+
+                                                                                                                ② Self-distillation: the judge turns the reply into a hint h
+                                                                                                                (“explain each step”); the same model with h in its prompt is
+                                                                                                                the teacher
+                                                                                                                → At = log πθ(yt | h) − log πθ(yt), per token
+
+
+         loss = ① + ②, on the same responses, in one update
+         ① a score on every turn, but one number; ② which tokens to change, but only when the reply has a correction
+
+
+
+[Wang et al., OpenClaw-RL: Train Any Agent Simply by Talking. arXiv 2026]
+Code: https://github.com/Gen-Verse/OpenClaw-RL Blog: https://yinjjiew.github.io/projects/openclawrl1 (figure)
+  8
+
+
+
+       One Training Step
+            Prompts                                  ① Rollout                                                ② Reward r
+                                                                                    n responses
+         a batch from the                         inference engine                                       verifier, tests or judge
+                                                                                     per prompt
+             dataset                               vLLM / SGLang                                         1 score per response
+
+
+
+                             ⑤ weight sync
+
+                                                                                                           ③ Advantage
+                                                    ④ Update                        At for every token
+             reference                                                                                     At = r − baseline
+         frozen start model
+                                                      trainer
+                                                                                                         better or worse than
+                                                  FSDP / Megatron
+              → KL penalty                                                                                    expected?
+
+
+                                                                                                            critic V (PPO only)
+         Q: Why does the model live in two places?
+
+         A: generation needs a fast KV-cache engine, training needs gradients and optimizer
+         state → copy the weights after every update
+
+[Sheng et al., HybridFlow: A Flexible and Efficient RLHF Framework. EuroSys 2025]
+Docs: https://verl.readthedocs.io/
+   9
+
+
+
+       Rollout vs Trainer
+                            ① Rollout: inference engine                                                                         ④ Update: trainer
+                                vLLM / SGLang                                                                                   FSDP / Megatron
+
+          job: predict the next token, again and again, until the                                       job: gradients of the loss over whole responses
+          response is done                                                                              forward + backward: keeps activations, gradients and the
+          forward pass only: no gradients                                                               optimizer state
+          keeps a KV cache, so past tokens are not recomputed                                           FSDP: splits weights, gradients and optimizer state
+          vLLM: KV cache in pages (PagedAttention) + continuous                                         across GPUs; gathers a layer’s full weights just before
+          batching → many responses at once                                                             using it
+
+
+          memory per parameter (Qwen3-8B, 8.2B params)                                                   memory per parameter (same scale)
+
+          weights                         KV cache (not per parameter)                                   weights     grads     weights copy         momentum              variance
+           bf16, 2 B              ≈ 0.15 MB per token; takes the free GPU memory                         bf16, 2 B bf16, 2 B     fp32, 4 B            fp32, 4 B           fp32, 4 B
+
+
+                                                                                                                                             Adam optimizer state: 12 B
+
+          2 bytes × 8.2B ≈ 16 GB + KV cache                                                              16 bytes × 8.2B ≈ 130 GB + activations; > one 80 GB GPU
+
+
+
+[Kwon et al., PagedAttention (vLLM). SOSP 2023] [Zhao et al., PyTorch FSDP. VLDB 2023] [Rajbhandari et al., ZeRO. SC 2020]
+ 10
+
+
+
+       Vocabulary
+        term                                     symbol                       what it is                                         in verl
+
+        policy / actor                           πθ                           the model being trained                            actor
+
+        rollout                                                               sampling responses with the current model          rollout
+
+        state                                    st                           the prompt + the tokens so far
+
+        reward                                   r                            score of one response                              token_level_scores
+
+        advantage                                At                           better or worse than expected, per token           advantages
+
+        old policy                               πold                         the weights that sampled this batch                old_log_probs
+
+        reference policy                         πref                         the frozen start model                             ref_log_prob
+
+        critic / value model                     V(st)                        predicts the reward from st (PPO only)             critic, values
+
+        step                                                                  one rollout + update                               global_steps
+
+        epoch                                                                 one pass over the prompt dataset                   total_epochs
+
+
+
+
+Docs: https://verl.readthedocs.io/ Code: https://github.com/verl-project/verl/blob/ddf7007/verl/trainer/ppo/v1/trainer_base.py
+ 11
+
+
+
+      Batch → Mini-batch → Micro-batch
+                                                                                                     B = train_batch_size = 1024 prompts
+                       training batch = B × n = 5120 responses                                       n = rollout.n = 5 responses per prompt
+                                                                                                     → B × n = 5120 responses = one rollout
+
+                                                                                                     M = ppo_mini_batch_size = 256 prompts
+         mini-batch 1           mini-batch 2           mini-batch 3           mini-batch 4
+                                                                                                     → B ÷ M = 4 optimizer steps
+         M × n = 1280           M × n = 1280           M × n = 1280           M × n = 1280
+                                                                                                     mini-batch: the data for one weight update
+
+        GPU 1      GPU 2        GPU 3     GPU 4      GPU 5       GPU 6       GPU 7     GPU 8         G = 8 GPUs (data parallel)
+         160        160          160       160        160         160         160       160          → M × n ÷ G = 160 responses per GPU
+
+                                                                                                     m = ppo_micro_batch_size_per_gpu = 4
+          4        4        4        4        4        4        4        4        4        …         → 160 ÷ m = 40 micro-batches = grad accumulation
+                                                                                                     micro-batch: split only so it fits in GPU memory
+       GPU 1’s 160 responses, m = 4 at a time
+
+        Q: On-policy = trained on samples from the current weights. Mini-batch 1 or 2: which is on-policy?
+
+        A: 1 only. With more than one mini-batch, the model is updated after each one, so from 2 on it is no longer the policy that sampled
+        the rollout: πθ ≠ πold.
+
+
+Docs: https://verl.readthedocs.io/en/latest/algo/grpo.html#configuration (figure of the batch sizes)
+Code: https://github.com/verl-project/verl/blob/ddf7007/examples/grpo_trainer/run_qwen3_8b_fsdp.sh (the numbers above)
+ 12
+
+
+
+       On-Policy Distillation and Self-Distillation
+                                                                                                                                       ② Teacher
+             Prompts                                   ① Rollout                                                                    another model πT,
+                                                                                                                                                         c = a demo, the
+                                                                                                    responses                                            solution, or feedback
+         from the dataset                           inference engine
+                                                                                                                                      or itself πθ + c
+
+
+
+                                ⑤ weight sync
+
+                                                                                                                                    ③ Advantage At
+                                                        ④ Update                                                                    = log πteacher(yt)
+                                                         trainer
+                                                                                                                                      − log πθ(yt)
+
+
+                                        on-policy distillation (OPD)                                       self-distillation
+         teacher                        another, bigger model                                              the model itself, with c in its prompt
+         knows more from                its size and training                                              c only: without it, teacher = student → no signal
+
+
+
+[Agarwal et al., GKD 2024] [Shenfeld et al., SDFT 2026] [Zhao et al., OPSD 2026] [Hübotter et al., SDPO 2026] [Kaur et al., 2026]
+Blog: https://thinkingmachines.ai/blog/on-policy-distillation/
+ 13
+
+
+
+       RL vs Distillation
+                                 method                             who scores a response                          advantage At of token yt
+
+
+                                                                                                                   Q(st, yt) − V(st)
+                                 PPO                                reward r(x, y)
+                                                                                                                   V = a learned critic
+                 RL
+                                                                                                                   (r − mean) / std
+                                 GRPO                               reward r(x, y)
+                                                                                                                   over the n responses to a prompt: the mean replaces V
+
+
+                                                                                                                   log πT(yt) − log πθ(yt)
+                                 on-policy (OPD)                    another, bigger model πT
+                                                                                                                   a different value on every token
+           distillation
+                                                                                                                   log πθ(yt | c) − log πθ(yt)
+                                 self-distillation                  the same model πθ + c
+                                                                                                                   only difference: c in the teacher’s prompt
+
+       V(st): reward expected from here, where s t = the prompt + the tokens so far
+       Q(st, yt): reward expected after picking token y t
+
+
+
+[Schulman et al., PPO 2017] [Schulman et al., GAE. ICLR 2016] [Shao et al., DeepSeekMath 2024] [Agarwal et al., GKD 2024]
+Blog: https://thinkingmachines.ai/blog/on-policy-distillation/
+ 14
+
+
+
+       Entropy and KL in the Loss
+
+             −min( ρtAt , clip(ρt, 1−ε, 1+ε) At )                                             + β KL(πθ ‖ πref)                     − α H(πθ)
+
+                             policy gradient                                            KL to the frozen model                       entropy
+
+          ρt = πθ / πold: how much the token’s                                     πref = the frozen start model          how random the next token is
+          probability changed                                                      keeps the model close to it            near 0 = stopped exploring
+          At > 0 pushes the token up, < 0 down                                     reasoning RL: usually off              the bonus is usually off, but
+          the clip keeps each step small                                                                                  always watch the curve
+                                                                                   RLHF: on
+
+
+
+
+[Schulman et al., Proximal Policy Optimization Algorithms 2017] [Shao et al., DeepSeekMath 2024] [Yu et al., DAPO 2025]
+Code: https://github.com/verl-project/verl/blob/ddf7007/verl/trainer/ppo/core_algos.py
+ 15
+
+
+
+      An Example Run: Reasoning RL on Math
+
+
+
+       normal: slow start, then a steady climb                 normal: rises along with the reward         normal: stays well above 0
+       red flag: flat from the start: no signal                red flag: reward up, validation down        red flag: falls toward 0: collapse
+
+
+
+
+       normal: changes as the reasoning changes                normal: small and steady (≈ 1e-4 here)      normal: high at first, then settles
+       red flag: stuck at the max length: cut off              red flag: spikes: an update moved too far   red flag: spikes or NaN: unstable
+
+                                        verl’s public math baseline: Qwen2.5-Math-7B, a GRPO variant, tested on AIME 2024
+
+
+
+Run: https://wandb.ai/verl-org/DAPO%20Reproduction%20on%20verl/runs/ow47vvon (public W&B)
+[Yu et al., DAPO: An Open-Source LLM Reinforcement Learning System at Scale 2025]
+ 16
+
+
+
+       The Same Step in verl
+       # PPOTrainer.step(), sync mode (verl default)
+       self._add_batch_to_generate()                                                                                                   ① rollout: n responses per prompt
+
+       batch = self.replay_buffer.sample(batch_size=B)                                                                                 ② reward: scored as each finishes
+
+       self.checkpoint_manager.sleep_replicas()                                                                                           free GPU memory for training
+
+       batch = self._balance_batch(batch)                                                                                              give every GPU similar total tokens
+
+       batch = self._compute_old_log_prob(batch)
+       if self.use_reference_policy:
+             batch = self._compute_ref_log_prob(batch)                                                                                 log-probs (old, reference) and values
+
+       if self.use_critic:
+             batch = self._compute_values(batch)
+       batch = self._compute_advantage(batch)                                                                                             ③ advantage: the algorithm
+
+       batch = self._update_actor(batch)                                                                                               ④ update: one step per mini-batch
+
+       self.checkpoint_manager.update_weights(self.global_steps)                                                                        ⑤ weight sync → rollout engine
+
+
+
+
+Code: https://github.com/verl-project/verl/blob/ddf7007/verl/trainer/ppo/v1/trainer_base.py#L555-L611 + trainer_sync.py (simplified)
+[Sheng et al., HybridFlow: A Flexible and Efficient RLHF Framework. EuroSys 2025]
+ 17
+
+
+
+      Training with verl: What You Write
+       ① tasks → parquet, one row per prompt                                                   ③ launch (overrides on the config)
+
+        {"data_source": "openai/gsm8k",                                                          python3 -m verl.trainer.main_ppo \
+         "prompt": [{"role": "user", "content": q}],                                               algorithm.adv_estimator=grpo \
+         "reward_model": {"style": "rule",                                                         data.train_files=gsm8k/train.parquet \
+                          "ground_truth": "72"}}                                                   data.train_batch_size=1024 \
+                                                                                                   actor_rollout_ref.model.path=Qwen/Qwen3-8B \
+                                                                                                   actor_rollout_ref.rollout.name=vllm \
+                                                                                                   actor_rollout_ref.rollout.n=5 \
+                                                                                                   actor_rollout_ref.actor.ppo_mini_batch_size=256 \
+       ② a reward function                                                                         reward.custom_reward_function.path=my_reward.py \
+                                                                                                   trainer.n_gpus_per_node=8
+        def compute_score(data_source, solution_str,
+                          ground_truth, extra_info=None, **kw):
+            answer = extract_answer(solution_str)
+            return float(answer == ground_truth)
+
+
+
+
+                                  ④ watch the curves                                                      ⑤ export: verl.model_merger merge
+                                  as in the example run                                               FSDP shards → Hugging Face → serve with vLLM
+
+
+
+
+Docs: https://verl.readthedocs.io/en/latest/start/quickstart.html
+Code: https://github.com/verl-project/verl/blob/ddf7007/examples/grpo_trainer/run_qwen3_8b_fsdp.sh
+ 18
+
+
+
+       verl vs reef: Dataset vs Live Traffic
+                        verl: train first, deploy later                                                                reef: learn while serving
+
+                               fixed prompt set + labels                                                                live traffic: users and agents
+
+                                                                                                                      requests, replies, feedback
+
+                                       trainer                                                         reef
+                                                                               × N steps
+                             rollout → reward → update
+
+                                                                                                              Serve                    Train             Evaluate
+
+                                          checkpoint
+
+                                                    export, deploy separately
+                                                                                                                               new version, no restart
+
+                                              users
+
+                  verl is a trainer over a dataset you prepared; reef is an inference server that learns from its own traffic
+
+[Sheng et al., HybridFlow: A Flexible and Efficient RLHF Framework. EuroSys 2025] Code: https://github.com/Human-Agent-Society/reef
+Blog: https://x.com/ao_qu18465/status/2094867930081337730
+19
+
+
+
+     reef: Infrastructure for Continual Self-Improving Agents
+
+
+
+
+     GitHub                                Your Inference Server is Secretly a Learner: Open-Sourcing reef
+     github.com/Human-Agent-Society/reef   for Continual Self-Improving Agents
+                                           x.com/ao_qu18465/status/2094867930081337730
+

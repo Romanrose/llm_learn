@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: cs329a-autumn25
+lecture: lecture-03
+title: Robust Verification
+preparedAt: 2026-11-27T12:17:14.414Z
+video:
+  id: p7TdPUcPoik
+  title: Stanford CS329A Self-Improving AI Agents | Part 3 | Robust Verification
+  url: https://www.youtube.com/watch?v=p7TdPUcPoik
+  playlist: https://www.youtube.com/playlist?list=PLangBM27OtEA
+  playlistIndex: null
+  channel: Stanford Online
+  durationSeconds: 4378
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/models-agents/cs329a-autumn25/notes/lecture-03/transcript.en.md
+  processor: video-subtitle-transcript

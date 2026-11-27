@@ -1,0 +1,176 @@
+   Rethinking the role of
+    harnesses in LMs
+                     Alex Zhang
+PhD student in CSAIL advised by Omar Khattab / Tim Kraska
+What I used to do, and how that got me to harnesses
+
+“LM capabilities are a function of training data,   “LM systems and kernel design are iterative
+ whose size & quality is a function of what we      with clear objectives, but data constrained.
+    care about solving / benchmarking.”                How do we accelerate such tasks?”
+Typical language model workﬂow
+
+
+            Input prompt
+
+
+
+                LM
+
+
+
+
+        “Reasoning” + answer
+Typical language model workﬂow
+
+                                      Input prompt
+            Input prompt
+
+
+
+                LM               LM              transform
+
+
+
+
+        “Reasoning” + answer
+
+                                        answer
+What does the “standard” agent look like?
+What does the “standard” agent look like?
+Start of 2026: Context management in language models
+
+
+
+
+                                          Past few months: people are trying
+Jan 1. Prime Intellect reveals they are   Claude Code for non-coding tasks.
+working on RLMs.
+
+                                                                               Jan 6. Cursor release dynamic context.
+   Recursive Language Models (2025)
+     ●     Should language models be
+           entirely neural?
+
+
+
+     ●     Do harnesses matter, and what
+           abstractions are important in
+           designing a harness?
+
+
+
+     ●     Long-context is a silly problem.
+
+
+Recursive Language Models (Zhang, Kraska, Khattab, NeurIPS 2026)
+   Recursive Language Models (2025)
+             “LMs are constrained around their architecture. Harnesses are opinionated choices
+             on top of a blackbox model, to get around that model’s constraints.”
+
+
+
+
+Recursive Language Models (Zhang, Kraska, Khattab, NeurIPS 2026)
+   Recursive Language Models (2025)
+             “LMs are constrained around their architecture. Harnesses are opinionated choices
+             on top of a blackbox model, to get around that model’s constraints.”
+
+
+
+
+Recursive Language Models (Zhang, Kraska, Khattab, NeurIPS 2026)
+From Raymond Weitekamp (2026): https://raw.works/
+Are “LM agents” analogous to an RLM reasoning chain?
+
+                                               Suppose an LM is asked to produce an
+                                               algorithm for protein folding, or some
+                                               other big task.
+
+
+
+
+  e.g. mini-swe-agent is ~100 lines of code!
+   What exactly does the harness do?
+
+
+
+
+           “Language models are suﬃciently capable of           “Harnesses can enable wider task transfer, by
+           composing themselves to solve harder tasks.            implicitly shaping what the model sees.”
+              This a property of tasks themselves.”
+
+The Mismanaged Geniuses Hypothesis (Zhang, Li, Khattab, 2026)
+Re-thinking the role of the harness.
+   Harness Design for “Locally In-Distributioness”
+
+
+
+
+Language Model Harnesses are Compositional Generalizers (Zhang, Khattab, 2026)
+   Removing generalization pressure from the LM.
+                        Setup: Train only on short tasks, evaluate exclusively on longer variants.
+
+
+
+
+Language Model Harnesses are Compositional Generalizers (Zhang, Khattab, 2026)
+   Relating generalization performance to a train trajectory.
+
+                                                                                 max(re-executing top-25 closest train trajectories on eval contexts)
+
+
+
+
+Language Model Harnesses are Compositional Generalizers (Zhang, Khattab, 2026)
+What I’m particularly interested in now
+                                Micro-level view (harness design choices)
+
+
+                                                         ?
+       Base LM               Compaction            Compaction + RLM +      Compaction + RLM               RLM
+                                                     “model shape”
+
+
+
+
+                              Macro-level view (scaling w.r.t. harnesses)
+
+
+
+
+          how harnesses aﬀect scaling on data / envs               scaling laws for harnesses (token spend)
+Are harnesses characterizable?
+  If you wanted some kind of predictable (e.g. inference scaling) laws for harnesses, how would you
+                 parameterize the class of harnesses we care about searching over?
+
+ Minimally, as models get better, what is the role of the harness and how do we characterize & study
+                                                  this?
+
+
+
+
+          with veriﬁcation, does this just reduce to
+                       LLM monkeys?
+                                                         What ultimately matters in a harness w.r.t. the model?
+                                                                     HarnessTax (Pan et al., 2026)
+Blurring model-harness co-design.
+
+ Are there other tradeoﬀs with diﬀerent input / output types that work better with harnesses? Do some
+                           harness changes become architectural changes?
+
+
+
+
+                                                                       Jev (TypeSafe AI, 2026)
+    Should a language model always be, densely,
+                                                            An neat recent example of constraining the output
+                  string -> string?                           space, so an LM is string -> Dict[Literal, noul].
+    Blurring model-harness co-design: model shape
+
+           “Can language models have more control over what they see, and varying levels of granularity?”
+
+
+
+
+https://alexzhang13.github.io/blog/2026/shape/
+
