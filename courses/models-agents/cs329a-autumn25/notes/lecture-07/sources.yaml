@@ -1,0 +1,52 @@
+schemaVersion: 1
+course: cs329a-autumn25
+lecture: lecture-07
+state: assigned-readings-only
+checkedAt: 2026-11-27T14:21:33.944Z
+officialSchedule: https://cs329a.stanford.edu/
+papers:
+  - lecture: lecture-07
+    label: Automated Design of Agentic Systems
+    url: https://arxiv.org/pdf/2505.22954
+    retrievedUrl: https://arxiv.org/pdf/2505.22954
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-07/paper-1.txt
+    characters: 268745
+    status: extracted
+    actualTitle: "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents"
+    linkLabelMismatch: Official label says Automated design of agentic systems, but linked arXiv 2505.22954 is Darwin Gödel Machine. Preserve actual linked identity; do not substitute an unassigned paper.
+    sha256: 32f28251c632991b07851453a362fa1e97d23a7122f5a98e6f1f79b67d9c0602
+    excerpt:
+      startCharacter: 0
+      endCharacter: 89982
+      fullCharacters: 268745
+  - lecture: lecture-07
+    label: "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery (Lu et al. 2024)"
+    url: https://arxiv.org/abs/2408.06292
+    retrievedUrl: https://arxiv.org/pdf/2408.06292
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-07/paper-2.txt
+    characters: 599426
+    status: extracted
+    actualTitle: "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery"
+    sha256: 080f7e21a3a3eff27436153be5819735e4f95c8ef15be2954395474442a41590
+    excerpt:
+      startCharacter: 0
+      endCharacter: 89979
+      fullCharacters: 599426
+  - lecture: lecture-07
+    label: "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms"
+    url: https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf
+    retrievedUrl: https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-07/paper-3.txt
+    characters: 174165
+    status: extracted
+    actualTitle: "AlphaEvolve: A coding agent for scientific and algorithmic discovery"
+    sha256: 988f2abc5204a61bd53a358415bdd19190801812c8c17e80b391b554db08d0ff
+    excerpt:
+      startCharacter: 0
+      endCharacter: 89959
+      fullCharacters: 174165
+limitations:
+  - No classroom recording or slides; no classroom transcripts.
+  - Retrieved linked versions may postdate Autumn 2025; no reconstruction of classroom speech.
+  - Only explicitly recorded initial text spans were sent to the model; appendices may be omitted.
+  - PDF extraction can omit diagrams and reorder two-column text.

@@ -431,7 +431,7 @@ items:
     unitLabel: Lecture
     date: 2025-10-13
     title: Open-Ended Evolution of Self-Improving Agents
-    subtitle: 自我改进智能体的开放式演化。官方 9 讲播放列表未收录本讲。Homework 2 于 10 月 14 日发布。
+    subtitle: 自我改进智能体的开放式演化。官方 9 讲播放列表未收录本讲。Homework 2 于 10 月 14 日发布。 本站补充内容仅为官网指定论文的阅读笔记与 Blog，不是课堂记录；无课堂逐字稿。
     status: resources-approved
     official:
       - label: 课程主页
@@ -441,7 +441,7 @@ items:
       - label: Automated Design of Agentic Systems
         url: https://arxiv.org/pdf/2505.22954
         type: paper
-        note: 官方课程表所列阅读。
+        note: "官网标签为 Automated design of agentic systems，但实际链接 arXiv:2505.22954 指向 Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents。本文依据实际链接目标，不将其当作 ADAS 论文。"
       - label: "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery (Lu et al. 2024)"
         url: https://arxiv.org/abs/2408.06292
         type: paper
@@ -450,7 +450,21 @@ items:
         url: https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: 指定阅读笔记
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-07/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: 阅读 Blog
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-07/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      sourceType: assigned-readings
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-07/review.yaml
   - id: lecture-08
     order: 8
     displayOrder: 8
@@ -571,7 +585,7 @@ items:
     unitLabel: Lecture
     date: 2025-11-03
     title: Agentic Frameworks for Software Engineering
-    subtitle: 面向软件工程的智能体框架。官方播放列表未收录。
+    subtitle: 面向软件工程的智能体框架。官方播放列表未收录。 本站补充内容仅为官网指定论文的阅读笔记与 Blog，不是课堂记录；无课堂逐字稿。
     status: resources-approved
     official:
       - label: 课程主页
@@ -590,14 +604,28 @@ items:
         url: https://arxiv.org/abs/2410.15625
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: 指定阅读笔记
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-13/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: 阅读 Blog
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-13/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      sourceType: assigned-readings
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-13/review.yaml
   - id: lecture-14
     order: 14
     displayOrder: 14
     unitLabel: Lecture
     date: 2025-11-07
     title: Augmenting Agents with Memory
-    subtitle: "为智能体增加记忆。Guest lecturer: Junchen Jiang (LMCache, UChicago)。官方播放列表未收录。"
+    subtitle: "为智能体增加记忆。Guest lecturer: Junchen Jiang (LMCache, UChicago)。官方播放列表未收录。 本站补充内容仅为官网指定论文的阅读笔记与 Blog，不是课堂记录；无课堂逐字稿。"
     status: resources-approved
     official:
       - label: 课程主页
@@ -616,7 +644,21 @@ items:
         url: https://arxiv.org/abs/2405.16444
         type: paper
         note: 官方课程表所列阅读。
-    outputs: []
+    outputs:
+      - id: lecture-note
+        label: 指定阅读笔记
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-14/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: 阅读 Blog
+        source: courses/models-agents/cs329a-autumn25/notes/lecture-14/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      sourceType: assigned-readings
+      manifest: courses/models-agents/cs329a-autumn25/notes/lecture-14/review.yaml
   - id: lecture-15
     order: 15
     displayOrder: 15

@@ -1,0 +1,51 @@
+schemaVersion: 1
+course: cs329a-autumn25
+lecture: lecture-14
+state: assigned-readings-only
+checkedAt: 2026-11-27T14:21:33.931Z
+officialSchedule: https://cs329a.stanford.edu/
+papers:
+  - lecture: lecture-14
+    label: "Cartridges: Lightweight and general-purpose long context representations via self-study"
+    url: https://arxiv.org/abs/2506.06266
+    retrievedUrl: https://arxiv.org/pdf/2506.06266
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-14/paper-1.txt
+    characters: 186638
+    status: extracted
+    actualTitle: "Cartridges: Lightweight and general-purpose long context representations via self-study"
+    sha256: d704688d16581f858ba7e0e169602042ba3499aa59f8ffb48b7b46f8f9badf49
+    excerpt:
+      startCharacter: 0
+      endCharacter: 89878
+      fullCharacters: 186638
+  - lecture: lecture-14
+    label: "MemGPT: Towards LLMs as Operating Systems (Packer et al. 2023)"
+    url: https://arxiv.org/abs/2310.08560
+    retrievedUrl: https://arxiv.org/pdf/2310.08560
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-14/paper-2.txt
+    characters: 94052
+    status: extracted
+    actualTitle: "MemGPT: Towards LLMs as Operating Systems"
+    sha256: 2d7410ac7d9f39ac4957a42cbeb4c39b2e775663d8624341bd4917588567294f
+    excerpt:
+      startCharacter: 0
+      endCharacter: 89939
+      fullCharacters: 94052
+  - lecture: lecture-14
+    label: "CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion"
+    url: https://arxiv.org/abs/2405.16444
+    retrievedUrl: https://arxiv.org/pdf/2405.16444
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-14/paper-3.txt
+    characters: 138977
+    status: extracted
+    actualTitle: "CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion"
+    sha256: b5f3961271671f8e337c2c05a3551c2f101605103d93c3e046e2a06f1eea0c49
+    excerpt:
+      startCharacter: 0
+      endCharacter: 89994
+      fullCharacters: 138977
+limitations:
+  - No classroom recording or slides; no classroom transcripts.
+  - Retrieved linked versions may postdate Autumn 2025; no reconstruction of classroom speech.
+  - Only explicitly recorded initial text spans were sent to the model; appendices may be omitted.
+  - PDF extraction can omit diagrams and reorder two-column text.

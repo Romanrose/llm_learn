@@ -1,0 +1,19 @@
+schemaVersion: 1
+course: cs329a-autumn25
+lecture: lecture-13
+state: candidate-ready
+provider: deepseek
+model: deepseek-v4-flash
+sourceType: assigned-readings
+createdAt: 2026-11-27T14:22:13.360Z
+inputs:
+  sources: courses/models-agents/cs329a-autumn25/notes/lecture-13/sources.yaml
+outputs:
+  note: courses/models-agents/cs329a-autumn25/notes/lecture-13/references/deepseek/note.md
+  blog: courses/models-agents/cs329a-autumn25/notes/lecture-13/references/deepseek/blog.md
+review:
+  state: pending
+  required:
+    - source-fidelity
+    - version-limitations
+    - no-classroom-claims

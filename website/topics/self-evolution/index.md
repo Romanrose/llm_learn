@@ -36,3 +36,7 @@ MIT 这门是目前能找到的最新开设，2026 秋仍在上课。斯坦福�
 
 - 课程的讲义、教材与视频版权归原作者；本站仅保留官方链接与自行整理的学习内容。
 - CS329A 基于平台自动字幕整理；MIT 仅基于幻灯片。生成内容已获用户授权发布，但不等于独立人工内容审阅，请对照官方来源核验术语与论证。
+
+### CS329A 未录制讲次的指定阅读导读
+
+除已有录像对应的 9 讲外，现补充 [第 7 讲：开放式演化](/generated/courses/cs329a-autumn25/lecture-07/lecture-note.html)、[第 13 讲：软件工程 Agent 框架](/generated/courses/cs329a-autumn25/lecture-13/lecture-note.html)、[第 14 讲：Agent 记忆](/generated/courses/cs329a-autumn25/lecture-14/lecture-note.html)的官网指定论文阅读笔记与 Blog。这些不是课堂讲述复原，也没有课堂逐字稿；嘉宾课没有找到本期公开材料的部分、期中学生报告继续只保留日程与资源导航。

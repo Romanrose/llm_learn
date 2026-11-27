@@ -129,3 +129,15 @@ node workflow/scripts/slide-notes.mjs mit-mas-s62-fall26 week-01 --promote-autho
 ```
 
 生成固定使用 `deepseek-v4-flash`，读取本机 `.env`；候选稿在 `notes/<week>/references/deepseek/`，`review.state: pending`。发布入口拒绝覆盖已有正文，只登记 Note / Blog，保留候选稿与来源，并在 `review.yaml` 如实记录用户授权及未经独立人工内容审阅的限制。课程级 `publishOutputs` 仍须显式开启。两种操作均不提交、不推送、不部署；不得给没有录像的单元登记课堂逐字稿。
+
+## 指定论文阅读导读（无录像的讲次）
+
+`reading-notes.mjs` 仅根据课程官网列出的论文生成 Note / Blog，不创建任何课堂逐字稿，也不推断讲师讲过什么。输入由课程 `references/official-readings/sources.yaml` 记录：每篇包含 `lecture`、`label`、`url`、提取文本 `text`、`status: extracted`，可另记 `actualTitle` 和链接标题不一致。
+
+```bash
+node workflow/scripts/reading-notes.mjs cs329a-autumn25 lecture-07 --run
+# 仅在用户明确授权后：
+node workflow/scripts/reading-notes.mjs cs329a-autumn25 lecture-07 --promote-authorized --authorization="当次用户明确授权的原文"
+```
+
+固定使用 `deepseek-v4-flash`，读取本机 `.env`。每篇论文最多取前 90,000 字符（在换行处结束），避免代码/附录占满上下文；`sources.yaml` 精确记录原文哈希、全文字符数和输入区间，不能声称完整审阅了未输入的附录。要求模型正常结束且输出非空，候选稿位于 `references/deepseek/`，`review.state: pending`。发布入口拒绝覆盖已有正文，要求显式授权、来源类型与阅读导读标签匹配，仅登记 Note / Blog。论文最新修订可能晚于课程日期，正文始终明确区分阅读导读与课堂记录。原 PDF 只作本机运行时缓存；不调用字幕、音频、ASR 或 PDF 导出。

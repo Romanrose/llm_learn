@@ -1,0 +1,78 @@
+course: cs329a-autumn25
+source: https://cs329a.stanford.edu/
+checkedAt: 2026-11-27T14:20:26.350Z
+basis: Official assigned paper links; not classroom recordings or slides.
+readings:
+  - lecture: lecture-07
+    label: Automated Design of Agentic Systems
+    url: https://arxiv.org/pdf/2505.22954
+    retrievedUrl: https://arxiv.org/pdf/2505.22954
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-07/paper-1.txt
+    characters: 268745
+    status: extracted
+    actualTitle: "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents"
+    linkLabelMismatch: Official label says Automated design of agentic systems, but linked arXiv 2505.22954 is Darwin Gödel Machine. Preserve actual linked identity; do not substitute an unassigned paper.
+  - lecture: lecture-07
+    label: "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery (Lu et al. 2024)"
+    url: https://arxiv.org/abs/2408.06292
+    retrievedUrl: https://arxiv.org/pdf/2408.06292
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-07/paper-2.txt
+    characters: 599426
+    status: extracted
+    actualTitle: "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery"
+  - lecture: lecture-07
+    label: "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms"
+    url: https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf
+    retrievedUrl: https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-07/paper-3.txt
+    characters: 174165
+    status: extracted
+    actualTitle: "AlphaEvolve: A coding agent for scientific and algorithmic discovery"
+  - lecture: lecture-13
+    label: "CodeMonkeys: Scaling Test-Time Compute for Software Engineering"
+    url: https://arxiv.org/abs/2501.14723
+    retrievedUrl: https://arxiv.org/pdf/2501.14723
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-13/paper-1.txt
+    characters: 72582
+    status: extracted
+    actualTitle: "CodeMonkeys: Scaling Test-Time Compute for Software Engineering"
+  - lecture: lecture-13
+    label: "KernelBench: Can LLMs Write Efficient GPU Kernels?"
+    url: https://arxiv.org/pdf/2502.10517
+    retrievedUrl: https://arxiv.org/pdf/2502.10517
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-13/paper-2.txt
+    characters: 115086
+    status: extracted
+    actualTitle: "KernelBench: Can LLMs Write Efficient GPU Kernels?"
+  - lecture: lecture-13
+    label: Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+    url: https://arxiv.org/abs/2410.15625
+    retrievedUrl: https://arxiv.org/pdf/2410.15625
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-13/paper-3.txt
+    characters: 109669
+    status: extracted
+    actualTitle: Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+  - lecture: lecture-14
+    label: "Cartridges: Lightweight and general-purpose long context representations via self-study"
+    url: https://arxiv.org/abs/2506.06266
+    retrievedUrl: https://arxiv.org/pdf/2506.06266
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-14/paper-1.txt
+    characters: 186638
+    status: extracted
+    actualTitle: "Cartridges: Lightweight and general-purpose long context representations via self-study"
+  - lecture: lecture-14
+    label: "MemGPT: Towards LLMs as Operating Systems (Packer et al. 2023)"
+    url: https://arxiv.org/abs/2310.08560
+    retrievedUrl: https://arxiv.org/pdf/2310.08560
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-14/paper-2.txt
+    characters: 94052
+    status: extracted
+    actualTitle: "MemGPT: Towards LLMs as Operating Systems"
+  - lecture: lecture-14
+    label: "CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion"
+    url: https://arxiv.org/abs/2405.16444
+    retrievedUrl: https://arxiv.org/pdf/2405.16444
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-14/paper-3.txt
+    characters: 138977
+    status: extracted
+    actualTitle: "CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion"
