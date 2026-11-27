@@ -1,0 +1,99 @@
+Towards self-improving agents
+
+     UdS, winter 2026/27, Yupei Du
+Can LLM agents learn from their own experience?
+What is this seminar about?
+
+ Reasoning and inference-time computation
+
+ Learning from agent experience
+
+ Task generation and curriculum learning
+
+ Self-modifying agents
+
+ Evaluating self-improvement
+Inference-time computation
+
+
+
+
+Large Language Monkeys: Scaling Inference Compute with Repeated Sampling
+Learning from experience
+
+
+
+
+Reinforcement Learning for Self-Improving Agent with Skill Library
+Task generation and curriculum learning
+
+
+
+     Task generator                                  Training tasks               Learner
+
+
+
+
+                                      learning progress
+                                                                             Evaluate progress
+
+
+Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability
+Self-modifying agents
+
+
+
+
+Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents
+Logistics
+Course information
+Instructor: Yupei Du · yudo@lst.uni-saarland.de
+
+Tuesdays, 16:15–17:45
+
+Gebäude C7 3 – Seminarraum 1.14
+
+Paper sessions: 10 Nov 2026–2 Feb 2027
+
+No class: 3 Nov, 22 Dec, 29 Dec
+Format
+
+● One main paper each week, presented by one or two students.
+● 45–60 minutes presentation; 30–45 minutes discussion.
+● Read the paper and participate actively.
+Presenting a paper
+
+●   Explain the problem and the main idea with an example.
+●   Discuss the evidence, limitations, and open questions.
+●   Propose alternative papers at least one week ahead.
+●   Send your slides and materials afterward.
+Participation and assessment
+Participation each session
+0: not engaged; 1: questions/comments; 2: thoughtful contributions.
+
+4 credits
+Presentation 60% + participation 40%.
+
+7 credits
+Presentation 30% + participation 20% + term paper 50%.
+Term paper
+
+ ●    For the 7-credit version.
+ ●    A focused survey or a small independent project.
+ ●    Up to 10 pages, excluding references and appendices.
+ ●    NeurIPS format; submit a PDF by email.
+
+
+
+
+Deadline: 31 March 2027.
+LLM policy
+
+●   You may use AI tools.
+●   Document their use.
+●   You remain responsible for the content.
+●   Check claims, citations, experiments, and code.
+Questionnaire
+                https://forms.gle/6RSfE7YJchVNQjzC8
+Ask me anything!
+

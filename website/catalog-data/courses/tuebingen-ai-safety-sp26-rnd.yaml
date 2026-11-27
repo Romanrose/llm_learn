@@ -1,0 +1,53 @@
+kind: course
+id: tuebingen-ai-safety-sp26-rnd
+category: agent
+title: Tübingen · AI Safety · Summer 2026（仅第 12 讲）
+shortTitle: Tübingen AI Safety · AI R&D 单讲
+eyebrow: Tübingen · AI Safety · Summer 2026（仅第 12 讲）
+year: 2026
+status: resources-approved
+publishOutputs: true
+unitLabel: Lecture
+paths:
+  root: courses/models-agents/tuebingen-ai-safety-sp26-rnd
+  notes: courses/models-agents/tuebingen-ai-safety-sp26-rnd/notes
+  resources: courses/models-agents/tuebingen-ai-safety-sp26-rnd/resources
+  references: courses/models-agents/tuebingen-ai-safety-sp26-rnd/references
+  exports: courses/models-agents/tuebingen-ai-safety-sp26-rnd/exports
+  lectures: courses/models-agents/tuebingen-ai-safety-sp26-rnd/lectures
+official: &a1
+  - label: 官方课程仓库
+    url: https://github.com/aisa-group/tue-ai-safety-course
+practice: []
+items:
+  - id: lecture-12
+    order: 12
+    displayOrder: 12
+    date: 2026-07-06
+    title: Automating AI R&D
+    subtitle: Recursive self-improvement、benchmarks、AI control 与 scalable oversight；官方 HTML 幻灯片，无已核实的公开视频字幕。
+    status: resources-approved
+    official: *a1
+    resources:
+      - label: Lecture 12 官方 HTML 幻灯片
+        url: https://github.com/aisa-group/tue-ai-safety-course/blob/main/lecture-slides/lecture-12-ai-rnd-automation.html
+        type: slides
+    readings: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/tuebingen-ai-safety-sp26-rnd/notes/lecture-12/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/tuebingen-ai-safety-sp26-rnd/notes/lecture-12/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/tuebingen-ai-safety-sp26-rnd/notes/lecture-12/review.yaml
+topicOnly: true
+instructors:
+  - Maksym Andriushchenko
+description: AI Safety 硕士课的相关单讲：Automating AI R&D；仅作自进化专题延伸，不将整门安全课作为自进化课程。基于官方 HTML 幻灯片，不是课堂逐字稿。

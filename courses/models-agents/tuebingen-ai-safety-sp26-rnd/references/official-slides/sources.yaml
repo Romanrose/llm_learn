@@ -1,0 +1,9 @@
+course: tuebingen-ai-safety-sp26-rnd
+source: https://github.com/aisa-group/tue-ai-safety-course
+checkedAt: 2026-11-27
+slides:
+  - week: lecture-12
+    url: https://github.com/aisa-group/tue-ai-safety-course/blob/main/lecture-slides/lecture-12-ai-rnd-automation.html
+    text: courses/models-agents/tuebingen-ai-safety-sp26-rnd/references/official-slides/lecture-12/slides-1.txt
+    status: extracted
+    format: official-html-slides

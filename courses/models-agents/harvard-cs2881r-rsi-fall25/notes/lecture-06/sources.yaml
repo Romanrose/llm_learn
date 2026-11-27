@@ -1,0 +1,21 @@
+schemaVersion: 1
+course: harvard-cs2881r-rsi-fall25
+lecture: lecture-06
+title: Recursive Self-Improvement
+preparedAt: 2026-11-27T14:12:09.710Z
+video:
+  id: wzep3Rnv6iw
+  title: "AI Safety (CS 2881) Lecture 6: Recursive Self Improvement"
+  url: https://www.youtube.com/watch?v=wzep3Rnv6iw
+  playlist: null
+  playlistIndex: null
+  channel: Boaz Barak
+  durationSeconds: 8972
+materials: []
+state: subtitle-ready
+caption:
+  state: extracted
+  kind: auto
+  language: en-orig
+  transcript: courses/models-agents/harvard-cs2881r-rsi-fall25/notes/lecture-06/transcript.en.md
+  processor: video-subtitle-transcript

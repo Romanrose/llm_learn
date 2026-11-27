@@ -1,0 +1,20 @@
+schemaVersion: 1
+course: uds-sia-winter2627
+unit: session-01
+provider: deepseek
+model: deepseek-v4-flash
+state: candidate-ready
+createdAt: 2026-11-27T14:10:39.151Z
+inputs:
+  sources: courses/models-agents/uds-sia-winter2627/notes/session-01/sources.yaml
+  slides:
+    - courses/models-agents/uds-sia-winter2627/references/official-slides/session-01/slides-1.txt
+outputs:
+  note: courses/models-agents/uds-sia-winter2627/notes/session-01/references/deepseek/note.md
+  blog: courses/models-agents/uds-sia-winter2627/notes/session-01/references/deepseek/blog.md
+review:
+  state: pending
+  required:
+    - source-fidelity
+    - figure-extraction-limitations
+    - terminology

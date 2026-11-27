@@ -1,0 +1,24 @@
+schemaVersion: 1
+state: candidate-ready
+provider: deepseek
+model: deepseek-v4-flash
+createdAt: 2026-11-27T14:13:58.963Z
+course: harvard-cs2881r-rsi-fall25
+lecture: lecture-06
+inputs:
+  transcriptEn: courses/models-agents/harvard-cs2881r-rsi-fall25/notes/lecture-06/transcript.en.md
+  lecture: null
+outputs:
+  transcriptZh: courses/models-agents/harvard-cs2881r-rsi-fall25/notes/lecture-06/references/deepseek/transcript.zh-CN.md
+  note: courses/models-agents/harvard-cs2881r-rsi-fall25/notes/lecture-06/references/deepseek/note.md
+  blog: courses/models-agents/harvard-cs2881r-rsi-fall25/notes/lecture-06/references/deepseek/blog.md
+translation:
+  chunks: 17
+  maxConcurrent: 3
+review:
+  state: pending
+  required:
+    - completeness
+    - terminology
+    - hallucination
+    - citations

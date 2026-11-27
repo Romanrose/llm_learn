@@ -1,0 +1,9 @@
+course: uds-sia-winter2627
+source: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+checkedAt: 2026-11-27
+slides:
+  - week: session-01
+    url: https://docs.google.com/presentation/d/1NbojB0-V0Ef_5V2rAyjQIw5ZsWOLd6Shs9XudmM4Uis/export/pdf
+    text: courses/models-agents/uds-sia-winter2627/references/official-slides/session-01/slides-1.txt
+    status: extracted
+    format: public-google-slides-pdf-export

@@ -4,7 +4,7 @@
 
 以课程为主线的个人学习资料库，覆盖编程与系统、大模型与智能体、软件与产品、机器人与 AI 硬件。仓库保存课程来源、资料索引、学习笔记和审核记录；网站提供课程导航、资料检索以及官方 Lab 与作业入口。
 
-目前有 **25 个课程入口、26 套课程版本资料**，其中 CMU 15-213 同时保留 2026 与 2015 历史版本；UVA 产品管理入口包含五门子课程。课程单元可能是讲座、阅读、教程或作业，不把单元数统一当作讲次数。
+目前有 **26 个课程入口、27 套课程版本资料**，其中 CMU 15-213 同时保留 2026 与 2015 历史版本；UVA 产品管理入口包含五门子课程。另有 2 个仅在专题页导航的相关单讲，不作为完整自进化课程。课程单元可能是讲座、阅读、教程或作业，不把单元数统一当作讲次数。
 
 ## 从哪里开始
 
@@ -41,6 +41,7 @@
 | [Harvard CS2680 Fall 2026](courses/models-agents/harvard-cs2680-fall26/) | Coding Agent、Agent 系统与高效推理服务 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/harvard-cs2680-fall26/) |
 | [MIT MAS.S62 Fall 2026](courses/models-agents/mit-mas-s62-fall26/) | 自进化 AI：context / harness / model / environment | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/mit-mas-s62-fall26/) |
 | [Stanford CS329A Autumn 2025](courses/models-agents/cs329a-autumn25/) | 自我改进智能体；9 讲官方录像 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs329a-autumn25/) |
+| [UdS Self-Improving Agents Winter 26/27](courses/models-agents/uds-sia-winter2627/) | Yupei Du 的论文研讨课；12 次讨论 | [进入研讨课](https://romanrose.github.io/llm_learn/generated/courses/uds-sia-winter2627/) |
 | [CS224R Spring 2026](courses/models-agents/cs224r-sp26/) | 模仿学习、Actor-Critic、离线 RL 与 LLM / 机器人应用 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs224r-sp26/) |
 | [MIT 6.S184 2026](courses/models-agents/mit-6s184-2026/) | Flow Matching、扩散模型、ODE / SDE 与生成实践 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/mit-6s184-2026/) |
 

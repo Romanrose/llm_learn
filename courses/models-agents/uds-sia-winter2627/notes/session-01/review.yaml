@@ -1,0 +1,11 @@
+schemaVersion: 1
+course: uds-sia-winter2627
+unit: session-01
+state: approved
+approvedBy: user
+approvedAt: 2026-11-27T14:11:43.604Z
+authorization: 把剩下的课程也都弄进去
+candidateManifest: courses/models-agents/uds-sia-winter2627/notes/session-01/references/deepseek/run.yaml
+limitations:
+  - Publication authorized by user; no independent human content review.
+  - Slides-based explanation, not a classroom transcript.

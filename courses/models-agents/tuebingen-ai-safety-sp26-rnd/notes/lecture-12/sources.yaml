@@ -1,0 +1,11 @@
+schemaVersion: 1
+course: tuebingen-ai-safety-sp26-rnd
+unit: lecture-12
+state: slides-only
+sourceType: official-slides
+slides:
+  - url: https://github.com/aisa-group/tue-ai-safety-course/blob/main/lecture-slides/lecture-12-ai-rnd-automation.html
+    text: courses/models-agents/tuebingen-ai-safety-sp26-rnd/references/official-slides/lecture-12/slides-1.txt
+limitations:
+  - No public lecture recordings; no classroom transcripts.
+  - Extracted slide text may omit figures, formula layout and speaker explanations.

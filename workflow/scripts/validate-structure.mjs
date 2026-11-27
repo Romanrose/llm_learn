@@ -57,6 +57,7 @@ for (const section of site.sections) {
     for (const version of [entry, ...(entry.versions ?? [])]) {
       const course = courses.get(version.courseId)
       assert(course, `Homepage references missing course: ${version.courseId}`)
+      assert(course.topicOnly !== true, `Topic-only lecture must not appear on homepage: ${course.id}`)
       assert(!registered.has(course.id), `Duplicate homepage course/version: ${course.id}`)
       registered.add(course.id)
       assert.equal(course.paths.root, `courses/${groups.get(section.id)}/${course.id}`)
@@ -64,7 +65,16 @@ for (const section of site.sections) {
     }
   }
 }
-assert.equal(registered.size, courses.size, 'Catalog and homepage course versions differ')
+// Related single lectures have generated pages but must not become full-course cards.
+for (const entry of site.relatedLectures ?? []) {
+  const course = courses.get(entry.courseId)
+  assert(course?.topicOnly === true, `Related lecture must be explicitly topicOnly: ${entry.courseId}`)
+  assert(!registered.has(course.id), `Related lecture also appears on homepage: ${course.id}`)
+  assert.equal(entry.route, `/generated/courses/${course.id}/`)
+  assert.equal(course.items.length, 1, `Related-lecture catalog must contain one lecture: ${course.id}`)
+  registered.add(course.id)
+}
+assert.equal(registered.size, courses.size, 'Catalog and homepage/topic-only registrations differ')
 
 // Check the maintained GitHub entry documents, without imposing new rules on upstream projects.
 const docs = ['README.md', 'courses/README.md', 'references/README.md', ...[...groups.values()].map(group => `courses/${group}/README.md`)]

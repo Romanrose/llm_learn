@@ -108,6 +108,11 @@ sections:
         title: MIT 6.S184 2026
         subtitle: Flow Matching、扩散模型与随机微分方程；六个视频单元、官方讲义及三份实践 Notebook。
         route: /generated/courses/mit-6s184-2026/
+      - id: uds-sia-winter2627
+        courseId: uds-sia-winter2627
+        title: UdS · Towards Self-Improving Agents
+        route: /generated/courses/uds-sia-winter2627/
+        subtitle: Winter 26/27 论文研讨课；导论与 11 次学生论文讨论。
   - id: evaluation
     title: 评测与基准
     description: 语言模型与 Agent 的评测方法、基准设计、LLM-as-a-judge、测量效度与统计检验
@@ -207,3 +212,10 @@ referenceCollections:
     title: 交互与产品设计经典资料
     description: Design Thinking Bootleg · 2018、NN/g · 10 Usability Heuristics
     route: /topics/design/#经典资料
+relatedLectures:
+  - courseId: harvard-cs2881r-rsi-fall25
+    route: /generated/courses/harvard-cs2881r-rsi-fall25/
+    topic: /topics/self-evolution/
+  - courseId: tuebingen-ai-safety-sp26-rnd
+    route: /generated/courses/tuebingen-ai-safety-sp26-rnd/
+    topic: /topics/self-evolution/

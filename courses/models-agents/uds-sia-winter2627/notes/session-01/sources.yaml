@@ -1,0 +1,11 @@
+schemaVersion: 1
+course: uds-sia-winter2627
+unit: session-01
+state: slides-only
+sourceType: official-slides
+slides:
+  - url: https://docs.google.com/presentation/d/1NbojB0-V0Ef_5V2rAyjQIw5ZsWOLd6Shs9XudmM4Uis/export/pdf
+    text: courses/models-agents/uds-sia-winter2627/references/official-slides/session-01/slides-1.txt
+limitations:
+  - No public lecture recordings; no classroom transcripts.
+  - Extracted slide text may omit figures, formula layout and speaker explanations.

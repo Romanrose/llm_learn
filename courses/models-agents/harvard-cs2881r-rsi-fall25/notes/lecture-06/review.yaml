@@ -1,0 +1,18 @@
+schemaVersion: 1
+state: reviewed
+course: harvard-cs2881r-rsi-fall25
+lecture: lecture-06
+provider: deepseek
+reviewedAt: 2026-11-27T14:14:12.156Z
+source: courses/models-agents/harvard-cs2881r-rsi-fall25/notes/lecture-06/references/deepseek
+outputs:
+  chinese: courses/models-agents/harvard-cs2881r-rsi-fall25/notes/lecture-06/transcript.zh-CN.md
+  note: courses/models-agents/harvard-cs2881r-rsi-fall25/notes/lecture-06/note.md
+  blog: courses/models-agents/harvard-cs2881r-rsi-fall25/notes/lecture-06/blog.md
+checks:
+  errors: []
+  warnings: []
+authorization: 把剩下的课程也都弄进去
+limitations:
+  - User-authorized inclusion; automated validation, not independent human content review.
+  - English source uses platform auto-captions.

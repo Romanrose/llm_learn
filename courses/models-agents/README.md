@@ -11,7 +11,13 @@
 | [Harvard CS2680 Fall 2026](harvard-cs2680-fall26/) | Coding Agent、Agent 系统与高效推理服务 |
 | [MIT MAS.S62 Fall 2026](mit-mas-s62-fall26/) | 自进化 AI：context / harness / model / environment |
 | [Stanford CS329A Autumn 2025](cs329a-autumn25/) | 自我改进智能体；9 讲官方录像 |
+| [UdS Self-Improving Agents Winter 26/27](uds-sia-winter2627/) | 论文研讨课：12 次讨论，主论文与延伸阅读 |
 | [CS224R Spring 2026](cs224r-sp26/) | 模仿学习、Actor-Critic、离线 RL 与 LLM / 机器人应用 |
 | [MIT 6.S184 2026](mit-6s184-2026/) | Flow Matching、扩散模型、ODE / SDE 与生成实践 |
 
 [返回课程目录](../README.md) · [完整网站目录](https://romanrose.github.io/llm_learn/)
+
+## 专题相关单讲（不是新增整门自进化课）
+
+- [Harvard Fall 2025 · Recursive Self-Improvement](harvard-cs2881r-rsi-fall25/)
+- [Tübingen AI Safety · Lecture 12 Automating AI R&D](tuebingen-ai-safety-sp26-rnd/)

@@ -1,0 +1,316 @@
+kind: course
+id: uds-sia-winter2627
+category: agent
+title: Saarland / UdS · Towards Self-Improving Agents · Winter 26/27
+shortTitle: UdS Self-Improving Agents Winter 26/27
+eyebrow: Saarland / UdS · Towards Self-Improving Agents · Winter 26/27
+year: 2026
+status: resources-approved
+publishOutputs: true
+unitLabel: Session
+paths:
+  root: courses/models-agents/uds-sia-winter2627
+  notes: courses/models-agents/uds-sia-winter2627/notes
+  resources: courses/models-agents/uds-sia-winter2627/resources
+  references: courses/models-agents/uds-sia-winter2627/references
+  exports: courses/models-agents/uds-sia-winter2627/exports
+  lectures: courses/models-agents/uds-sia-winter2627/lectures
+official:
+  - label: 官方研讨课主页
+    url: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+practice: []
+items:
+  - id: session-01
+    order: 1
+    displayOrder: 1
+    unitLabel: Session
+    date: 2026-10-27
+    title: "Introduction: reasoning, agents, and improvement"
+    subtitle: 讲师导论；官方幻灯片。
+    status: resources-approved
+    official:
+      - label: 官方研讨课主页
+        url: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+    resources:
+      - label: Slides
+        url: https://docs.google.com/presentation/d/1NbojB0-V0Ef_5V2rAyjQIw5ZsWOLd6Shs9XudmM4Uis/edit
+        type: slides
+    readings: []
+    outputs:
+      - id: lecture-note
+        label: Lecture Note
+        source: courses/models-agents/uds-sia-winter2627/notes/session-01/note.md
+        searchable: true
+        reviewStatus: reviewed
+      - id: blog
+        label: Blog 解读
+        source: courses/models-agents/uds-sia-winter2627/notes/session-01/blog.md
+        searchable: true
+        reviewStatus: reviewed
+    generation:
+      state: reviewed
+      manifest: courses/models-agents/uds-sia-winter2627/notes/session-01/review.yaml
+  - id: session-02
+    order: 2
+    displayOrder: 2
+    unitLabel: Session
+    date: 2026-11-10
+    title: Repeated sampling and answer selection
+    subtitle: 学生论文报告与讨论；未发现公开学生幻灯片或课堂录像。
+    status: resources-approved
+    official:
+      - label: 官方研讨课主页
+        url: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+    resources: []
+    readings:
+      - label: "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling"
+        url: https://arxiv.org/abs/2407.21787
+        type: paper
+        note: 官方指定主论文。
+      - label: Shrinking the Generation-Verification Gap with Weak Verifiers
+        url: https://arxiv.org/abs/2506.18203
+        type: paper
+        note: 官方 Related Research 延伸阅读。
+    outputs: []
+  - id: session-03
+    order: 3
+    displayOrder: 3
+    unitLabel: Session
+    date: 2026-11-17
+    title: What does RL actually learn?
+    subtitle: 学生论文报告与讨论；未发现公开学生幻灯片或课堂录像。
+    status: resources-approved
+    official:
+      - label: 官方研讨课主页
+        url: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+    resources: []
+    readings:
+      - label: Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?
+        url: https://arxiv.org/abs/2504.13837
+        type: paper
+        note: 官方指定主论文。
+      - label: "Spurious Rewards: Rethinking Training Signals in RLVR"
+        url: https://arxiv.org/abs/2506.10947
+        type: paper
+        note: 官方 Related Research 延伸阅读。
+    outputs: []
+  - id: session-04
+    order: 4
+    displayOrder: 4
+    unitLabel: Session
+    date: 2026-11-24
+    title: Where does the reward come from?
+    subtitle: 学生论文报告与讨论；未发现公开学生幻灯片或课堂录像。
+    status: resources-approved
+    official:
+      - label: 官方研讨课主页
+        url: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+    resources: []
+    readings:
+      - label: Can Large Reasoning Models Self-Train?
+        url: https://arxiv.org/abs/2505.21444
+        type: paper
+        note: 官方指定主论文。
+      - label: "TTRL: Test-Time Reinforcement Learning"
+        url: https://arxiv.org/abs/2504.16084
+        type: paper
+        note: 官方 Related Research 延伸阅读。
+    outputs: []
+  - id: session-05
+    order: 5
+    displayOrder: 5
+    unitLabel: Session
+    date: 2026-12-01
+    title: Learning to create and reuse skills
+    subtitle: 学生论文报告与讨论；未发现公开学生幻灯片或课堂录像。
+    status: resources-approved
+    official:
+      - label: 官方研讨课主页
+        url: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+    resources: []
+    readings:
+      - label: Reinforcement Learning for Self-Improving Agent with Skill Library
+        url: https://arxiv.org/abs/2512.17102
+        type: paper
+        note: 官方指定主论文。
+      - label: "SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks"
+        url: https://arxiv.org/abs/2602.12670
+        type: paper
+        note: 官方 Related Research 延伸阅读。
+    outputs: []
+  - id: session-06
+    order: 6
+    displayOrder: 6
+    unitLabel: Session
+    date: 2026-12-08
+    title: Optimizing prompts from experience
+    subtitle: 学生论文报告与讨论；未发现公开学生幻灯片或课堂录像。
+    status: resources-approved
+    official:
+      - label: 官方研讨课主页
+        url: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+    resources: []
+    readings:
+      - label: "GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning"
+        url: https://arxiv.org/abs/2507.19457
+        type: paper
+        note: 官方指定主论文。
+      - label: "Agentic Context Engineering: Evolving Contexts for Self-Improving Language Models"
+        url: https://arxiv.org/abs/2510.04618
+        type: paper
+        note: 官方 Related Research 延伸阅读。
+    outputs: []
+  - id: session-07
+    order: 7
+    displayOrder: 7
+    unitLabel: Session
+    date: 2026-12-15
+    title: Generating verifiable training tasks
+    subtitle: 学生论文报告与讨论；未发现公开学生幻灯片或课堂录像。
+    status: resources-approved
+    official:
+      - label: 官方研讨课主页
+        url: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+    resources: []
+    readings:
+      - label: "Absolute Zero: Reinforced Self-play Reasoning with Zero Data"
+        url: https://arxiv.org/abs/2505.03335
+        type: paper
+        note: 官方指定主论文。
+      - label: Toward Training Superintelligent Software Agents through Self-Play SWE-RL
+        url: https://arxiv.org/abs/2512.18552
+        type: paper
+        note: 官方 Related Research 延伸阅读。
+    outputs: []
+  - id: session-08
+    order: 8
+    displayOrder: 8
+    unitLabel: Session
+    date: 2027-01-05
+    title: Learning to generate useful curricula
+    subtitle: 学生论文报告与讨论；未发现公开学生幻灯片或课堂录像。
+    status: resources-approved
+    official:
+      - label: 官方研讨课主页
+        url: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+    resources: []
+    readings:
+      - label: "Teaching Models to Teach Themselves: Reasoning at the Edge of Learnability"
+        url: https://arxiv.org/abs/2601.18778
+        type: paper
+        note: 官方指定主论文。
+      - label: "R-Zero: Self-Evolving Reasoning LLM from Zero Data"
+        url: https://arxiv.org/abs/2508.05004
+        type: paper
+        note: 官方 Related Research 延伸阅读。
+    outputs: []
+  - id: session-09
+    order: 9
+    displayOrder: 9
+    unitLabel: Session
+    date: 2027-01-12
+    title: Modifying the agent’s implementation
+    subtitle: 学生论文报告与讨论；未发现公开学生幻灯片或课堂录像。
+    status: resources-approved
+    official:
+      - label: 官方研讨课主页
+        url: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+    resources: []
+    readings:
+      - label: "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents"
+        url: https://arxiv.org/abs/2505.22954
+        type: paper
+        note: 官方指定主论文。
+      - label: "Huxley-Gödel Machine: Human-Level Coding Agent Development by an Approximation of the Optimal Self-Improving Machine"
+        url: https://arxiv.org/abs/2510.21614
+        type: paper
+        note: 官方 Related Research 延伸阅读。
+    outputs: []
+  - id: session-10
+    order: 10
+    displayOrder: 10
+    unitLabel: Session
+    date: 2027-01-19
+    title: Improving the research agent’s own code
+    subtitle: 学生论文报告与讨论；未发现公开学生幻灯片或课堂录像。
+    status: resources-approved
+    official:
+      - label: 官方研讨课主页
+        url: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+    resources: []
+    readings:
+      - label: Recursive self-improvement of AI research agents
+        url: https://arxiv.org/abs/2609.26457
+        type: paper
+        note: 官方指定主论文。
+      - label: "Meta-Harness: End-to-End Optimization of Model Harnesses"
+        url: https://arxiv.org/abs/2603.28052
+        type: paper
+        note: 官方 Related Research 延伸阅读。
+    outputs: []
+  - id: session-11
+    order: 11
+    displayOrder: 11
+    unitLabel: Session
+    date: 2027-01-26
+    title: Do self-modifications generalize?
+    subtitle: 学生论文报告与讨论；未发现公开学生幻灯片或课堂录像。
+    status: resources-approved
+    official:
+      - label: 官方研讨课主页
+        url: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+    resources: []
+    readings:
+      - label: "HarnessDev: Can LLMs Create and Evolve Their Own Agent Harness?"
+        url: https://arxiv.org/abs/2609.01437
+        type: paper
+        note: 官方指定主论文。
+      - label: "A Sober Look at Progress in Language Model Reasoning: Pitfalls and Paths to Reproducibility"
+        url: https://arxiv.org/abs/2504.07086
+        type: paper
+        note: 官方 Related Research 延伸阅读。
+    outputs: []
+  - id: session-12
+    order: 12
+    displayOrder: 12
+    unitLabel: Session
+    date: 2027-02-02
+    title: When self-improvement goes wrong
+    subtitle: 学生论文报告与讨论；未发现公开学生幻灯片或课堂录像。
+    status: resources-approved
+    official:
+      - label: 官方研讨课主页
+        url: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+    resources: []
+    readings:
+      - label: "Your Agent May Misevolve: Emergent Risks in Self-evolving LLM Agents"
+        url: https://arxiv.org/abs/2509.26354
+        type: paper
+        note: 官方指定主论文。
+      - label: "Reflections on Trusting Trust, Revisited: Contaminating Self-Modifying AI Coding Agents with Poisoned Benchmarks"
+        url: https://arxiv.org/abs/2609.17817
+        type: paper
+        note: 官方 Related Research 延伸阅读。
+    outputs: []
+instructors:
+  - Yupei Du
+description: 论文讨论 Seminar，非有录像的讲座课：讲师导论后由学生报告指定论文。按官方课程表登记 12 次讨论及主论文、延伸阅读；不将论文解读伪装成课堂笔记或逐字稿。
+schedule:
+  source: https://ypdu.github.io/courses/self-improving-agents-seminar-winter-26/
+  timezone: Europe/Berlin
+  note: 周二 16:15–17:45；C7 3 Seminarraum 1.14。学生报告约 45–60 分钟，讨论约 30–45 分钟。
+  unitCount: 12
+  checkedAt: 2026-11-27
+  events:
+    - date: 2026-11-03
+      title: No class
+    - date: 2026-12-22
+      title: No class — Christmas break
+    - date: 2026-12-29
+      title: No class — Christmas break
+learningModules:
+  - id: seminar
+    title: 论文研讨日程
+    description: 导论与学生论文讨论，不代表公开讲座录像。
+    from: 1
+    to: 12

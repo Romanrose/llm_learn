@@ -1,0 +1,11 @@
+schemaVersion: 1
+course: tuebingen-ai-safety-sp26-rnd
+unit: lecture-12
+state: approved
+approvedBy: user
+approvedAt: 2026-11-27T14:11:43.675Z
+authorization: 把剩下的课程也都弄进去
+candidateManifest: courses/models-agents/tuebingen-ai-safety-sp26-rnd/notes/lecture-12/references/deepseek/run.yaml
+limitations:
+  - Publication authorized by user; no independent human content review.
+  - Slides-based explanation, not a classroom transcript.

@@ -1,0 +1,20 @@
+schemaVersion: 1
+course: tuebingen-ai-safety-sp26-rnd
+unit: lecture-12
+provider: deepseek
+model: deepseek-v4-flash
+state: candidate-ready
+createdAt: 2026-11-27T14:11:07.252Z
+inputs:
+  sources: courses/models-agents/tuebingen-ai-safety-sp26-rnd/notes/lecture-12/sources.yaml
+  slides:
+    - courses/models-agents/tuebingen-ai-safety-sp26-rnd/references/official-slides/lecture-12/slides-1.txt
+outputs:
+  note: courses/models-agents/tuebingen-ai-safety-sp26-rnd/notes/lecture-12/references/deepseek/note.md
+  blog: courses/models-agents/tuebingen-ai-safety-sp26-rnd/notes/lecture-12/references/deepseek/blog.md
+review:
+  state: pending
+  required:
+    - source-fidelity
+    - figure-extraction-limitations
+    - terminology

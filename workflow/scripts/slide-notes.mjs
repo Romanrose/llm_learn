@@ -47,11 +47,13 @@ if (action === '--run') {
   for (const kind of ['note', 'blog']) { writeFileSync(join(candidate, `${kind}.md`), await generate(kind)); console.log(`${unitId}: ${kind} ready`) }
   yaml(runPath, { schemaVersion: 1, course: courseId, unit: unitId, provider: 'deepseek', model, state: 'candidate-ready', createdAt: new Date().toISOString(), inputs: { sources: rel(join(base, 'sources.yaml')), slides: slides.map(s => s.text) }, outputs: { note: rel(join(candidate, 'note.md')), blog: rel(join(candidate, 'blog.md')) }, review: { state: 'pending', required: ['source-fidelity', 'figure-extraction-limitations', 'terminology'] } })
 } else {
+  const authorization = process.argv.find(arg => arg.startsWith('--authorization='))?.slice('--authorization='.length)
+  if (!authorization) throw Error('Promotion requires --authorization=<explicit user authorization>')
   const run = parse(readFileSync(runPath, 'utf8'))
   if (run.course !== courseId || run.unit !== unitId || run.state !== 'candidate-ready') throw Error('Candidate metadata mismatch')
   if (['note', 'blog'].some(k => existsSync(join(base, `${k}.md`)))) throw Error('Formal output exists; refusing overwrite')
   for (const kind of ['note', 'blog']) { required(join(candidate, `${kind}.md`)); copyFileSync(join(candidate, `${kind}.md`), join(base, `${kind}.md`)) }
-  yaml(join(base, 'review.yaml'), { schemaVersion: 1, course: courseId, unit: unitId, state: 'approved', approvedBy: 'user', approvedAt: new Date().toISOString(), authorization: '全部搞完直接合并掉', candidateManifest: rel(runPath), limitations: ['Publication authorized by user; no independent human content review.', 'Slides-based explanation, not a classroom transcript.'] })
+  yaml(join(base, 'review.yaml'), { schemaVersion: 1, course: courseId, unit: unitId, state: 'approved', approvedBy: 'user', approvedAt: new Date().toISOString(), authorization, candidateManifest: rel(runPath), limitations: ['Publication authorized by user; no independent human content review.', 'Slides-based explanation, not a classroom transcript.'] })
   unit.outputs = ['note', 'blog'].map(k => ({ id: k === 'note' ? 'lecture-note' : 'blog', label: k === 'note' ? 'Lecture Note' : 'Blog 解读', source: rel(join(base, `${k}.md`)), searchable: true, reviewStatus: 'reviewed' }))
   unit.generation = { state: 'reviewed', manifest: rel(join(base, 'review.yaml')) }
   yaml(catalog, course)

@@ -125,7 +125,13 @@ npm run validate:structure
 ```bash
 node workflow/scripts/slide-notes.mjs mit-mas-s62-fall26 week-01 --run
 # 仅在用户明确授权发布、核对候选来源和完整性后：
-node workflow/scripts/slide-notes.mjs mit-mas-s62-fall26 week-01 --promote-authorized
+node workflow/scripts/slide-notes.mjs mit-mas-s62-fall26 week-01 --promote-authorized --authorization="用户明确授权的原文"
 ```
 
 生成固定使用 `deepseek-v4-flash`，读取本机 `.env`；候选稿在 `notes/<week>/references/deepseek/`，`review.state: pending`。发布入口拒绝覆盖已有正文，只登记 Note / Blog，保留候选稿与来源，并在 `review.yaml` 如实记录用户授权及未经独立人工内容审阅的限制。课程级 `publishOutputs` 仍须显式开启。两种操作均不提交、不推送、不部署；不得给没有录像的单元登记课堂逐字稿。
+
+### 专题相关单讲
+
+`website/course.yaml` 的 `relatedLectures` 注册只有一讲的 catalog，且 catalog 须显式设 `topicOnly: true`。生成器照常提供课程/单讲路由，但不加入首页 sections 的整课卡片。结构校验要求每个 catalog 恰有首页或相关单讲注册，避免遗漏与重复。
+
+幻灯片路径也可接收公开 Google Slides PDF 导出的文本或官方 HTML 幻灯片文本；来源清单记录实际格式和官方 URL。`week` 字段沿用既有来源清单格式，值为稳定单元 ID（也可为 `session-01`、`lecture-12`）。推广时必须传入当次用户明确授权的原文，不能复用旧任务授权。

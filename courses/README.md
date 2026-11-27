@@ -9,3 +9,5 @@
 - [评测与基准](evaluation/)：LLM 与 Agent 评测、测量科学与统计检验。
 
 课程元数据统一放在 [website/catalog-data/courses](../website/catalog-data/courses/)，不在这里另建一份目录或生成流程。每门课程的 `paths` 指向其源目录，`outputs` 控制正式发布内容。
+
+专题相关单讲可由 `website/course.yaml` 的 `relatedLectures` 单独登记，不作为首页完整课程；目录与来源仍在相应方向中保留。
