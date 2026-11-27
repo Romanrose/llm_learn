@@ -1,0 +1,469 @@
+kind: course
+id: mit-mas-s62-fall26
+category: agent
+title: MIT MAS.S62 · Self-Evolving AI · Fall 2026
+shortTitle: MIT MAS.S62 Fall 2026
+eyebrow: MIT Media Lab · Self-Evolving AI · Fall 2026
+year: 2026
+status: resources-approved
+publishOutputs: false
+unitLabel: 单元
+description: Paul Liang 与 Ao Qu 开设的自进化 AI 课程，亦称 AI4AI / How to AI an AI for (Almost) Anything：按 context、harness、model 与 environment 四条演化主线组织。官方公开课程页、Syllabus 以及第 1–3、5–7、9 周讲义；第 10–12、14 周课程表有 slides 占位，2026-11-27 核对时尚无文件。未发现公开录像。请勿与 Spring 2025 的 MAS.S60 How2AI（多模态）混淆。
+paths:
+  root: courses/models-agents/mit-mas-s62-fall26
+  notes: courses/models-agents/mit-mas-s62-fall26/notes
+  resources: courses/models-agents/mit-mas-s62-fall26/resources
+  references: courses/models-agents/mit-mas-s62-fall26/references
+  exports: courses/models-agents/mit-mas-s62-fall26/exports
+instructors:
+  - Paul Liang
+  - Ao Qu
+official:
+  - label: 课程主页
+    url: https://mit-mi.github.io/how2ai-course/fall2026/
+  - label: 课程表
+    url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+  - label: Syllabus（Google Doc）
+    url: https://docs.google.com/document/d/1H1vs32fhWaxEuP6-nA2GP-a1aFuEmjOXNMcer2UyKpM/edit?usp=sharing
+  - label: 往期项目报告
+    url: https://mit-mi.github.io/how2ai-course/fall2026/projects/
+schedule:
+  source: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+  timezone: America/New_York
+  note: 周三 14:00–16:00，地点 E15-359，2026-09-09 至 2026-12-09。第 1–3、5–7、9 周讲义已公开；第 10–12、14 周课程表有 slides 占位，核对时尚无文件。未发现公开录像。往期项目页所列报告多来自先前 How2AI（多为多模态），与本学期 MAS.S62 不是同一门课。
+  events: []
+  unitCount: 14
+  checkedAt: 2026-11-27
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    description: 官方来源与版本说明。
+    from: 0
+    to: 0
+  - id: course
+    title: 01 · 课程单元
+    description: 按官方课程表登记 14 个教学周。
+    from: 1
+    to: 999
+practice: []
+items:
+  - id: week-01
+    order: 1
+    displayOrder: 1
+    unitLabel: Week
+    date: 2026-09-09
+    title: Course introduction
+    subtitle: Basics of LLMs and foundation models；AI agents and self-evolution。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources:
+      - label: Slides
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec1%20-%20intro.pdf
+        type: slides
+        note: 官方课程表所列；2026-11-27 核对可访问。
+    readings: []
+    outputs: []
+  - id: week-02
+    order: 2
+    displayOrder: 2
+    unitLabel: Week
+    date: 2026-09-16
+    title: Context evolution 1
+    subtitle: "Prompt optimization；memory, tools, knowledge。"
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources:
+      - label: Slides 1
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec2%20-%20context.pdf
+        type: slides
+        note: 官方课程表所列；2026-11-27 核对可访问。
+      - label: Tutorial（Colab）
+        url: https://colab.research.google.com/drive/1rL24Ydm9yQKRUPoGXHr2-zJumFbBRfvJ
+        type: docs
+        note: 官方课程表所列；访问权限与版本以原站为准。
+      - label: Slides 2 · Guest
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/context_guest.pdf
+        type: slides
+        note: 官方课程表所列；2026-11-27 核对可访问。
+    readings:
+      - label: Large Language Models Are Human-Level Prompt Engineers
+        url: https://arxiv.org/abs/2211.01910
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "TextGrad: Automatic Differentiation via Text"
+        url: https://arxiv.org/abs/2406.07496
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines"
+        url: https://arxiv.org/abs/2310.03714
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Reflexion: Language Agents with Verbal Reinforcement Learning"
+        url: https://arxiv.org/abs/2303.11366
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Evolving Prompts In-Context: An Open-ended, Self-replicating Perspective"
+        url: https://arxiv.org/abs/2506.17930
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning"
+        url: https://arxiv.org/abs/2507.19457
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "ReasoningBank: Scaling Agent Self-Evolving with Reasoning Memory"
+        url: https://arxiv.org/abs/2509.25140
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: week-03
+    order: 3
+    displayOrder: 3
+    unitLabel: Week
+    date: 2026-09-23
+    title: Context evolution 2
+    subtitle: LLMs as optimizers；LLMs for discovery。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources:
+      - label: Slides
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec3%20-%20llm%20optimizers.pdf
+        type: slides
+        note: 官方课程表所列；2026-11-27 核对可访问。
+    readings:
+      - label: "FunSearch: Mathematical discoveries from program search with large language models"
+        url: https://www.nature.com/articles/s41586-023-06924-6
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: Large Language Models as Optimizers
+        url: https://arxiv.org/abs/2309.03409
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "AlphaEvolve: A coding agent for scientific and algorithmic discovery"
+        url: https://arxiv.org/abs/2506.13131
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery"
+        url: https://arxiv.org/abs/2408.06292
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Can LLMs Generate Novel Research Ideas? A Large-Scale Human Study with 100+ NLP Researchers"
+        url: https://arxiv.org/abs/2409.04109
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: Towards End-to-End Automation of AI Research
+        url: https://arxiv.org/abs/2606.15497
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: week-04
+    order: 4
+    displayOrder: 4
+    unitLabel: Week
+    date: 2026-09-30
+    title: Project proposal presentations
+    subtitle: 项目开题报告。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources: []
+    readings: []
+    outputs: []
+  - id: week-05
+    order: 5
+    displayOrder: 5
+    unitLabel: Week
+    date: 2026-10-07
+    title: Harness evolution 1
+    subtitle: Harness components；agent memory；harness evolution。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources:
+      - label: Slides 1
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec4%20-%20harness.pdf
+        type: slides
+        note: 官方课程表所列；2026-11-27 核对可访问。
+      - label: Slides 2 · Guest
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/harness_guest.pdf
+        type: slides
+        note: 官方课程表所列；2026-11-27 核对可访问。
+    readings:
+      - label: "Darwin Godel Machine: Open-Ended Evolution of Self-Improving Agents"
+        url: https://arxiv.org/abs/2505.22954
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: Recursive Language Models
+        url: https://arxiv.org/abs/2512.24601
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: Context Language Models
+        url: https://arxiv.org/abs/2609.37725
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "MEM1: Learning to Synergize Memory and Reasoning for Efficient Long-horizon Agents"
+        url: https://arxiv.org/abs/2506.15841
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Reflexion: Language Agents with Verbal Reinforcement Learning"
+        url: https://arxiv.org/abs/2303.11366
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Meta-Harness: End-to-End Optimization of Model Harnesses"
+        url: https://arxiv.org/abs/2603.28052
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Continual Harness: Online Adaptation for Self-Improving Foundation Agents"
+        url: https://arxiv.org/abs/2605.09998
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "HarnessTax: How Much Does the Harness Matter for Coding Agents?"
+        url: https://arena.ai/blog/coding-agents-harness-tax
+        type: docs
+        note: 官方课程表所列阅读。
+      - label: "Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents"
+        url: https://arxiv.org/abs/2605.30621
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: week-06
+    order: 6
+    displayOrder: 6
+    unitLabel: Week
+    date: 2026-10-14
+    title: Harness evolution 2
+    subtitle: Harness engineering tutorial；tool and skill evolution；multi-agent evolution。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources:
+      - label: Slides 1 · Tutorial
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/harness%20engineering%20tutorial.pdf
+        type: slides
+        note: 官方课程表所列；2026-11-27 核对可访问。
+      - label: Slides 2
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec5%20-%20multi%20agent.pdf
+        type: slides
+        note: 官方课程表所列；2026-11-27 核对可访问。
+    readings:
+      - label: "Toolformer: Language Models Can Teach Themselves to Use Tools"
+        url: https://arxiv.org/abs/2302.04761
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs"
+        url: https://arxiv.org/abs/2307.16789
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks"
+        url: https://arxiv.org/abs/2602.12670
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Voyager: An Open-Ended Embodied Agent with Large Language Models"
+        url: https://arxiv.org/abs/2305.16291
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "CORAL: Towards Autonomous Multi-Agent Evolution for Open-Ended Discovery"
+        url: https://arxiv.org/abs/2604.01658
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: Towards a Science of Scaling Agent Systems
+        url: https://arxiv.org/abs/2512.08296
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Why Do Multi-Agent LLM Systems Fail?"
+        url: https://arxiv.org/abs/2503.13657
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: week-07
+    order: 7
+    displayOrder: 7
+    unitLabel: Week
+    date: 2026-10-21
+    title: Model evolution 1
+    subtitle: Reinforcement learning；distillation；test-time training。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources:
+      - label: Slides 1
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6%20-%20training.pdf
+        type: slides
+        note: 官方课程表所列；2026-11-27 核对可访问。
+      - label: Slides 2 · Guest
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/model_guest.pdf
+        type: slides
+        note: 官方课程表所列；2026-11-27 核对可访问。
+    readings:
+      - label: "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning"
+        url: https://arxiv.org/abs/2501.12948
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes"
+        url: https://arxiv.org/abs/2306.13649
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "TTRL: Test-Time Reinforcement Learning"
+        url: https://arxiv.org/abs/2504.16084
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: Self-Rewarding Language Models
+        url: https://arxiv.org/abs/2401.10020
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "s1: Simple Test-Time Scaling"
+        url: https://arxiv.org/abs/2501.19393
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Does RL Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?"
+        url: https://arxiv.org/abs/2504.13837
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Understanding R1-Zero-Like Training: A Critical Perspective"
+        url: https://arxiv.org/abs/2503.20783
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "RL's Razor: Why Online Reinforcement Learning Forgets Less"
+        url: https://arxiv.org/abs/2509.04259
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Self-Distilled Reasoner: On-Policy Self-Distillation for Large Language Models"
+        url: https://arxiv.org/abs/2601.18734
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: Reinforcement Learning via Self-Distillation
+        url: https://arxiv.org/abs/2601.20802
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: Scaling Test-Time Compute Without Verification or RL is Suboptimal
+        url: https://arxiv.org/abs/2502.12118
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: week-08
+    order: 8
+    displayOrder: 8
+    unitLabel: Week
+    date: 2026-10-28
+    title: Project midterm presentations
+    subtitle: 项目中期报告。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources: []
+    readings: []
+    outputs: []
+  - id: week-09
+    order: 9
+    displayOrder: 9
+    unitLabel: Week
+    date: 2026-11-04
+    title: Model evolution 2
+    subtitle: RL in practice；self-play approaches。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources:
+      - label: Slides 1
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec6%20-%20rl%20in%20practice.pdf
+        type: slides
+        note: 官方课程表所列；2026-11-27 核对可访问。
+      - label: Slides 2
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/lec7%20-%20self%20play.pdf
+        type: slides
+        note: 官方课程表所列；2026-11-27 核对可访问。
+    readings:
+      - label: "Absolute Zero: Reinforced Self-play Reasoning with Zero Data"
+        url: https://arxiv.org/abs/2505.03335
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "R-Zero: Self-Evolving Reasoning LLM from Zero Data"
+        url: https://arxiv.org/abs/2508.05004
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Propose, Solve, Verify: Self-Play Through Formal Verification"
+        url: https://arxiv.org/abs/2512.18160
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: week-10
+    order: 10
+    displayOrder: 10
+    unitLabel: Week
+    date: 2026-11-11
+    title: Environment evolution 1
+    subtitle: Synthetic data and tasks；environment generation。官方课程表列有 slides 占位，2026-11-27 核对时尚无讲义文件。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources: []
+    readings: []
+    outputs: []
+  - id: week-11
+    order: 11
+    displayOrder: 11
+    unitLabel: Week
+    date: 2026-11-18
+    title: Environment evolution 2
+    subtitle: World models；evolving evaluation and rewards。官方课程表列有 slides 占位，2026-11-27 核对时尚无讲义文件。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources: []
+    readings: []
+    outputs: []
+  - id: week-12
+    order: 12
+    displayOrder: 12
+    unitLabel: Week
+    date: 2026-11-25
+    title: Future topics
+    subtitle: AI for scientific discovery；multimodal agents。官方课程表列有 slides 占位，2026-11-27 核对时尚无讲义文件。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources: []
+    readings: []
+    outputs: []
+  - id: week-13
+    order: 13
+    displayOrder: 13
+    unitLabel: Week
+    date: 2026-12-02
+    title: Project final presentations
+    subtitle: 项目期末报告。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources: []
+    readings: []
+    outputs: []
+  - id: week-14
+    order: 14
+    displayOrder: 14
+    unitLabel: Week
+    date: 2026-12-09
+    title: Future topics
+    subtitle: Embodied harnesses；safe evolution。官方课程表列有 slides 占位，2026-11-27 核对时尚无讲义文件。
+    status: resources-approved
+    official:
+      - label: 课程表
+        url: https://mit-mi.github.io/how2ai-course/fall2026/schedule/
+    resources: []
+    readings: []
+    outputs: []

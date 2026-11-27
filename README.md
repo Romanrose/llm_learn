@@ -4,7 +4,7 @@
 
 以课程为主线的个人学习资料库，覆盖编程与系统、大模型与智能体、软件与产品、机器人与 AI 硬件。仓库保存课程来源、资料索引、学习笔记和审核记录；网站提供课程导航、资料检索以及官方 Lab 与作业入口。
 
-目前有 **19 个课程入口、20 套课程版本资料**，其中 CMU 15-213 同时保留 2026 与 2015 历史版本；UVA 产品管理入口包含五门子课程。课程单元可能是讲座、阅读、教程或作业，不把单元数统一当作讲次数。
+目前有 **25 个课程入口、26 套课程版本资料**，其中 CMU 15-213 同时保留 2026 与 2015 历史版本；UVA 产品管理入口包含五门子课程。课程单元可能是讲座、阅读、教程或作业，不把单元数统一当作讲次数。
 
 ## 从哪里开始
 
@@ -30,7 +30,7 @@
 
 ### 大模型与智能体
 
-语言模型、强化学习、生成模型与 Agent 工程。
+语言模型、强化学习、生成模型与 Agent 工程；[自进化与自我改进专题](https://romanrose.github.io/llm_learn/topics/self-evolution/)。
 
 | 课程与本地资料 | 学习重点 | 网站 |
 | --- | --- | --- |
@@ -39,6 +39,8 @@
 | [CMU 11-768 Fall 2026](courses/models-agents/cmu-11768-fall26/) | 工具、上下文、记忆、Agent 训练与评估 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cmu-11768-fall26/) |
 | [CS329Z Fall 2026](courses/models-agents/cs329z-fall26/) | RAG、编排、多智能体、评测与安全 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs329z-fall26/) |
 | [Harvard CS2680 Fall 2026](courses/models-agents/harvard-cs2680-fall26/) | Coding Agent、Agent 系统与高效推理服务 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/harvard-cs2680-fall26/) |
+| [MIT MAS.S62 Fall 2026](courses/models-agents/mit-mas-s62-fall26/) | 自进化 AI：context / harness / model / environment | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/mit-mas-s62-fall26/) |
+| [Stanford CS329A Autumn 2025](courses/models-agents/cs329a-autumn25/) | 自我改进智能体；9 讲官方录像 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs329a-autumn25/) |
 | [CS224R Spring 2026](courses/models-agents/cs224r-sp26/) | 模仿学习、Actor-Critic、离线 RL 与 LLM / 机器人应用 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/cs224r-sp26/) |
 | [MIT 6.S184 2026](courses/models-agents/mit-6s184-2026/) | Flow Matching、扩散模型、ODE / SDE 与生成实践 | [进入课程](https://romanrose.github.io/llm_learn/generated/courses/mit-6s184-2026/) |
 
@@ -83,6 +85,7 @@ llm_learn/
 ├── courses/                       # 课程源文件，方向与网站首页对应
 │   ├── foundations/               # 编程与计算机系统（含历史版本）
 │   ├── models-agents/             # 大模型与智能体
+│   ├── evaluation/                # 评测与基准
 │   ├── software-product/          # 软件与产品开发
 │   └── robotics-hardware/         # 机器人与 AI 硬件
 ├── references/                    # 配套学习材料与上游项目

@@ -1,0 +1,527 @@
+kind: course
+id: cs329a-autumn25
+category: agent
+title: Stanford CS329A · Self-Improving AI Agents · Autumn 2025
+shortTitle: CS329A Autumn 2025
+eyebrow: Stanford · Self-Improving AI Agents · Autumn 2025
+year: 2025
+status: resources-approved
+publishOutputs: false
+unitLabel: 单元
+description: Aakanksha Chowdhery 与 Azalia Mirhoseini 的自我改进智能体课程：从 LLM 自我改进、工具与记忆、多步推理到 Agent 评测。目前可公开使用的最新校园课材料为 Autumn 2025，含官方课程页、9 讲核心 YouTube 录像（对应第 1–6、8、17、20 讲）与作业仓库；公开主页未提供官方幻灯片。斯坦福课程目录已排 2027 春校园课，但尚无新的公开大纲或录像。不收录付费的 Stanford Online Agentic AI 项目。
+paths:
+  root: courses/models-agents/cs329a-autumn25
+  notes: courses/models-agents/cs329a-autumn25/notes
+  resources: courses/models-agents/cs329a-autumn25/resources
+  references: courses/models-agents/cs329a-autumn25/references
+  exports: courses/models-agents/cs329a-autumn25/exports
+instructors:
+  - Aakanksha Chowdhery
+  - Azalia Mirhoseini
+official:
+  - label: 课程主页
+    url: https://cs329a.stanford.edu/
+  - label: 官方 YouTube 播放列表
+    url: https://www.youtube.com/playlist?list=PLangBM27OtEA
+  - label: 作业仓库
+    url: https://github.com/stanford-cs329a
+  - label: 往期项目
+    url: https://cs329a.stanford.edu/pastprojects.html
+schedule:
+  source: https://cs329a.stanford.edu/
+  timezone: America/Los_Angeles
+  note: 周一、周五 16:30–17:50 PT，Autumn 2025，地点 Skilling Auditorium。官方 9 讲播放列表对应第 1–6、8、17、20 讲；第 7 讲与嘉宾课未进播放列表。公开主页无官方幻灯片。斯坦福课程目录已排 2027 春（约 3 月 29 日至 6 月 2 日），但核对时尚无新的公开大纲或录像。
+  events:
+    - date: 2025-11-24
+      title: Holiday
+    - date: 2025-11-28
+      title: Holiday
+    - date: 2025-12-10
+      title: Final project due
+    - date: 2025-12-12
+      title: Final project poster presentation
+  unitCount: 20
+  checkedAt: 2026-11-27
+learningModules:
+  - id: references
+    title: 00 · 课程参考资料
+    description: 官方来源与版本说明。
+    from: 0
+    to: 0
+  - id: course
+    title: 01 · 课程单元
+    description: 按官方课程表登记 20 个编号讲次；节假日与期末提交见日程事件。
+    from: 1
+    to: 999
+practice:
+  - id: homework-1
+    title: Homework 1
+    url: https://github.com/stanford-cs329a/cs329a-homework1-fall2025-public
+    source: https://cs329a.stanford.edu/
+    checkedAt: 2026-11-27
+    note: Autumn 2025 官方公开作业仓库；课程页载明 10 月 3 日发布。
+  - id: homework-2
+    title: Homework 2
+    url: https://github.com/stanford-cs329a/cs329a-homework2-fall2025-public
+    source: https://cs329a.stanford.edu/
+    checkedAt: 2026-11-27
+    note: Autumn 2025 官方公开作业仓库；课程页载明 10 月 14 日发布。
+  - id: homework-3
+    title: Homework 3
+    url: https://github.com/stanford-cs329a/cs329a-homework3-fall2025-public
+    source: https://cs329a.stanford.edu/
+    checkedAt: 2026-11-27
+    note: Autumn 2025 官方公开作业仓库；课程页载明 10 月 24 日发布。
+items:
+  - id: lecture-01
+    order: 1
+    displayOrder: 1
+    unitLabel: Lecture
+    date: 2025-09-22
+    title: Course Overview
+    subtitle: 课程导论。官方播放列表第 1 讲。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=6YnLB0XbTnI
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=6YnLB0XbTnI&list=PLangBM27OtEA&index=1
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-02
+    order: 2
+    displayOrder: 2
+    unitLabel: Lecture
+    date: 2025-09-26
+    title: Test-time Compute Scaling
+    subtitle: 测试时计算扩展。官方播放列表第 2 讲。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=-Ggc37xLj_Y
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=-Ggc37xLj_Y&list=PLangBM27OtEA&index=2
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings:
+      - label: "Large Language Monkeys: Scaling Inference Compute with Repeated Sampling (Brown et al. 2024)"
+        url: https://arxiv.org/abs/2407.21787
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Archon: An Architecture Search Framework for Inference-Time Techniques (Saad-Falcon et al. 2024)"
+        url: https://www.arxiv.org/abs/2409.15254
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters (Snell et al. 2024)
+        url: https://arxiv.org/abs/2408.03314
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "How Do Large Language Monkeys Get Their Power (Laws)?"
+        url: https://arxiv.org/abs/2502.17578
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: lecture-03
+    order: 3
+    displayOrder: 3
+    unitLabel: Lecture
+    date: 2025-09-29
+    title: Robust Verification
+    subtitle: 稳健验证与验证器。官方播放列表第 3 讲。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=p7TdPUcPoik
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=p7TdPUcPoik&list=PLangBM27OtEA&index=3
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings:
+      - label: Shrinking the Generation-Verification Gap with Weak Verifiers
+        url: https://arxiv.org/abs/2506.18203
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: Training Verifiers to Solve Math Word Problems (Cobbe et al. 2021)
+        url: https://arxiv.org/abs/2110.14168
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Let's Verify Step by Step (Lightman et al. 2023)"
+        url: https://arxiv.org/abs/2305.20050
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations (Wang et al. 2023)"
+        url: https://arxiv.org/abs/2312.08935
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: lecture-04
+    order: 4
+    displayOrder: 4
+    unitLabel: Lecture
+    date: 2025-10-03
+    title: Learning from feedback with tools/code
+    subtitle: 从工具与代码执行反馈中学习。官方播放列表第 4 讲。Homework 1 于本日发布。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=Lxh9RF5S-K0
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=Lxh9RF5S-K0&list=PLangBM27OtEA&index=4
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings:
+      - label: "ReAct: Synergizing Reasoning and Acting in Language Models (Yao et al. 2022)"
+        url: https://arxiv.org/abs/2210.03629
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "RLEF: Grounding Code LLMs in Execution Feedback with Reinforcement Learning"
+        url: https://arxiv.org/abs/2410.02089
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Constitutional AI: Harmlessness from AI Feedback"
+        url: https://arxiv.org/abs/2212.08073
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: lecture-05
+    order: 5
+    displayOrder: 5
+    unitLabel: Lecture
+    date: 2025-10-06
+    title: Multi-step Reasoning/Planning
+    subtitle: 多步推理与规划。官方播放列表第 5 讲。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=Ml_fp9XkB8Y
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=Ml_fp9XkB8Y&list=PLangBM27OtEA&index=5
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings:
+      - label: "SWiRL: Synthetic Data Generation and Multi-Step RL for Reasoning and Tool Use"
+        url: https://arxiv.org/abs/2504.04736
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Language Agent Tree Search Unifies Reasoning, Acting and Planning in Language Models (Zhou et al. 2023)"
+        url: https://arxiv.org/abs/2310.04406
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "SPRINT: Enabling Interleaved Planning and Parallelized Execution in Reasoning Models"
+        url: https://arxiv.org/abs/2506.05745
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "ADaPT: As-Needed Decomposition and Planning with Language Models (Prasad et al. 2024)"
+        url: https://arxiv.org/abs/2311.05772
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Wider or Deeper? Scaling LLM Inference-Time Compute with Adaptive Branching Tree Search"
+        url: https://arxiv.org/abs/2503.04412
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: lecture-06
+    order: 6
+    displayOrder: 6
+    unitLabel: Lecture
+    date: 2025-10-10
+    title: Train Time Scaling/Scaling RL
+    subtitle: 训练阶段扩展与强化学习。官方播放列表第 6 讲。项目提案截止。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=yVnmHSAy3ck
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=yVnmHSAy3ck&list=PLangBM27OtEA&index=6
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings:
+      - label: "STaR: Bootstrapping Reasoning With Reasoning (Zelikman et al. 2022)"
+        url: https://arxiv.org/pdf/2203.14465
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models"
+        url: https://arxiv.org/abs/2402.03300
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "DAPO: An Open-Source LLM Reinforcement Learning System at Scale"
+        url: https://arxiv.org/abs/2503.14476
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: lecture-07
+    order: 7
+    displayOrder: 7
+    unitLabel: Lecture
+    date: 2025-10-13
+    title: Open-Ended Evolution of Self-Improving Agents
+    subtitle: 自我改进智能体的开放式演化。官方 9 讲播放列表未收录本讲。Homework 2 于 10 月 14 日发布。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings:
+      - label: Automated Design of Agentic Systems
+        url: https://arxiv.org/pdf/2505.22954
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery (Lu et al. 2024)"
+        url: https://arxiv.org/abs/2408.06292
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms"
+        url: https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: lecture-08
+    order: 8
+    displayOrder: 8
+    unitLabel: Lecture
+    date: 2025-10-17
+    title: "Self improvement with Search & Deep Research Agents"
+    subtitle: 结合搜索的自我改进与深度研究智能体。官方播放列表第 7 讲，标题为 Self-Improvement and Deep Research Agents。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=Uni9dqyuuDM
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=Uni9dqyuuDM&list=PLangBM27OtEA&index=7
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings:
+      - label: Competition-Level Code Generation with AlphaCode
+        url: https://arxiv.org/pdf/2203.07814
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: AlphaCode 2 Technical Report
+        url: https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "Search-o1: Agentic Search-Enhanced Large Reasoning Models"
+        url: https://arxiv.org/pdf/2501.05366
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: lecture-09
+    order: 9
+    displayOrder: 9
+    unitLabel: Lecture
+    date: 2025-10-20
+    title: "Guest Lecture: Melvin Johnson (Google DeepMind)"
+    subtitle: Evolution of Post-training from Chatbots to Agents。官方播放列表未收录。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-10
+    order: 10
+    displayOrder: 10
+    unitLabel: Lecture
+    date: 2025-10-24
+    title: Mid term presentations
+    subtitle: 期中报告。Homework 3 于本日发布。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-11
+    order: 11
+    displayOrder: 11
+    unitLabel: Lecture
+    date: 2025-10-27
+    title: Mid term presentations
+    subtitle: 期中报告。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-12
+    order: 12
+    displayOrder: 12
+    unitLabel: Lecture
+    date: 2025-10-31
+    title: Mid term presentations
+    subtitle: 期中报告。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-13
+    order: 13
+    displayOrder: 13
+    unitLabel: Lecture
+    date: 2025-11-03
+    title: Agentic Frameworks for Software Engineering
+    subtitle: 面向软件工程的智能体框架。官方播放列表未收录。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings:
+      - label: "CodeMonkeys: Scaling Test-Time Compute for Software Engineering"
+        url: https://arxiv.org/abs/2501.14723
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "KernelBench: Can LLMs Write Efficient GPU Kernels?"
+        url: https://arxiv.org/pdf/2502.10517
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+        url: https://arxiv.org/abs/2410.15625
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: lecture-14
+    order: 14
+    displayOrder: 14
+    unitLabel: Lecture
+    date: 2025-11-07
+    title: Augmenting Agents with Memory
+    subtitle: "为智能体增加记忆。Guest lecturer: Junchen Jiang (LMCache, UChicago)。官方播放列表未收录。"
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings:
+      - label: "Cartridges: Lightweight and general-purpose long context representations via self-study"
+        url: https://arxiv.org/abs/2506.06266
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "MemGPT: Towards LLMs as Operating Systems (Packer et al. 2023)"
+        url: https://arxiv.org/abs/2310.08560
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion"
+        url: https://arxiv.org/abs/2405.16444
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: lecture-15
+    order: 15
+    displayOrder: 15
+    unitLabel: Lecture
+    date: 2025-11-10
+    title: "Guest Lecture: Denny Zhou (Google DeepMind)"
+    subtitle: LLM Reasoning。官方播放列表未收录。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-16
+    order: 16
+    displayOrder: 16
+    unitLabel: Lecture
+    date: 2025-11-14
+    title: "Guest Lecture: Thang Luong (Google DeepMind)"
+    subtitle: "Towards AI Superhuman Reasoning: AlphaProof, AlphaGeometry and Gemini IMO Gold Medal。官方播放列表未收录。"
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-17
+    order: 17
+    displayOrder: 17
+    unitLabel: Lecture
+    date: 2025-11-17
+    title: "Agentic Evaluations & Long-Horizon Tasks"
+    subtitle: 智能体评测与长时程任务。官方播放列表第 8 讲。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=8JAqLnTaZu4
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=8JAqLnTaZu4&list=PLangBM27OtEA&index=8
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings:
+      - label: Measuring AI Ability to Complete Long Tasks
+        url: https://arxiv.org/abs/2503.14499
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "GDPVal: Evaluating AI Model Performance on Real-World Economically Valuable Tasks"
+        url: https://arxiv.org/abs/2510.04374
+        type: paper
+        note: 官方课程表所列阅读。
+      - label: "DeepScholar-Bench: A Live Benchmark and Automated Evaluation for Generative Research Synthesis"
+        url: https://arxiv.org/abs/2508.20033
+        type: paper
+        note: 官方课程表所列阅读。
+    outputs: []
+  - id: lecture-18
+    order: 18
+    displayOrder: 18
+    unitLabel: Lecture
+    date: 2025-11-21
+    title: "Guest Lecture: Misha Laskin (Reflection AI)"
+    subtitle: "Building Agentic Systems for Autonomy: Lessons and Open Questions。官方播放列表未收录。"
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-19
+    order: 19
+    displayOrder: 19
+    unitLabel: Lecture
+    date: 2025-12-01
+    title: "Guest Lecture: Danny Driess (Physical Intelligence)"
+    subtitle: Multimodal AI Agents in Robotics。官方播放列表未收录。
+    status: resources-approved
+    official:
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings: []
+    outputs: []
+  - id: lecture-20
+    order: 20
+    displayOrder: 20
+    unitLabel: Lecture
+    date: 2025-12-05
+    title: Future Research Areas
+    subtitle: 后续研究方向。官方播放列表第 9 讲。
+    status: resources-approved
+    official:
+      - label: 课程视频
+        url: https://www.youtube.com/watch?v=AyO6wyu4DEg
+      - label: 官方录像
+        url: https://www.youtube.com/watch?v=AyO6wyu4DEg&list=PLangBM27OtEA&index=9
+      - label: 课程主页
+        url: https://cs329a.stanford.edu/
+    resources: []
+    readings: []
+    outputs: []

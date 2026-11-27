@@ -88,6 +88,16 @@ sections:
         title: Harvard CS2680 Fall 2026
         subtitle: 从 Agent 使用与评估到工具、记忆和系统工程；接入 2026 秋季讲义、阅读与官方作业仓库。
         route: /generated/courses/harvard-cs2680-fall26/
+      - id: mit-mas-s62-fall26
+        courseId: mit-mas-s62-fall26
+        title: MIT MAS.S62 Fall 2026
+        subtitle: Self-Evolving AI · context / harness / model / environment；公开讲义，暂无录像
+        route: /generated/courses/mit-mas-s62-fall26/
+      - id: cs329a-autumn25
+        courseId: cs329a-autumn25
+        title: Stanford CS329A Autumn 2025
+        subtitle: Self-Improving AI Agents · 目前可公开使用的最新校园课材料，含 9 讲官方录像
+        route: /generated/courses/cs329a-autumn25/
       - id: cs224r-sp26
         courseId: cs224r-sp26
         title: CS224R Spring 2026
@@ -181,6 +191,10 @@ referenceCollections:
     title: 评测与基准专题
     description: 评测历史、核心论文、课程与工具
     route: /topics/evaluation/
+  - id: self-evolution-references
+    title: 自进化与自我改进专题
+    description: 自进化 / 自我改进智能体课程，以及安全课中的经典 RSI 讲次
+    route: /topics/self-evolution/
   - id: product-references
     title: 产品管理经典资料
     description: SVPG · INSPIRED 第 2 版与 TRANSFORMED、Product Talk · 持续产品发现
