@@ -1,0 +1,1291 @@
+                                        CacheBlend: Fast Large Language Model Serving for
+                                              RAG with Cached Knowledge Fusion
+                                                            Jiayi Yao                                               Hanchen Li                                      Yuhan Liu
+                                        University of Chicago/CUHK Shenzhen                                   University of Chicago                            University of Chicago
+
+                                                        Siddhant Ray                                              Yihua Cheng                                   Qizheng Zhang
+                                                    University of Chicago                                     University of Chicago                             Stanford University
+
+                                                          Kuntai Du                                                   Shan Lu                                    Junchen Jiang
+                                                    University of Chicago                             Microsoft Research / University of                       University of Chicago
+arXiv:2405.16444v3 [cs.LG] 3 Apr 2025
+
+
+
+
+                                                                                                                  Chicago
+
+                                        Abstract                                                                                 with the state-of-the-art KV cache reusing schemes on three
+                                        Large language models (LLMs) often incorporate multiple                                  open-source LLMs of various sizes and four popular bench-
+                                        text chunks in their inputs to provide the necessary contexts.                           mark datasets of different tasks, we show that CacheBlend
+                                        To speed up the prefill of the long LLM inputs, one can                                  reduces time-to-first-token (TTFT) by 2.2–3.3× and increases
+                                        pre-compute the KV cache of a text and re-use the KV cache                               the inference throughput by 2.8-5× from full KV recompute
+                                        when the context is reused as the prefix of another LLM input.                           without compromising generation quality. The code is avail-
+                                        However, the reused text chunks are not always the input                                 able at https://github.com/LMCache/LMCache.
+                                        prefix, which makes precomputed KV caches not directly                                   CCS Concepts • Computing methodologies → Natural
+                                        usable since they ignore the text’s cross-attention with the                             language processing; • Networks → Cloud computing;
+                                        preceding texts. Thus, the benefits of reusing KV caches                                 • Information systems → Data management systems.
+                                        remain largely unrealized.
+                                           This paper tackles just one challenge: when an LLM in-                                Keywords Large Language Models, KV Cache, Retrieval-
+                                        put contains multiple text chunks, how to quickly combine                                Augmented-Generation
+                                        their precomputed KV caches in order to achieve the same
+                                                                                                                                 ACM Reference Format:
+                                        generation quality as the expensive full prefill (i.e., with-                            Jiayi Yao, Hanchen Li, Yuhan Liu, Siddhant Ray, Yihua Cheng,
+                                        out reusing KV cache)? This challenge naturally arises in                                Qizheng Zhang, Kuntai Du, Shan Lu, and Junchen Jiang. 2025.
+                                        retrieval-augmented generation (RAG) where the input is                                  CacheBlend: Fast Large Language Model Serving for RAG with
+                                        supplemented with multiple retrieved texts as the context.                               Cached Knowledge Fusion. In Twentieth European Conference on
+                                        We present CacheBlend, a scheme that reuses the pre-                                     Computer Systems (EuroSys ’25), March 30–April 3, 2025, Rotter-
+                                        computed KV caches, regardless prefix or not, and selec-                                 dam, Netherlands. ACM, New York, NY, USA, 16 pages. https:
+                                        tively recomputes the KV values of a small subset of tokens                              //doi.org/10.1145/3689031.3696098
+                                        to partially update each reused KV cache. In the meantime,
+                                        the small extra delay for recomputing some tokens can be                                 1   Introduction
+                                        pipelined with the retrieval of KV caches within the same job,                           For their remarkable capabilities, large language models
+                                        allowing CacheBlend to store KV caches in slower devices                                 (LLMs) are widely used in personal assistance, AI healthcare,
+                                        with more storage capacity while retrieving them without                                 and question answering [1, 3, 4, 9]. To ensure high-quality
+                                        increasing the inference delay. By comparing CacheBlend                                  and consistent responses, applications often supplement the
+                                                                                                                                 user query with additional texts to provide the necessary
+                                        Permission to make digital or hard copies of all or part of this work for                context of domain knowledge or user-specific information. A
+                                        personal or classroom use is granted without fee provided that copies                    typical example is Retrieval-Augmented Generation (RAG)
+                                        are not made or distributed for profit or commercial advantage and that
+                                        copies bear this notice and the full citation on the first page. Copyrights              where a user query will be prepended by multiple text chunks
+                                        for components of this work owned by others than the author(s) must                      retrieved from a database to form the LLM input.
+                                        be honored. Abstracting with credit is permitted. To copy otherwise, or                     These context text chunks, however, significantly slow
+                                        republish, to post on servers or to redistribute to lists, requires prior specific       down LLM inference. This is because, before generating any
+                                        permission and/or a fee. Request permissions from permissions@acm.org.                   token, an LLM first uses prefill to go through the entire LLM
+                                        EuroSys ’25, March 30–April 3, 2025, Rotterdam, Netherlands
+                                                                                                                                 input to produce the KV cache—concatenation of tensors
+                                        © 2025 Copyright held by the owner/author(s). Publication rights licensed
+                                        to ACM.                                                                                  associated with each input token that embeds the token’s
+                                        ACM ISBN 979-8-4007-1196-1/25/03. . . $15.00                                             “attention” with its preceding tokens. Thus, the prefill delay
+                                        https://doi.org/10.1145/3689031.3696098                                                  determines the time to first token (TTFT). We refer to it as
+                                                                                                                             1
+            LLM input                                   KV cache of [1, 2, 3]
+                                 Slowest                                            Good
+                                                                                                  understanding information from multiple chunks jointly (e.g.,
+  Chunk 1 Chunk 2 Chunk 3
+                                                                                    quality       chunks about geography and chunks about politics). §3.3
+                        (a) Default: Full KV re-compute.                                          offers concrete examples to illustrate when prefix caching
+                             Prefill on entire input
+                                                                                                  and modular caching are insufficient.
+ Prefix's KV cache                                     KV cache of [1, 2, 3]
+                               Marginally faster                                   Good
+                                                                                                  Our approach: This paper tackles only one challenge: when
+     KV    Chunk 2 Chunk 3                                                         quality
+   Cache 1                                                                                        an LLM input includes multiple text chunks, how to quickly
+                        (b) Prior work: Prefix caching.                                           combine their individually pre-computed KV caches, in order
+                        Only reusing prefix's KV cache
+                                                                                                  to achieve the same generation quality as the expensive full
+                                Much
+          Stored KV caches
+                                faster    KV cache of [1, 2, 3]                                   prefill? In other words, we seek to have both the speed of full
+                                                                          Low
+     KV      KV      KV
+   Cache 1 Cache 2 Cache 3               Ignore cross-attention          quality                  KV reuse and the generation quality of full KV recompute.
+                    (c) Prior work: Full KV reuse.
+                                                                                                     We present CacheBlend, a system that fuses multiple
+            Reusing all KV caches, ignoring cross-attention                                       pre-computed KV caches, regardless of prefix or not, by
+                                Much
+                                                                                                  selectively recomputing the KV cache of a small fraction of
+         Stored KV caches                 KV cache of [1, 2, 3]
+                                faster                                                            tokens, based on the preceding texts in the specific LLM input.
+                                                                        Good
+      KV      KV      KV
+    Cache 1 Cache 2 Cache 3                                             quality                   We refer to it as selective KV recompute (Figure 1(d)). At
+         (d) CacheBlend (ours): Selective KV re-compute.                                          a high level, selective KV recompute performs prefill on the
+   Reusing all KV caches but re-computing a small fraction of KV
+                                                                                                  input text in a traditional layer-by-layer fashion; however,
+                                                                                                  in each layer, it updates the KV of only a small fraction of
+Figure 1. Contrasting full KV recompute, prefix caching, full
+                                                                                                  tokens while reusing the KV of other tokens.
+KV reuse, and CacheBlend’s selective KV recompute.
+                                                                                                     Comparing with full KV recompute, an update fraction of
+                                                                                                  less than 15% can typically generate same-quality responses
+full KV recompute (Figure 1(a)). Despite many optimizations,                                      based on our experience. The deeper reason why it suffices
+the delay and computation of prefill grow super-linearly                                          to only updating a small fraction of KV is due to the sparsity
+with the input length, and can easily slow down the service,                                      of attention matrices (see §4.3).
+especially on long LLM inputs (e.g., in RAG) [11, 53, 60].                                           Comparing with full KV reuse, CacheBlend achieves
+   So, how do we speed up the prefill of LLM inputs? Recent                                       higher generation quality with a small amount of extra KV
+optimizations embrace the fact that same context texts are                                        update. Moreover, this small extra computation does not
+often reused by different LLM inputs. They then pre-compute                                       increase the inference latency, because CacheBlend par-
+the KV caches of these texts once and re-use the stored KV                                        allelizes partial KV update on one layer with the fetching
+caches to avoid repeated prefill on these reused texts.                                           of the KV cache on the next layer into GPU memory. Such
+Limitations of existing methods: There are currently                                              pipelining enables CacheBlend to store KV caches in slower
+two approaches to KV cache reusing, but they both have                                            non-volatile devices (e.g., disk) without incurring extra delay,
+limitations.                                                                                      allowing more KV caches to be stored and reused.
+   First, prefix caching only stores and reuses the KV cache of                                      To put our contribution in context, CacheBlend enables
+the prefix of the LLM input [33, 36, 41, 42, 59] (Figure 1(b)).                                   the reusing of KV caches of multiple text chunks in one
+Because the prefix’s KV cache is independent of the succeed-                                      LLM input, without compromising generation quality. This
+ing texts, prefix caching does not hurt generation quality.                                       is complementary to the recent work that reduces KV cache
+However, many applications, such as RAG, include multiple                                         storage sizes [28, 35, 42, 43, 45, 58] and optimizes the access
+text chunks, rather than one, in the LLM input to provide all                                     patterns of KV cache [33, 59].
+necessary contexts to ensure good response quality. Thus,                                            We implemented CacheBlend on top of vLLM and com-
+only the first text chunk is the prefix, and other reused texts’                                  pared CacheBlend with state-of-the-art KV cache reusing
+KV caches are not reused. As a result, the speed of prefix                                        schemes on three open-source LLMs of various sizes and
+caching will be almost as slow as full KV recompute when                                          three popular benchmark datasets of two LLM tasks (RAG
+input consists of many reused text chunks.                                                        and QA). We show that compared to prefix caching, CacheBlend
+   Second, full KV reuse aims to address this shortcoming                                         reduces time-to-first-token (TTFT) by 2.2–3.3× and increases
+(Figure 1(c)). When a reused text is not at the input prefix, it                                  the inference throughput by 2.8–5×, without compromising
+still reuses the KV cache by adjusting its positional embed-                                      generation quality or incurring more storage cost. Compared
+ding so that the LLM generation will produce meaningful                                           to full KV reuse, CacheBlend achieves almost the same
+output [24]. However, this method ignores the important                                           TTFT but 0.1-0.2 higher absolute F1-scores on QA tasks and
+cross-attention—the attention between tokens in one chunk                                         0.03-0.25 higher absolute Rouge-L scores on summarization.
+with tokens in its preceding chunks. The cross-attention in-
+formation cannot be pre-computed as the preceding chunks                                          2   Background
+are not known in advance. Yet, cross-attention can be vital to                                    Most LLM services today use transformers [13, 16, 52]. After
+answer queries (e.g., about geopolitics) that naturally require                                   receiving the input tokens, the LLM first uses the prefill
+                                                                                              2
+phase (explained shortly) to transform the tokens into key                 Since the reused contexts typically contain more informa-
+(K) and value (V) vectors, i.e., KV cache. After prefill, the LLM       tion than the user queries, the prefill on the “context” part of
+then iteratively decodes (generates) the next token with the            the input accounts for the bulk of prefill overhead [22, 33].
+current KV cache and appends the new K and V vectors of                 Thus, it would be ideal to store and reuse the KV caches
+the new tokens to the KV cache for the next iteration.                  of reused texts, in order to avoid the prefill overhead when
+   The prefill phase computes the KV cache layer by layer.              these texts are used again in different LLM inputs.
+The input tokens embeddings on each layer are first trans-
+formed into query (Q), key (K), and value (V) vectors, of               3.2    Why is prefix caching insufficient?
+which the K and V vectors form one layer of the KV cache.               Indeed, several recent systems are developed to reduce prefill
+The LLM then multiplies Q and K vectors to obtain the at-               delay by reusing KV caches. For example, in prefix caching,
+tention matrix—the attention between each token and its                 the KV cache of a reusable text chunk is precomputed once,
+preceding tokens—and does another dot product between                   and if the text chunk is at the prefix of an LLM input, then
+the (normalized and masked) attention matrix with the V                 the precomputed KV cache can be reused to avoid prefill on
+vector. The resulting vector will go through multiple neural            the prefix. The advantage of prefix caching is that the KV
+layers to obtain the tokens’ embeddings on the next layer.              cache of a prefix is not affected by the succeeding text, so
+   When the KV cache of a prefix is available, the prefill              the generation result will be identical to full KV recompute
+phase will only need to compute the forward attention matrix            (without the KV cache). Several systems have followed this
+(between the suffix tokens and the prefix tokens) on each               approach, e.g., vLLM [36], SGLang [59], and RAGCache [33].
+layer which directly affects the generated token.                          The disadvantage of prefix caching is also clear. To an-
+   The prefill phase can be slow, especially on long inputs.            swer one query, applications, such as RAG, often prepend
+For instance, on an input of four thousand tokens (a typical            multiple text chunks in the LLM input to provide different
+context length in RAG [33]), running prefill can take three             contexts necessary for answering the query.1 As a result,
+(or six) seconds for Llama-34B (or Llama-70B) on one A40                except the first chunk, all other chunks’ KV caches are
+GPU. This causes a substantial delay that users have to wait            not reused since they are not the prefix of the LLM input.
+before seeing the first word generated. Recent work also                   Let us think about the queries from §3.1. To answer “who in
+demonstrates that prefill can be a throughput bottleneck, by            the IT department proposed using RAG to enhance the customer
+showing that getting rid of the prefill phase can double the            service X during the last all-hands meeting?”, we need contexts
+throughput of an LLM inference system [60].                             from multiple sources, including IT department’s employees,
+                                                                        information about service X, and meeting notes from the all-
+                                                                        hands meeting. Similarly, in the Arxiv-summarization app,
+3     Motivation                                                        answering the example queries will require the LLM to read
+3.1   Opportunities of reusing KV caches                                several recent RAG-related Arxiv papers as the contexts. Be-
+                                                                        ing on different topics, these contexts are unlikely to appear
+Recent systems try to alleviate the prefill overhead by lever-          together in one text chunk. They are separate text chunks
+aging the observation that in many LLM use cases, the same              used together only when answering a particular query.
+texts are used repeatedly in different LLM inputs. This allows             To empirically show the needs for including multiple text
+reusing KV caches of these reused texts (explained shortly).            chunks in LLM inputs, we use two popular multi-hop QA
+   Text reusing is particularly prevalent when same texts               datasets, Musique and 2WikiMQA. These datasets consist
+are included in the LLM input to provide necessary contexts             of queries and multiple associated context texts needed to
+to ensure high and consistent response quality. To make it              answer the queries. Following the common practice of RAG,
+more concrete, let’s consider two scenarios.                            we first create a vector database by splitting the contexts
+• In a company that uses LLM to manage internal records,                into chunks of 128 tokens (a popular number [29]) using
+  two queries can be “who in the IT department proposed                 the text chunking mechanism from Langchain [5]. For each
+  using RAG to enhance the customer service X during the last           query, we embed the query using SentenceTransformers [49],
+  all-hands meeting?” and “who from the IT department were
+                                                                        1 Prepending all contexts in an LLM input is a popular way of augmenting
+  graduates from college Y?” While seemingly different, both
+                                                                        user queries (e.g., “stuff” mode in Langchain and LlamaIndex). By default,
+  queries involve the list of employees in the IT department
+                                                                        this paper uses this mode. Other RAG methods like “MapReduce” or “Rerank”
+  as a necessary context to generate correct answers.                   do not fit in this category. They first process each context text chunk sepa-
+• Similarly, in an LLM-based application that summarizes                rately before combining the results from each context. Since each chunk
+  Arxiv papers, two queries can be “what are the trending               is always the prefix when processed separately, prefix caching works well.
+  RAG techniques on Arxiv?” and “what datasets are used re-             However, “MapReduce” is slow since it needs to summarize every chunk
+                                                                        before generating the answer from summaries. “Rerank” suffers from low
+  cently to benchmark RAG-related papers on Arxiv?” They                generation quality if multiple chunks contain relevant information as it
+  both need the recent Arxiv papers about RAG as the neces-             processes every chunk individually. We also empirically evaluate these
+  sary context to generate correct results.                             methods and compare them with CacheBlend in §7.
+                                                                    3
+     Full KV recompute (w/ cross attention)                    Full KV reuse (w/o cross attention)               Chunk 1                Chunk 2
+           0.35                                             0.35
+                                                                                                                                                                 Query
+                                                                                                               "Lionel Messi       "Cristiano scored 8   "Who scored more goals
+           0.30                                             0.30                                            scored 13 goals at     goals at FIFA World     at FIFA World Cups,
+                             Benefit of cross-                             Benefit of cross-
+F1-Score
+
+
+
+
+                                                 F1-Score
+                                                                                                            FIFA World Cups.\n"         Cups.\n"          Messi or Ronaldo?\n"
+           0.25              chunk attention                0.25           chunk attention
+                             in KV cache                                   in KV cache                                (a) Setup: Query and two relevant text chunks.
+           0.20                                             0.20
+
+           0.15                                             0.15                                                                           LLM       "Lionel Messi scored
+                                                                                                                                                      more goals than at
+                                                                                                           Chunk 1   Chunk 2 + Query                 FIFA World Cups than
+                    5   15   25    35    45                        5     15     25      35                                                           Cristiano Ronaldo.\n"
+            # relevant chunks in LLM input                   # relevant chunks in LLM input
+                     (a) Musique                                     (b) 2WikiMQA                                       (b) Full KV recompute gives correct answer.
+
+Figure 2. Generation quality improves as more text chunks                                                                                             "The question is asking
+                                                                                                                                          LLM          for information about
+are retrieved.                                                                                            KV cache KV cache   + Query                   FIFA World Cups. The
+                                                                                                          Chunk 1 Chunk 2                                names of Messi and
+                                                                                                                                                     Ronaldo are well-known …"
+                                                                                                                           (c) Full KV reuse gives wrong answer.
+and fetch top-k relevant chunks from the database, based on
+the least L2 distance between the embeddings of the query                                                Figure 3. An illustrative example of an LLM input with two
+and the chunk respectively. Figure 2 shows the generation                                                text chunks prepended to a query. Full KV recompute (b), with-
+quality, measured using a standard F1-score metric, with an                                              out reusing KV cache, is slow but gives the correct answer. Full
+increasing number of selected text chunks. We can see that                                               KV reuse (c), however, gives the wrong answer as it neglects
+the quality improves significantly as more text chunks are                                               cross-attention between the chunks (Figure 4).
+retrieved to supplement the LLM input, though including
+too many chunks hurts quality due to the well-known lost-
+in-the-middle issue [40, 54].
+                                                                                                         uses this KV cache to generate the answer, it will start to
+   In short, prefix caching can only save the prefill of the first
+                                                                                                         ramble and not produce the right answer.
+text chunk, so the saving will be marginal when the LLM
+                                                                                                            To understand why, we take a closer look at the attention
+input includes more text chunks, even if they are reused.
+                                                                                                         matrix (explained in §2), particularly the cross-attention
+                                                                                                         between the two text chunks talking about the players’ sta-
+3.3               Why is full KV reuse insufficient?
+                                                                                                         tistics. Figure 4 visualizes the attention matrix resulting from
+Full KV reuse is proposed to address this very problem. This                                             the KV cache of the original (full) prefill and the KV cache of
+approach is recently pioneered by PromptCache [24]. It con-                                              full KV reuse. Since full KV reuse precomputes each chunk
+catenates independently precomputed KV caches of recur-                                                  separately, the cross attention between two chunks is com-
+ring text chunks with the help of buffers to maintain the                                                pletely missed (never computed) when the KV caches are pre-
+positional accuracy of each text chunk. For instance, to con-                                            computed. In this example, the first chunk contains Messi’s
+catenate the KV caches of chunks 𝐶 1 and 𝐶 2 , PromptCache                                               goal count and the second chunk contains Ronaldo’s. The
+first needs to precompute the KV cache of 𝐶 2 by running pre-                                            LLM is queried to compare the goal counts between Messi
+fill on a hypothetical input that prepends 𝐶 2 with a dummy                                              and Ronaldo. Neglecting the interaction (cross-attention)
+prefix of length greater or equal to 𝐶 1 . This way, even if 𝐶 2                                         between two chunks would lead to a flawed answer.
+is not the prefix, we still correctly preserve the positional                                               In fairness, it should be noted that full KV reuse does work
+information of 𝐶 2 ’s KV cache, though each chunk’s KV cache                                             when the cross-attention between chunks is low. This can
+will have to be precomputed multiple times.                                                              commonly occur with prompt templates which are the main
+    However, even with the positional information preserved,                                             target application of PromptCache [24].
+a more fundamental problem is that the KV cache of non-                                                     The absence of cross-attention in full KV reuse causes
+prefix text chunk (e.g., 𝐶 2 ) ignores the cross-attention be-                                           significant discrepancies in the forward attention matrix
+tween the chunk and the preceding text (e.g., 𝐶 1 ). This is                                             (explained in §2), which contains the attention between con-
+because the preceding text is not known when precomput-                                                  text tokens and the last few tokens, and directly affects the
+ing the KV cache.                                                                                        generated tokens.
+    Ignoring cross-attention can lead to a wrong response.                                                  To show the prevalence of cross-attention in multi-chunk
+Figure 3 shows an illustrative example, where a user query                                               LLM inputs, Figure 2 contrasts the response quality (in F1
+"How many goals did Messi score more than Cristiano Ronaldo                                              score) between full KV recompute (with cross-attention) and
+at FIFA World Cups?" is prepended by the two text chunks                                                 full KV reuse (without cross-attention). We can see that as the
+of the players’ career statistics. With full prefill or prefix                                           number of relevant chunks increases, the disparity between
+caching, the result is clear and correct. With full KV reuse                                             full prefill and modular caching becomes more pronounced.
+the KV caches of the two text chunks are precomputed, with                                               This is because, with a larger number of chunks, the amount
+each chunk having the right positional embedding, and then                                               of cross-referencing and interdependency between different
+concatenated to form the KV cache. However, if the LLM                                                   parts of the input (cross-attention) increases.
+                                                                                                     4
+                                                                                             Notation      Description
+            Attention matrix
+                                                                                                       𝑖   Layer index
+                                                      Forward-attention
+                                                                                                       𝑗   Token index
+      Cross-attention
+                                                                                                   𝐾𝑉      KV cache
+                                                                                                  𝐾𝑉𝑖      KV on layer 𝑖
+                                                                                             𝐾𝑉𝑖 [ 𝑗]      KV on layer 𝑖 at token 𝑗
+                                                                                              𝐾𝑉 full      Fully recomputed KV cache
+             (a) Full KV recompute (correct cross-attention)                                  𝐾𝑉 pre       Pre-computed KV cache
+                                                                                             𝐾𝑉 new        CacheBlend-updated KV cache
+                                                                                                     𝐴𝑖    Forward attention matrix on layer 𝑖
+             Attention matrix
+                                                                                                 𝐴𝑖full    Forward attention matrix of full KV recompute
+                                                                                                    pre
+                                                      Forward-attention                          𝐴𝑖        Forward attention matrix of full KV reuse
+      Cross-attention
+                                                                                                𝐴𝑖 new     Forward attention matrix with CacheBlend
+                                                                               Δkv (𝐾𝑉𝑖 , 𝐾𝑉𝑖full ) [ 𝑗]   KV deviation between 𝐾𝑉𝑖 [ 𝑗] and 𝐾𝑉𝑖full [ 𝑗]
+                                                                                    Δattn (𝐴𝑖 , 𝐴𝑖full )   Attention deviation between 𝐴𝑖 and 𝐴𝑖full
+                                                                                              Table 1. Summary of terminology
+                (b) Full KV reuse (ignoring cross-attention)
+
+Figure 4. Contrasting the attention matrices of (a) full KV
+recompute and (b) full KV reuse. The yellow boxes highlight the                  The difference between the full KV recompute (full prefill)
+cross-attention. The right-hand side plots show the resulting                 and the full KV re-use is two-fold.
+forward attention matrices whose discrepancies are a result of                • KV deviation: We define the KV deviation of a KV cache
+the different cross-attention between the two methods.                          𝐾𝑉 on layer 𝑖 of token 𝑗 as the absolute difference between
+                                                                                𝐾𝑉𝑖 [ 𝑗] and 𝐾𝑉𝑖full [ 𝑗], denoted as Δkv (𝐾𝑉𝑖 , 𝐾𝑉𝑖full ) [ 𝑗]. It
+4     Fast KV Cache Fusing                                                      measures how much different the given KV is on a particu-
+Given that full KV recompute (i.e., full prefill or prefix caching)             lar token and layer compared to the full-prefilled KV cache.
+can be too slow while full KV reuse has low quality, a natural                  We will later use the KV deviation to identify which tokens’
+question then is how to have both the speed of full KV reuse                    KV has higher deviation and thus need to be updated.
+and the quality of full KV recompute. Our goal, therefore, is                 • Attention deviation: Similarly, for the forward attention
+the following:                                                                  matrix 𝐴𝑖 on layer 𝑖, we define the attention deviation, de-
+Goal. When an LLM input includes multiple re-used text                          noted as Δattn (𝐴𝑖 , 𝐴𝑖full ), to be the L-2 norm of its difference
+chunks, how to quickly update the pre-computed KV cache,                        with 𝐴𝑖full . Recall from §3.3 that full KV reuse suffers from
+such that the forward attention matrix (and subsequently the                    deviation in the forward attention matrix (illustrated in
+output text) has minimum difference with the one produced                       Figure 4) due to the absence of cross-attention.
+by full KV recompute.                                                            Using these notations, our goal can be formulated as how
+                                                                              to quickly update the precomputed KV cache 𝐾𝑉 pre to the
+   To achieve our goal, we present CacheBlend, which
+                                                                              new KV cache 𝐾𝑉 new , such that the attention deviation
+recomputes the KV of a selective subset of tokens on each
+                                                                              Δattn (𝐴𝑖new, 𝐴𝑖full ) on any layer 𝑖, is minimized.
+layer while reusing other tokens’ KV.2 This section explains
+CacheBlend in three parts. We begin with the notations
+                                                                              4.2    Selectively recomputing KV cache
+(§4.1), and then describe how to recompute the KV of only
+a small subset of tokens (§4.2), and finally explain how to                   For now, let us assume we have already selected a subset of
+select the tokens on each layer whose KV will be recomputed                   tokens to recompute on each layer (we will explain how to
+(§4.3).                                                                       select them in §4.3). Here, we describe how CacheBlend
+                                                                              recomputes the KV of these selected tokens on each layer.
+4.1     Terminology                                                           Workflow: The default implementation of prefill (depicted
+Table 1 summarizes the notations used in this section. For                    in Figure 5(a)) does not “skip” tokens while only computes
+a given list of 𝑁 text chunks, we use 𝐾𝑉 full to denote the                   the KV of a subset of tokens. Instead, CacheBlend runs the
+KV cache from full KV recompute, 𝐾𝑉 pre to denote the pre-                    following steps (depicted in Figure 5(b)):
+computed KV cache, and 𝐾𝑉 new to denote the CacheBlend-                       • It first applies a mask on the input of each layer 𝑖 to reduce
+updated KV cache. Here, each of these KV caches is a concate-                   it to a subset of selected tokens.
+nation of KV caches associated with different text chunks.                    • It then transforms the reduced input into the 𝑄𝑖 , 𝐾𝑖 and 𝑉𝑖
+Each layer 𝑖 of the KV cache, 𝐾𝑉𝑖 , produces the forward                        vectors will also be restricted to the selected tokens.
+attention matrix 𝐴𝑖 .                                                         • It then expands the 𝐾𝑖 vector and 𝑉𝑖 vector by reusing the
+2 For simplicity, we use the terms KV and KV cache interchangeably.             KV cache entries associated with the un-selected tokens
+                                                                          5
+      Input on                                                            Input on                     To show the effectiveness of selecting tokens with high
+       layer 𝑖                   𝑄!       𝐾!                      𝑉!     layer 𝑖 + 1
+                                                   Attn Matrix                                      KV deviations, Figure 6 uses three models on the dataset of
+                                                                                        next
+                                                                                        layer
+                                                                                                    Musique (please see §7.1 for details). It shows the change of
+ …                                                                                      …           average attention deviation across all layers 𝑖, Δattn (𝐴𝑖 , 𝐴𝑖full ),
+                                                                                                    after we use the aforementioned scheme (§4.2) to select and
+                                                                                                    recompute the 𝑟 % of tokens 𝑗 who have the highest KV devia-
+                                                                                                    tion Δkv (𝐾𝑉𝑖 , 𝐾𝑉𝑖full ) [ 𝑗]. As the recompute ratio (𝑟 ) increases,
+                                (a) Full KV recompute for reference
+                                                                                                    we can see that the attention deviation gradually reduces,
+                                         Re-used        Re-computed                                 and the biggest drops happen when the top few tokens with
+      Input on                                                            Input on                  the highest KV deviations are recomputed. Empirically, it
+                                 𝑄!      𝐾!                      𝑉!
+       layer 𝑖                                  Attn Matrix              layer 𝑖 + 1 next           suggests the following insight.
+                                                                                     layer
+ …                                                                                   …
+                                                                                                    Insight 1. On layer 𝑖, recomputing the KV of token 𝑗 who has
+                                                                                                    a higher KV deviation (i.e., Δkv (𝐾𝑉𝑖 , 𝐾𝑉𝑖 ) [ 𝑗]) reduces the
+                                                                                                                                                  full
+
+                                                                                                    attention deviation (i.e., Δattn (𝐴𝑖 , 𝐴𝑖 )) by a greater amount.
+                                                                                                                                            full
+       (b) Selective KV recompute on two selected tokens
+                                                                                                       Thus, if we recompute the KV of, say 10%, of tokens on
+Figure 5. Illustrated contrast between (a) full KV recompute                                        a layer 𝑖, we should choose the 10% of tokens which have
+and (b) selective KV recompute on one layer.                                                        the highest KV deviations.3 We refer to these tokens as the
+                                                                                                    High-KV-Deviation (or HKVD) tokens on layer 𝑖.
+                               1.0
+                                                                                                       Now that we know we should recompute KV for the
+         attention deviation
+
+
+
+
+                               0.8                                    Mistral-7B
+                                                                      Yi-34B                        HKVD tokens, two natural questions arise.
+              Forward
+
+
+
+
+                               0.6
+                                                                      Llama-70B
+                               0.4                                                                  Do we need to recompute KV for most tokens? In §7,
+                               0.2                                                                  we empirically show that choosing 10-20% tokens as HKVD
+                               0.0                                                                  tokens and recomputing their KV suffices to greatly reduce
+                                     0    10     20      30        40              50
+                                            Recomputation ratio (%)                                 the attention deviation and preserve generation quality.
+                                                                                                        This can be intuitively explained by attention sparsity, a
+Figure 6. Attention deviation reduces as we recompute the                                           well-studied property observed in many transformer models
+KV of more tokens on each layer. Importantly, the biggest drop                                      by prior research [14, 15, 43, 58]. It says that in an attention
+in attention deviation results from recomputing the KV of the                                       matrix, high attention typically only occurs between a small
+tokens with the highest KV deviation (i.e., HKVD tokens).                                           number of tokens and their preceding tokens. To validate
+                                                                                                    this observation, Figure 7 uses the same models and dataset
+  on layer 𝑖, so that the attention matrix includes attention                                       as Figure 6. It shows the distribution of KV deviation on
+  between selected tokens and all other tokens.                                                     one layer. We can see that a small fraction, about 10-15%, of
+                                                                                                    tokens have much higher KV deviation than others, which
+• Finally, it runs the same attention module to produce the
+                                                                                                    corroborates the sparsity of cross-attention.
+  input of the next layer.
+                                                                                                        If a token has very low attention with other chunks’ tokens
+These changes make little assumption on the exact trans-                                            (i.e., low cross-attention with other chunks), the KV deviation
+former process and can be integrated with many popular                                              between 𝐴pre and 𝐴full will be low and thus do not need to
+transformers (more details in §6). It is important to notice                                        be recomputed. Only when a token has a high attention with
+that the compute overhead is proportional to the number                                             other chunks (high KV deviation compared with ground
+of selected tokens. This is because it only runs computation                                        truth), should its KV be recomputed.
+associated with the selected tokens. If we recompute 𝑟 % of
+tokens per layer, the total compute overhead will be 𝑟 % of                                         How to identify the HKVD tokens without knowing
+full prefill.                                                                                       the true KV values or attention matrix? Naively, to iden-
+                                                                                                    tify the HKVD tokens, one must know the fully recomputed
+4.3    Selecting which tokens to recompute                                                          𝐾𝑉𝑖full of each layer 𝑖 in the first place, but doing so is too
+Next, we explain how to choose the tokens whose KV should
+be recomputed on each layer in order to reduce the attention                                        3 In the precomputed KV cache, the K vector of each chunk must be ad-
+
+deviation on each layer, which results from the KV deviation.                                       justed with the correct positional embedding. In SOTA positional embed-
+Our intuition, therefore, is to prioritize recomputing the                                          ding scheme (Rotary Positional Embedding or ROPE [50]), this correc-
+                                                                                                    tion  is done simply by multiplying the K vector by a rotation matrix of
+KV of tokens who have high KV deviations. Of course, this                                           
+                                                                                                      cos 𝑚𝜃 − sin 𝑚𝜃
+intuitive scheme is not feasible as it needs to know full-                                                                 . (The n-dimensional case in Appendix A) This step
+                                                                                                      sin 𝑚𝜃     cos 𝑚𝜃
+prefilled KV cache, and we will make it practical shortly.                                          has negligible overhead since the multiplication is performed only once.
+                                                                                                6
+                      1.0                                                          1.0                                                         1.0                                                              Layer 𝟏                       Layer 𝟐                        Layer 𝟑              …
+                                                                                                                                                                                                                                                 Selectively                   Selectively
+                                                  Layer 4                                                    Layer 10                                                      Layer 4                              Recompute all
+CDF
+
+
+
+
+                                                                     CDF
+
+
+
+
+                                                                                                                                 CDF
+                                                                                                                                                                                                                                              recompute three                recompute two
+                      0.5                                                          0.5                                                         0.5                                                            tokens on Layer 1
+
+
+
+
+                                                                                                                                                                                             Updated KV
+                                                  Layer 5                                                    Layer 11                                                      Layer 5                                                           tokens on Layer 2             tokens on Layer 3
+                                                                                                                                                                                                                                                                                                  …
+                                                  Layer 6                                                    Layer 12                                                      Layer 6
+                      0.0                                                          0.0                                                         0.0
+                                    0      20 40 60                                             0     25 50 75                                               0   20 40 60
+                                         KV deviation                                               KV deviation                                              KV deviation
+
+
+
+
+                                                                                                                                                                                                                            HKVD tokens
+
+
+
+
+                                                                                                                                                                                                                                                             HKVD tokens
+
+
+
+
+                                                                                                                                                                                                                                                                                         HKVD tokens
+                                        (a) Mistral-7B                                               (b) Yi-34B                                              (c) Llama-70B
+
+
+
+
+                                                                                                                                                                                                                             Selected
+
+
+
+
+                                                                                                                                                                                                                                                              Selected
+
+
+
+
+                                                                                                                                                                                                                                                                                          Selected
+                                                                                                                                                                                             Precomputed KV
+Figure 7. Distribution of KV deviation of different tokens on                                                                                                                                                     KV                             KV                            KV
+one layer.                                                                                                                                                                                                      deviation                      deviation                     deviation
+Spearman's rank correlation
+
+
+
+
+                                                            Spearman's rank correlation
+
+
+
+
+                                                                                                                         Spearman's rank correlation
+between neighboring layers
+
+
+
+
+                                                            between neighboring layers
+
+
+
+
+                                                                                                                         between neighboring layers
+                              1.0                                                         1.0                                                          1.0                                                                                                 Re-computed
+                                                                                                                                                                                                                                          Re-used
+                              0.8                                                         0.8                                                          0.8
+                              0.6                                                         0.6                                                          0.6
+                                                                                                                                                                                             Figure 9. CacheBlend selects the HKVD (high KV deviation)
+                              0.4                                                         0.4                                                          0.4
+                              0.2                                                         0.2                                                          0.2
+                                                                                                                                                                                             tokens of one layer by computing KV deviation of only the
+                              0.0                                                         0.0                                                          0.0                                   HKVD tokens selected from the previous layer and selecting
+                                    6
+
+
+                                              3
+
+                                                     2
+
+                                                              2
+
+
+
+
+                                                                                                    6
+
+
+                                                                                                           7
+
+                                                                                                                  2
+
+                                                                                                                           7
+
+
+
+
+                                                                                                                                                                 2
+
+                                                                                                                                                                       2
+
+                                                                                                                                                                               2
+
+                                                                                                                                                                                     2
+                                            .1
+
+                                                  .2
+
+                                                          .3
+
+
+
+
+                                                                                                         .1
+
+                                                                                                               .3
+
+                                                                                                                      .4
+
+
+
+
+                                                                                                                                                             .1
+
+                                                                                                                                                                     .2
+
+                                                                                                                                                                           .4
+
+                                                                                                                                                                                   .6
+                                                                                                                                                                                             the tokens among them with high KV deviation.
+                                    s.
+
+
+
+
+                                                                                                s.
+                                5v
+
+
+
+
+                                                                                            5v
+                                           vs
+
+                                                  vs
+
+                                                         vs
+
+
+
+
+                                                                                                        vs
+
+                                                                                                               vs
+
+                                                                                                                      vs
+
+
+
+
+                                                                                                                                                             vs
+
+                                                                                                                                                                     vs
+
+                                                                                                                                                                           vs
+
+                                                                                                                                                                                   vs
+                                         12
+
+                                                21
+
+                                                       31
+
+
+
+
+                                                                                                     16
+
+                                                                                                             31
+
+                                                                                                                    46
+
+
+
+
+                                                                                                                                                        11
+
+                                                                                                                                                                  21
+
+                                                                                                                                                                          41
+
+
+                                          Layer pairs                                                   Layer pairs                                                Layer pairs  61
+
+                                         (a) Mistral-7B                                                 (b) Yi-34B                                                (c) Llama-70B                 Thus, we opt for a gradual filtering scheme (depicted in
+                                                                                                                                                                                             Figure 9). If on average we want to pick 𝑟 % HKVD tokens
+Figure 8. Rank correlation of the KV deviation per token be-
+                                                                                                                                                                                             per layer, we will pick 𝑟 1 % tokens based on the token-wise
+tween two consecutive layers.
+                                                                                                                                                                                             attention deviation on the first layer, with 𝑟 1 being slightly
+                                                                                                                                                                                             higher than 𝑟 , and use them as the HKVD tokens on the
+expensive and defeats the purpose of selective KV recom-                                                                                                                                     second layer. Then we recompute the KV of these 𝑟 1 % HKVD
+pute. Instead, we observe that the HKVD tokens on different                                                                                                                                  tokens on the second layer and pick 𝑟 2 % tokens that have
+layers are not independent:                                                                                                                                                                  the highest token-wise attention deviation, with 𝑟 2 slightly
+Insight 2. Tokens with the highest KV deviations on one layer                                                                                                                                less than 𝑟 1 , as the HKVD tokens on the next layer, and so
+are likely to have the highest KV deviations on the next layer.                                                                                                                              forth. Intuitively, this gradual-filtering scheme eventually
+                                                                                                                                                                                             picks the HKVD tokens who have high attention deviation,
+For instance, if the HKVD tokens on the first layer are tokens                                                                                                                               not only on the first layer but also on multiple layers, which
+2, 3, and 5, these three tokens will likely also have higher                                                                                                                                 empirically is statistically more reliable to identify the HKVD
+KV deviations than most other tokens on the second layer.                                                                                                                                    tokens on each layer.
+   Figure 8 uses the same setting as Figure 7 and shows Spear-                                                                                                                                  Although the KV-cache space of the layer i performing the
+man’s rank correlation score between the KV deviation of                                                                                                                                     HKVD calculation holds both Updated-KV and Precomputed-
+tokens between two neighboring layers. The figure shows a                                                                                                                                    KV, layer-i’s extra Precomputed-KV is immediately discarded
+consistently high similarity of HKVD tokens between differ-                                                                                                                                  once the inference proceeds to layer i+1. This makes the
+ent layers.4                                                                                                                                                                                 memory overhead in HKVD negligible.
+   The intuition behind this correlation lies in the previous
+observation that the input embedding of each token changes                                                                                                                                   5 CacheBlend System Design
+slowly between layers in transformer models [44, 47]. There-
+                                                                                                                                                                                             We present a concrete system design for CacheBlend, which
+fore, KV cache between layers should also bear similarity
+                                                                                                                                                                                             reduces the impact of the selective KV recompute using the
+as KV cache is generated from the input embedding with a
+                                                                                                                                                                                             following basic insight.
+linear transformation.
+   Given the substantial correlation between the HKVD to-                                                                                                                                    Basic insight: If the delay for selective KV recompute (§4.3) is
+kens, a straightforward solution is that we can perform prefill                                                                                                                              faster than the loading of KV into GPU memory, then properly
+on the first layer first, pick the HKVD tokens of the first layer,                                                                                                                           pipelining the selective KV recompute and KV loading makes
+and only update their KV on all other layers. Since an LLM                                                                                                                                   the extra delay of KV recompute negligible.
+usually has over 30 layers, this process can save most of the
+compute compared to full KV recompute. That said, using                                                                                                                                      Pipelining KV loading and recompute: In CacheBlend,
+only the attention deviation of different tokens on the first                                                                                                                                the selective recompute of one layer can start immediately
+layer may not be statistically reliable to pick HKVD tokens                                                                                                                                  after pre-computed the KV cache of the previous layer is
+of all layers, especially deeper layers.                                                                                                                                                     loaded into the GPU. This is because which tokens’ KV to
+                                                                                                                                                                                             recompute on one layer only depends on the KV deviation
+4We should clarify that although the HKVD tokens are similar across layers,                                                                                                                  of the previous layer’s tokens. As a result, if loading the pre-
+the attention matrices between layers can still be quite different.                                                                                                                          computed KV for one layer is faster or equal to selective KV
+                                                                                                                                                                                         7
+         For an SSD of 1GB/s throughput,         w/o pipelining
+                                                                                  The loading delay estimator estimates the loading delay of the
+         this is the best re-compute                                              KV cache of one layer, 𝑇𝑙𝑜𝑎𝑑 (𝐿𝐿𝑀, 𝐿, 𝑠𝑡𝑜𝑟𝑎𝑔𝑒_𝑑𝑒𝑣𝑖𝑐𝑒) 6 , based
+         ratio (no extra delay)
+                                                                                  on the LLM, the storage device’s speed (which is measured
+                                                        w. pipelining             offline), and the length of context 𝐿.
+                                                                                     The controller calculates an idealized recomputation ratio
+                                                                                  such that the loading delay can hide the recompute delay,
+                       (a)                                                        without degrading the inference quality. It first picks the
+                                                                                  recompute ratio 𝑟 % such that 𝑇𝑟𝑒𝑐𝑜𝑚𝑝𝑢𝑡𝑒 (𝑟 %, 𝐿𝐿𝑀, 𝐿) is equal
+                                                                                  to 𝑇𝑙𝑜𝑎𝑑 (𝐿𝐿𝑀, 𝐿, 𝑠𝑡𝑜𝑟𝑎𝑔𝑒_𝑑𝑒𝑣𝑖𝑐𝑒), and then takes the max of
+        Under 15% re-compute ratio, this is the best
+        storage device. (cheapest and no extra delay)                             𝑟 % and 𝑟 ∗ %, where 𝑟 ∗ % is the minimal recompute ratio that
+                                                                                  empirically has low negligible quality drop from full KV re-
+                                                                                  compute. In practice, we found 𝑟 ∗ % to be 15% from Figure 16.
+                                                                                  This means that even if the storage device is a fast device (ex.
+                                                                                  CPU RAM), the delay will be lower-bounded by the minimal
+                         (b)
+                                                                                  recomputation to guarantee quality.
+Figure 10. (a) Smartly picking the recompute ratio will not
+                                                                                     In practice, CacheBlend faces another challenge: which
+incur an extra delay. (b) Smartly picking storage device(s) to
+                                                                                  storage devices should the developer use? To solve this chal-
+store KVs saves cost while not increasing delay.
+                                                                                  lenge, we present a more formulated question to the loading
+                                                                                  controller: If we only do KV recompute of a fixed selective
+recompute of one layer, the KV-loading delay should be able
+                                                                                  recompute ratio (ex. 15%), how can we choose the right storage
+to hide the selective recompute delay, i.e., without incurring
+                                                                                  device to store KVs such that no extra delay is caused? As
+any extra delay on time-to-first-token (TTFT).
+                                                                                  shown in Figure 10(b), under a fixed recompute ratio, the
+   Take the Llama-7B model and a 4K-long context, recom-
+                                                                                  controller should pick the cheapest storage device among all
+puting 15% of the tokens (the default recompute ratio) only
+                                                                                  devices that do not increase the delay.
+takes 3 ms per layer, while loading one layer’s KV cache takes
+                                                                                     In CacheBlend, the system developers can provide a list
+16 ms from an NVME SSD (§7). In this case, KV loading can
+                                                                                  of potential storage device(s), and the controller uses a stor-
+hide the delay for KV recompute on 15% of the tokens, i.e.,
+                                                                                  age cost estimator which estimates the cost of storing KVs
+KV recompute incurs no extra delay. Recomputing more to-
+                                                                                  for each device, namely 𝐶𝑠𝑡𝑜𝑟𝑒 (𝐿𝐿𝑀, 𝐿,𝑇 , 𝑠𝑡𝑜𝑟𝑎𝑔𝑒_𝑑𝑒𝑣𝑖𝑐𝑒),
+kens, which can slightly improve generation quality, may
+                                                                                  based on the LLM, length of context 𝐿 and time duration
+not incur extra delay either, as long as the delay is below
+                                                                                  𝑇 needed to store it (if it is cloud storage). Then it uses
+16 ms. On the contrary, with another model, Llama-70B, re-
+                                                                                  𝑇𝑟𝑒𝑐𝑜𝑚𝑝𝑢𝑡𝑒 (15%, 𝐿𝐿𝑀, 𝐿) and𝑇𝑙𝑜𝑎𝑑 (𝐿𝐿𝑀, 𝐿, 𝑠𝑡𝑜𝑟𝑎𝑔𝑒_𝑑𝑒𝑣𝑖𝑐𝑒) to
+computing 15% of tokens takes 7 ms, but it only takes 4 ms
+                                                                                  estimate the recompute and loading delays for all devices.
+to load one layer’s KV from an NVME SSD. Here KV loading
+                                                                                  Lastly, it finds out which storage device is the cheapest where
+does not completely hide the recompute delay. In short, a
+                                                                                  𝑇𝑟𝑒𝑐𝑜𝑚𝑝𝑢𝑡𝑒 ≥ 𝑇𝑙𝑜𝑎𝑑 . In this way, if the developer can navigate
+controller is needed to intelligently pick the recompute ratio
+                                                                                  through the different storage devices for the KV caches given
+as well as where to store the KV cache (if applicable).
+                                                                                  a fixed recomputation target that satisfies the generation
+5.1    Key Components                                                             quality requirement.
+To realize the benefit of pipelining KV loading and recom-                        KV cache store (mapping LLM input to KV caches): The
+pute, our system has three major components.                                      KV cache store splits an LLM input into multiple text chunks,
+                                                                                  each of which can be reused or new. For instance, a RAG
+Loading Controller: We face two design questions in prac-
+                                                                                  input typically consists of multiple retrieved context chunks
+tice: First, given a fixed storage device to use, how to choose
+                                                                                  (likely of a fixed length) and the user input. The splitting of
+a recompute ratio (what fraction of tokens to recompute KV
+                                                                                  LLM inputs is specific to the application, and we implement
+per layer) without incurring extra delay to time-to-first-token
+                                                                                  the same strategy as described in recent work [24, 38]. Once
+(TTFT)? Figure 10(a) illustrates an example that, if we select
+                                                                                  the input is split into text chunks, each chunk is hashed to
+a recompute ratio wisely, the recompute should not cause
+                                                                                  find their corresponding KV cache, in the same way as the
+any extra delay to loading if loading is slow.
+                                                                                  block hashing is implemented in vLLM [36]. The KV caches
+   For this, the controller uses two delay estimators to find an
+                                                                                  of new chunks generated by the fusor (explained soon) are
+idealized recompute ratio, such that the recompute delay is
+                                                                                  added to the devices. When the storage devices are full, we
+close to the loading delay. Given the recompute ratio 𝑟 , length
+                                                                                  evict the least recently used KV cache. In this paper, we
+of context to be loaded 𝐿, and LLM, the recompute delay esti-
+                                                                                  only focus on storing KV cache in one single level of storage
+mator calculates the expected delay 𝑇𝑟𝑒𝑐𝑜𝑚𝑝𝑢𝑡𝑒 (𝑟 %, 𝐿𝐿𝑀, 𝐿) 5 .
+                                                                                  device such as CPU RAM or SSD.
+5𝑇
+  𝑟𝑒𝑐𝑜𝑚𝑝𝑢𝑡𝑒 (𝑟 %, 𝐿𝐿𝑀, 𝐿) = 𝑟 % × 𝑃𝑟𝑒 𝑓 𝑖𝑙𝑙 (𝐿𝐿𝑀, 𝐿). 𝑃𝑟𝑒 𝑓 𝑖𝑙𝑙 (𝐿𝐿𝑀, 𝐿) is
+                                                                                  6𝑇                                   𝑃𝑒𝑟𝑇 𝑜𝑘𝑒𝑛𝐾𝑉 𝑆𝑖𝑧𝑒 (𝐿𝐿𝑀 ) ×𝐿
+offline profiled.                                                                   𝑙𝑜𝑎𝑑 (𝐿𝐿𝑀, 𝐿, 𝑠𝑡𝑜𝑟𝑎𝑔𝑒_𝑑𝑒𝑣𝑖𝑐𝑒 ) = 𝑇 ℎ𝑟𝑜𝑢𝑔ℎ𝑝𝑢𝑡 (𝑠𝑡𝑜𝑟𝑎𝑔𝑒_𝑑𝑒𝑣𝑖𝑐𝑒 ) .
+                                                                              8
+                                                                                                  Drone Drone Agri   Agri
+              User                                  Loading Controller                            Chunk Chunk Chunk Chunk
+                                                                                                   #1    #2    #1     #2
+
+
+       : “Can we use drones
+            in agriculture?”                                                      KV Cache #1-4         KV Cache Store
+                                              Fused      KV Cache Fusor
+                                             KV Cache                                                        CPU
+                               “Drones can
+                                    …”                                                                     SSD
+
+                                                                           Potential New KV Cache Slower Disks
+                                                  CacheBlend System
+
+Figure 11. CacheBlend system (green stared) in light of LLM context augmented generation for a single request. CacheBlend
+uses text provided by the retriever, interacts with the storage device(s), and provides KV cache on top of LLM inference engines.
+
+Fusor: The cache fusor (§4) merges pre-computed KV caches                and performs the partial prefill process for this particular
+via selective recompute. Recall from §4.3, the decision of               layer. The output is used as the input for the next layer.
+which tokens need to be recomputed for one layer depends              • synchronize(): CacheBlend requires synchronization
+on the recompute of the previous layer. Thus, the fusor waits            before prefilling every layer to make sure the KV cache of
+until the recompute for the previous layer is done, and the              this layer has already been loaded into the GPU.
+KV caches for layer 𝐿 are loaded into the queue on GPU                    We implement these three interfaces inside vLLMs. For
+memory and then perform selective recompute using the                 fetch_kv, we first calculate the hash of the text and search
+recompute ratio 𝑟 % calculated by the loading controller. The         if it is inside the KV store system. If it is present, we call
+fusor repeats this process until all the layers are recomputed.       torch.load() to load it into GPU memory if KV cache is
+                                                                      on disk or use torch.cuda() if the KV cache is inside CPU
+5.2   Putting them together                                           memory. For prefill_layer, we implement this interface
+We put the key components together in an LLM inference                on top of the original layer function in vLLM that performs
+workflow in Figure 11. When a user of an LLM application              one layer of prefill. Three key-value pairs are recorded in
+submits a question, a list of relevant text chunks will be            the input_dict: (1) the original input data input_org re-
+queried. The loading controller then queries the KV cache             quired for prefilling an LLM layer (e.g., input_tensor, in-
+manager on whether the KV caches for those text chunks                put_metadata), (2) a check_flag indicating whether HKVD
+exist, and where they are stored. Next, the KV cache manager          tokens will be selected in this layer, and (3) HKVD_indices
+returns this information back to the loading controller and           that track the indices of HKVD tokens. If check_flag is
+the controller computes the idealized selective recomputa-            True, the input tokens with the largest deviation between
+tion ratio, sends it to the fusor, and loads the KV caches into       the newly computed KV cache and the loaded KV cache will
+a queue in GPU memory. The KV cache fusor continuously                be selected as the HKVD tokens. If check_flag is False,
+recomputes the KV caches in the queue, until all layers are           partial prefill will only be performed on the current HKVD
+recomputed. Lastly, the fused KV cache is input into the LLM          tokens indicated by HKVD_indices. Only the KV cache of
+inference engine, which generates the answer to the user              the HKVD tokens will be computed and updated at each
+question based on the KV cache.                                       layer. In the partial prefill for layer 𝑖, two threads are used
+                                                                      to pipeline the computation (prefill_layer) of layer 𝑖 and
+6     Implementation                                                  the KV cache loading (fetch_kv) of the next layer 𝑖 + 1.
+We implement CacheBlend on top of vLLM with about 3K                  synchronize is called before prefill_layer to assure the
+lines of code in Python based on PyTorch v2.0.                        KV cache needed for prefill has been loaded into GPU.
+Integrating Fusor into LLM serving engine: CacheBlend                 Managing KV cache: CacheBlend manages the KV caches
+performs the partial prefill process in a layer-wise manner           such that: If KV cache is not inside the system and is recom-
+through three interfaces:                                             puted by the LLM engine in the runtime, we will move the
+                                                                      KV cache into CPU by torch.cpu() and open a thread to
+• fetch_kv(text, layer_id) -> KVCache: given a piece
+                                                                      write it back to disk in the background with torch.save().
+   of text and a layer id, CacheBlend fetches the correspond-
+                                                                      During fetch_kv, we go through through the hash tables to
+   ing KV cache from KV store into the GPU. Returns -1 if
+                                                                      fetch KV cache for the fusor. The hash tables are kept in CPU
+   the KV cache is not in the system.
+                                                                      for their relatively small size (16MB for one million chunks).
+• prefill_layer(input_dict, KVCache) -> output_dict:
+   CacheBlend takes in the input and KV cache of this layer
+                                                                  9
+                                         Be                                  Be                                    Be
+                                            tte                                 tte                                   tte
+                                                r                                   r                                     r
+
+
+
+
+                                         Be                                  Be                                    Be
+                                            tte                                 tte                                   tte
+                                                r                                   r                                     r
+
+
+
+
+                                         Be                                  Be                                    Be
+                                            tte                                 tte                                   tte
+                                                r                                   r                                     r
+
+
+
+
+                                         Be                                  Be                                    Be
+                                            tte                                 tte                                   tte
+                                                r                                   r                                     r
+
+
+
+
+Figure 12. CacheBlend reduces TTFT by 2.2-3.3× compared to full KV recompute with negligible quality drop across four datasets
+and three models.
+
+
+
+
+                      Be                            Be                                  Be                                    Be
+                         tte                           tte                                 tte                                   tte
+                             r                             r                                   r                                     r
+
+
+
+
+                 Figure 13. Generation quality of CacheBlend with Yi-34B vs MapReduce and MapRerank.
+
+7     Evaluation                                                    model quantization to Llama-70B and Yi-34B. We run our
+Our key takeaways from the evaluation are:                          end-to-end experiments on Runpod GPUs [10] with 128 GB
+• TTFT reduction: Compared to full KV recompute,                    RAM, 2 Nvidia A40 GPUs, and 1TB NVME SSD whose mea-
+  CacheBlend reduces TTFT by 2.2-3.3× over several mod-             sured throughput is 4.8 GB/s. We use 1 GPU to serve Mistral-
+                                                                    7B and Yi-34B, and 2 GPUs to serve Llama-70B.
+  els and tasks.
+                                                                    Datasets: Our evaluation covers the following datasets.
+• High quality: Compared with full KV reuse, CacheBlend
+  improves quality from 0.15 to 0.35 in F1-score and Rouge-L        • 2WikiMQA7 [27]: This dataset aims to test LLM’s reasoning
+  score, while having no more than 0.01-0.03 quality drop             skills by requiring the model to read multiple paragraphs
+  compared to full KV recompute and prefix caching.                   to answer a given question. We included 200 test cases,
+• Higher throughput: At the same TTFT, CacheBlend                     following the dataset size of previous work [12].
+  can increase throughput by up to 5× compared with full            • Musique7 [51]: This is a multi-document question-answering
+  KV recompute and 3.3× compared with prefix caching.                 dataset. It is designated to test LLM’s multi-hop reason-
+                                                                      ing ability where one reasoning step critically relies on
+                                                                      information from another and contains 150 test cases.
+7.1   Setup
+Models and hardware settings: We evaluate CacheBlend                7 Since the standard answers for 2WikiMQA and Musique are always less
+on Mistral-7B[30], Yi-34B[56] and Llama-70B[2] to represent         than 5 words, we append “Answer within 5 words.” to their prompts to
+a wide scale of open source models. Note that we apply 8-bit        reduce the impact of answer length mismatch in F1 score calculation.
+                                                               10
+                        CacheFuse (ours)                           Full KV recompute            Prefix Caching (RAM)            Prefix Caching (RAM+SSD)
+                                                            Mistral-7B                              Yi-34B                          Llama-70B
+                                               2                                        5                                8
+                      2WikiMQA
+
+
+
+
+                                    TTFT (s)
+                                                                                                                         6
+                      Extended
+                      Dataset                                                                                            4
+                                                                                                                         2
+                                               0                                        0                                0
+                                                   0           2            4            0.0         0.5         1.0     0.00     0.25   0.50   0.75
+                                                                                        5                                8
+                      Musique                  2
+                                    TTFT (s)
+
+                      Extended                                                                                           6
+                      Dataset                                                                                            4
+                                                                                                                         2
+                                               0                                        0                                0
+                                                   0           2            4            0.0         0.5         1.0     0.00     0.25   0.50   0.75
+                                                                                       Average Request Rate per Second
+
+Figure 14. CacheBlend achieves lower TTFT with higher throughput in RAG scenarios compared with baselines of similar quality.
+
+                           CacheFuse (ours)                        Full KV recompute                • F1-score [6] is used to evaluate 2WikiMQA and Musique
+                                2.0                                                                   datasets [12]. It measures the similarity between the model’s
+           1.5                                                        7.5
+                                    1.5                                                               output and the ground-truth answer of the question based
+TTFT (s)
+
+
+
+
+           1.0                                                        5.0
+                                    1.0                                                               on the number of overlapping words.
+           0.5
+                                    0.5                               2.5                           • Rouge-L score [39] is used to evaluate MultiNews and SAM-
+                                                                                                      Sum datasets [12]. It measures the similarity between the
+           0.0                      0.0                               0.0
+                 3  6    9 12                      300 600 900              2      6      10          model’s output and the ground-truth summaries based on
+             (a) Number of chunks                  (b) Chunk length         (c) Batch size
+                                                                                                      the longest common sequence.
+Figure 15. CacheBlend outperforms baseline with varying                                             Baselines: We compare CacheBlend with the following
+chunk numbers, chunk lengths, and batch sizes.                                                      baselines:
+                                                                                                    • Full KV recompute: The raw texts are fed into LLM as input.
+• SAMSum [25]: This dataset comprises multiple pairs of                                               The LLM calculates KV cache of all tokens during prefill.
+  dialogues and summaries, and requires the LLM to output                                           • Prefix caching [33, 36, 59]: We adopt the techniques from
+  a summary to a new dialogue. It is intended to test the                                             SGLang [59] to identify the frequently used prefix chunks
+  few-shot learning ability of language models and contains                                           and store their KV caches in both RAM and SSD. The KV
+  200 test cases.                                                                                     cache of non-prefix tokens needs to be computed during
+• MultiNews [20]: This dataset consists of news articles and                                          prefill. We also make an idealized assumption in favor of
+  human-written summaries of these articles from the site                                             prefix caching that there is no loading delay from RAM
+  newser.com. Each summary is professionally written by                                               or SSD to GPU. This assumption makes it perform better
+  editors and includes links to the original articles cited and                                       than it would under real-world conditions.
+  contains 60 sampled cases.                                                                        • Full KV reuse [24]: We implement full KV reuse by using
+We split contexts into 512-token chunks with Langchain and                                            the approach proposed in PromptCache [24]. We append
+use the original 200-400 token chunks in SAMSum. We also                                              a buffer before the text to prepare its KV cache to be used
+create a synthetic dataset to simulate the chunk reuse in                                             in different positions with correct positional encoding.
+RAG scenarios. Specifically, we randomly pick 1500 queries                                            We did not compare with the scaffolding scheme since
+in the Musique and 2WikiMQA datasets each and build a                                                 its application to RAG scenarios requires human users to
+context chunk database by splitting each query’s context                                              manually select important chunks at runtime.
+into 512-token chunks [29] with Langchain [5]. For each                                             • MapReduce [7]: Different from traditional MapReduce [18],
+query, we use GPT4 API to generate 3 more similar queries.                                            this is an alternative RAG method in LangChain. The LLM
+In the 6000 queries (1500 original + 4500 simulated), we                                              first summarises all chunks in parallel and concatenates
+retrieve the top-6 chunks8 based on L2 distance, in a random                                          them together. The concatenated summaries are then fed
+order[34]. We refer to these datasets as Musique extended                                             to the LLM again to generate the final answer.
+and 2WikiMQA extended. We only report for baselines with                                            • MapRerank [8]: This is another RAG method in LangChain.
+similar quality and skip the result for the first 1K queries as                                       In MapRerank, the LLM independently generates an an-
+the initial storage is completely empty.                                                              swer from each chunk along with a score based on its
+                                                                                                      confidence that the answer is correct. The answer with
+Quality metrics: We adopt the following standard metrics
+                                                                                                      the highest score is picked as the final output.
+to measure the generation quality.
+8 Max number of chunks that fit into input token limit for Llama-70B.
+
+                                                                                               11
+                                           Be                                         Be                                    Be                             Be
+                                              tte                                        tte                                   tte                            tte
+                                                  r                                          r                                     r                              r
+
+
+
+
+            Figure 16. CacheBlend has minimal loss in quality compared with full KV recompute, with 5%–18% selective recompute ratio,
+            with Yi-34B.
+
+                       CacheBlend (ours)     Full KV Reuse       Prefix Caching       Full Recomp         prefix caching, CacheBlend is also better in terms of higher
+                           CPU RAM                                   Slower Disk (4Gbps)                  throughput and lower delay as prefix caching needs to store
+           0.4                                         0.4
+                                                                                                          multiple versions of KV caches for the same chunk if they
+F1-Score
+
+
+
+
+           0.2                                         0.2                                                have different prefixes. Thus, given the total storage space is
+                                                                                                          fixed, prefix caching will incur a higher miss rate.
+           0.0
+                 0           1               2
+                                                       0.0
+                                                             0        1           2              3
+                                                                                                             Finally, compared to other RAG methods, like MapRe-
+                                                  TTFT (s)                                                duce and MapRerank, CacheBlend is also better in terms of
+                                                                                                          quality or delay. For MapReduce, it has a higher delay than
+            Figure 17. CacheBlend’s outperforms baselines when using                                      CacheBlend due to additional LLM inference. Although
+            RAM and slower disks                                                                          MapRerank has slightly lower TTFT than CacheBlend, its
+                                                                                                          quality is much worse, since processing the input chunks
+                                                                                                          separately ignores the dependencies between chunks.
+            7.2      Overall Improvement
+           Reduced TTFT with minimal quality drop: Figure 12
+           compares the average quality and TTFT across the requests,                                     7.3   Sensitivity Analysis
+           where each request has a context of 6 top chunks picked                                        For a better understanding of CacheBlend, we further ana-
+           by lowest L2-distance between the respective embeddings                                        lyze how varying the configurations impacts overall perfor-
+           generated by SentenceTransformers [49] (512 tokens per                                         mance.
+           chunk). As shown in the graph, compared to the full KV                                         Varying chunk numbers and lengths: Figure 15a and 15b
+           recompute and prefix caching, CacheBlend’s reduction in                                        show the minimum compute time needed by CacheBlend
+           F1 and Rouge-L score is within 0.02, while it significantly                                    to maintain generation quality (≤0.015 loss in F1-score) at
+           reduces the TTFT by 2.2-3.3× across all models and datasets.                                   different numbers of chunks and chunk lengths. The exper-
+           While CacheBlend is slower than full KV reuse due to its                                       iment is conducted on 2WikiMQA with Mistral-7B model.
+           selective recomputation, its quality stably outperforms full                                   As shown in the figure, the compute time reduction ratio re-
+           KV reuse by a large margin (in many cases more than 2×).                                       mains similar across different numbers of chunks and chunk
+              Figure 13 compares CacheBlend with RAG methods in-                                          length settings.
+           cluding MapReduce and MapRerank. Compared to MapRe-                                            Varying recompute ratios: Figure 16 shows the impact of
+           duce, CacheBlend has a 2-5× lower TTFT and higher F1                                           the recompute ratio on the quality-TTFT trade-off across all
+           score.                                                                                         datasets on Yi-34B model. Across all the datasets, CacheBlend’s
+           Higher throughput with lower delay: In Figure 14, we                                           loss in generation quality is at most 0.002 in F1 score or
+           compare CacheBlend with full KV recompute and prefix                                           Rouge-L score compared to full KV recompute, with 5%~18%
+           caching on Musique extended and 2WikiMQA datasets un-                                          recomputation ratio. To put the number into context, the
+           der different request rates. CacheBlend achieves lower de-                                     5%~18% recomputation ratio can be translated to 4.1-6.6×
+           lay with higher throughput by 2.8-5× than all the baselines                                    TTFT reduction compared with full KV-recompute and 3.4-
+           across different models and datasets.                                                          6.1× TTFT reduction compared with prefix caching.
+           Understanding CacheBlend’s improvement: CacheBlend                                             Varying batch size: Figure 15c shows the compute time
+           is better than all baselines for different reasons. Compared to                                of prefill phase of different batch sizes. It is worth noting
+           the full KV recompute, CacheBlend has a much lower delay                                       that the time of the decoding phase increases slower than
+           and higher throughput due to only a small amount of tokens                                     the prefill phase when the batch size becomes larger [36, 60],
+           are recomputed. Compared to full KV reuse, although its de-                                    making prefill overhead dominant with increasing batch
+           lay is lower than CacheBlend, the quality drops a lot as full                                  size. Therefore, CacheBlend’s improvement over the prefill
+           KV reuse did not perform any of the recompute, thus missing                                    phase becomes more prominent to the overall delay reduc-
+           the cross-attention between different chunks. Compared to                                      tion with larger batch sizes.
+                                                                                                     12
+Varying storage device: To study the effect of different             reduce the KV cache size. CacheBlend can benifit from such
+storage types on CacheBlend, we modify the underlying                techniques by storing and loading less KV cache.
+storage devices for every method and conduct a similar ex-
+periment as Figure 12 for the Yi-34B model and 2WikiMQA              9    Limitations and Future Work
+dataset. As shown in Figure 17, CacheBlend consistently              Our method in this paper (e.g., the insights in § 4.3) cur-
+reduces TTFT with minimal quality degradation when the               rently only applies to language models with transformer
+KV cache is stored in RAM or a slower SSD device. Notice             structures. We leave investigation of architectures other than
+that the delay gap between CacheBlend and Full KV reuse              transformer such as Mamba [26] and Griffin [17] for future
+is smaller for slower storage since the delay of CacheBlend          work. In our evaluation, we haven’t tested CacheBlend’s
+would be more dominated by the loading delay instead of its          performance on more models and datasets with different
+partial KV recomputation.                                            quantization settings. For better understanding and improve-
+                                                                     ment of the method, we have open-sourced our work to
+                                                                     facilitate more effort in this direction.
+8   Related Work                                                        In this paper, we integrated CacheBlend in vLLM but
+                                                                     have not yet tested CacheBlend’s performance on the latest
+Retrieval augmented generation (RAG): RAG [22, 23,                   serving engines like Distserve[60] or StableGen [11]. Nor
+37, 46, 48] can enhance the accuracy and reliability of LLMs         have we studied how to apply CacheBlend to workloads
+with text chunks fetched from external sources. However,             that share KV cache across different compute nodes. Since
+processing these text chunks in the LLM can take a long time.        CacheBlend is able to reduce the costly prefill phase, we
+CacheBlend reduces this overhead by storing and reusing              believe combining CacheBlend with these new serving en-
+the KV caches of these text chunks.                                  gines could potentially bring more savings. We leave the
+                                                                     integration of CacheBlend into these novel inference frame-
+KV cache reuse across requests: Storing and reusing
+                                                                     works for future work.
+KV cache across different requests have been commonly
+studied in recent work [24, 33, 41, 42, 59]. Most of these           10     Conclusion
+works [33, 41, 42, 59] focus on prefix-only caching. Prompt-
+                                                                     We present CacheBlend, a system that combines multiple
+Cache [24] allows KV cache to be reused at different po-
+                                                                     pre-computed KV caches, when their corresponding texts
+sitions but fails to maintain satisfying generation quality
+                                                                     are concatenated in the LLM input. To preserve generation
+due to inaccurate postional encoding and ignorance of cross
+                                                                     quality, CacheBlend recovers the cross-attention among
+attention. CacheBlend adopts a novel partial recomputa-
+                                                                     these texts by selectively recomputing the KV cache values
+tion framework to better retain positional accuracies and
+                                                                     of a small fraction of tokens. Through experiments across
+cross attention. Most of the existing work stores KV cache
+                                                                     four datasets and three models, CacheBlend reduces TTFT
+in volatile memory devices for guaranteed performance (e.g.,
+                                                                     by 2.2-3.3× and increases throughput by 2.8-5×, compared to
+GPU HBM, CPU DRAM). While there are emerging research
+                                                                     full KV recompute, under negligible quality drop. The code
+trying to reuse high-speed NVME SSD for KV caches [21],
+                                                                     is available at https://github.com/LMCache/LMCache.
+CacheBlend is unique in pipelining loading with partial
+recomputation and its extension to even slower object store.
+                                                                     11     Acknowledgement
+General-purpose LLM serving systems: Numerous general-               We thank all the anonymous reviewers and our shepherd,
+purpose LLM serving systems have been developed [11, 36,             Thaleia Dimitra Doudali, for their insightful feedback and
+57, 60]. Orca [57] enables multiple requests to be processed         suggestions. The project is funded by NSF CNS-2146496,
+in parallel with iteration-level scheduling. vLLM [36] further       CNS-2131826, CNS-2313190, CNS-1901466, CNS-2313190,
+increases the parallelsim through more efficent GPU mem-             CCF-2119184, CNS-1956180, and research awards from Google,
+ory management. CacheBlend is complementary to these                 CERES Center, Conviva, and Chameleon Cloud.
+general-purpose LLM serving systems, empowering them
+with context resuing capabilities.                                   References
+                                                                      [1] 12 Practical Large Language Model (LLM) Applications - Techopedia.
+Context compression methods: Context compression
+                                                                          https://www.techopedia.com/12-practical-large-language-model-l
+techniques [19, 31, 32, 43, 55, 58] can be complementary                  lm-applications. (Accessed on 09/21/2023).
+to CacheBlend. Some of these techniques [31, 32] shorten              [2] [2302.13971] llama: Open and efficient foundation language models.
+the prompt length by prunining the unimportant tokens.                    https://arxiv.org/abs/2302.13971. (Accessed on 09/21/2023).
+CacheBlend is compatible with such methods in that it                 [3] 7 top large language model use cases and applications. https://www.
+                                                                          projectpro.io/article/large-language-model-use-cases-and-applicati
+can take different chunk lengths as shown in §7.3. Another                ons/887. (Accessed on 09/21/2023).
+line of work [19, 43, 58] focus on dropping the unimportant           [4] Applications of large language models - indata labs. https://indatalabs
+KV vectors based on the attention matrix, which essentially               .com/blog/large-language-model-apps. (Accessed on 09/21/2023).
+                                                                13
+ [5] Chains. https://python.langchain.com/docs/modules/chains/.                          for large language models: A survey. arXiv preprint arXiv:2312.10997,
+ [6] Evaluating qa: Metrics, predictions, and the null response. https:                  2023.
+     //github.com/fastforwardlabs/ff14_blog/blob/master/_notebooks/20               [24] In Gim, Guojun Chen, Seung seob Lee, Nikhil Sarda, Anurag Khan-
+     20-06-09-Evaluating_BERT_on_SQuAD.ipynb.                                            delwal, and Lin Zhong. Prompt cache: Modular attention reuse for
+ [7] Langchain: Map reduce. https://api.python.langchain.com/en/latest/c                 low-latency inference, 2023.
+     hains/langchain.chains.combine_documents.map_reduce.MapReduc                   [25] Bogdan Gliwa, Iwona Mochol, Maciej Biesek, and Aleksander Wawer.
+     eDocumentsChain.html#langchain.chains.combine_documents.ma                          Samsum corpus: A human-annotated dialogue dataset for abstractive
+     p_reduce.MapReduceDocumentsChain.                                                   summarization. arXiv preprint arXiv:1911.12237, 2019.
+ [8] Langchain: Map rerank. https://api.python.langchain.com/en/latest/c            [26] Albert Gu and Tri Dao. Mamba: Linear-time sequence modeling with
+     hains/langchain.chains.combine_documents.map_rerank.MapReran                        selective state spaces, 2023.
+     kDocumentsChain.html.                                                          [27] Xanh Ho, Anh-Khoa Duong Nguyen, Saku Sugawara, and Akiko
+ [9] Real-world use cases for large language models (llms) | by cellstrat |              Aizawa. Constructing a multi-hop qa dataset for comprehensive eval-
+     medium. https://cellstrat.medium.com/real-world-use-cases-for-lar                   uation of reasoning steps. arXiv preprint arXiv:2011.01060, 2020.
+     ge-language-models-llms-d71c3a577bf2. (Accessed on 09/21/2023).                [28] Coleman Hooper, Sehoon Kim, Hiva Mohammadzadeh, Michael W Ma-
+[10] Runpod: Cloud compute made easy. https://www.runpod.io/, 2024.                      honey, Yakun Sophia Shao, Kurt Keutzer, and Amir Gholami. Kvquant:
+     Accessed: 2024-05-21.                                                               Towards 10 million context length llm inference with kv cache quanti-
+[11] Amey Agrawal, Ashish Panwar, Jayashree Mohan, Nipun Kwatra,                         zation. arXiv preprint arXiv:2401.18079, 2024.
+     Bhargav S. Gulavani, and Ramachandran Ramjee. Sarathi: Efficient               [29] Muhammad Jan. Optimize rag efficiency with llamaindex: The perfect
+     llm inference by piggybacking decodes with chunked prefills, 2023.                  chunk size. https://datasciencedojo.com/blog/rag-with-llamaindex/,
+[12] Yushi Bai, Xin Lv, Jiajie Zhang, Hongchang Lyu, Jiankai Tang, Zhidian               october 2023.
+     Huang, Zhengxiao Du, Xiao Liu, Aohan Zeng, Lei Hou, Yuxiao Dong,               [30] Albert Q Jiang, Alexandre Sablayrolles, Arthur Mensch, Chris Bamford,
+     Jie Tang, and Juanzi Li. Longbench: A bilingual, multitask benchmark                Devendra Singh Chaplot, Diego de las Casas, Florian Bressand, Gianna
+     for long context understanding. arXiv preprint arXiv:2308.14508, 2023.              Lengyel, Guillaume Lample, Lucile Saulnier, et al. Mistral 7b. arXiv
+[13] Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared D                      preprint arXiv:2310.06825, 2023.
+     Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish            [31] Huiqiang Jiang, Qianhui Wu, Chin-Yew Lin, Yuqing Yang, and Lili Qiu.
+     Sastry, Amanda Askell, et al. Language models are few-shot learners.                Llmlingua: Compressing prompts for accelerated inference of large
+     Advances in neural information processing systems, 33:1877–1901, 2020.              language models. arXiv preprint arXiv:2310.05736, 2023.
+[14] Beidi Chen, Tri Dao, Eric Winsor, Zhao Song, Atri Rudra, and Christo-          [32] Huiqiang Jiang, Qianhui Wu, Xufang Luo, Dongsheng Li, Chin-Yew Lin,
+     pher Ré. Scatterbrain: Unifying sparse and low-rank attention. Ad-                  Yuqing Yang, and Lili Qiu. Longllmlingua: Accelerating and enhancing
+     vances in Neural Information Processing Systems, 34:17413–17426, 2021.              llms in long context scenarios via prompt compression, 2023.
+[15] Krzysztof Choromanski, Valerii Likhosherstov, David Dohan, Xingyou             [33] Chao Jin, Zili Zhang, Xuanlin Jiang, Fangyue Liu, Xin Liu, Xuanzhe
+     Song, Andreea Gane, Tamas Sarlos, Peter Hawkins, Jared Davis, Afroz                 Liu, and Xin Jin. Ragcache: Efficient knowledge caching for retrieval-
+     Mohiuddin, Lukasz Kaiser, et al. Rethinking attention with performers.              augmented generation. arXiv preprint arXiv:2404.12457, 2024.
+     arXiv preprint arXiv:2009.14794, 2020.                                         [34] Jeff Johnson, Matthijs Douze, and Hervé Jégou. Billion-scale similarity
+[16] Aakanksha Chowdhery, Sharan Narang, Jacob Devlin, Maarten Bosma,                    search with GPUs, 2017.
+     Gaurav Mishra, Adam Roberts, Paul Barham, Hyung Won Chung,                     [35] Hao Kang, Qingru Zhang, Souvik Kundu, Geonhwa Jeong, Zaoxing
+     Charles Sutton, Sebastian Gehrmann, et al. Palm: Scaling language                   Liu, Tushar Krishna, and Tuo Zhao. Gear: An efficient kv cache com-
+     modeling with pathways. arXiv preprint arXiv:2204.02311, 2022.                      pression recipe for near-lossless generative inference of llm, 2024.
+[17] Soham De, Samuel L. Smith, Anushan Fernando, Aleksandar Botev,                 [36] Woosuk Kwon, Zhuohan Li, Siyuan Zhuang, Ying Sheng, Lianmin
+     George Cristian-Muraru, Albert Gu, Ruba Haroun, Leonard Berrada,                    Zheng, Cody Hao Yu, Joseph Gonzalez, Hao Zhang, and Ion Stoica.
+     Yutian Chen, Srivatsan Srinivasan, Guillaume Desjardins, Arnaud                     Efficient memory management for large language model serving with
+     Doucet, David Budden, Yee Whye Teh, Razvan Pascanu, Nando De                        pagedattention. In Proceedings of the 29th Symposium on Operating
+     Freitas, and Caglar Gulcehre. Griffin: Mixing gated linear recurrences              Systems Principles, pages 611–626, 2023.
+     with local attention for efficient language models, 2024.                      [37] Huayang Li, Yixuan Su, Deng Cai, Yan Wang, and Lemao Liu. A
+[18] Jeffrey Dean and Sanjay Ghemawat. Mapreduce: simplified data pro-                   survey on retrieval-augmented text generation. arXiv preprint
+     cessing on large clusters. Communications of the ACM, 51(1):107–113,                arXiv:2202.01110, 2022.
+     2008.                                                                          [38] Chaofan Lin, Chengruidong Zhang Zhenhua Han, Yuqing Yang, Fan
+[19] Harry Dong, Xinyu Yang, Zhenyu Zhang, Zhangyang Wang, Yuejie                        Yang, Chen Chen, and Lili Qiu. Parrot: Efficient serving of llm-based
+     Chi, and Beidi Chen. Get more with less: Synthesizing recurrence                    applications with semantic variable. In 18th USENIX Symposium on
+     with kv cache compression for efficient llm inference. arXiv preprint               Operating Systems Design and Implementation (OSDI 24), Santa Clara,
+     arXiv:2402.09398, 2024.                                                             CA, July 2024. USENIX Association.
+[20] Alexander R Fabbri, Irene Li, Tianwei She, Suyi Li, and Dragomir R             [39] Chin-Yew Lin. ROUGE: A package for automatic evaluation of sum-
+     Radev. Multi-news: A large-scale multi-document summariza-                          maries. In Text Summarization Branches Out, pages 74–81, Barcelona,
+     tion dataset and abstractive hierarchical model. arXiv preprint                     Spain, July 2004. Association for Computational Linguistics.
+     arXiv:1906.01749, 2019.                                                        [40] Nelson F Liu, Kevin Lin, John Hewitt, Ashwin Paranjape, Michele
+[21] Bin Gao, Zhuomin He, Puru Sharma, Qingxuan Kang, Djordje Jevdjic,                   Bevilacqua, Fabio Petroni, and Percy Liang. Lost in the middle: How
+     Junbo Deng, Xingkun Yang, Zhou Yu, and Pengfei Zuo. Attentionstore:                 language models use long contexts. arXiv preprint arXiv:2307.03172,
+     Cost-effective attention reuse across multi-turn conversations in large             2023.
+     language model serving, 2024.                                                  [41] Shu Liu, Asim Biswal, Audrey Cheng, Xiangxi Mo, Shiyi Cao, Joseph E.
+[22] Yunfan Gao, Yun Xiong, Xinyu Gao, Kangxiang Jia, Jinliu Pan, Yuxi Bi,               Gonzalez, Ion Stoica, and Matei Zaharia. Optimizing llm queries in
+     Yi Dai, Jiawei Sun, and Haofen Wang. Retrieval-augmented generation                 relational workloads, 2024.
+     for large language models: A survey, 2023.                                     [42] Yuhan Liu, Hanchen Li, Kuntai Du, Jiayi Yao, Yihua Cheng, Yuyang
+[23] Yunfan Gao, Yun Xiong, Xinyu Gao, Kangxiang Jia, Jinliu Pan, Yuxi Bi,               Huang, Shan Lu, Michael Maire, Henry Hoffmann, Ari Holtzman, et al.
+     Yi Dai, Jiawei Sun, and Haofen Wang. Retrieval-augmented generation                 Cachegen: Fast context loading for language model applications. arXiv
+
+                                                                               14
+     preprint arXiv:2310.07240, 2023.                                                    Gonzalez, et al. Efficiently programming large language models using
+[43] Zichang Liu, Aditya Desai, Fangshuo Liao, Weitao Wang, Victor Xie,                  sglang. arXiv preprint arXiv:2312.07104, 2023.
+     Zhaozhuo Xu, Anastasios Kyrillidis, and Anshumali Shrivastava. Scis-           [60] Yinmin Zhong, Shengyu Liu, Junda Chen, Jianbo Hu, Yibo Zhu, Xu-
+     sorhands: Exploiting the persistence of importance hypothesis for llm               anzhe Liu, Xin Jin, and Hao Zhang. Distserve: Disaggregating prefill
+     kv cache compression at test time. Advances in Neural Information                   and decoding for goodput-optimized large language model serving.
+     Processing Systems, 36, 2024.                                                       arXiv preprint arXiv:2401.09670, 2024.
+[44] Zichang Liu, Jue Wang, Tri Dao, Tianyi Zhou, Binhang Yuan, Zhao
+     Song, Anshumali Shrivastava, Ce Zhang, Yuandong Tian, Christopher
+     Re, et al. Deja vu: Contextual sparsity for efficient llms at inference
+     time. In International Conference on Machine Learning, pages 22137–
+     22176. PMLR, 2023.
+[45] Zirui Liu, Jiayi Yuan, Hongye Jin, Shaochen Zhong, Zhaozhuo Xu,
+     Vladimir Braverman, Beidi Chen, and Xia Hu. Kivi: A tuning-free asym-
+     metric 2bit quantization for kv cache. arXiv preprint arXiv:2402.02750,
+     2024.
+[46] Yuning Mao, Pengcheng He, Xiaodong Liu, Yelong Shen, Jianfeng Gao,
+     Jiawei Han, and Weizhu Chen. Generation-augmented retrieval for
+     open-domain question answering. arXiv preprint arXiv:2009.08553,
+     2020.
+[47] Jason Phang, Haokun Liu, and Samuel R Bowman. Fine-tuned trans-
+     formers show clusters of similar representations across layers. arXiv
+     preprint arXiv:2109.08406, 2021.
+[48] Ori Ram, Yoav Levine, Itay Dalmedigos, Dor Muhlgay, Amnon
+     Shashua, Kevin Leyton-Brown, and Yoav Shoham. In-context retrieval-
+     augmented language models. Transactions of the Association for Com-
+     putational Linguistics, 11:1316–1331, 2023.
+[49] Nils Reimers and Iryna Gurevych. Sentence-bert: Sentence embeddings
+     using siamese bert-networks. In Proceedings of the 2019 Conference
+     on Empirical Methods in Natural Language Processing. Association for
+     Computational Linguistics, 11 2019.
+[50] Jianlin Su, Murtadha Ahmed, Yu Lu, Shengfeng Pan, Wen Bo, and
+     Yunfeng Liu. Roformer: Enhanced transformer with rotary position
+     embedding. Neurocomputing, 568:127063, 2024.
+[51] Harsh Trivedi, Niranjan Balasubramanian, Tushar Khot, and Ashish
+     Sabharwal. Musique: Multihop questions via single-hop question
+     composition, 2022.
+[52] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion
+     Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention
+     Is All You Need, 2023.
+[53] Bingyang Wu, Shengyu Liu, Yinmin Zhong, Peng Sun, Xuanzhe Liu,
+     and Xin Jin. Loongserve: Efficiently serving long-context large lan-
+     guage models with elastic sequence parallelism, 2024.
+[54] Peng Xu, Wei Ping, Xianchao Wu, Lawrence McAfee, Chen Zhu, Zihan
+     Liu, Sandeep Subramanian, Evelina Bakhturina, Mohammad Shoeybi,
+     and Bryan Catanzaro. Retrieval meets long context large language
+     models. arXiv preprint arXiv:2310.03025, 2023.
+[55] Wangsong Yin, Mengwei Xu, Yuanchun Li, and Xuanzhe Liu. Llm as a
+     system service on mobile devices, 2024.
+[56] Alex Young, Bei Chen, Chao Li, Chengen Huang, Ge Zhang, Guanwei
+     Zhang, Heng Li, Jiangcheng Zhu, Jianqun Chen, Jing Chang, et al. Yi:
+     Open foundation models by 01. ai. arXiv preprint arXiv:2403.04652,
+     2024.
+[57] Gyeong-In Yu, Joo Seong Jeong, Geon-Woo Kim, Soojeong Kim,
+     and Byung-Gon Chun. Orca: A distributed serving system for
+     {Transformer-Based} generative models. In 16th USENIX Sympo-
+     sium on Operating Systems Design and Implementation (OSDI 22), pages
+     521–538, 2022.
+[58] Zhenyu Zhang, Ying Sheng, Tianyi Zhou, Tianlong Chen, Lianmin
+     Zheng, Ruisi Cai, Zhao Song, Yuandong Tian, Christopher Ré, Clark
+     Barrett, et al. H2o: Heavy-hitter oracle for efficient generative in-
+     ference of large language models. Advances in Neural Information
+     Processing Systems, 36, 2024.
+[59] Lianmin Zheng, Liangsheng Yin, Zhiqiang Xie, Jeff Huang, Chuyue
+     Sun, Cody Hao Yu, Shiyi Cao, Christos Kozyrakis, Ion Stoica, Joseph E
+
+                                                                               15
+A      N-dimensional positional recovery                                                  The reason why our positional recovery method can work
+Here we prove our positional recovery method can work in                               is because attention score between a pair of tokens is in-
+the N-dimensional scenario. We start with the definition of                            varaint to their absolute positions. Below is the proof of this
+RoPE in N-dimensional space.                                                           invariance.
+
+Definition 1 (Rotary Positional Encoding, ROPE[50]). Let                               Proposition A.1 (Rope only depends on relative position).
+vectors 𝑞, 𝑘 ∈ R𝑑 denote the query vector and key vector need to                       Let vector 𝑘 ∈ R𝑑 denote a key vector and 𝑘𝑚 ∈ R𝑑 denote the
+be embedded at some position m as 𝑞𝑚 , 𝑘𝑚 ∈ R𝑑 . Rope encodes                          key vector embedded at the fixed position m. And let vector
+the positional information as the following:                                           𝑞 ∈ R𝑑 denote a query vector and 𝑞𝑚+𝑙 ∈ R𝑑 denote the query
+                                                                                       vector embedded at position (m+l). Then attention score 𝑞𝑚+𝑙 𝑘𝑚
+                        𝑞𝑚 , 𝑘𝑚 = R𝑑Θ,𝑚 {𝑞, 𝑘 }                                        is derived as follow
+where                                                                                                                    𝑇
+                                                                                             𝑞𝑚+𝑙 𝑘𝑚 = (R𝑑Θ,𝑚+𝑙 𝑞) (R𝑑Θ,𝑚 𝑘)
+             cos 𝑚𝜃 0   − sin 𝑚𝜃 0   ...          0              0
+                                                                                                           𝑑/2−1
+           ­ sin 𝑚𝜃 0    cos 𝑚𝜃 0                 0              0
+           ©                                                              ª                                 ∑︁
+                                     ...
+                                                                                                       =           (𝑞 [2𝑖 ] 𝑘 [2𝑖 ] cos(𝑚 + 𝑙 − 𝑚)𝜃 𝑖
+                                                                          ®
+           ­                                                              ®
+           ­     ..          ..      ..           ..             ..       ®
+           ­      .           .          .         .              .       ®
+     𝑑
+    RΘ,𝑚 = ­
+           ­                                                              ®                                 𝑖=0                                                      (1)
+                                      ..                                                                   + 𝑞 [2𝑖+1] 𝑘 [2𝑖+1] cos(𝑚 + 𝑙 − 𝑚)𝜃 𝑖 )
+                                                                          ®
+           ­                                                              ®
+           ­ 0              0          .     cos 𝑚𝜃 𝑑 −1   − sin 𝑚𝜃 𝑑 −1 ®®
+           ­                                           2             2
+           ­
+                                      .
+                                                                          ®                                𝑑/2−1
+                                                                                                            ∑︁
+           ­                          ..                                  ®
+                 0          0                sin 𝑚𝜃 𝑑 −1    cos 𝑚𝜃 𝑑 −1                                =           (𝑞 [2𝑖 ] 𝑘 [2𝑖 ] + 𝑞 [2𝑖+1] 𝑘 [2𝑖+1] ) cos 𝑙𝜃 𝑖
+           «                                           2           2      ¬
+                                                                                                            𝑖=0
+    is the rotary matrix with hyperparameter Θ ∈ {𝜃𝑖       = 10000 −2𝑖𝑑 , 𝑖   ∈
+[0, 1, ..., 𝑑2 − 1] }                                                                    where {𝑞, 𝑘 } [𝑖 ] denotes i-th entry of vectors {𝑞, 𝑘 } and ℎ𝑖 de-
+                                                                                       notes dot product 𝑞𝑖 𝑘𝑖 . The attention score 𝑞𝑚+𝑙 𝑘𝑚 only depends
+                                                                                       on the relative distance 𝑙 rather than the absolute position 𝑚.
+
+
+
+
+                                                                                  16
+

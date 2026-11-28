@@ -1,0 +1,1483 @@
+                                                    Improving Parallel Program Performance with LLM Optimizers via
+                                                                         Agent-System Interfaces
+
+
+                                         Anjiang Wei * 1 Allen Nie * 1 Thiago S. F. X. Teixeira 2 Rohan Yadav 1 Wonchan Lee 3 Ke Wang 4 Alex Aiken 1
+
+
+                                                                    Abstract                                 entists, including physicists, chemists, and biologists, rely
+                                                                                                             on high-performance computing to tackle complex prob-
+                                                 Modern scientific discovery increasingly relies
+arXiv:2410.15625v4 [cs.LG] 30 May 2025
+
+
+
+
+                                                                                                             lems. These scientific computations dominate workloads
+                                                 on high-performance computing for complex
+                                                                                                             on the world’s most powerful supercomputers (Exascale
+                                                 modeling and simulation. A key challenge in
+                                                                                                             Computing). However, many domain scientists lack exper-
+                                                 improving parallel program performance is ef-
+                                                                                                             tise in computer science, and therefore having difficulties
+                                                 ficiently mapping tasks to processors and data
+                                                                                                             in optimizing their programs because of the complexity and
+                                                 to memory, a process dictated by intricate, low-
+                                                                                                             scale of the underlying machines. Even for experts, finding
+                                                 level system code known as mappers. Devel-
+                                                                                                             and fixing performance problems resulting from program
+                                                 oping high-performance mappers demands days
+                                                                                                             modifications or when porting to a new machine is often
+                                                 of manual tuning, posing a significant barrier
+                                                                                                             time-consuming. Any progress on automating performance
+                                                 for domain scientists without systems expertise.
+                                                                                                             tuning is of great benefit in this domain.
+                                                 We introduce a framework that automates map-
+                                                 per development with generative optimization,               Task-based programming (Slaughter et al., 2015; Bauer
+                                                 leveraging richer feedback beyond scalar perfor-            et al., 2012; Augonnet et al., 2009; Chamberlain et al.,
+                                                 mance metrics. Our approach features the Agent-             2007; Moritz et al., 2018; Barham et al., 2022) has emerged
+                                                 System Interface, which includes a Domain-                  as a promising approach to high performance computing.
+                                                 Specific Language (DSL) to abstract away the                The paradigm involves decomposing computations into
+                                                 low-level complexity of system code and define              independent tasks that communicate exclusively through
+                                                 a structured search space, as well as AutoGuide,            their arguments. A key advantage of task-based systems
+                                                 a mechanism that interprets raw execution output            is that the performance tuning problem is factored out into
+                                                 into actionable feedback. Unlike traditional rein-          a separate mapping: an assignment of tasks to processors
+                                                 forcement learning methods such as OpenTuner,               and data to particular memories. High-quality mapping,
+                                                 which rely solely on scalar feedback, our method            achieved through a well-designed mapper (implemented as
+                                                 finds superior mappers in far fewer iterations.             code), can significantly improve performance, often by an
+                                                 With just 10 iterations, it outperforms OpenTuner           order of magnitude (Galvez et al., 2017).
+                                                 even after 1000 iterations, achieving 3.8× faster
+                                                                                                             However, currently writing mappers remains a labor-
+                                                 performance. Our approach finds mappers that
+                                                                                                             intensive process, as it requires deep knowledge of appli-
+                                                 surpass expert-written mappers by up to 1.34×
+                                                                                                             cations, hardware, and low-level system APIs. In addition,
+                                                 speedup across nine benchmarks while reducing
+                                                                                                             this process is highly application-specific, input-specific,
+                                                 tuning time from days to minutes.
+                                                                                                             and machine-specific, often taking experts several days
+                                                                                                             of meticulous tuning to achieve high performance. This
+                                                                                                             challenge is especially pronounced for domain scientists,
+                                         1. Introduction                                                     who typically lack the necessary expertise in computer sys-
+                                         Modern scientific discovery depends on advanced software            tems and code optimization. Automating mapper develop-
+                                         tools for modeling and simulation (Stocks et al., 2024;             ment would enable scientists to focus on their own domain
+                                         Wang et al., 2024; Ltaief et al., 2024). Computational sci-         of expertise while fully utilizing the capabilities of high-
+                                                                                                             performance computing systems.
+                                             *
+                                             Equal contribution 1 Stanford University 2 Intel 3 NVIDIA
+                                         4
+                                          Nanjing University. Correspondence to: Anjiang Wei <an-            In this paper, we introduce a system powered by large lan-
+                                         jiang@cs.stanford.edu>.                                             guage models (LLMs) to automate both the generation
+                                                                                                             and optimization of mapper code. The first challenge
+                                         Proceedings of the 42 nd International Conference on Machine        stems from the complexity of generating mapper code due
+                                         Learning, Vancouver, Canada. PMLR 267, 2025. Copyright 2025
+                                         by the author(s).                                                   to the original low-level programming system, which ex-
+
+                                                                                                         1
+                 Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+    Agent System Interface                                          Agent System Interface                 Iteration 2
+                                           Iteration 1
+
+                                                                                                                           System
+                                                        System
+                                                                                                                            Code
+                                                         Code
+                DSL                                                              DSL                                                CPU
+                            Compiler                                                         Compiler
+                                                                                                                                    GPU1
+                                                D       G                                                      D       G
+    LLM                        A       B                        Update                         A       B
+                                                                                                                                    GPU2
+   Agent                                            F
+                                                            I
+                                                                                                                   F
+                                                                                                                            I
+
+
+            AutoGuide
+                                   C        E                                AutoGuide
+                                                                                                   C       E
+                                                        H                                                              H
+                                   Execution                      Generative
+                                                                 Optimization
+
+
+Figure 1. Iterative mapper refinement with agent-based generative optimization. The system leverages the Agent-System Interface,
+which consists of the Domain-Specific Language (DSL) and AutoGuide. The DSL abstracts away the low-level system code, defining a
+search space for mapping strategies, while AutoGuide interprets execution results into actionable guidance. As iterations progress, the
+mapper evolves to improve performance.
+poses the agent to intricate system APIs, coupled with the               LLM-powered agents not only match but often surpass
+problem that raw feedback messages from the system are                   expert-written mappers, achieving up to 1.34× speedup
+often uninformative to the agent. The second challenge                   across nine benchmarks. Since expert-written mappers set
+involves optimizing mapper performance. Specifically, it                 the highest standard, surpassing them is a notable accom-
+consists of (1) defining an appropriate search space and (2)             plishment. At the same time, our method significantly re-
+devising efficient methods to find optimal mappers, thereby              duces mapper tuning time from days to minutes, making
+maximizing parallel program performance.                                 high-performance mapping more accessible to domain sci-
+                                                                         entists. To further highlight the advantage of generative op-
+To address the first challenge, we propose an Agent-
+                                                                         timization, we compare it against OpenTuner, a reinforce-
+System Interface (ASI), as shown in Figure 1, an abstrac-
+                                                                         ment learning-based autotuning framework. Our genera-
+tion layer between the agent and the system that simplifies
+                                                                         tive optimizer finds mappers 11× faster than OpenTuner
+code generation and provides more meaningful feedback to
+                                                                         when both run for 10 iterations and still maintains a 3.8×
+the agent. At the core of ASI is a Domain-Specific Lan-
+                                                                         advantage even when OpenTuner runs for 1000 iterations.
+guage (DSL), a high-level interface that encapsulates all
+                                                                         Furthermore, ablation studies underscore the necessity of
+performance-critical decisions required to generate a map-
+                                                                         the agent-system interface design in achieving these per-
+per. The DSL abstracts away the complexity of low-level
+                                                                         formance gains. Our contributions are as follows:
+system code with a compiler. Additionally, the DSL defines
+a structured search space, enabling systematic exploration
+of mapping strategies. We also design and implement the                  1. Design of an Agent-System Interface: We introduce
+AutoGuide mechanism to interpret raw execution output                       an abstraction layer that simplifies mapper code gener-
+into informative and actionable guidance. This mechanism                    ation and provides guidance to the agent. The Domain-
+allows the agent to iteratively optimize the mapper by lever-               Specific Language (DSL) defines a search space, al-
+aging enriched feedback to update its strategy.                             lowing the agent to explore mapping strategies without
+                                                                            dealing with low-level system code. AutoGuide inter-
+For the second challenge, we adopt the generative opti-                     prets raw execution output into targeted feedback, en-
+mization approach, a recent advance in optimization tech-                   abling the agent to refine mapper code more effectively.
+niques. Unlike traditional methods such as reinforcement
+learning (Ansel et al., 2014), which rely solely on scalar re-           2. Generative Optimization for Systems: We intro-
+wards, generative optimization can utilize richer forms of                  duce generative optimization to improve system perfor-
+feedback, such as error explanations and actionable sugges-                 mance, leveraging richer feedback such as error mes-
+tions expressed in natural language. This agentic optimiza-                 sages and actionable suggestions in natural language.
+tion workflow has previously proven to be effective across                  Unlike reinforcement learning methods like OpenTuner,
+various domains (Nie et al., 2024; Cheng et al., 2024; Yang                 which rely solely on scalar feedback, our method identi-
+et al., 2023; Khattab et al., 2023; Yuksekgonul et al., 2024).              fies better mappers in far fewer iterations. With only 10
+Our work is the first to apply such technique to the domain                 iterations, it outperforms OpenTuner by 3.8× even after
+of system optimization.                                                     1000 iterations.
+                                                                         3. Empirical Evaluation of Performance: Our agent-
+Our experiments demonstrate that mappers optimized by
+                                                                            based solution achieves up to 1.34× speedup across
+
+                                                                     2
+                Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+   nine benchmarks, surpassing expert-written mappers               led with numerical methods, including mixed-integer pro-
+   while reducing tuning time from days to minutes. We              gramming (AhmadiTeshnizi et al., 2024a;b) and numerical
+   highlight the critical role of the agent-system interface        optimization (Nie et al., 2024). A key advantage of genera-
+   through ablation studies, demonstrating its impact on            tive optimization is its ability to iteratively refine solutions
+   achieving the performance gains.                                 using diverse forms of feedback. For example, Cheng et al.
+                                                                    (2024) applies generative optimization to robotic manipu-
+                                                                    lation and game playing, while Yuksekgonul et al. (2024)
+2. Related Work                                                     optimizes prompts and molecular designs. While reinforce-
+Mapping in Parallel Programming Many parallel pro-                  ment learning has been applied to system optimization,
+gramming systems allow users to make their own mapping              the potential of LLM-driven optimization in systems re-
+decisions, such as Legion (Bauer et al., 2012), StarPU (Au-         mains unexplored. Our work explores whether generative
+gonnet et al., 2009; 2010), Chapel (Chamberlain et al.,             optimization with richer feedback outperforms traditional
+2007), HPX (Kaiser et al., 2014; Heller et al., 2017), Se-          methods using scalar rewards in system optimization.
+quoia (Fatahalian et al., 2006), Ray (Moritz et al., 2018),
+TaskFlow (Huang et al., 2021), and Pathways (Barham                 3. Problem Definition
+et al., 2022). Several techniques have been proposed
+to automate mapping, including machine learning mod-
+                                                                    Motivation and Challenges The concrete problem we
+els (O’Boyle et al., 2013; Wang & O’Boyle, 2009), static
+                                                                    address is the automated generation of high-performance
+analysis (Poesia et al., 2017; Ren et al., 2008), reinforce-
+                                                                    mappers for the Legion parallel programming frame-
+ment learning (Ansel et al., 2014; Mirhoseini et al., 2017)
+                                                                    work (Bauer et al., 2012). Mappers dictate task scheduling
+and auto-tuning (SFX Teixeira et al., 2023). We use an
+                                                                    and data placement. A well-designed mapper can achieve
+agent-based approach with LLMs and explore a larger
+                                                                    orders-of-magnitude speedup over naive strategies.
+search space for mappers than traditional methods.
+                                                                    However, automating mapper generation is challenging due
+Agentic Frameworks Agents powered by Large Lan-
+                                                                    to two key factors. First, the complexity of low-level sys-
+guage Models (LLMs) play a critical role in decision-
+                                                                    tem code. Implementing a mapper requires writing hun-
+making, planning, tool integration, and solving complex
+                                                                    dreds of lines of intricate C++ code, demanding exper-
+problems in dynamic environments (Guo et al., 2024).
+                                                                    tise in system internals. Second, the vast search space
+Many agentic frameworks have been developed (Yao et al.,
+                                                                    of mapping strategies. The search space grows exponen-
+2022; Wu et al., 2023; Li et al., 2023; Hong et al., 2023),
+                                                                    tially with the number of tasks and arguments.
+with uses spanning domains such as software engineer-
+ing (Gur et al., 2023; Yang et al., 2024b; Jin et al., 2024),
+robotics (Kannan et al., 2024), healthcare (Li et al., 2024),       Search Space and Performance Impact As illustrated
+education (Ramirez & Esparrell, 2024), and knowledge en-            in Figure A1, the search space of mappers involves multi-
+gineering (Shao et al., 2024). Our work is the first to apply       ple decisions, each influencing performance. The first key
+an agentic workflow to iteratively optimize mapper code,            aspect is processor selection, which determines whether a
+improving the performance of parallel programs.                     task runs on GPUs, CPUs, or the OpenMP runtime. This
+                                                                    choice depends on factors such as task size, GPU mem-
+AI for Systems The application of AI to optimize sys-               ory capacity, and kernel launch overhead. For instance,
+tem design has gained significant traction in recent years.         small tasks may prefer CPUs due to the overhead of launch-
+Techniques such as deep learning (Zheng et al., 2020a;b;            ing GPU kernels, while tasks with large memory footprints
+2022b) and gradient-boosted trees (Feng et al., 2023) have          may run on CPUs when GPU memory is insufficient.
+been used to predict program execution times for per-
+formance optimization. Reinforcement learning methods               Another crucial dimension is memory placement, which
+have addressed challenges in chip floorplanning (Mirho-             dictates where data is stored. A mapper must decide
+seini et al., 2021), autotuning (Ansel et al., 2014), auto-         whether to place data in the GPU’s FrameBuffer for fast
+vectorization (Haj-Ali et al., 2020a), and compiler phase           access, ZeroCopy memory for CPU-GPU sharing, or CPU
+ordering (Haj-Ali et al., 2020b). While previous efforts            system memory for more available storage. Each option
+have predominantly relied on traditional approaches for             presents trade-offs between access speed, memory usage,
+cost prediction and optimization, our work uses the recent          and data transfer overhead.
+advances in generative optimization to tackle complex sys-          Additionally, memory layout further expands the search
+tem challenges.                                                     space, with decisions on Struct of Arrays (SOA) vs. Ar-
+                                                                    ray of Structures (AOS), data ordering (Fortran-order vs.
+Generative Optimization Recent work has explored the                C-order), and alignment constraints (e.g., 128-byte align-
+use of LLMs for optimization problems traditionally tack-           ment) significantly affecting cache efficiency and perfor-
+
+                                                                3
+                 Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+ 1 # Map task0 to GPU.                                              1 void slice_task(const Task& task,
+ 2 Task task0 GPU;                                                  2                 const SliceTaskInput &input,
+ 3                                                                  3                 SliceTaskOutput &output) {
+ 4 # Place certain data onto GPU ZeroCopy.                          4   vector<Processor> targets =
+ 5 Region * ghost_region GPU ZCMEM                                  5     this->select_targets_for_task(ctx, task);
+ 6                                                                  6   DomainT<2> space = input.domain;
+ 7 # Specify layout in memory                                       7   Point<2> num_points =
+ 8 # (aligned to 64 bytes)                                          8         space.bounds.hi - space.bounds.lo + ones;
+ 9 Layout * * * C_order SOA Align==64                               9   Rect<2> blocks(zeroes, num_blocks - ones);
+10                                                                 10   ... // 126 lines of C++ code omitted here
+11 # Define a cyclic mapping strategy                              11   for (PointInRectIterator<2> it(blocks); it() != NULL; it++)
+12 def cyclic(Task task):                                          12   {
+13     ip = task.ipoint;                                           13     DomainT<2,coord_t> slice_space;
+14     mgpu = Machine(GPU);                                        14     TaskSlice slice;
+15     node_idx = ip[0] % mgpu.size[0];                            15     slice.domain = {slice_lo, slice_hi};
+16     gpu_idx = ip[0] % mgpu.size[1];                             16     slice.proc = targets[index++ % targets.size()];
+17     return mgpu[node_idx, gpu_idx];                             17     output.slices.push_back(slice);
+18                                                                 18   }
+19 IndexTaskMap task4 cyclic                                       19 }
+
+
+   (a) An example mapper in Domain-Specific Language (DSL)                       (b) Code snippet from a C++ mapper
+
+Figure 2. Comparison of a DSL mapper and a C++ mapper. The DSL’s declarative, high-level design abstracts away the complexity
+of low-level C++ code, serving as the core of the Agent-System Interface. The highlighted boxes illustrate how the same functionality,
+which requires extensive C++ system code, can be expressed concisely in just a few lines in DSL.
+
+
+mance.                                                                significantly lower than that of C++. Figure 2a provides
+                                                                      an example of a DSL mapper, highlighting the key fea-
+Finally, an important idiom in high-performance comput-
+                                                                      tures of our DSL. In contrast, Figure 2b shows a snippet
+ing is launching tasks over partitioned data. Index map-
+                                                                      from a C++ mapper, emphasizing the intricacy of low-level
+ping determines how data partitions and task executions
+                                                                      implementation details. Across the benchmarks, using the
+are distributed across multiple processors. For consistency,
+                                                                      DSL results in an average lines of code reduction of 14×.
+we can represent data partitioning as a tensor of data par-
+                                                                      This substantial reduction makes DSL a more suitable tar-
+titions, the machine as a tensor of processors, and tasks
+                                                                      get for LLM code generation, as it abstracts away the com-
+operating on the partitioned data as a tensor of tasks. The
+                                                                      plexities inherent in low-level systems. As we will show
+way data and task indices are mapped to processor indices
+                                                                      in Section 5.2, LLMs generate DSL code more effectively,
+affects inter-processor communication, a key factor in per-
+                                                                      despite DSL having no examples in LLM training corpora,
+formance (Unger et al., 2022; Zheng et al., 2022a).
+                                                                      whereas C++ is widely represented.
+
+4. Our Approach: Agent-System Interface                               Next, we describe the DSL’s design, emphasizing its
+                                                                      declarative nature and structured search space. Section 3
+4.1. Domain-Specific Language Design                                  details the performance impact of each decision.
+A key challenge in automating mapper generation with a                The Task statement (Line 2) defines processor selection
+coding agent is the complexity of low-level system code,              for each task, choosing between CPU, GPU, or OpenMP.
+which requires intricate C++ implementations. To address              Line 2 specifies that instances of task0 should run on
+this, we design a high-level Domain-Specific Language                 GPUs. This decision is made per task; note that the search
+(DSL) as the core of our Agent-System Interface (ASI).                space expands exponentially with the number of tasks.
+The DSL provides a structured search space for mapping
+                                                                      The Region statement (Line 5) controls memory place-
+strategies while abstracting away low-level implementation
+                                                                      ment for data arguments. Line 5 specifies that all tasks us-
+details. Unlike C++, which demands imperative specifica-
+                                                                      ing ghost_region should place the data in GPU Zero-
+tions of mapping policies, our DSL adopts a declarative
+                                                                      Copy memory. Other choices include GPU FrameBuffer
+design, allowing users to specify what to achieve rather
+                                                                      memory and CPU System Memory. This decision is made
+than how to implement it. Most critically, the DSL sepa-
+                                                                      per task and per argument, causing the search space to grow
+rates concerns, enabling multiple aspects of mapping de-
+                                                                      exponentially.
+cisions to be expressed independently rather than being
+entangled in low-level system APIs. This design reduces               The Layout statement (Line 9) defines memory layouts.
+code complexity and naturally provides a search space for             Line 9 enforces a C_order axis ordering, an SOA layout,
+the agent to explore. To implement it, we develop a com-              and a 64-byte memory alignment for all data used by all
+piler that translates DSL into the low-level C++ APIs.                tasks mapped to all processors. Alternative choices include
+                                                                      F_order, AOS, and various alignment strategies. This is
+As illustrated in Figure 2, the complexity of DSL code is
+                                                                      a per-task, per-data, per-processor decision.
+
+                                                                  4
+                 Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+
+
+
+Figure 3. Agent Optimization Process. The mapper agent takes server specifications and application-specific information as input,
+generates mapper code, and executes it alongside the application on the server. Raw execution feedback is enriched using the AutoGuide
+mechanism, and the mapper is iteratively refined by an LLM optimizer to improve performance.
+
+                                                                                            AutoGuide
+    Case                 Raw Execution Output
+                                                                       Explain                            Suggest
+                Execution Error: Assertion failed: stride         Memory layout is        Adjust the layout constraints or move
+   Case 1
+                    does not match expected value.                  unexpected.            tasks to different processor types.
+                Performance Metric: Execution time is                                      Move more tasks to GPU to reduce
+   Case 2                                                                 N/A
+                              0.03s.                                                              execution time.
+
+Table 1. AutoGuide Feedback Mechanism. The AutoGuide mechanism interprets raw execution output from the runtime system,
+providing more informative error explanations and suggestions for mapper modifications. It is implemented via keyword matching.
+Additional examples are shown in Table A3.
+
+
+The IndexTaskMap statement (Line 19) controls index                   possible mappers, ω is an optimization objective, and T is a
+mapping using a customized function. Line 12 defines the              function that takes a mapper θ ∈ Θ as input, (f, g) = T (θ)
+mapping function that establishes the correspondence be-              and returns f , the feedback from executing the mapper
+tween two index spaces: the task index space (represented             (i.e., the measured performance after running the applica-
+by task.ipoint) defined in the application code (e.g.,                tion code with the generated mapper), and g, the process
+for loops) and the processor space of the distributed ma-             graph tracing how the mapper was generated. In our setup,
+chine (represented by Machine(GPU)). The DSL allows                   mapper performance is deterministic, as we carefully con-
+users to express arbitrary arithmetic mappings between the            trol all sources of randomness in the environment. If the
+two index spaces. This decision applies to each task group            parameter space were numerical, this online optimization
+launched by parallel for loops.                                       problem could be addressed using bandit algorithms (Lat-
+                                                                      timore & Szepesvári, 2020), reinforcement learning (Sut-
+Our DSL is designed to express a wide range of high-
+                                                                      ton & Barto, 2018), or Bayesian optimization (Snoek et al.,
+performance mapping strategies, including all of the most
+                                                                      2012), but these methods are less efficient when the param-
+important decisions. While there may be cases where cer-
+                                                                      eter search space is large and discrete (i.e., text).
+tain optimizations are not directly expressible, we have
+not encountered any. Despite being more constrained than              In this online optimization problem, we leverage the DSL
+general-purpose C++, the DSL has been proven to be effec-             to structure the parameter space to improve the efficiency of
+tive: all mappers discovered by our agent that outperform             optimization. Here, θ represents the program code, while
+expert-written C++ implementations are expressible within             ω and f are expressed as text. We adopt generative op-
+the current DSL.                                                      timization, leveraging LLMs as optimizers given the ob-
+                                                                      jective in text form. This emergent optimization behavior
+4.2. Generative Optimization via AutoGuide                            has been recently observed and applied across various do-
+                                                                      mains (Yang et al., 2024a; Cheng et al., 2024; Yuksekgonul
+We formulate mapper generation as an online optimiza-                 et al., 2024; Patel et al., 2024).
+tion problem. Given a triplet (Θ, ω, T ), where Θ is a set of
+
+
+                                                                  5
+                Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+Optimization Process We present the optimization pro-              5.1. Speedup of Application Performance
+cess in Figure 3. The agent takes two inputs: server spec-
+                                                                   Benchmarks Our evaluation utilizes a suite of 9 bench-
+ifications and application metadata. Server specifications
+                                                                   marks, including 3 scientific computing workloads and 6
+detail the hardware configuration, including the number of
+                                                                   well-known matrix multiplication algorithms. Circuit is
+CPUs and GPUs per node, as well as the total node count.
+                                                                   a simulation benchmark that models electrical circuit be-
+Application metadata provides information on task names
+                                                                   havior by simulating currents and voltages across inter-
+and the associated data arguments accessed by each task.
+                                                                   connected nodes and wires (Bauer et al., 2012). Sten-
+These inputs define the structured search space explored by
+                                                                   cil simulates a 2D grid where each point’s value is up-
+the agent during optimization. The agent, using the given
+                                                                   dated based on a stencil pattern determined by its neigh-
+inputs, generates mapper code that is executed alongside
+                                                                   bors (Van der Wijngaart & Mattson, 2014). Pennant mod-
+the application code on the server. Raw execution feed-
+                                                                   els unstructured mesh Lagrangian staggered-grid hydro-
+back from the runtime is augmented with the AutoGuide
+                                                                   dynamics, commonly used for simulating compressible
+mechanism and fed back to the LLM, iteratively refining
+                                                                   flow (Ferenbaugh, 2015). The remaining six benchmarks
+the agent for improved mapper code generation.
+                                                                   – Cannon’s, SUMMA, PUMMA, Johnson’s, Solomonik’s,
+                                                                   and COSMA – are well-known parallel matrix multiplica-
+                                                                   tion algorithms (Cannon, 1969; Van De Geijn & Watts,
+                                                                   1997; Choi et al., 1994; Agarwal et al., 1995; Solomonik &
+Coding Agent Our mapper agent improves mapping de-                 Demmel, 2011; Kwasniewski et al., 2019). Parallel matrix
+cisions by iteratively generating DSL code. A high-level           multiplication remains an active research topic due to its
+schema of the mapper agent is shown in Figure 3. The               central role in high-performance computing and scientific
+mapper agent is implemented as a Python program in the             simulations (Yadav et al., 2022). Furthermore, improving
+Trace (Cheng et al., 2024) framework, where we decom-              matrix multiplication performance has a broad impact, as it
+pose the task of generating a monolithic mapper into in-           accelerates numerous downstream machine learning work-
+dependent code segments. This decomposition allows the             loads (Jangda et al., 2022; Zheng et al., 2025). We discuss
+agent to decide what code to generate for each segment             these matrix multiplication algorithms in more detail in Ap-
+separately. This approach is effective because our DSL de-         pendix A.3. This benchmark suite provides both depth with
+sign eliminates unnecessary dependencies between map-              its representative matrix multiplication algorithms and va-
+ping decisions. Our modularization strategy aligns with            riety with its range of scientific computing workloads.
+least-to-most prompting (Zhou et al., 2022).
+                                                                   In this experiment, we evaluate the performance of the
+                                                                   mappers with the following baselines.
+                                                                   Expert-Written Mappers. These mappers are manually
+AutoGuide The AutoGuide feedback mechanism is de-                  developed by domain scientists who spend years master-
+signed based on three key motivations: (1) generative op-          ing computational science. Writing mappers in parallel
+timization benefits from natural language feedback rather          programming frameworks is another challenge, and tuning
+than relying solely on scalar values, (2) raw execution out-       them for specific applications can take days.
+put from the runtime system is often too uninformative
+to effectively guide the agent’s decisions, and (3) domain         Randomly Generated Mappers. These mappers were
+heuristics known to systems researchers can be naturally           randomly generated with 10 different random seeds, sam-
+expressed in language (e.g., most tasks run faster on GPUs         pling from the entire search space of each application. We
+than CPUs). To address these needs, AutoGuide helps the            report the average performance.
+agent by explaining opaque error messages and suggest-             Agent-Optimized Mappers. Using Trace (Cheng et al.,
+ing mapper modifications. As shown in Table 1, it in-              2024), we evaluated the Trace and OPRO (Yang et al.,
+terprets uninformative execution output into actionable in-        2023) search algorithms, running 10 iterations per appli-
+sights, with additional examples in Appendix A.5. The              cation. To account for stochastic output, we repeated the
+implementation relies on keyword matching over the raw             process 5 times and report the average. The best mapper
+execution output. An ablation study in Section 5.3 demon-          from Trace across runs is also reported.
+strates its effectiveness in our experiments.
+                                                                   OpenTuner Mappers. OpenTuner (Ansel et al., 2014) is
+                                                                   a program autotuning framework that uses reinforcement
+5. Evaluation                                                      learning to optimize performance based on scalar feed-
+Experiments are conducted on one node with two Intel               back. We provided execution time as feedback, with a high
+10-core E5-2640 v4 CPUs, 256G main memory, and four                penalty for failures.
+NVIDIA Tesla P100 GPUs. We use gpt-4o-2024-08-06.
+
+                                                               6
+                                   Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+      Norm. Throughput
+                      1.5               Circuit                                                 Stencil                                            Pennant
+
+
+
+
+                                                                Norm. Throughput
+
+
+
+
+                                                                                                                        Norm. Throughput
+                      1.0
+                      0.5
+                      0.0 0       2       4      6    8                            0     2        4      6       8                         0   2      4      6    8
+                                       Iterations                                              Iterations                                          Iterations
+                      1.5              Cannon's                                                SUMMA                                               PUMMA
+      Norm. Throughput
+
+
+
+
+                                                                Norm. Throughput
+
+
+
+
+                                                                                                                        Norm. Throughput
+                      1.0
+                      0.5
+                      0.0 0       2       4      6    8                            0     2        4      6       8                         0   2      4      6    8
+                                       Iterations                                              Iterations                                          Iterations
+                      1.5             Solomonik's                                              Johnson's                                           COSMA
+      Norm. Throughput
+
+
+
+
+                                                                Norm. Throughput
+
+
+
+
+                                                                                                                        Norm. Throughput
+                      1.0
+                      0.5
+                      0.0 0       2       4      6    8                            0     2        4      6       8                         0   2      4      6    8
+                                       Iterations                                              Iterations                                          Iterations
+                            Expert Design            Random                            Trace              OPRO                   OpenTuner                  Best Trace
+
+     Figure 4. Performance Comparison. Normalized throughput for 9 benchmarks, comparing expert mappers, random mappers, the
+     average optimization trajectories of Trace, OPRO, and OpenTuner in 10 iterations across 5 runs, and the best mappers found by Trace.
+
+
+                  13X Generative Optimizer vs Traditional RL (1k iters)                            mance, which includes both the correctness and efficiency
+Relative Throughput
+
+
+
+
+                                                                                                   of the generated mappers. If the generated code has any
+                                                                                                   syntax or runtime issues, its throughput is recorded as 0.
+                      9X                               Trace                                       We report the best mappers found by Trace, and the av-
+                                      11X              OpenTuner 3.8X                              erage optimization trajectories of Trace, OPRO and Open-
+                                                                                                   Tuner over 10 iterations across 5 runs.
+                      5X
+                                                                                                   All the best mappers found by Trace can match or sur-
+                                                                                                   pass the expert-written mappers, underscoring the effec-
+                      1X 0
+                       10                101              102                           103        tiveness of agent-based generative optimizer. In our con-
+                                       Iterations (Log Scale)                                      text, reporting the best-performing mapper is appropriate.
+                                                                                                   Mapper optimization is an offline process, and in practice,
+     Figure 5. Comparison of Trace (generative optimizer) and Open-                                it is standard to run the optimizer multiple times and deploy
+     Tuner (traditional RL) over 1K iterations (averaged across all 9                              the best result. Once identified, the mapper can be reused
+     benchmarks)                                                                                   across repeated executions on the same application, input,
+                                                                                                   and hardware, incurring no further search cost.
+                                                                                                   Random mappers consistently exhibit low performance
+     Results In Figure 4, we use normalized throughput as                                          across all applications, emphasizing the critical role of
+     our performance metric, where higher values indicate bet-                                     mapping decisions. For each application, we generate 10
+     ter performance. The throughput is normalized relative to                                     random mappers by sampling from the full DSL-defined
+     the expert-written mappers, providing a clear baseline for                                    search space, totaling 90 mappers across 9 applications.
+     comparison. Our focus is on measuring end-to-end perfor-                                      Among them, 74 (82.2%) raise runtime errors due to invalid
+
+                                                                                               7
+                 Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+                                                              Mapping Strategy
+                Code Generation Target                                                                Success Rate
+                                              1     2    3    4   5    6    7        8     9    10
+                  C++ (single trial)          ✗    –     –    ✗       –   –     ✗    ✗    –     –           0%
+                  DSL (single trial)          ✓    ✓     ✓    ✓       ✓   –     ✓    ✓    ✓     –          80%
+                 C++ (iterative refine)       ✗    –     –    ✗       ✗   ✗     ✗    ✗    ✗     ✗           0%
+                 DSL (iterative refine)       ✓    ✓     ✓    ✓       ✓   ✓     ✓    ✓    ✓     ✓         100%
+
+Table 2. Code Generation Success Rates. Success rates for generating code across 10 mapping strategies described in natural language.
+The test evaluates whether the generated code compiles and passes execution tests. Generating DSL code significantly outperforms
+generating C++ for both settings. Symbols indicate results: – fails to compile, ✗ compiles but fails the test, and ✓ passes the test.
+
+
+mapping decisions. The runtime system enforces correct-               across GPUs. For additional context, examples of Trace
+ness by rejecting such mappers during execution, resulting            mappers are presented in Appendix A.8.
+in a throughput of 0.
+When comparing optimization trajectories, Trace performs              5.2. Ablation Study of DSL for Code Generation
+similarly to OPRO, and significantly outperforms Open-                In Section 5.1, we demonstrate the overall effectiveness of
+Tuner. To further compare the agent-based optimizer                   our approach. Here, we conduct an ablation study on the
+with traditional reinforcement learning, we extended Open-            DSL, the core of the Agent-System Interface. Since suc-
+Tuner’s optimization iterations from 10 to 1000, as shown             cessful generation is the foundation of optimization, this
+in Figure 5, where the x-axis is the log-scale of itera-              subsection focuses on how well the DSL helps LLMs gen-
+tions and the y-axis represents relative throughput (aver-            erate syntactically and semantically correct mappers
+aged across all 9 benchmarks). Notably, Trace achieves a              compared to C++, rather than directly optimizing perfor-
+3.8× speedup over OpenTuner even when OpenTuner is                    mance.
+run for 1000 iterations. When both are limited to 10 itera-
+tions, Trace outperforms OpenTuner by 11×, demonstrat-
+                                                                      Experiment Setup We designed 10 mapping strategies,
+ing its ability to quickly identify high-performance map-
+                                                                      described in natural language, to evaluate whether LLMs
+pings. This highlights the superiority of Trace (genera-
+                                                                      can generate correct code in both the DSL and the orig-
+tive optimizer) over OpenTuner (traditional reinforce-
+                                                                      inal low-level C++. The strategies are detailed in Ap-
+ment learning). Moreover, Trace completes the entire op-
+                                                                      pendix A.7. To ensure a fair comparison, identical prompt
+timization process in just 10 minutes per application, re-
+                                                                      materials (documentation, examples, and starting code)
+ducing mapper development time from days to minutes.
+                                                                      were provided for both the DSL and C++. Success rates
+To offer a more comprehensive view of performance vari-               are measured based on whether the generated code passes
+ations, we present additional statistics, including the mean,         predefined test cases, with results reported for single trials
+standard deviation, worst, median, and best normalized                and iterative refinement, where the LLM is allowed up to
+throughput for both our method and OpenTuner. These                   10 iterations to improve the code using compiler feedback.
+statistics are derived from five runs for each benchmark,             The evaluation is conducted with the DSPy (Khattab et al.,
+as detailed in Appendix A.4.                                          2023) framework.
+
+Case Analysis The largest performance gain achieved by                Results Table 2 shows that DSL achieves significantly
+Trace over the expert mapper is observed in Circuit, with             higher generation success rates than C++ in both the
+a speedup of 1.34×. This improvement is primarily due                 single-trial and iterative refinement settings. This demon-
+to memory placement: the best mapper allocates two data               strates the effectiveness of DSL’s design in abstracting sys-
+collections to GPU FrameBuffer memory, while the ex-                  tem complexity and providing a high-level interface that
+pert mapper places them in GPU ZeroCopy memory. De-                   enables LLMs to tackle complex system challenges in
+spite a slight increase in inter-GPU communication costs,             code generation. Incorporating iterative refinement with
+Trace reduces task execution time due to faster memory ac-            compiler feedback further improves success rates, resolv-
+cess, resulting in higher overall performance. For matrix-            ing four compilation errors in C++ and two in the DSL.
+multiplication algorithms, the greatest speedup is seen in            However, the gap between DSL mappers and C++ map-
+COSMA, with Trace achieving a 1.31× speedup over the                  pers remains substantial. Notably, these results are strik-
+expert mapper. This is attributed to Trace’s more efficient           ing given that the DSL is a low-resource language with no
+index mapping functions, which reduce inter-GPU com-                  pre-training or fine-tuning data, while C++ code is widely
+munication by better distributing partitioned submatrices             present in LLM training corpora.
+
+                                                                  8
+                       Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+                             Circuit                                        COSMA                                              SUMMA
+Norm. Throughput
+
+
+
+
+                                                 Norm. Throughput
+
+
+
+
+                                                                                                    Norm. Throughput
+               1.5
+               1.0
+               0.5
+               0.0 0   2      4 6          8                        0   2      4 6           8                         0   2      4 6       8
+                           Iterations                                       Iterations                                         Iterations
+                           Expert Design                       5-Shot                    Execution + Explain
+                           0-Shot                              Execution                 Execution + Explain + Suggest
+   Figure 6. Comparison of different feedback designs. 0-Shot and 5-Shot are baselines. Execution provides only the raw execution
+   output as feedback. Explain provides additional explanations of execution errors. Suggest offers mapper modification suggestions. All
+   feedback is automatically generated.
+
+
+   Analysis LLMs perform better with the DSL for two rea-                        6. Conclusion
+   sons. First, the semantic gap between natural language and
+   code is smaller with the DSL than with C++. For example,                      In this paper, we introduced a system that leverages LLMs
+   writing a mapper to “align all data to 64 bytes in mem-                       to automate mapper generation and optimization. The
+   ory and use Fortran ordering” requires one line Layout                        Agent-System Interface (ASI) simplifies code generation
+                                                                                 with a Domain-Specific Language (DSL), which abstracts
+   * * * Align==64 F_order in the DSL because of
+   its declarative design. In contrast, the C++ mapping API                      away the low-level complexity of system code, and en-
+   requires a sequence of operations to enforce alignment and                    riches execution feedback through AutoGuide, which in-
+   ordering, which widens the semantic gap. Second, the DSL                      terprets raw execution output into actionable guidance. We
+   reduces the amount of code. As discussed before, LLMs                         adopted generative optimization, allowing LLMs to refine
+   achieve an average reduction of 14× in lines of code, sim-                    mappers using rich textual feedback beyond scalar met-
+   plifying code generation. These results underscore the im-                    rics. Unlike RL-based methods like OpenTuner, which
+   portance of a high-level agent-system interface.                              rely on numerical rewards, our approach incorporates error
+                                                                                 explanations and targeted suggestions, accelerating search
+                                                                                 efficiency. Experiments show that agent-generated map-
+   5.3. Ablation Study of the AutoGuide Feedback
+                                                                                 pers outperform expert-written ones, achieving up to 1.34×
+   The AutoGuide mechanism provides enriched feedback to                         speedup across nine benchmarks. Our method, running
+   the agentic optimizer. We compare with alternative feed-                      only 10 iterations, maintains a 3.8× advantage over Open-
+   back designs.                                                                 Tuner even after 1000 iterations. By reducing mapper de-
+                                                                                 velopment time from days to minutes, our approach ben-
+   Experiment Setup We compare the following baselines.                          efits computational scientists and demonstrates the effec-
+   0-shot and 5-shot have no feedback, allowing the LLM to                       tiveness of generative optimization in system design.
+   generate once with either 0 or 5 examples provided. Execu-
+   tion only provides raw execution feedback, Explain offers                     Acknowledgements
+   additional explanations for execution errors, and Suggest
+   offers mapper modification suggestions. The Trace trajec-                     This work was supported in part by a Google Research
+   tory shown in Figure 4 uses the full AutoGuide mode with                      Award. We thank Yuhui Zhang, Genghan Zhang, Qizheng
+   all Execution+Explain+Suggest. As an ablation study, we                       Zhang, Mohammad R. Fadiheh, Ed Chen, Mert Yuksek-
+   evaluate 3 benchmarks.                                                        gonul, Chenyang Yang, Jiaxin Ge, Simon Guo, and Anne
+                                                                                 Ouyang for the feedback. We thank Ching-An Cheng and
+   Results and Analysis Figure 6 demonstrates that the full                      Ken Liu for their discussions and feedback.
+   feedback mechanism consistently outperforms all re-
+   duced feedback variants. The 0-shot and 5-shot results per-                   Impact Statement
+   form the worst, underscoring the importance of feedback-
+   based iterative refinement. This highlights the value of an                   This paper presents work whose goal is to advance the field
+   agentic workflow, showing that performance improvements                       of Machine Learning. There are many potential societal
+   are not solely driven by prompting the LLM but are a direct                   consequences of our work, none of which we feel must be
+   result of the iterative refinement in the workflow design.                    specifically highlighted here.
+
+                                                                             9
+                Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+References                                                           Cheng, C.-A., Nie, A., and Swaminathan, A. Trace is
+                                                                       the next autodiff: Generative optimization with rich
+Agarwal, R. C., Balle, S. M., Gustavson, F. G., Joshi, M.,
+                                                                       feedback, execution traces, and llms. arXiv preprint
+  and Palkar, P. A three-dimensional approach to paral-
+                                                                       arXiv:2406.16218, 2024.
+  lel matrix multiplication. IBM Journal of Research and
+  Development, 39(5):575–582, 1995.
+                                                                     Choi, J., Walker, D. W., and Dongarra, J. J. Pumma: Par-
+AhmadiTeshnizi, A., Gao, W., Brunborg, H., Talaei, S., and             allel universal matrix multiplication algorithms on dis-
+  Udell, M. OptiMUS-0.3: Using large language models                   tributed memory concurrent computers. Concurrency:
+  to model and solve optimization problems at scale. Sub-              Practice and Experience, 6(7):543–570, 1994.
+  mitted, 2024a. URL https://arxiv.org/abs/
+  2407.19633.                                                        Exascale Computing. DOE Explains Exascale Computing,
+                                                                       2025.    https://www.energy.gov/science/
+AhmadiTeshnizi, A., Gao, W., and Udell, M. OptiMUS:                    doe-explainsexascale-computing.
+  Scalable optimization modeling using MIP solvers and
+  large language models. In International Conference                 Fatahalian, K., Horn, D. R., Knight, T. J., Leem, L., Hous-
+  on Machine Learning (ICML), 2024b. URL https:                        ton, M., Park, J. Y., Erez, M., Ren, M., Aiken, A., Dally,
+  //arxiv.org/abs/2402.10172.                                          W. J., and Hanrahan, P. Sequoia: Programming the
+Ansel, J., Kamil, S., Veeramachaneni, K., Ragan-Kelley,                memory hierarchy. In SC ’06: Proceedings of the 2006
+  J., Bosboom, J., O’Reilly, U.-M., and Amarasinghe, S.                ACM/IEEE Conference on Supercomputing, volume 0 of
+  Opentuner: An extensible framework for program auto-                 SC ’06, pp. 83–es, New York, NY, USA, 2006. Associa-
+  tuning. In Proceedings of the 23rd international con-                tion for Computing Machinery. ISBN 0769527000.
+  ference on Parallel architectures and compilation, pp.
+  303–316, 2014.                                                     Feng, S., Hou, B., Jin, H., Lin, W., Shao, J., Lai, R., Ye, Z.,
+                                                                       Zheng, L., Yu, C. H., Yu, Y., et al. Tensorir: An abstrac-
+Augonnet, C., Thibault, S., Namyst, R., and Wacrenier, P.-             tion for automatic tensorized program optimization. In
+  A. Starpu: a unified platform for task scheduling on het-            Proceedings of the 28th ACM International Conference
+  erogeneous multicore architectures. In European Con-                 on Architectural Support for Programming Languages
+  ference on Parallel Processing, pp. 863–874. Springer,               and Operating Systems, Volume 2, pp. 804–817, 2023.
+  2009.
+                                                                     Ferenbaugh, C. R. Pennant: an unstructured mesh mini-app
+Augonnet, C., Clet-Ortega, J., Thibault, S., and Namyst,
+                                                                       for advanced architecture research. Concurrency and
+  R. Data-Aware Task Scheduling on Multi-Accelerator
+                                                                       Computation: Practice and Experience, 27(17):4555–
+  based Platforms. In 16th International Conference on
+                                                                       4572, 2015.
+  Parallel and Distributed Systems, pp. 291–298, Shangai,
+  China, December 2010. IEEE. URL https://hal.                       Galvez, J. J., Jain, N., and Kale, L. V. Automatic topology
+  inria.fr/inria-00523937.                                             mapping of diverse large-scale parallel applications. In
+Barham, P., Chowdhery, A., Dean, J., Ghemawat, S., Hand,               Proceedings of the International Conference on Super-
+  S., Hurt, D., Isard, M., Lim, H., Pang, R., Roy, S., et al.          computing, pp. 1–10, 2017.
+  Pathways: Asynchronous distributed dataflow for ml.
+  Proceedings of Machine Learning and Systems, 4:430–                Guo, T., Chen, X., Wang, Y., Chang, R., Pei, S., Chawla,
+  449, 2022.                                                           N. V., Wiest, O., and Zhang, X. Large language model
+                                                                       based multi-agents: A survey of progress and challenges.
+Bauer, M., Treichler, S., Slaughter, E., and Aiken, A. Le-             arXiv preprint arXiv:2402.01680, 2024.
+  gion: Expressing locality and independence with logi-
+  cal regions. In SC’12: Proceedings of the International            Gur, I., Furuta, H., Huang, A., Safdari, M., Matsuo, Y.,
+  Conference on High Performance Computing, Network-                   Eck, D., and Faust, A. A real-world webagent with plan-
+  ing, Storage and Analysis, pp. 1–11. IEEE, 2012.                     ning, long context understanding, and program synthe-
+Cannon, L. E. A cellular computer to implement the                     sis. arXiv preprint arXiv:2307.12856, 2023.
+  Kalman filter algorithm. Montana State University,
+                                                                     Haj-Ali, A., Ahmed, N. K., Willke, T., Shao, Y. S.,
+  1969.
+                                                                       Asanovic, K., and Stoica, I. Neurovectorizer: End-to-
+Chamberlain, B. L., Callahan, D., and Zima, H. P. Parallel             end vectorization with deep reinforcement learning. In
+  programmability and the chapel language. The Interna-                Proceedings of the 18th ACM/IEEE International Sym-
+  tional Journal of High Performance Computing Applica-                posium on Code Generation and Optimization, pp. 242–
+  tions, 21(3):291–312, 2007.                                          255, 2020a.
+
+                                                                10
+                Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+Haj-Ali, A., Huang, Q. J., Xiang, J., Moses, W., Asanovic,           Lattimore, T. and Szepesvári, C. Bandit algorithms. Cam-
+  K., Wawrzynek, J., and Stoica, I. Autophase: Juggling                bridge University Press, 2020.
+  hls phase orderings in random forests with deep rein-
+  forcement learning. Proceedings of Machine Learning                Li, G., Hammoud, H., Itani, H., Khizbullin, D., and
+  and Systems, 2:70–81, 2020b.                                         Ghanem, B. Camel: Communicative agents for" mind"
+                                                                       exploration of large language model society. Advances
+Heller, T., Diehl, P., Byerly, Z., Biddiscombe, J., and                in Neural Information Processing Systems, 36:51991–
+  Kaiser, H. Hpx–an open source c++ standard library for               52008, 2023.
+  parallelism and concurrency. Proceedings of OpenSuCo,
+  5, 2017.                                                           Li, J., Wang, S., Zhang, M., Li, W., Lai, Y., Kang, X.,
+                                                                       Ma, W., and Liu, Y. Agent hospital: A simulacrum of
+Hong, S., Zheng, X., Chen, J., Cheng, Y., Wang, J., Zhang,             hospital with evolvable medical agents. arXiv preprint
+  C., Wang, Z., Yau, S. K. S., Lin, Z., Zhou, L., et al.               arXiv:2405.02957, 2024.
+  Metagpt: Meta programming for multi-agent collabora-
+  tive framework. arXiv preprint arXiv:2308.00352, 2023.             Ltaief, H., Alomairy, R., Cao, Q., Ren, J., Slim, L.,
+                                                                       Kurth, T., Dorschner, B., Bougouffa, S., Abdelkhalak,
+Huang, T.-W., Lin, D.-L., Lin, C.-X., and Lin, Y. Task-                R., and Keyes, D. E. Toward capturing genetic epis-
+  flow: A lightweight parallel and heterogeneous task                  tasis from multivariate genome-wide association stud-
+  graph computing system. IEEE Transactions on Parallel                ies using mixed-precision kernel ridge regression. In
+  and Distributed Systems, 33(6):1303–1320, 2021.                      SC24: International Conference for High Performance
+                                                                       Computing, Networking, Storage and Analysis, pp. 1–
+Jangda, A., Huang, J., Liu, G., Sabet, A. H. N., Maleki, S.,           12. IEEE, 2024.
+  Miao, Y., Musuvathi, M., Mytkowicz, T., and Saarikivi,
+  O. Breaking the computation and communication ab-                  Mirhoseini, A., Pham, H., Le, Q. V., Steiner, B., Larsen,
+  straction barrier in distributed machine learning work-             R., Zhou, Y., Kumar, N., Norouzi, M., Bengio, S., and
+  loads. In Proceedings of the 27th ACM International                 Dean, J. Device placement optimization with reinforce-
+  Conference on Architectural Support for Programming                 ment learning. In International conference on machine
+  Languages and Operating Systems, pp. 402–416, 2022.                 learning, pp. 2430–2439. PMLR, 2017.
+Jin, H., Huang, L., Cai, H., Yan, J., Li, B., and Chen, H.           Mirhoseini, A., Goldie, A., Yazgan, M., Jiang, J. W.,
+   From llms to llm-based agents for software engineer-               Songhori, E., Wang, S., Lee, Y.-J., Johnson, E., Pathak,
+   ing: A survey of current, challenges and future. arXiv             O., Nazi, A., et al. A graph placement methodology for
+   preprint arXiv:2408.02479, 2024.                                   fast chip design. Nature, 594(7862):207–212, 2021.
+Kaiser, H., Heller, T., Adelstein-Lelbach, B., Serio, A., and        Moritz, P., Nishihara, R., Wang, S., Tumanov, A., Liaw, R.,
+  Fey, D. Hpx: A task based programming model in a                    Liang, E., Elibol, M., Yang, Z., Paul, W., Jordan, M. I.,
+  global address space. In Proceedings of the 8th Interna-            et al. Ray: A distributed framework for emerging {AI}
+  tional Conference on Partitioned Global Address Space               applications. In 13th USENIX Symposium on Operat-
+  Programming Models, pp. 1–11, 2014.                                 ing Systems Design and Implementation (OSDI 18), pp.
+                                                                      561–577, 2018.
+Kannan, S. S., Venkatesh, V. L., and Min, B.-C. Smart-
+  llm: Smart multi-agent robot task planning using large             Nie, A., Cheng, C.-A., Kolobov, A., and Swaminathan,
+  language models. In 2024 IEEE/RSJ International Con-                 A. The importance of directional feedback for llm-based
+  ference on Intelligent Robots and Systems (IROS), pp.                optimizers. arXiv preprint arXiv:2405.16434, 2024.
+  12140–12147. IEEE, 2024.
+                                                                     O’Boyle, M. F. P., Wang, Z., and Grewe, D. Portable map-
+Khattab, O., Singhvi, A., Maheshwari, P., Zhang, Z., San-              ping of data parallel programs to opencl for heteroge-
+  thanam, K., Vardhamanan, S., Haq, S., Sharma, A.,                    neous systems. In Proceedings of the 2013 IEEE/ACM
+  Joshi, T. T., Moazam, H., et al. Dspy: Compiling declar-             International Symposium on Code Generation and Op-
+  ative language model calls into self-improving pipelines.            timization (CGO), CGO ’13, pp. 1–10, USA, 2013.
+  arXiv preprint arXiv:2310.03714, 2023.                               IEEE Computer Society. ISBN 9781467355247. doi:
+                                                                       10.1109/CGO.2013.6494993. URL https://doi.
+Kwasniewski, G., Kabić, M., Besta, M., VandeVondele,                  org/10.1109/CGO.2013.6494993.
+ J., Solcà, R., and Hoefler, T. Red-blue pebbling re-
+ visited: near optimal parallel matrix-matrix multiplica-            Patel, B., Chakraborty, S., Suttle, W. A., Wang, M.,
+ tion. In Proceedings of the International Conference for              Bedi, A. S., and Manocha, D. Aime: Ai system op-
+ High Performance Computing, Networking, Storage and                   timization via multiple llm evaluators. arXiv preprint
+ Analysis, pp. 1–22, 2019.                                             arXiv:2410.03131, 2024.
+
+                                                                11
+                Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+Poesia, G., Guimarães, B., Ferracioli, F., and Pereira, F. M.        Sutton, R. S. and Barto, A. G. Reinforcement learning: An
+  Q. a. Static placement of computation on heterogeneous               introduction. MIT press, 2018.
+  devices. Proceedings of the ACM on Programming Lan-
+  guages, 1(OOPSLA), October 2017.                                   Unger, C., Jia, Z., Wu, W., Lin, S., Baines, M., Narvaez, C.
+                                                                       E. Q., Ramakrishnaiah, V., Prajapati, N., McCormick,
+Ramirez, E. A. B. and Esparrell, J. A. F. Artificial intelli-          P., Mohd-Yusof, J., et al. Unity: Accelerating {DNN}
+  gence (ai) in education: Unlocking the perfect synergy               training through joint optimization of algebraic transfor-
+  for learning. Educational Process: International Jour-               mations and parallelization. In 16th USENIX Sympo-
+  nal, 13(1):35–51, 2024.                                              sium on Operating Systems Design and Implementation
+                                                                       (OSDI 22), pp. 267–284, 2022.
+Ren, M., Park, J. Y., Houston, M., Aiken, A., and Dally,
+  W. J. A tuning framework for software-managed mem-                 Van De Geijn, R. A. and Watts, J. Summa: Scalable univer-
+  ory hierarchies. In Proceedings of the 17th Interna-                 sal matrix multiplication algorithm. Concurrency: Prac-
+  tional Conference on Parallel Architectures and Compi-               tice and Experience, 9(4):255–274, 1997.
+  lation Techniques, PACT ’08, pp. 280–291, New York,
+  NY, USA, 2008. Association for Computing Machin-                   Van der Wijngaart, R. F. and Mattson, T. G. The parallel
+  ery. ISBN 9781605582825. doi: 10.1145/1454115.                       research kernels. In 2014 IEEE High Performance Ex-
+  1454155.     URL https://doi.org/10.1145/                            treme Computing Conference (HPEC), pp. 1–6. IEEE,
+  1454115.1454155.                                                     2014.
+SFX Teixeira, T., Henzinger, A., Yadav, R., and Aiken, A.            Wang, X., Liu, S., Tsaris, A., Choi, J.-Y., Aji, A. M., Fan,
+  Automated mapping of task-based programs onto dis-                  M., Zhang, W., Yin, J., Ashfaq, M., Lu, D., et al. Or-
+  tributed and heterogeneous machines. In Proceedings                 bit: Oak ridge base foundation model for earth system
+  of the International Conference for High Performance                predictability. In SC24: International Conference for
+  Computing, Networking, Storage and Analysis, pp. 1–                 High Performance Computing, Networking, Storage and
+  13, 2023.                                                           Analysis, pp. 1–11. IEEE, 2024.
+Shao, Y., Jiang, Y., Kanell, T. A., Xu, P., Khattab, O., and         Wang, Z. and O’Boyle, M. F. Mapping parallelism to multi-
+  Lam, M. S. Assisting in writing wikipedia-like articles             cores: A machine learning based approach. In Proceed-
+  from scratch with large language models. arXiv preprint             ings of the 14th ACM SIGPLAN Symposium on Prin-
+  arXiv:2402.14207, 2024.                                             ciples and Practice of Parallel Programming, PPoPP
+Slaughter, E., Lee, W., Treichler, S., Bauer, M., and Aiken,          ’09, pp. 75–84, New York, NY, USA, 2009. Associa-
+  A. Regent: A high-productivity programming language                 tion for Computing Machinery. ISBN 9781605583976.
+  for hpc with logical regions. In Proceedings of the Inter-          doi: 10.1145/1504176.1504189. URL https://doi.
+  national Conference for High Performance Computing,                 org/10.1145/1504176.1504189.
+  Networking, Storage and Analysis, pp. 1–12, 2015.
+                                                                     Wu, Q., Bansal, G., Zhang, J., Wu, Y., Zhang, S., Zhu, E.,
+Snoek, J., Larochelle, H., and Adams, R. P. Practical                 Li, B., Jiang, L., Zhang, X., and Wang, C. Autogen:
+  bayesian optimization of machine learning algorithms.               Enabling next-gen llm applications via multi-agent con-
+  Advances in neural information processing systems, 25,              versation framework. arXiv preprint arXiv:2308.08155,
+  2012.                                                               2023.
+
+Solomonik, E. and Demmel, J. Communication-optimal                   Yadav, R., Aiken, A., and Kjolstad, F. Distal: the dis-
+  parallel 2.5 d matrix multiplication and lu factorization            tributed tensor algebra compiler. In Proceedings of the
+  algorithms. In Euro-Par 2011 Parallel Processing: 17th               43rd ACM SIGPLAN International Conference on Pro-
+  International Conference, Euro-Par 2011, Bordeaux,                   gramming Language Design and Implementation, pp.
+  France, August 29-September 2, 2011, Proceedings, Part               286–300, 2022.
+  II 17, pp. 90–109. Springer, 2011.
+                                                                     Yang, C., Wang, X., Lu, Y., Liu, H., Le, Q. V., Zhou,
+Stocks, R., Vallejo, J. L. G., Fiona, C., Snowdon, C.,                 D., and Chen, X. Large language models as optimizers.
+  Palethorpe, E., Kurzak, J., Bykov, D., and Barca, G. M.              arXiv preprint arXiv:2309.03409, 2023.
+  Breaking the million-electron and 1 eflop/s barriers:
+  Biomolecular-scale ab initio molecular dynamics using              Yang, C., Wang, X., Lu, Y., Liu, H., Le, Q. V., Zhou, D.,
+  mp2 potentials. In SC24: International Conference for                and Chen, X. Large language models as optimizers. In
+  High Performance Computing, Networking, Storage and                  International Conference on Learning Representations,
+  Analysis, pp. 1–12. IEEE, 2024.                                      2024a.
+
+                                                                12
+                Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+Yang, J., Jimenez, C. E., Wettig, A., Lieret, K., Yao,
+  S., Narasimhan, K., and Press, O. Swe-agent: Agent-
+  computer interfaces enable automated software engi-
+  neering. arXiv preprint arXiv:2405.15793, 2024b.
+Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan,
+  K., and Cao, Y. React: Synergizing reasoning and acting
+  in language models. arXiv preprint arXiv:2210.03629,
+  2022.
+Yuksekgonul, M., Bianchi, F., Boen, J., Liu, S., Huang, Z.,
+  Guestrin, C., and Zou, J. Textgrad: Automatic" differen-
+  tiation" via text. arXiv preprint arXiv:2406.07496, 2024.
+
+Zheng, L., Jia, C., Sun, M., Wu, Z., Yu, C. H., Haj-Ali,
+  A., Wang, Y., Yang, J., Zhuo, D., Sen, K., et al. An-
+  sor: Generating {High-Performance} tensor programs
+  for deep learning. In 14th USENIX symposium on op-
+  erating systems design and implementation (OSDI 20),
+  pp. 863–879, 2020a.
+
+Zheng, L., Li, Z., Zhang, H., Zhuang, Y., Chen, Z., Huang,
+  Y., Wang, Y., Xu, Y., Zhuo, D., Xing, E. P., et al. Alpa:
+  Automating inter-and {Intra-Operator} parallelism for
+  distributed deep learning. In 16th USENIX Sympo-
+  sium on Operating Systems Design and Implementation
+  (OSDI 22), pp. 559–578, 2022a.
+Zheng, S., Liang, Y., Wang, S., Chen, R., and Sheng, K.
+  Flextensor: An automatic schedule exploration and opti-
+  mization framework for tensor computation on heteroge-
+  neous system. In Proceedings of the Twenty-Fifth Inter-
+  national Conference on Architectural Support for Pro-
+  gramming Languages and Operating Systems, pp. 859–
+  873, 2020b.
+Zheng, S., Chen, R., Wei, A., Jin, Y., Han, Q., Lu, L., Wu,
+  B., Li, X., Yan, S., and Liang, Y. Amos: enabling au-
+  tomatic mapping for tensor computations on spatial ac-
+  celerators with hardware abstraction. In Proceedings of
+  the 49th Annual International Symposium on Computer
+  Architecture, pp. 874–887, 2022b.
+Zheng, S., Fang, J., Zheng, X., Hou, Q., Bao, W., Zheng,
+  N., Jiang, Z., Wang, D., Ye, J., Lin, H., et al. Tilelink:
+  Generating efficient compute-communication overlap-
+  ping kernels using tile-centric primitives. arXiv preprint
+  arXiv:2503.20313, 2025.
+Zhou, D., Schärli, N., Hou, L., Wei, J., Scales, N.,
+  Wang, X., Schuurmans, D., Cui, C., Bousquet, O., Le,
+  Q., et al. Least-to-most prompting enables complex
+  reasoning in large language models. arXiv preprint
+  arXiv:2205.10625, 2022.
+
+
+
+
+                                                               13
+                 Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+A. Appendix
+A.1. Illustration for Mapping
+We show an illustration for mapping in Figure A1.
+
+               Application
+                                                               Mapper                             Machines
+                 Tasks
+
+                                                 Processor
+                                                 Selection
+                                                  (tasks)
+
+
+
+
+                                                 Memory
+                                                Placement
+                                                  (data)
+
+                     Data
+                                                  Index
+                                                 Mapping
+                                                 (tasks, data)
+
+                                                 (processor)
+
+
+
+
+Figure A1. Mappers decide the placement of each task in the task graph to processors, the placement of data to memory, and how the
+iteration space of data is partitioned and mapped to different processors.
+
+
+A.2. DSL Grammar
+Terminals: TaskName, RegionName, var, int
+
+Grammar Rules:
+
+
+  Program            →       Statement+
+  Statement          →       TaskMap | DataMap | DataLayout | FuncDef | IndexTaskMap TaskName var
+  TaskMap            →       Task TaskName Proc+
+  DataMap            →       Region TaskName RegionName Proc Memory+
+  Proc               →       CPU | GPU | OMP
+  Memory             →       SYSMEM | FBMEM | ZCMEM
+  DataLayout →               Layout TaskName RegionName Proc Constraint+
+  Constraint →               SOA | AOS | C_order | F_order | Align == int
+  FuncDef            →       def var(var+):            FuncStmt+
+  FuncStmt           →       var = Expr | return Expr
+  Expr               →       var | var(Expr+) | Machine(Proc) | Expr.Expr | Expr Op Expr | (Expr) |
+                             Expr[Expr] | *Expr | Expr ?                Expr :     Expr
+
+
+
+
+                                                                 14
+                Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+A.3. Parallel Matrix Multiplication Algorithms
+2D Algorithms Cannon’s (Cannon, 1969) introduced a systolic communication pattern with tiled data partitioning for
+distributed matrix multiplication. PUMMA (Choi et al., 1994) and SUMMA (Van De Geijn & Watts, 1997) extended this
+approach by supporting non-square matrices and improving communication efficiency through pipelining. They are called
+2D algorithms because they partition the matrices into 2D tiles and then map them onto the processor space.
+
+Non-2D Algorithms Johnson’s (Agarwal et al., 1995) introduced a 3D algorithm that partitions the input matri-
+ces into 3D tiles and uses additional memory per processor to reduce communication compared to 2D algorithms.
+Solomonik’s (Solomonik & Demmel, 2011) balances between 2D and 3D approaches by using extra memory to further
+minimize communication. COSMA (Kwasniewski et al., 2019) takes a different approach by optimizing the processor grid
+and parallelization strategy based on the input size and the machine size.
+
+A.4. Additional Performance Statistics
+In our setting, reporting the best result across multiple runs is appropriate, as the best mapper is the one that is desired by
+the user. Mapper search is an offline optimization process, and it is feasible to run the optimizer multiple times to select
+the highest-performing mapper. Once identified, this mapper can be reused without incurring additional search cost, as the
+deployment scenario (application, input, and hardware) remains fixed.
+That said, additional statistics on performance varations can provide a more complete picture. Here we include the mean,
+standard deviation, worst, median, and best normalized throughput across five runs for each benchmark of our approach
+Trace and OpenTuner.
+
+                                 Benchmark      Mean     Std Dev   Worst    Median      Best
+                                 Circuit       1.33×      0.01     1.31×     1.33×      1.34×
+                                 Stencil       1.01×      0.01     1.00×     1.01×      1.02×
+                                 Pennant       1.03×      0.02     1.00×     1.03×      1.04×
+                                 Cannon        1.09×      0.00     1.08×     1.09×      1.09×
+                                 SUMMA         0.86×      0.48     0.00×     1.07×      1.09×
+                                 PUMMA         0.57×      0.55     0.00×     0.66×      1.09×
+                                 Johnson       0.98×      0.17     0.68×     1.06×      1.07×
+                                 Solomonik     0.52×      0.41     0.00×     0.61×      1.09×
+                                 COSMA         1.25×      0.03     1.23×     1.23×      1.31×
+
+                                   Table A1. Normalized throughput of our framework Trace.
+
+
+                                 Benchmark      Mean     Std Dev   Worst    Median      Best
+                                 Circuit       0.97×      0.16     0.81×     0.99×      1.20×
+                                 Stencil       0.00×      0.00     0.00×     0.00×      0.00×
+                                 Pennant       0.00×      0.00     0.00×     0.00×      0.00×
+                                 Cannon        0.00×      0.00     0.00×     0.00×      0.00×
+                                 SUMMA         0.00×      0.00     0.00×     0.00×      0.00×
+                                 PUMMA         0.00×      0.00     0.00×     0.00×      0.00×
+                                 Johnson       0.00×      0.00     0.00×     0.00×      0.00×
+                                 Solomonik     0.00×      0.00     0.00×     0.00×      0.00×
+                                 COSMA         0.00×      0.00     0.00×     0.00×      0.00×
+
+                                        Table A2. Normalized throughput of OpenTuner.
+
+Our method achieves relatively stable performance across most benchmarks. The higher variance and occasional 0.00×
+worst-case throughput observed in SUMMA, PUMMA, and Solomonik are due to invalid mapper configurations in the
+search space (e.g., violating cuBLAS layout constraints). The runtime enforces correctness by rejecting such configurations
+during execution. While the generative optimizer typically learns to avoid these cases through the AutoGuide mechanism,
+occasional failures within the 10-iteration budget are still possible. In practice, such failures can be mitigated by repeating
+the optimization and selecting the best-performing mapper. In contrast, OpenTuner, despite running the same number of
+iterations, fails to generate valid mappers for 8 out of 9 benchmarks. This highlights the difficulty of exploring the search
+space using traditional reinforcement learning methods.
+
+                                                              15
+               Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+A.5. Examples of Feedback Configurations
+We give examples for the raw execution output and enriched feedback in Table A3. The enhanced feedback includes
+explanations of errors and suggestions for mapper modifications.
+
+                                                                                         AutoGuide
+    Case               Raw Execution Output
+                                                                    Explain                           Suggest
+             Compile Error: Syntax error, unexpected                                       There should be no colon : in
+  case1                                                               N/A
+                         :, expecting {                                                         function definition.
+                  Compile Error: IndexTaskMap’s                                         Define the IndexTaskMap function
+  case2                                                               N/A
+                        function undefined                                                     first before using it.
+                                                                                      Include mgpu = Machine(GPU);
+  case3           Compile Error: mgpu not found                       N/A
+                                                                                              in the generated code.
+              Execution Error: Assertion failed: stride        Memory layout is        Adjust the layout constraints or move
+  case4
+                  does not match expected value.                 unexpected.            tasks to different processor types.
+               Execution Error: DGEMM parameter                Memory layout is
+  case5                                                                                     Adjust the layout constraint.
+                   number 8 had an illegal value                 unexpected.
+                                                                                        Ensure that the first index of mgpu
+                                                                 IndexTaskMap
+              Execution Error: Slice processor index                                   ends with % mgpu.size[0], and
+  case6                                                         statements cause
+                          out of bound                                                   the second element ends with %
+                                                                      error.
+                                                                                                mgpu.size[1].
+                                                                  InstanceLimit
+                     Execution Error: Assertion                                           Avoid generating InstanceLimit
+  case7                                                         statements cause
+                        ‘event.exists()’ failed                                                    statements.
+                                                                      error.
+              Performance Metric: Execution time is                                     Move more tasks to GPU to reduce
+  case8                                                               N/A
+                            0.03s.                                                             execution time.
+                                                                                       Try using different IndexTaskMap
+                   Performance Metric: Achieved
+  case9                                                               N/A              or SingleTaskMap statements to
+                     throughput = 4877 GFLOPS
+                                                                                              maximize throughput.
+
+       Table A3. Raw execution output and AutoGuide (error explanations and adjustment suggestions) for different cases.
+
+
+
+
+                                                              16
+                 Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+A.6. Trace Agent Code
+Trace (Cheng et al., 2024) uses Python decorators like @bundle to annotate Python programs. It allows us to design an
+LLM code generation agent as if we were writing a Python program ourselves. We first set up an end-to-end runnable
+Python program that can generate a valid mapper program by randomly making decisions over the search space. We show
+the high-level structure of our Trace Mapper in Figure A3. Figure A2 shows how we incorporate the feedback from the
+execution to update the agent. At each optimization step, Trace will execute DSLMapperGenerator and collect the
+corresponding execution flow to build up a graph. Then it will make a call to an LLM to perform an update to any function
+that is decorated with @bundle(trainable=True). The DSLMapperGenerator is structured in the same way as
+providing a search space specified by the DSL, where an LLM optimizer can make decisions along the pre-designed axes.
+We note that this type of design is only enabled by recent developments like Trace and is much more challenging to do
+using older LLM-based frameworks.
+
+
+
+
+ 1 policy = MapperAgent()
+ 2 params = policy.parameters()
+ 3 optimizer = trace.Optimizer(params)
+ 4
+ 5 app = GetApplicationInfo()
+ 6 test = GetMapperEvaluator(app)
+ 7
+ 8 for i in range(iterations):
+ 9   # Forward pass
+10   try:
+11     mapper = policy(app)
+12     # feedback (str) contains performance
+13     feedback = test(mapper)
+14   except TraceExecutionError as e:
+15     feedback = str(e)
+16     target = e.exception_node
+17
+18   # Backward pass and update
+19   optimizer.zero_feedback()
+20   optimizer.backward(target, feedback)
+21   optimizer.step()
+
+
+Figure A2. We show how we use Trace to incorporate the feedback from the execution to update the agent, with a Pytorch-like syntax.
+
+
+
+
+                                                                17
+                 Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+
+
+
+ 1 import   opto.trace as trace
+ 2
+ 3 classMapperAgent(trace.Module):
+ 4    @trace.bundle(trainable=True)
+ 5    def task_decision(self, tasks):
+ 6        ...
+ 7
+ 8    @trace.bundle(trainable=True)
+ 9    def region_decision(self, regions):
+10        ...
+11
+12    @trace.bundle(trainable=True)
+13    def layout_decision(self):
+14        ...
+15
+16    @trace.bundle(trainable=True)
+17    def instance_limit_decision(self, tasks):
+18        ...
+19
+20    @trace.bundle(trainable=True)
+21    def index_task_map_decision(self, index_tasks):
+22
+23    @trace.bundle(trainable=True)
+24    def single_task_map_decision(self, single_tasks):
+25        ...
+26
+27    def generate_mapper(self):
+28        """
+29        Generate the final mapper code by combining all code statements.
+30        """
+31        task_statements = self.task_decision(self.tasks)
+32        region_statements = self.region_decision(self.regions)
+33        layout_statements = self.layout_decision()
+34        instance_limit_statements = self.instance_limit_decision(self.tasks)
+35        index_task_map_statements = self.index_task_map_decision(self.index_tasks,
+      self.index_task_specification)
+36        single_task_statements = self.single_task_map_decision(self.single_tasks)
+37
+38           code_statements = (
+39               task_statements +
+40               region_statements +
+41               layout_statements +
+42               instance_limit_statements +
+43               index_task_map_statements +
+44               single_task_statements
+45           )
+46           # Combine all code statements and function definitions into a single string
+47           code_list = code_statements
+48           mapper_code = str_join(node(’\n’), *code_list)
+49           return mapper_code
+
+
+Figure A3. High-level structure of the Trace-based agent template, where functions annotated with @bundle(trainable=True)
+define the search space that the LLM optimizer updates during mapper generation. Note: This agent serves as a shared starting point
+for ALL tasks. For each task, we produce a mapper from this starting agent and then ask LLMs to “optimize” this agent (by changing
+functions that are trainable) to produce mappers that are optimal for the particular task.
+
+
+
+
+                                                                18
+                Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+A.7. Mapping Strategies
+Strategy 1: Map the tasks of calculate_new_currents, distribute_charge, update_voltages onto
+GPUs in this way: linearize the 2D GPU processor space into 1D, then perform 1D block mapping from launch domain to
+the linearized 1D processor space.
+ 1 Task * GPU,CPU; # for any task, run on GPU if supported
+ 2 Region * *GPU FBMEM; # for any task, any region, if mapped onto GPU, use FBMEM as default
+ 3 Region * * CPU SYSMEM; # if mapped onto CPU, use SYSMEM as default
+ 4
+ 5 Layout * * * SOA C_order;
+ 6
+ 7 mcpu = Machine(CPU);
+ 8 mgpu = Machine(GPU);
+ 9
+10 ========== Above is fixed ==========
+11 def linearblock(Task task) {
+12     return mgpu[task.ipoint[0] / mgpu.size[1], task.ipoint[0] % mgpu.size[1]];
+13 }
+14
+15 IndexTaskMap calculate_new_currents,distribute_charge,update_voltages linearblock;
+
+
+Strategy 2: Place ghost/shared regions (rp_shared and rp_ghost) onto GPU zero-copy memory
+ 1 Task * GPU,CPU; # for any task, run on GPU if supported
+ 2
+ 3 Region * * GPU FBMEM; # for any task, any region, if mapped onto GPU, use FBMEM as default
+ 4 Region * * CPU SYSMEM; # if mapped onto CPU, use SYSMEM as default
+ 5
+ 6 Layout * * * SOA C_order;
+ 7
+ 8 mcpu = Machine(CPU);
+ 9 mgpu = Machine(GPU);
+10
+11 ========== Above is fixed ==========
+12
+13 Region * rp_shared GPU ZCMEM;
+14 Region * rp_ghost GPU ZCMEM;
+
+
+Strategy 3: Use Array Of Struct (AOS) data layout for all data instead of the default SOA
+ 1 Task * GPU,CPU; # for any task, run on GPU if supported
+ 2
+ 3 Region * * GPU FBMEM; # for any task, any region, if mapped onto GPU, use FBMEM as default
+ 4 Region * * CPU SYSMEM; # if mapped onto CPU, use SYSMEM as default
+ 5
+ 6 mcpu = Machine(CPU);
+ 7 mgpu = Machine(GPU);
+ 8
+ 9 ========== Above is fixed ==========
+10
+11 Layout * * * AOS;
+
+
+Strategy 4: Use Fortran ordering of data layout for all data instead of the default C order
+ 1 Task * GPU,CPU; # for any task, run on GPU if supported
+ 2
+ 3 Region * * GPU FBMEM; # for any task, any region, if mapped onto GPU, use FBMEM as default
+ 4 Region * * CPU SYSMEM; # if mapped onto CPU, use SYSMEM as default
+ 5
+ 6 mcpu = Machine(CPU);
+ 7 mgpu = Machine(GPU);
+ 8
+ 9 ========== Above is fixed ==========
+10
+11 Layout * * * F_order;
+
+
+
+
+                                                             19
+                Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+Strategy 5: Align all the regions to 64 bytes while using the Fortran ordering of data
+ 1 Task * GPU,CPU; # for any task, run on GPU if supported
+ 2
+ 3 Region * * GPU FBMEM; # for any task, any region, if mapped onto GPU, use FBMEM as default
+ 4 Region * * CPU SYSMEM; # if mapped onto CPU, use SYSMEM as default
+ 5
+ 6 mcpu = Machine(CPU);
+ 7 mgpu = Machine(GPU);
+ 8
+ 9 ========== Above is fixed ==========
+10
+11 Layout * * * Align==64 F_order;
+
+
+Strategy 6: Place the task calculate_new_currents onto CPU
+ 1 Task * GPU,CPU; # for any task, run on GPU if supported
+ 2
+ 3 Region * * GPU FBMEM; # for any task, any region, if mapped onto GPU, use FBMEM as default
+ 4 Region * * CPU SYSMEM; # if mapped onto CPU, use SYSMEM as default
+ 5
+ 6 mcpu = Machine(CPU);
+ 7
+ 8 mgpu = Machine(GPU);
+ 9
+10 Layout * * * SOA C_order;
+11
+12 ========== Above is fixed ==========
+13 Task calculate_new_currents CPU;
+
+
+Strategy 7: Collect all the memory used by task calculate_new_currents
+ 1 Task * GPU,CPU; # for any task, run on GPU if supported
+ 2
+ 3 Region * * GPU FBMEM; # for any task, any region, if mapped onto GPU, use FBMEM as default
+ 4 Region * * CPU SYSMEM; # if mapped onto CPU, use SYSMEM as default
+ 5
+ 6 mcpu = Machine(CPU);
+ 7 mgpu = Machine(GPU);
+ 8
+ 9 Layout * * * SOA C_order;
+10
+11 ========== Above is fixed ==========
+12 CollectMemory calculate_new_currents *;
+
+
+Strategy 8: Ensure that at most 4 tasks of calculate_new_currents can be run at the same time
+ 1 Task * GPU,CPU; # for any task, run on GPU if supported
+ 2
+ 3 Region * * GPU FBMEM; # for any task, any region, if mapped onto GPU, use FBMEM as default
+ 4 Region * * CPU SYSMEM; # if mapped onto CPU, use SYSMEM as default
+ 5
+ 6 mcpu = Machine(CPU);
+ 7 mgpu = Machine(GPU);
+ 8
+ 9 Layout * * * SOA C_order;
+10
+11 ========== Above is fixed ==========
+12 InstanceLimit calculate_new_currents 4;
+
+
+Strategy 9: Map the second region argument of task distribute_charge onto GPU’s Zero-Copy memory
+ 1 Task * GPU,CPU; # for any task, run on GPU if supported
+ 2
+ 3 Region * * GPU FBMEM; # for any task, any region, if mapped onto GPU, use FBMEM as default
+ 4 Region * * CPU SYSMEM; # if mapped onto CPU, use SYSMEM as default
+ 5
+ 6 mcpu = Machine(CPU);
+ 7 mgpu = Machine(GPU);
+ 8
+ 9 Layout * * * SOA C_order;
+10
+11 ========== Above is fixed ==========
+12 Region distribute_charge 1 GPU ZCMEM;
+
+
+
+
+                                                            20
+               Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+Strategy 10: Map the tasks of calculate_new_currents,distribute_charge,update_voltages onto GPUs in a 1D cyclic man-
+ner: perform a cyclic distribution over both the node and processor dimensions.
+ 1 Task * GPU,CPU; # for any task, run on GPU if supported
+ 2
+ 3 Region * * GPU FBMEM; # for any task, any region, if mapped onto GPU, use FBMEM as default
+ 4 Region * * CPU SYSMEM; # if mapped onto CPU, use SYSMEM as default
+ 5
+ 6 mcpu = Machine(CPU);
+ 7 mgpu = Machine(GPU);
+ 8
+ 9 Layout * * * SOA C_order;
+10
+11 ========== Above is fixed ==========
+12 def cyclic1d(Task task) {
+13     ip = task.ipoint;
+14     # cyclic over node, cyclic over gpu
+15     return mgpu[ip[0] % mgpu.size[0], ip[0] / mgpu.size[0] % mgpu.size[1]];
+16 }
+17
+18 IndexTaskMap calculate_new_currents,distribute_charge,update_voltages cyclic1d;
+
+
+
+
+                                                         21
+                 Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+A.8. Generated Mapper Examples
+Here we provide examples of generated mappers for a subset of problems. The mappers, written in DSL, are produced by
+the mapper agent. While the LLM is responsible for creating and refining the mapper agent, the agent itself is implemented
+in Python, and it generates mappers as DSL programs. For the Circuit Simulation benchmark, the optimized mapper
+(Figure A5) is more concise than the initial version (Figure A4), with an additional constraint for byte alignment in the
+data layout. In contrast, for Solomonik’s algorithm, the initial mapper is relatively simple (Figure A6), whereas the final
+optimized mapper adopts a more complex and detailed index mapping strategy (Figure A7).
+
+1 Task  * GPU,OMP,CPU;
+2 Task  calculate_new_currents GPU;
+3 Task  update_voltages GPU;
+ 4 Region * * GPU FBMEM;
+ 5 Region * * * SOCKMEM,SYSMEM;
+ 6 Region * all_times GPU FBMEM;
+ 7 Region * all_nodes GPU FBMEM;
+ 8 Region * all_wires GPU FBMEM;
+ 9 Region * ghost_ranges GPU FBMEM;
+10 Region * rp_all_nodes GPU FBMEM;
+11 Region * all_private GPU FBMEM;
+12 Region * all_shared GPU FBMEM;
+13 Region * rp_shared GPU FBMEM;
+14 Region * rp_wires GPU FBMEM;
+15 Region * rp_ghost_ranges GPU FBMEM;
+16 Layout * * * C_order AOS;
+17 mgpu = Machine(GPU);
+18
+19 m_2d   = Machine(GPU);
+20 def   same_point(Task task) {
+21       return m_2d[*task.parent.processor(m_2d)];
+22 }
+
+
+
+                 Figure A4. For the Circuit task, we show the mapper produced by the mapper agent at iteration 2.
+
+
+1 Task * GPU,OMP,CPU;
+2 Task calculate_new_currents GPU;
+3 Task update_voltages GPU;
+4 Region * * GPU FBMEM;
+5 Layout * * * C_order AOS Align==128;
+6 mgpu = Machine(GPU);
+7
+8 m_2d    = Machine(GPU);
+ 9 def   same_point(Task task) {
+10       return m_2d[*task.parent.processor(m_2d)];
+11 }
+
+
+
+                 Figure A5. For the Circuit task, we show the mapper produced by the mapper agent at iteration 10.
+
+
+
+
+                                                                22
+                  Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+
+
+
+
+ 1 Task * GPU,OMP,CPU;
+ 2 Region * * GPU FBMEM;
+ 3 Region * * * SOCKMEM,SYSMEM;
+ 4 Layout * * * F_order SOA;
+ 5 mgpu = Machine(GPU);
+ 6
+ 7 def   block1d(Task task) {
+ 8       ip = task.ipoint;
+ 9       return mgpu[ip[0] % mgpu.size[0], ip[0] % mgpu.size[1]];
+10 }
+11
+12 IndexTaskMap task_2 block1d;
+13
+14 m_2d = Machine(GPU);
+15 def   same_point(Task task) {
+16       return m_2d[*task.parent.processor(m_2d)];
+17 }
+
+
+
+              Figure A6. For Solomonik’s algorithm, we show the mapper produced by the mapper agent at iteration 2.
+
+
+
+
+ 1 Task * GPU,OMP,CPU;
+ 2 Region * * GPU FBMEM;
+ 3 Region * * * SOCKMEM,SYSMEM;
+ 4 Layout * * * C_order SOA No_Align;
+ 5 mgpu = Machine(GPU);
+ 6
+ 7 def   linearize3D(Task task) {
+ 8       ip = task.ipoint;
+ 9       linearize = ip[0] + ip[1] + ip[2];
+10       return mgpu[linearize % mgpu.size[0], linearize % mgpu.size[1]];
+11 }
+12
+13 IndexTaskMap task_1 linearize3D;
+14
+15 def linearize2D(Task task) {
+16       ip = task.ipoint;
+17       linearize = ip[0] * 2 + ip[2];
+18       return mgpu[linearize % mgpu.size[0], linearize % mgpu.size[1]];
+19 }
+20
+21 IndexTaskMap task_1 linearize2D;
+22 IndexTaskMap task_2 linearize2D;
+23 IndexTaskMap task_3 linearize2D;
+24 IndexTaskMap task_5 linearize2D;
+25
+26 m_2d = Machine(GPU);
+27 def same_point(Task task) {
+28     return m_2d[*task.parent.processor(m_2d)];
+29 }
+
+
+
+              Figure A7. For Solomonik’s algorithm, we show the mapper produced by the mapper agent at iteration 10.
+
+
+
+
+                                                               23
+

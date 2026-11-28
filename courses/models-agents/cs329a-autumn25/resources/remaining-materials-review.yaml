@@ -1,0 +1,108 @@
+schemaVersion: 1
+course: cs329a-autumn25
+checkedAt: 2026-11-27T14:22:13.482Z
+officialSchedule: https://cs329a.stanford.edu/
+officialPlaylist: https://www.youtube.com/playlist?list=PLangBM27OtEA
+playlistVideos:
+  - id: 6YnLB0XbTnI
+    title: Stanford CS329A Self-Improving AI Agents | Part 1 | Course Overview
+  - id: -Ggc37xLj_Y
+    title: Stanford CS329A Self-Improving AI Agents | Part 2 | Test-Time Compute Scaling
+  - id: p7TdPUcPoik
+    title: Stanford CS329A Self-Improving AI Agents | Part 3 | Robust Verification
+  - id: Lxh9RF5S-K0
+    title: Stanford CS329A Self-Improving AI Agents | Part 4 | Learning from Feedback with Tools/Code
+  - id: Ml_fp9XkB8Y
+    title: Stanford CS329A Self-Improving AI Agents | Part 5 | Planning and Multi-Step Reasoning
+  - id: yVnmHSAy3ck
+    title: Stanford CS329A Self-Improving AI Agents | Part 6 | Train Time Scaling/Scaling RL
+  - id: Uni9dqyuuDM
+    title: Stanford CS329A Self-Improving AI Agents | Part 7 | Self-Improvement and Deep Research Agents
+  - id: 8JAqLnTaZu4
+    title: Stanford CS329A Self-Improving AI Agents | Part 8 | Agentic Evaluations and Long Horizon Tasks
+  - id: AyO6wyu4DEg
+    title: Stanford CS329A Self-Improving AI Agents | Part 9 | Future Research Areas
+videoLectureMapping:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 8
+  - 17
+  - 20
+search:
+  scope: One public search covering official Autumn 2025 CS329A guest recordings/slides and L07/L13/L14; no newly attributable course-specific recording/deck found.
+  excluded: Generic speaker talks, unrelated offerings and third-party substitute reconstructions were not used.
+remaining:
+  - lecture: lecture-07
+    title: Open-Ended Evolution of Self-Improving Agents
+    date: 2025-10-13
+    state: assigned-reading-notes
+    basis: Three officially assigned papers; no video/slides.
+    transcripts: not-generated-no-public-course-video
+  - lecture: lecture-09
+    title: "Guest Lecture: Melvin Johnson (Google DeepMind)"
+    date: 2025-10-20
+    state: no-public-course-specific-material-found
+    basis: Official schedule lists no public video, deck or assigned paper links.
+    transcripts: not-generated-no-public-course-video
+  - lecture: lecture-10
+    title: Mid term presentations
+    date: 2025-10-24
+    state: midterm-no-lecture-material
+    basis: Official schedule lists no public video, deck or assigned paper links.
+    transcripts: not-generated-no-public-course-video
+  - lecture: lecture-11
+    title: Mid term presentations
+    date: 2025-10-27
+    state: midterm-no-lecture-material
+    basis: Official schedule lists no public video, deck or assigned paper links.
+    transcripts: not-generated-no-public-course-video
+  - lecture: lecture-12
+    title: Mid term presentations
+    date: 2025-10-31
+    state: midterm-no-lecture-material
+    basis: Official schedule lists no public video, deck or assigned paper links.
+    transcripts: not-generated-no-public-course-video
+  - lecture: lecture-13
+    title: Agentic Frameworks for Software Engineering
+    date: 2025-11-03
+    state: assigned-reading-notes
+    basis: Three officially assigned papers; no video/slides.
+    transcripts: not-generated-no-public-course-video
+  - lecture: lecture-14
+    title: Augmenting Agents with Memory
+    date: 2025-11-07
+    state: assigned-reading-notes
+    basis: Three officially assigned papers; no video/slides.
+    transcripts: not-generated-no-public-course-video
+  - lecture: lecture-15
+    title: "Guest Lecture: Denny Zhou (Google DeepMind)"
+    date: 2025-11-10
+    state: no-public-course-specific-material-found
+    basis: Official schedule lists no public video, deck or assigned paper links.
+    transcripts: not-generated-no-public-course-video
+  - lecture: lecture-16
+    title: "Guest Lecture: Thang Luong (Google DeepMind)"
+    date: 2025-11-14
+    state: no-public-course-specific-material-found
+    basis: Official schedule lists no public video, deck or assigned paper links.
+    transcripts: not-generated-no-public-course-video
+  - lecture: lecture-18
+    title: "Guest Lecture: Misha Laskin (Reflection AI)"
+    date: 2025-11-21
+    state: no-public-course-specific-material-found
+    basis: Official schedule lists no public video, deck or assigned paper links.
+    transcripts: not-generated-no-public-course-video
+  - lecture: lecture-19
+    title: "Guest Lecture: Danny Driess (Physical Intelligence)"
+    date: 2025-12-01
+    state: no-public-course-specific-material-found
+    basis: Official schedule lists no public video, deck or assigned paper links.
+    transcripts: not-generated-no-public-course-video
+mappingIssues:
+  - L13 is 2025-11-03 in the official schedule and existing catalog, not 2025-10-31 (that date is L12 midterms).
+  - L07 official ADAS label links to arXiv:2505.22954, which is Darwin Gödel Machine; actual linked paper used and mismatch disclosed.
+  - Current linked paper revisions may postdate Autumn 2025; generated text is reading-based, not a reconstruction of classroom content.

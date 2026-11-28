@@ -1,0 +1,51 @@
+schemaVersion: 1
+course: cs329a-autumn25
+lecture: lecture-13
+state: assigned-readings-only
+checkedAt: 2026-11-27T14:21:33.879Z
+officialSchedule: https://cs329a.stanford.edu/
+papers:
+  - lecture: lecture-13
+    label: "CodeMonkeys: Scaling Test-Time Compute for Software Engineering"
+    url: https://arxiv.org/abs/2501.14723
+    retrievedUrl: https://arxiv.org/pdf/2501.14723
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-13/paper-1.txt
+    characters: 72582
+    status: extracted
+    actualTitle: "CodeMonkeys: Scaling Test-Time Compute for Software Engineering"
+    sha256: 3939d03757587dc31c3a6dcced268a7391844a8f6fc8b902323be3db217487c6
+    excerpt:
+      startCharacter: 0
+      endCharacter: 72582
+      fullCharacters: 72582
+  - lecture: lecture-13
+    label: "KernelBench: Can LLMs Write Efficient GPU Kernels?"
+    url: https://arxiv.org/pdf/2502.10517
+    retrievedUrl: https://arxiv.org/pdf/2502.10517
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-13/paper-2.txt
+    characters: 115086
+    status: extracted
+    actualTitle: "KernelBench: Can LLMs Write Efficient GPU Kernels?"
+    sha256: ceb746a717479c26eec9e664a8e8dacf00adb8ce711b23f8baebe2ce65a3b905
+    excerpt:
+      startCharacter: 0
+      endCharacter: 89961
+      fullCharacters: 115086
+  - lecture: lecture-13
+    label: Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+    url: https://arxiv.org/abs/2410.15625
+    retrievedUrl: https://arxiv.org/pdf/2410.15625
+    text: courses/models-agents/cs329a-autumn25/references/official-readings/lecture-13/paper-3.txt
+    characters: 109669
+    status: extracted
+    actualTitle: Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces
+    sha256: bcf9081a10a606800933fdd10adbefb679f1d91cbcdb76c792aad395a86074c0
+    excerpt:
+      startCharacter: 0
+      endCharacter: 89980
+      fullCharacters: 109669
+limitations:
+  - No classroom recording or slides; no classroom transcripts.
+  - Retrieved linked versions may postdate Autumn 2025; no reconstruction of classroom speech.
+  - Only explicitly recorded initial text spans were sent to the model; appendices may be omitted.
+  - PDF extraction can omit diagrams and reorder two-column text.

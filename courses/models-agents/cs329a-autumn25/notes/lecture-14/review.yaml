@@ -1,0 +1,15 @@
+schemaVersion: 1
+course: cs329a-autumn25
+lecture: lecture-14
+state: approved
+approvedBy: user
+approvedAt: 2026-11-27T14:22:54.228Z
+authorization: 不是，你搞错了，我们是把cs329a剩余的课程东西都补上去
+candidateManifest: courses/models-agents/cs329a-autumn25/notes/lecture-14/references/deepseek/run.yaml
+checks:
+  nonempty: true
+  readingBasisLabel: true
+  noTranscriptOutputs: true
+limitations:
+  - User-authorized inclusion with automated checks, not independent human content review.
+  - Reading-based explanation; no reconstruction of classroom content.
